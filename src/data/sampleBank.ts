@@ -21,13 +21,6 @@ export const INITIAL_SUBJECTS: Subject[] = [
         chapter: "Phần 1: Lập trình cơ bản Python (Tin học 10)",
         totalQuestions: 5,
       },
-      {
-        id: "tin-python-dung-sai",
-        name: "Ôn tập: Trắc nghiệm Đúng / Sai Python (10F)",
-        subjectId: "tin-hoc-12",
-        chapter: "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-        totalQuestions: 5,
-      },
 
       // Tuần 7: Ôn tập chủ đề 1 (Tin học 12) - Trí tuệ nhân tạo (AI)
       {

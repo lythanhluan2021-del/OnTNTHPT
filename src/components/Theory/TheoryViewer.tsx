@@ -21,6 +21,7 @@ import {
   BookmarkCheck,
   X
 } from "lucide-react";
+import { LatexRenderer } from "../UI/LatexRenderer";
 
 interface TheoryViewerProps {
   topicId: string;
@@ -111,7 +112,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
         <div className="flex items-center justify-between">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100/90 text-blue-800 text-[11px] font-bold tracking-wide">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>TÓM TẮT LÝ THUYẾT TRỌNG TÂM</span>
+            <span>NỘI DUNG LÝ THUYẾT ĐẦY ĐỦ (NGUYÊN BẢN)</span>
           </span>
           <span className="text-[10px] text-slate-500 font-medium truncate max-w-[140px]" title={theoryData.docTitle}>
             {theoryData.docTitle}
@@ -123,7 +124,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
             {theoryData.topicName}
           </h2>
           <p className="text-xs text-slate-600 mt-1">
-            Hệ thống hóa toàn bộ kiến thức cốt lõi từ file bài giảng Word, giúp bạn nắm chắc lý thuyết trước khi bước vào phòng thi.
+            Giữ nguyên vẹn 100% nội dung lý thuyết từ tài liệu bài giảng gốc, được trình bày mạch lạc, trực quan giúp bạn nắm chắc kiến thức trước khi luyện đề.
           </p>
         </div>
 
@@ -257,9 +258,10 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                 {/* Nội dung chi tiết khi mở thẻ */}
                 {isExpanded && (
                   <div className="px-3.5 sm:px-4 pb-4 pt-1 space-y-3.5 border-t border-slate-300/60">
-                    {/* Tóm tắt nhanh */}
-                    <div className="p-2.5 rounded-neu-sm bg-blue-50/70 border-l-3 border-blue-500 text-xs text-blue-900 font-medium">
-                      {section.summary}
+                    {/* Giới thiệu trọng tâm mục */}
+                    <div className="p-2.5 rounded-neu-sm bg-blue-50/80 border-l-3 border-blue-500 text-xs text-blue-950 font-medium flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                      <span>{section.summary}</span>
                     </div>
 
                     {/* Các đoạn văn bản và đề mục */}
@@ -267,15 +269,38 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                       <div key={bIdx} className="space-y-2 text-xs">
                         {block.heading && (
                           <h4 className="font-extrabold text-slate-800 text-xs flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                            <span>{block.heading}</span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0" />
+                            <LatexRenderer content={block.heading} />
                           </h4>
                         )}
 
                         {block.text && (
-                          <p className="text-slate-700 leading-relaxed pl-1">
-                            {block.text}
-                          </p>
+                          <div className="text-slate-700 leading-relaxed pl-1">
+                            <LatexRenderer content={block.text} />
+                          </div>
+                        )}
+
+                        {/* Hình ảnh bài học (nếu có) */}
+                        {block.image && (
+                          <div className="my-2.5 p-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm flex flex-col items-center">
+                            <img
+                              src={block.image}
+                              alt={block.imageCaption || "Hình minh họa bài học"}
+                              className="max-h-72 w-auto object-contain rounded border border-slate-300/80 shadow-sm"
+                            />
+                            {block.imageCaption && (
+                              <span className="text-[11px] text-slate-500 font-medium italic mt-1.5 text-center">
+                                {block.imageCaption}
+                              </span>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Khối mã nguồn Code (nếu có) */}
+                        {block.code && (
+                          <div className="my-2 p-2.5 rounded-neu-sm bg-slate-900 text-slate-100 font-mono text-xs overflow-x-auto shadow-inner">
+                            <pre className="whitespace-pre">{block.code}</pre>
+                          </div>
                         )}
 
                         {block.bulletPoints && block.bulletPoints.length > 0 && (
@@ -288,18 +313,18 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                                 {point.label && (
                                   <div className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
                                     <span className="text-blue-600">▪</span>
-                                    <span>{point.label}</span>
+                                    <LatexRenderer content={point.label} />
                                   </div>
                                 )}
-                                <p className="text-slate-700 text-xs leading-relaxed">
-                                  {point.desc}
-                                </p>
+                                <div className="text-slate-700 text-xs leading-relaxed">
+                                  <LatexRenderer content={point.desc} />
+                                </div>
                                 {point.example && (
                                   <div className="pt-1.5 mt-1 border-t border-slate-300/70 flex items-start gap-1.5 text-[11px] text-emerald-900 font-medium">
                                     <Lightbulb className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
                                     <div className="leading-snug">
                                       <span className="font-bold text-emerald-800">Ví dụ thực tế: </span>
-                                      <span>{point.example}</span>
+                                      <LatexRenderer content={point.example} />
                                     </div>
                                   </div>
                                 )}
