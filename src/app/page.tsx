@@ -259,6 +259,58 @@ export default function AppHome() {
     }
   };
 
+  // Xử lý quét tự động toàn bộ thư mục OnTNTHPT qua Service Account
+  const handleScanFolder = async (
+    targetFolderId: string,
+    serviceAccountKey: string
+  ): Promise<{ count: number; subjectsCount: number; tree: any }> => {
+    const res = await fetch("/api/drive-folder-sync", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        folderId: targetFolderId,
+        serviceAccount: serviceAccountKey,
+      }),
+    });
+
+    const json = await res.json();
+    if (!res.ok || json.error) {
+      throw new Error(json.error + (json.hint ? ` (${json.hint})` : ""));
+    }
+
+    const { questions: scannedQuestions, subjects: scannedSubjects, tree } = json.data;
+
+    if (scannedQuestions && scannedQuestions.length > 0) {
+      setQuestions(scannedQuestions);
+      try {
+        localStorage.setItem("thpt_custom_questions", JSON.stringify(scannedQuestions));
+      } catch {
+        // Fallback
+      }
+    }
+
+    if (scannedSubjects && scannedSubjects.length > 0) {
+      setSubjects(scannedSubjects);
+      setSelectedSubjectId(scannedSubjects[0].id);
+      if (scannedSubjects[0].topics.length > 0) {
+        setSelectedTopicId(scannedSubjects[0].topics[0].id);
+      }
+      try {
+        localStorage.setItem("thpt_custom_subjects", JSON.stringify(scannedSubjects));
+      } catch {
+        // Fallback
+      }
+    }
+
+    setCurrentQuestionIndex(0);
+
+    return {
+      count: json.count,
+      subjectsCount: json.subjectsCount,
+      tree,
+    };
+  };
+
   return (
     <div className="min-h-screen bg-[#e6ecf5] flex flex-col antialiased">
       {/* Sidebar bên trái chứa toàn bộ cấu trúc bài học */}
@@ -369,6 +421,7 @@ export default function AppHome() {
         subjects={subjects}
         selectedSubjectId={selectedSubjectId}
         onSync={handleDriveSync}
+        onScanFolder={handleScanFolder}
       />
 
       {/* Hộp thoại chuyển đổi môn ôn tập thông minh */}
