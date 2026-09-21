@@ -47,12 +47,26 @@ export default function AppHome() {
     totalImported: INITIAL_QUESTIONS.length,
   });
 
-  // Nạp lịch sử từ localStorage nếu có
+  // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage nếu có
   useEffect(() => {
     try {
       const savedAttempts = localStorage.getItem("thpt_attempts");
       if (savedAttempts) {
         setAttempts(JSON.parse(savedAttempts));
+      }
+      const savedQuestions = localStorage.getItem("thpt_custom_questions");
+      if (savedQuestions) {
+        const parsedQ = JSON.parse(savedQuestions);
+        if (Array.isArray(parsedQ) && parsedQ.length > 0) {
+          setQuestions(parsedQ);
+        }
+      }
+      const savedSubjects = localStorage.getItem("thpt_custom_subjects");
+      if (savedSubjects) {
+        const parsedS = JSON.parse(savedSubjects);
+        if (Array.isArray(parsedS) && parsedS.length > 0) {
+          setSubjects(parsedS);
+        }
       }
     } catch {
       // Ignored
@@ -159,17 +173,50 @@ export default function AppHome() {
   // Xử lý đồng bộ dữ liệu từ Google Drive
   const handleDriveSync = async (sheetUrl: string): Promise<boolean> => {
     try {
-      // Giả lập đọc tài liệu hoặc gọi API sync
-      setDriveSyncStatus((prev) => ({ ...prev, status: "syncing" }));
+      setDriveSyncStatus((prev) => ({ ...prev, status: "syncing", message: undefined }));
       
-      // Ở đây ta mô phỏng quá trình nạp an toàn, đảm bảo nguồn tài liệu khép kín
-      await new Promise((res) => setTimeout(res, 1200));
+      const res = await fetch("/api/drive-sync", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sheetUrl }),
+      });
+
+      const json = await res.json();
+      if (!res.ok || json.error) {
+        throw new Error(json.error || "Không thể đồng bộ từ Google Drive");
+      }
+
+      const { questions: newQuestions, subjects: newSubjects } = json.data;
+
+      if (!newQuestions || newQuestions.length === 0) {
+        throw new Error("Không có câu hỏi hợp lệ trong bảng tính Google Drive này!");
+      }
+
+      // Cập nhật câu hỏi và môn học
+      setQuestions(newQuestions);
+      if (newSubjects && newSubjects.length > 0) {
+        setSubjects(newSubjects);
+        setSelectedSubjectId(newSubjects[0].id);
+        if (newSubjects[0].topics.length > 0) {
+          setSelectedTopicId(newSubjects[0].topics[0].id);
+        }
+      }
+      setCurrentQuestionIndex(0);
+
+      // Lưu trữ an toàn trong localStorage
+      try {
+        localStorage.setItem("thpt_custom_questions", JSON.stringify(newQuestions));
+        localStorage.setItem("thpt_custom_subjects", JSON.stringify(newSubjects));
+      } catch {
+        // Quota full fallback
+      }
 
       setDriveSyncStatus({
         status: "success",
-        totalImported: questions.length,
+        totalImported: newQuestions.length,
         sheetUrl,
         lastSyncedAt: Date.now(),
+        message: `Đã nạp thành công ${newQuestions.length} câu hỏi chuẩn từ Google Drive!`,
       });
       return true;
     } catch (err: any) {
@@ -178,7 +225,7 @@ export default function AppHome() {
         status: "error",
         message: err.message,
       }));
-      return false;
+      throw err;
     }
   };
 

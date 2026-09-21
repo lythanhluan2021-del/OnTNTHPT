@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { parseGoogleSheetData } from "@/lib/driveSync";
+import { parseGoogleSheetData, normalizeGoogleSheetUrl } from "@/lib/driveSync";
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,11 +12,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Tải dữ liệu từ URL Google Sheets công khai
-    const response = await fetch(sheetUrl);
+    const exportUrl = normalizeGoogleSheetUrl(sheetUrl);
+
+    // Tải dữ liệu từ Google Sheets công khai
+    const response = await fetch(exportUrl, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      },
+    });
+
     if (!response.ok) {
       return NextResponse.json(
-        { error: "Không thể truy cập tài liệu Google Drive. Vui lòng kiểm tra quyền chia sẻ." },
+        {
+          error:
+            "Không thể tải nội dung bảng tính. Vui lòng kiểm tra quyền chia sẻ: 'Bất kỳ ai có đường liên kết đều có thể xem' (Anyone with link can view).",
+        },
         { status: 400 }
       );
     }
@@ -31,7 +41,7 @@ export async function POST(req: NextRequest) {
     });
   } catch (error: any) {
     return NextResponse.json(
-      { error: error.message || "Lỗi xử lý tài liệu" },
+      { error: error.message || "Lỗi xử lý tài liệu Google Drive" },
       { status: 500 }
     );
   }
