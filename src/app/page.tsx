@@ -58,10 +58,10 @@ export default function AppHome() {
       if (savedQuestions) {
         const parsedQ = JSON.parse(savedQuestions);
         if (Array.isArray(parsedQ) && parsedQ.length > 0) {
-          const initialIds = new Set(parsedQ.map((q: any) => q.id));
+          const initIds = new Set(INITIAL_QUESTIONS.map((q) => q.id));
           setQuestions([
-            ...parsedQ,
-            ...INITIAL_QUESTIONS.filter((q) => !initialIds.has(q.id)),
+            ...INITIAL_QUESTIONS,
+            ...parsedQ.filter((q: any) => !initIds.has(q.id)),
           ]);
         }
       }
@@ -73,11 +73,18 @@ export default function AppHome() {
           parsedS.length > 0 &&
           parsedS.some((s: any) => s.topics && s.topics.length > 0)
         ) {
-          // Gộp với INITIAL_SUBJECTS để không bao giờ bị mất môn hay bài học
+          // Gộp với INITIAL_SUBJECTS để luôn cập nhật đủ 76 câu hỏi cho Chủ đề A
           const merged = INITIAL_SUBJECTS.map((initSubj) => {
             const found = parsedS.find((s: any) => s.id === initSubj.id);
             if (found && found.topics && found.topics.length > 0) {
-              return found;
+              const updatedTopics = found.topics.map((top: any) => {
+                const initTop = initSubj.topics.find((t) => t.id === top.id);
+                if (initTop && initTop.totalQuestions > (top.totalQuestions || 0)) {
+                  return { ...top, totalQuestions: initTop.totalQuestions };
+                }
+                return top;
+              });
+              return { ...found, topics: updatedTopics };
             }
             return initSubj;
           });
