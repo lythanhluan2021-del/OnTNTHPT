@@ -16,7 +16,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-python-dung-sai",
-        name: "Ôn tập: Trắc nghiệm Đúng / Sai Python (10F)",
+        name: "Ôn tập: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
         subjectId: "tin-hoc-12",
         chapter: "Phần 1: Lập trình cơ bản Python (Tin học 10)",
         totalQuestions: 5,
@@ -48,7 +48,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-mang-dung-sai",
-        name: "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (12B)",
+        name: "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
         totalQuestions: 11,

@@ -99,7 +99,7 @@ export default function AppHome() {
                 ...initSubj.topics.map((initTop) => {
                   const foundTop = found.topics.find((t: any) => t.id === initTop.id);
                   if (foundTop && (foundTop.totalQuestions || 0) > initTop.totalQuestions) {
-                    return foundTop;
+                    return { ...initTop, totalQuestions: foundTop.totalQuestions };
                   }
                   return initTop;
                 }),

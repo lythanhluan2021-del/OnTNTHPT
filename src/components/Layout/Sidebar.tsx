@@ -19,6 +19,7 @@ import {
   FolderOpen,
   PanelLeftClose,
   Sparkles,
+  Calendar,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -50,6 +51,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   // Trạng thái thu gọn / mở rộng từng chương (mặc định mở chương có topic đang chọn)
   const [expandedChapters, setExpandedChapters] = useState<Record<string, boolean>>({});
+
+  // Helper bóc tách Tuần học và Tên bài học rõ ràng
+  const parseTopicInfo = (rawName: string) => {
+    // Nhận diện định dạng (Tuần X) hoặc (Tuần X – Y)
+    const weekMatch = rawName.match(/\((Tuần\s*[\d\s–-]+)\)/i);
+    const week = weekMatch ? weekMatch[1].trim() : null;
+    // Bỏ phần (Tuần ...) ở cuối tên bài để hiển thị độc lập đẹp mắt
+    const cleanName = rawName.replace(/\s*\((Tuần\s*[\d\s–-]+)\)\s*$/i, "").trim();
+    return { week, cleanName };
+  };
 
   // Nhóm topics theo Chapter
   const groupedChapters = useMemo(() => {
@@ -345,10 +356,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-xs font-bold truncate leading-tight">
+                        <h3 className="text-xs font-extrabold text-slate-800 leading-snug break-words">
                           {chapterTitle}
                         </h3>
-                        <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-medium mt-0.5">
+                        <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-medium mt-1">
                           <span>{topicList.length} dạng bài</span>
                           <span>•</span>
                           <span>{totalChapterQuestions} câu hỏi</span>
@@ -367,9 +378,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                   {/* Danh sách các bài học / chủ đề bên trong chương khi mở rộng */}
                   {isExpanded && (
-                    <div className="p-1.5 space-y-1.5 border-t border-slate-200/80 bg-slate-100/40">
+                    <div className="p-1.5 space-y-2 border-t border-slate-200/80 bg-slate-100/40">
                       {topicList.map((topic) => {
                         const isCurrent = topic.id === selectedTopicId;
+                        const { week, cleanName } = parseTopicInfo(topic.name);
+
                         return (
                           <button
                             key={topic.id}
@@ -380,23 +393,39 @@ export const Sidebar: React.FC<SidebarProps> = ({
                                 onClose();
                               }
                             }}
-                            className={`w-full text-left p-2 rounded-neu-sm transition-all flex items-center justify-between gap-2 ${
+                            className={`w-full text-left p-2.5 rounded-neu-sm transition-all flex items-start justify-between gap-2 ${
                               isCurrent
-                                ? "bg-[#e6ecf5] text-blue-700 shadow-neu-inset font-semibold"
+                                ? "bg-[#e6ecf5] text-blue-800 shadow-neu-inset font-semibold border-l-3 border-blue-600"
                                 : "bg-[#e6ecf5] text-slate-700 shadow-neu-flat-xs hover:text-blue-600 active:shadow-neu-inset"
                             }`}
                           >
-                            <div className="pr-1 min-w-0 flex-1">
-                              <p className="text-xs leading-snug truncate">{topic.name}</p>
-                              <span className="text-[10px] text-slate-500 font-normal">
-                                {topic.totalQuestions} câu hỏi chuẩn
-                              </span>
+                            <div className="flex-1 min-w-0 space-y-1">
+                              {/* Hàng huy hiệu: Tuần học nổi bật + Số lượng câu hỏi */}
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                {week && (
+                                  <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200/80 shadow-neu-flat-xs">
+                                    <Calendar className="w-3 h-3 text-blue-600 flex-shrink-0" />
+                                    <span>{week}</span>
+                                  </span>
+                                )}
+                                <span className="text-[10px] text-slate-500 font-medium">
+                                  {topic.totalQuestions} câu hỏi chuẩn
+                                </span>
+                              </div>
+
+                              {/* Tên bài học đầy đủ (KHÔNG CẮT BỚT - HIỂN THỊ 100%) */}
+                              <p className="text-xs font-bold text-slate-800 leading-snug break-words">
+                                {cleanName}
+                              </p>
                             </div>
-                            <ChevronRight
-                              className={`w-3.5 h-3.5 flex-shrink-0 transition-transform ${
-                                isCurrent ? "text-blue-600 translate-x-0.5" : "text-slate-400"
-                              }`}
-                            />
+
+                            <div className="pt-1 flex-shrink-0">
+                              <ChevronRight
+                                className={`w-4 h-4 transition-transform ${
+                                  isCurrent ? "text-blue-600 translate-x-0.5" : "text-slate-400"
+                                }`}
+                              />
+                            </div>
                           </button>
                         );
                       })}
