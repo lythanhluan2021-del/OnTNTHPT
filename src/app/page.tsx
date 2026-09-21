@@ -11,6 +11,7 @@ import { StepHintPanel } from "@/components/Practice/StepHintPanel";
 import { SocraticTutorDrawer } from "@/components/Practice/SocraticTutorDrawer";
 import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
 import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
+import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
 import { parseGoogleSheetData } from "@/lib/driveSync";
 
 export default function AppHome() {
@@ -20,13 +21,14 @@ export default function AppHome() {
   const [attempts, setAttempts] = useState<StudentAttempt[]>([]);
 
   // 2. Navigation States
-  const [selectedSubjectId, setSelectedSubjectId] = useState<string>("toan-12");
+  const [selectedSubjectId, setSelectedSubjectId] = useState<string>("tin-hoc-12");
   const [selectedTopicId, setSelectedTopicId] = useState<string>(
-    "toan-ham-so-don-dieu"
+    "tin-ai-tri-tue-nhan-tao"
   );
   const [activeTab, setActiveTab] = useState<"practice" | "analytics">("practice");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
+  const [isSubjectModalOpen, setIsSubjectModalOpen] = useState(false);
 
   // 3. Question Practice States
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -203,6 +205,7 @@ export default function AppHome() {
           onChangeTab={setActiveTab}
           subjectTitle={currentSubject?.name || "Môn học"}
           topicTitle={currentTopic?.name || "Chủ đề"}
+          onOpenSubjectModal={() => setIsSubjectModalOpen(true)}
         />
 
         {/* Khung nội dung chính */}
@@ -287,6 +290,15 @@ export default function AppHome() {
         onClose={() => setIsDriveModalOpen(false)}
         syncStatus={driveSyncStatus}
         onSync={handleDriveSync}
+      />
+
+      {/* Hộp thoại chuyển đổi môn ôn tập thông minh */}
+      <SubjectSwitchModal
+        isOpen={isSubjectModalOpen}
+        onClose={() => setIsSubjectModalOpen(false)}
+        subjects={subjects}
+        selectedSubjectId={selectedSubjectId}
+        onSelectSubject={handleSelectSubject}
       />
     </div>
   );

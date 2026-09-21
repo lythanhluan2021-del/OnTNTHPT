@@ -6,6 +6,7 @@ import {
   BookOpen,
   Calculator,
   Atom,
+  Laptop,
   ChevronRight,
   CheckCircle2,
   X,
@@ -96,25 +97,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wider px-1">
             Chọn môn học
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-3 gap-1.5">
             {subjects.map((subj) => {
               const isSelected = subj.id === selectedSubjectId;
               return (
                 <button
                   key={subj.id}
                   onClick={() => onSelectSubject(subj.id)}
-                  className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-neu-sm text-xs font-semibold transition-all ${
+                  className={`flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
                     isSelected
                       ? "bg-[#e6ecf5] text-blue-600 shadow-neu-inset"
-                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset"
+                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
                   }`}
                 >
-                  {subj.id.includes("toan") ? (
-                    <Calculator className="w-4 h-4" />
+                  {subj.id.includes("tin") ? (
+                    <Laptop className="w-4 h-4 text-indigo-600" />
+                  ) : subj.id.includes("toan") ? (
+                    <Calculator className="w-4 h-4 text-blue-600" />
                   ) : (
-                    <Atom className="w-4 h-4" />
+                    <Atom className="w-4 h-4 text-cyan-600" />
                   )}
-                  <span>{subj.name}</span>
+                  <span className="truncate w-full text-center leading-tight">
+                    {subj.name.replace(" học", "")}
+                  </span>
                 </button>
               );
             })}
