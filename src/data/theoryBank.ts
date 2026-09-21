@@ -230,8 +230,161 @@ export const TOPIC_THEORY_MAP: Record<string, {
         ]
       }
     ]
-  }
+  },
+
+  "tin-thiet-bi-giao-thuc-mang": {
+    subjectId: "tin-hoc-12",
+    subjectName: "Tin học 12",
+    topicName: "Chủ đề B: Mạng máy tính và Internet",
+    chapterName: "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
+    docTitle: "Chuyên đề 12B. Kết nối mạng (Google Drive)",
+    objectives: [
+      "Nêu được chức năng chính của một số thiết bị mạng thông dụng (Access Point, Switch, Modem, Router, Cáp mạng) và kết nối được với PC.",
+      "Mô tả sơ lược được vai trò và chức năng của giao thức mạng nói chung và bộ giao thức TCP/IP nói riêng.",
+      "Sử dụng được các chức năng mạng của hệ điều hành để chia sẻ tài nguyên (thư mục, máy in).",
+      "Thiết lập kết nối và sử dụng mạng trên thiết bị di động (Wi-Fi, dữ liệu di động)."
+    ],
+    sections: [
+      {
+        id: "net-concepts-types",
+        topicId: "tin-thiet-bi-giao-thuc-mang",
+        title: "1. Khái Niệm & Phân Loại Mạng Máy Tính",
+        icon: "Layers",
+        tag: "Nền tảng mạng",
+        summary: "Khái niệm mạng máy tính, mạng LAN, mạng không dây WLAN (Wi-Fi), mạng WAN và mạng Internet toàn cầu.",
+        keyTerms: ["Mạng máy tính", "LAN", "WLAN", "Wi-Fi", "WAN", "Internet", "Tài nguyên mạng"],
+        content: [
+          {
+            heading: "Khái niệm & Lợi ích mạng máy tính",
+            text: "Mạng máy tính là một hệ thống các thiết bị số được kết nối với nhau để truyền dữ liệu và trao đổi thông tin. Lợi ích quan trọng nhất của mạng máy tính là giúp người dùng chia sẻ tài nguyên dùng chung, bao gồm thông tin (tệp, dữ liệu) và thiết bị phần cứng (máy in, camera, ổ đĩa).",
+            bulletPoints: [
+              {
+                label: "Mạng LAN (Local Area Network)",
+                desc: "Mạng cục bộ kết nối các thiết bị trong phạm vi nhỏ như tòa nhà, cơ quan, trường học, nhà riêng. Thành phần gồm máy chủ (server), máy trạm PC, máy in, cáp mạng, Switch, Modem, Router, Access Point."
+              },
+              {
+                label: "Mạng WLAN (Wireless LAN / Wi-Fi)",
+                desc: "Mạng cục bộ không dây sử dụng sóng điện từ (sóng vô tuyến) để kết nối các thiết bị (laptop, smartphone, tablet) mà không cần dây cáp mạng. Mạng Wi-Fi hoạt động theo chuẩn IEEE 802.11."
+              },
+              {
+                label: "Mạng WAN & Internet",
+                desc: "Mạng diện rộng (WAN) kết nối các mạng LAN ở khoảng cách xa (liên quận, liên tỉnh, quốc gia). Internet là một mạng WAN đặc biệt toàn cầu - 'mạng của các mạng', phủ khắp thế giới với hàng tỉ người dùng."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "net-devices",
+        topicId: "tin-thiet-bi-giao-thuc-mang",
+        title: "2. Các Thiết Bị Mạng Thông Dụng",
+        icon: "Cpu",
+        tag: "Thiết bị phần cứng",
+        summary: "Chức năng của Cáp xoắn, Cáp quang, Switch, Modem, Router, Access Point và Card mạng (NIC).",
+        keyTerms: ["Switch", "Modem", "Router", "Access Point", "Cáp UTP", "Cáp quang", "Card mạng", "Địa chỉ MAC"],
+        content: [
+          {
+            heading: "Chức năng và đặc điểm của các thiết bị mạng cốt lõi:",
+            bulletPoints: [
+              {
+                label: "Cáp mạng (Cáp xoắn UTP & Cáp quang)",
+                desc: "Cáp xoắn dùng dây đồng truyền tín hiệu điện, sử dụng đầu nối RJ45 cắm vào cổng LAN. Cáp quang có lõi sợi thủy tinh truyền tín hiệu ánh sáng, cho tốc độ truyền cao và khoảng cách xa vượt trội."
+              },
+              {
+                label: "Switch (Bộ chuyển mạch)",
+                desc: "Kết nối các máy tính và thiết bị trong cùng một mạng LAN. Switch sử dụng BẢNG ĐỊA CHỈ MAC (gồm 12 ký tự hex duy nhất cho mỗi thiết bị) để chuyển tiếp gói tin chính xác đến đúng cổng đích.",
+                example: "Switch chỉ chuyển gói tin đến đúng máy nhận thay vì phát tán ra toàn mạng như Hub, giúp tăng hiệu suất và bảo mật."
+              },
+              {
+                label: "Modem (Bộ điều chế & Giải điều chế)",
+                desc: "Chuyển đổi tín hiệu số (digital) của máy tính thành tín hiệu tương tự (analog) truyền qua đường truyền viễn thông và ngược lại, đóng vai trò cầu nối mạng LAN với nhà cung cấp Internet (ISP)."
+              },
+              {
+                label: "Router (Bộ định tuyến)",
+                desc: "Kết nối các mạng khác nhau (như mạng LAN gia đình với mạng WAN Internet). Router đọc địa chỉ IP của gói tin để xác định đường đi tối ưu nhất đến đích."
+              },
+              {
+                label: "Access Point (Điểm truy cập không dây - AP)",
+                desc: "Thiết bị thu phát sóng Wi-Fi, cho phép các thiết bị không dây (laptop, điện thoại) kết nối vào mạng LAN có dây. Để kết nối cần biết tên mạng (SSID) và mật khẩu."
+              },
+              {
+                label: "Card mạng (NIC - Network Interface Card)",
+                desc: "Bộ phận gắn trên máy tính để kết nối mạng. Laptop/Smartphone thường tích hợp sẵn card mạng không dây, trong khi máy tính để bàn thường gắn sẵn card mạng có dây cổng RJ45."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "net-protocols-ip-dns",
+        topicId: "tin-thiet-bi-giao-thuc-mang",
+        title: "3. Giao Thức Mạng, Bộ Giao Thức TCP/IP & DNS",
+        icon: "Compass",
+        tag: "Giao thức & Địa chỉ",
+        summary: "Giao thức mạng, TCP/IP, Địa chỉ IPv4 (32-bit), IPv6 (128-bit), IP tĩnh vs IP động, Tên miền và hệ thống DNS.",
+        keyTerms: ["TCP/IP", "IPv4", "IPv6", "Địa chỉ IP", "IP tĩnh", "IP động", "DHCP", "DNS", "Tên miền"],
+        content: [
+          {
+            heading: "Giao thức mạng & Giao thức TCP/IP",
+            text: "Giao thức mạng là tập hợp các quy tắc chuẩn hóa để điều khiển truyền thông, trao đổi dữ liệu an toàn giữa các thiết bị trên mạng. Bộ giao thức TCP/IP là nền tảng hoạt động của Internet: TCP đảm bảo việc truyền dữ liệu tin cậy không bị mất gói tin; IP chịu trách nhiệm đánh địa chỉ và định tuyến gói tin."
+          },
+          {
+            heading: "Địa chỉ IP (IPv4 vs IPv6)",
+            bulletPoints: [
+              {
+                label: "Địa chỉ IPv4",
+                desc: "Chuỗi 32 bit nhị phân chia thành 4 cụm (octet), mỗi cụm 8 bit viết dưới dạng thập phân cách nhau bởi dấu chấm (vd: 192.168.1.1). Tổng số gần 4,3 tỉ địa chỉ đã cạn kiệt."
+              },
+              {
+                label: "Địa chỉ IPv6",
+                desc: "Chuỗi 128 bit nhị phân biểu diễn dưới dạng 8 nhóm số thập lục phân (hex), cung cấp không gian địa chỉ khổng lồ cho tương lai."
+              },
+              {
+                label: "IP tĩnh vs IP động",
+                desc: "IP tĩnh được gán cố định cho thiết bị (thường dùng cho máy chủ server, máy in). IP động được cấp phát tự động và thay đổi theo thời gian bởi dịch vụ DHCP của Router."
+              },
+              {
+                label: "Hệ thống tên miền (DNS)",
+                desc: "Dịch vụ chuyển đổi tên miền dễ nhớ (vd: 'google.com', '.edu' cho giáo dục, '.gov' cho chính phủ) sang địa chỉ IP dạng số mà máy tính hiểu được."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "net-sharing-config",
+        topicId: "tin-thiet-bi-giao-thuc-mang",
+        title: "4. Kết Nối Thiết Bị Di Động & Chia Sẻ Tài Nguyên",
+        icon: "Sparkles",
+        tag: "Kỹ năng thực hành",
+        summary: "Bật Wi-Fi/4G trên di động, các bước chia sẻ thư mục trên Windows 10 và 3 mức phân quyền (Full Control, Change, Read).",
+        keyTerms: ["Chia sẻ thư mục", "Full Control", "Change", "Read", "Advanced Sharing", "Wi-Fi di động"],
+        content: [
+          {
+            heading: "Quy trình chia sẻ thư mục trên mạng LAN (Windows 10):",
+            text: "Nhấp chuột phải vào thư mục cần chia sẻ -> Chọn Properties -> Thẻ Sharing -> Chọn Advanced Sharing -> Tích chọn 'Share this folder' -> Nút Permissions để thiết lập quyền truy cập cho người dùng.",
+            bulletPoints: [
+              {
+                label: "Full Control (Toàn quyền)",
+                desc: "Cho phép đọc, sửa đổi, tạo mới, xóa file và thư mục con, đồng thời có quyền thay đổi phân quyền truy cập."
+              },
+              {
+                label: "Change (Quyền thay đổi)",
+                desc: "Cho phép đọc, ghi, sửa đổi, tạo mới và xóa các tệp tin trong thư mục chia sẻ, nhưng không thể thay đổi phân quyền."
+              },
+              {
+                label: "Read (Chỉ đọc)",
+                desc: "Chỉ cho phép mở và xem nội dung tệp tin, không được phép chỉnh sửa hay xóa tài liệu."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
 };
 
-// Aliases
 TOPIC_THEORY_MAP["tin-ai-dung-sai"] = TOPIC_THEORY_MAP["tin-ai-tri-tue-nhan-tao"];
+TOPIC_THEORY_MAP["tin-mang-dung-sai"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
+TOPIC_THEORY_MAP["tin-giao-thuc-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
+TOPIC_THEORY_MAP["tin-chia-se-tai-nguyen-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];

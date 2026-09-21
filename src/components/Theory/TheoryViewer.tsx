@@ -341,7 +341,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
           Bạn đã nắm vững lý thuyết phần này?
         </div>
         <p className="text-[11px] text-slate-600">
-          Hãy củng cố kiến thức ngay bằng cách thử sức với 76 câu nhiều lựa chọn hoặc 20 câu Đúng / Sai chuẩn ma trận thi tốt nghiệp THPT!
+          Hãy củng cố kiến thức ngay bằng cách thử sức với các câu hỏi nhiều lựa chọn hoặc câu hỏi Đúng / Sai chuẩn ma trận thi tốt nghiệp THPT!
         </p>
         <div className="grid grid-cols-2 gap-2 pt-1">
           <button
@@ -351,7 +351,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
             }}
             className="py-2.5 px-2 rounded-neu-sm bg-blue-600 text-white font-bold text-xs shadow-neu-blue active:shadow-neu-blue-pressed flex items-center justify-center gap-1.5 transition"
           >
-            <span>Làm 76 câu Phần 1</span>
+            <span>Luyện tập 4 lựa chọn</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
           <button
@@ -361,7 +361,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
             }}
             className="py-2.5 px-2 rounded-neu-sm bg-gradient-to-r from-blue-700 to-indigo-700 text-white font-bold text-xs shadow-neu-blue active:shadow-neu-blue-pressed flex items-center justify-center gap-1.5 transition"
           >
-            <span>Làm 20 câu Đúng/Sai</span>
+            <span>Luyện tập Đúng / Sai</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
