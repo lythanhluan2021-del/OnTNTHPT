@@ -170,8 +170,11 @@ export default function AppHome() {
     setActiveTab("practice");
   };
 
-  // Xử lý đồng bộ dữ liệu từ Google Drive
-  const handleDriveSync = async (sheetUrl: string): Promise<boolean> => {
+  // Xử lý đồng bộ dữ liệu từ Google Drive (theo từng môn học hoặc tất cả)
+  const handleDriveSync = async (
+    sheetUrl: string,
+    targetSubjectId?: string
+  ): Promise<boolean> => {
     try {
       setDriveSyncStatus((prev) => ({ ...prev, status: "syncing", message: undefined }));
       
@@ -192,28 +195,55 @@ export default function AppHome() {
         throw new Error("Không có câu hỏi hợp lệ trong bảng tính Google Drive này!");
       }
 
-      // Cập nhật câu hỏi và môn học
-      setQuestions(newQuestions);
-      if (newSubjects && newSubjects.length > 0) {
-        setSubjects(newSubjects);
-        setSelectedSubjectId(newSubjects[0].id);
-        if (newSubjects[0].topics.length > 0) {
-          setSelectedTopicId(newSubjects[0].topics[0].id);
+      let updatedQuestions = newQuestions;
+
+      // Nếu đồng bộ cho 1 môn cụ thể trong thư mục riêng
+      if (targetSubjectId) {
+        const normalized = newQuestions.map((q: any) => ({
+          ...q,
+          subjectId: targetSubjectId,
+        }));
+        const otherQuestions = questions.filter((q) => q.subjectId !== targetSubjectId);
+        updatedQuestions = [...otherQuestions, ...normalized];
+        setQuestions(updatedQuestions);
+
+        if (newSubjects && newSubjects.length > 0) {
+          const newTopics = newSubjects[0].topics.map((t: any) => ({
+            ...t,
+            subjectId: targetSubjectId,
+          }));
+          setSubjects((prev) =>
+            prev.map((s) => (s.id === targetSubjectId ? { ...s, topics: newTopics } : s))
+          );
+          setSelectedSubjectId(targetSubjectId);
+          if (newTopics.length > 0) {
+            setSelectedTopicId(newTopics[0].id);
+          }
+        }
+      } else {
+        // Đồng bộ tổng quát
+        setQuestions(newQuestions);
+        if (newSubjects && newSubjects.length > 0) {
+          setSubjects(newSubjects);
+          setSelectedSubjectId(newSubjects[0].id);
+          if (newSubjects[0].topics.length > 0) {
+            setSelectedTopicId(newSubjects[0].topics[0].id);
+          }
         }
       }
+
       setCurrentQuestionIndex(0);
 
       // Lưu trữ an toàn trong localStorage
       try {
-        localStorage.setItem("thpt_custom_questions", JSON.stringify(newQuestions));
-        localStorage.setItem("thpt_custom_subjects", JSON.stringify(newSubjects));
+        localStorage.setItem("thpt_custom_questions", JSON.stringify(updatedQuestions));
       } catch {
         // Quota full fallback
       }
 
       setDriveSyncStatus({
         status: "success",
-        totalImported: newQuestions.length,
+        totalImported: updatedQuestions.length,
         sheetUrl,
         lastSyncedAt: Date.now(),
         message: `Đã nạp thành công ${newQuestions.length} câu hỏi chuẩn từ Google Drive!`,
@@ -336,6 +366,8 @@ export default function AppHome() {
         isOpen={isDriveModalOpen}
         onClose={() => setIsDriveModalOpen(false)}
         syncStatus={driveSyncStatus}
+        subjects={subjects}
+        selectedSubjectId={selectedSubjectId}
         onSync={handleDriveSync}
       />
 

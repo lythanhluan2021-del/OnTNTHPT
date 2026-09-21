@@ -35,6 +35,7 @@ export interface Subject {
   id: string;
   name: string;
   icon: string;
+  driveUrl?: string; // Link file Google Sheets nằm trong thư mục môn đó
   topics: Topic[];
 }
 
