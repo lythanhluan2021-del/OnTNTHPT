@@ -63,10 +63,17 @@ export default function AppHome() {
         const parsedQ = JSON.parse(savedQuestions);
         if (Array.isArray(parsedQ) && parsedQ.length > 0) {
           const initIds = new Set(INITIAL_QUESTIONS.map((q) => q.id));
+          const initTopics = new Set(INITIAL_QUESTIONS.map((q) => q.topicId));
+          // Chỉ lấy các câu hỏi custom từ file mới mà chủ đề chưa có sẵn bộ chuẩn trong INITIAL_QUESTIONS
+          const validCustom = parsedQ.filter(
+            (q: any) => !initIds.has(q.id) && !initTopics.has(q.topicId)
+          );
           setQuestions([
             ...INITIAL_QUESTIONS,
-            ...parsedQ.filter((q: any) => !initIds.has(q.id)),
+            ...validCustom,
           ]);
+          // Cập nhật lại cache sạch để trình duyệt không bị đúp câu hỏi cũ
+          localStorage.setItem("thpt_custom_questions", JSON.stringify(validCustom));
         }
       }
       const savedSubjects = localStorage.getItem("thpt_custom_subjects");
@@ -517,7 +524,7 @@ export default function AppHome() {
                           <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
                             selectedTopicId === "tin-ai-tri-tue-nhan-tao" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
                           }`}>
-                            76
+                            {questions.filter((q) => q.topicId === "tin-ai-tri-tue-nhan-tao").length || 76}
                           </span>
                         </button>
 
@@ -537,7 +544,7 @@ export default function AppHome() {
                           <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
                             selectedTopicId === "tin-ai-dung-sai" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
                           }`}>
-                            20
+                            {questions.filter((q) => q.topicId === "tin-ai-dung-sai").length || 20}
                           </span>
                         </button>
                       </div>
@@ -578,7 +585,7 @@ export default function AppHome() {
                           <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
                             selectedTopicId === "tin-thiet-bi-giao-thuc-mang" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
                           }`}>
-                            69
+                            {questions.filter((q) => q.topicId === "tin-thiet-bi-giao-thuc-mang").length || 72}
                           </span>
                         </button>
 
@@ -598,7 +605,7 @@ export default function AppHome() {
                           <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
                             selectedTopicId === "tin-mang-dung-sai" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
                           }`}>
-                            11
+                            {questions.filter((q) => q.topicId === "tin-mang-dung-sai").length || 11}
                           </span>
                         </button>
                       </div>

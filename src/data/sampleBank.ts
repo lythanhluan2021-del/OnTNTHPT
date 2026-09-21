@@ -34,14 +34,14 @@ export const INITIAL_SUBJECTS: Subject[] = [
       // Tuần 8 - 10: Mạng máy tính & Internet (Chuyên đề 12B)
       {
         id: "tin-thiet-bi-giao-thuc-mang",
-        name: "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+        name: "Ôn tập: Một số thiết bị mạng thông dụng (Tuần 8 – 10)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-        totalQuestions: 69,
+        totalQuestions: 72,
       },
       {
         id: "tin-mang-dung-sai",
-        name: "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+        name: "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (12B)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
         totalQuestions: 11,
@@ -3648,14 +3648,15 @@ export const INITIAL_QUESTIONS: Question[] = [
     "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12A:\n- Ý a) : Sai (Hệ thống AI của công ty A có khả năng tự học và tự điều chỉnh các tiêu chí đánh giá ứng viên mà không cần sự can thiệp từ con người.)\n- Ý b) : Đúng (AI của công ty A có thể tạo ra kết quả không công bằng, thiên vị nếu dữ liệu huấn luyện ban đầu có sự thiên lệch.)\n- Ý c) : Sai (AI của công ty A chỉ đơn giản là làm theo các quy tắc cố định và không thể thích ứng với dữ liệu mới.)\n- Ý d) : Đúng (Một cách để khắc phục vấn đề thiên lệch trong AI là cung cấp cho hệ thống dữ liệu huấn luyện đa dạng và được cân bằng tốt.)",
     "sourceDocTitle": "Chuyên đề 12A. Giới thiệu trí tuệ nhân tạo (Google Drive)"
   },
+  // --- CÂU HỎI TRẮC NGHIỆM 4 LỰA CHỌN CHUYÊN ĐỀ 12B: KẾT NỐI MẠNG (72 CÂU) ---
   {
     "id": "Q-TIN-NET-01",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Lợi ích nào sau đây là quan trọng nhất củ",
+    "content": "Lợi ích nào sau đây là quan trọng nhất của mạng xã hội là gì?",
     "options": [
       {
         "id": "A",
@@ -3676,9 +3677,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -3687,10 +3688,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-02",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Mạng LAN là viết tắt củ",
+    "content": "Mạng LAN là viết tắt của cụm từ nào?",
     "options": [
       {
         "id": "A",
@@ -3702,7 +3703,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Local Area ."
+        "content": "Local Area ."
       },
       {
         "id": "D",
@@ -3711,9 +3712,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -3722,14 +3723,14 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-03",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
     "content": "Máy tính kết nối với nhau để:",
     "options": [
       {
         "id": "A",
-        "content": "Chia sẻ các thiết bị"
+        "content": "Chia sẻ các thiết bị"
       },
       {
         "id": "B",
@@ -3741,14 +3742,14 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Chia sẻ các thiết bị và trao đổi dữ liệu"
+        "content": "Chia sẻ các thiết bị và trao đổi dữ liệu"
       }
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -3757,10 +3758,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-04",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Trường hợp nào không thích hợp để sử dụng mạng LAN?",
+    "content": "Trường hợp nào không thích hợp để sử dụng mạng LAN?",
     "options": [
       {
         "id": "A",
@@ -3781,9 +3782,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -3792,10 +3793,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-05",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Phát biểu nào sau đây không chính xác?",
+    "content": "Phát biểu nào sau đây không chính xác?",
     "options": [
       {
         "id": "A",
@@ -3816,9 +3817,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -3827,10 +3828,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-06",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Đâu không phải là ưu điểm củ",
+    "content": "Đâu không phải là ưu điểm của mạng không dây?",
     "options": [
       {
         "id": "A",
@@ -3851,9 +3852,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -3862,10 +3863,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-07",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Đâu không phải ưu điểm củ",
+    "content": "Đâu không phải ưu điểm của điện toán đám mây?",
     "options": [
       {
         "id": "A",
@@ -3886,9 +3887,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -3897,10 +3898,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-08",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Đâu không phải là dịch vụ lưu trữ qu",
+    "content": "Đâu không phải là dịch vụ lưu trữ qua điện toán đám mây?",
     "options": [
       {
         "id": "A",
@@ -3921,9 +3922,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -3932,10 +3933,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-09",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Những hạn chế củ",
+    "content": "Những hạn chế của mạng xã hội?",
     "options": [
       {
         "id": "A",
@@ -3947,7 +3948,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Nguy cơ bị lừa đảo, đánh cắp thông tin cá nhân."
+        "content": "Nguy cơ bị lừa đảo, đánh cắp thông tin cá nhân."
       },
       {
         "id": "D",
@@ -3956,9 +3957,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -3967,10 +3968,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-10",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Chúng t",
+    "content": "Chúng ta nên làm gì để tự bảo vệ bản thân khi sử dụng mạng xã hội?",
     "options": [
       {
         "id": "A",
@@ -3986,14 +3987,49 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Tất cả các phương án trên.Câu 11. Để bảo vệ dữ liệu trên máy tính khi dùng internet, em cần làm gì?"
+        "content": "Tất cả các phương án trên."
       }
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-NET-11",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
+    "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
+    "difficulty": "NhanBiet",
+    "content": "Để bảo vệ dữ liệu trên máy tính khi dùng internet, em cần làm gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cài đặt và cập nhật phần mềm chống virus."
+      },
+      {
+        "id": "B",
+        "content": "Tải các phần mềm ứng dụng không rõ nguồn gốc về máy tính."
+      },
+      {
+        "id": "C",
+        "content": "Cung cấp thông tin cá nhân trên mạng xã hội."
+      },
+      {
+        "id": "D",
+        "content": "Truy cập vào các liên kết lạ."
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
+      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4002,7 +4038,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-12",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
     "content": "Điều nào sau đây được khuyến khích khi sử dụng các dịch vụ trên internet?",
@@ -4026,9 +4062,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4037,10 +4073,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-13",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Chọn phương án sai. Khi sử dụng internet, có thể:",
+    "content": "Chọn phương án sai. Khi sử dụng internet, có thể:",
     "options": [
       {
         "id": "A",
@@ -4061,9 +4097,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4072,10 +4108,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-14",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Lời khuyên nào sai khi em muốn bảo vệ máy tính và thông tin trên máy tính củ",
+    "content": "Lời khuyên nào sai khi em muốn bảo vệ máy tính và thông tin trên máy tính của mình?",
     "options": [
       {
         "id": "A",
@@ -4096,9 +4132,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4107,10 +4143,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-15",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Cách làm nào sau đây giúp phòng ngừ",
+    "content": "Cách làm nào sau đây giúp phòng ngừa tác hại của Internet?",
     "options": [
       {
         "id": "A",
@@ -4131,9 +4167,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4142,7 +4178,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-16",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
     "content": "Con đường nào không lây, truyền virus:",
@@ -4166,9 +4202,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4177,10 +4213,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-17",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Đâu là tác hại khi tham gi",
+    "content": "Đâu là tác hại khi tham gia internet?",
     "options": [
       {
         "id": "A",
@@ -4201,9 +4237,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4212,10 +4248,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-18",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Em sẽ làm gì trong các trường hợp sau: “Được một nhóm bạn truyền cho một đị",
+    "content": "Em sẽ làm gì trong các trường hợp sau: “Được một nhóm bạn truyền cho một địa chỉ website nhưng dặn là phải bí mật, không để người lớn biết”.",
     "options": [
       {
         "id": "A",
@@ -4236,9 +4272,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4247,10 +4283,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-19",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Đâu không phải là lợi ích củ",
+    "content": "Đâu không phải là lợi ích của việc sử dụng mạng máy tính?",
     "options": [
       {
         "id": "A",
@@ -4271,9 +4307,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4282,10 +4318,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-20",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "E-Payment có nghĩ",
+    "content": "E-Payment có nghĩa là gì?",
     "options": [
       {
         "id": "A",
@@ -4306,9 +4342,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4317,10 +4353,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-21",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Phát biểu nào sao đây là sai ?",
+    "content": "Phát biểu nào sao đây là sai ?",
     "options": [
       {
         "id": "A",
@@ -4341,9 +4377,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4352,10 +4388,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-22",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Điền vào chỗ chấm: “Nhờ vào mạng máy tính, người sử dụng có thể (1)….. để trao đổi (2)….. chi",
+    "content": "Điền vào chỗ chấm: “Nhờ vào mạng máy tính, người sử dụng có thể (1)….. để trao đổi (2)….. chia sẻ (3)….. và dùng chung các (4)….. trên mạng”.",
     "options": [
       {
         "id": "A",
@@ -4376,9 +4412,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4387,7 +4423,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-23",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
     "content": "Mạng LAN là mạng kết nối dùng trong phạm vi:",
@@ -4411,9 +4447,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4422,7 +4458,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-24",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
     "content": "Phát biểu đúng về điện toán đám mây?",
@@ -4446,9 +4482,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4457,10 +4493,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-25",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
-    "content": "Điện toán đám mây không thể cung cấp những dịch vụ nào trong các dịch vụ sau:",
+    "content": "Điện toán đám mây không thể cung cấp những dịch vụ nào trong các dịch vụ sau:",
     "options": [
       {
         "id": "A",
@@ -4481,9 +4517,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4492,10 +4528,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-26",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
-    "content": "Đâu không phải là đặc điểm củ",
+    "content": "Đâu không phải là đặc điểm của Internet?",
     "options": [
       {
         "id": "A",
@@ -4516,9 +4552,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4527,10 +4563,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-27",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
-    "content": "Mô tả nào sau đây nói về Internet là sai?",
+    "content": "Mô tả nào sau đây nói về Internet là sai?",
     "options": [
       {
         "id": "A",
@@ -4551,9 +4587,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4562,7 +4598,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-28",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Mạng máy tính được kết nối bằng những phương tiện nào?",
@@ -4586,9 +4622,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4597,7 +4633,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-29",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Thiết bị nào sau đây được coi là thiết bị đầu cuối?",
@@ -4621,9 +4657,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4632,10 +4668,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-30",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
-    "content": "Thiết bị nào trong mạng LAN có nhiệm vụ chuyển tiếp dữ liệu giữ",
+    "content": "Thiết bị nào trong mạng LAN có nhiệm vụ chuyển tiếp dữ liệu giữa các thiết bị?",
     "options": [
       {
         "id": "A",
@@ -4656,9 +4692,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4667,7 +4703,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-31",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Mạng WLAN sử dụng công nghệ nào để kết nối các thiết bị?",
@@ -4691,9 +4727,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4702,7 +4738,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-32",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Thiết bị nào cung cấp kết nối Wi-Fi trong mạng cục bộ?",
@@ -4726,9 +4762,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4737,10 +4773,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-33",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
-    "content": "Mạng diện rộng (WAN) có phạm vi đị",
+    "content": "Mạng diện rộng (WAN) có phạm vi địa lý như thế nào?",
     "options": [
       {
         "id": "A",
@@ -4761,9 +4797,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4772,10 +4808,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-34",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
-    "content": "Thiết bị nào có nhiệm vụ chuyển đổi tín hiệu giữ",
+    "content": "Thiết bị nào có nhiệm vụ chuyển đổi tín hiệu giữa số và tương tự?",
     "options": [
       {
         "id": "A",
@@ -4796,9 +4832,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4807,7 +4843,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-35",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Nhà cung cấp dịch vụ truy cập Internet được gọi là gì?",
@@ -4831,9 +4867,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4842,7 +4878,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-36",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Thiết bị nào xác định đường đi tối ưu cho gói tin trong mạng WAN?",
@@ -4866,9 +4902,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4877,7 +4913,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-37",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Giao thức mạng là gì?",
@@ -4901,9 +4937,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4912,7 +4948,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-38",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Giao thức Internet (IP) có vai trò gì trong mạng máy tính?",
@@ -4936,9 +4972,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4947,7 +4983,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-39",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Giao thức TCP đảm bảo điều gì trong truyền dữ liệu?",
@@ -4971,9 +5007,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -4982,10 +5018,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-40",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
-    "content": "Đị",
+    "content": "Địa chỉ IP là gì?",
     "options": [
       {
         "id": "A",
@@ -5006,9 +5042,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5017,7 +5053,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-41",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Hệ thống tên miền DNS có chức năng gì?",
@@ -5036,14 +5072,49 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Đảm bảo độ tin cậy truyền dữ liệuCâu 42: Tên miền cấp cao nhất (TLD) thường là gì?"
+        "content": "Đảm bảo độ tin cậy truyền dữ liệu"
       }
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-NET-42",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
+    "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
+    "difficulty": "ThongHieu",
+    "content": "Tên miền cấp cao nhất (TLD) thường là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Phần đuôi sau cùng của tên miền"
+      },
+      {
+        "id": "B",
+        "content": "Phần đầu của tên miền"
+      },
+      {
+        "id": "C",
+        "content": "Một phần của địa chỉ IP"
+      },
+      {
+        "id": "D",
+        "content": "Một loại giao thức mạng"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
+      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5052,7 +5123,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-43",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Giao thức HTTP được sử dụng để làm gì?",
@@ -5071,14 +5142,49 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Chia dữ liệu thành các gói tinCâu 44: Khi kết nối máy tính với Access Point trên Windows 10, bước đầu tiên bạn cần làm gì?"
+        "content": "Chia dữ liệu thành các gói tin"
       }
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-NET-44",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
+    "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
+    "difficulty": "ThongHieu",
+    "content": "Khi kết nối máy tính với Access Point trên Windows 10, bước đầu tiên bạn cần làm gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Kiểm tra địa chỉ IP"
+      },
+      {
+        "id": "B",
+        "content": "Nhập mật khẩu mạng Wi-Fi"
+      },
+      {
+        "id": "C",
+        "content": "Chọn tên mạng Wi-Fi"
+      },
+      {
+        "id": "D",
+        "content": "Mở trình duyệt web"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
+      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5087,7 +5193,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-45",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Khi kết nối máy tính với Switch, dấu hiệu nào cho thấy kết nối vật lý đã thành công?",
@@ -5111,9 +5217,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5122,7 +5228,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-46",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Để kết nối điện thoại thông minh vào Access Point, bạn cần thực hiện bước nào sau đây đầu tiên?",
@@ -5146,9 +5252,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5157,15 +5263,11 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-47",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
-    "content": "Khi chi",
+    "content": "Khi chia sẻ dữ liệu từ PC-A, để cấp quyền truy cập cho mọi người, bạn cần chọn quyền nào trong hộp thoại Permissions for D?",
     "options": [
-      {
-        "id": "C",
-        "content": "A, để cấp quyền truy cập cho mọi người, bạn cần chọn quyền nào trong hộp thoại Permissions for D?"
-      },
       {
         "id": "A",
         "content": "Full Control"
@@ -5177,13 +5279,17 @@ export const INITIAL_QUESTIONS: Question[] = [
       {
         "id": "C",
         "content": "Change"
+      },
+      {
+        "id": "D",
+        "content": "Write"
       }
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5192,33 +5298,33 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-48",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
-    "content": "Bước đầu tiên để kết nối PC-B với máy in được chi",
+    "content": "Bước đầu tiên để kết nối PC-B với máy in được chia sẻ từ PC-A là gì?",
     "options": [
       {
-        "id": "C",
-        "content": ""
+        "id": "A",
+        "content": "Mở Control Panel trên PC-B"
       },
       {
         "id": "B",
-        "content": "với máy in được chia sẻ từ P"
+        "content": "Tìm kiếm máy in bằng tên"
       },
       {
         "id": "C",
-        "content": ""
+        "content": "In thử một trang tài liệu"
       },
       {
-        "id": "A",
-        "content": "là gì?"
+        "id": "D",
+        "content": "Chọn Add a printer"
       }
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5227,10 +5333,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-49",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
-    "content": "Để kiểm tr",
+    "content": "Để kiểm tra kết nối mạng sau khi kết nối với Access Point, bạn nên làm gì?",
     "options": [
       {
         "id": "A",
@@ -5251,9 +5357,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5262,7 +5368,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-50",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "content": "Khi kết nối máy tính với Switch, loại cáp nào được sử dụng?",
@@ -5286,9 +5392,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5297,19 +5403,11 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-51",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Trong quá trình chi",
+    "content": "Trong quá trình chia sẻ máy in, bạn cần làm gì trên PC-A để máy in có thể được chia sẻ?",
     "options": [
-      {
-        "id": "C",
-        "content": ""
-      },
-      {
-        "id": "A",
-        "content": "để máy in có thể được chia sẻ?"
-      },
       {
         "id": "A",
         "content": "Chọn Add a printer"
@@ -5317,13 +5415,21 @@ export const INITIAL_QUESTIONS: Question[] = [
       {
         "id": "B",
         "content": "Chọn máy in từ danh sách có sẵn"
+      },
+      {
+        "id": "C",
+        "content": "Đặt tên chia sẻ máy in"
+      },
+      {
+        "id": "D",
+        "content": "Tìm kiếm máy in"
       }
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5332,7 +5438,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-52",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "content": "Để xem chi tiết kết nối mạng trên Windows 10, bạn cần làm gì?",
@@ -5351,14 +5457,14 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Chọn Network   Internet settings"
+        "content": "Chọn Network Internet settings"
       }
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5367,10 +5473,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-53",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Phạm vi sử dụng củ",
+    "content": "Phạm vi sử dụng của internet là:",
     "options": [
       {
         "id": "A",
@@ -5391,9 +5497,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5402,10 +5508,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-54",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Dịch vụ nào sau đây không là dịch vụ củ",
+    "content": "Dịch vụ nào sau đây không là dịch vụ của điện toán đám mây?",
     "options": [
       {
         "id": "A",
@@ -5426,9 +5532,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5437,7 +5543,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-55",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "content": "Em truy cập trang mạng để xem tin tức thì ngẫu nhiên xem được một video có hình ảnh bạo lực mà em rất sợ. Em nên làm gì?",
@@ -5461,9 +5567,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5472,7 +5578,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-56",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "content": "Đâu không phải là dịch vụ lưu trữ đám mây?",
@@ -5496,9 +5602,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5507,10 +5613,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-57",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Trang web hiển thị đầu tiên khi t",
+    "content": "Trang web hiển thị đầu tiên khi ta truy cập vào website gọi là gì?",
     "options": [
       {
         "id": "A",
@@ -5531,9 +5637,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5542,10 +5648,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-58",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Đị",
+    "content": "Địa chỉ trang Web https://igiaoduc.vn/ chữ “vn” trên địa chỉ trang web có ý nghĩa gì?",
     "options": [
       {
         "id": "A",
@@ -5566,9 +5672,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5577,7 +5683,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-59",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "content": "Phần mềm nào sau đây không phải trình duyệt WEB?",
@@ -5601,9 +5707,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5612,10 +5718,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-60",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "DNS có nghĩ",
+    "content": "DNS có nghĩa là gì?",
     "options": [
       {
         "id": "A",
@@ -5636,9 +5742,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5647,7 +5753,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-61",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "content": "Website là gì?",
@@ -5671,9 +5777,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5682,10 +5788,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-62",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Tên miền trong đị",
+    "content": "Tên miền trong địa chỉ website có .edu cho biết Website đó thuộc về?",
     "options": [
       {
         "id": "A",
@@ -5706,9 +5812,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5717,10 +5823,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-63",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Muốn kết nối các máy tính trong phạm vi gi",
+    "content": "Muốn kết nối các máy tính trong phạm vi gia đình thành một mạng, nên dùng loại thiết bị nào sau đây?",
     "options": [
       {
         "id": "A",
@@ -5741,9 +5847,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5752,7 +5858,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-64",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "content": "Internet là mạng toàn cầu hoạt động theo giao thức",
@@ -5776,9 +5882,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5787,10 +5893,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-65",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Wi-Fi là một bộ tiêu chuẩn kĩ thuật truyền dữ liệu bằng … được sử dụng rộng rãi trong các mạng cục bộ. Điền cụm từ còn thiếu vào dấu b",
+    "content": "Wi-Fi là một bộ tiêu chuẩn kĩ thuật truyền dữ liệu bằng … được sử dụng rộng rãi trong các mạng cục bộ. Điền cụm từ còn thiếu vào dấu ba chấm.",
     "options": [
       {
         "id": "A",
@@ -5811,9 +5917,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5822,10 +5928,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-66",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Mỗi thiết bị tham gi",
+    "content": "Mỗi thiết bị tham gia Internet đều phải có địa chỉ. Hiện nay (2024) có bao nhiêu loại địa chỉ IP?",
     "options": [
       {
         "id": "A",
@@ -5846,9 +5952,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5857,10 +5963,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-67",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Xác định đị",
+    "content": "Xác định địa chỉ IP tương ứng ở dạng thập phân của địa chỉ sau: 11000000 10101000 00000010 00000011",
     "options": [
       {
         "id": "A",
@@ -5881,9 +5987,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5892,10 +5998,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-68",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Lệnh nào củ",
+    "content": "Lệnh nào của giao thức ICMP (Internet Control Message Protocol) giúp kiểm tra máy tính có kết nối được với một máy tính hay một thiết bị mạng hay không?",
     "options": [
       {
         "id": "A",
@@ -5916,9 +6022,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5927,10 +6033,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-69",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Điểm khác nhau củ",
+    "content": "Điểm khác nhau của Hub và Switch là ở:",
     "options": [
       {
         "id": "A",
@@ -5951,9 +6057,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5962,7 +6068,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-70",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "content": "IP động là gì?",
@@ -5986,9 +6092,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -5997,10 +6103,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-71",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Mệnh đề nào sau đây là SAI khi nói về việc kết nối máy tính và Access Point?",
+    "content": "Mệnh đề nào sau đây là SAI khi nói về việc kết nối máy tính và Access Point?",
     "options": [
       {
         "id": "A",
@@ -6021,9 +6127,9 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
@@ -6032,10 +6138,10 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-NET-72",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
-    "topicName": "Ôn tập: Trắc nghiệm 4 lựa chọn Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
-    "content": "Một bạn học sinh cần thiết lập máy tính củ",
+    "content": "Một bạn học sinh cần thiết lập máy tính của mình thành máy cung cấp dịch vụ in cho các máy tính của các bạn khác trong phòng máy. Các bước bạn học sinh đã thực hiện bao gồm: Bước 1: Kết nối máy in với máy tính. Bước 2: Đặt cấu hình chia sẻ máy in. Bước 3: Bước 4: In thử từ máy tính khác trong mạng. Phương án nào sau đây là phù hợp nhất để điền vào Bước 3?",
     "options": [
       {
         "id": "A",
@@ -6056,18 +6162,19 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại khái niệm, thiết bị mạng (Switch, Modem, Access Point) hoặc giao thức mạng (TCP/IP, IP, DNS) trong chương trình Tin học 12.",
+      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Đối chiếu với bài học Chủ đề B: Kết nối mạng để chọn đáp án chính xác nhất."
+      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
+  // --- CÂU HỎI TRẮC NGHIỆM ĐÚNG / SAI CHUYÊN ĐỀ 12B: KẾT NỐI MẠNG (11 CÂU) ---
   {
     "id": "Q-TIN-TF-NET-01",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
     "type": "true_false",
@@ -6106,7 +6213,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-02",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
     "type": "true_false",
@@ -6145,7 +6252,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-03",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
     "type": "true_false",
@@ -6184,7 +6291,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-04",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
     "type": "true_false",
@@ -6223,7 +6330,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-05",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "type": "true_false",
@@ -6262,7 +6369,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-06",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "type": "true_false",
@@ -6301,7 +6408,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-07",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "type": "true_false",
@@ -6340,7 +6447,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-08",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
     "type": "true_false",
@@ -6379,7 +6486,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-09",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "type": "true_false",
@@ -6418,7 +6525,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-10",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "type": "true_false",
@@ -6457,7 +6564,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "id": "Q-TIN-TF-NET-11",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-mang-dung-sai",
-    "topicName": "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
     "type": "true_false",
@@ -6491,239 +6598,5 @@ export const INITIAL_QUESTIONS: Question[] = [
     },
     "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (IP tĩnh được gán cố định cho một thiết bị.)\n- Ý b) : Sai (IP tĩnh được thay đổi theo thời gian.)\n- Ý c) : Sai (Muốn thay đổi địa chỉ IP phải liên hệ với nhà cung cấp dịch vụ mạng.)\n- Ý d) : Sai (Địa chỉ IP tĩnh luôn có dạng: 192.168.2)",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
-  },
-  {
-    id: "Q-TIN-HTML-01",
-    subjectId: "tin-hoc-12",
-    topicId: "tin-html-cau-truc-dinh-dang",
-    topicName: "Cấu trúc trang web & Định dạng HTML",
-    chapterName: "Chủ đề F: Tạo trang web với HTML & CSS",
-    difficulty: "NhanBiet",
-    content: "Trong một tài liệu HTML chuẩn, thẻ nào được sử dụng để chứa toàn bộ nội dung hiển thị trực tiếp cho người dùng xem trên trang web?",
-    options: [
-      { id: "A", content: "<head>" },
-      { id: "B", content: "<body>" },
-      { id: "C", content: "<title>" },
-      { id: "D", content: "<meta>" },
-    ],
-    correctAnswer: "B",
-    hints: {
-      level1_concept: "Cấu trúc cơ bản của trang HTML: <!DOCTYPE html> <html> <head>...</head> <body>...</body> </html>.",
-      level2_formula: "Phần <head> chứa thông tin khai báo tiêu đề, cấu hình meta; phần <body> chứa các văn bản, hình ảnh, bảng biểu hiển thị trên màn hình trình duyệt.",
-      level3_steps: "Chọn thẻ đại diện cho phần 'thân' của trang web.",
-    },
-    explanation: "Thẻ <body> chứa tất cả nội dung trực quan (văn bản, hình ảnh, liên kết, bảng, video) hiển thị trên cửa sổ trình duyệt.",
-    sourceDocTitle: "Dinh huong on tap TNTHPT-TKN (Môn Tin học)",
-  },
-  {
-    id: "Q-TIN-HTML-02",
-    subjectId: "tin-hoc-12",
-    topicId: "tin-html-cau-truc-dinh-dang",
-    topicName: "Cấu trúc trang web & Định dạng HTML",
-    chapterName: "Chủ đề F: Tạo trang web với HTML & CSS",
-    difficulty: "ThongHieu",
-    content: "Để tạo một liên kết mở đến trang web khác khi người dùng nhấp chuột, ta sử dụng thẻ HTML nào và thuộc tính nào chỉ định địa chỉ URL?",
-    options: [
-      { id: "A", content: "Thẻ <link> với thuộc tính href" },
-      { id: "B", content: "Thẻ <a> với thuộc tính href" },
-      { id: "C", content: "Thẻ <nav> với thuộc tính url" },
-      { id: "D", content: "Thẻ <a> với thuộc tính src" },
-    ],
-    correctAnswer: "B",
-    hints: {
-      level1_concept: "Mục Tạo liên kết (Cột E - Tài liệu ôn tập): Sử dụng thẻ <a> để tạo liên kết, xác định cấu trúc URL đích.",
-      level2_formula: "Cú pháp: <a href=\"đường_dẫn_URL\">Văn bản liên kết</a>. Chú ý phân biệt 'href' dùng cho thẻ <a> và 'src' dùng cho thẻ <img>, <script>.",
-      level3_steps: "Kiểm tra đúng cặp: Tên thẻ liên kết (anchor) và thuộc tính chỉ định đích đến.",
-    },
-    explanation: "Thẻ <a> (anchor) cùng với thuộc tính href=\"URL\" được dùng để thiết lập siêu liên kết trong trang HTML.",
-    sourceDocTitle: "Dinh huong on tap TNTHPT-TKN (Môn Tin học)",
-  },
-  {
-    id: "Q-TIN-HTML-03",
-    subjectId: "tin-hoc-12",
-    topicId: "tin-html-da-phuong-tien-form",
-    topicName: "Đa phương tiện, Bảng & Biểu mẫu (Form) HTML",
-    chapterName: "Chủ đề F: Tạo trang web với HTML & CSS",
-    difficulty: "ThongHieu",
-    content: "Để tạo một ô nhập mật khẩu mà các ký tự gõ vào được ẩn đi (dạng dấu chấm hoặc dấu sao), ta thiết lập thuộc tính type của phần tử <input> là:",
-    options: [
-      { id: "A", content: "type=\"text\"" },
-      { id: "B", content: "type=\"hidden\"" },
-      { id: "C", content: "type=\"password\"" },
-      { id: "D", content: "type=\"security\"" },
-    ],
-    correctAnswer: "C",
-    hints: {
-      level1_concept: "Tạo biểu mẫu (Cột E): Phần tử <input> có các kiểu thuộc tính type: text, password, radio, checkbox, button, submit,...",
-      level2_formula: "Giá trị 'password' biến đổi các ký tự hiển thị thành ký hiệu che giấu để bảo mật khi nhập dữ liệu nhạy cảm.",
-      level3_steps: "Đối chiếu các từ khóa tiếng Anh biểu thị từ 'mật khẩu'.",
-    },
-    explanation: "Phần tử <input type=\"password\"> tự động ẩn các ký tự nhập vào để đảm bảo an toàn cho mật khẩu người dùng.",
-    sourceDocTitle: "Dinh huong on tap TNTHPT-TKN (Môn Tin học)",
-  },
-  {
-    id: "Q-TIN-CSS-01",
-    subjectId: "tin-hoc-12",
-    topicId: "tin-css-bo-chon-dinh-dang",
-    topicName: "CSS: Bộ chọn, Định dạng & Mô hình hộp",
-    chapterName: "Chủ đề F: Tạo trang web với HTML & CSS",
-    difficulty: "NhanBiet",
-    content: "Trong CSS, để định kiểu cho một phần tử có thuộc tính class=\"tieu-de\", bộ chọn (selector) được viết bằng ký tự nào bắt đầu?",
-    options: [
-      { id: "A", content: "#tieu-de" },
-      { id: "B", content: ".tieu-de" },
-      { id: "C", content: "@tieu-de" },
-      { id: "D", content: "*tieu-de" },
-    ],
-    correctAnswer: "B",
-    hints: {
-      level1_concept: "Các bộ chọn cơ bản (Cột E): Bộ chọn lớp (class selector), Bộ chọn định danh (ID selector), Bộ chọn phần tử (tag selector).",
-      level2_formula: "Quy ước ký hiệu: Dấu chấm (.) dùng cho class; dấu thăng (#) dùng cho id.",
-      level3_steps: "Đề bài yêu cầu định kiểu cho thuộc tính class. Hãy chọn ký tự quy ước cho class.",
-    },
-    explanation: "Trong CSS, bộ chọn class bắt đầu bằng dấu chấm (.), ví dụ .tieu-de. Bộ chọn id bắt đầu bằng dấu thăng (#).",
-    sourceDocTitle: "Dinh huong on tap TNTHPT-TKN (Môn Tin học)",
-  },
-  {
-    id: "Q-TIN-CSS-02",
-    subjectId: "tin-hoc-12",
-    topicId: "tin-css-bo-chon-dinh-dang",
-    topicName: "CSS: Bộ chọn, Định dạng & Mô hình hộp",
-    chapterName: "Chủ đề F: Tạo trang web với HTML & CSS",
-    difficulty: "ThongHieu",
-    content: "Trong mô hình hộp (Box Model) của CSS, vùng đệm nằm giữa nội dung (content) và đường viền (border) của phần tử được điều chỉnh bởi thuộc tính nào?",
-    options: [
-      { id: "A", content: "margin" },
-      { id: "B", content: "padding" },
-      { id: "C", content: "outline" },
-      { id: "D", content: "spacing" },
-    ],
-    correctAnswer: "B",
-    hints: {
-      level1_concept: "Mô hình hộp trong tài liệu ôn tập: 'Định dạng khung viền: padding; margin; width; height; border-width; border-style; border-color; border'.",
-      level2_formula: "Mô hình hộp từ trong ra ngoài: Content -> Padding (khoảng cách từ nội dung tới viền) -> Border (đường viền) -> Margin (khoảng cách bên ngoài viền tới các phần tử khác).",
-      level3_steps: "Xác định thuộc tính đại diện cho khoảng đệm bên trong viền.",
-    },
-    explanation: "Padding là khoảng đệm nằm giữa nội dung của phần tử và đường viền (border). Margin là khoảng cách bên ngoài đường viền.",
-    sourceDocTitle: "Dinh huong on tap TNTHPT-TKN (Môn Tin học)",
-  },
-  {
-    id: "Q-TIN-DB-01",
-    subjectId: "tin-hoc-12",
-    topicId: "tin-co-so-du-lieu-sql",
-    topicName: "Hệ CSDL quan hệ & Truy vấn SQL (Lớp 11)",
-    chapterName: "Chủ đề F: Giới thiệu Cơ sở dữ liệu",
-    difficulty: "NhanBiet",
-    content: "Trong mô hình Cơ sở dữ liệu quan hệ, một trường (hoặc tập hợp các trường) dùng để phân biệt duy nhất từng bản ghi (hàng) trong một bảng được gọi là:",
-    options: [
-      { id: "A", content: "Khóa ngoài (Foreign Key)" },
-      { id: "B", content: "Khóa chính (Primary Key)" },
-      { id: "C", content: "Chỉ mục phụ (Secondary Index)" },
-      { id: "D", content: "Trường liên kết (Join Field)" },
-    ],
-    correctAnswer: "B",
-    hints: {
-      level1_concept: "Các khái niệm cơ bản trong mô hình CSDL quan hệ: quan hệ (bảng), khóa (khóa chính), khóa ngoài, truy vấn, cập nhật dữ liệu.",
-      level2_formula: "Khóa chính có đặc tính bắt buộc: giá trị không được trùng lặp và không được rỗng (NULL), xác định tính duy nhất của mỗi dòng.",
-      level3_steps: "Khóa ngoài dùng để liên kết bảng, khóa chính dùng để định danh duy nhất.",
-    },
-    explanation: "Khóa chính (Primary Key) là một hoặc một nhóm trường có giá trị duy nhất dùng để xác định và phân biệt từng bản ghi trong bảng quan hệ.",
-    sourceDocTitle: "Dinh huong on tap TNTHPT-TKN (Môn Tin học)",
-  },
-  {
-    id: "Q-TIN-PY-01",
-    subjectId: "tin-hoc-12",
-    topicId: "tin-lap-trinh-python",
-    topicName: "Lập trình cơ bản Python (Lớp 10)",
-    chapterName: "Chủ đề F: Kỹ thuật lập trình cơ bản",
-    difficulty: "ThongHieu",
-    content: "Cho đoạn mã Python sau: \n`s = 0`\n`for i in range(1, 4):`\n`    s = s + i`\nSau khi thực hiện xong vòng lặp, giá trị của biến `s` bằng bao nhiêu?",
-    options: [
-      { id: "A", content: "3" },
-      { id: "B", content: "6" },
-      { id: "C", content: "10" },
-      { id: "D", content: "4" },
-    ],
-    correctAnswer: "B",
-    hints: {
-      level1_concept: "Hàm range(start, stop) trong Python sinh ra dãy số nguyên từ start đến stop - 1.",
-      level2_formula: "Hàm range(1, 4) sẽ lần lượt gán cho biến i các giá trị: 1, 2, 3 (không bao gồm 4).",
-      level3_steps: "1) Bước 1: i = 1 => s = 0 + 1 = 1\n2) Bước 2: i = 2 => s = 1 + 2 = 3\n3) Bước 3: i = 3 => s = 3 + 3 = ?\nHãy tính tổng trên để chọn phương án.",
-    },
-    explanation: "Vòng lặp chạy với i = 1, 2, 3. Biến s cộng dồn: 0 + 1 + 2 + 3 = 6.",
-    sourceDocTitle: "Dinh huong on tap TNTHPT-TKN (Môn Tin học)",
-  },
-
-  // ================== MÔN TOÁN HỌC 12 ==================
-  {
-    id: "Q-TOAN-001",
-    subjectId: "toan-12",
-    topicId: "toan-ham-so-don-dieu",
-    topicName: "Tính đơn điệu của hàm số",
-    chapterName: "Chương 1: Ứng dụng đạo hàm khảo sát hàm số",
-    difficulty: "NhanBiet",
-    content: "Cho hàm số \\( y = f(x) \\) có bảng biến thiên với \\( f'(x) > 0 \\) trên khoảng \\( (-2; 0) \\) và \\( (2; +\\infty) \\); \\( f'(x) < 0 \\) trên khoảng \\( (-\\infty; -2) \\) và \\( (0; 2) \\). Hàm số đã cho đồng biến trên khoảng nào dưới đây?",
-    options: [
-      { id: "A", content: "\\( (-\\infty; -2) \\)" },
-      { id: "B", content: "\\( (-2; 0) \\)" },
-      { id: "C", content: "\\( (0; 2) \\)" },
-      { id: "D", content: "\\( (-2; 2) \\)" },
-    ],
-    correctAnswer: "B",
-    hints: {
-      level1_concept: "Định lý về dấu đạo hàm: Hàm số \\( y = f(x) \\) đồng biến trên khoảng \\( K \\) khi và chỉ khi \\( f'(x) \\ge 0, \\forall x \\in K \\).",
-      level2_formula: "Quan sát bảng dấu đạo hàm: Tìm khoảng mà dấu của đạo hàm mang dấu cộng (+), tức là \\( f'(x) > 0 \\).",
-      level3_steps: "Đề bài cho trực tiếp khoảng có \\( f'(x) > 0 \\). Hãy đối chiếu danh sách các phương án A, B, C, D với 2 khoảng đồng biến đã cho.",
-    },
-    explanation: "Theo đề bài, \\( f'(x) > 0 \\) trên các khoảng \\( (-2; 0) \\) và \\( (2; +\\infty) \\). Do đó hàm số đồng biến trên các khoảng đó. Phương án B trùng khớp với khoảng \\( (-2; 0) \\).",
-    sourceDocTitle: "Chuyên đề Hàm Số 12 - Ôn Thi THPT",
-  },
-  {
-    id: "Q-TOAN-002",
-    subjectId: "toan-12",
-    topicId: "toan-ham-so-don-dieu",
-    topicName: "Tính đơn điệu của hàm số",
-    chapterName: "Chương 1: Ứng dụng đạo hàm khảo sát hàm số",
-    difficulty: "ThongHieu",
-    content: "Hàm số \\( y = -x^3 + 3x^2 - 2 \\) nghịch biến trên khoảng nào dưới đây?",
-    options: [
-      { id: "A", content: "\\( (0; 2) \\)" },
-      { id: "B", content: "\\( (-\\infty; 0) \\) và \\( (2; +\\infty) \\)" },
-      { id: "C", content: "\\( (0; +\\infty) \\)" },
-      { id: "D", content: "\\( (-\\infty; 2) \\)" },
-    ],
-    correctAnswer: "B",
-    hints: {
-      level1_concept: "Hàm đa thức nghịch biến trên khoảng \\( K \\) khi đạo hàm \\( y' \\le 0, \\forall x \\in K \\).",
-      level2_formula: "Tính đạo hàm bậc 3: \\( y' = -3x^2 + 6x \\). Sau đó giải phương trình \\( y' = 0 \\) để tìm các nghiệm.",
-      level3_steps: "1) Cho \\( -3x^2 + 6x = 0 \\implies x = 0 \\) hoặc \\( x = 2 \\).\n2) Vì hệ số \\( a = -3 < 0 \\), tam thức mang dấu âm ở ngoài hai nghiệm.",
-    },
-    explanation: "Đạo hàm: \\( y' = -3x^2 + 6x = -3x(x - 2) \\). \\( y' = 0 \\iff x = 0 \\) hoặc \\( x = 2 \\). Do hệ số \\( a = -3 < 0 \\), \\( y' < 0 \\) khi \\( x \\in (-\\infty; 0) \\cup (2; +\\infty) \\).",
-    sourceDocTitle: "Chuyên đề Hàm Số 12 - Ôn Thi THPT",
-  },
-
-  // ================== MÔN VẬT LÝ 12 ==================
-  {
-    id: "Q-LY-001",
-    subjectId: "vat-ly-12",
-    topicId: "ly-dao-dong-dieu-hoa",
-    topicName: "Đại cương Dao động điều hòa",
-    chapterName: "Chương 1: Dao động cơ",
-    difficulty: "NhanBiet",
-    content: "Một chất điểm dao động điều hòa theo phương trình \\( x = 5\\cos(4\\pi t + \\frac{\\pi}{3}) \\) (cm). Pha ban đầu của dao động là:",
-    options: [
-      { id: "A", content: "\\( 5 \\) cm" },
-      { id: "B", content: "\\( 4\\pi \\) rad/s" },
-      { id: "C", content: "\\( \\frac{\\pi}{3} \\) rad" },
-      { id: "D", content: "\\( -\\frac{\\pi}{3} \\) rad" },
-    ],
-    correctAnswer: "C",
-    hints: {
-      level1_concept: "Phương trình tổng quát của dao động điều hòa: \\( x = A\\cos(\\omega t + \\varphi) \\). Trong đó \\( \\varphi \\) là pha ban đầu tại thời điểm \\( t = 0 \\).",
-      level2_formula: "Đồng nhất các hệ số giữa phương trình tổng quát và phương trình đề bài.",
-      level3_steps: "Đọc trực tiếp đại lượng cộng thêm sau \\( \\omega t \\) trong dấu ngoặc tròn của hàm cos.",
-    },
-    explanation: "Đối chiếu với dạng chuẩn \\( x = A\\cos(\\omega t + \\varphi) \\), ta có pha ban đầu \\( \\varphi = \\frac{\\pi}{3} \\) rad.",
-    sourceDocTitle: "Tài liệu Vật Lý 12 Ôn Thi THPT",
-  },
+  }
 ];
