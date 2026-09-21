@@ -547,7 +547,7 @@ export default function AppHome() {
                   />
 
                   {/* Khoảng đệm để không bị che bởi Fixed Bottom Bar */}
-                  <div className="h-32" />
+                  <div className="h-20" />
                 </>
               ) : (
                 <div className="p-6 rounded-neu bg-[#e6ecf5] shadow-neu-flat text-center space-y-3">
