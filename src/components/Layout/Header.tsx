@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Menu, BookOpenCheck, BarChart3, ChevronDown, Volume2, VolumeX } from "lucide-react";
+import { Menu, BookOpen, BookOpenCheck, BarChart3, ChevronDown, Volume2, VolumeX } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 
 interface HeaderProps {
   onToggleSidebar: () => void;
-  activeTab: "practice" | "analytics";
-  onChangeTab: (tab: "practice" | "analytics") => void;
+  activeTab: "practice" | "analytics" | "theory";
+  onChangeTab: (tab: "practice" | "analytics" | "theory") => void;
   subjectTitle: string;
   topicTitle: string;
   onOpenSubjectModal: () => void;
@@ -80,11 +80,26 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={() => {
               soundManager.playClick();
+              onChangeTab("theory");
+            }}
+            className={`p-1.5 rounded-lg transition-all ${
+              activeTab === "theory"
+                ? "bg-[#e6ecf5] text-blue-600 shadow-neu-flat-xs font-bold"
+                : "text-slate-500 hover:text-slate-700"
+            }`}
+            title="Tóm tắt Lý thuyết bài học"
+          >
+            <BookOpen className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => {
+              soundManager.playClick();
               onChangeTab("practice");
             }}
             className={`p-1.5 rounded-lg transition-all ${
               activeTab === "practice"
-                ? "bg-[#e6ecf5] text-blue-600 shadow-neu-flat-xs"
+                ? "bg-[#e6ecf5] text-blue-600 shadow-neu-flat-xs font-bold"
                 : "text-slate-500 hover:text-slate-700"
             }`}
             title="Luyện tập câu hỏi"

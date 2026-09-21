@@ -12,8 +12,10 @@ import { SocraticTutorDrawer } from "@/components/Practice/SocraticTutorDrawer";
 import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
 import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
 import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
+import { TheoryViewer } from "@/components/Theory/TheoryViewer";
 import { parseGoogleSheetData } from "@/lib/driveSync";
 import { soundManager } from "@/lib/audioEffects";
+import { BookOpen } from "lucide-react";
 
 export default function AppHome() {
   // 1. Data States
@@ -26,7 +28,7 @@ export default function AppHome() {
   const [selectedTopicId, setSelectedTopicId] = useState<string>(
     INITIAL_SUBJECTS[0].topics[0].id
   );
-  const [activeTab, setActiveTab] = useState<"practice" | "analytics">("practice");
+  const [activeTab, setActiveTab] = useState<"practice" | "analytics" | "theory">("practice");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
   const [isSubjectModalOpen, setIsSubjectModalOpen] = useState(false);
@@ -447,46 +449,77 @@ export default function AppHome() {
 
         {/* Khung nội dung chính */}
         <main className="flex-1 max-w-md w-full mx-auto p-4 space-y-4">
-          {activeTab === "practice" ? (
+          {activeTab === "theory" ? (
+            /* Tab Tóm Tắt & Tra Cứu Lý Thuyết Trọng Tâm */
+            <TheoryViewer
+              topicId={selectedTopicId}
+              onStartPractice={(part) => {
+                if (part === "tf") {
+                  setSelectedTopicId("tin-ai-dung-sai");
+                } else {
+                  setSelectedTopicId("tin-ai-tri-tue-nhan-tao");
+                }
+                setCurrentQuestionIndex(0);
+                setActiveTab("practice");
+              }}
+            />
+          ) : activeTab === "practice" ? (
             <>
               {currentQuestion ? (
                 <>
-                  {/* Bộ chuyển đổi nhanh giữa Phần 1 (Trắc nghiệm 4 lựa chọn) và Phần 2 (Đúng / Sai) */}
+                  {/* Bộ chuyển đổi nhanh giữa Lý thuyết, Phần 1 (Nhiều lựa chọn) và Phần 2 (Đúng / Sai) */}
                   {selectedSubjectId === "tin-hoc-12" &&
                     (selectedTopicId === "tin-ai-tri-tue-nhan-tao" || selectedTopicId === "tin-ai-dung-sai") && (
                       <div className="flex items-center p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1 text-xs font-bold">
                         <button
                           onClick={() => {
                             soundManager.playClick();
+                            setActiveTab("theory");
+                          }}
+                          className="py-2 px-2 rounded-neu-xs text-slate-700 hover:text-blue-700 flex items-center justify-center gap-1 transition-all shadow-neu-flat-xs active:shadow-neu-inset"
+                          title="Xem tóm tắt lý thuyết chủ đề này"
+                        >
+                          <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+                          <span className="text-[11px] font-extrabold">Lý thuyết</span>
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            soundManager.playClick();
                             setSelectedTopicId("tin-ai-tri-tue-nhan-tao");
                             setCurrentQuestionIndex(0);
                           }}
-                          className={`flex-1 py-2 px-2 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1.5 ${
+                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
                             selectedTopicId === "tin-ai-tri-tue-nhan-tao"
                               ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
                               : "text-slate-600 hover:text-blue-700"
                           }`}
                         >
-                          <span>🔘 Phần 1: Nhiều lựa chọn</span>
-                          <span className="text-[10px] bg-blue-100 text-blue-900 px-1.5 py-0.5 rounded-full font-bold">
-                            76 câu
+                          <span className="truncate">🔘 P1: 4 lựa chọn</span>
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                            selectedTopicId === "tin-ai-tri-tue-nhan-tao" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
+                          }`}>
+                            76
                           </span>
                         </button>
+
                         <button
                           onClick={() => {
                             soundManager.playClick();
                             setSelectedTopicId("tin-ai-dung-sai");
                             setCurrentQuestionIndex(0);
                           }}
-                          className={`flex-1 py-2 px-2 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1.5 ${
+                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
                             selectedTopicId === "tin-ai-dung-sai"
                               ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
                               : "text-slate-600 hover:text-blue-700"
                           }`}
                         >
-                          <span>⚖️ Phần 2: Đúng / Sai</span>
-                          <span className="text-[10px] bg-blue-100 text-blue-900 px-1.5 py-0.5 rounded-full font-bold">
-                            20 câu
+                          <span className="truncate">⚖️ P2: Đúng / Sai</span>
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                            selectedTopicId === "tin-ai-dung-sai" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
+                          }`}>
+                            20
                           </span>
                         </button>
                       </div>
@@ -536,7 +569,10 @@ export default function AppHome() {
               topics={currentSubject?.topics || []}
               questions={questions}
               attempts={attempts}
-              onSelectTopicToPractice={handleSelectTopic}
+              onSelectTopicToPractice={(topicId) => {
+                handleSelectTopic(topicId);
+                setActiveTab("practice");
+              }}
             />
           )}
         </main>
