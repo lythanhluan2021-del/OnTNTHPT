@@ -47,7 +47,7 @@ export default function AppHome() {
     totalImported: INITIAL_QUESTIONS.length,
   });
 
-  // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage nếu có
+  // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage nếu có (bảo toàn cấu trúc bài học)
   useEffect(() => {
     try {
       const savedAttempts = localStorage.getItem("thpt_attempts");
@@ -58,14 +58,34 @@ export default function AppHome() {
       if (savedQuestions) {
         const parsedQ = JSON.parse(savedQuestions);
         if (Array.isArray(parsedQ) && parsedQ.length > 0) {
-          setQuestions(parsedQ);
+          const initialIds = new Set(parsedQ.map((q: any) => q.id));
+          setQuestions([
+            ...parsedQ,
+            ...INITIAL_QUESTIONS.filter((q) => !initialIds.has(q.id)),
+          ]);
         }
       }
       const savedSubjects = localStorage.getItem("thpt_custom_subjects");
       if (savedSubjects) {
         const parsedS = JSON.parse(savedSubjects);
-        if (Array.isArray(parsedS) && parsedS.length > 0) {
-          setSubjects(parsedS);
+        if (
+          Array.isArray(parsedS) &&
+          parsedS.length > 0 &&
+          parsedS.some((s: any) => s.topics && s.topics.length > 0)
+        ) {
+          // Gộp với INITIAL_SUBJECTS để không bao giờ bị mất môn hay bài học
+          const merged = INITIAL_SUBJECTS.map((initSubj) => {
+            const found = parsedS.find((s: any) => s.id === initSubj.id);
+            if (found && found.topics && found.topics.length > 0) {
+              return found;
+            }
+            return initSubj;
+          });
+          setSubjects(merged);
+        } else {
+          // Xóa cache rỗng không hợp lệ
+          localStorage.removeItem("thpt_custom_subjects");
+          setSubjects(INITIAL_SUBJECTS);
         }
       }
     } catch {
@@ -281,22 +301,38 @@ export default function AppHome() {
     const { questions: scannedQuestions, subjects: scannedSubjects, tree } = json.data;
 
     if (scannedQuestions && scannedQuestions.length > 0) {
-      setQuestions(scannedQuestions);
+      const initialIds = new Set(scannedQuestions.map((q: any) => q.id));
+      const mergedQuestions = [
+        ...scannedQuestions,
+        ...INITIAL_QUESTIONS.filter((q) => !initialIds.has(q.id)),
+      ];
+      setQuestions(mergedQuestions);
       try {
-        localStorage.setItem("thpt_custom_questions", JSON.stringify(scannedQuestions));
+        localStorage.setItem("thpt_custom_questions", JSON.stringify(mergedQuestions));
       } catch {
         // Fallback
       }
     }
 
     if (scannedSubjects && scannedSubjects.length > 0) {
-      setSubjects(scannedSubjects);
-      setSelectedSubjectId(scannedSubjects[0].id);
-      if (scannedSubjects[0].topics.length > 0) {
-        setSelectedTopicId(scannedSubjects[0].topics[0].id);
+      const mergedSubjects = INITIAL_SUBJECTS.map((initSubj) => {
+        const found = scannedSubjects.find((s: any) => s.id === initSubj.id);
+        if (found && found.topics && found.topics.length > 0) {
+          return {
+            ...initSubj,
+            topics: found.topics,
+          };
+        }
+        return initSubj;
+      });
+
+      setSubjects(mergedSubjects);
+      setSelectedSubjectId(mergedSubjects[0].id);
+      if (mergedSubjects[0].topics.length > 0) {
+        setSelectedTopicId(mergedSubjects[0].topics[0].id);
       }
       try {
-        localStorage.setItem("thpt_custom_subjects", JSON.stringify(scannedSubjects));
+        localStorage.setItem("thpt_custom_subjects", JSON.stringify(mergedSubjects));
       } catch {
         // Fallback
       }

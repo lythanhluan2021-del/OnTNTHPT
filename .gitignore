@@ -30,3 +30,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# credentials & secrets
+*onthithpt*.json*
+*.crdownload
+~$*
+credentials*.json
+*service_account*.json
+
