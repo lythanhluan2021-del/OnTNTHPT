@@ -31,6 +31,13 @@ export default function AppHome() {
   const [activeTab, setActiveTab] = useState<"practice" | "analytics" | "theory">("practice");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
+
+  // Mặc định mở sidebar trên màn hình máy tính (>= 768px)
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setIsSidebarOpen(true);
+    }
+  }, []);
   const [isSubjectModalOpen, setIsSubjectModalOpen] = useState(false);
 
   // 3. Question Practice States
@@ -448,7 +455,11 @@ export default function AppHome() {
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col md:pl-80">
+      <div
+        className={`flex-1 flex flex-col transition-all duration-300 ${
+          isSidebarOpen ? "md:pl-80" : "md:pl-0"
+        }`}
+      >
         {/* Header cho mobile & desktop */}
         <Header
           onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
