@@ -8282,7 +8282,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "S:=R2*pi."
+        "content": "S:=R<sup>2</sup>*pi."
       }
     ],
     "correctAnswer": "B",
@@ -8301,7 +8301,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
     "difficulty": "ThongHieu",
-    "content": "Để viết 3 mũ 4 trong Python chọn",
+    "content": "Để viết 3 mũ 4 ($3^4$) trong Python chọn",
     "options": [
       {
         "id": "A",
@@ -8336,7 +8336,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
     "difficulty": "ThongHieu",
-    "content": "Chuyển biểu thức sau sang python 2x+1x+2",
+    "content": "Chuyển biểu thức sau sang Python: $\\frac{2x+1}{x+2}$",
     "options": [
       {
         "id": "A",
@@ -8410,19 +8410,19 @@ export const INITIAL_QUESTIONS: Question[] = [
     "options": [
       {
         "id": "A",
-        "content": "aa+1*(x-1)."
+        "content": "$\\frac{a}{a+1} \\cdot (x-1)$"
       },
       {
         "id": "B",
-        "content": "aa+1(x-1)."
+        "content": "$\\frac{a}{a+1}(x-1)$"
       },
       {
         "id": "C",
-        "content": "aa+1 x (x-1)."
+        "content": "$\\frac{a}{a+1} \\times (x-1)$"
       },
       {
         "id": "D",
-        "content": "ax-1(a+1). VẬN DỤNG"
+        "content": "$\\frac{a}{x-1}(a+1)$"
       }
     ],
     "correctAnswer": "B",

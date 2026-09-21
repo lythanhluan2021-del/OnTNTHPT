@@ -38,12 +38,19 @@ export function extractDocxTextFromBuffer(buffer: Buffer): string {
           }
 
           if (xml) {
-            // Bảo toàn đánh dấu gạch chân (Underline) và in đậm (Bold) trên từng đoạn văn bản (run)
+            // Bảo toàn đánh dấu gạch chân (Underline), chỉ số trên (Superscript) và chỉ số dưới (Subscript)
             const processedXml = xml.replace(/<w:r\b[\s\S]*?<\/w:r>/g, (run) => {
               const isUnderline = /<w:u\b/i.test(run);
+              const isSuperscript = /vertAlign\b[^>]*\bval="superscript"/i.test(run);
+              const isSubscript = /vertAlign\b[^>]*\bval="subscript"/i.test(run);
               const textMatch = run.match(/<w:t[^>]*>([\s\S]*?)<\/w:t>/g);
               if (!textMatch) return "";
-              const t = textMatch.map((m) => m.replace(/<[^>]+>/g, "")).join("");
+              let t = textMatch.map((m) => m.replace(/<[^>]+>/g, "")).join("");
+              if (isSuperscript) {
+                t = `__SUP__${t}__ESUP__`;
+              } else if (isSubscript) {
+                t = `__SUB__${t}__ESUB__`;
+              }
               if (isUnderline) {
                 return `__U__${t}__EU__`;
               }
@@ -56,6 +63,10 @@ export function extractDocxTextFromBuffer(buffer: Buffer): string {
               .replace(/<\/w:tr>/g, "\n")
               .replace(/<w:tab\/>/g, "\t")
               .replace(/<[^>]+>/g, "")
+              .replace(/__SUP__/g, "<sup>")
+              .replace(/__ESUP__/g, "</sup>")
+              .replace(/__SUB__/g, "<sub>")
+              .replace(/__ESUB__/g, "</sub>")
               .replace(/&lt;/g, "<")
               .replace(/&gt;/g, ">")
               .replace(/&amp;/g, "&")
