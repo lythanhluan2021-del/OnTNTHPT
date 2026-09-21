@@ -1,8 +1,9 @@
 import zlib from "zlib";
 
 /**
- * Trích xuất toàn bộ văn bản thuần từ file Word .docx (dạng nhị phân ZIP)
- * Sử dụng thư viện zlib tiêu chuẩn của Node.js, không phụ thuộc thư viện bên ngoài
+ * Trích xuất toàn bộ văn bản từ file Word .docx (dạng nhị phân ZIP)
+ * Bảo toàn định dạng gạch chân (Underline) và in đậm (Bold) để phát hiện đáp án đúng của đề thi
+ * Sử dụng zlib tiêu chuẩn của Node.js, không phụ thuộc thư viện ngoài
  */
 export function extractDocxTextFromBuffer(buffer: Buffer): string {
   let offset = 0;
@@ -37,8 +38,20 @@ export function extractDocxTextFromBuffer(buffer: Buffer): string {
           }
 
           if (xml) {
+            // Bảo toàn đánh dấu gạch chân (Underline) và in đậm (Bold) trên từng đoạn văn bản (run)
+            const processedXml = xml.replace(/<w:r\b[\s\S]*?<\/w:r>/g, (run) => {
+              const isUnderline = /<w:u\b/i.test(run);
+              const textMatch = run.match(/<w:t[^>]*>([\s\S]*?)<\/w:t>/g);
+              if (!textMatch) return "";
+              const t = textMatch.map((m) => m.replace(/<[^>]+>/g, "")).join("");
+              if (isUnderline) {
+                return `__U__${t}__EU__`;
+              }
+              return t;
+            });
+
             // Bóc tách text và giữ lại dấu xuống dòng của đoạn văn
-            return xml
+            return processedXml
               .replace(/<\/w:p>/g, "\n")
               .replace(/<\/w:tr>/g, "\n")
               .replace(/<w:tab\/>/g, "\t")

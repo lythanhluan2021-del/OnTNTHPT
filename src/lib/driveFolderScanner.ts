@@ -56,13 +56,10 @@ export async function downloadDriveFileContent(
   let fetchUrl = "";
 
   if (mimeType === "application/vnd.google-apps.spreadsheet") {
-    // Xuất Google Sheets thành CSV
     fetchUrl = `https://www.googleapis.com/drive/v3/files/${fileId}/export?mimeType=text/csv`;
   } else if (mimeType === "application/vnd.google-apps.document") {
-    // Xuất Google Docs thành text thuần
     fetchUrl = `https://www.googleapis.com/drive/v3/files/${fileId}/export?mimeType=text/plain`;
   } else {
-    // Tệp tải xuống trực tiếp dạng nhị phân (Binary stream)
     fetchUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
   }
 
@@ -77,7 +74,6 @@ export async function downloadDriveFileContent(
     throw new Error(`Lỗi tải tệp [${fileId}]: ${text}`);
   }
 
-  // Nếu là file Word .docx, giải nén và trích xuất text từ Buffer
   const isDocx =
     mimeType.includes("wordprocessingml") ||
     fileName.toLowerCase().endsWith(".docx");
@@ -85,8 +81,7 @@ export async function downloadDriveFileContent(
   if (isDocx) {
     const arrayBuffer = await res.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
-    const extractedText = extractDocxTextFromBuffer(buffer);
-    return extractedText;
+    return extractDocxTextFromBuffer(buffer);
   }
 
   return await res.text();
@@ -107,65 +102,144 @@ function extractAnswerKeyTable(text: string): Map<number, "A" | "B" | "C" | "D">
   return answerMap;
 }
 
+function normalizeVietnamese(str: string): string {
+  return str
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .trim();
+}
+
 /**
- * Bộ bóc tách thông minh cho đề trắc nghiệm dạng văn bản (Word .docx / Google Docs / Text)
+ * Tự động khớp file Drive vào đúng Chuyên đề trong chương trình học
+ */
+function matchFileToExistingTopic(
+  fileName: string,
+  existingTopics: Topic[],
+  subjectId: string
+): { topicId: string; topicName: string; chapterName: string; isMatched: boolean } {
+  const norm = normalizeVietnamese(fileName);
+
+  // 1. Chuyên đề 12A / Trí tuệ nhân tạo
+  if (norm.includes("12a") || norm.includes("tri tue nhan tao") || norm.includes("ai")) {
+    const found = existingTopics.find((t) => t.id === "tin-ai-tri-tue-nhan-tao");
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // 2. Chuyên đề 12B / Thiết bị mạng & Giao thức mạng
+  if (norm.includes("12b") || norm.includes("thiet bi mang") || norm.includes("giao thuc") || norm.includes("tcp")) {
+    const found = existingTopics.find((t) => t.id === "tin-thiet-bi-giao-thuc-mang");
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // 3. Chuyên đề 12D / Đạo đức & văn hóa số
+  if (norm.includes("12d") || norm.includes("dao duc") || norm.includes("nhan van") || norm.includes("phap luat")) {
+    const found = existingTopics.find((t) => t.id === "tin-dao-duc-phap-luat-so");
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // 4. Chuyên đề 12F / HTML & CSS
+  if (norm.includes("12f") || norm.includes("html") || norm.includes("web") || norm.includes("css")) {
+    const found = existingTopics.find((t) => t.id.includes("html") || t.id.includes("css"));
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // Khớp theo độ tương đồng tên
+  for (const t of existingTopics) {
+    const tNorm = normalizeVietnamese(t.name);
+    if (norm.includes(tNorm) || tNorm.includes(norm)) {
+      return { topicId: t.id, topicName: t.name, chapterName: t.chapter, isMatched: true };
+    }
+  }
+
+  // Tạo chủ đề mới nếu chưa có
+  const cleanName = fileName.replace(/\.[^.]+$/, "");
+  const slug = normalizeVietnamese(cleanName).replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-").slice(0, 30);
+  return {
+    topicId: `topic-${subjectId}-${slug}`,
+    topicName: cleanName,
+    chapterName: `Tài liệu từ Drive: ${cleanName}`,
+    isMatched: false,
+  };
+}
+
+/**
+ * Bộ bóc tách thông minh chuyên sâu cho đề trắc nghiệm Word (.docx) & Google Docs
+ * Hỗ trợ nhận diện gạch chân (__U__...__EU__) làm đáp án đúng, tự sinh gợi ý Socratic
  */
 export function parseTextDocumentQuestions(
   docText: string,
   subjectId: string,
+  topicId: string,
   topicName: string,
+  chapterName: string,
   fileName: string
 ): Question[] {
   const questions: Question[] = [];
   if (!docText || docText.length < 30) return questions;
 
-  // Lấy bảng đáp án tổng hợp nếu có ở cuối tài liệu
   const answerKeys = extractAnswerKeyTable(docText);
-
-  // Chuẩn hóa văn bản: tách thành từng dòng
   const lines = docText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
 
-  let currentQuestionNumber = 0;
+  let currentLevel: "NhanBiet" | "ThongHieu" | "VanDung" | "VanDungCao" = "ThongHieu";
   let currentHeader = "";
+  let currentQNum = 0;
   let optA = "";
   let optB = "";
   let optC = "";
   let optD = "";
-  let currentAns: "A" | "B" | "C" | "D" = "A";
-  let currentHint = "";
-  let currentExplanation = "";
+  let correctAns: "A" | "B" | "C" | "D" = "A";
+  let hasUnderlineAnswer = false;
   let isInQuestion = false;
 
   const flushQuestion = () => {
     if (currentHeader && optA && optB) {
-      const qNum = currentQuestionNumber;
-      // Ưu tiên đáp án trong câu, nếu không có lấy từ bảng đáp án
-      const finalAns = answerKeys.has(qNum) ? answerKeys.get(qNum)! : currentAns;
+      const qNum = currentQNum || questions.length + 1;
+      const finalAns = hasUnderlineAnswer
+        ? correctAns
+        : answerKeys.has(qNum)
+        ? answerKeys.get(qNum)!
+        : correctAns;
 
-      const qId = `Q-${subjectId.toUpperCase().substring(0, 3)}-${Date.now().toString().slice(-4)}-${qNum || questions.length + 1}`;
+      const cleanHeader = currentHeader.replace(/__U__|__EU__/g, "").trim();
+      const cleanOptA = optA.replace(/__U__|__EU__/g, "").trim();
+      const cleanOptB = optB.replace(/__U__|__EU__/g, "").trim();
+      const cleanOptC = optC ? optC.replace(/__U__|__EU__/g, "").trim() : "Không có phương án C";
+      const cleanOptD = optD ? optD.replace(/__U__|__EU__/g, "").trim() : "Không có phương án D";
+
+      const qId = `Q-${subjectId.toUpperCase().slice(0, 3)}-${Date.now().toString().slice(-4)}-${qNum}`;
 
       questions.push({
         id: qId,
         subjectId,
-        topicId: `topic-${subjectId}-${fileName.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
-        topicName: topicName || fileName.replace(/\.[^.]+$/, ""),
-        chapterName: "Đồng bộ từ Drive: " + fileName,
-        difficulty: "ThongHieu",
-        content: currentHeader,
+        topicId,
+        topicName,
+        chapterName,
+        difficulty: currentLevel,
+        content: cleanHeader,
         options: [
-          { id: "A", content: optA },
-          { id: "B", content: optB },
-          { id: "C", content: optC || "Không có phương án C" },
-          { id: "D", content: optD || "Không có phương án D" },
+          { id: "A", content: cleanOptA },
+          { id: "B", content: cleanOptB },
+          { id: "C", content: cleanOptC },
+          { id: "D", content: cleanOptD },
         ],
         correctAnswer: finalAns,
         hints: {
-          level1_concept: currentHint || "Vận dụng kiến thức lý thuyết trong bài: " + topicName,
-          level2_formula: "Đọc kỹ giả thiết đề bài và áp dụng phương pháp loại trừ phương án sai.",
-          level3_steps: "Thực hiện từng bước suy luận để tự tin xác định phương án đúng.",
+          level1_concept: `Nhớ lại định nghĩa và các đặc trưng cốt lõi trong bài học "${topicName}".`,
+          level2_formula: `Đọc kỹ giả thiết trong câu hỏi, áp dụng phương pháp loại trừ các phương án thiếu căn cứ hoặc phát biểu quá mức tuyệt đối.`,
+          level3_steps: `Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất.`,
         },
-        explanation: currentExplanation || "",
-        sourceDocTitle: fileName + " (Google Drive)",
+        explanation: `Câu hỏi bóc tách từ tài liệu "${fileName}". Phân tích nội dung để chọn phương án đúng nhất theo chuẩn chương trình THPT.`,
+        sourceDocTitle: `${fileName} (Google Drive)`,
       });
     }
 
@@ -174,82 +248,78 @@ export function parseTextDocumentQuestions(
     optB = "";
     optC = "";
     optD = "";
-    currentAns = "A";
-    currentHint = "";
-    currentExplanation = "";
+    correctAns = "A";
+    hasUnderlineAnswer = false;
+    isInQuestion = false;
   };
 
+  const optRegex = /(?:__U__)?([A-D])[.)](?:__EU__)?\s*([\s\S]*?)(?=(?:__U__)?[A-D][.)]|$)/g;
+
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
+    const rawLine = lines[i];
 
-    // Phát hiện câu hỏi mới: "Câu 1:", "Câu 1.", "Bài 1:" hoặc "1."
-    const qMatch = line.match(/^(?:Câu|Bài)\s*(\d+)[\s.:]+(.*)/i);
+    // Cập nhật mức độ câu hỏi
+    if (/1\.1\.\s*Nhận biết/i.test(rawLine)) {
+      currentLevel = "NhanBiet";
+      continue;
+    }
+    if (/1\.2\.\s*Thông hiểu/i.test(rawLine)) {
+      currentLevel = "ThongHieu";
+      continue;
+    }
+    if (/1\.3\.\s*Vận dụng/i.test(rawLine)) {
+      currentLevel = "VanDung";
+      continue;
+    }
+    if (/2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI/i.test(rawLine) || /PHẦN II/i.test(rawLine)) {
+      if (isInQuestion) flushQuestion();
+      break; // Tạm dừng tại phần trắc nghiệm đúng sai để ưu tiên đề 4 lựa chọn
+    }
 
+    // Phát hiện câu hỏi mới: "Câu 1.", "Câu 1:", "Bài 1:"
+    const cleanLine = rawLine.replace(/__U__|__EU__/g, "").trim();
+    const qMatch = cleanLine.match(/^Câu\s*(\d+)[\s.:]+([\s\S]*)/i);
     if (qMatch) {
       if (isInQuestion) flushQuestion();
       isInQuestion = true;
-      currentQuestionNumber = parseInt(qMatch[1], 10);
+      currentQNum = parseInt(qMatch[1], 10);
       currentHeader = qMatch[2].trim();
       continue;
     }
 
     if (!isInQuestion) continue;
 
-    // Phát hiện các phương án A, B, C, D (cùng dòng hoặc khác dòng)
-    if (/^A[.)]\s+/i.test(line)) {
-      // Có thể có cả 4 phương án trên 1 dòng: A. ... B. ... C. ... D. ...
-      const multiOpt = line.match(/^A[.)]\s+([\s\S]*?)\s+B[.)]\s+([\s\S]*?)(?:\s+C[.)]\s+([\s\S]*?))?(?:\s+D[.)]\s+([\s\S]*?))?$/i);
-      if (multiOpt) {
-        optA = multiOpt[1]?.trim() || "";
-        optB = multiOpt[2]?.trim() || "";
-        optC = multiOpt[3]?.trim() || "";
-        optD = multiOpt[4]?.trim() || "";
-      } else {
-        optA = line.replace(/^A[.)]\s+/i, "").trim();
+    // Phát hiện dòng chứa các phương án A, B, C, D
+    const testLine = cleanLine.replace(/^[ \t]+/, "");
+    if (/^[A-D][.)]/i.test(testLine)) {
+      optRegex.lastIndex = 0;
+      let m: RegExpExecArray | null;
+      while ((m = optRegex.exec(rawLine)) !== null) {
+        if (!m[0].trim()) continue;
+        const fullToken = m[0];
+        const letter = m[1].toUpperCase() as "A" | "B" | "C" | "D";
+        const content = m[2].trim();
+
+        // Nếu phương án có gạch chân trong Word (__U__) thì đây là đáp án đúng!
+        if (fullToken.includes("__U__") && !hasUnderlineAnswer) {
+          correctAns = letter;
+          hasUnderlineAnswer = true;
+        }
+
+        if (letter === "A") optA = content;
+        else if (letter === "B") optB = content;
+        else if (letter === "C") optC = content;
+        else if (letter === "D") optD = content;
       }
       continue;
     }
 
-    if (/^B[.)]\s+/i.test(line)) {
-      optB = line.replace(/^B[.)]\s+/i, "").trim();
-      continue;
-    }
-
-    if (/^C[.)]\s+/i.test(line)) {
-      optC = line.replace(/^C[.)]\s+/i, "").trim();
-      continue;
-    }
-
-    if (/^D[.)]\s+/i.test(line)) {
-      optD = line.replace(/^D[.)]\s+/i, "").trim();
-      continue;
-    }
-
-    // Phát hiện dòng đáp án
-    const ansMatch = line.match(/(?:Đáp án|Đ\/A|Key|Chọn)[:\s]*([A-D])\b/i);
-    if (ansMatch) {
-      currentAns = ansMatch[1].toUpperCase() as "A" | "B" | "C" | "D";
-      continue;
-    }
-
-    // Phát hiện dòng Gợi ý / Lời giải
-    if (/(?:Gợi ý|Hướng dẫn|Phương pháp)[:\s]/i.test(line)) {
-      currentHint = line.replace(/^(?:Gợi ý|Hướng dẫn|Phương pháp)[:\s]*/i, "").trim();
-      continue;
-    }
-
-    if (/(?:Lời giải|Giải chi tiết)[:\s]/i.test(line)) {
-      currentExplanation = line.replace(/^(?:Lời giải|Giải chi tiết)[:\s]*/i, "").trim();
-      continue;
-    }
-
-    // Nếu chưa có đáp án A mà có dòng chữ tiếp theo thì ghép vào đề bài
-    if (!optA && line) {
-      currentHeader += " " + line;
+    // Nếu chưa gặp phương án A thì các dòng tiếp theo là phần thân câu hỏi
+    if (!optA && rawLine) {
+      currentHeader += " " + rawLine.replace(/__U__|__EU__/g, "");
     }
   }
 
-  // Đóng câu hỏi cuối cùng
   if (isInQuestion) flushQuestion();
 
   return questions;
@@ -279,12 +349,13 @@ export async function scanOnTNTHPTRootFolder(
   };
 
   const allQuestions: Question[] = [];
-  // Bắt đầu với danh sách môn mặc định để KHÔNG BAO GIỜ bị mất cấu trúc bài học
+
+  // Bắt đầu với danh sách môn mặc định (9 chuyên đề chuẩn của Tin học 12, Toán, Lý)
   const subjectMap = new Map<string, Subject>();
   INITIAL_SUBJECTS.forEach((subj) => {
     subjectMap.set(subj.id, {
       ...subj,
-      topics: [...subj.topics],
+      topics: subj.topics.map((t) => ({ ...t })),
     });
   });
 
@@ -324,7 +395,13 @@ export async function scanOnTNTHPTRootFolder(
       files,
     });
 
-    const newTopics: Topic[] = [];
+    const currentSubject = subjectMap.get(subjectId) || {
+      id: subjectId,
+      name: subjectDisplayName,
+      icon,
+      driveUrl: `https://drive.google.com/drive/folders/${folder.id}`,
+      topics: [],
+    };
 
     // Duyệt và bóc tách từng file trong thư mục môn
     for (const file of files) {
@@ -338,6 +415,9 @@ export async function scanOnTNTHPTRootFolder(
 
         let parsedQuestions: Question[] = [];
 
+        // Khớp nối file vào Chuyên đề tương ứng trong chương trình
+        const matched = matchFileToExistingTopic(file.name, currentSubject.topics, subjectId);
+
         // Nếu là Google Sheets hoặc file CSV
         if (
           file.mimeType === "application/vnd.google-apps.spreadsheet" ||
@@ -348,14 +428,23 @@ export async function scanOnTNTHPTRootFolder(
           parsedQuestions = sheetResult.questions.map((q) => ({
             ...q,
             subjectId,
-            sourceDocTitle: file.name + " (Google Drive)",
+            topicId: matched.topicId,
+            topicName: matched.topicName,
+            chapterName: matched.chapterName,
+            sourceDocTitle: `${file.name} (Google Drive)`,
           }));
-        } else {
+        } else if (
+          file.mimeType.includes("wordprocessingml") ||
+          file.name.endsWith(".docx") ||
+          file.mimeType === "application/vnd.google-apps.document"
+        ) {
           // Là Word .docx hoặc Google Docs
           parsedQuestions = parseTextDocumentQuestions(
             rawContent,
             subjectId,
-            file.name.replace(/\.[^.]+$/, ""),
+            matched.topicId,
+            matched.topicName,
+            matched.chapterName,
             file.name
           );
         }
@@ -363,36 +452,27 @@ export async function scanOnTNTHPTRootFolder(
         if (parsedQuestions.length > 0) {
           parsedQuestions.forEach((q) => allQuestions.push(q));
 
-          newTopics.push({
-            id: `topic-${subjectId}-${file.id.substring(0, 8)}`,
-            name: file.name.replace(/\.[^.]+$/, ""),
-            subjectId,
-            chapter: `Thư mục Drive: ${folder.name}`,
-            totalQuestions: parsedQuestions.length,
-          });
+          // Cập nhật số lượng câu hỏi trong danh sách Chuyên đề
+          const existingTopic = currentSubject.topics.find((t) => t.id === matched.topicId);
+          if (existingTopic) {
+            existingTopic.totalQuestions = parsedQuestions.length;
+          } else {
+            currentSubject.topics.unshift({
+              id: matched.topicId,
+              name: matched.topicName,
+              subjectId,
+              chapter: matched.chapterName,
+              totalQuestions: parsedQuestions.length,
+            });
+          }
         }
       } catch (err) {
         console.error(`Bỏ qua file [${file.name}]:`, err);
       }
     }
 
-    // Lấy môn học hiện tại (đã có sẵn cấu trúc 9 bài từ file Excel)
-    const existingSubject = subjectMap.get(subjectId) || {
-      id: subjectId,
-      name: subjectDisplayName,
-      icon,
-      driveUrl: `https://drive.google.com/drive/folders/${folder.id}`,
-      topics: [],
-    };
-
-    // Nếu bóc tách được các bài mới từ file Drive, gộp vào cấu trúc hiện tại chứ không ghi đè mất
-    if (newTopics.length > 0) {
-      // Đặt các chủ đề mới từ Drive lên đầu
-      existingSubject.topics = [...newTopics, ...existingSubject.topics];
-    }
-
-    existingSubject.driveUrl = `https://drive.google.com/drive/folders/${folder.id}`;
-    subjectMap.set(subjectId, existingSubject);
+    currentSubject.driveUrl = `https://drive.google.com/drive/folders/${folder.id}`;
+    subjectMap.set(subjectId, currentSubject);
   }
 
   return {
