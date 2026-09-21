@@ -6,75 +6,160 @@ export const INITIAL_SUBJECTS: Subject[] = [
     name: "Tin học 12",
     icon: "Laptop",
     topics: [
+      // Tuần 2 - 6: Luyện tập NNLT Python (Tin học 10)
+      {
+        id: "tin-lap-trinh-python",
+        name: "Luyện tập NNLT Python (Tin học 10) (Tuần 2 – 6)",
+        subjectId: "tin-hoc-12",
+        chapter: "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+        totalQuestions: 4,
+      },
+
+      // Tuần 7: Ôn tập chủ đề 1 (Tin học 12) - Trí tuệ nhân tạo (AI)
       {
         id: "tin-ai-tri-tue-nhan-tao",
-        name: "Phần 1: Trắc nghiệm 4 lựa chọn (AI)",
+        name: "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề A: Máy tính và xã hội tri thức",
+        chapter: "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
         totalQuestions: 76,
       },
       {
         id: "tin-ai-dung-sai",
-        name: "Phần 2: Trắc nghiệm Đúng / Sai (AI)",
+        name: "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề A: Máy tính và xã hội tri thức",
+        chapter: "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
         totalQuestions: 20,
       },
+
+      // Tuần 8 - 10: Mạng máy tính & Internet
       {
         id: "tin-thiet-bi-giao-thuc-mang",
-        name: "Thiết bị mạng & Giao thức mạng (TCP/IP)",
+        name: "Ôn tập: Một số thiết bị mạng thông dụng (Tuần 8)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề B: Mạng máy tính và Internet",
+        chapter: "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
         totalQuestions: 4,
       },
       {
-        id: "tin-dao-duc-phap-luat-so",
-        name: "Gìn giữ tính nhân văn trong thế giới ảo",
+        id: "tin-giao-thuc-mang",
+        name: "Ôn tập: Giao thức mạng (Tuần 9)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề D: Đạo đức, pháp luật & văn hoá số",
+        chapter: "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
+        totalQuestions: 4,
+      },
+      {
+        id: "tin-chia-se-tai-nguyen-mang",
+        name: "Ôn tập: Thực hành chia sẻ tài nguyên trên mạng (Tuần 10)",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
+        totalQuestions: 3,
+      },
+
+      // Tuần 11: Đạo đức, pháp luật & văn hoá số
+      {
+        id: "tin-dao-duc-phap-luat-so",
+        name: "Ôn tập: Giao tiếp và ứng xử trong không gian mạng (Tuần 11)",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tin học 12)",
+        totalQuestions: 3,
+      },
+
+      // Tuần 12 - 20: Tạo trang web với HTML & CSS
+      {
+        id: "tin-html-cau-truc-dinh-dang",
+        name: "Ôn tập: HTML và cấu trúc trang web (Tuần 12)",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        totalQuestions: 4,
+      },
+      {
+        id: "tin-html-dinh-dang-van-ban",
+        name: "Ôn tập: Định dạng văn bản (Tuần 13)",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
         totalQuestions: 3,
       },
       {
-        id: "tin-html-cau-truc-dinh-dang",
-        name: "Cấu trúc trang web & Định dạng HTML",
+        id: "tin-html-danh-sach-bang",
+        name: "Ôn tập: Tạo danh sách, bảng (Tuần 14)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề F: Tạo trang web với HTML & CSS",
-        totalQuestions: 4,
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        totalQuestions: 3,
+      },
+      {
+        id: "tin-html-tao-lien-ket",
+        name: "Ôn tập: Tạo liên kết (Tuần 15)",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        totalQuestions: 3,
       },
       {
         id: "tin-html-da-phuong-tien-form",
-        name: "Đa phương tiện, Bảng & Biểu mẫu (Form) HTML",
+        name: "Ôn tập: Chèn tệp tin đa phương tiện và khung nội tuyến (Tuần 16)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề F: Tạo trang web với HTML & CSS",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
         totalQuestions: 4,
+      },
+      {
+        id: "tin-html-bieu-mau-form",
+        name: "Ôn tập: Tạo biểu mẫu (Tuần 18)",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        totalQuestions: 3,
+      },
+      {
+        id: "tin-css-khai-niem-vai-tro",
+        name: "Ôn tập: Khái niệm, vai trò của CSS; Định dạng văn bản & Màu sắc (Tuần 19)",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        totalQuestions: 3,
       },
       {
         id: "tin-css-bo-chon-dinh-dang",
-        name: "CSS: Bộ chọn, Định dạng & Mô hình hộp",
+        name: "Ôn tập: Định dạng khung, các mức ưu tiên của bộ chọn (Tuần 20)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề F: Tạo trang web với HTML & CSS",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
         totalQuestions: 4,
       },
-      {
-        id: "tin-co-so-du-lieu-sql",
-        name: "Hệ CSDL quan hệ & Truy vấn SQL (Lớp 11)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề F: Giới thiệu Cơ sở dữ liệu",
-        totalQuestions: 4,
-      },
-      {
-        id: "tin-lap-trinh-python",
-        name: "Lập trình cơ bản Python (Lớp 10)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề F: Kỹ thuật lập trình cơ bản",
-        totalQuestions: 4,
-      },
+
+      // Tuần 21 - 23: Hướng nghiệp với tin học
       {
         id: "tin-huong-nghiep-dich-vu",
-        name: "Hướng nghiệp: Nhóm nghề dịch vụ & quản trị",
+        name: "Ôn tập chủ đề: Hướng nghiệp với tin học (Tin học 10, 11, 12) (Tuần 21)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề G: Hướng nghiệp với tin học",
+        chapter: "Chủ đề 5: Hướng nghiệp với tin học (Tin học 10, 11, 12)",
         totalQuestions: 3,
+      },
+      {
+        id: "tin-huong-nghiep-ict",
+        name: "Ôn tập chủ đề 6,7 _ICT (Tin học 12) (Tuần 22 – 23)",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 5: Hướng nghiệp với tin học (Tin học 10, 11, 12)",
+        totalQuestions: 4,
+      },
+
+      // Tuần 26 - 29: Cơ sở dữ liệu lớp 11
+      {
+        id: "tin-co-so-du-lieu-sql",
+        name: "Ôn thi TN.THPT: Chủ đề CSDL lớp 11 (Tuần 26 – 29)",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tin học 11)",
+        totalQuestions: 4,
+      },
+
+      // Tuần 24 - 25 & 30 - 35: Luyện giải đề tổng hợp & Đề mẫu
+      {
+        id: "tin-giai-de-tong-hop",
+        name: "Ôn tập: Giải đề tổng hợp (Tuần 24 – 25)",
+        subjectId: "tin-hoc-12",
+        chapter: "Luyện giải đề thi tốt nghiệp THPT",
+        totalQuestions: 4,
+      },
+      {
+        id: "tin-giai-de-mau",
+        name: "Giải đề mẫu chuẩn tốt nghiệp THPT (Tuần 30 – 35)",
+        subjectId: "tin-hoc-12",
+        chapter: "Luyện giải đề thi tốt nghiệp THPT",
+        totalQuestions: 4,
       },
     ],
   },

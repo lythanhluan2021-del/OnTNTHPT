@@ -77,17 +77,22 @@ export default function AppHome() {
           parsedS.length > 0 &&
           parsedS.some((s: any) => s.topics && s.topics.length > 0)
         ) {
-          // Gộp với INITIAL_SUBJECTS để luôn cập nhật đủ 76 câu hỏi cho Chủ đề A
+          // Gộp với INITIAL_SUBJECTS để luôn cập nhật đầy đủ các chủ đề theo kế hoạch ôn tập mới
           const merged = INITIAL_SUBJECTS.map((initSubj) => {
             const found = parsedS.find((s: any) => s.id === initSubj.id);
             if (found && found.topics && found.topics.length > 0) {
-              const updatedTopics = found.topics.map((top: any) => {
-                const initTop = initSubj.topics.find((t) => t.id === top.id);
-                if (initTop && initTop.totalQuestions > (top.totalQuestions || 0)) {
-                  return { ...top, totalQuestions: initTop.totalQuestions };
-                }
-                return top;
-              });
+              const updatedTopics = [
+                ...initSubj.topics.map((initTop) => {
+                  const foundTop = found.topics.find((t: any) => t.id === initTop.id);
+                  if (foundTop && (foundTop.totalQuestions || 0) > initTop.totalQuestions) {
+                    return foundTop;
+                  }
+                  return initTop;
+                }),
+                ...found.topics.filter(
+                  (t: any) => !initSubj.topics.some((it) => it.id === t.id)
+                ),
+              ];
               return { ...found, topics: updatedTopics };
             }
             return initSubj;
