@@ -10,34 +10,38 @@ export function sanitizeTutorResponse(
 ): string {
   let text = rawText;
 
-  // 1. Chặn các cụm từ chỉ định trực tiếp phương án đúng
-  const forbiddenPatterns = [
-    new RegExp(`(chọn|đáp án là|kết quả là|chính là|đáp án đúng là)\\s*(${question.correctAnswer})`, "gi"),
-    new RegExp(`phương án\\s*${question.correctAnswer}\\s*là đúng`, "gi"),
-    new RegExp(`câu này\\s*(${question.correctAnswer})`, "gi"),
-  ];
+  // 1. Chặn các cụm từ chỉ định trực tiếp phương án đúng (nếu có correctAnswer)
+  if (question.correctAnswer) {
+    const forbiddenPatterns = [
+      new RegExp(`(chọn|đáp án là|kết quả là|chính là|đáp án đúng là)\\s*(${question.correctAnswer})`, "gi"),
+      new RegExp(`phương án\\s*${question.correctAnswer}\\s*là đúng`, "gi"),
+      new RegExp(`câu này\\s*(${question.correctAnswer})`, "gi"),
+    ];
 
-  for (const pattern of forbiddenPatterns) {
-    if (pattern.test(text)) {
-      text = text.replace(
-        pattern,
-        "hãy xem lại công thức và tự kiểm tra phương án phù hợp nhé"
-      );
+    for (const pattern of forbiddenPatterns) {
+      if (pattern.test(text)) {
+        text = text.replace(
+          pattern,
+          "hãy xem lại công thức và tự kiểm tra phương án phù hợp nhé"
+        );
+      }
     }
   }
 
   // 2. Chặn nội dung chính xác của đáp án đúng nếu xuất hiện trần trụi
-  const correctOption = question.options.find(
-    (opt) => opt.id === question.correctAnswer
-  );
-  if (correctOption && correctOption.content.length > 3) {
-    const rawContent = correctOption.content.replace(/[\$\(\)\\]/g, "").trim();
-    if (rawContent && text.includes(rawContent)) {
-      // Thay thế bằng gợi mở suy luận
-      text = text.replace(
-        rawContent,
-        "[giá trị bạn cần tự tính từ công thức trên]"
-      );
+  if (question.options && question.correctAnswer) {
+    const correctOption = question.options.find(
+      (opt) => opt.id === question.correctAnswer
+    );
+    if (correctOption && correctOption.content.length > 3) {
+      const rawContent = correctOption.content.replace(/[\$\(\)\\]/g, "").trim();
+      if (rawContent && text.includes(rawContent)) {
+        // Thay thế bằng gợi mở suy luận
+        text = text.replace(
+          rawContent,
+          "[giá trị bạn cần tự tính từ công thức trên]"
+        );
+      }
     }
   }
 

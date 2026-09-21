@@ -13,6 +13,7 @@ import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
 import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
 import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
 import { parseGoogleSheetData } from "@/lib/driveSync";
+import { soundManager } from "@/lib/audioEffects";
 
 export default function AppHome() {
   // 1. Data States
@@ -23,7 +24,7 @@ export default function AppHome() {
   // 2. Navigation States
   const [selectedSubjectId, setSelectedSubjectId] = useState<string>("tin-hoc-12");
   const [selectedTopicId, setSelectedTopicId] = useState<string>(
-    "tin-ai-tri-tue-nhan-tao"
+    INITIAL_SUBJECTS[0].topics[0].id
   );
   const [activeTab, setActiveTab] = useState<"practice" | "analytics">("practice");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -35,6 +36,7 @@ export default function AppHome() {
   const [selectedOption, setSelectedOption] = useState<"A" | "B" | "C" | "D" | null>(
     null
   );
+  const [selectedTF, setSelectedTF] = useState<Record<string, boolean | null>>({});
   const [hasAnswered, setHasAnswered] = useState(false);
   const [hintLevel, setHintLevel] = useState(0);
   const [isHintOpen, setIsHintOpen] = useState(false);
@@ -111,11 +113,17 @@ export default function AppHome() {
   // Reset trạng thái câu hỏi khi chuyển câu hoặc chuyển chủ đề
   useEffect(() => {
     setSelectedOption(null);
+    setSelectedTF({});
     setHasAnswered(false);
     setHintLevel(0);
     setIsHintOpen(false);
     setQuestionStartTime(Date.now());
   }, [currentQuestionIndex, selectedTopicId]);
+
+  // Chọn Đúng / Sai cho từng ý câu hỏi Phần 2
+  const handleSelectTF = (itemId: string, value: boolean) => {
+    setSelectedTF((prev) => ({ ...prev, [itemId]: value }));
+  };
 
   // Thông tin tiêu đề hiển thị trên Header
   const currentSubject = subjects.find((s) => s.id === selectedSubjectId);
@@ -123,13 +131,67 @@ export default function AppHome() {
 
   // Xử lý kiểm tra đáp án
   const handleCheckAnswer = () => {
-    if (!selectedOption || !currentQuestion || hasAnswered) return;
+    if (!currentQuestion || hasAnswered) return;
 
-    const isCorrect = selectedOption === currentQuestion.correctAnswer;
     const timeSpent = Math.max(
       1,
       Math.round((Date.now() - questionStartTime) / 1000)
     );
+
+    // 1. Kiểm tra cho dạng câu hỏi Đúng / Sai (Phần 2)
+    if (currentQuestion.type === "true_false") {
+      const items = currentQuestion.tfItems || [];
+      if (Object.keys(selectedTF).length === 0) return;
+
+      let correctCount = 0;
+      items.forEach((item) => {
+        if (selectedTF[item.id] === item.correctAnswer) {
+          correctCount++;
+        }
+      });
+
+      const isAllCorrect = correctCount === items.length;
+      if (correctCount >= 3) {
+        soundManager.playCorrect();
+      } else {
+        soundManager.playIncorrect();
+      }
+
+      const newAttempt: StudentAttempt = {
+        id: "att-" + Date.now(),
+        questionId: currentQuestion.id,
+        subjectId: currentQuestion.subjectId,
+        topicId: currentQuestion.topicId,
+        selectedOption: null,
+        selectedTF: selectedTF as any,
+        isCorrect: isAllCorrect,
+        hintsViewed: hintLevel,
+        socraticQuestionsAsked: 0,
+        timeSpentSeconds: timeSpent,
+        timestamp: Date.now(),
+      };
+
+      const updatedAttempts = [...attempts, newAttempt];
+      setAttempts(updatedAttempts);
+      setHasAnswered(true);
+
+      try {
+        localStorage.setItem("thpt_attempts", JSON.stringify(updatedAttempts));
+      } catch {
+        // Storage error handled
+      }
+      return;
+    }
+
+    // 2. Kiểm tra cho dạng câu hỏi Trắc nghiệm 4 lựa chọn (Phần 1)
+    if (!selectedOption) return;
+
+    const isCorrect = selectedOption === currentQuestion.correctAnswer;
+    if (isCorrect) {
+      soundManager.playCorrect();
+    } else {
+      soundManager.playIncorrect();
+    }
 
     const newAttempt: StudentAttempt = {
       id: "att-" + Date.now(),
@@ -157,6 +219,7 @@ export default function AppHome() {
 
   // Chuyển sang câu tiếp theo
   const handleNextQuestion = () => {
+    soundManager.playClick();
     if (currentQuestionIndex < topicQuestions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
@@ -167,11 +230,13 @@ export default function AppHome() {
 
   // Tăng bậc gợi ý
   const handleAdvanceHint = () => {
+    soundManager.playHint();
     setHintLevel((prev) => Math.min(prev + 1, 3));
     setIsHintOpen(true);
   };
 
   const handleToggleHint = () => {
+    soundManager.playHint();
     if (hintLevel === 0) {
       setHintLevel(1);
       setIsHintOpen(true);
@@ -386,6 +451,47 @@ export default function AppHome() {
             <>
               {currentQuestion ? (
                 <>
+                  {/* Bộ chuyển đổi nhanh giữa Phần 1 (Trắc nghiệm 4 lựa chọn) và Phần 2 (Đúng / Sai) */}
+                  {selectedSubjectId === "tin-hoc-12" &&
+                    (selectedTopicId === "tin-ai-tri-tue-nhan-tao" || selectedTopicId === "tin-ai-dung-sai") && (
+                      <div className="flex items-center p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1 text-xs font-bold">
+                        <button
+                          onClick={() => {
+                            soundManager.playClick();
+                            setSelectedTopicId("tin-ai-tri-tue-nhan-tao");
+                            setCurrentQuestionIndex(0);
+                          }}
+                          className={`flex-1 py-2 px-2 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1.5 ${
+                            selectedTopicId === "tin-ai-tri-tue-nhan-tao"
+                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
+                              : "text-slate-600 hover:text-blue-700"
+                          }`}
+                        >
+                          <span>🔘 Phần 1: Nhiều lựa chọn</span>
+                          <span className="text-[10px] bg-blue-100 text-blue-900 px-1.5 py-0.5 rounded-full font-bold">
+                            76 câu
+                          </span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            soundManager.playClick();
+                            setSelectedTopicId("tin-ai-dung-sai");
+                            setCurrentQuestionIndex(0);
+                          }}
+                          className={`flex-1 py-2 px-2 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1.5 ${
+                            selectedTopicId === "tin-ai-dung-sai"
+                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
+                              : "text-slate-600 hover:text-blue-700"
+                          }`}
+                        >
+                          <span>⚖️ Phần 2: Đúng / Sai</span>
+                          <span className="text-[10px] bg-blue-100 text-blue-900 px-1.5 py-0.5 rounded-full font-bold">
+                            20 câu
+                          </span>
+                        </button>
+                      </div>
+                  )}
+
                   {/* Thẻ câu hỏi và các phương án */}
                   <QuestionCard
                     question={currentQuestion}
@@ -393,6 +499,8 @@ export default function AppHome() {
                     totalInTopic={topicQuestions.length}
                     selectedOption={selectedOption}
                     onSelectOption={setSelectedOption}
+                    selectedTF={selectedTF}
+                    onSelectTF={handleSelectTF}
                     hasAnswered={hasAnswered}
                   />
 
@@ -439,6 +547,11 @@ export default function AppHome() {
         <FixedBottomBar
           hasAnswered={hasAnswered}
           selectedOption={selectedOption}
+          canSubmit={
+            currentQuestion.type === "true_false"
+              ? Object.keys(selectedTF).length > 0
+              : !!selectedOption
+          }
           onCheckAnswer={handleCheckAnswer}
           onNextQuestion={handleNextQuestion}
           onToggleHint={handleToggleHint}

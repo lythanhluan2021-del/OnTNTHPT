@@ -1,5 +1,13 @@
 export type DifficultyLevel = "NhanBiet" | "ThongHieu" | "VanDung" | "VanDungCao";
 
+export type QuestionType = "multiple_choice" | "true_false";
+
+export interface TrueFalseItem {
+  id: "a" | "b" | "c" | "d";
+  content: string;
+  correctAnswer: boolean; // true: Đúng, false: Sai
+}
+
 export interface Question {
   id: string;
   subjectId: string;
@@ -7,12 +15,16 @@ export interface Question {
   topicName: string;
   chapterName: string;
   difficulty: DifficultyLevel;
-  content: string; // May include LaTeX: \( f(x) = x^3 - 3x \)
-  options: {
+  type?: QuestionType; // 'multiple_choice' (mặc định) hoặc 'true_false'
+  content: string; // Đề bài hoặc ngữ cảnh tình huống
+  // Dành cho dạng trắc nghiệm 4 lựa chọn
+  options?: {
     id: "A" | "B" | "C" | "D";
     content: string;
   }[];
-  correctAnswer: "A" | "B" | "C" | "D";
+  correctAnswer?: "A" | "B" | "C" | "D";
+  // Dành cho dạng trắc nghiệm Đúng / Sai (Phần 2)
+  tfItems?: TrueFalseItem[];
   hints: {
     level1_concept: string; // Lý thuyết, định lý cốt lõi
     level2_formula: string; // Công thức và phương pháp tiếp cận
@@ -45,6 +57,7 @@ export interface StudentAttempt {
   subjectId: string;
   topicId: string;
   selectedOption: "A" | "B" | "C" | "D" | null;
+  selectedTF?: Record<string, boolean>; // Lưu đáp án học sinh chọn cho từng ý a, b, c, d
   isCorrect: boolean;
   hintsViewed: number; // 0, 1, 2, 3
   socraticQuestionsAsked: number;
