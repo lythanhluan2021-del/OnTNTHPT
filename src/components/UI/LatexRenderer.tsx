@@ -15,40 +15,74 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({
   const renderedHtml = useMemo(() => {
     if (!content) return "";
 
-    // Tách và render cả công thức inline \( ... \) / $ ... $ và display \[ ... \] / $$ ... $$
     let text = content;
 
-    // Thay thế display math $$ ... $$ hoặc \[ ... \]
-    text = text.replace(/(\$\$|\\\[)([\s\S]*?)(\$\$|\\\])/g, (_, __, math) => {
+    // 1. Display math: $$ ... $$ hoặc \[ ... \]
+    text = text.replace(/\$\$([\s\S]*?)\$\$/g, (_, math) => {
       try {
         return katex.renderToString(math.trim(), {
           displayMode: true,
           throwOnError: false,
         });
       } catch {
-        return math;
+        return `$$${math}$$`;
       }
     });
 
-    // Thay thế inline math \( ... \) hoặc $ ... $
-    text = text.replace(/(\$|\\\()([^\$\\\n]+?)(\$|\\\))/g, (_, __, math) => {
+    text = text.replace(/\\\[([\s\S]*?)\\\]/g, (_, math) => {
+      try {
+        return katex.renderToString(math.trim(), {
+          displayMode: true,
+          throwOnError: false,
+        });
+      } catch {
+        return `\\[${math}\\]`;
+      }
+    });
+
+    // 2. Inline math: \( ... \)
+    text = text.replace(/\\\(([\s\S]*?)\\\)/g, (_, math) => {
       try {
         return katex.renderToString(math.trim(), {
           displayMode: false,
           throwOnError: false,
         });
       } catch {
-        return math;
+        return `\\(${math}\\)`;
       }
     });
 
-    // Tự động nhận diện ký hiệu số mũ dạng X^2, R^2, x^n khi không ở trong KaTeX
-    text = text.replace(/([a-zA-Z0-9)\]])\^([0-9a-zA-Z+-]+)/g, "$1<sup class=\"font-semibold text-[0.8em] relative -top-1\">$2</sup>");
+    // 3. Inline math: $ ... $ (cho phép mọi ký tự kể cả backslash \ và dấu cách)
+    text = text.replace(/\$([^\$\n]+?)\$/g, (_, math) => {
+      try {
+        return katex.renderToString(math.trim(), {
+          displayMode: false,
+          throwOnError: false,
+        });
+      } catch {
+        return `$${math}$`;
+      }
+    });
 
-    // Đảm bảo thẻ <sup> sẵn có hiển thị đẹp mắt, nâng cao rõ ràng
-    text = text.replace(/<sup>([\s\S]*?)<\/sup>/g, "<sup class=\"font-semibold text-[0.8em] relative -top-1\">$1</sup>");
+    // 4. Bắt thêm các công thức phân số \frac{...}{...} nếu người dùng hoặc tài liệu chưa kịp bọc $
+    text = text.replace(/(\\frac\{[^{}]+\}\{[^{}]+\}(?:\s*(?:\\cdot|\\times|\*|\+|-)?\s*(?:\([^\)]+\)|[a-zA-Z0-9]+))?)/g, (match) => {
+      try {
+        return katex.renderToString(match.trim(), {
+          displayMode: false,
+          throwOnError: false,
+        });
+      } catch {
+        return match;
+      }
+    });
 
-    // Chuyển ký tự xuống dòng thành <br />
+    // 5. Tự động nhận diện ký hiệu số mũ dạng X^2, R^2, x^n khi không ở trong KaTeX
+    text = text.replace(/([a-zA-Z0-9)\]])\^([0-9a-zA-Z+-]+)/g, '$1<sup class="font-semibold text-[0.8em] relative -top-1">$2</sup>');
+
+    // 6. Đảm bảo thẻ <sup> sẵn có hiển thị đẹp mắt, nâng cao rõ ràng
+    text = text.replace(/<sup>([\s\S]*?)<\/sup>/g, '<sup class="font-semibold text-[0.8em] relative -top-1">$1</sup>');
+
+    // 7. Chuyển ký tự xuống dòng thành <br />
     text = text.replace(/\n/g, "<br />");
 
     return text;
