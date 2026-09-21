@@ -97,10 +97,11 @@ export async function downloadDriveFileContent(
  */
 function extractAnswerKeyTable(text: string): Map<number, "A" | "B" | "C" | "D"> {
   const answerMap = new Map<number, "A" | "B" | "C" | "D">();
-  const matches = text.matchAll(/(?:Câu\s*)?(\d+)[\s.:\-_–]+([A-D])\b/gi);
-  for (const m of matches) {
-    const qNum = parseInt(m[1], 10);
-    const ans = m[2].toUpperCase() as "A" | "B" | "C" | "D";
+  const regex = /(?:Câu\s*)?(\d+)[\s.:\-_–]+([A-D])\b/gi;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(text)) !== null) {
+    const qNum = parseInt(match[1], 10);
+    const ans = match[2].toUpperCase() as "A" | "B" | "C" | "D";
     answerMap.set(qNum, ans);
   }
   return answerMap;
