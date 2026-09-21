@@ -382,9 +382,184 @@ export const TOPIC_THEORY_MAP: Record<string, {
       }
     ]
   },
+  "tin-lap-trinh-python": {
+    "subjectId": "tin-hoc-12",
+    "subjectName": "Tin học 12",
+    "topicName": "Chuyên đề 10F: Lập trình cơ bản Python (Tin học 10)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "docTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)",
+    "objectives": [
+      "Biết được vai trò của ngôn ngữ lập trình bậc cao và làm quen với môi trường lập trình Python (IDLE, Shell, Code Editor).",
+      "Hiểu khái niệm biến, phép gán, quy tắc đặt tên biến và các kiểu dữ liệu số cơ bản (int, float).",
+      "Sử dụng thành thạo các câu lệnh vào/ra đơn giản: input() và print().",
+      "Vận dụng các phép so sánh, toán tử logic và cấu trúc rẽ nhánh (if, if...else, if...elif...else).",
+      "Viết được các câu lệnh lặp dạng for (với range) và dạng while để giải quyết bài toán thuật toán.",
+      "Xây dựng và sử dụng được chương trình con (hàm def) có tham số và giá trị trả về.",
+      "Nắm vững cách xử lý xâu ký tự (str) và cấu trúc dữ liệu danh sách (list) trong Python."
+    ],
+    "sections": [
+      {
+        "id": "sec-py-01",
+        "topicId": "tin-lap-trinh-python",
+        "title": "Bài 1 – 3: Ngôn ngữ Python, Biến & Kiểu dữ liệu cơ bản",
+        "icon": "Code",
+        "tag": "Cú pháp cơ bản",
+        "summary": "Tổng quan về Python, quy tắc đặt tên biến, phép gán, các kiểu dữ liệu số và câu lệnh nhập/xuất.",
+        "keyTerms": [
+          "Python",
+          "Guido van Rossum",
+          "Biến",
+          "Phép gán",
+          "int",
+          "float",
+          "input()",
+          "print()"
+        ],
+        "content": [
+          {
+            "heading": "1. Làm quen với Python & Quy tắc cơ bản",
+            "text": "Python là ngôn ngữ lập trình bậc cao do Guido van Rossum phát triển, ra mắt lần đầu năm 1991. Tệp mã nguồn Python có phần mở rộng là .py. Python sử dụng quy tắc thụt lề (indentation) bằng phím Tab hoặc 4 dấu cách để xác định các khối lệnh.",
+            "bulletPoints": [
+              {
+                "label": "Quy tắc đặt tên biến",
+                "desc": "Tên biến chỉ gồm chữ cái, chữ số và dấu gạch dưới (_); bắt đầu bằng chữ cái hoặc _; phân biệt chữ hoa và chữ thường; không được trùng với các từ khóa (if, else, for, while, def,...)."
+              },
+              {
+                "label": "Cú pháp phép gán",
+                "desc": "Tên_biến = Biểu_thức. Thực hiện tính giá trị biểu thức vế phải trước, sau đó lưu kết quả vào biến ở vế trái."
+              },
+              {
+                "label": "Các kiểu dữ liệu số",
+                "desc": "Kiểu số nguyên (int) như 5, -12; kiểu số thực (float) như 3.14, -0.5."
+              },
+              {
+                "label": "Các toán tử số học",
+                "desc": "+, -, * (nhân), / (chia ra số thực), // (chia lấy phần nguyên), % (chia lấy phần dư), ** (phép lũy thừa, ví dụ 3**4 = 81)."
+              },
+              {
+                "label": "Nhập và xuất dữ liệu",
+                "desc": "print() để in ra màn hình. input() để nhập từ bàn phím (luôn trả về kiểu xâu, cần ép kiểu int(input()) hoặc float(input()) khi tính toán số học)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sec-py-02",
+        "topicId": "tin-lap-trinh-python",
+        "title": "Bài 4 – 6: Biểu thức Logic & Cấu trúc rẽ nhánh (if - else)",
+        "icon": "GitBranch",
+        "tag": "Rẽ nhánh",
+        "summary": "Biểu thức so sánh, toán tử logic (and, or, not) và cấu trúc rẽ nhánh kiểm tra điều kiện.",
+        "keyTerms": [
+          "if",
+          "else",
+          "elif",
+          "and",
+          "or",
+          "not",
+          "bool"
+        ],
+        "content": [
+          {
+            "heading": "2. Cấu trúc câu lệnh điều kiện",
+            "text": "Câu lệnh rẽ nhánh cho phép chương trình thực hiện các khối lệnh khác nhau tùy thuộc vào điều kiện đúng hay sai.",
+            "bulletPoints": [
+              {
+                "label": "Phép so sánh",
+                "desc": "== (bằng), != (khác), > (lớn hơn), < (nhỏ hơn), >= (lớn hơn hoặc bằng), <= (nhỏ hơn hoặc bằng)."
+              },
+              {
+                "label": "Toán tử logic",
+                "desc": "and (đúng khi cả hai cùng đúng), or (đúng khi ít nhất một điều kiện đúng), not (phủ định, đảo ngược giá trị logic)."
+              },
+              {
+                "label": "Cú pháp if...else",
+                "desc": "if <điều_kiện>: [các lệnh khi đúng] else: [các lệnh khi sai]. Khối lệnh con bắt buộc phải thụt dòng đồng mức."
+              },
+              {
+                "label": "Cú pháp nhiều nhánh if...elif...else",
+                "desc": "Kiểm tra tuần tự nhiều điều kiện từ trên xuống dưới, khối lệnh của điều kiện đúng đầu tiên sẽ được thực hiện."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sec-py-03",
+        "topicId": "tin-lap-trinh-python",
+        "title": "Bài 7 – 8: Cấu trúc lặp (for & while)",
+        "icon": "Repeat",
+        "tag": "Vòng lặp",
+        "summary": "Vòng lặp biết trước số lần với for - range và vòng lặp chưa biết trước số lần với while.",
+        "keyTerms": [
+          "for",
+          "while",
+          "range()",
+          "lặp vô hạn",
+          "điều kiện dừng"
+        ],
+        "content": [
+          {
+            "heading": "3. Hai cấu trúc lặp trong Python",
+            "text": "Vòng lặp giúp tự động lặp đi lặp lại một khối lệnh nhiều lần theo thuật toán.",
+            "bulletPoints": [
+              {
+                "label": "Vòng lặp for với range()",
+                "desc": "range(n) sinh dãy từ 0 đến n - 1 (n lần lặp). range(start, stop) sinh từ start đến stop - 1. range(start, stop, step) có bước nhảy step."
+              },
+              {
+                "label": "Vòng lặp while",
+                "desc": "while <điều_kiện>: lặp chừng nào điều kiện còn đúng. Cần đảm bảo trong thân vòng lặp có câu lệnh làm thay đổi biến điều kiện để tránh vòng lặp vô hạn."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sec-py-04",
+        "topicId": "tin-lap-trinh-python",
+        "title": "Bài 9 – 10: Chương trình con (Hàm def) & Xâu ký tự, Danh sách",
+        "icon": "Box",
+        "tag": "Chương trình con & Dữ liệu",
+        "summary": "Định nghĩa hàm tự tạo (def), lệnh return, xâu ký tự (str) và kiểu danh sách (list).",
+        "keyTerms": [
+          "def",
+          "return",
+          "tham số",
+          "str",
+          "list",
+          "append()",
+          "split()",
+          "len()"
+        ],
+        "content": [
+          {
+            "heading": "4. Chương trình con & Cấu trúc dữ liệu có cấu trúc",
+            "text": "Chương trình con (hàm) giúp chia nhỏ chương trình thành các mô-đun độc lập, tái sử dụng mã và dễ dàng kiểm thử.",
+            "bulletPoints": [
+              {
+                "label": "Cú pháp định nghĩa hàm",
+                "desc": "def ten_ham(tham_so1, tham_so2): [khối lệnh thân hàm] return gia_tri. Gọi hàm bằng: ten_ham(doi_so)."
+              },
+              {
+                "label": "Xâu ký tự (str)",
+                "desc": "Đặt trong cặp nháy đơn '' hoặc nháy kép \"\". Chỉ số ký tự bắt đầu từ 0. Các thao tác: len(s) lấy độ dài, s.split(';') tách xâu thành danh sách, s.find('từ') tìm vị trí xuất hiện."
+              },
+              {
+                "label": "Kiểu danh sách (list)",
+                "desc": "Tạo danh sách bằng cặp ngoặc vuông []: a = [1, 2, 3, 4, 5]. Chỉ số phần tử bắt đầu từ 0 (a[0] là phần tử đầu tiên). Thêm phần tử cuối danh sách bằng a.append(x). Duyệt danh sách bằng: for item in a:."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
 };
 
 TOPIC_THEORY_MAP["tin-ai-dung-sai"] = TOPIC_THEORY_MAP["tin-ai-tri-tue-nhan-tao"];
 TOPIC_THEORY_MAP["tin-mang-dung-sai"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
 TOPIC_THEORY_MAP["tin-giao-thuc-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
 TOPIC_THEORY_MAP["tin-chia-se-tai-nguyen-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
+TOPIC_THEORY_MAP["tin-python-dung-sai"] = TOPIC_THEORY_MAP["tin-lap-trinh-python"];

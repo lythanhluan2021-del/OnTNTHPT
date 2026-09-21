@@ -483,6 +483,15 @@ export default function AppHome() {
                   } else {
                     setSelectedTopicId("tin-thiet-bi-giao-thuc-mang");
                   }
+                } else if (
+                  selectedTopicId.startsWith("tin-lap-trinh") ||
+                  selectedTopicId.startsWith("tin-python")
+                ) {
+                  if (part === "tf") {
+                    setSelectedTopicId("tin-python-dung-sai");
+                  } else {
+                    setSelectedTopicId("tin-lap-trinh-python");
+                  }
                 }
                 setCurrentQuestionIndex(0);
                 setActiveTab("practice");
@@ -492,6 +501,64 @@ export default function AppHome() {
             <>
               {currentQuestion ? (
                 <>
+                  {/* Bộ chuyển đổi nhanh giữa Lý thuyết, Phần 1 (Nhiều lựa chọn) và Phần 2 (Đúng / Sai) - CHUYÊN ĐỀ 10F: PYTHON */}
+                  {selectedSubjectId === "tin-hoc-12" &&
+                    (selectedTopicId === "tin-lap-trinh-python" ||
+                      selectedTopicId === "tin-python-dung-sai") && (
+                      <div className="flex items-center p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1 text-xs font-bold">
+                        <button
+                          onClick={() => {
+                            soundManager.playClick();
+                            setActiveTab("theory");
+                          }}
+                          className="py-2 px-2 rounded-neu-xs text-slate-700 hover:text-blue-700 flex items-center justify-center gap-1 transition-all shadow-neu-flat-xs active:shadow-neu-inset"
+                          title="Xem tóm tắt lý thuyết Chuyên đề 10F: Lập trình Python"
+                        >
+                          <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+                          <span className="text-[11px] font-extrabold">Lý thuyết</span>
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            soundManager.playClick();
+                            setSelectedTopicId("tin-lap-trinh-python");
+                            setCurrentQuestionIndex(0);
+                          }}
+                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
+                            selectedTopicId === "tin-lap-trinh-python"
+                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
+                              : "text-slate-600 hover:text-blue-700"
+                          }`}
+                        >
+                          <span className="truncate">🔘 P1: 4 lựa chọn</span>
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                            selectedTopicId === "tin-lap-trinh-python" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
+                          }`}>
+                            {questions.filter((q) => q.topicId === "tin-lap-trinh-python").length || 54}
+                          </span>
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            soundManager.playClick();
+                            setSelectedTopicId("tin-python-dung-sai");
+                            setCurrentQuestionIndex(0);
+                          }}
+                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
+                            selectedTopicId === "tin-python-dung-sai"
+                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
+                              : "text-slate-600 hover:text-blue-700"
+                          }`}
+                        >
+                          <span className="truncate">⚖️ P2: Đúng / Sai</span>
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                            selectedTopicId === "tin-python-dung-sai" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
+                          }`}>
+                            {questions.filter((q) => q.topicId === "tin-python-dung-sai").length || 5}
+                          </span>
+                        </button>
+                      </div>
+                  )}
                   {/* Bộ chuyển đổi nhanh giữa Lý thuyết, Phần 1 (Nhiều lựa chọn) và Phần 2 (Đúng / Sai) - CHỦ ĐỀ 1: AI */}
                   {selectedSubjectId === "tin-hoc-12" &&
                     (selectedTopicId === "tin-ai-tri-tue-nhan-tao" || selectedTopicId === "tin-ai-dung-sai") && (

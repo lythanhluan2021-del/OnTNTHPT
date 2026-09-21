@@ -9,10 +9,24 @@ export const INITIAL_SUBJECTS: Subject[] = [
       // Tuần 2 - 6: Luyện tập NNLT Python (Tin học 10)
       {
         id: "tin-lap-trinh-python",
-        name: "Luyện tập NNLT Python (Tin học 10) (Tuần 2 – 6)",
+        name: "Ôn tập: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
         subjectId: "tin-hoc-12",
         chapter: "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-        totalQuestions: 4,
+        totalQuestions: 54,
+      },
+      {
+        id: "tin-python-dung-sai",
+        name: "Ôn tập: Trắc nghiệm Đúng / Sai Python (10F)",
+        subjectId: "tin-hoc-12",
+        chapter: "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+        totalQuestions: 5,
+      },
+      {
+        id: "tin-python-dung-sai",
+        name: "Ôn tập: Trắc nghiệm Đúng / Sai Python (10F)",
+        subjectId: "tin-hoc-12",
+        chapter: "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+        totalQuestions: 5,
       },
 
       // Tuần 7: Ôn tập chủ đề 1 (Tin học 12) - Trí tuệ nhân tạo (AI)
@@ -6598,5 +6612,2187 @@ export const INITIAL_QUESTIONS: Question[] = [
     },
     "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (IP tĩnh được gán cố định cho một thiết bị.)\n- Ý b) : Sai (IP tĩnh được thay đổi theo thời gian.)\n- Ý c) : Sai (Muốn thay đổi địa chỉ IP phải liên hệ với nhà cung cấp dịch vụ mạng.)\n- Ý d) : Sai (Địa chỉ IP tĩnh luôn có dạng: 192.168.2)",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
+  },
+  // --- CÂU HỎI TRẮC NGHIỆM 4 LỰA CHỌN CHUYÊN ĐỀ 10F: LẬP TRÌNH PYTHON (54 CÂU) ---
+  {
+    "id": "Q-TIN-PY-01",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Trong các đặc điểm sau, đặc điểm nào không phải là của ngôn ngữ lập trình bậc cao?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Gần gũi với ngôn ngữ tự nhiên của con người"
+      },
+      {
+        "id": "B",
+        "content": "Được máy tính hiểu trực tiếp mà không cần dịch"
+      },
+      {
+        "id": "C",
+        "content": "Dễ đọc và dễ bảo trì"
+      },
+      {
+        "id": "D",
+        "content": "Có nhiều thư viện hỗ trợ đa dạng"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-02",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Quy tắc nào sau đây không đúng khi đặt tên biến trong Python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tên biến không được trùng với các từ khóa của Python."
+      },
+      {
+        "id": "B",
+        "content": "Tên biến phải bắt đầu bằng chữ cái hoặc dấu “”."
+      },
+      {
+        "id": "C",
+        "content": "Tên biến không được phép bắt đầu bằng chữ in hoa."
+      },
+      {
+        "id": "D",
+        "content": "Tên biến chỉ chứa các chữ cái, chữ số và dấu “”."
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-03",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Khi khai báo biến kiểu số nguyên, cú pháp nào là đúng?",
+    "options": [
+      {
+        "id": "A",
+        "content": "int a = \"10\";"
+      },
+      {
+        "id": "B",
+        "content": "float a = 10;"
+      },
+      {
+        "id": "C",
+        "content": "int a = 10;"
+      },
+      {
+        "id": "D",
+        "content": "string a = 10;"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-04",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Để nhập một giá trị số nguyên từ bàn phím và gán vào biến x, câu lệnh đúng trong Python là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "x = (input(\"Nhập số nguyên: \"))"
+      },
+      {
+        "id": "B",
+        "content": "x = float(input(\"Nhập số nguyên: \"))"
+      },
+      {
+        "id": "C",
+        "content": "x = input(\"Nhập số nguyên: \")"
+      },
+      {
+        "id": "D",
+        "content": "x = int(input(\"Nhập số nguyên: \"))"
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-05",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Cấu trúc đúng của một câu lệnh if trong Python là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "if (điều kiện) { lệnh }"
+      },
+      {
+        "id": "B",
+        "content": "if (điều kiện) : lệnh"
+      },
+      {
+        "id": "C",
+        "content": "if điều kiện: lệnh"
+      },
+      {
+        "id": "D",
+        "content": "if điều kiện :"
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-06",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Trong quá trình thực hiện thuật toán, khi nào cần dùng cấu trúc rẽ nhánh?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Khi phải dựa trên một điều kiện cụ thể nào đó để xác định bước thực hiện tiếp theo."
+      },
+      {
+        "id": "B",
+        "content": "Khi có các phép tính toán."
+      },
+      {
+        "id": "C",
+        "content": "Khi lặp đi lặp lại một công việc nào đó."
+      },
+      {
+        "id": "D",
+        "content": "Khi sử dụng các hàm toán học."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-07",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Câu lệnh lặp nào sau đây sẽ lặp từ 0 đến 4?",
+    "options": [
+      {
+        "id": "A",
+        "content": "for i in range(5):"
+      },
+      {
+        "id": "B",
+        "content": "for i in range(1, 5):"
+      },
+      {
+        "id": "C",
+        "content": "for i in range(0, 5, 2):"
+      },
+      {
+        "id": "D",
+        "content": "for i in range(5, 0):"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-08",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Phát biểu nào sau đây là sai?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Dùng câu lệnh while ta cũng thể hiện được cấu trúc lặp với số lần biết trước."
+      },
+      {
+        "id": "B",
+        "content": "Dùng câu lệnh for ta cũng thể hiện được cấu trúc lặp với số lần không biết trước."
+      },
+      {
+        "id": "C",
+        "content": "Trong Python có 2 dạng lặp: Lặp với số lần biết trước và lặp với số lần không biết trước."
+      },
+      {
+        "id": "D",
+        "content": "Câu lệnh thể hiện lặp với số lần không biết trước phải sử dụng một biểu thức logic làm điều kiện lặp."
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-09",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Khái niệm nào sau đây mô tả chính xác nhất về chương trình con?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Đoạn mã thực hiện một chức năng cụ thể và có thể được gọi từ nhiều nơi trong chương trình."
+      },
+      {
+        "id": "B",
+        "content": "Một chương trình hoàn chỉnh có thể chạy độc lập."
+      },
+      {
+        "id": "C",
+        "content": "Một biến dùng để lưu trữ giá trị tạm thời trong chương trình."
+      },
+      {
+        "id": "D",
+        "content": "Một cách tổ chức dữ liệu trong lập trình."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-10",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Khi bạn tạo một chương trình con, điều gì sau đây là đúng?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chương trình con phải có ít nhất một tham số."
+      },
+      {
+        "id": "B",
+        "content": "Chương trình con không thể trả về giá trị."
+      },
+      {
+        "id": "C",
+        "content": "Chương trình con có thể được gọi từ nhiều vị trí khác nhau trong mã."
+      },
+      {
+        "id": "D",
+        "content": "Chương trình con luôn phải là một hàm."
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-11",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Trong lập trình, xâu ký tự có thể được coi là một cấu trúc dữ liệu. Hãy cho biết đặc điểm chính nào của xâu ký tự giúp nó khác biệt với các kiểu dữ liệu khác?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Có thể thay đổi kích thước linh hoạt."
+      },
+      {
+        "id": "B",
+        "content": "Chỉ có thể chứa ký tự chữ cái."
+      },
+      {
+        "id": "C",
+        "content": "Là một chuỗi không thay đổi (immutable)."
+      },
+      {
+        "id": "D",
+        "content": "Không thể thực hiện các phép toán trên xâu."
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-12",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Để khởi tạo danh sách b có 5 phần tử 1, 2, 3, 4, 5 ta dùng viết:",
+    "options": [
+      {
+        "id": "A",
+        "content": "b = 1, 2, 3, 4, 5"
+      },
+      {
+        "id": "B",
+        "content": "b = (1, 2, 3, 4, 5)"
+      },
+      {
+        "id": "C",
+        "content": "b = [1..5]"
+      },
+      {
+        "id": "D",
+        "content": "b = [1, 2, 3, 4, 5]"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-13",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Ai đã phát triển Ngôn ngữ lập trình Python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Wick van Rossum."
+      },
+      {
+        "id": "B",
+        "content": "Rasmus Lerdorf."
+      },
+      {
+        "id": "C",
+        "content": "Guido van Rossum."
+      },
+      {
+        "id": "D",
+        "content": "Niene Stom."
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-14",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Ngôn ngữ Python được ra mắt lần đầu vào năm nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "1995."
+      },
+      {
+        "id": "B",
+        "content": "1972."
+      },
+      {
+        "id": "C",
+        "content": "1981."
+      },
+      {
+        "id": "D",
+        "content": "1991."
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-15",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Ngôn ngữ nào gần với ngôn ngữ tự nhiên nhất?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ngôn ngữ bậc cao."
+      },
+      {
+        "id": "B",
+        "content": "Ngôn ngữ máy."
+      },
+      {
+        "id": "C",
+        "content": "Hợp ngữ."
+      },
+      {
+        "id": "D",
+        "content": "Cả ba phương án đều sai."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-16",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Phần mở rộng nào sau đây là đúng của tệp Python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "python."
+      },
+      {
+        "id": "B",
+        "content": "pl."
+      },
+      {
+        "id": "C",
+        "content": "py."
+      },
+      {
+        "id": "D",
+        "content": "p."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-17",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Giá trị của biểu thức Python sau sẽ là bao nhiêu?\n4 + 15 / 5",
+    "options": [
+      {
+        "id": "A",
+        "content": "7."
+      },
+      {
+        "id": "B",
+        "content": "2."
+      },
+      {
+        "id": "C",
+        "content": "4."
+      },
+      {
+        "id": "D",
+        "content": "1."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-18",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Điều nào sau đây được sử dụng để xác định một khối mã trong ngôn ngữ Python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thụt lề."
+      },
+      {
+        "id": "B",
+        "content": "Nháy “ ”."
+      },
+      {
+        "id": "C",
+        "content": "Dấu ngoặc ( )."
+      },
+      {
+        "id": "D",
+        "content": "Dấu ngoặc [ ]."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-19",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Thứ tự thực hiện các phép tính trong Python ở đáp án nào đúng?",
+    "options": [
+      {
+        "id": "A",
+        "content": "/, -, +, *."
+      },
+      {
+        "id": "B",
+        "content": "(*, /), (+, -)."
+      },
+      {
+        "id": "C",
+        "content": "Từ trái sang phải."
+      },
+      {
+        "id": "D",
+        "content": "(+, -), (*, /)."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-20",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Giá trị của biểu thức Python sau sẽ là bao nhiêu?\n6 – 6 / 2 + 4 * 5 – 6 / 2",
+    "options": [
+      {
+        "id": "A",
+        "content": "17."
+      },
+      {
+        "id": "B",
+        "content": "20."
+      },
+      {
+        "id": "C",
+        "content": "18."
+      },
+      {
+        "id": "D",
+        "content": "19."
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-21",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Để kết thúc một phiên làm việc trong python, ta có thể?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Nháy dấu X góc bên phải màn hình."
+      },
+      {
+        "id": "B",
+        "content": "Gõ câu lệnh quit() rồi ấn Enter"
+      },
+      {
+        "id": "C",
+        "content": "Sử dụng câu lệnh Exit."
+      },
+      {
+        "id": "D",
+        "content": "Cả ba cách làm trên đều đúng."
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-22",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "NhanBiet",
+    "content": "Người tạo ra phiên bản đầu tiên của ngôn ngữ lập trình Python là người nước nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Hà Lan."
+      },
+      {
+        "id": "B",
+        "content": "Đức."
+      },
+      {
+        "id": "C",
+        "content": "Pháp."
+      },
+      {
+        "id": "D",
+        "content": "Bỉ. THÔNG HIỂU"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-23",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Chọn phát biểu sai?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cửa sổ Shell, cho phép viết và thực hiện ngay các biểu thức hoặc câu lệnh."
+      },
+      {
+        "id": "B",
+        "content": "Ngôn ngữ lập trình trực quan như Scratch dễ dùng và thích hợp với các bạn nhỏ tuổi."
+      },
+      {
+        "id": "C",
+        "content": "Trong Python, không phân biệt chữ hoa và chữ thường."
+      },
+      {
+        "id": "D",
+        "content": "Python là ngôn ngữ lập trình bậc cao phổ biến rộng rãi trên thế giới."
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-24",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Biểu thức số học nào sau đây là hợp lệ trong Python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "5 + 3 * 2"
+      },
+      {
+        "id": "B",
+        "content": "4 / 0"
+      },
+      {
+        "id": "C",
+        "content": "7 %"
+      },
+      {
+        "id": "D",
+        "content": "3 ^ 2 + 1"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-25",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Lệnh x = x + 1 có ý nghĩa gì trong chương trình?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Gán giá trị 1 cho biến x"
+      },
+      {
+        "id": "B",
+        "content": "Tăng giá trị của x lên 1 đơn vị so với giá trị hiện tại"
+      },
+      {
+        "id": "C",
+        "content": "Kiểm tra xem x có lớn hơn 1 hay không"
+      },
+      {
+        "id": "D",
+        "content": "Đặt giá trị x bằng 1"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-26",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Khi chạy đoạn mã sau, kết quả nào sẽ được in ra màn hình?\nx=6 y=2 print(x//y)",
+    "options": [
+      {
+        "id": "A",
+        "content": "6"
+      },
+      {
+        "id": "B",
+        "content": "3"
+      },
+      {
+        "id": "C",
+        "content": "2"
+      },
+      {
+        "id": "D",
+        "content": "0"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-27",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Nếu muốn nhập một số thực từ bàn phím và gán cho biến x, dòng lệnh nào sau đây là đúng trong Python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "x = input(\"Nhập số thực: \")"
+      },
+      {
+        "id": "B",
+        "content": "x = float(input(\"Nhập số thực: \")"
+      },
+      {
+        "id": "C",
+        "content": "x = int(input(\"Nhập số thực: \"))"
+      },
+      {
+        "id": "D",
+        "content": "x = str(input(\"Nhập số thực: \"))"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-28",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Khi nào khối lệnh bên trong câu lệnh if sẽ được thực hiện?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Khi điều kiện sai"
+      },
+      {
+        "id": "B",
+        "content": "Khi điều kiện đúng"
+      },
+      {
+        "id": "C",
+        "content": "Khi không có điều kiện"
+      },
+      {
+        "id": "D",
+        "content": "Khi điều kiện là số 0"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-29",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Cho đoạn chương trình sau:\ns=0 for i in range(6): s=s+i Sau khi thực hiện đoạn chương trình trên giá trị của s là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "1"
+      },
+      {
+        "id": "B",
+        "content": "15"
+      },
+      {
+        "id": "C",
+        "content": "6"
+      },
+      {
+        "id": "D",
+        "content": "21"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-30",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Tại sao nên sử dụng chương trình con trong lập trình?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Để làm cho chương trình ngắn gọn hơn"
+      },
+      {
+        "id": "B",
+        "content": "Để giảm thời gian thực hiện chương trình"
+      },
+      {
+        "id": "C",
+        "content": "Để tái sử dụng mã nguồn và giảm thiểu lỗi"
+      },
+      {
+        "id": "D",
+        "content": "Để tạo giao diện người dùng đẹp hơn"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-31",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Đoạn mã nào sau đây định nghĩa chính xác một chương trình con trong Python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "function my_function():"
+      },
+      {
+        "id": "B",
+        "content": "def my_function():"
+      },
+      {
+        "id": "C",
+        "content": "define my_function():"
+      },
+      {
+        "id": "D",
+        "content": "sub my_function():"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-32",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Khi nói về việc thao tác với xâu ký tự, thuật ngữ \"chuỗi con\" (substring) có ý nghĩa gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Một xâu ký tự nằm bên trong một xâu ký tự khác."
+      },
+      {
+        "id": "B",
+        "content": "Một xâu ký tự hoàn toàn khác biệt với xâu gốc."
+      },
+      {
+        "id": "C",
+        "content": "Một phần của một danh sách các xâu ký tự."
+      },
+      {
+        "id": "D",
+        "content": "Một phép toán giữa hai xâu ký tự."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-33",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Output của lệnh sau là:\nprint(1+ 2 + 3+ 4)",
+    "options": [
+      {
+        "id": "A",
+        "content": "10."
+      },
+      {
+        "id": "B",
+        "content": "15."
+      },
+      {
+        "id": "C",
+        "content": "1 + 2 + 3 + 4."
+      },
+      {
+        "id": "D",
+        "content": "1 + 2 + 3."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-34",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Câu lệnh sau bị lỗi ở đâu?\n3 + * 5",
+    "options": [
+      {
+        "id": "A",
+        "content": "3 ."
+      },
+      {
+        "id": "B",
+        "content": "+ hoặc *."
+      },
+      {
+        "id": "C",
+        "content": "*."
+      },
+      {
+        "id": "D",
+        "content": "Không có lỗi."
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-35",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Phát biểu nào sau đây sai khi nói về python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Python là ngôn ngữ lập trình bậc cao."
+      },
+      {
+        "id": "B",
+        "content": "Python có mã nguồn mở thu hút được nhiều nhà khoa học cùng phát triển."
+      },
+      {
+        "id": "C",
+        "content": "Python có các lệnh phức tạp nên không phổ biến trong giáo dục."
+      },
+      {
+        "id": "D",
+        "content": "Python có các câu lệnh khá gần ngôn ngữ tự nhiên."
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-36",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Chọn phát biểu đúng khi nói về môi trường lập trình Python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chế độ soạn thảo có dấu nhắc."
+      },
+      {
+        "id": "B",
+        "content": "Ngoài chế độ gõ lệnh trực tiếp và soạn thảo còn có các chế độ khác"
+      },
+      {
+        "id": "C",
+        "content": "Chế độ gõ lệnh trực tiếp thích hợp cho việc tính toán và kiểm tra nhanh các lệnh"
+      },
+      {
+        "id": "D",
+        "content": "Chế độ gõ lệnh trực tiếp có con trỏ soạn thảo."
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-37",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Dùng câu lệnh print và kí tự nào để viết được đoạn văn xuống dòng giữa xâu?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cặp dấu nháy đơn."
+      },
+      {
+        "id": "B",
+        "content": "Cặp ba dấu nháy kép."
+      },
+      {
+        "id": "C",
+        "content": "Cặp dấu nháy kép."
+      },
+      {
+        "id": "D",
+        "content": "Không thể thực hiện được."
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-38",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Phát biểu nào là sai về chương trình?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chương trình viết bằng ngôn ngữ máy có thể được nạp trực tiếp vào bộ nhớ và thực hiện ngay, còn chương trình viết bằng ngôn ngữ lập trình bậc cao phải được chuyển đổi thành chương trình trên ngôn ngữ máy mới có thể thực hiện được."
+      },
+      {
+        "id": "B",
+        "content": "Chương trình đặc biệt có chức năng chuyển đổi chương trình được viết bằng ngôn ngữ lập trình bậc cao thành chương trình thực hiện được trên máy tính cụ thể được gọi là chương trình dịch."
+      },
+      {
+        "id": "C",
+        "content": "Lập trình là sử dụng cấu trúc dữ liệu và các câu lệnh của ngôn ngữ lập trình cụ thể để mô tả dữ liệu và diễn đạt các thao tác của thuật toán."
+      },
+      {
+        "id": "D",
+        "content": "Chương trình dịch nhận đầu vào là chương trình viết bằng ngôn ngữ lập trình bậc thấp (chương trình nguồn), thực hiện chuyển đổi sang ngôn ngữ lập trình bậc cao (chương trình đích)."
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-39",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Mỗi ngôn ngữ lập trình thường có các thành phần cơ bản nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Bảng chữ cái, cú pháp."
+      },
+      {
+        "id": "B",
+        "content": "Bảng chữ cái và ngữ nghĩa."
+      },
+      {
+        "id": "C",
+        "content": "Bảng chữ cái, cú pháp và ngữ nghĩa."
+      },
+      {
+        "id": "D",
+        "content": "Cú pháp và ngữ nghĩa."
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-40",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Chọn phát biểu đúng khi nói về môi trường lập trình Python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chế độ soạn thảo có dấu nhắc."
+      },
+      {
+        "id": "B",
+        "content": "Ngoài chế độ gõ lệnh trực tiếp và soạn thảo còn có các chế độ khác"
+      },
+      {
+        "id": "C",
+        "content": "Chế độ gõ lệnh trực tiếp thích hợp cho việc tính toán và kiểm tra nhanh các lệnh"
+      },
+      {
+        "id": "D",
+        "content": "Chế độ gõ lệnh trực tiếp có con trỏ soạn thảo."
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-41",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Trong ngôn ngữ Python, tên nào sau đây là từ khoá?",
+    "options": [
+      {
+        "id": "A",
+        "content": "program, sqr."
+      },
+      {
+        "id": "B",
+        "content": "uses, var."
+      },
+      {
+        "id": "C",
+        "content": "include, const."
+      },
+      {
+        "id": "D",
+        "content": "if, else."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-42",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Từ khoá của một ngôn ngữ lâp trình là:",
+    "options": [
+      {
+        "id": "A",
+        "content": "là những từ dành riêng."
+      },
+      {
+        "id": "B",
+        "content": "cho một mục đích sử dụng nhất định."
+      },
+      {
+        "id": "C",
+        "content": "có thể đặt tên cho biến."
+      },
+      {
+        "id": "D",
+        "content": "Cả A và B"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-43",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Trong ngôn ngữ Python, tên nào sau đây đặt sai theo quy tắc?",
+    "options": [
+      {
+        "id": "A",
+        "content": "11tinhoc."
+      },
+      {
+        "id": "B",
+        "content": "tinhoc11."
+      },
+      {
+        "id": "C",
+        "content": "tin_hoc."
+      },
+      {
+        "id": "D",
+        "content": "_11."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-44",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Lệnh gán giá trị cho biến b nguyên nào sau đây là đúng?",
+    "options": [
+      {
+        "id": "A",
+        "content": "b = 10."
+      },
+      {
+        "id": "B",
+        "content": "B = 10."
+      },
+      {
+        "id": "C",
+        "content": "b == 10"
+      },
+      {
+        "id": "D",
+        "content": "b = ‘10’"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-45",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Trường hợp nào sau đây không phải lệnh gán trong python?",
+    "options": [
+      {
+        "id": "A",
+        "content": "cd = 50."
+      },
+      {
+        "id": "B",
+        "content": "a = a * 2."
+      },
+      {
+        "id": "C",
+        "content": "a = 10."
+      },
+      {
+        "id": "D",
+        "content": "a + b = 100."
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-46",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Tìm lỗi sai trong khai báo biến nguyên Max sau đây?\nMax = 2021:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Dư dấu (=)"
+      },
+      {
+        "id": "B",
+        "content": "Tên biến trùng với từ khoá"
+      },
+      {
+        "id": "C",
+        "content": "Dư dấu (:)"
+      },
+      {
+        "id": "D",
+        "content": "Câu lệnh đúng"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-47",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Để gán giá trị cho một biến số ta thực hiện như thế nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "giá trị :="
+      },
+      {
+        "id": "B",
+        "content": "A = giá trị ."
+      },
+      {
+        "id": "C",
+        "content": "giá trị ="
+      },
+      {
+        "id": "D",
+        "content": ""
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-48",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Để tính diện tích đường tròn bán kính R, với pi = 3,14, biểu thức nào sau đây trong Python là đúng?",
+    "options": [
+      {
+        "id": "A",
+        "content": "S:=R*R*pi."
+      },
+      {
+        "id": "B",
+        "content": "S=R*R*pi."
+      },
+      {
+        "id": "C",
+        "content": "S:=2(R)*pi."
+      },
+      {
+        "id": "D",
+        "content": "S:=R2*pi."
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-49",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Để viết 3 mũ 4 trong Python chọn",
+    "options": [
+      {
+        "id": "A",
+        "content": "3**4."
+      },
+      {
+        "id": "B",
+        "content": "3//4."
+      },
+      {
+        "id": "C",
+        "content": "3*3+3*3."
+      },
+      {
+        "id": "D",
+        "content": "3%4."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-50",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Chuyển biểu thức sau sang python 2x+1x+2",
+    "options": [
+      {
+        "id": "A",
+        "content": "2*x+1/x+2."
+      },
+      {
+        "id": "B",
+        "content": "(2*x+1)/(x+2)."
+      },
+      {
+        "id": "C",
+        "content": "(2*x+1)(x+2)."
+      },
+      {
+        "id": "D",
+        "content": "(2*x+1) :(x+2)."
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-51",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Kết quả khi thực hiện câu lệnh sau:\n10 - 5 ** 2 + 8//3 +2",
+    "options": [
+      {
+        "id": "A",
+        "content": "-11."
+      },
+      {
+        "id": "B",
+        "content": "11."
+      },
+      {
+        "id": "C",
+        "content": "7."
+      },
+      {
+        "id": "D",
+        "content": "Câu lệnh bị lỗi."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-52",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "ThongHieu",
+    "content": "Biểu thức a/(a+1)*(x-1) khi chuyển sang dạng toán học có dạng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "aa+1*(x-1)."
+      },
+      {
+        "id": "B",
+        "content": "aa+1(x-1)."
+      },
+      {
+        "id": "C",
+        "content": "aa+1 x (x-1)."
+      },
+      {
+        "id": "D",
+        "content": "ax-1(a+1). VẬN DỤNG"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-53",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "VanDung",
+    "content": "Trong một chương trình, nếu bạn có biến x = 7.5 và y = 2.5, câu lệnh nào sau đây sẽ xuất ra kết quả là \"Tổng x và y là: 10.0\"?",
+    "options": [
+      {
+        "id": "A",
+        "content": "print(\"Tổng x và y là: \" + x + y)"
+      },
+      {
+        "id": "B",
+        "content": "print(\"Tổng x và y là: \", x + y)"
+      },
+      {
+        "id": "C",
+        "content": "print(\"Tổng x và y là: \" + str(x + y))"
+      },
+      {
+        "id": "D",
+        "content": "print(\"Tổng x và y là:\", x + y)"
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-PY-54",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-lap-trinh-python",
+    "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "VanDung",
+    "content": "Trong đoạn mã sau, nếu giá trị của biến y là 4, kết quả in ra sẽ là gì?\ny = 4 if y % 2 == 0: print(\"Là số chẵn\") else: print(\"Là số lẻ\")",
+    "options": [
+      {
+        "id": "A",
+        "content": "\"Là số chẵn\""
+      },
+      {
+        "id": "B",
+        "content": "\"Là số lẻ\""
+      },
+      {
+        "id": "C",
+        "content": "Không có gì được in ra"
+      },
+      {
+        "id": "D",
+        "content": "Lỗi cú pháp"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
+      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
+      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  // --- CÂU HỎI TRẮC NGHIỆM ĐÚNG / SAI CHUYÊN ĐỀ 10F: LẬP TRÌNH PYTHON (5 CÂU) ---
+  {
+    "id": "Q-TIN-TF-PY-01",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-python-dung-sai",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "VanDung",
+    "type": "true_false",
+    "content": "Bạn đang phát triển một chương trình Python để tính toán tổng tiền lương của nhân viên trong một công ty. Chương trình sẽ yêu cầu người dùng nhập số giờ làm việc và mức lương theo giờ của từng nhân viên. Dưới đây là một số phát biểu liên quan đến quá trình này. Hãy xác định tính chính xác của từng phát biểu:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ý a"
+      },
+      {
+        "id": "B",
+        "content": "Ý b"
+      },
+      {
+        "id": "C",
+        "content": "Ý c"
+      },
+      {
+        "id": "D",
+        "content": "Ý d"
+      }
+    ],
+    "correctAnswer": "A",
+    "tfItems": [
+      {
+        "id": "a",
+        "content": "Khi người dùng nhập số giờ làm việc và mức lương theo giờ, bạn có thể trực tiếp sử dụng hàm input() để lưu trữ giá trị vào biến mà không cần chuyển đổi kiểu dữ liệu, vì Python sẽ tự động nhận diện kiểu dữ liệu.",
+        "correctAnswer": false
+      },
+      {
+        "id": "b",
+        "content": "Để tính tổng tiền lương, bạn có thể sử dụng công thức: tien_luong = so_gio_lam * luong_theo_gio, trong đó cả hai biến đều đã được chuyển đổi thành kiểu float.",
+        "correctAnswer": true
+      },
+      {
+        "id": "c",
+        "content": "Nếu người dùng nhập một chuỗi không phải là số (ví dụ: \"mười\"), câu lệnh int() sẽ tự động chuyển đổi chuỗi đó thành giá trị 0 mà không gây ra lỗi.",
+        "correctAnswer": false
+      },
+      {
+        "id": "d",
+        "content": "Để đảm bảo chương trình hoạt động đúng, bạn nên sử dụng khối lệnh try và except để xử lý các lỗi có thể xảy ra khi người dùng nhập dữ liệu không hợp lệ.",
+        "correctAnswer": true
+      }
+    ],
+    "hints": {
+      "level1_concept": "Đọc kỹ tình huống bài toán lập trình Python thực tế và phân tích từng nhận định độc lập a, b, c, d.",
+      "level2_formula": "Kiểm tra tính chính xác của cú pháp, kiểu dữ liệu ép kiểu và logic thuật toán của từng phát biểu.",
+      "level3_steps": "Quy tắc chấm điểm thi tốt nghiệp THPT: Đúng 1 ý: 0.1đ; Đúng 2 ý: 0.25đ; Đúng 3 ý: 0.5đ; Đúng cả 4 ý: 1.0đ."
+    },
+    "explanation": "Câu hỏi trắc nghiệm Đúng / Sai theo cấu trúc đề thi tốt nghiệp THPT từ tài liệu Chuyên đề 10F.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-TF-PY-02",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-python-dung-sai",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "VanDung",
+    "type": "true_false",
+    "content": "Minh đang phát triển một chương trình Python để phân loại điểm số của học sinh vào các loại: Giỏi, Khá, Trung bình, và Yếu. Dựa vào điểm số mà người dùng nhập vào, chương trình sẽ sử dụng câu lệnh rẽ nhánh để xác định loại điểm. Dưới đây là một số phát biểu liên quan đến việc sử dụng câu lệnh rẽ nhánh trong chương trình này. Hãy xác định tính chính xác của từng phát biểu:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ý a"
+      },
+      {
+        "id": "B",
+        "content": "Ý b"
+      },
+      {
+        "id": "C",
+        "content": "Ý c"
+      },
+      {
+        "id": "D",
+        "content": "Ý d"
+      }
+    ],
+    "correctAnswer": "A",
+    "tfItems": [
+      {
+        "id": "a",
+        "content": "Bạn có thể sử dụng câu lệnh if để kiểm tra điểm số của học sinh và phân loại nó thành \"Giỏi\" nếu điểm số lớn hơn hoặc bằng 8.0.",
+        "correctAnswer": true
+      },
+      {
+        "id": "b",
+        "content": "Câu lệnh elif là cách duy nhất để kiểm tra nhiều điều kiện trong một câu lệnh rẽ nhánh.",
+        "correctAnswer": false
+      },
+      {
+        "id": "c",
+        "content": "Nếu điểm số của học sinh là 7.5, câu lệnh if có thể kiểm tra và phân loại là \"Khá\" bằng cách sử dụng cấu trúc:\nif diem = 8.0:\nprint(\"Giỏi\")\nelif diem = 6.5:\nprint(\"Khá\")",
+        "correctAnswer": true
+      },
+      {
+        "id": "d",
+        "content": "Câu lệnh else không cần thiết trong một câu lệnh rẽ nhánh nếu bạn chỉ muốn kiểm tra một điều kiện duy nhất.",
+        "correctAnswer": true
+      }
+    ],
+    "hints": {
+      "level1_concept": "Đọc kỹ tình huống bài toán lập trình Python thực tế và phân tích từng nhận định độc lập a, b, c, d.",
+      "level2_formula": "Kiểm tra tính chính xác của cú pháp, kiểu dữ liệu ép kiểu và logic thuật toán của từng phát biểu.",
+      "level3_steps": "Quy tắc chấm điểm thi tốt nghiệp THPT: Đúng 1 ý: 0.1đ; Đúng 2 ý: 0.25đ; Đúng 3 ý: 0.5đ; Đúng cả 4 ý: 1.0đ."
+    },
+    "explanation": "Câu hỏi trắc nghiệm Đúng / Sai theo cấu trúc đề thi tốt nghiệp THPT từ tài liệu Chuyên đề 10F.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-TF-PY-03",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-python-dung-sai",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "VanDung",
+    "type": "true_false",
+    "content": "Một nhà hàng đang triển khai một chương trình khuyến mãi trong tháng với nhiều món ăn khác nhau. Mỗi đầu bếp sẽ nhập vào số lượng món ăn mà họ đã phục vụ trong tháng và doanh thu từ mỗi món ăn đó. Chương trình Python sẽ sử dụng câu lệnh lặp để tổng hợp doanh thu và đưa ra thông tin hữu ích.\nHãy xem xét các phát biểu dưới đây và xác định tính đúng sai của chúng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ý a"
+      },
+      {
+        "id": "B",
+        "content": "Ý b"
+      },
+      {
+        "id": "C",
+        "content": "Ý c"
+      },
+      {
+        "id": "D",
+        "content": "Ý d"
+      }
+    ],
+    "correctAnswer": "A",
+    "tfItems": [
+      {
+        "id": "a",
+        "content": "Câu lệnh lặp for rất hiệu quả trong việc tổng hợp doanh thu từ các món ăn vì số lượng món ăn đã được xác định trước trong thực đơn.",
+        "correctAnswer": true
+      },
+      {
+        "id": "b",
+        "content": "Nếu một đầu bếp phục vụ 6 món ăn và doanh thu từ các món ăn đó lần lượt là 10.000, 15.000, 20.000, 25.000, 30.000 và 5.000, thì tổng doanh thu sẽ là 105.000.",
+        "correctAnswer": false
+      },
+      {
+        "id": "c",
+        "content": "Sử dụng câu lệnh lặp while có thể hợp lý khi không biết số lượng món ăn, nhưng phải có một điều kiện dừng rõ ràng để tránh vòng lặp vô hạn.",
+        "correctAnswer": true
+      },
+      {
+        "id": "d",
+        "content": "Nếu tổng doanh thu từ các món ăn bằng 0, chương trình nên in ra thông báo \"Không có doanh thu nào được ghi nhận.\" và khuyến khích đầu bếp xem xét lý do tại sao doanh thu lại bằng 0, như đánh giá chất lượng món ăn hoặc sự hài lòng của khách hàng.",
+        "correctAnswer": true
+      }
+    ],
+    "hints": {
+      "level1_concept": "Đọc kỹ tình huống bài toán lập trình Python thực tế và phân tích từng nhận định độc lập a, b, c, d.",
+      "level2_formula": "Kiểm tra tính chính xác của cú pháp, kiểu dữ liệu ép kiểu và logic thuật toán của từng phát biểu.",
+      "level3_steps": "Quy tắc chấm điểm thi tốt nghiệp THPT: Đúng 1 ý: 0.1đ; Đúng 2 ý: 0.25đ; Đúng 3 ý: 0.5đ; Đúng cả 4 ý: 1.0đ."
+    },
+    "explanation": "Câu hỏi trắc nghiệm Đúng / Sai theo cấu trúc đề thi tốt nghiệp THPT từ tài liệu Chuyên đề 10F.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-TF-PY-04",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-python-dung-sai",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "VanDung",
+    "type": "true_false",
+    "content": "Một giáo viên đang phát triển một ứng dụng để theo dõi điểm số của học sinh trong các bài kiểm tra. Ứng dụng này cho phép giáo viên nhập vào danh sách điểm số của từng học sinh và tính toán tổng điểm, điểm trung bình, cũng như số học sinh đạt điểm trên trung bình. Giáo viên sử dụng các chương trình con (hàm) và thư viện có sẵn để thực hiện các phép toán này.\nHãy xem xét các phát biểu dưới đây và xác định tính đúng sai của chúng:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ý a"
+      },
+      {
+        "id": "B",
+        "content": "Ý b"
+      },
+      {
+        "id": "C",
+        "content": "Ý c"
+      },
+      {
+        "id": "D",
+        "content": "Ý d"
+      }
+    ],
+    "correctAnswer": "A",
+    "tfItems": [
+      {
+        "id": "a",
+        "content": "Việc sử dụng hàm cho phép tách biệt các chức năng khác nhau, như nhập điểm, tính tổng, tính trung bình và đếm số học sinh đạt điểm trên trung bình.",
+        "correctAnswer": true
+      },
+      {
+        "id": "b",
+        "content": "Khi định nghĩa một hàm để tính điểm trung bình, lập trình viên cần phải chỉ định kiểu dữ liệu cho tham số, chẳng hạn như danh sách điểm số.",
+        "correctAnswer": false
+      },
+      {
+        "id": "c",
+        "content": "Thư viện thống kê cung cấp các hàm như mean và stdev rất hữu ích cho việc tính toán điểm trung bình và độ lệch chuẩn của danh sách điểm.",
+        "correctAnswer": true
+      },
+      {
+        "id": "d",
+        "content": "Nếu một hàm cần trả về cả tổng điểm và điểm trung bình, lập trình viên có thể sử dụng một cấu trúc dữ liệu như tuple hoặc danh sách để trả về cả hai giá trị từ một hàm duy nhất.",
+        "correctAnswer": true
+      }
+    ],
+    "hints": {
+      "level1_concept": "Đọc kỹ tình huống bài toán lập trình Python thực tế và phân tích từng nhận định độc lập a, b, c, d.",
+      "level2_formula": "Kiểm tra tính chính xác của cú pháp, kiểu dữ liệu ép kiểu và logic thuật toán của từng phát biểu.",
+      "level3_steps": "Quy tắc chấm điểm thi tốt nghiệp THPT: Đúng 1 ý: 0.1đ; Đúng 2 ý: 0.25đ; Đúng 3 ý: 0.5đ; Đúng cả 4 ý: 1.0đ."
+    },
+    "explanation": "Câu hỏi trắc nghiệm Đúng / Sai theo cấu trúc đề thi tốt nghiệp THPT từ tài liệu Chuyên đề 10F.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-TF-PY-05",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-python-dung-sai",
+    "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
+    "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
+    "difficulty": "VanDung",
+    "type": "true_false",
+    "content": "Giáo viên đang xây dựng một chương trình để lưu trữ thông tin về học sinh. Mỗi thông tin học sinh được lưu trữ dưới dạng xâu ký tự theo định dạng: \"Mã học sinh;Tên học sinh;Điểm số\". Ví dụ: \"HS001;Nguyễn Văn A;8.0\".\nGiáo viên muốn thực hiện các chức năng sau:\n1. Tách thông tin từ xâu ký tự để truy cập từng phần của thông tin học sinh.\n2. Kiểm tra điểm số của học sinh để xác định xem học sinh có đủ điều kiện nhận học bổng hay không (điểm số ≥ 8.0).\nDưới đây là một số phát biểu liên quan đến việc xử lý xâu ký tự trong tình huống này. Hãy xác định tính chính xác của từng phát biểu và giải thích lý do:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Ý a"
+      },
+      {
+        "id": "B",
+        "content": "Ý b"
+      },
+      {
+        "id": "C",
+        "content": "Ý c"
+      },
+      {
+        "id": "D",
+        "content": "Ý d"
+      }
+    ],
+    "correctAnswer": "A",
+    "tfItems": [
+      {
+        "id": "a",
+        "content": "Có thể sử dụng phương thức split(';') để tách xâu ký tự thành các thành phần: mã học sinh, tên học sinh và điểm số.",
+        "correctAnswer": true
+      },
+      {
+        "id": "b",
+        "content": "Để truy cập tên học sinh, cần phải sử dụng chỉ số 1 trong mảng được tạo ra từ việc phân tách xâu ký tự.",
+        "correctAnswer": true
+      },
+      {
+        "id": "c",
+        "content": "Nếu xâu ký tự là \"HS002;Trần Thị B;7.5\", có thể sử dụng phương thức .find('Trần') để kiểm tra xem tên học sinh có chứa từ \"Trần\" hay không.",
+        "correctAnswer": false
+      },
+      {
+        "id": "d",
+        "content": "Để kiểm tra xem học sinh có đủ điều kiện nhận học bổng hay không, có thể so sánh điểm số với giá trị 8.0.",
+        "correctAnswer": true
+      }
+    ],
+    "hints": {
+      "level1_concept": "Đọc kỹ tình huống bài toán lập trình Python thực tế và phân tích từng nhận định độc lập a, b, c, d.",
+      "level2_formula": "Kiểm tra tính chính xác của cú pháp, kiểu dữ liệu ép kiểu và logic thuật toán của từng phát biểu.",
+      "level3_steps": "Quy tắc chấm điểm thi tốt nghiệp THPT: Đúng 1 ý: 0.1đ; Đúng 2 ý: 0.25đ; Đúng 3 ý: 0.5đ; Đúng cả 4 ý: 1.0đ."
+    },
+    "explanation": "Câu hỏi trắc nghiệm Đúng / Sai theo cấu trúc đề thi tốt nghiệp THPT từ tài liệu Chuyên đề 10F.",
+    "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
   }
 ];
