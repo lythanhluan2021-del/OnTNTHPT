@@ -1,14 +1,45 @@
 import fs from "fs";
 import path from "path";
+import os from "os";
 import { User, StudentAttempt, StudentProgressSummary, AdminDashboardOverview } from "@/types";
 
-const DB_DIR = path.join(process.cwd(), "src", "data", "db");
-const USERS_FILE = path.join(DB_DIR, "users.json");
-const ATTEMPTS_FILE = path.join(DB_DIR, "attempts.json");
+const IS_SERVERLESS = Boolean(
+  process.env.VERCEL ||
+  process.env.AWS_LAMBDA_FUNCTION_NAME ||
+  (typeof process.cwd === "function" && process.cwd().startsWith("/var/task"))
+);
 
-function ensureDirExists() {
-  if (!fs.existsSync(DB_DIR)) {
-    fs.mkdirSync(DB_DIR, { recursive: true });
+const TMP_DB_DIR = path.join(os.tmpdir(), "ontnthpt-db");
+const LOCAL_DB_DIR = path.join(process.cwd(), "src", "data", "db");
+
+// Bộ nhớ đệm toàn cục duy trì dữ liệu trên Serverless và tránh lỗi EROFS
+const globalForStorage = globalThis as unknown as {
+  ontnUsersCache?: User[];
+  ontnAttemptsCache?: StudentAttempt[];
+};
+
+function safeReadJson<T>(filePath: string): T | null {
+  try {
+    if (fs.existsSync(filePath)) {
+      const data = fs.readFileSync(filePath, "utf-8");
+      return JSON.parse(data) as T;
+    }
+  } catch {
+    // Bỏ qua lỗi đọc file
+  }
+  return null;
+}
+
+function safeWriteJson(dirPath: string, filePath: string, data: any): boolean {
+  try {
+    if (!fs.existsSync(dirPath)) {
+      fs.mkdirSync(dirPath, { recursive: true });
+    }
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+    return true;
+  } catch {
+    // Bỏ qua lỗi ghi trên hệ thống tệp Read-Only (Vercel /var/task), dữ liệu vẫn duy trì ở in-memory
+    return false;
   }
 }
 
@@ -167,22 +198,44 @@ const INITIAL_ATTEMPTS: StudentAttempt[] = [
 
 export class StorageAdapter {
   static getUsers(): User[] {
-    ensureDirExists();
-    if (!fs.existsSync(USERS_FILE)) {
-      fs.writeFileSync(USERS_FILE, JSON.stringify(INITIAL_USERS, null, 2), "utf-8");
-      return INITIAL_USERS;
+    if (globalForStorage.ontnUsersCache && globalForStorage.ontnUsersCache.length > 0) {
+      return globalForStorage.ontnUsersCache;
     }
-    try {
-      const data = fs.readFileSync(USERS_FILE, "utf-8");
-      return JSON.parse(data);
-    } catch {
-      return INITIAL_USERS;
+
+    // 1. Thử đọc từ TMP (được ưu tiên nếu đã có bản ghi mới trong phiên serverless)
+    const tmpUsers = safeReadJson<User[]>(path.join(TMP_DB_DIR, "users.json"));
+    if (tmpUsers && Array.isArray(tmpUsers) && tmpUsers.length > 0) {
+      globalForStorage.ontnUsersCache = tmpUsers;
+      return tmpUsers;
     }
+
+    // 2. Thử đọc từ tệp dự án (cho phép đọc Read-Only trên Vercel /var/task)
+    const localUsers = safeReadJson<User[]>(path.join(LOCAL_DB_DIR, "users.json"));
+    if (localUsers && Array.isArray(localUsers) && localUsers.length > 0) {
+      globalForStorage.ontnUsersCache = localUsers;
+      safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), localUsers);
+      return localUsers;
+    }
+
+    // 3. Dự phòng danh sách mẫu ban đầu
+    globalForStorage.ontnUsersCache = [...INITIAL_USERS];
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), INITIAL_USERS);
+    if (!IS_SERVERLESS) {
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), INITIAL_USERS);
+    }
+    return globalForStorage.ontnUsersCache;
   }
 
   static saveUsers(users: User[]) {
-    ensureDirExists();
-    fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2), "utf-8");
+    globalForStorage.ontnUsersCache = [...users];
+
+    // Ghi vào TMP_DIR (luôn ghi được trên Vercel/Lambda)
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), users);
+
+    // Ghi vào LOCAL_DB_DIR nếu không phải serverless
+    if (!IS_SERVERLESS) {
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), users);
+    }
   }
 
   static getUserByUsername(username: string): User | undefined {
@@ -250,36 +303,52 @@ export class StorageAdapter {
   // =================== ATTEMPTS / TIẾN ĐỘ HỌC TẬP ===================
 
   static getAttempts(studentId?: string): StudentAttempt[] {
-    ensureDirExists();
-    if (!fs.existsSync(ATTEMPTS_FILE)) {
-      fs.writeFileSync(ATTEMPTS_FILE, JSON.stringify(INITIAL_ATTEMPTS, null, 2), "utf-8");
-      return studentId ? INITIAL_ATTEMPTS.filter((a) => a.studentId === studentId) : INITIAL_ATTEMPTS;
+    let allAttempts = globalForStorage.ontnAttemptsCache;
+
+    if (!allAttempts) {
+      // 1. Thử đọc từ TMP
+      const tmpAttempts = safeReadJson<StudentAttempt[]>(path.join(TMP_DB_DIR, "attempts.json"));
+      if (tmpAttempts && Array.isArray(tmpAttempts)) {
+        allAttempts = tmpAttempts;
+      } else {
+        // 2. Thử đọc từ tệp dự án (cho phép đọc Read-Only)
+        const localAttempts = safeReadJson<StudentAttempt[]>(path.join(LOCAL_DB_DIR, "attempts.json"));
+        if (localAttempts && Array.isArray(localAttempts)) {
+          allAttempts = localAttempts;
+        } else {
+          allAttempts = [...INITIAL_ATTEMPTS];
+        }
+      }
+      globalForStorage.ontnAttemptsCache = allAttempts;
     }
-    try {
-      const data = fs.readFileSync(ATTEMPTS_FILE, "utf-8");
-      const attempts: StudentAttempt[] = JSON.parse(data);
-      return studentId ? attempts.filter((a) => a.studentId === studentId) : attempts;
-    } catch {
-      return INITIAL_ATTEMPTS;
-    }
+
+    return studentId ? allAttempts.filter((a) => a.studentId === studentId) : allAttempts;
   }
 
   static saveAttempt(attempt: StudentAttempt) {
-    ensureDirExists();
     const attempts = this.getAttempts();
-    attempts.push(attempt);
-    fs.writeFileSync(ATTEMPTS_FILE, JSON.stringify(attempts, null, 2), "utf-8");
+    const updated = [...attempts, attempt];
+    globalForStorage.ontnAttemptsCache = updated;
+
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), updated);
+    if (!IS_SERVERLESS) {
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), updated);
+    }
   }
 
   static saveAttemptsBatch(newAttempts: StudentAttempt[]) {
-    ensureDirExists();
     const attempts = this.getAttempts();
     // Tránh duplicate theo ID
     const existingIds = new Set(attempts.map((a) => a.id));
     const toAdd = newAttempts.filter((a) => !existingIds.has(a.id));
     if (toAdd.length > 0) {
-      attempts.push(...toAdd);
-      fs.writeFileSync(ATTEMPTS_FILE, JSON.stringify(attempts, null, 2), "utf-8");
+      const updated = [...attempts, ...toAdd];
+      globalForStorage.ontnAttemptsCache = updated;
+
+      safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), updated);
+      if (!IS_SERVERLESS) {
+        safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), updated);
+      }
     }
   }
 

@@ -47,8 +47,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Cập nhật thời điểm đăng nhập gần nhất
-    StorageAdapter.updateUser(user.id, { lastLoginAt: Date.now() });
+    // Cập nhật thời điểm đăng nhập gần nhất (không chặn đăng nhập nếu hệ thống tệp read-only)
+    try {
+      StorageAdapter.updateUser(user.id, { lastLoginAt: Date.now() });
+    } catch (e) {
+      console.warn("Bỏ qua cập nhật lastLoginAt:", e);
+    }
 
     // Trả về thông tin an toàn (bỏ trường password)
     const { password: _, ...safeUser } = user;
