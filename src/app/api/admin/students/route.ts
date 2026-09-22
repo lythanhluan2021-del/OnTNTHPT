@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const className = searchParams.get("class");
 
-    let students = StorageAdapter.getUsers().filter((u) => u.role === "student");
+    let students = (await StorageAdapter.getUsers()).filter((u) => u.role === "student");
     if (className && className !== "all") {
       students = students.filter((s) => s.className === className);
     }
@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
         }
 
         try {
-          const newUser = StorageAdapter.createUser({
+          const newUser = await StorageAdapter.createUser({
             username: item.username.trim(),
             fullName: item.fullName.trim(),
             role: "student",
@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const newUser = StorageAdapter.createUser({
+    const newUser = await StorageAdapter.createUser({
       username: username.trim(),
       fullName: fullName.trim(),
       role: "student",

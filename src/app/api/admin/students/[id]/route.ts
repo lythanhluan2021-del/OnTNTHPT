@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { StorageAdapter } from "@/lib/db/storageAdapter";
 
+export const dynamic = "force-dynamic";
+
 export async function PUT(
   req: NextRequest,
   { params }: { params: { id: string } }
@@ -9,7 +11,7 @@ export async function PUT(
     const { id } = params;
     const body = await req.json();
 
-    const updated = StorageAdapter.updateUser(id, body);
+    const updated = await StorageAdapter.updateUser(id, body);
     const { password: _, ...safeUser } = updated;
 
     return NextResponse.json({
@@ -31,7 +33,7 @@ export async function DELETE(
 ) {
   try {
     const { id } = params;
-    const ok = StorageAdapter.deleteUser(id);
+    const ok = await StorageAdapter.deleteUser(id);
 
     if (!ok) {
       return NextResponse.json(

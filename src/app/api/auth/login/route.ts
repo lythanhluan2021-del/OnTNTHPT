@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const user = StorageAdapter.getUserByUsername(username);
+    const user = await StorageAdapter.getUserByUsername(username);
 
     if (!user) {
       return NextResponse.json(
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
 
     // Cập nhật thời điểm đăng nhập gần nhất (không chặn đăng nhập nếu hệ thống tệp read-only)
     try {
-      StorageAdapter.updateUser(user.id, { lastLoginAt: Date.now() });
+      await StorageAdapter.updateUser(user.id, { lastLoginAt: Date.now() });
     } catch (e) {
       console.warn("Bỏ qua cập nhật lastLoginAt:", e);
     }

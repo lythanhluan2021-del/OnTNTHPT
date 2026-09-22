@@ -147,5 +147,6 @@ export interface AdminDashboardOverview {
     isCorrect: boolean;
     timestamp: number;
   }[];
+  isCloudConnected?: boolean;
 }
 

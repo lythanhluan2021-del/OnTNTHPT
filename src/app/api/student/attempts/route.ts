@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const studentId = searchParams.get("studentId");
 
-    const attempts = StorageAdapter.getAttempts(studentId || undefined);
+    const attempts = await StorageAdapter.getAttempts(studentId || undefined);
     return NextResponse.json({ success: true, attempts });
   } catch (error: any) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
     // Hỗ trợ cả gửi 1 attempt hoặc mảng attempts
     if (Array.isArray(body.attempts)) {
-      StorageAdapter.saveAttemptsBatch(body.attempts);
+      await StorageAdapter.saveAttemptsBatch(body.attempts);
       return NextResponse.json({
         success: true,
         message: `Đã lưu ${body.attempts.length} lượt làm bài.`,
@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    StorageAdapter.saveAttempt(attempt);
+    await StorageAdapter.saveAttempt(attempt);
 
     return NextResponse.json({
       success: true,

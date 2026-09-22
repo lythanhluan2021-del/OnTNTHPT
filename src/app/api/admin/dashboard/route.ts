@@ -8,8 +8,8 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const selectedClass = searchParams.get("class") || "all";
 
-    const overview = StorageAdapter.getAdminDashboardOverview(selectedClass);
-    const students = StorageAdapter.getStudentProgressSummaries(selectedClass);
+    const overview = await StorageAdapter.getAdminDashboardOverview(selectedClass);
+    const students = await StorageAdapter.getStudentProgressSummaries(selectedClass);
 
     return NextResponse.json({
       success: true,

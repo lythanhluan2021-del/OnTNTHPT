@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import os from "os";
+import { Redis } from "@upstash/redis";
 import { User, StudentAttempt, StudentProgressSummary, AdminDashboardOverview } from "@/types";
 
 const IS_SERVERLESS = Boolean(
@@ -12,11 +13,45 @@ const IS_SERVERLESS = Boolean(
 const TMP_DB_DIR = path.join(os.tmpdir(), "ontnthpt-db");
 const LOCAL_DB_DIR = path.join(process.cwd(), "src", "data", "db");
 
-// Bộ nhớ đệm toàn cục duy trì dữ liệu trên Serverless và tránh lỗi EROFS
+// Bộ nhớ đệm toàn cục duy trì dữ liệu trên Serverless và kết nối Redis
 const globalForStorage = globalThis as unknown as {
   ontnUsersCache?: User[];
   ontnAttemptsCache?: StudentAttempt[];
+  ontnRedisClient?: Redis | null;
 };
+
+// Khởi tạo Upstash Redis Client (Tự động nhận diện cả UPSTASH_REDIS_REST_* và KV_REST_API_* từ Vercel)
+function getRedisClient(): Redis | null {
+  if (globalForStorage.ontnRedisClient !== undefined) {
+    return globalForStorage.ontnRedisClient;
+  }
+
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ||
+    process.env.KV_REST_API_URL ||
+    process.env.NEXT_PUBLIC_UPSTASH_REDIS_REST_URL;
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ||
+    process.env.KV_REST_API_TOKEN ||
+    process.env.NEXT_PUBLIC_UPSTASH_REDIS_REST_TOKEN;
+
+  if (url && token) {
+    try {
+      globalForStorage.ontnRedisClient = new Redis({
+        url: url.trim(),
+        token: token.trim(),
+      });
+      console.log("[StorageAdapter] 🟢 Đã kết nối thành công tới Đám mây Upstash Redis!");
+    } catch (e) {
+      console.warn("[StorageAdapter] ⚠️ Khởi tạo Upstash Redis thất bại, chuyển về fallback:", e);
+      globalForStorage.ontnRedisClient = null;
+    }
+  } else {
+    globalForStorage.ontnRedisClient = null;
+  }
+
+  return globalForStorage.ontnRedisClient;
+}
 
 function safeReadJson<T>(filePath: string): T | null {
   try {
@@ -197,19 +232,44 @@ const INITIAL_ATTEMPTS: StudentAttempt[] = [
 ];
 
 export class StorageAdapter {
-  static getUsers(): User[] {
+  static isCloudConnected(): boolean {
+    return Boolean(getRedisClient());
+  }
+
+  static async getUsers(): Promise<User[]> {
+    const redis = getRedisClient();
+
+    // 1. Nếu có Upstash Redis, ưu tiên đọc trực tiếp từ Đám Mây thời gian thực
+    if (redis) {
+      try {
+        const remoteUsers = await redis.get<User[]>("thpt:users");
+        if (remoteUsers && Array.isArray(remoteUsers) && remoteUsers.length > 0) {
+          globalForStorage.ontnUsersCache = remoteUsers;
+          return remoteUsers;
+        } else {
+          // Lần đầu cắm Redis: Khởi tạo danh sách mẫu lên Redis
+          await redis.set("thpt:users", INITIAL_USERS);
+          globalForStorage.ontnUsersCache = INITIAL_USERS;
+          return INITIAL_USERS;
+        }
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi đọc từ Upstash Redis, dùng bộ nhớ đệm:", err);
+      }
+    }
+
+    // 2. Nếu đã có trong RAM cache
     if (globalForStorage.ontnUsersCache && globalForStorage.ontnUsersCache.length > 0) {
       return globalForStorage.ontnUsersCache;
     }
 
-    // 1. Thử đọc từ TMP (được ưu tiên nếu đã có bản ghi mới trong phiên serverless)
+    // 3. Đọc từ thư mục /tmp (Serverless)
     const tmpUsers = safeReadJson<User[]>(path.join(TMP_DB_DIR, "users.json"));
     if (tmpUsers && Array.isArray(tmpUsers) && tmpUsers.length > 0) {
       globalForStorage.ontnUsersCache = tmpUsers;
       return tmpUsers;
     }
 
-    // 2. Thử đọc từ tệp dự án (cho phép đọc Read-Only trên Vercel /var/task)
+    // 4. Đọc từ tệp dự án (cho phép đọc Read-Only trên Vercel /var/task)
     const localUsers = safeReadJson<User[]>(path.join(LOCAL_DB_DIR, "users.json"));
     if (localUsers && Array.isArray(localUsers) && localUsers.length > 0) {
       globalForStorage.ontnUsersCache = localUsers;
@@ -217,7 +277,7 @@ export class StorageAdapter {
       return localUsers;
     }
 
-    // 3. Dự phòng danh sách mẫu ban đầu
+    // 5. Dự phòng danh sách mẫu ban đầu
     globalForStorage.ontnUsersCache = [...INITIAL_USERS];
     safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), INITIAL_USERS);
     if (!IS_SERVERLESS) {
@@ -226,30 +286,40 @@ export class StorageAdapter {
     return globalForStorage.ontnUsersCache;
   }
 
-  static saveUsers(users: User[]) {
+  static async saveUsers(users: User[]): Promise<void> {
     globalForStorage.ontnUsersCache = [...users];
 
-    // Ghi vào TMP_DIR (luôn ghi được trên Vercel/Lambda)
+    // 1. Lưu vào Đám Mây Upstash Redis nếu có kết nối
+    const redis = getRedisClient();
+    if (redis) {
+      try {
+        await redis.set("thpt:users", users);
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi lưu users lên Upstash Redis:", err);
+      }
+    }
+
+    // 2. Ghi dự phòng vào /tmp
     safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), users);
 
-    // Ghi vào LOCAL_DB_DIR nếu không phải serverless
+    // 3. Ghi vào LOCAL_DB_DIR nếu không phải serverless
     if (!IS_SERVERLESS) {
       safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), users);
     }
   }
 
-  static getUserByUsername(username: string): User | undefined {
-    const users = this.getUsers();
+  static async getUserByUsername(username: string): Promise<User | undefined> {
+    const users = await this.getUsers();
     return users.find((u) => u.username.toLowerCase() === username.trim().toLowerCase());
   }
 
-  static getUserById(id: string): User | undefined {
-    const users = this.getUsers();
+  static async getUserById(id: string): Promise<User | undefined> {
+    const users = await this.getUsers();
     return users.find((u) => u.id === id);
   }
 
-  static createUser(user: Omit<User, "id" | "createdAt">): User {
-    const users = this.getUsers();
+  static async createUser(user: Omit<User, "id" | "createdAt">): Promise<User> {
+    const users = await this.getUsers();
     const existing = users.find((u) => u.username.toLowerCase() === user.username.toLowerCase());
     if (existing) {
       throw new Error(`Tên đăng nhập "${user.username}" đã tồn tại trên hệ thống.`);
@@ -263,12 +333,12 @@ export class StorageAdapter {
     };
 
     users.push(newUser);
-    this.saveUsers(users);
+    await this.saveUsers(users);
     return newUser;
   }
 
-  static updateUser(id: string, updates: Partial<User>): User {
-    const users = this.getUsers();
+  static async updateUser(id: string, updates: Partial<User>): Promise<User> {
+    const users = await this.getUsers();
     const idx = users.findIndex((u) => u.id === id);
     if (idx === -1) {
       throw new Error(`Không tìm thấy người dùng có ID: ${id}`);
@@ -286,15 +356,15 @@ export class StorageAdapter {
 
     const updated = { ...users[idx], ...updates };
     users[idx] = updated;
-    this.saveUsers(users);
+    await this.saveUsers(users);
     return updated;
   }
 
-  static deleteUser(id: string): boolean {
-    const users = this.getUsers();
+  static async deleteUser(id: string): Promise<boolean> {
+    const users = await this.getUsers();
     const filtered = users.filter((u) => u.id !== id);
     if (filtered.length !== users.length) {
-      this.saveUsers(filtered);
+      await this.saveUsers(filtered);
       return true;
     }
     return false;
@@ -302,48 +372,87 @@ export class StorageAdapter {
 
   // =================== ATTEMPTS / TIẾN ĐỘ HỌC TẬP ===================
 
-  static getAttempts(studentId?: string): StudentAttempt[] {
-    let allAttempts = globalForStorage.ontnAttemptsCache;
+  static async getAttempts(studentId?: string): Promise<StudentAttempt[]> {
+    const redis = getRedisClient();
+    let allAttempts: StudentAttempt[] | null = null;
+
+    // 1. Đọc từ Upstash Redis nếu có kết nối
+    if (redis) {
+      try {
+        const remoteAttempts = await redis.get<StudentAttempt[]>("thpt:attempts");
+        if (remoteAttempts && Array.isArray(remoteAttempts)) {
+          allAttempts = remoteAttempts;
+        } else {
+          // Lần đầu cắm Redis: Khởi tạo attempts mẫu
+          await redis.set("thpt:attempts", INITIAL_ATTEMPTS);
+          allAttempts = INITIAL_ATTEMPTS;
+        }
+        globalForStorage.ontnAttemptsCache = allAttempts;
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi đọc attempts từ Upstash Redis:", err);
+      }
+    }
 
     if (!allAttempts) {
-      // 1. Thử đọc từ TMP
-      const tmpAttempts = safeReadJson<StudentAttempt[]>(path.join(TMP_DB_DIR, "attempts.json"));
-      if (tmpAttempts && Array.isArray(tmpAttempts)) {
-        allAttempts = tmpAttempts;
+      if (globalForStorage.ontnAttemptsCache) {
+        allAttempts = globalForStorage.ontnAttemptsCache;
       } else {
-        // 2. Thử đọc từ tệp dự án (cho phép đọc Read-Only)
-        const localAttempts = safeReadJson<StudentAttempt[]>(path.join(LOCAL_DB_DIR, "attempts.json"));
-        if (localAttempts && Array.isArray(localAttempts)) {
-          allAttempts = localAttempts;
+        const tmpAttempts = safeReadJson<StudentAttempt[]>(path.join(TMP_DB_DIR, "attempts.json"));
+        if (tmpAttempts && Array.isArray(tmpAttempts)) {
+          allAttempts = tmpAttempts;
         } else {
-          allAttempts = [...INITIAL_ATTEMPTS];
+          const localAttempts = safeReadJson<StudentAttempt[]>(path.join(LOCAL_DB_DIR, "attempts.json"));
+          if (localAttempts && Array.isArray(localAttempts)) {
+            allAttempts = localAttempts;
+          } else {
+            allAttempts = [...INITIAL_ATTEMPTS];
+          }
         }
+        globalForStorage.ontnAttemptsCache = allAttempts;
       }
-      globalForStorage.ontnAttemptsCache = allAttempts;
     }
 
     return studentId ? allAttempts.filter((a) => a.studentId === studentId) : allAttempts;
   }
 
-  static saveAttempt(attempt: StudentAttempt) {
-    const attempts = this.getAttempts();
+  static async saveAttempt(attempt: StudentAttempt): Promise<void> {
+    const attempts = await this.getAttempts();
     const updated = [...attempts, attempt];
     globalForStorage.ontnAttemptsCache = updated;
 
+    // Lưu vào Upstash Redis
+    const redis = getRedisClient();
+    if (redis) {
+      try {
+        await redis.set("thpt:attempts", updated);
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi lưu attempt lên Upstash Redis:", err);
+      }
+    }
+
+    // Dự phòng /tmp và cục bộ
     safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), updated);
     if (!IS_SERVERLESS) {
       safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), updated);
     }
   }
 
-  static saveAttemptsBatch(newAttempts: StudentAttempt[]) {
-    const attempts = this.getAttempts();
-    // Tránh duplicate theo ID
+  static async saveAttemptsBatch(newAttempts: StudentAttempt[]): Promise<void> {
+    const attempts = await this.getAttempts();
     const existingIds = new Set(attempts.map((a) => a.id));
     const toAdd = newAttempts.filter((a) => !existingIds.has(a.id));
     if (toAdd.length > 0) {
       const updated = [...attempts, ...toAdd];
       globalForStorage.ontnAttemptsCache = updated;
+
+      const redis = getRedisClient();
+      if (redis) {
+        try {
+          await redis.set("thpt:attempts", updated);
+        } catch (err) {
+          console.warn("[StorageAdapter] ⚠️ Lỗi lưu attempts batch lên Upstash Redis:", err);
+        }
+      }
 
       safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), updated);
       if (!IS_SERVERLESS) {
@@ -354,13 +463,14 @@ export class StorageAdapter {
 
   // =================== AGGREGATIONS & PROGRESS ===================
 
-  static getStudentProgressSummaries(className?: string): StudentProgressSummary[] {
-    const users = this.getUsers().filter((u) => u.role === "student");
+  static async getStudentProgressSummaries(className?: string): Promise<StudentProgressSummary[]> {
+    const allUsers = await this.getUsers();
+    const users = allUsers.filter((u) => u.role === "student");
     const filteredUsers = className && className !== "all"
       ? users.filter((u) => u.className === className)
       : users;
 
-    const allAttempts = this.getAttempts();
+    const allAttempts = await this.getAttempts();
 
     return filteredUsers.map((student) => {
       const studentAttempts = allAttempts.filter((a) => a.studentId === student.id);
@@ -436,9 +546,10 @@ export class StorageAdapter {
     });
   }
 
-  static getAdminDashboardOverview(className?: string): AdminDashboardOverview {
-    const students = this.getStudentProgressSummaries(className);
-    const users = this.getUsers().filter((u) => u.role === "student");
+  static async getAdminDashboardOverview(className?: string): Promise<AdminDashboardOverview> {
+    const students = await this.getStudentProgressSummaries(className);
+    const allUsers = await this.getUsers();
+    const users = allUsers.filter((u) => u.role === "student");
     const activeStudents = students.filter((s) => s.totalQuestionsAttempted > 0).length;
 
     const participated = students.filter((s) => s.totalQuestionsAttempted > 0);
@@ -461,7 +572,8 @@ export class StorageAdapter {
     const classes = Array.from(classSet).sort();
 
     // Lấy hoạt động gần đây
-    const attempts = this.getAttempts().sort((a, b) => b.timestamp - a.timestamp).slice(0, 10);
+    const allAttempts = await this.getAttempts();
+    const attempts = allAttempts.sort((a, b) => b.timestamp - a.timestamp).slice(0, 10);
     const recentActivities = attempts.map((a) => ({
       studentName: a.studentName || "Học sinh",
       className: a.className || "12A1",
@@ -480,6 +592,7 @@ export class StorageAdapter {
       atRiskCount,
       classes,
       recentActivities,
+      isCloudConnected: Boolean(getRedisClient()),
     };
   }
 }

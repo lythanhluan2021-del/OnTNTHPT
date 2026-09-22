@@ -32,6 +32,9 @@ import {
   LogOut,
   AlertCircle,
   Check,
+  Cloud,
+  Database,
+  ExternalLink,
 } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { useAuth } from "@/contexts/AuthContext";
@@ -57,6 +60,7 @@ export default function AdminDashboardPage() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
+  const [isCloudHelpModalOpen, setIsCloudHelpModalOpen] = useState(false);
   const [activeStudent, setActiveStudent] = useState<StudentProgressSummary | null>(null);
 
   // 4. Form States for Single / Bulk Creation
@@ -480,6 +484,30 @@ export default function AdminDashboardPage() {
             <p className="text-xs text-slate-500 font-medium">
               Trường THPT Nguyễn Sinh Sắc • Năm học 2026 - 2027 • Phụ trách: Thầy Lý Thành Luân
             </p>
+            {/* Huy hiệu trạng thái Lưu trữ Đám mây Thời gian thực */}
+            <div className="flex items-center gap-2 pt-1">
+              {overview?.isCloudConnected ? (
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black shadow-neu-flat-xs border border-emerald-300">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <Database className="w-3 h-3 text-emerald-700" />
+                  <span>Đám Mây Upstash Redis: Đã Kết Nối (Lưu Thời Gian Thực Toàn Trường)</span>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    setIsCloudHelpModalOpen(true);
+                  }}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-900 text-[10px] font-bold shadow-neu-flat-xs border border-amber-300 transition cursor-pointer"
+                  title="Bấm xem hướng dẫn kết nối Upstash Redis miễn phí"
+                >
+                  <Cloud className="w-3 h-3 text-amber-700" />
+                  <span>Chế độ Cục Bộ • Bấm để Kích Hoạt Lưu Trữ Đám Mây Realtime (1-Click)</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-amber-700" />
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -1330,6 +1358,98 @@ export default function AdminDashboardPage() {
                 className="flex-1 py-2 rounded-neu-sm bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset"
               >
                 Lưu Mật Khẩu
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ======================================================== */}
+      {/* MODAL 4: HƯỚNG DẪN KÍCH HOẠT LƯU TRỮ CLOUD REALTIME      */}
+      {/* ======================================================== */}
+      {isCloudHelpModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+          <div className="w-full max-w-xl bg-[#e6ecf5] rounded-neu shadow-neu-flat p-6 relative border border-white/70 space-y-4 max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setIsCloudHelpModalOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-[#e6ecf5] shadow-neu-flat-xs active:shadow-neu-inset text-slate-500 hover:text-slate-800"
+              aria-label="Đóng"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-3 border-b border-slate-300/60 pb-3">
+              <div className="w-12 h-12 rounded-neu-sm bg-blue-100 flex items-center justify-center text-blue-700 shadow-neu-flat-xs flex-shrink-0">
+                <Database className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-base font-black text-slate-800">
+                  Kích Hoạt Lưu Trữ Đám Mây Upstash Redis
+                </h2>
+                <p className="text-xs text-slate-500 font-medium">
+                  Đồng bộ tiến độ làm bài của toàn bộ học sinh theo thời gian thực (Miễn phí 100%)
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3 text-xs text-slate-700 leading-relaxed">
+              <p>
+                Để học sinh làm bài trên bất kỳ thiết bị nào (điện thoại, máy tính ở nhà) mà Thầy mở Dashboard là <strong>thấy ngay điểm số cập nhật tức thì</strong>, Thầy chỉ cần kết nối 1 Database Upstash Redis miễn phí trên Vercel theo 3 bước:
+              </p>
+
+              <div className="space-y-2.5">
+                {/* Bước 1 */}
+                <div className="p-3 rounded-neu-sm bg-white/70 shadow-neu-flat-xs border border-white/90 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] font-black flex items-center justify-center flex-shrink-0">
+                      1
+                    </span>
+                    <strong className="text-slate-800">Mở trang quản trị dự án trên Vercel:</strong>
+                  </div>
+                  <p className="text-slate-600 pl-7 text-[11px]">
+                    Truy cập <strong>vercel.com</strong> $\rightarrow$ Bấm vào dự án <strong>OnTNTHPT</strong> của Thầy.
+                  </p>
+                </div>
+
+                {/* Bước 2 */}
+                <div className="p-3 rounded-neu-sm bg-white/70 shadow-neu-flat-xs border border-white/90 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] font-black flex items-center justify-center flex-shrink-0">
+                      2
+                    </span>
+                    <strong className="text-slate-800">Tạo Database KV / Upstash Redis miễn phí:</strong>
+                  </div>
+                  <p className="text-slate-600 pl-7 text-[11px]">
+                    Bấm vào tab <strong>Storage</strong> trên thanh menu $\rightarrow$ Bấm nút <strong>Create Database</strong> $\rightarrow$ Chọn <strong>KV</strong> (hoặc <strong>Upstash Redis</strong>) $\rightarrow$ Chọn gói <em>Hobby (Free)</em>.
+                  </p>
+                </div>
+
+                {/* Bước 3 */}
+                <div className="p-3 rounded-neu-sm bg-white/70 shadow-neu-flat-xs border border-white/90 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-emerald-600 text-white text-[11px] font-black flex items-center justify-center flex-shrink-0">
+                      3
+                    </span>
+                    <strong className="text-slate-800">Bấm Connect vào dự án:</strong>
+                  </div>
+                  <p className="text-slate-600 pl-7 text-[11px]">
+                    Bấm <strong>Connect to Project</strong> $\rightarrow$ Chọn dự án <strong>OnTNTHPT</strong>. Vercel sẽ tự động tạo 2 biến môi trường: <code>KV_REST_API_URL</code> và <code>KV_REST_API_TOKEN</code>.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-3 rounded-neu-sm bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-medium leading-relaxed">
+                🎉 <strong>Hoàn tất:</strong> Sau khi Connect xong, Thầy chỉ cần bấm <strong>Redeploy</strong> trên Vercel. Ứng dụng đã được tích hợp sẵn mã nguồn tự nhận diện các biến này. Huy hiệu góc trên sẽ chuyển sang 🟢 <strong>Đã Kết Nối</strong> và mọi lượt làm bài của học sinh sẽ được lưu vĩnh viễn trên đám mây!
+              </div>
+            </div>
+
+            <div className="pt-2 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setIsCloudHelpModalOpen(false)}
+                className="px-4 py-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold text-slate-700 hover:text-slate-900"
+              >
+                Đã Hiểu
               </button>
             </div>
           </div>
