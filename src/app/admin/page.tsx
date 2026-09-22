@@ -77,8 +77,9 @@ export default function AdminDashboardPage() {
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [formNotification, setFormNotification] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
-  // 5. Form State for Reset Password
+  // 5. Form State for Reset Password & Reset Mock Data
   const [newPasswordVal, setNewPasswordVal] = useState("123");
+  const [isResetting, setIsResetting] = useState(false);
 
   // 6. Admin Login Form (if not logged in as Admin)
   const [adminUsernameInput, setAdminUsernameInput] = useState("admin");
@@ -379,6 +380,40 @@ export default function AdminDashboardPage() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  // Handle Reset Mock Data
+  const handleResetData = async () => {
+    const confirmed = window.confirm(
+      "⚠️ XÁC NHẬN DỌN DẸP DỮ LIỆU:\n\nThầy có chắc chắn muốn dọn sạch toàn bộ học sinh mẫu và lịch sử bài làm thử nghiệm?\n\n• Tài khoản Quản trị viên (Admin Thầy Luân) sẽ được BẢO LƯU tuyệt đối.\n• Toàn bộ học sinh và lịch sử làm bài sẽ được đưa về 0 để Thầy sẵn sàng thêm danh sách học sinh thật.\n\nBấm OK để tiếp tục dọn dẹp."
+    );
+    if (!confirmed) return;
+
+    setIsResetting(true);
+    setFormNotification(null);
+
+    try {
+      soundManager.playClick();
+      const res = await fetch("/api/admin/reset-data", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ purgeAllStudents: true }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Không thể dọn dẹp dữ liệu.");
+      }
+
+      soundManager.playSuccess();
+      setFormNotification({ type: "success", message: data.message });
+      await fetchData(selectedClass);
+    } catch (err: any) {
+      soundManager.playError();
+      setFormNotification({ type: "error", message: err.message || "Lỗi khi dọn dữ liệu." });
+    } finally {
+      setIsResetting(false);
+    }
   };
 
   // If Not Logged In as Admin, Show Secure Admin Authentication
@@ -741,6 +776,17 @@ export default function AdminDashboardPage() {
             >
               <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
               <span className="hidden sm:inline">Xuất Báo Cáo</span>
+            </button>
+
+            <button
+              onClick={handleResetData}
+              disabled={isResetting}
+              className="px-3 py-2 rounded-neu-sm bg-[#e6ecf5] hover:bg-rose-50 text-rose-700 font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1.5 border border-rose-300/60 cursor-pointer disabled:opacity-50"
+              title="Dọn sạch dữ liệu mẫu để sẵn sàng thêm tài khoản học sinh thật"
+            >
+              <Trash2 className={`w-3.5 h-3.5 text-rose-600 ${isResetting ? "animate-spin" : ""}`} />
+              <span className="hidden sm:inline">{isResetting ? "Đang dọn..." : "Dọn Dữ Liệu Mẫu"}</span>
+              <span className="sm:hidden">Dọn Mẫu</span>
             </button>
           </div>
         </div>

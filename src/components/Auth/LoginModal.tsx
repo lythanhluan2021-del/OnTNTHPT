@@ -131,7 +131,7 @@ export const LoginModal: React.FC = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder={roleMode === "student" ? "Ví dụ: hs12a1_01" : "admin"}
+              placeholder={roleMode === "student" ? "Nhập mã số học sinh..." : "admin"}
               className="w-full px-3.5 py-2.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
               autoFocus
             />
@@ -165,25 +165,19 @@ export const LoginModal: React.FC = () => {
           </button>
         </form>
 
-        {/* Nút nạp nhanh tài khoản mẫu để trải nghiệm */}
+        {/* Nút nạp nhanh tài khoản Quản trị viên */}
         <div className="pt-2 border-t border-slate-300/60 text-center space-y-2">
           <p className="text-[11px] text-slate-500 font-medium">
-            Tài khoản mẫu để thử nghiệm nhanh:
+            Học sinh đăng nhập bằng tài khoản và mật khẩu được Thầy/Cô cấp:
           </p>
           <div className="flex items-center justify-center gap-2">
             <button
               type="button"
-              onClick={() => handleQuickFill("hs12a1_01", "123", "student")}
-              className="text-[11px] font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-neu-sm shadow-neu-flat-xs active:shadow-neu-inset transition"
-            >
-              Học sinh: Nguyễn Văn An (12A1)
-            </button>
-            <button
-              type="button"
               onClick={() => handleQuickFill("admin", "admin", "admin")}
-              className="text-[11px] font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-2.5 py-1 rounded-neu-sm shadow-neu-flat-xs active:shadow-neu-inset transition"
+              className="text-[11px] font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-neu-sm shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1.5"
             >
-              Admin: Thầy Luân
+              <KeyRound className="w-3 h-3" />
+              <span>Quản trị viên: Thầy Lý Thành Luân</span>
             </button>
           </div>
         </div>

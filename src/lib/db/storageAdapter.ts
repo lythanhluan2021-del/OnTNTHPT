@@ -105,7 +105,7 @@ function safeWriteJson(dirPath: string, filePath: string, data: any): boolean {
   }
 }
 
-// Dữ liệu khởi tạo mặc định cho Admin và học sinh đại diện
+// Dữ liệu khởi tạo mặc định cho Admin (Không tạo học sinh giả lập)
 const INITIAL_USERS: User[] = [
   {
     id: "usr-admin",
@@ -117,146 +117,10 @@ const INITIAL_USERS: User[] = [
     createdAt: 1726000000000,
     lastLoginAt: Date.now(),
   },
-  {
-    id: "hs-12a1-01",
-    username: "hs12a1_01",
-    fullName: "Nguyễn Văn An",
-    role: "student",
-    className: "12A1",
-    schoolYear: "2026-2027",
-    isActive: true,
-    password: "123",
-    createdAt: 1726000000000,
-    lastLoginAt: Date.now() - 3600000,
-  },
-  {
-    id: "hs-12a1-02",
-    username: "hs12a1_02",
-    fullName: "Trần Thị Bích",
-    role: "student",
-    className: "12A1",
-    schoolYear: "2026-2027",
-    isActive: true,
-    password: "123",
-    createdAt: 1726000000000,
-    lastLoginAt: Date.now() - 7200000,
-  },
-  {
-    id: "hs-12a1-03",
-    username: "hs12a1_03",
-    fullName: "Lê Hoàng Long",
-    role: "student",
-    className: "12A1",
-    schoolYear: "2026-2027",
-    isActive: true,
-    password: "123",
-    createdAt: 1726000000000,
-    lastLoginAt: Date.now() - 1800000,
-  },
-  {
-    id: "hs-12a1-04",
-    username: "hs12a1_04",
-    fullName: "Phạm Minh Tuấn",
-    role: "student",
-    className: "12A1",
-    schoolYear: "2026-2027",
-    isActive: true,
-    password: "123",
-    createdAt: 1726000000000,
-    lastLoginAt: Date.now() - 86400000,
-  },
-  {
-    id: "hs-12a1-05",
-    username: "hs12a1_05",
-    fullName: "Võ Kim Ngân",
-    role: "student",
-    className: "12A1",
-    schoolYear: "2026-2027",
-    isActive: true,
-    password: "123",
-    createdAt: 1726000000000,
-  },
-  {
-    id: "hs-12a2-01",
-    username: "hs12a2_01",
-    fullName: "Đặng Quốc Bảo",
-    role: "student",
-    className: "12A2",
-    schoolYear: "2026-2027",
-    isActive: true,
-    password: "123",
-    createdAt: 1726000000000,
-    lastLoginAt: Date.now() - 14400000,
-  },
-  {
-    id: "hs-12a2-02",
-    username: "hs12a2_02",
-    fullName: "Huỳnh Mỹ Duyên",
-    role: "student",
-    className: "12A2",
-    schoolYear: "2026-2027",
-    isActive: true,
-    password: "123",
-    createdAt: 1726000000000,
-  },
-  {
-    id: "hs-12a3-01",
-    username: "hs12a3_01",
-    fullName: "Mai Tấn Tài",
-    role: "student",
-    className: "12A3",
-    schoolYear: "2026-2027",
-    isActive: true,
-    password: "123",
-    createdAt: 1726000000000,
-    lastLoginAt: Date.now() - 28800000,
-  },
-  {
-    id: "hs-12a3-02",
-    username: "hs12a3_02",
-    fullName: "Nguyễn Thùy Linh",
-    role: "student",
-    className: "12A3",
-    schoolYear: "2026-2027",
-    isActive: true,
-    password: "123",
-    createdAt: 1726000000000,
-  },
 ];
 
-// Dữ liệu làm bài mẫu khởi tạo
-const INITIAL_ATTEMPTS: StudentAttempt[] = [
-  // Nguyễn Văn An (12A1) - Học lực Xuất sắc
-  { id: "att-01", studentId: "hs-12a1-01", studentName: "Nguyễn Văn An", className: "12A1", questionId: "Q-TIN-AI-01", subjectId: "tin-hoc-12", topicId: "tin-ai-tri-tue-nhan-tao", selectedOption: "A", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 25, timestamp: Date.now() - 3600000 },
-  { id: "att-02", studentId: "hs-12a1-01", studentName: "Nguyễn Văn An", className: "12A1", questionId: "Q-TIN-AI-02", subjectId: "tin-hoc-12", topicId: "tin-ai-tri-tue-nhan-tao", selectedOption: "B", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 30, timestamp: Date.now() - 3500000 },
-  { id: "att-03", studentId: "hs-12a1-01", studentName: "Nguyễn Văn An", className: "12A1", questionId: "Q-TIN-AI-03", subjectId: "tin-hoc-12", topicId: "tin-ai-tri-tue-nhan-tao", selectedOption: "C", isCorrect: true, hintsViewed: 1, socraticQuestionsAsked: 1, timeSpentSeconds: 45, timestamp: Date.now() - 3400000 },
-  { id: "att-04", studentId: "hs-12a1-01", studentName: "Nguyễn Văn An", className: "12A1", questionId: "Q-TIN-PY-01", subjectId: "tin-hoc-12", topicId: "tin-lap-trinh-python", selectedOption: "B", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 20, timestamp: Date.now() - 3300000 },
-  { id: "att-05", studentId: "hs-12a1-01", studentName: "Nguyễn Văn An", className: "12A1", questionId: "Q-TIN-PY-02", subjectId: "tin-hoc-12", topicId: "tin-lap-trinh-python", selectedOption: "A", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 15, timestamp: Date.now() - 3200000 },
-  { id: "att-06", studentId: "hs-12a1-01", studentName: "Nguyễn Văn An", className: "12A1", questionId: "Q-TIN-PY-47", subjectId: "tin-hoc-12", topicId: "tin-lap-trinh-python", selectedOption: "B", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 25, timestamp: Date.now() - 3100000 },
-  { id: "att-07", studentId: "hs-12a1-01", studentName: "Nguyễn Văn An", className: "12A1", questionId: "Q-TIN-NET-01", subjectId: "tin-hoc-12", topicId: "tin-thiet-bi-giao-thuc-mang", selectedOption: "A", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 30, timestamp: Date.now() - 3000000 },
-  { id: "att-08", studentId: "hs-12a1-01", studentName: "Nguyễn Văn An", className: "12A1", questionId: "Q-TIN-NET-02", subjectId: "tin-hoc-12", topicId: "tin-thiet-bi-giao-thuc-mang", selectedOption: "C", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 22, timestamp: Date.now() - 2900000 },
-
-  // Trần Thị Bích (12A1) - Đạt chuẩn khá
-  { id: "att-09", studentId: "hs-12a1-02", studentName: "Trần Thị Bích", className: "12A1", questionId: "Q-TIN-AI-01", subjectId: "tin-hoc-12", topicId: "tin-ai-tri-tue-nhan-tao", selectedOption: "A", isCorrect: true, hintsViewed: 1, socraticQuestionsAsked: 0, timeSpentSeconds: 35, timestamp: Date.now() - 7200000 },
-  { id: "att-10", studentId: "hs-12a1-02", studentName: "Trần Thị Bích", className: "12A1", questionId: "Q-TIN-AI-02", subjectId: "tin-hoc-12", topicId: "tin-ai-tri-tue-nhan-tao", selectedOption: "A", isCorrect: false, hintsViewed: 2, socraticQuestionsAsked: 1, timeSpentSeconds: 60, timestamp: Date.now() - 7100000 },
-  { id: "att-11", studentId: "hs-12a1-02", studentName: "Trần Thị Bích", className: "12A1", questionId: "Q-TIN-PY-01", subjectId: "tin-hoc-12", topicId: "tin-lap-trinh-python", selectedOption: "B", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 25, timestamp: Date.now() - 7000000 },
-  { id: "att-12", studentId: "hs-12a1-02", studentName: "Trần Thị Bích", className: "12A1", questionId: "Q-TIN-PY-47", subjectId: "tin-hoc-12", topicId: "tin-lap-trinh-python", selectedOption: "B", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 30, timestamp: Date.now() - 6900000 },
-
-  // Lê Hoàng Long (12A1) - Chăm chỉ, tích cực
-  { id: "att-13", studentId: "hs-12a1-03", studentName: "Lê Hoàng Long", className: "12A1", questionId: "Q-TIN-AI-26", subjectId: "tin-hoc-12", topicId: "tin-ai-tri-tue-nhan-tao", selectedOption: "C", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 20, timestamp: Date.now() - 1800000 },
-  { id: "att-14", studentId: "hs-12a1-03", studentName: "Lê Hoàng Long", className: "12A1", questionId: "Q-TIN-NET-23", subjectId: "tin-hoc-12", topicId: "tin-thiet-bi-giao-thuc-mang", selectedOption: "C", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 18, timestamp: Date.now() - 1700000 },
-  { id: "att-15", studentId: "hs-12a1-03", studentName: "Lê Hoàng Long", className: "12A1", questionId: "Q-TIN-NET-36", subjectId: "tin-hoc-12", topicId: "tin-thiet-bi-giao-thuc-mang", selectedOption: "D", isCorrect: true, hintsViewed: 1, socraticQuestionsAsked: 1, timeSpentSeconds: 40, timestamp: Date.now() - 1600000 },
-
-  // Phạm Minh Tuấn (12A1) - Cần hỗ trợ phụ đạo (Điểm thấp)
-  { id: "att-16", studentId: "hs-12a1-04", studentName: "Phạm Minh Tuấn", className: "12A1", questionId: "Q-TIN-PY-01", subjectId: "tin-hoc-12", topicId: "tin-lap-trinh-python", selectedOption: "A", isCorrect: false, hintsViewed: 1, socraticQuestionsAsked: 0, timeSpentSeconds: 50, timestamp: Date.now() - 86400000 },
-  { id: "att-17", studentId: "hs-12a1-04", studentName: "Phạm Minh Tuấn", className: "12A1", questionId: "Q-TIN-PY-02", subjectId: "tin-hoc-12", topicId: "tin-lap-trinh-python", selectedOption: "C", isCorrect: false, hintsViewed: 2, socraticQuestionsAsked: 0, timeSpentSeconds: 65, timestamp: Date.now() - 86300000 },
-  { id: "att-18", studentId: "hs-12a1-04", studentName: "Phạm Minh Tuấn", className: "12A1", questionId: "Q-TIN-PY-47", subjectId: "tin-hoc-12", topicId: "tin-lap-trinh-python", selectedOption: "A", isCorrect: false, hintsViewed: 2, socraticQuestionsAsked: 2, timeSpentSeconds: 80, timestamp: Date.now() - 86200000 },
-  { id: "att-19", studentId: "hs-12a1-04", studentName: "Phạm Minh Tuấn", className: "12A1", questionId: "Q-TIN-AI-01", subjectId: "tin-hoc-12", topicId: "tin-ai-tri-tue-nhan-tao", selectedOption: "A", isCorrect: true, hintsViewed: 1, socraticQuestionsAsked: 0, timeSpentSeconds: 30, timestamp: Date.now() - 86100000 },
-
-  // Đặng Quốc Bảo (12A2) - Khá tốt
-  { id: "att-20", studentId: "hs-12a2-01", studentName: "Đặng Quốc Bảo", className: "12A2", questionId: "Q-TIN-NET-23", subjectId: "tin-hoc-12", topicId: "tin-thiet-bi-giao-thuc-mang", selectedOption: "C", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 22, timestamp: Date.now() - 14400000 },
-  { id: "att-21", studentId: "hs-12a2-01", studentName: "Đặng Quốc Bảo", className: "12A2", questionId: "Q-TIN-NET-36", subjectId: "tin-hoc-12", topicId: "tin-thiet-bi-giao-thuc-mang", selectedOption: "D", isCorrect: true, hintsViewed: 0, socraticQuestionsAsked: 0, timeSpentSeconds: 26, timestamp: Date.now() - 14300000 },
-];
+// Dữ liệu làm bài mặc định ban đầu (rỗng, sẵn sàng đón học sinh làm bài thật)
+const INITIAL_ATTEMPTS: StudentAttempt[] = [];
 
 export class StorageAdapter {
   static isCloudConnected(): boolean {
@@ -271,10 +135,30 @@ export class StorageAdapter {
       try {
         const remoteUsers = await redis.get<User[]>("thpt:users");
         if (remoteUsers && Array.isArray(remoteUsers) && remoteUsers.length > 0) {
+          // Tự động dọn dẹp các tài khoản học sinh mẫu (mock data cũ) nếu còn sót lại trong Redis
+          const mockUserIds = new Set([
+            "hs-12a1-01", "hs-12a1-02", "hs-12a1-03", "hs-12a1-04", "hs-12a1-05",
+            "hs-12a2-01", "hs-12a2-02", "hs-12a3-01", "hs-12a3-02",
+          ]);
+          const hasMock = remoteUsers.some(
+            (u) => mockUserIds.has(u.id) || (u.username.startsWith("hs12a") && u.createdAt === 1726000000000)
+          );
+          if (hasMock) {
+            const cleanedUsers = remoteUsers.filter(
+              (u) => !mockUserIds.has(u.id) && !(u.username.startsWith("hs12a") && u.createdAt === 1726000000000)
+            );
+            if (!cleanedUsers.some((u) => u.role === "admin")) {
+              cleanedUsers.unshift(INITIAL_USERS[0]);
+            }
+            await redis.set("thpt:users", cleanedUsers);
+            globalForStorage.ontnUsersCache = cleanedUsers;
+            return cleanedUsers;
+          }
+
           globalForStorage.ontnUsersCache = remoteUsers;
           return remoteUsers;
         } else {
-          // Lần đầu cắm Redis: Khởi tạo danh sách mẫu lên Redis
+          // Lần đầu cắm Redis: Khởi tạo danh sách mặc định lên Redis (chỉ có Admin)
           await redis.set("thpt:users", INITIAL_USERS);
           globalForStorage.ontnUsersCache = INITIAL_USERS;
           return INITIAL_USERS;
@@ -408,9 +292,22 @@ export class StorageAdapter {
       try {
         const remoteAttempts = await redis.get<StudentAttempt[]>("thpt:attempts");
         if (remoteAttempts && Array.isArray(remoteAttempts)) {
+          // Tự động dọn dẹp các lượt làm bài mock data cũ
+          const hasMock = remoteAttempts.some(
+            (a) => a.id.startsWith("att-") || (a.studentId ? a.studentId.startsWith("hs-12a") : false)
+          );
+          if (hasMock) {
+            const cleanedAttempts = remoteAttempts.filter(
+              (a) => !a.id.startsWith("att-") && !(a.studentId ? a.studentId.startsWith("hs-12a") : false)
+            );
+            await redis.set("thpt:attempts", cleanedAttempts);
+            globalForStorage.ontnAttemptsCache = cleanedAttempts;
+            return studentId ? cleanedAttempts.filter((a) => a.studentId === studentId) : cleanedAttempts;
+          }
+
           allAttempts = remoteAttempts;
         } else {
-          // Lần đầu cắm Redis: Khởi tạo attempts mẫu
+          // Khởi tạo attempts rỗng lên Redis
           await redis.set("thpt:attempts", INITIAL_ATTEMPTS);
           allAttempts = INITIAL_ATTEMPTS;
         }
@@ -486,6 +383,75 @@ export class StorageAdapter {
         safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), updated);
       }
     }
+  }
+
+  // =================== RESET & DỌN DẸP DỮ LIỆU ===================
+
+  /**
+   * Dọn sạch toàn bộ dữ liệu học sinh & bài làm thử nghiệm, bảo lưu tài khoản Quản trị viên (Admin)
+   */
+  static async resetMockData(purgeAllStudents: boolean = true): Promise<{ success: boolean; message: string; remainingUsers: number }> {
+    const currentUsers = await this.getUsers();
+    // Luôn bảo lưu tài khoản admin
+    let adminUsers = currentUsers.filter((u) => u.role === "admin");
+    if (adminUsers.length === 0) {
+      adminUsers = [INITIAL_USERS[0]];
+    }
+
+    let finalUsers: User[];
+    let finalAttempts: StudentAttempt[];
+
+    if (purgeAllStudents) {
+      // Xóa toàn bộ học sinh để thầy nạp lại từ đầu
+      finalUsers = adminUsers;
+      finalAttempts = [];
+    } else {
+      // Chỉ dọn các học sinh mẫu mock data cũ
+      const mockIds = new Set([
+        "hs-12a1-01", "hs-12a1-02", "hs-12a1-03", "hs-12a1-04", "hs-12a1-05",
+        "hs-12a2-01", "hs-12a2-02", "hs-12a3-01", "hs-12a3-02",
+      ]);
+      finalUsers = currentUsers.filter(
+        (u) => u.role === "admin" || (!mockIds.has(u.id) && !u.username.startsWith("hs12a"))
+      );
+      const allAttempts = await this.getAttempts();
+      finalAttempts = allAttempts.filter(
+        (a) => !a.id.startsWith("att-") && !(a.studentId && mockIds.has(a.studentId))
+      );
+    }
+
+    // Ghi đè RAM cache
+    globalForStorage.ontnUsersCache = finalUsers;
+    globalForStorage.ontnAttemptsCache = finalAttempts;
+
+    // Ghi đè Upstash Redis nếu có kết nối
+    const redis = getRedisClient();
+    if (redis) {
+      try {
+        await redis.set("thpt:users", finalUsers);
+        await redis.set("thpt:attempts", finalAttempts);
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi ghi reset lên Upstash Redis:", err);
+      }
+    }
+
+    // Ghi dự phòng vào /tmp
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), finalUsers);
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), finalAttempts);
+
+    // Ghi vào local nếu đang ở môi trường phát triển cục bộ
+    if (!IS_SERVERLESS) {
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), finalUsers);
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), finalAttempts);
+    }
+
+    return {
+      success: true,
+      message: purgeAllStudents
+        ? "Đã dọn sạch toàn bộ dữ liệu học sinh và bài làm mẫu. Hệ thống sẵn sàng tiếp nhận tài khoản học sinh mới!"
+        : "Đã dọn dẹp các tài khoản học sinh mẫu thử nghiệm thành công.",
+      remainingUsers: finalUsers.length,
+    };
   }
 
   // =================== AGGREGATIONS & PROGRESS ===================
