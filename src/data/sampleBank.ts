@@ -6,19 +6,19 @@ export const INITIAL_SUBJECTS: Subject[] = [
     name: "Tin học 12",
     icon: "Laptop",
     topics: [
-      // Tuần 2 - 6: Luyện tập NNLT Python (Tin học 10)
+      // Tuần 2 - 6: Luyện tập NNLT Python (Tin học 10) [10 tiết]
       {
         id: "tin-lap-trinh-python",
-        name: "Chuyên đề 10F: Lập trình cơ bản Python",
+        name: "Chuyên đề 10F: Luyện tập NNLT Python",
         subjectId: "tin-hoc-12",
-        chapter: "Phần 1: Lập trình cơ bản Python (Tuần 2 – 6)",
+        chapter: "Phần 1: Luyện tập NNLT Python (Tuần 2 – 6)",
         totalQuestions: 59,
         mcCount: 54,
         tfCount: 5,
         hasTheory: true,
       },
 
-      // Tuần 7: Ôn tập chủ đề 1 (Tin học 12) - Trí tuệ nhân tạo (AI)
+      // Tuần 7: Ôn tập chủ đề 1 (Tin học 12) - Trí tuệ nhân tạo (AI) [2 tiết]
       {
         id: "tin-ai-tri-tue-nhan-tao",
         name: "Chuyên đề 12A: Giới thiệu Trí tuệ Nhân tạo",
@@ -30,7 +30,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
         hasTheory: true,
       },
 
-      // Tuần 8 - 10: Mạng máy tính & Internet (Chuyên đề 12B)
+      // Tuần 8 - 10: Mạng máy tính & Internet (Chuyên đề 12B) [6 tiết]
       {
         id: "tin-thiet-bi-giao-thuc-mang",
         name: "Chuyên đề 12B: Mạng máy tính và Internet",
@@ -42,20 +42,20 @@ export const INITIAL_SUBJECTS: Subject[] = [
         hasTheory: true,
       },
 
-      // Tuần 11: Đạo đức, pháp luật & văn hoá số
+      // Tuần 11: Đạo đức, pháp luật & văn hoá số [2 tiết]
       {
         id: "tin-dao-duc-phap-luat-so",
-        name: "Giao tiếp và ứng xử trong không gian mạng",
+        name: "Ôn tập: Giao tiếp và ứng xử trong không gian mạng",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
         totalQuestions: 3,
         mcCount: 3,
       },
 
-      // Tuần 12 - 20: Tạo trang web với HTML & CSS
+      // Tuần 12 - 20: Tạo trang web với HTML & CSS [14 tiết - trừ Tuần 17 KTHK I]
       {
         id: "tin-html-cau-truc-dinh-dang",
-        name: "Bài 1: HTML và cấu trúc trang web",
+        name: "Bài 1: HTML và cấu trúc trang web (Tuần 12)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 4,
@@ -63,7 +63,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-html-dinh-dang-van-ban",
-        name: "Bài 2: Định dạng văn bản",
+        name: "Bài 2: Định dạng văn bản (Tuần 13)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
@@ -71,7 +71,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-html-danh-sach-bang",
-        name: "Bài 3: Tạo danh sách, bảng",
+        name: "Bài 3: Tạo danh sách, bảng (Tuần 14)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
@@ -79,7 +79,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-html-tao-lien-ket",
-        name: "Bài 4: Tạo liên kết",
+        name: "Bài 4: Tạo liên kết (Tuần 15)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
@@ -87,7 +87,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-html-da-phuong-tien-form",
-        name: "Bài 5: Chèn tệp tin đa phương tiện và khung nội tuyến",
+        name: "Bài 5: Chèn tệp tin đa phương tiện và khung nội tuyến (Tuần 16)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 4,
@@ -95,7 +95,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-html-bieu-mau-form",
-        name: "Bài 6: Tạo biểu mẫu (Form)",
+        name: "Bài 6: Tạo biểu mẫu (Form) (Tuần 18)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
@@ -103,7 +103,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-css-khai-niem-vai-tro",
-        name: "Bài 7: Khái niệm & vai trò của CSS",
+        name: "Bài 7: Khái niệm, vai trò của CSS; Định dạng văn bản & Màu sắc (Tuần 19)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
@@ -111,17 +111,17 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-css-bo-chon-dinh-dang",
-        name: "Bài 8: Định dạng khung và các mức ưu tiên bộ chọn",
+        name: "Bài 8: Định dạng khung, các mức ưu tiên của bộ chọn (Tuần 20)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 4,
         mcCount: 4,
       },
 
-      // Tuần 21 - 23: Hướng nghiệp với tin học
+      // Tuần 21 - 23: Hướng nghiệp với tin học [6 tiết]
       {
         id: "tin-huong-nghiep-dich-vu",
-        name: "Hướng nghiệp với tin học (Lớp 10, 11, 12)",
+        name: "Hướng nghiệp với tin học (Tin học 10, 11, 12) (Tuần 21)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
         totalQuestions: 3,
@@ -129,37 +129,39 @@ export const INITIAL_SUBJECTS: Subject[] = [
       },
       {
         id: "tin-huong-nghiep-ict",
-        name: "Hướng nghiệp ngành ICT",
+        name: "Ôn tập chủ đề 6,7 _ICT (Tin học 12) (Tuần 22 – 23)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
         totalQuestions: 4,
         mcCount: 4,
       },
 
-      // Tuần 26 - 29: Cơ sở dữ liệu lớp 11
+      // Tuần 24 - 25: Luyện giải đề thi tốt nghiệp THPT [4 tiết]
+      {
+        id: "tin-giai-de-tong-hop",
+        name: "Ôn tập giải đề tổng hợp (Tuần 24 – 25)",
+        subjectId: "tin-hoc-12",
+        chapter: "Luyện giải đề thi tốt nghiệp THPT (Tuần 24 – 25)",
+        totalQuestions: 4,
+        mcCount: 4,
+      },
+
+      // Tuần 26 - 29: Cơ sở dữ liệu quan hệ (Tin học 11) [8 tiết]
       {
         id: "tin-co-so-du-lieu-sql",
-        name: "Hệ quản trị CSDL quan hệ và SQL",
+        name: "Ôn thi TN.THPT: Chủ đề CSDL lớp 11 (Tuần 26 – 29)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
         totalQuestions: 4,
         mcCount: 4,
       },
 
-      // Tuần 24 - 25 & 30 - 35: Luyện giải đề tổng hợp & Đề mẫu
-      {
-        id: "tin-giai-de-tong-hop",
-        name: "Giải đề tổng hợp",
-        subjectId: "tin-hoc-12",
-        chapter: "Luyện giải đề thi tốt nghiệp THPT (Tuần 24 – 25 & 30 – 35)",
-        totalQuestions: 4,
-        mcCount: 4,
-      },
+      // Tuần 30 - 35: Luyện giải đề mẫu chuẩn tốt nghiệp [10 tiết - trừ Tuần 33 KTHK II]
       {
         id: "tin-giai-de-mau",
-        name: "Giải đề mẫu chuẩn tốt nghiệp THPT",
+        name: "Giải đề mẫu chuẩn tốt nghiệp THPT (Tuần 30 – 35)",
         subjectId: "tin-hoc-12",
-        chapter: "Luyện giải đề thi tốt nghiệp THPT (Tuần 24 – 25 & 30 – 35)",
+        chapter: "Luyện giải đề mẫu chuẩn tốt nghiệp (Tuần 30 – 35)",
         totalQuestions: 4,
         mcCount: 4,
       },

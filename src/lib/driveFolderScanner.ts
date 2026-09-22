@@ -121,7 +121,15 @@ function matchFileToExistingTopic(
 ): { topicId: string; topicName: string; chapterName: string; isMatched: boolean } {
   const norm = normalizeVietnamese(fileName);
 
-  // 1. Chuyên đề 12A / Trí tuệ nhân tạo
+  // 0. Chuyên đề 10F / Luyện tập NNLT Python (Tin học 10)
+  if (norm.includes("10f") || norm.includes("python") || norm.includes("lap trinh co ban")) {
+    const found = existingTopics.find((t) => t.id === "tin-lap-trinh-python");
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // 1. Chuyên đề 12A / Trí tuệ nhân tạo (Tin học 12)
   if (norm.includes("12a") || norm.includes("tri tue nhan tao") || norm.includes("ai")) {
     const found = existingTopics.find((t) => t.id === "tin-ai-tri-tue-nhan-tao");
     if (found) {
@@ -129,8 +137,8 @@ function matchFileToExistingTopic(
     }
   }
 
-  // 2. Chuyên đề 12B / Thiết bị mạng & Giao thức mạng
-  if (norm.includes("12b") || norm.includes("thiet bi mang") || norm.includes("giao thuc") || norm.includes("tcp")) {
+  // 2. Chuyên đề 12B / Mạng máy tính và Internet (Tin học 12)
+  if (norm.includes("12b") || norm.includes("thiet bi mang") || norm.includes("giao thuc") || norm.includes("mang may tinh") || norm.includes("tcp")) {
     const found = existingTopics.find((t) => t.id === "tin-thiet-bi-giao-thuc-mang");
     if (found) {
       return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };

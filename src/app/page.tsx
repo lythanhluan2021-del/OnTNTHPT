@@ -59,64 +59,72 @@ export default function AppHome() {
     totalImported: INITIAL_QUESTIONS.length,
   });
 
-  // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage nếu có (bảo toàn cấu trúc bài học)
+  // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage với cơ chế kiểm soát phiên bản chuẩn KH GD1
   useEffect(() => {
     try {
-      const savedAttempts = localStorage.getItem("thpt_attempts");
-      if (savedAttempts) {
-        setAttempts(JSON.parse(savedAttempts));
-      }
-      const savedQuestions = localStorage.getItem("thpt_custom_questions");
-      if (savedQuestions) {
-        const parsedQ = JSON.parse(savedQuestions);
-        if (Array.isArray(parsedQ) && parsedQ.length > 0) {
-          const initIds = new Set(INITIAL_QUESTIONS.map((q) => q.id));
-          const initTopics = new Set(INITIAL_QUESTIONS.map((q) => q.topicId));
-          // Chỉ lấy các câu hỏi custom từ file mới mà chủ đề chưa có sẵn bộ chuẩn trong INITIAL_QUESTIONS
-          const validCustom = parsedQ.filter(
-            (q: any) => !initIds.has(q.id) && !initTopics.has(q.topicId)
-          );
-          setQuestions([
-            ...INITIAL_QUESTIONS,
-            ...validCustom,
-          ]);
-          // Cập nhật lại cache sạch để trình duyệt không bị đúp câu hỏi cũ
-          localStorage.setItem("thpt_custom_questions", JSON.stringify(validCustom));
-        }
-      }
-      const savedSubjects = localStorage.getItem("thpt_custom_subjects");
-      if (savedSubjects) {
-        const parsedS = JSON.parse(savedSubjects);
-        if (
-          Array.isArray(parsedS) &&
-          parsedS.length > 0 &&
-          parsedS.some((s: any) => s.topics && s.topics.length > 0)
-        ) {
-          // Gộp với INITIAL_SUBJECTS để luôn cập nhật đầy đủ các chủ đề theo kế hoạch ôn tập mới
-          const merged = INITIAL_SUBJECTS.map((initSubj) => {
-            const found = parsedS.find((s: any) => s.id === initSubj.id);
-            if (found && found.topics && found.topics.length > 0) {
-              const updatedTopics = [
-                ...initSubj.topics.map((initTop) => {
+      const STRUCTURE_VERSION = "2026_GD1_V4_OFFICIAL";
+      const currentVer = localStorage.getItem("thpt_structure_version");
+
+      if (currentVer !== STRUCTURE_VERSION) {
+        // Tự động dọn sạch cache cũ chứa các mục con bị tách rời để nạp chuẩn 100% theo KH GD1
+        localStorage.removeItem("thpt_custom_subjects");
+        localStorage.setItem("thpt_structure_version", STRUCTURE_VERSION);
+        setSubjects(INITIAL_SUBJECTS);
+      } else {
+        const savedSubjects = localStorage.getItem("thpt_custom_subjects");
+        if (savedSubjects) {
+          const parsedS = JSON.parse(savedSubjects);
+          if (Array.isArray(parsedS) && parsedS.length > 0) {
+            // Chỉ cập nhật số lượng câu hỏi nếu có file mới từ Drive, KHÔNG BAO GIỜ append các topic lạ/cũ
+            const merged = INITIAL_SUBJECTS.map((initSubj) => {
+              const found = parsedS.find((s: any) => s.id === initSubj.id);
+              if (found && found.topics && found.topics.length > 0) {
+                const updatedTopics = initSubj.topics.map((initTop) => {
                   const foundTop = found.topics.find((t: any) => t.id === initTop.id);
                   if (foundTop && (foundTop.totalQuestions || 0) > initTop.totalQuestions) {
                     return { ...initTop, totalQuestions: foundTop.totalQuestions };
                   }
                   return initTop;
-                }),
-                ...found.topics.filter(
-                  (t: any) => !initSubj.topics.some((it) => it.id === t.id)
-                ),
-              ];
-              return { ...found, topics: updatedTopics };
-            }
-            return initSubj;
+                });
+                return { ...initSubj, topics: updatedTopics };
+              }
+              return initSubj;
+            });
+            setSubjects(merged);
+          }
+        }
+      }
+
+      // Nạp lịch sử làm bài và tự động map các topicId cũ nếu có
+      const savedAttempts = localStorage.getItem("thpt_attempts");
+      if (savedAttempts) {
+        const parsedAttempts = JSON.parse(savedAttempts);
+        if (Array.isArray(parsedAttempts)) {
+          const normalizedAttempts = parsedAttempts.map((att: any) => {
+            if (att.topicId === "tin-ai-dung-sai") return { ...att, topicId: "tin-ai-tri-tue-nhan-tao" };
+            if (att.topicId === "tin-python-dung-sai") return { ...att, topicId: "tin-lap-trinh-python" };
+            if (att.topicId === "tin-mang-dung-sai") return { ...att, topicId: "tin-thiet-bi-giao-thuc-mang" };
+            return att;
           });
-          setSubjects(merged);
-        } else {
-          // Xóa cache rỗng không hợp lệ
-          localStorage.removeItem("thpt_custom_subjects");
-          setSubjects(INITIAL_SUBJECTS);
+          setAttempts(normalizedAttempts);
+        }
+      }
+
+      // Nạp câu hỏi tùy chỉnh (loại trừ ID trùng và map ID chuẩn)
+      const savedQuestions = localStorage.getItem("thpt_custom_questions");
+      if (savedQuestions) {
+        const parsedQ = JSON.parse(savedQuestions);
+        if (Array.isArray(parsedQ) && parsedQ.length > 0) {
+          const initIds = new Set(INITIAL_QUESTIONS.map((q) => q.id));
+          const normalizedQ = parsedQ.map((q: any) => {
+            if (q.topicId === "tin-ai-dung-sai") return { ...q, topicId: "tin-ai-tri-tue-nhan-tao" };
+            if (q.topicId === "tin-python-dung-sai") return { ...q, topicId: "tin-lap-trinh-python" };
+            if (q.topicId === "tin-mang-dung-sai") return { ...q, topicId: "tin-thiet-bi-giao-thuc-mang" };
+            return q;
+          }).filter((q: any) => !initIds.has(q.id));
+
+          setQuestions([...INITIAL_QUESTIONS, ...normalizedQ]);
+          localStorage.setItem("thpt_custom_questions", JSON.stringify(normalizedQ));
         }
       }
     } catch {
@@ -460,9 +468,16 @@ export default function AppHome() {
       const mergedSubjects = INITIAL_SUBJECTS.map((initSubj) => {
         const found = scannedSubjects.find((s: any) => s.id === initSubj.id);
         if (found && found.topics && found.topics.length > 0) {
+          const updatedTopics = initSubj.topics.map((initTop) => {
+            const foundTop = found.topics.find((t: any) => t.id === initTop.id);
+            if (foundTop && (foundTop.totalQuestions || 0) > initTop.totalQuestions) {
+              return { ...initTop, totalQuestions: foundTop.totalQuestions };
+            }
+            return initTop;
+          });
           return {
             ...initSubj,
-            topics: found.topics,
+            topics: updatedTopics,
           };
         }
         return initSubj;
