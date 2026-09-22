@@ -20,20 +20,47 @@ const globalForStorage = globalThis as unknown as {
   ontnRedisClient?: Redis | null;
 };
 
-// Khởi tạo Upstash Redis Client (Tự động nhận diện cả UPSTASH_REDIS_REST_* và KV_REST_API_* từ Vercel)
+// Tự động nhận diện linh hoạt mọi tiền tố do Vercel sinh ra (KV_, STORAGE_, UPSTASH_)
+function getRedisCredentials(): { url?: string; token?: string } {
+  let url =
+    process.env.KV_REST_API_URL ||
+    process.env.UPSTASH_REDIS_REST_URL ||
+    process.env.STORAGE_REST_API_URL ||
+    process.env.STORAGE_KV_REST_API_URL ||
+    process.env.STORAGE_URL;
+
+  let token =
+    process.env.KV_REST_API_TOKEN ||
+    process.env.UPSTASH_REDIS_REST_TOKEN ||
+    process.env.STORAGE_REST_API_TOKEN ||
+    process.env.STORAGE_KV_REST_API_TOKEN ||
+    process.env.STORAGE_TOKEN;
+
+  if (!url || !token) {
+    for (const [k, v] of Object.entries(process.env)) {
+      if (typeof v === "string" && v.startsWith("https://")) {
+        if (k.includes("REST_API_URL") || k.includes("REDIS_REST_URL") || k.includes("KV_REST_URL")) {
+          url = url || v.trim();
+        }
+      }
+      if (typeof v === "string" && (k.includes("REST_API_TOKEN") || k.includes("REDIS_TOKEN") || k.includes("KV_TOKEN"))) {
+        if (!k.includes("READ_ONLY")) {
+          token = token || v.trim();
+        }
+      }
+    }
+  }
+
+  return { url, token };
+}
+
+// Khởi tạo Upstash Redis Client
 function getRedisClient(): Redis | null {
   if (globalForStorage.ontnRedisClient !== undefined) {
     return globalForStorage.ontnRedisClient;
   }
 
-  const url =
-    process.env.UPSTASH_REDIS_REST_URL ||
-    process.env.KV_REST_API_URL ||
-    process.env.NEXT_PUBLIC_UPSTASH_REDIS_REST_URL;
-  const token =
-    process.env.UPSTASH_REDIS_REST_TOKEN ||
-    process.env.KV_REST_API_TOKEN ||
-    process.env.NEXT_PUBLIC_UPSTASH_REDIS_REST_TOKEN;
+  const { url, token } = getRedisCredentials();
 
   if (url && token) {
     try {
