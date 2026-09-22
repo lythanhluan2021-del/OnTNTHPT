@@ -155,7 +155,13 @@ function matchFileToExistingTopic(
 
   // 4. Chuyên đề 12F / HTML & CSS
   if (norm.includes("12f") || norm.includes("html") || norm.includes("web") || norm.includes("css")) {
-    const found = existingTopics.find((t) => t.id.includes("html") || t.id.includes("css"));
+    const found = existingTopics.find(
+      (t) =>
+        t.id === "tin-chuyen-de-12f-web" ||
+        t.id.includes("html") ||
+        t.id.includes("css") ||
+        t.id.includes("12f")
+    );
     if (found) {
       return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
     }
@@ -230,13 +236,13 @@ export function parseTextDocumentQuestions(
       continue;
     }
     if (
-      /2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI/i.test(rawLine) ||
+      /2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG\s*[\/\s]\s*SAI/i.test(rawLine) ||
       /PHẦN II/i.test(rawLine) ||
-      /2\.\s*CÂU TRẮC NGHIỆM ĐÚNG SAI/i.test(rawLine)
+      /2\.\s*CÂU TRẮC NGHIỆM ĐÚNG\s*[\/\s]\s*SAI/i.test(rawLine)
     ) {
       if (currentGroup) groups.push(currentGroup);
       currentGroup = null;
-      break; // Ưu tiên phần trắc nghiệm nhiều lựa chọn
+      break; // Kết thúc phần trắc nghiệm nhiều lựa chọn
     }
 
     // Phát hiện câu hỏi mới: "Câu 1.", "Câu 1:", "Câu 1(B1-NB):"
@@ -258,7 +264,7 @@ export function parseTextDocumentQuestions(
   }
   if (currentGroup) groups.push(currentGroup);
 
-  // 2. Phân tích từng câu hỏi với bộ tìm phương án tuần tự (A -> B -> C -> D)
+  // 2. Phân tích từng câu hỏi trắc nghiệm 4 lựa chọn (A -> B -> C -> D)
   for (const g of groups) {
     const firstLine = g.lines[0];
     const headerMatch = firstLine.match(/^(?:__U__)?Câu\s+\d+(?:\s*\([^)]*\))?[\s.:]+/i);
@@ -271,7 +277,6 @@ export function parseTextDocumentQuestions(
     let searchPos = 0;
 
     for (const target of expectedLetters) {
-      // Regex hỗ trợ __U__ trước/sau ký tự hoặc bao quanh dấu chấm/ngoặc
       const p = new RegExp(
         `(?:__U__|__EU__|\\s)*${target}(?:__U__|__EU__|\\s)*[.):](?:__U__|__EU__|\\s)*`,
         "i"
@@ -350,6 +355,7 @@ export function parseTextDocumentQuestions(
       topicName,
       chapterName,
       difficulty: g.level,
+      type: "multiple_choice",
       content: cleanHeader,
       options: [
         { id: "A", content: cleanOptA },
@@ -366,6 +372,115 @@ export function parseTextDocumentQuestions(
       explanation: `Câu hỏi bóc tách từ tài liệu "${fileName}". Phân tích nội dung để chọn phương án đúng nhất theo chuẩn chương trình THPT.`,
       sourceDocTitle: `${fileName} (Google Drive)`,
     });
+  }
+
+  // 3. Phân tích phần 2: Câu hỏi trắc nghiệm Đúng / Sai (nếu có)
+  const part2Match =
+    docText.match(/2\.\s*Câu hỏi trắc nghiệm Đúng\s*[\/\s]\s*Sai[^\n]*/i) ||
+    docText.match(/2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG\s*[\/\s]\s*SAI[^\n]*/i) ||
+    docText.match(/PHẦN II[^\n]*/i);
+
+  if (part2Match && part2Match.index !== undefined) {
+    const part2Text = docText.slice(part2Match.index);
+    const p2Split = part2Text.replace(
+      /(?<=[^\n])(?=(?:__U__)?Câu\s+\d+(?:\s*\([^)]*\))?[\s.:])/gi,
+      "\n"
+    );
+    const linesP2 = p2Split.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+
+    const tfGroups: { qNum: number; lines: string[] }[] = [];
+    let curTF: { qNum: number; lines: string[] } | null = null;
+
+    for (const line of linesP2) {
+      if (/2\.\s*Câu hỏi trắc nghiệm Đúng[\/\s]Sai/i.test(line) || /PHẦN II/i.test(line)) continue;
+      const clean = line.replace(/__U__|__EU__/g, "").trim();
+      const qMatch = clean.match(/^Câu\s*(\d+)[\s.:]+([\s\S]*)/i);
+      if (qMatch) {
+        if (curTF) tfGroups.push(curTF);
+        curTF = {
+          qNum: parseInt(qMatch[1], 10),
+          lines: [line],
+        };
+        continue;
+      }
+      if (curTF) curTF.lines.push(line);
+    }
+    if (curTF) tfGroups.push(curTF);
+
+    const itemRegex = /^(?:__U__)?([a-dA-D])(?:[.)]|\s{2,})(?:__EU__)?\s*([\s\S]*)/;
+
+    for (const g of tfGroups) {
+      const headerLines: string[] = [];
+      const items: { id: "a" | "b" | "c" | "d"; content: string; correctAnswer: boolean }[] = [];
+
+      for (let i = 0; i < g.lines.length; i++) {
+        const l = g.lines[i];
+        if (i === 0) {
+          const hRest = l.replace(/^(?:__U__)?Câu\s+\d+[\s.:]+/i, "").trim();
+          if (hRest) headerLines.push(hRest);
+          continue;
+        }
+
+        const match = l.match(itemRegex);
+        if (match) {
+          const letter = match[1].toLowerCase() as "a" | "b" | "c" | "d";
+          const rawItemContent = match[2];
+          const isUnderlineToken = /__U__[a-dA-D][.)]__EU__/.test(l);
+          const isUnderlineDung = /__U__\s*Đúng\s*__EU__/i.test(l);
+          const endsWithD = /[\s\t]+Đ$/i.test(l.trim());
+          const hasDung = isUnderlineToken || isUnderlineDung || endsWithD;
+
+          const cleanItemContent = rawItemContent
+            .replace(/__U__|__EU__/g, "")
+            .replace(/[\s\t]+(Đúng|Sai|[ĐS])$/i, "")
+            .trim();
+
+          items.push({
+            id: letter,
+            content: cleanItemContent,
+            correctAnswer: Boolean(hasDung),
+          });
+        } else {
+          if (items.length === 0) {
+            headerLines.push(l.replace(/__U__|__EU__/g, "").trim());
+          } else {
+            const last = items[items.length - 1];
+            last.content += "\n" + l.replace(/__U__|__EU__/g, "").trim();
+          }
+        }
+      }
+
+      if (items.length >= 4) {
+        const qId = `Q-${subjectId.toUpperCase().slice(0, 3)}-TF-${Date.now().toString().slice(-4)}-${g.qNum}`;
+        const scenario = headerLines.join("\n").trim();
+        const tf4 = items.slice(0, 4).map((it, idx) => ({
+          id: ["a", "b", "c", "d"][idx] as "a" | "b" | "c" | "d",
+          content: it.content,
+          correctAnswer: it.correctAnswer,
+        }));
+
+        questions.push({
+          id: qId,
+          subjectId,
+          topicId,
+          topicName,
+          chapterName,
+          difficulty: "VanDung",
+          type: "true_false",
+          content: scenario,
+          tfItems: tf4,
+          hints: {
+            level1_concept: `Phân tích tình huống thực tế và các yêu cầu kỹ thuật trong bài học "${topicName}".`,
+            level2_formula: `Kiểm tra từng phát biểu a, b, c, d xem có thỏa mãn các quy tắc hoặc cú pháp kỹ thuật hay không.`,
+            level3_steps: `Đánh giá tính đúng/sai của từng phương án: đối chiếu với kiến thức trọng tâm để xác nhận Đúng hoặc Sai.`,
+          },
+          explanation:
+            `Đáp án chi tiết từng mệnh đề:\n` +
+            tf4.map((it) => `- Ý ${it.id}) : ${it.correctAnswer ? "Đúng" : "Sai"}`).join("\n"),
+          sourceDocTitle: `${fileName} (Google Drive)`,
+        });
+      }
+    }
   }
 
   return questions;

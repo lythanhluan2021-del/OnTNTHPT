@@ -52,70 +52,16 @@ export const INITIAL_SUBJECTS: Subject[] = [
         mcCount: 3,
       },
 
-      // Tuần 12 - 20: Tạo trang web với HTML & CSS [14 tiết - trừ Tuần 17 KTHK I]
+      // Tuần 12 - 20: Tạo trang web với HTML & CSS (Chuyên đề 12F) [14 tiết - trừ Tuần 17 KTHK I]
       {
-        id: "tin-html-cau-truc-dinh-dang",
-        name: "Bài 1: HTML và cấu trúc trang web (Tuần 12)",
+        id: "tin-chuyen-de-12f-web",
+        name: "Chuyên đề 12F: Tạo trang web với HTML & CSS",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
-        totalQuestions: 4,
-        mcCount: 4,
-      },
-      {
-        id: "tin-html-dinh-dang-van-ban",
-        name: "Bài 2: Định dạng văn bản (Tuần 13)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
-        totalQuestions: 3,
-        mcCount: 3,
-      },
-      {
-        id: "tin-html-danh-sach-bang",
-        name: "Bài 3: Tạo danh sách, bảng (Tuần 14)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
-        totalQuestions: 3,
-        mcCount: 3,
-      },
-      {
-        id: "tin-html-tao-lien-ket",
-        name: "Bài 4: Tạo liên kết (Tuần 15)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
-        totalQuestions: 3,
-        mcCount: 3,
-      },
-      {
-        id: "tin-html-da-phuong-tien-form",
-        name: "Bài 5: Chèn tệp tin đa phương tiện và khung nội tuyến (Tuần 16)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
-        totalQuestions: 4,
-        mcCount: 4,
-      },
-      {
-        id: "tin-html-bieu-mau-form",
-        name: "Bài 6: Tạo biểu mẫu (Form) (Tuần 18)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
-        totalQuestions: 3,
-        mcCount: 3,
-      },
-      {
-        id: "tin-css-khai-niem-vai-tro",
-        name: "Bài 7: Khái niệm, vai trò của CSS; Định dạng văn bản & Màu sắc (Tuần 19)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
-        totalQuestions: 3,
-        mcCount: 3,
-      },
-      {
-        id: "tin-css-bo-chon-dinh-dang",
-        name: "Bài 8: Định dạng khung, các mức ưu tiên của bộ chọn (Tuần 20)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
-        totalQuestions: 4,
-        mcCount: 4,
+        totalQuestions: 146,
+        mcCount: 132,
+        tfCount: 14,
+        hasTheory: true,
       },
 
       // Tuần 21 - 23: Hướng nghiệp với tin học [6 tiết]
@@ -8892,5 +8838,5303 @@ export const INITIAL_QUESTIONS: Question[] = [
     },
     "explanation": "Câu hỏi bóc tách từ tài liệu Chuyên đề 12B. Phương án đúng: C theo chuẩn chương trình THPT.",
     "sourceDocTitle": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng.docx (Google Drive)"
-  }
+  },
+{
+  "id": "Q-TIN-12F-MC-01",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Trong các khai báo cấu trúc văn bản HTML sau, khai báo nào đúng cú pháp.",
+  "options": [
+    {
+      "id": "A",
+      "content": "<html> <head> <title> </title> </head> <body> </body> < /html>"
+    },
+    {
+      "id": "B",
+      "content": "<html> <head> </head> <body> <title> </title> </body> < /html>"
+    },
+    {
+      "id": "C",
+      "content": "<html> <head> <title> <body> </body> </title> </head> < /html>"
+    },
+    {
+      "id": "D",
+      "content": "<html> <body> <title> <head> </head> </title> </body> < /html>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-02",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phần tử nào sau đây được sử dụng để khai báo phần nội dung của trang web?",
+  "options": [
+    {
+      "id": "A",
+      "content": "body"
+    },
+    {
+      "id": "B",
+      "content": "html"
+    },
+    {
+      "id": "C",
+      "content": "head"
+    },
+    {
+      "id": "D",
+      "content": "meta"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-03",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Để tạo đoạn văn bản trong ngôn ngữ đánh dấu siêu văn bản HTML thì ta sử dụng cấu trúc nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<p> Văn bản </p>"
+    },
+    {
+      "id": "B",
+      "content": "</p> Văn bản <p>"
+    },
+    {
+      "id": "C",
+      "content": "(p) Văn bản (/p)"
+    },
+    {
+      "id": "D",
+      "content": "<p> Văn bản <\\p>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-04",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào sau đây được dùng để khai báo tạo danh sách xác định thứ tự?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<ol>"
+    },
+    {
+      "id": "B",
+      "content": "<li>"
+    },
+    {
+      "id": "C",
+      "content": "<ul>"
+    },
+    {
+      "id": "D",
+      "content": "<h1>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-05",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào sau đây được dùng để khai báo tạo danh sách không xác định thứ tự?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<ol>"
+    },
+    {
+      "id": "B",
+      "content": "<li>"
+    },
+    {
+      "id": "C",
+      "content": "<ul>"
+    },
+    {
+      "id": "D",
+      "content": "<h1>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-06",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thuộc tính nào sau đây được sử dụng để khai báo việc chèn hình ảnh vào trang web??",
+  "options": [
+    {
+      "id": "A",
+      "content": "<img>"
+    },
+    {
+      "id": "B",
+      "content": "<picture>"
+    },
+    {
+      "id": "C",
+      "content": "<jpg>"
+    },
+    {
+      "id": "D",
+      "content": "<image>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-07",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thuộc tính nào sau đây được sử dụng để khai báo việc chèn âm thanh vào trang web?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<img>"
+    },
+    {
+      "id": "B",
+      "content": "<mp3>"
+    },
+    {
+      "id": "C",
+      "content": "<video>"
+    },
+    {
+      "id": "D",
+      "content": "<audio>"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-08",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào sau đây tạo ra một hộp kiểm/ô lựa chọn?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<check>"
+    },
+    {
+      "id": "B",
+      "content": "<checkbox>"
+    },
+    {
+      "id": "C",
+      "content": "<input type = “check ’’>"
+    },
+    {
+      "id": "D",
+      "content": "<input type = ‘'checkbox'’>"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-09",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "CSS là viết tắt của cụm từ nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Creative Style Sheets."
+    },
+    {
+      "id": "B",
+      "content": "Cascading Style Scripts."
+    },
+    {
+      "id": "C",
+      "content": "Cascading Style Sheets."
+    },
+    {
+      "id": "D",
+      "content": "Computer Style Syntax."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-10",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thuộc tính nào sau đây được sử dụng để xác định kích thước của font chữ trong css?",
+  "options": [
+    {
+      "id": "A",
+      "content": "font-size."
+    },
+    {
+      "id": "B",
+      "content": "text-size."
+    },
+    {
+      "id": "C",
+      "content": "size."
+    },
+    {
+      "id": "D",
+      "content": "font-style."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-11",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "HTML là viết tắt củ",
+  "options": [
+    {
+      "id": "A",
+      "content": "A. HyperText Markup Language"
+    },
+    {
+      "id": "B",
+      "content": "Hyperlink and Text Markup Language"
+    },
+    {
+      "id": "C",
+      "content": "HyperText Multi-language"
+    },
+    {
+      "id": "D",
+      "content": "HyperText Media Language"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-12",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Ngôn ngữ đánh dấu siêu văn bản (HTML) được sử dụng chủ yếu để làm gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tạo bảng tính"
+    },
+    {
+      "id": "B",
+      "content": "Tạo trang web"
+    },
+    {
+      "id": "C",
+      "content": "Lập trình ứng dụng"
+    },
+    {
+      "id": "D",
+      "content": "Xử lý dữ liệu"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-13",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Trong HTML, dấu “/” trong thẻ có ý nghĩa gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Đánh dấu phần tử bị lỗi"
+    },
+    {
+      "id": "B",
+      "content": "Kết thúc thẻ"
+    },
+    {
+      "id": "C",
+      "content": "Bắt đầu thẻ"
+    },
+    {
+      "id": "D",
+      "content": "Chỉ thị kiểu chữ"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-14",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Tên thẻ HTML có phân biệt chữ hoa và chữ thường không?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Có phân biệt"
+    },
+    {
+      "id": "B",
+      "content": "Không phân biệt"
+    },
+    {
+      "id": "C",
+      "content": "Chỉ phân biệt trong các trình duyệt khác nhau"
+    },
+    {
+      "id": "D",
+      "content": "Phân biệt trong các phiên bản khác nhau"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-15",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phần nào của tài liệu HTML chứa nội dung sẽ hiển thị trên màn hình của trình duyệt web?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phần đầu"
+    },
+    {
+      "id": "B",
+      "content": "Phần chân"
+    },
+    {
+      "id": "C",
+      "content": "Phần thân"
+    },
+    {
+      "id": "D",
+      "content": "Phần meta"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-16",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Dòng đầu tiên của văn bản HTML thường là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tiêu đề của trang web"
+    },
+    {
+      "id": "B",
+      "content": "Doctype"
+    },
+    {
+      "id": "C",
+      "content": "Nội dung của trang web"
+    },
+    {
+      "id": "D",
+      "content": "Siêu dữ liệu"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-17",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Khi soạn thảo văn bản HTML trong Sublime Text, bạn nên lưu tệp với định dạng nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": ".txt"
+    },
+    {
+      "id": "B",
+      "content": ".html"
+    },
+    {
+      "id": "C",
+      "content": ".docx"
+    },
+    {
+      "id": "D",
+      "content": ".xml"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-18",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "HTML hỗ trợ bao nhiêu cấp tiêu đề mục từ lớn đến nhỏ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "3"
+    },
+    {
+      "id": "B",
+      "content": "4"
+    },
+    {
+      "id": "C",
+      "content": "5"
+    },
+    {
+      "id": "D",
+      "content": "6"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-19",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phần tử <a> trong HTML được sử dụng để làm gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tạo các đoạn văn bản"
+    },
+    {
+      "id": "B",
+      "content": "Tạo các tiêu đề"
+    },
+    {
+      "id": "C",
+      "content": "Tạo các siêu liên kết"
+    },
+    {
+      "id": "D",
+      "content": "Tạo các bảng"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-20",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phần tử nào trong HTML được sử dụng để in đậm văn bản?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<strong>"
+    },
+    {
+      "id": "B",
+      "content": "<em>"
+    },
+    {
+      "id": "C",
+      "content": "<mark>"
+    },
+    {
+      "id": "D",
+      "content": "<b>"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-21",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào dùng để chèn hình ảnh vào trang web?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<img>"
+    },
+    {
+      "id": "B",
+      "content": "<picture>"
+    },
+    {
+      "id": "C",
+      "content": "<photo>"
+    },
+    {
+      "id": "D",
+      "content": "<image>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-22",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào được sử dụng để tạo các đoạn văn bản trên trang web trong HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<h1>"
+    },
+    {
+      "id": "B",
+      "content": "<a>"
+    },
+    {
+      "id": "C",
+      "content": "<p>"
+    },
+    {
+      "id": "D",
+      "content": "<div>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-23",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào trong HTML được sử dụng để định nghĩa tiêu đề cho một bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<thead>"
+    },
+    {
+      "id": "B",
+      "content": "<title>"
+    },
+    {
+      "id": "C",
+      "content": "<header>"
+    },
+    {
+      "id": "D",
+      "content": "<footer>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-24",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào trong HTML được sử dụng để định nghĩa một tiêu đề cột trong bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<td>"
+    },
+    {
+      "id": "B",
+      "content": "<th>"
+    },
+    {
+      "id": "C",
+      "content": "<tr>"
+    },
+    {
+      "id": "D",
+      "content": "<caption>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-25",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào trong HTML được sử dụng để tạo bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<table>"
+    },
+    {
+      "id": "B",
+      "content": "<tab>"
+    },
+    {
+      "id": "C",
+      "content": "<btable>"
+    },
+    {
+      "id": "D",
+      "content": "<grid>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-26",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào dùng để tạo một danh sách có thứ tự trong HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<ul>"
+    },
+    {
+      "id": "B",
+      "content": "<ol>"
+    },
+    {
+      "id": "C",
+      "content": "<dl>"
+    },
+    {
+      "id": "D",
+      "content": "<list>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-27",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào được sử dụng để tạo danh sách xác định thứ tự trong HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<ul>"
+    },
+    {
+      "id": "B",
+      "content": "<ol>"
+    },
+    {
+      "id": "C",
+      "content": "<li>"
+    },
+    {
+      "id": "D",
+      "content": "<table>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-28",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào được sử dụng để tạo các mục nội dung trong danh sách?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<ol>"
+    },
+    {
+      "id": "B",
+      "content": "<ul>"
+    },
+    {
+      "id": "C",
+      "content": "<li>"
+    },
+    {
+      "id": "D",
+      "content": "<table>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-29",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào dùng để định nghĩa một mục trong danh sách có thứ tự?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<li>"
+    },
+    {
+      "id": "B",
+      "content": "<item>"
+    },
+    {
+      "id": "C",
+      "content": "<list>"
+    },
+    {
+      "id": "D",
+      "content": "<ol>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-30",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào trong HTML được sử dụng để định nghĩa một hàng trong bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<row>"
+    },
+    {
+      "id": "B",
+      "content": "<td>"
+    },
+    {
+      "id": "C",
+      "content": "<th>"
+    },
+    {
+      "id": "D",
+      "content": "<tr>"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-31",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào trong HTML được sử dụng để định nghĩa một ô dữ liệu trong bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<td>"
+    },
+    {
+      "id": "B",
+      "content": "<th>"
+    },
+    {
+      "id": "C",
+      "content": "<tr>"
+    },
+    {
+      "id": "D",
+      "content": "<header>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-32",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Cú pháp nào sau đây là đúng cho thẻ Doctype",
+  "options": [
+    {
+      "id": "A",
+      "content": "<!DOCTYPE/html>;"
+    },
+    {
+      "id": "B",
+      "content": "<!DOCTYPE html>;"
+    },
+    {
+      "id": "C",
+      "content": "<!DOCTYPE-html>;"
+    },
+    {
+      "id": "D",
+      "content": "< DOCTYPE/html>;"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-33",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Các tệp chứa trang web thường có phần mở rộng là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "web;"
+    },
+    {
+      "id": "B",
+      "content": "txt;"
+    },
+    {
+      "id": "C",
+      "content": "html;"
+    },
+    {
+      "id": "D",
+      "content": "tag;"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-34",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ <br> được sử dụng để làm gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Gạch chân một đoạn văn bản;"
+    },
+    {
+      "id": "B",
+      "content": "In nghiêng một đoạn văn bản;"
+    },
+    {
+      "id": "C",
+      "content": "In đậm một đoạn văn bản;"
+    },
+    {
+      "id": "D",
+      "content": "Xuống dòng;"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-35",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Cấu trúc của văn bản HTML được viết bằng cặp thẻ nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<html> ……</html>"
+    },
+    {
+      "id": "B",
+      "content": "<head> ……</head>"
+    },
+    {
+      "id": "C",
+      "content": "<body> ……</body>"
+    },
+    {
+      "id": "D",
+      "content": "<p> ……</p>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-36",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phần đầu của văn bản HTML được viết bằng cặp thẻ nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<html> ……</html>"
+    },
+    {
+      "id": "B",
+      "content": "<head> ……</head>"
+    },
+    {
+      "id": "C",
+      "content": "<body> ……</body>"
+    },
+    {
+      "id": "D",
+      "content": "<p> ……</p>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-37",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phần thân của văn bản HTML được viết bằng cặp thẻ nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<html> ……</html>"
+    },
+    {
+      "id": "B",
+      "content": "<head> ……</head>"
+    },
+    {
+      "id": "C",
+      "content": "<body> ……</body>"
+    },
+    {
+      "id": "D",
+      "content": "<p> ……</p>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-38",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Để thêm chú thích vào văn bản HTML em viết chú thích vào cặp thẻ nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<p>"
+    },
+    {
+      "id": "B",
+      "content": "<hr>"
+    },
+    {
+      "id": "C",
+      "content": "<!-- và -->"
+    },
+    {
+      "id": "D",
+      "content": "<h>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-39",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào sau đây được sử dụng để tạo bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<table>"
+    },
+    {
+      "id": "B",
+      "content": "<tr>"
+    },
+    {
+      "id": "C",
+      "content": "<tbl>"
+    },
+    {
+      "id": "D",
+      "content": "<td>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-40",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào sau đây được sử dụng để tạo các dòng trong bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<th>"
+    },
+    {
+      "id": "B",
+      "content": "<tr>"
+    },
+    {
+      "id": "C",
+      "content": "<tl>"
+    },
+    {
+      "id": "D",
+      "content": "<trow>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-41",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào sau đây được sử dụng để tạo một danh sách không xác định thứ tự?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<li>"
+    },
+    {
+      "id": "B",
+      "content": "<ul>"
+    },
+    {
+      "id": "C",
+      "content": "<ol>"
+    },
+    {
+      "id": "D",
+      "content": "<il>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-42",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào sau đây được sử dụng để tạo một siêu liên kết?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<a>"
+    },
+    {
+      "id": "B",
+      "content": "<link>"
+    },
+    {
+      "id": "C",
+      "content": "<href>"
+    },
+    {
+      "id": "D",
+      "content": "<url>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-43",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào sau đây được sử dụng để liệt kê các danh mục trong một danh sách ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<li>"
+    },
+    {
+      "id": "B",
+      "content": "<ul>"
+    },
+    {
+      "id": "C",
+      "content": "<ol>"
+    },
+    {
+      "id": "D",
+      "content": "<il>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-44",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thành phần nào sau đây không có trong thẻ hiển thị ảnh của HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "img"
+    },
+    {
+      "id": "B",
+      "content": "src"
+    },
+    {
+      "id": "C",
+      "content": "alt"
+    },
+    {
+      "id": "D",
+      "content": "size"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-45",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "CSS là viết tắt của cụm từ nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Creative Style Sheets."
+    },
+    {
+      "id": "B",
+      "content": "Cascading Style Scripts."
+    },
+    {
+      "id": "C",
+      "content": "Cascading Style Sheets."
+    },
+    {
+      "id": "D",
+      "content": "Computer Style Syntax."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-46",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thuộc tính nào sau đây được sử dụng để xác định kích thước của font chữ trong css?",
+  "options": [
+    {
+      "id": "A",
+      "content": "font-size."
+    },
+    {
+      "id": "B",
+      "content": "text-size."
+    },
+    {
+      "id": "C",
+      "content": "size."
+    },
+    {
+      "id": "D",
+      "content": "font-style."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-47",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phần tử nào sau đây không sử dụng thẻ đóng để kết thúc khai báo?",
+  "options": [
+    {
+      "id": "A",
+      "content": "img"
+    },
+    {
+      "id": "B",
+      "content": "P"
+    },
+    {
+      "id": "C",
+      "content": "Title"
+    },
+    {
+      "id": "D",
+      "content": "html"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-48",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Cặp thẻ <title> </title> chứ",
+  "options": [
+    {
+      "id": "A",
+      "content": "A. tiêu đề trang web"
+    },
+    {
+      "id": "B",
+      "content": "cấu trúc trang web"
+    },
+    {
+      "id": "C",
+      "content": "nội dung trang web"
+    },
+    {
+      "id": "D",
+      "content": "Định nghĩa phần nội dung chính của trang web"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-49",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "HTML5 cung cấp phần tử font để định dạng phông chữ cho văn bản."
+    },
+    {
+      "id": "B",
+      "content": "HTML hỗ trợ khai báo bảy tiêu đề mục được phân cấp, định nghĩa bởi các phần tử h1, h2, h3, h4, h5, h6 và h7."
+    },
+    {
+      "id": "C",
+      "content": "Để tạo siêu liên kết giữa các trang web trong cùng thư mục, chỉ cần khai báo thành phần Đường dẫn trong URL là tên tệp của trang web cần kết nối."
+    },
+    {
+      "id": "D",
+      "content": "Mỗi phần tử trong một văn bản HTML có thể có nhiều định danh."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-50",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào được sử dụng để xác định một bảng trong HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<table>"
+    },
+    {
+      "id": "B",
+      "content": "<div>"
+    },
+    {
+      "id": "C",
+      "content": "<body>"
+    },
+    {
+      "id": "D",
+      "content": "<ol>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-51",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ nào được sử dụng để định nghĩa một mục trong danh sách?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<ol>"
+    },
+    {
+      "id": "B",
+      "content": "<ul>"
+    },
+    {
+      "id": "C",
+      "content": "<li>"
+    },
+    {
+      "id": "D",
+      "content": "<p>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-52",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào được sử dụng để chèn âm thanh vào trang web?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<audio>"
+    },
+    {
+      "id": "B",
+      "content": "<sound>"
+    },
+    {
+      "id": "C",
+      "content": "<music>"
+    },
+    {
+      "id": "D",
+      "content": "<voice>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-53",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào được sử dụng để chèn video vào trang web?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<video>"
+    },
+    {
+      "id": "B",
+      "content": "<movie>"
+    },
+    {
+      "id": "C",
+      "content": "<film>"
+    },
+    {
+      "id": "D",
+      "content": "<clip>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-54",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Điều khiển nhập xâu kí tự nào sau đây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<input type=\"text\" name=“Tên_điều_khiển” value=“Giá trị”>"
+    },
+    {
+      "id": "B",
+      "content": "<input type=\"lable\" name=“Tên_điều_khiển” value=“Giá trị”>"
+    },
+    {
+      "id": "C",
+      "content": "<input type=\"audio\" name=“Tên_điều_khiển” value=“Giá trị”>"
+    },
+    {
+      "id": "D",
+      "content": "<input type=\"checkbox\" name=“Tên_điều_khiển” value=“Giá trị”>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-55",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây nêu đúng mục đích sử dụng css?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Xác định cấu trúc và nội dung của trang web,"
+    },
+    {
+      "id": "B",
+      "content": "Thêm hiệu ứng động và tương tác vào trang web."
+    },
+    {
+      "id": "C",
+      "content": "Đinh dạng và trang trí giao diện của trang web."
+    },
+    {
+      "id": "D",
+      "content": "Kiểm soát dữ liệu đầu vào trên trang web."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-56",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thuộc tính CSS được dùng để thiết lập phông chữ:",
+  "options": [
+    {
+      "id": "A",
+      "content": "color"
+    },
+    {
+      "id": "B",
+      "content": "background-color"
+    },
+    {
+      "id": "C",
+      "content": "font-family"
+    },
+    {
+      "id": "D",
+      "content": "font-size"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-57",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào sau đây được sử dụng để tạo bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<table>"
+    },
+    {
+      "id": "B",
+      "content": "<tr>"
+    },
+    {
+      "id": "C",
+      "content": "<tbl>"
+    },
+    {
+      "id": "D",
+      "content": "<td>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-58",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "CSS là viết tắt của cụm từ nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Creative Style Sheets."
+    },
+    {
+      "id": "B",
+      "content": "Cascading Style Scripts."
+    },
+    {
+      "id": "C",
+      "content": "Cascading Style Sheets."
+    },
+    {
+      "id": "D",
+      "content": "Computer Style Syntax."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-59",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Hai thuộc tính liên kết phân tử <label> và <input> tương ứng là?",
+  "options": [
+    {
+      "id": "A",
+      "content": "input, id"
+    },
+    {
+      "id": "B",
+      "content": "for, id"
+    },
+    {
+      "id": "C",
+      "content": "input, name"
+    },
+    {
+      "id": "D",
+      "content": "for, name"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-60",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây là đúng khi nói về phần tử trong ngôn ngữ đánh dấu siêu văn bản HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Việc khai báo thuộc tính cho các phần tử là bắt buộc."
+    },
+    {
+      "id": "B",
+      "content": "Một phần tử được khai báo bắt đầu bằng thẻ mở (< >)"
+    },
+    {
+      "id": "C",
+      "content": "Phần tử nào cũng cần phải sử dụng thẻ đóng (< / >) để kết thúc."
+    },
+    {
+      "id": "D",
+      "content": "Mỗi phần tử chỉ có một thuộc tính duy nhất."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-61",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tạo siêu liên kết đến trang web “tintuc.html” thì khai báo nào sau đây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<a href=“tin tuc.html”>Trang chủ</a>"
+    },
+    {
+      "id": "B",
+      "content": "<a link=“tintu"
+    },
+    {
+      "id": "C",
+      "content": "html”>Trang chủ</a>\nC. <a href=“tintuc.html”>Trang chủ</a>"
+    },
+    {
+      "id": "D",
+      "content": "<a hepl=“tintuc.html”>Trang chủ</a>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-62",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phần tử nào sau đây được sử dụng để in nghiêng nội dung văn bản trong HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "strong."
+    },
+    {
+      "id": "B",
+      "content": "itali"
+    },
+    {
+      "id": "C",
+      "content": "C. mark."
+    },
+    {
+      "id": "D",
+      "content": "em."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-63",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cho đoạn mã HTML sau: <a href=\"\">Trang liên hệ</a>\nPhát biểu nào sau đây là đúng về đoạn mã (văn bản) HTML trên?",
+  "options": [
+    {
+      "id": "A",
+      "content": "URL không đúng."
+    },
+    {
+      "id": "B",
+      "content": "Đúng cú pháp, tuy nhiên khi nhấp chuột không chuyển đến vị trí khá"
+    },
+    {
+      "id": "C",
+      "content": "C. Thiểu giá trị cho thuộc tính href trong thẻ <a>."
+    },
+    {
+      "id": "D",
+      "content": "Thừa thẻ đóng </a>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-64",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong một trang web, để tạo ra một bảng gồm các thông tin như hình sau:\nNgày thi\nCa sáng\nCa chiều\n08/11/2024\nVăn, Toán\nTiếng Anh\n09/11/2024\nLý, Hoá, Sinh\nSử, Địa\n10/11/2024\nTin, Công nghệ\nGDQP, GDKT&PL\nPhương án nào sau đây nêu đúng số lượng thẻ HTML cần sử dụng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "1 thẻ <table>, 3 thẻ <tr>, 4 thẻ <td>"
+    },
+    {
+      "id": "B",
+      "content": "1 thẻ <table>, 4 thẻ <tr>, 4 thẻ <td>"
+    },
+    {
+      "id": "C",
+      "content": "1 thẻ <table>, 12 thẻ <tr>, 4 thẻ <td>"
+    },
+    {
+      "id": "D",
+      "content": "1 thẻ <table>, 4 thẻ <tr>, 12 thẻ <td>"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-65",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phương án nào sau đây nếu đúng mục đích của việc sử dụng khung nội tuyến (ifranme) trong HTML",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hiển thị các văn bán HTML khác trong cùng một trang we"
+    },
+    {
+      "id": "B",
+      "content": "B. Tạo ra một không gian để chứa các phần tử HTML khá"
+    },
+    {
+      "id": "C",
+      "content": "C. Nhúng một trang web hoặc tài nguyên từ một nguồn bên ngoài vào trang web hiện tại."
+    },
+    {
+      "id": "D",
+      "content": "Chỉ được sử dụng để hiển thị hình ảnh hoặc video."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-66",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thẻ HTML nào sau đây tạo ra một ô nhập dữ liệu với nhiều dòng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<input type = ‘'textarea ”>"
+    },
+    {
+      "id": "B",
+      "content": "<textarea>"
+    },
+    {
+      "id": "C",
+      "content": "<input type= “textbox”>"
+    },
+    {
+      "id": "D",
+      "content": "<textbox>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-67",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây nêu đúng mục đích sử dụng CSS?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Xác định cấu trúc và nội dung cùa trang we"
+    },
+    {
+      "id": "B",
+      "content": "B. Thêm hiệu ứng động và tương tác vào trang web."
+    },
+    {
+      "id": "C",
+      "content": "Định dạng và trang trí giao diện của trang web."
+    },
+    {
+      "id": "D",
+      "content": "Kiểm soát dữ liệu đầu vào trên trang web."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-68",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phưong án sử dụng CSS nào sau đây tốt nhất để định dạng (định kiểu) cho tất cả các phần tử <p> trong văn bân HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sử dụng bộ chọn lớp."
+    },
+    {
+      "id": "B",
+      "content": "Sử dụng bộ chọn thuộc tính."
+    },
+    {
+      "id": "C",
+      "content": "Sử dụng bộ chọn phần tử."
+    },
+    {
+      "id": "D",
+      "content": "Sử dụng bộ chọn định danh."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-69",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mã lệnh CSS nào sau đây cho phép tạo ra một khoảng cách giữa các phần tử hiện tại và các phần tử lân cận là 20 px?",
+  "options": [
+    {
+      "id": "A",
+      "content": "margin: 20px."
+    },
+    {
+      "id": "B",
+      "content": "margin-all: 20px."
+    },
+    {
+      "id": "C",
+      "content": "padding: 20px."
+    },
+    {
+      "id": "D",
+      "content": "border: 20px."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-70",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phần tử nào được sử dụng để xác định phần đầu của một tài liệu HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<body>"
+    },
+    {
+      "id": "B",
+      "content": "<footer>"
+    },
+    {
+      "id": "C",
+      "content": "<head>"
+    },
+    {
+      "id": "D",
+      "content": "<header>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-71",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thẻ nào trong phần đầu của tài liệu HTML dùng để khai báo tiêu đề của trang web?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<title>"
+    },
+    {
+      "id": "B",
+      "content": "<header>"
+    },
+    {
+      "id": "C",
+      "content": "<footer>"
+    },
+    {
+      "id": "D",
+      "content": "<meta>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-72",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để xem kết quả của tệp HTML, bạn cần làm gì sau khi lưu tệp?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Mở tệp bằng trình soạn thảo văn bản"
+    },
+    {
+      "id": "B",
+      "content": "Gửi tệp qua email"
+    },
+    {
+      "id": "C",
+      "content": "Chạy tệp trên máy chủ"
+    },
+    {
+      "id": "D",
+      "content": "Mở tệp bằng trình duyệt web"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-73",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thẻ nào được dùng để tạo tiêu đề cấp 1 trong HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<header>"
+    },
+    {
+      "id": "B",
+      "content": "<h1>"
+    },
+    {
+      "id": "C",
+      "content": "<title>"
+    },
+    {
+      "id": "D",
+      "content": "<head>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-74",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tạo một đoạn văn bản mới trong HTML, ta sử dụng thẻ",
+  "options": [
+    {
+      "id": "A",
+      "content": "<p>"
+    },
+    {
+      "id": "B",
+      "content": "<div>"
+    },
+    {
+      "id": "C",
+      "content": "<span>"
+    },
+    {
+      "id": "D",
+      "content": "<br>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-75",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cú pháp <strong> Nội dung <strong> sử dụng để",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tô màu đỏ nội dung."
+    },
+    {
+      "id": "B",
+      "content": "In nghiêng nội dung."
+    },
+    {
+      "id": "C",
+      "content": "Tô màu vàng nội dung."
+    },
+    {
+      "id": "D",
+      "content": "In đậm nội dung."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-76",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thẻ <br> được sử dụng để:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tạo một dòng mới"
+    },
+    {
+      "id": "B",
+      "content": "Tạo một đoạn văn mới"
+    },
+    {
+      "id": "C",
+      "content": "Tạo một liên kết"
+    },
+    {
+      "id": "D",
+      "content": "Tạo một hình ảnh"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-77",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thuộc tính nào trong thẻ <a> xác định địa chỉ của tài nguyên web?",
+  "options": [
+    {
+      "id": "A",
+      "content": "id"
+    },
+    {
+      "id": "B",
+      "content": "Src"
+    },
+    {
+      "id": "C",
+      "content": "href"
+    },
+    {
+      "id": "D",
+      "content": "class"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-78",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phần tử nào trong HTML được sử dụng để in nghiêng nội dung?",
+  "options": [
+    {
+      "id": "A",
+      "content": "b"
+    },
+    {
+      "id": "B",
+      "content": "em"
+    },
+    {
+      "id": "C",
+      "content": "u"
+    },
+    {
+      "id": "D",
+      "content": "strong"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-79",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thẻ <dt> được sử dụng trong danh sách định nghĩa để:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Định nghĩa một thuật ngữ"
+    },
+    {
+      "id": "B",
+      "content": "Định nghĩa một định nghĩa"
+    },
+    {
+      "id": "C",
+      "content": "Tạo một danh sách không thứ tự"
+    },
+    {
+      "id": "D",
+      "content": "Tạo một danh sách có thứ tự"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-80",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thuộc tính nào trong thẻ <table> được sử dụng để thêm chú thích cho bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "description"
+    },
+    {
+      "id": "B",
+      "content": "header"
+    },
+    {
+      "id": "C",
+      "content": "note"
+    },
+    {
+      "id": "D",
+      "content": "caption"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-81",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thuộc tính nào được sử dụng để xác định thứ tự bắt đầu của danh sách xác định thứ tự?",
+  "options": [
+    {
+      "id": "A",
+      "content": "type"
+    },
+    {
+      "id": "B",
+      "content": "start"
+    },
+    {
+      "id": "C",
+      "content": "order"
+    },
+    {
+      "id": "D",
+      "content": "list"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-82",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thẻ <tfoot> trong bảng được sử dụng để:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Định nghĩa phần chân bảng"
+    },
+    {
+      "id": "B",
+      "content": "Định nghĩa tiêu đề cột"
+    },
+    {
+      "id": "C",
+      "content": "Định nghĩa các hàng dữ liệu"
+    },
+    {
+      "id": "D",
+      "content": "Định nghĩa các tiêu đề cột."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-83",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Địa chỉ URL nào sau đây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "fit.hnue.edu.vn"
+    },
+    {
+      "id": "B",
+      "content": "https://fit.hnue.edu.vn"
+    },
+    {
+      "id": "C",
+      "content": "https://hnue.edu.vn/index.html"
+    },
+    {
+      "id": "D",
+      "content": "C://fit.hnue.edu.vn"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-84",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi nhấp chuột vào một siêu liên kết, theo mặc định, nội dung trang web liên kết sẽ hiển thị ở đâu?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Trong cửa sổ trình duyệt hiện tại"
+    },
+    {
+      "id": "B",
+      "content": "Trong cửa sổ trình duyệt mới"
+    },
+    {
+      "id": "C",
+      "content": "Trong một tab mới trình duyệt"
+    },
+    {
+      "id": "D",
+      "content": "Trong một cửa sổ mới"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-85",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi đặt một siêu liên kết vào một đoạn văn bản nào đó, đoạn văn bản sẽ có định dạng mặc định là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "In nghiêng và màu xanh"
+    },
+    {
+      "id": "B",
+      "content": "In nghiêng và gạch dưới"
+    },
+    {
+      "id": "C",
+      "content": "Gạch dưới và màu xanh"
+    },
+    {
+      "id": "D",
+      "content": "Gạch dưới và màu tím"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-86",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây là không đúng với một thẻ liên kết HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một thẻ liên kết có thể liên kết với một hoặc nhiều trang web khác."
+    },
+    {
+      "id": "B",
+      "content": "Một thẻ liên kết có thể liên kết tới một vị trí cụ thể trong cùng một trang web."
+    },
+    {
+      "id": "C",
+      "content": "Một thẻ liên kết có thể liên kết tới một hình ảnh."
+    },
+    {
+      "id": "D",
+      "content": "Một thẻ liên kết có thể liên kết tới một tệp văn bản."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-87",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Sự khác nhau giữa thành phần nhập văn bản và nhập mật khẩu của biểu mẫu là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Không có sự khác nhau."
+    },
+    {
+      "id": "B",
+      "content": "Giá trị trả về của hai thành phần này là khác nhau."
+    },
+    {
+      "id": "C",
+      "content": "Nội dung hiển thị của hai thành phần này là khác nhau."
+    },
+    {
+      "id": "D",
+      "content": "Hình dạng hiển thị của hai thành phần này là khác nhau."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-88",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cho một cú pháp HTML như sau: <audio src = “hnue/fit.mp3”>\nCú pháp trên dùng để hiển thị thông tin gì trên trình duyệt ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hình ảnh"
+    },
+    {
+      "id": "B",
+      "content": "Văn bản"
+    },
+    {
+      "id": "C",
+      "content": "Video"
+    },
+    {
+      "id": "D",
+      "content": "Âm thanh"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-89",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây là sai?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Các lệnh CSS có thể đặt trong cùng tệp mã lệnh HTML."
+    },
+    {
+      "id": "B",
+      "content": "Các lệnh CSS có thể đặt trong một tệp riêng bên ngoài và phải được liên kết vào trang HTML khi sử dụng."
+    },
+    {
+      "id": "C",
+      "content": "Các lệnh CSS có thể đặt trong các thẻ HTML."
+    },
+    {
+      "id": "D",
+      "content": "Các lệnh CSS có thể đặt trong một tệp riêng bên ngoài nhưng phải cùng thư mục với tệp mã lệnh HTML."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-90",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Giải thích nào sau đây là đúng về mã lệnh CSS sau?\nh1 h2 h3 {border: dashed 3px red;}",
+  "options": [
+    {
+      "id": "A",
+      "content": "Đây là cú pháp CSS sai vì các thẻ phải cách nhau bởi dấu phẩy."
+    },
+    {
+      "id": "B",
+      "content": "Đây là cú pháp CSS sai vì các thuộc tính không được đặt đúng thứ tự."
+    },
+    {
+      "id": "C",
+      "content": "Đây là cú pháp CSS sai vì giá trị thuộc tính bị sai."
+    },
+    {
+      "id": "D",
+      "content": "Tất cả các nội dung trong thẻ h1,h2,h3 sẽ hiển thị với biên màu đỏ, dày 3px, và nét đứt."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-91",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Địa chỉ URL nào sau đây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "fit.hnue.edu.vn"
+    },
+    {
+      "id": "B",
+      "content": "https://.fit.hnue.edu.vn"
+    },
+    {
+      "id": "C",
+      "content": "http://hnue.edu.vn/index.html"
+    },
+    {
+      "id": "D",
+      "content": "C://fit.hneu.edu.vn"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-92",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Các cấp độ tiêu đề mục trong HTML được phân biệt như thế nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phân biệt bằng kiểu chữ."
+    },
+    {
+      "id": "B",
+      "content": "Phân biệt bằng cỡ chữ."
+    },
+    {
+      "id": "C",
+      "content": "Phân biệt bằng màu chữ."
+    },
+    {
+      "id": "D",
+      "content": "Phân biệt bằng phông chữ."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-93",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi nào thì nên sử dụng thẻ <ol> thay vì thẻ <ul> trong HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Khi muốn tạo một danh sách có đánh số thứ tự."
+    },
+    {
+      "id": "B",
+      "content": "Khi muốn tạo một danh sách không có thứ tự."
+    },
+    {
+      "id": "C",
+      "content": "Khi muốn tạo một danh sách với các mục không có ký hiệu."
+    },
+    {
+      "id": "D",
+      "content": "Khi muốn tạo một danh sách với các biểu tượng đặc biệt."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-94",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Sự khác biệt giữa thuộc tính type=\"1\" và type=\"i\" trong thẻ <ol> là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "type=\"1\" hiển thị số, trong khi type=\"i\" hiển thị số La Mã thường."
+    },
+    {
+      "id": "B",
+      "content": "type=\"1\" hiển thị số La Mã thường, trong khi type=\"i\" hiển thị số."
+    },
+    {
+      "id": "C",
+      "content": "type=\"1\" hiển thị chữ cái thường, trong khi type=\"i\" hiển thị số."
+    },
+    {
+      "id": "D",
+      "content": "type=\"1\" và type=\"i\" đều hiển thị số nhưng có kiểu khác nhau."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-95",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khái niệm Biểu mẫu trên trang web là đáp án nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một loại hình ảnh động"
+    },
+    {
+      "id": "B",
+      "content": "Một phần tử HTML để thu thập dữ liệu từ người dùng"
+    },
+    {
+      "id": "C",
+      "content": "Một đoạn mã JavaScript"
+    },
+    {
+      "id": "D",
+      "content": "Một loại tệp tin hình ảnh"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-96",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Điều khiển sau đây giúp thực hiện công việc gì?\nMật khẩu: <input type= “Password” name= “Matkhau”>",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hiển thị dòng có nhãn Matkhau và ô Password để người dùng nhập mật khẩu"
+    },
+    {
+      "id": "B",
+      "content": "Hiển thị dòng có nhãn Password và ô Mật khẩu để người dùng nhập mật khẩu"
+    },
+    {
+      "id": "C",
+      "content": "Hiển thị dòng có nhãn Mật khẩu và ô Password để người dùng nhập mật khẩu"
+    },
+    {
+      "id": "D",
+      "content": "Hiển thị dòng có nhãn Password và ô Matkhau để người dùng nhập mật khẩu"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-97",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây nêu đúng lợi ích chính của việc sử dụng css ngoài (ngoại tuyến)? (TH)",
+  "options": [
+    {
+      "id": "A",
+      "content": "Giảm kích thước của trang we"
+    },
+    {
+      "id": "B",
+      "content": "B. Tăng tính bảo mật của trang web."
+    },
+    {
+      "id": "C",
+      "content": "Tái sử dụng các định dạng css trên nhiều trang."
+    },
+    {
+      "id": "D",
+      "content": "Tạo ra các hiệu ứng động và tương tác."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-98",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Sự khác biệt giữa bộ chọn lớp (class) và bộ chọn định danh (ID) là:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Bộ chọn định danh được tạo bằng dấu chấm (.) và bộ chọn lớp sử dụng ký hiệu #."
+    },
+    {
+      "id": "B",
+      "content": "Bộ chọn lớp chỉ được sử dụng một lần trong khi bộ chọn định danh có thể được áp dụng nhiều lần trên HTML."
+    },
+    {
+      "id": "C",
+      "content": "Bộ chọn lớp có thể được sử dụng bởi nhiều phần tử HTML, trong khi Bộ chọn định danh chỉ được sử dụng bởi một phần tử HTML duy nhất trên trang."
+    },
+    {
+      "id": "D",
+      "content": "Bộ chọn lớp sử dụng cho CSS External, bộ chọn định danh sử dụng cho CSS Internal"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-99",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để áp dụng bộ chọn định danh cho phần tử HTML, cần khai báo thuộc tính nào của phần tử HTML đó.",
+  "options": [
+    {
+      "id": "A",
+      "content": "class"
+    },
+    {
+      "id": "B",
+      "content": "Id"
+    },
+    {
+      "id": "C",
+      "content": "Style"
+    },
+    {
+      "id": "D",
+      "content": "name"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-100",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Bộ chọn định danh dùng để:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Áp dụng định dạng cho một số phần tử được chọn."
+    },
+    {
+      "id": "B",
+      "content": "Áp dụng định dạng cho một phần tử cụ thể."
+    },
+    {
+      "id": "C",
+      "content": "Áp dụng định dạng cho một nhóm phần tử."
+    },
+    {
+      "id": "D",
+      "content": "Áp dụng định dạng cho tất cả các phần tử"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-101",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tạo 1 bảng gồm 3 hàng và 4 cột, cách sử dụng thẻ nào sau đây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "4 cặp thẻ <tr> </tr>, 3 cặp thẻ <th> </th> và 9 cặp thẻ <td> </td>"
+    },
+    {
+      "id": "B",
+      "content": "3 cặp thẻ <tr> </tr>, 4 cặp thẻ <th> </th> và 4 cặp thẻ <td> </td>"
+    },
+    {
+      "id": "C",
+      "content": "3 cặp thẻ <tr> </tr>, 4 cặp thẻ <th> </th> và 8 cặp thẻ <td> </td>"
+    },
+    {
+      "id": "D",
+      "content": "3 cặp thẻ <tr> </tr> và 4 cặp thẻ <td> </td>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-102",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Sau khi viết các trang web riêng lẻ, em muốn kết nối chúng để tạo ra một website. Em nên sử dụng loại đường dẫn nào để liên kết giữa các trang?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Đường dẫn trực tiếp"
+    },
+    {
+      "id": "B",
+      "content": "Đường dẫn gián tiếp"
+    },
+    {
+      "id": "C",
+      "content": "Cả hai loại đường dẫn trực tiếp và đường dẫn gián tiếp"
+    },
+    {
+      "id": "D",
+      "content": "Không dùng đường dẫn mà dùng mã định danh"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-103",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cho đoạn mã sau:\n<p>This is <u> a paragraph</u>. </p>\nĐoạn mã trên sẽ cho kết quả là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "This is a paragraph."
+    },
+    {
+      "id": "B",
+      "content": "This is a paragraph."
+    },
+    {
+      "id": "C",
+      "content": "This is a paragraph."
+    },
+    {
+      "id": "D",
+      "content": "This is a paragraph."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-104",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tạo siêu liên kết đến trang web “tintuc.html” thì khai báo nào sau đây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<a href=“tin tuc.html”>Trang chủ</a>"
+    },
+    {
+      "id": "B",
+      "content": "<a link=“tintu"
+    },
+    {
+      "id": "C",
+      "content": "html”>Trang chủ</a>\nC. <a href=“tintuc.html”>Trang chủ</a>"
+    },
+    {
+      "id": "D",
+      "content": "<a hepl=“tintuc.html”>Trang chủ</a>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-105",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mẫu CSS định dạng các liên kết sau khi kích hoạt chuyển màu xanh dương là lệnh nào trong các lệnh sau:",
+  "options": [
+    {
+      "id": "A",
+      "content": "a:link {color: blue;}."
+    },
+    {
+      "id": "B",
+      "content": "a:visited {color: blue;}."
+    },
+    {
+      "id": "C",
+      "content": "a:hover {color: blue;}."
+    },
+    {
+      "id": "D",
+      "content": "a:clicked {color: blue;}."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-106",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phần tử nào sau đây được sử dụng để in nghiêng nội dung văn bản trong HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "strong."
+    },
+    {
+      "id": "B",
+      "content": "itali"
+    },
+    {
+      "id": "C",
+      "content": "C. mark."
+    },
+    {
+      "id": "D",
+      "content": "em."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-107",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cho đoạn mã HTML sau: <a href=\"\">Trang liên hệ</a>\nPhát biểu nào sau đây là đúng về đoạn mã (văn bản) HTML trên?",
+  "options": [
+    {
+      "id": "A",
+      "content": "URL không đúng."
+    },
+    {
+      "id": "B",
+      "content": "Đúng cú pháp, tuy nhiên khi nhấp chuột không chuyển đến vị trí khá"
+    },
+    {
+      "id": "C",
+      "content": "C. Thiểu giá trị cho thuộc tính href trong thẻ <a>."
+    },
+    {
+      "id": "D",
+      "content": "Thừa thẻ đóng </a>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-108",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phương án nào sau đây nếu đúng mục đích của việc sử dụng khung nội tuyến (ifranme) trong HTML",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hiển thị các văn bán HTML khác trong cùng một trang we"
+    },
+    {
+      "id": "B",
+      "content": "B. Tạo ra một không gian để chứa các phần tử HTML khá"
+    },
+    {
+      "id": "C",
+      "content": "C. Nhúng một trang web hoặc tài nguyên từ một nguồn bên ngoài vào trang web hiện tại."
+    },
+    {
+      "id": "D",
+      "content": "Chỉ được sử dụng để hiển thị hình ảnh hoặc video."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-109",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phưong án sử dụng CSS nào sau đây tốt nhất để định dạng (định kiểu) cho tất cả các phần tử <p> trong văn bân HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sử dụng bộ chọn lớp."
+    },
+    {
+      "id": "B",
+      "content": "Sử dụng bộ chọn thuộc tính."
+    },
+    {
+      "id": "C",
+      "content": "Sử dụng bộ chọn phần tử."
+    },
+    {
+      "id": "D",
+      "content": "Sử dụng bộ chọn định danh."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-110",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Theo mặc định, ảnh được chèn vào vị trí nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Bên dưới vị trí đang viết, chính giữa màn hình"
+    },
+    {
+      "id": "B",
+      "content": "Bên trên vị trí đang viết, chính giữa màn hình"
+    },
+    {
+      "id": "C",
+      "content": "Ngay tại vị trí đang viết của đoạn văn bản"
+    },
+    {
+      "id": "D",
+      "content": "Bên trái vị trí của đoạn văn bản"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-111",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Bạn Minh tạo một trang web của lớp 10A1và trong trang web đó có đoạn nội dung như sau:\nDANH SÁCH CÁN BỘ ĐOÀN LỚP 10A1\n1. Hoàng Mạnh Kiên - Bí thư\n2. Trần Thu Thuỷ - Phó bí thư\n3. Hà Thị Hồng – Uỷ viên\nĐoạn mã HTML nào dưới đây phù hợp nhất để thực hiện việc này?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<p> DANH SÁCH CÁN BỘ ĐOÀN LỚP 10A1 </p>\n<ol>\n<li> Hoàng Mạnh Kiên - Bí thư </li>\n<li> Trần Thu Thuỷ - Phó bí thư </li>\n<li> Hà Thị Hồng – Uỷ viên </li>\n</ol>"
+    },
+    {
+      "id": "B",
+      "content": "<p> <strong> DANH SÁCH CÁN BỘ ĐOÀN LỚP 10A1 </strong></p>\n<ol>\n<li> Hoàng Mạnh Kiên - Bí thư </li>\n<li> Trần Thu Thuỷ - Phó bí thư </li>\n<li> Hà Thị Hồng – Uỷ viên </li>\n</ol>"
+    },
+    {
+      "id": "C",
+      "content": "<p> <strong> DANH SÁCH CÁN BỘ ĐOÀN LỚP 10A1 </strong></p>\n<ol>\n<li> 1. Hoàng Mạnh Kiên - Bí thư </li>\n<li> 2. Trần Thu Thuỷ - Phó bí thư </li>\n<li> 3. Hà Thị Hồng – Uỷ viên </li>\n</ol>"
+    },
+    {
+      "id": "D",
+      "content": "<p> <strong> DANH SÁCH CÁN BỘ ĐOÀN LỚP 10A1 </strong></p>\n<ul>\n<li> 1. Hoàng Mạnh Kiên - Bí thư </li>\n<li> 2. Trần Thu Thuỷ - Phó bí thư </li>\n<li> 3. Hà Thị Hồng – Uỷ viên </li>\n</ul>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-112",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Cần thiết kế một trang web cho một trung tâm dạy nghề trong đó có hiển thị bảng thông tin về các khoá học và số lượng học viên tham gia cho mỗi khoá học. Biết rằng trung tâm có 2 khoá học. Đoạn mã HTML nào sau đây thực hiện được yêu cầu đã cho?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<table>\n<tr><td> Khoá học 1 </td> <td> 20 học viên </td></tr>\n<tr><td> Khoá học 2 </td> <td> 30 học viên </td></tr>\n</table>"
+    },
+    {
+      "id": "B",
+      "content": "<table>\n<td><tr> Khoá học 1 </td> <td> 20 học viên </tr></td>\n<td><tr> Khoá học 2 </td> <td> 30 học viên </tr></td>\n</table>"
+    },
+    {
+      "id": "C",
+      "content": "<table>\n<td><tr> Khoá học 1 </tr> <td> 20 học viên </td></td>\n<tr><td> Khoá học 2 </td> <td> 30 học viên </td></tr>\n</table>"
+    },
+    {
+      "id": "D",
+      "content": "<table>\n<tr><td> Khoá học 1 </td> <td> 20 học viên </td></tr>\n</table>\n<tr><td> Khoá học 2 </td> <td> 30 học viên </td></tr>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-113",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Bạn Hoàng đang tạo một trang web và bạn ấy muốn định dạng cho phần văn bản của tất cả các thẻ <p> có đặc điểm sau: Có màu chữ đỏ đậm, cỡ chữ 20 picel. Đoạn mã CSS nào sau đây thực hiện được yêu cầu đó:",
+  "options": [
+    {
+      "id": "A",
+      "content": "para-p {color: red; font-weight: bold; size: 20px}"
+    },
+    {
+      "id": "B",
+      "content": "p {color: red; font: bold; size: 20px}"
+    },
+    {
+      "id": "C",
+      "content": "p {color: red; font-weight: bold; size: 20px}"
+    },
+    {
+      "id": "D",
+      "content": "p {color: red; font-style: bold; size: 20px}"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-114",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Hiệu trưởng trường A muốn tạo biểu mẫu HTML cho phép giáo viên đăng ký đi du lịch. Mỗi giáo viên chỉ được chọn duy nhất một trong hai trạng thái là “Tham gia” hoặc “Không tham gia”. Phương án nào sau đây phù hợp nhất để thực hiện việc này?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<input type = “checkbox” name = “chk_thamgia”> Tham gia\n<input type = “checkbox” name = “chk_thamgia”> Không tham gia"
+    },
+    {
+      "id": "B",
+      "content": "<input type = “radio” name = “chk_Yes” value = “C”> Tham gia\n<input type = “radio” name = “chk_No” value = “K”> Tham gia"
+    },
+    {
+      "id": "C",
+      "content": "<input type = “radio” name = “rd_thamgia” value = “Tham gia”>\n<input type = “radio” name = “rd_thamgia” value = “Không tham gia”>"
+    },
+    {
+      "id": "D",
+      "content": "<input type = “radio” name = “chk_binhchon” value = “C”> Tham gia\n<input type = “radio” name = “chk_binhchon” value = “K”> Không tham gia"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-115",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Khi cài đặt Sublime Text, bạn cần làm gì sau khi tải về tệp tin cài đặt?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chạy chương trình từ trang web"
+    },
+    {
+      "id": "B",
+      "content": "Nhấp đúp vào tệp tin cài đặt"
+    },
+    {
+      "id": "C",
+      "content": "Giải nén tệp tin cài đặt"
+    },
+    {
+      "id": "D",
+      "content": "Mở tệp tin bằng trình soạn thảo văn bản"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-116",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Cho các phát biểu sau:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thẻ HTML thường không có thẻ kết thúc."
+    },
+    {
+      "id": "B",
+      "content": "Tên thẻ HTML không phân biệt chữ hoa và chữ thường."
+    },
+    {
+      "id": "C",
+      "content": "Phần đầu của một tệp HTML được xác định bởi thẻ <head> và </head>."
+    },
+    {
+      "id": "D",
+      "content": "Thẻ <body> chứa nội dung chính hiển thị trên màn hình của trình duyệt\nSố phát biểu đúng là\nA. 1B. 2C. 3D. 4"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-117",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Cho các phát biểu sau về cấu trúc cơ bản của một tệp HTML?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phần đầu của tài liệu HTML thường bao gồm các thẻ <header> và </header>."
+    },
+    {
+      "id": "B",
+      "content": "Tệp HTML cần phải bắt đầu với chỉ dẫn doctype để chỉ định phiên bản HTML."
+    },
+    {
+      "id": "C",
+      "content": "Nội dung của trang web được hiển thị trong phần <head> của tệp HTML."
+    },
+    {
+      "id": "D",
+      "content": "Để tạo một tệp HTML, có thể sử dụng bất kỳ trình soạn thảo văn bản nào, không nhất thiết phải là Sublime Text.\nSố phát biểu đúng là\nA. 1B. 2C. 3D. 4"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-118",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Để tạo siêu liên kết đến một phần tử trong cùng trang web, bạn sử dụng cú pháp nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<a href=\"http://example.com\">"
+    },
+    {
+      "id": "B",
+      "content": "<a href=\"#Tên Định Danh\">"
+    },
+    {
+      "id": "C",
+      "content": "<a href=\"mailto:email@example.com\">"
+    },
+    {
+      "id": "D",
+      "content": "<a href=\"tel:123456789\">"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-119",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Các phần tử tiêu đề mục trong HTML được hiển thị với kiểu chữ và kích thước như thế nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tất cả đều có cùng kích thước và kiểu chữ"
+    },
+    {
+      "id": "B",
+      "content": "Kích thước chữ giảm dần từ <h1> đến <h6> và kiểu chữ in đậm"
+    },
+    {
+      "id": "C",
+      "content": "Kích thước chữ tăng dần từ <h1> đến <h6> và kiểu chữ in nghiêng"
+    },
+    {
+      "id": "D",
+      "content": "Kích thước chữ không thay đổi và kiểu chữ khác nhau tùy thuộc vào trình duyệt"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-120",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Cú pháp để tạo một liên kết mở trong một cửa sổ mới là:",
+  "options": [
+    {
+      "id": "A",
+      "content": "<a href=\"url\" target=\"_blank\">Link</a>"
+    },
+    {
+      "id": "B",
+      "content": "<a href=\"url\" target=\"_self\">Link</a>"
+    },
+    {
+      "id": "C",
+      "content": "<a href=\"url\" new=\"true\">Link</a>"
+    },
+    {
+      "id": "D",
+      "content": "<a href=\"url\" window=\"_new\">Link</a>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-121",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Cú pháp để tạo một liên kết mở trong một cửa sổ mới là:",
+  "options": [
+    {
+      "id": "A",
+      "content": "<a href=\"url\" window=\"_new\">Link</a>"
+    },
+    {
+      "id": "B",
+      "content": "<a href=\"url\" target=\"_self\">Link</a>"
+    },
+    {
+      "id": "C",
+      "content": "<a href=\"url\" new=\"true\">Link</a>"
+    },
+    {
+      "id": "D",
+      "content": "<a href=\"url\" target=\"_blank\">Link</a>"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-122",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Cú pháp nào là đúng để khai báo một ô dữ liệu trong bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<td>Data</td>"
+    },
+    {
+      "id": "B",
+      "content": "<tr>Data</tr>"
+    },
+    {
+      "id": "C",
+      "content": "<table>Data</table>"
+    },
+    {
+      "id": "D",
+      "content": "<th>Data</th>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-123",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Khi khai báo danh sách con trong danh sách xác định thứ tự, thẻ nào được sử dụng để tạo mục con?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<table>"
+    },
+    {
+      "id": "B",
+      "content": "<ol>"
+    },
+    {
+      "id": "C",
+      "content": "<ul>"
+    },
+    {
+      "id": "D",
+      "content": "<li>"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-124",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Thẻ <section> thường được sử dụng để:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tạo một phần riêng biệt của tài liệu"
+    },
+    {
+      "id": "B",
+      "content": "Tạo tiêu đề"
+    },
+    {
+      "id": "C",
+      "content": "Tạo một đoạn văn bản"
+    },
+    {
+      "id": "D",
+      "content": "Tạo một liên kết"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-125",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Nếu bạn chỉ cung cấp tên miền trong URL mà không có giao thức, trình duyệt sẽ làm gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Mở trang chủ của tên miền đó"
+    },
+    {
+      "id": "B",
+      "content": "Hiển thị lỗi"
+    },
+    {
+      "id": "C",
+      "content": "Tìm kiếm trên Internet"
+    },
+    {
+      "id": "D",
+      "content": "Chuyển hướng đến trang mặc định"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-126",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Khi tạo bảng và muốn đặt đường viền cho các ô trong bảng, thuộc tính nào cần thiết?",
+  "options": [
+    {
+      "id": "A",
+      "content": "margin"
+    },
+    {
+      "id": "B",
+      "content": "padding"
+    },
+    {
+      "id": "C",
+      "content": "border"
+    },
+    {
+      "id": "D",
+      "content": "color"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-127",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Để liên kết các trang web trong cùng một thư mục, đoạn mã nào sau đây là đúng nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<a href=”C:\\home\\news.html”>News</a>"
+    },
+    {
+      "id": "B",
+      "content": "<a href=”News.html”>News</a>"
+    },
+    {
+      "id": "C",
+      "content": "<a href=”http://fit.hnue.edu.vn/news.html”> News</a>"
+    },
+    {
+      "id": "D",
+      "content": "<a href=”fpt://fit.hnue.edu.vn/news.html”> News</a>"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là B. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-128",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Đoạn mã lệnh HTML nào sau đây là đúng để liên kết tới trang web Facebook.com ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<a href=” Facebook.com”> Facebook</a>"
+    },
+    {
+      "id": "B",
+      "content": "<a herf=” Facebook.com”> Facebook</a>"
+    },
+    {
+      "id": "C",
+      "content": "<a href=” Facebook.com”> Facebook<a>"
+    },
+    {
+      "id": "D",
+      "content": "<a href=Facebook.com> Facebook</a>"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là A. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-129",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Có một tệp ảnh kích thước 600x800. Đoạn lệnh sau đây sẽ hiển thị ảnh có kích thước là bao nhiêu trên trình duyệt ?\n<image src=”hnue.jpeg” alt =”hnue” width=”300”/>",
+  "options": [
+    {
+      "id": "A",
+      "content": "300x600"
+    },
+    {
+      "id": "B",
+      "content": "400x300"
+    },
+    {
+      "id": "C",
+      "content": "600x800"
+    },
+    {
+      "id": "D",
+      "content": "300x400"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-130",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Cú pháp tạo siêu liên kết đến phần tử có id=“contact” trong cùng một trang web là",
+  "options": [
+    {
+      "id": "A",
+      "content": "<a href=#contact>Liên hệ</a>"
+    },
+    {
+      "id": "B",
+      "content": "<a href=“@contact”>Liên hệ</a>"
+    },
+    {
+      "id": "C",
+      "content": "<a href=“#contact”>Liên hệ</a>"
+    },
+    {
+      "id": "D",
+      "content": "<a href=“contact”>Liên hệ</a>"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là C. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-131",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Để hiển thị nút lệnh , em chọn lệnh HTML nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<input type=\"submit\" name=\"subdangki\" > Đăng kí"
+    },
+    {
+      "id": "B",
+      "content": "<input type=\"radio\" name=\"subdangki\" value=\"Đăng kí\">"
+    },
+    {
+      "id": "C",
+      "content": "<input type=\"checkbox\" name=\"subdangki\" value=\"Đăng kí\">"
+    },
+    {
+      "id": "D",
+      "content": "<input type=\"submit\" name=\"subdangki\" value=\"Đăng kí\">"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-MC-132",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "multiple_choice",
+  "content": "Hiệu trưởng trường A muốn tạo biểu mẫu HTML cho phép giáo viên đăng ký đi du lịch. Mỗi giáo viên chỉ được chọn duy nhất một trong hai trạng thái là “Tham gia” hoặc “Không tham gia”. Phương án nào sau đây phù hợp nhất để thực hiện việc này?",
+  "options": [
+    {
+      "id": "A",
+      "content": "<input type = “checkbox” name = “chk_thamgia”> Tham gia\n<input type = “checkbox” name = “chk_thamgia”> Không tham gia"
+    },
+    {
+      "id": "B",
+      "content": "<input type = “radio” name = “chk_Yes” value = “C”> Tham gia\n<input type = “radio” name = “chk_No” value = “K”> Tham gia"
+    },
+    {
+      "id": "C",
+      "content": "<input type = “radio” name = “rd_thamgia” value = “Tham gia”>\n<input type = “radio” name = “rd_thamgia” value = “Không tham gia”>"
+    },
+    {
+      "id": "D",
+      "content": "<input type = “radio” name = “chk_binhchon” value = “C”> Tham gia\n<input type = “radio” name = “chk_binhchon” value = “K”> Không tham gia"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại cú pháp thẻ, thuộc tính HTML hoặc quy tắc định kiểu CSS trong Chuyên đề 12F.",
+    "level2_formula": "Xác định mục đích câu hỏi (cấu trúc HTML, thẻ định dạng văn bản, bảng, liên kết, đa phương tiện, biểu mẫu hoặc bộ chọn CSS) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu cú pháp chuẩn của HTML5 và CSS3 với 4 phương án A, B, C, D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án đúng là D. Nội dung được biên soạn chuẩn theo chương trình Chuyên đề 12F: Tạo trang web với HTML & CSS.",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-01",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Bạn Lan cần chỉnh sửa một bức ảnh gia đình được chụp trong chuyến du lịch. Trong bức ảnh đó gia đình Lan đứng phía trước và có một vườn hoa ở phía sau. Bạn Lan muốn tăng sáng và điều chỉnh màu sắc cho bức ảnh. Sau đây là một số ý kiến của các bạn trong lớp để giúp Lan chỉnh sửa ảnh:",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Không thể tăng sáng cho bức ảnh",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Có thể điều chỉnh các kênh màu để thay đổi màu sắc của vùng chọn trên ảnh",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Nếu muốn chỉnh màu bầu trời thành màu xanh dương cần phải điều chỉnh màu cho toàn bộ bức ảnh.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Để làm nổi bật hình ảnh gia đình Lan trong bức ảnh, cần phải tăng độ tương phản giữa gia đình Lan và khung cảnh xung quanh.",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Không thể tăng sáng cho bức ảnh...)\n- Ý b) : Đúng (Có thể điều chỉnh các kênh màu để thay đổi màu sắc của vùng ...)\n- Ý c) : Sai (Nếu muốn chỉnh màu bầu trời thành màu xanh dương cần phải đi...)\n- Ý d) : Đúng (Để làm nổi bật hình ảnh gia đình Lan trong bức ảnh, cần phải...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-02",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Lớp 12C1 lên kế hoạch họp nhóm để triển khai dự án học tập “Thiết kế trang thông tin của chi đoàn”. Một số thành viên phát biểu về phương án sử dụng CSS cho dự án:",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Sử dụng bộ chọn định danh để định dạng cho một phần tử cụ thể bằng cách sử dụng một định danh cụ thể của phần tử đó trên trang.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Bộ chọn định danh chỉ được sử dụng một lần",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Bộ chọn lớp được sử dụng nhiều lần trên cùng một trang HTML",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Bộ chọn lớp có thể được sử dụng trên nhiều trang HTML khác nhau.",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Sử dụng bộ chọn định danh để định dạng cho một phần tử cụ th...)\n- Ý b) : Sai (Bộ chọn định danh chỉ được sử dụng một lần...)\n- Ý c) : Đúng (Bộ chọn lớp được sử dụng nhiều lần trên cùng một trang HTML...)\n- Ý d) : Đúng (Bộ chọn lớp có thể được sử dụng trên nhiều trang HTML khác n...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-03",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Minh muốn tạo một website cá nhân để chia sẻ những bức ảnh du lịch của mình. Tuy nhiên, Minh không biết làm thế nào để chèn hình ảnh vào trang web. Bạn có thể lựa chọn giúp Minh với những phương án sau đây:",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Tải hình ảnh lên một trang web chia sẻ ảnh và lấy link để chèn vào trang web cá nhân.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Sử dụng thẻ <img> trong HTML để chèn hình ảnh trực tiếp từ máy tính vào trang web.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Chèn hình ảnh bằng cách sử dụng phần mềm xử lý văn bản và sao chép vào trang web.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Gửi email cho bạn bè và nhờ họ chèn hình ảnh vào trang web giúp Minh.",
+      "correctAnswer": false
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Tải hình ảnh lên một trang web chia sẻ ảnh và lấy link để ch...)\n- Ý b) : Đúng (Sử dụng thẻ <img> trong HTML để chèn hình ảnh trực tiếp từ m...)\n- Ý c) : Sai (Chèn hình ảnh bằng cách sử dụng phần mềm xử lý văn bản và sa...)\n- Ý d) : Sai (Gửi email cho bạn bè và nhờ họ chèn hình ảnh vào trang web g...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-04",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Thầy giáo yêu cầu học sinh đọc nội dung sau đây để chuẩn bị làm việc một website bán chè.\nCHÈ NGON – PHỔ CỔ NHUẾ\n136 Ngõ 43 Cổ Nhuế, Bắc Từ Liêm, Hà Nội\nĐiểm đánh giá: 999 + đánh giá trên Shopee\nGiờ mở cửa: 09:00 – 23:59\nSau khi đọc xong, học sinh có các ý kiến phát biểu như sau. Ý kiến nào đúng?",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Để hiển thị tiêu đề dòng 1, sử dụng thẻ <P>.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Đoạn Code sau sẽ hiển thị đúng nội dung trong dòng thứ 2:\n<i> 136 Ngõ 43 Cổ Nhuế, Bắc Từ Liêm, Hà Nội </i>",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Để hiển thị nội dung dòng thứ 3, sử dụng các thẻ <span> như sau:\nĐiểm đánh giá: <span style= “color: white; background:black”> 999+ đánh giá trên Shopee </span>",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Để hiển thị nội dung dòng thứ 4, sử dụng thẻ <strong> như sau:\nGiờ mở cửa: <strong> 09:00 – 23:59</strong>",
+      "correctAnswer": false
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Để hiển thị tiêu đề dòng 1, sử dụng thẻ <P>....)\n- Ý b) : Đúng (Đoạn Code sau sẽ hiển thị đúng nội dung trong dòng thứ 2:\n<i...)\n- Ý c) : Sai (Để hiển thị nội dung dòng thứ 3, sử dụng các thẻ <span> như ...)\n- Ý d) : Sai (Để hiển thị nội dung dòng thứ 4, sử dụng thẻ <strong> như sa...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-05",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Một trung tâm gia sư muốn làm một website có thông tin và định dạng như sau đây:\nVĂN PHÒNG GIA SƯ\nPhòng 509, nhà K1\nHotline: 0949.401.111 – 0912.602.769\nEmail: info@nnt.edu.vn\nGiáo viên yêu cầu học sinh viết mã lệnh HTML để mô tả nội dung này. Sau đây là ý kiến của bạn học sinh:",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Có thể sử dụng thẻ <h2> cho nội dung dòng thứ nhất.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Đoạn code sau đây sẽ hiển thị đúng nội dung dòng thứ 2:\n<em> Phòng 509, nhà K1 </em>",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Để hiển thị dòng thứ 3, sử dụng đoạn mã lệnh sau:\n<b style=”color:#999999”> Hotline: 0949.401.111 – 0912.602.769 </b>",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Để hiển thị dòng thứ 4, sử dụng đoạn mã lệnh sau:\n<a href=info@nnt.edu.vn>  </a>",
+      "correctAnswer": false
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Có thể sử dụng thẻ <h2> cho nội dung dòng thứ nhất....)\n- Ý b) : Đúng (Đoạn code sau đây sẽ hiển thị đúng nội dung dòng thứ 2:\n<em>...)\n- Ý c) : Sai (Để hiển thị dòng thứ 3, sử dụng đoạn mã lệnh sau:\n<b style=”...)\n- Ý d) : Sai (Để hiển thị dòng thứ 4, sử dụng đoạn mã lệnh sau:\n<a href=in...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-06",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Mỗi phát biểu sau đây về mục đích sử dụng của các phần tử là đúng hay sai?",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Phần tử body dùng để khai báo phần nội dung sẽ hiển thị trên màn hình cửa sổ trình duyệt web.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Phần tử head dùng để khai báo thông tin về cấu trúc của trang web.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Phần tử title dùng để khai báo tiêu đề và thông tin tác giả soạn trang web.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Phần tử html dùng để khai báo cấu trúc và nội dung của trang web.",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Phần tử body dùng để khai báo phần nội dung sẽ hiển thị trên...)\n- Ý b) : Sai (Phần tử head dùng để khai báo thông tin về cấu trúc của tran...)\n- Ý c) : Sai (Phần tử title dùng để khai báo tiêu đề và thông tin tác giả ...)\n- Ý d) : Đúng (Phần tử html dùng để khai báo cấu trúc và nội dung của trang...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-07",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Mỗi phát biểu sau đây là đúng hay sai khi sử dụng các phần tử để định dạng văn bản trên trang web?",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Nội dung các tiêu đề mục tạo bởi các phần tử h1, h2, h3, h4, h5, h6 khi hiển thị trên màn hình trình duyệt web đều được in đậm.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Nội dung của phần tử strong không thể chứa phần tử h1.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Nội dung của phần tử mark khi hiển thị trên màn hình trình duyệt web được tô nền màu xanh.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Đoạn văn bản tạo phần tử p được hiển thị trên một đoạn mới khi mở bằng trình duyệt web.",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Nội dung các tiêu đề mục tạo bởi các phần tử h1, h2, h3, h4,...)\n- Ý b) : Sai (Nội dung của phần tử strong không thể chứa phần tử h1....)\n- Ý c) : Sai (Nội dung của phần tử mark khi hiển thị trên màn hình trình d...)\n- Ý d) : Đúng (Đoạn văn bản tạo phần tử p được hiển thị trên một đoạn mới k...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-08",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Mỗi phát biểu sau đây là đúng hay sai khi sử dụng các phần ol, ul để tạo danh sách trên trang web?",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Khi khai báo thuộc tính type=“A”, danh sách xác định thứ tự các mục theo chữ cái in hoa.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Số thứ tự trong danh sách xác định thứ tự luôn là số nguyên.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Khi mở bằng trình duyệt web, theo mặc định mục trong danh sách không xác định thứ tự được hiển thị bắt đầu bằng dấu sao (*).",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Có thể thay đổi số thứ tự của mục bắt đầu trong danh sách xác định thứ tự.",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Khi khai báo thuộc tính type=“A”, danh sách xác định thứ tự ...)\n- Ý b) : Sai (Số thứ tự trong danh sách xác định thứ tự luôn là số nguyên....)\n- Ý c) : Sai (Khi mở bằng trình duyệt web, theo mặc định mục trong danh sá...)\n- Ý d) : Đúng (Có thể thay đổi số thứ tự của mục bắt đầu trong danh sách xá...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-09",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Siêu văn bản là loại văn bản mà nội dung của nó không chỉ chứa văn bản mà còn có thể chứa nhiều dạng dữ liệu khác như âm thanh, hình ảnh,… và đặc biệt là chứa các siêu liên kết tới siêu văn bản khác.",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Các tệp có phần mở rộng .txt đều là các siêu văn bản.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Trong HTML, người ta sử dụng thẻ <href> để tạo siêu liên kết.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Có hai loại đường dẫn chính là đường dẫn tuyệt đối và đường dẫn tương đối.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Đường dẫn tương đối không yêu cầu giao thức hay tên miền mà chỉ cần tên đường dẫn.",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Các tệp có phần mở rộng .txt đều là các siêu văn bản....)\n- Ý b) : Sai (Trong HTML, người ta sử dụng thẻ <href> để tạo siêu liên kết...)\n- Ý c) : Đúng (Có hai loại đường dẫn chính là đường dẫn tuyệt đối và đường ...)\n- Ý d) : Đúng (Đường dẫn tương đối không yêu cầu giao thức hay tên miền mà ...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-10",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Thuộc tính của thẻ có tác dụng bổ sung thông tin, làm rõ các điều khiển được thẻ chỉ định.",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Mỗi thẻ HTML đều phải có thuộc tính.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Cú pháp để xác định thuộc tính: tên_thuộc_tính=\"giá trị\".",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Thuộc tính có thể nằm trong thẻ kết thúc.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Trong trường hợp thẻ có nhiều hơn một thuộc tính thì các thuộc tính được ngăn cách bởi dấu cách.",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Mỗi thẻ HTML đều phải có thuộc tính....)\n- Ý b) : Đúng (Cú pháp để xác định thuộc tính: tên_thuộc_tính=\"giá trị\"....)\n- Ý c) : Sai (Thuộc tính có thể nằm trong thẻ kết thúc....)\n- Ý d) : Đúng (Trong trường hợp thẻ có nhiều hơn một thuộc tính thì các thu...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-11",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong định nghĩa phần tử form tạo biểu mẫu, em hãy chọn đáp án Đúng/Sai tương ứng với từng phát biểu sau đây?",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Trong định nghĩa phần tử form dùng phương thức GET, POST để xác định phương thức gửi dữ liệu",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Phương thức GET không bị hạn chế về dung lượng",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Phương thức POST bị hạn chế về dung lượng",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Nếu không khai báo method trong phần tử form thì phương thức mặc định là GET",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Trong định nghĩa phần tử form dùng phương thức GET, POST để ...)\n- Ý b) : Sai (Phương thức GET không bị hạn chế về dung lượng...)\n- Ý c) : Sai (Phương thức POST bị hạn chế về dung lượng...)\n- Ý d) : Đúng (Nếu không khai báo method trong phần tử form thì phương thức...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-12",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong điều khiển hỗ trợ nhập dữ liệu kí tự và nút lệnh, em hãy chọn đáp án Đúng/Sai tương ứng với từng phát biểu sau đây?",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Trong điều khiển nhập xâu kí tự có sử dụng thuộc tính name và value để khai báo phần tử input",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Thuộc tính value nếu có thì Giá trị được gán là giá trị mặc định của ô text trên màn hình duyệt web",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Phần tử label giúp tạo ô nhập đoạn văn bản",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "HTML cho phép tạo nút lệnh để gửi dữ liệu, thường được gọi là nút submit",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Trong điều khiển nhập xâu kí tự có sử dụng thuộc tính name v...)\n- Ý b) : Đúng (Thuộc tính value nếu có thì Giá trị được gán là giá trị mặc ...)\n- Ý c) : Sai (Phần tử label giúp tạo ô nhập đoạn văn bản...)\n- Ý d) : Đúng (HTML cho phép tạo nút lệnh để gửi dữ liệu, thường được gọi l...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-13",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Lớp 12A, lên kế hoạch họp nhóm để triển khai dự án học tập “Thiết kế trang thông tin giúp Đoàn trường”. Một số thành viên phát biểu về phương án sử dụng CSS cho dự án:",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Sử dụng bộ chọn định danh để định dạng cho một phần tử cụ thể bằng cách sử dụng một định danh cụ thể của phần tử đó trên trang.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Bộ chọn định danh chỉ được sử dụng một lần",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Bộ chọn lớp được sử dụng nhiều lần trên cùng một trang HTML",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Bộ chọn lớp có thể được sử dụng trên nhiều trang HTML khác nhau.",
+      "correctAnswer": true
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Sử dụng bộ chọn định danh để định dạng cho một phần tử cụ th...)\n- Ý b) : Đúng (Bộ chọn định danh chỉ được sử dụng một lần...)\n- Ý c) : Sai (Bộ chọn lớp được sử dụng nhiều lần trên cùng một trang HTML...)\n- Ý d) : Đúng (Bộ chọn lớp có thể được sử dụng trên nhiều trang HTML khác n...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-12F-TF-14",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-chuyen-de-12f-web",
+  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Minh muốn tạo một website cá nhân để chia sẻ những bức ảnh du lịch của mình. Tuy nhiên, Minh không biết làm thế nào để chèn hình ảnh vào trang web. Bạn có thể lựa chọn giúp Minh với những phương án sau đây:",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Tải hình ảnh lên một trang web chia sẻ ảnh và lấy link để chèn vào trang web cá nhân.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Sử dụng thẻ <img> trong HTML để chèn hình ảnh trực tiếp từ máy tính vào trang web.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Chèn hình ảnh bằng cách sử dụng phần mềm xử lý văn bản và sao chép vào trang web.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Gửi email cho bạn bè và nhờ họ chèn hình ảnh vào trang web giúp Minh.",
+      "correctAnswer": false
+    }
+  ],
+  "hints": {
+    "level1_concept": "Phân tích tình huống thực tế và các yêu cầu kỹ thuật về HTML/CSS trong bài toán.",
+    "level2_formula": "Kiểm tra từng phát biểu a, b, c, d xem cú pháp thẻ, thuộc tính hoặc quy tắc định kiểu có thỏa mãn yêu cầu hay không.",
+    "level3_steps": "Đánh giá tính đúng/sai của từng phương án: đối chiếu các thẻ <p>, <i>, <em>, <span>, <strong>, <a>, <img>, <ol>, <ul>, CSS ID/Class selector."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Tải hình ảnh lên một trang web chia sẻ ảnh và lấy link để ch...)\n- Ý b) : Đúng (Sử dụng thẻ <img> trong HTML để chèn hình ảnh trực tiếp từ m...)\n- Ý c) : Sai (Chèn hình ảnh bằng cách sử dụng phần mềm xử lý văn bản và sa...)\n- Ý d) : Sai (Gửi email cho bạn bè và nhờ họ chèn hình ảnh vào trang web g...)",
+  "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+}
 ];
