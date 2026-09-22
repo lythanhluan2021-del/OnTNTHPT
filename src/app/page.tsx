@@ -62,14 +62,16 @@ export default function AppHome() {
   // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage với cơ chế kiểm soát phiên bản chuẩn KH GD1
   useEffect(() => {
     try {
-      const STRUCTURE_VERSION = "2026_GD1_V4_OFFICIAL";
+      const STRUCTURE_VERSION = "2026_GD1_V5_MC_ACCURATE";
       const currentVer = localStorage.getItem("thpt_structure_version");
 
       if (currentVer !== STRUCTURE_VERSION) {
-        // Tự động dọn sạch cache cũ chứa các mục con bị tách rời để nạp chuẩn 100% theo KH GD1
+        // Tự động dọn sạch cache cũ chứa các câu hỏi bị lỗi bóc tách để nạp ngân hàng câu hỏi chuẩn xác 100%
         localStorage.removeItem("thpt_custom_subjects");
+        localStorage.removeItem("thpt_custom_questions");
         localStorage.setItem("thpt_structure_version", STRUCTURE_VERSION);
         setSubjects(INITIAL_SUBJECTS);
+        setQuestions(INITIAL_QUESTIONS);
       } else {
         const savedSubjects = localStorage.getItem("thpt_custom_subjects");
         if (savedSubjects) {

@@ -225,7 +225,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Khả năng nào sau đây KHÔNG phải là đặc trưng của AI?",
     "options": [
       {
@@ -260,7 +260,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Sự kiện nào đánh dấu sự khởi đầu của lịch sử trí tuệ nhân tạo?",
     "options": [
       {
@@ -295,7 +295,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Trong các phương án sau đây, phương án nào ĐÚNG khi nói về sự khác nhau giữa Trí tuệ nhân tạo hẹp (AI hẹp) và Trí tuệ nhân tạo tổng quát (AI mạnh)?",
     "options": [
       {
@@ -330,7 +330,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Câu nào dưới đây là đúng khi nói về khả năng nhận thức môi trường xung quanh của AI được cải thiện chủ yếu?",
     "options": [
       {
@@ -365,7 +365,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Thiết bị nào sau đây KHÔNG sử dụng trí tuệ nhân tạo để điểu khiển tự động?",
     "options": [
       {
@@ -400,7 +400,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "AI có thể giúp tối ưu hóa lĩnh vực sản xuất công nghiệp bằng cách nào dưới đây?",
     "options": [
       {
@@ -435,7 +435,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Khả năng nào dưới đây của AI cho phép máy tính điều chỉnh hành vi dựa trên dữ liệu mới?",
     "options": [
       {
@@ -470,7 +470,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Hệ thống nào dưới đây KHÔNG được coi là hệ thống có ứng dụng AI?",
     "options": [
       {
@@ -479,18 +479,18 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "B",
-        "content": "ChatGPT."
+        "content": "Dây chuyền lắp ráp tự động."
       },
       {
         "id": "C",
-        "content": "Dây chuyền lắp ráp tự động."
+        "content": "Chat GPT."
       },
       {
         "id": "D",
         "content": "Dự báo thời tiết."
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "B",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -505,7 +505,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Trí tuệ nhân tạo có tên viết tắt tiếng Anh là gì?",
     "options": [
       {
@@ -540,16 +540,16 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phương án nào dưới đây nêu đúng về khả năng suy luận của AI?",
     "options": [
       {
         "id": "A",
-        "content": "Trích xuất thông tin từ dữ liệu để học và tích luỹ tri thức."
+        "content": "Trích xuất thông tin từ dữ liệu để học và tích lũy kiến thức."
       },
       {
         "id": "B",
-        "content": "Cảm nhận và hiểu biết môi trường thông qua các cảm biến và thiết bị đẩu vào."
+        "content": "Cảm nhận và hiểu biết về môi trường thông qua các cảm biến và thiết bị đầu vào."
       },
       {
         "id": "C",
@@ -575,7 +575,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Hệ thống phân tích tài chính thuộc loại trí tuệ nhân tạo nào dưới đây?",
     "options": [
       {
@@ -610,7 +610,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Lĩnh vực nào dưới đây đã ứng dụng AI để dự đoán hành vi khách hàng?",
     "options": [
       {
@@ -645,7 +645,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Hệ thống nào dưới đây là một thành tựu của xử lí ngôn ngữ tự nhiên và thị giác máy tính?",
     "options": [
       {
@@ -680,7 +680,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phương án nào sau đây là ứng dụng của AI trong lĩnh vực giao thông vận tải?",
     "options": [
       {
@@ -715,7 +715,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "MYCIN là hệ chuyên gia trong lĩnh vực nào?",
     "options": [
       {
@@ -750,7 +750,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Trợ lí ảo của Samsung là",
     "options": [
       {
@@ -785,7 +785,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Robot hình người đầu tiên trên thế giới được tích hợp một loạt ứng dụng AI là",
     "options": [
       {
@@ -820,7 +820,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Hội thảo nào được coi là điểm mốc ghi nhận sự ra đời của thuật ngữ AI, đánh dấu sự khởi đầu của lĩnh vực AI, thúc đẩy sự phát triển của lĩnh vực này trong các năm tiếp theo?",
     "options": [
       {
@@ -855,7 +855,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Hệ thống nào dưới đây không được coi là hệ thống có ứng dụng AI?",
     "options": [
       {
@@ -864,18 +864,18 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "B",
-        "content": "ChatGPT."
+        "content": "Dây chuyền lắp ráp tự động."
       },
       {
         "id": "C",
-        "content": "Dây chuyền lắp ráp tự động."
+        "content": "Chat GPT."
       },
       {
         "id": "D",
         "content": "Dự báo thời tiết."
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "B",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -890,7 +890,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phần mềm IBM Watson for Oncology góp phần nâng cao hiệu quả điều trị bệnh gì?",
     "options": [
       {
@@ -925,7 +925,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Một thành tựu của xử lí ngôn ngữ tự nhiên và thị giác máy tính là",
     "options": [
       {
@@ -960,7 +960,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "ChatGPT được phát triển bởi",
     "options": [
       {
@@ -995,7 +995,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "AI (Trí tuệ nhân tạo) là gì?",
     "options": [
       {
@@ -1030,7 +1030,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Mục đích chính của AI là gì?",
     "options": [
       {
@@ -1065,7 +1065,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Hệ thống nào dưới đây KHÔNG được coi là hệ thống có ứng dụng AI?",
     "options": [
       {
@@ -1100,27 +1100,27 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Robot đầu tiên trên thế giới được tích hợp ứng dụng AI do hãng nào sản xuất?",
     "options": [
       {
         "id": "A",
-        "content": "C. Honda."
+        "content": "Tesla."
       },
       {
         "id": "B",
-        "content": "NAS"
+        "content": "NASA."
       },
       {
         "id": "C",
-        "content": "Không có phương án C"
+        "content": "Honda."
       },
       {
         "id": "D",
         "content": "Toshiba."
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -1135,7 +1135,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phương án nào sau đây đúng khi nói về ứng dụng của Trí tuệ nhân tạo trong lĩnh vực y tế?",
     "options": [
       {
@@ -1152,10 +1152,10 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Không có phương án D"
+        "content": "Trí tuệ nhân tạo được ứng dụng trong y tế để chuẩn đoán bệnh, phân tích hình ảnh, phát triển thuốc, quản lý hồ sơ bệnh nhân và quyết định hỗ trợ lâm sàng."
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "D",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -1170,7 +1170,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Nhận định nào sau đây là ĐÚNG khi nói về Trí tuệ nhân tạo?",
     "options": [
       {
@@ -1205,7 +1205,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Thiết bị nào sao đây được tích hợp AI?",
     "options": [
       {
@@ -1218,14 +1218,14 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Không có phương án C"
+        "content": "Camera nhận dạng."
       },
       {
         "id": "D",
         "content": "Máy cắt cỏ chạy bằng xăng."
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -1240,7 +1240,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phương án nào sau đây liệt kê hai phân loại chính của Trí tuệ nhân tạo (AI)?",
     "options": [
       {
@@ -1275,7 +1275,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Đâu là chức năng chính của hệ chuyên gia MYCIN?",
     "options": [
       {
@@ -1288,14 +1288,14 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Không có phương án C"
+        "content": "Đưa ra các chuẩn đoán về bệnh nhiễm trùng máu."
       },
       {
         "id": "D",
         "content": "Nghiên cứu về bệnh tim mạch."
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -1310,7 +1310,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Một trong những lợi ích của AI trong giáo dục là",
     "options": [
       {
@@ -1323,14 +1323,14 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Không có phương án C"
+        "content": "Theo dõi tiến trình học tập và đề xuất nội dung học tập phù hợp với người học."
       },
       {
         "id": "D",
         "content": "Chỉ dùng để ra bài tập luyện tập."
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -1345,7 +1345,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Thuật ngữ \"AI\" bắt đầu được sử dụng vào năm nào?",
     "options": [
       {
@@ -1525,22 +1525,22 @@ export const INITIAL_QUESTIONS: Question[] = [
     "options": [
       {
         "id": "A",
-        "content": "AI làm cho máy tính có khả năng thực hiện những công việc cần có trí tuệ như của con người."
+        "content": "Mục tiêu của việc phát triển ứng dụng AI là nhằm xây dựng các phần mềm giúp máy tính có được những năng lực trí tuệ như con người."
       },
       {
         "id": "B",
-        "content": "Các lĩnh vực nghiên cứu phát triển AI gồm có: học máy, xử lí ngôn ngữ tự nhiên, thị giác máy tính, AI tạo sinh."
+        "content": "Chương trình máy tính chơi cờ là một ví dụ của trí tuệ nhân tạo mạnh."
       },
       {
         "id": "C",
-        "content": "Thị giác máy tính góp phần phát triển các hệ thống AI để điều khiển phương tiện tự lái, hỗ trợ người lái hay người máy có camera tích hợp công nghệ nhận dạng giọng nói và cảm xúc."
+        "content": "Giữa AI và tự động hoá có sự khác biệt."
       },
       {
         "id": "D",
-        "content": "Chat GPT có thể viết các tóm tắt nghiên cứu giống như bài viết của một nhà khoa học."
+        "content": "Mọi ứng dụng AI trong thực tế đều cần có sự kết hợp ở các mức độ khác nhau của những đặc trưng trí tuệ."
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "B",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -1595,19 +1595,19 @@ export const INITIAL_QUESTIONS: Question[] = [
     "options": [
       {
         "id": "A",
-        "content": "AI mạnh đã được sử dụng rộng rãi và có hiệu quả cao trong một số nhiệm vụ cụ thể."
+        "content": "Các thành tựu hiện tại của AI đều là Trí tuệ nhân tạo tổng quát."
       },
       {
         "id": "B",
-        "content": "Không thể phân biệt được hệ thống AI yếu với trí tuệ con người nói chung."
+        "content": "Phiên bản GPT-2 được huấn luyện trên hàng vạn văn bản thuộc nhiều lĩnh vực khác nhau trên Internet, bao gồm sách, bài báo, trang web và nhiều nguồn khác."
       },
       {
         "id": "C",
-        "content": "AI yếu có thể được con người huấn luyện thông qua học máy nhưng không thể tự học hỏi hoặc tự cải thiện nếu không có sự hỗ trợ và hướng dẫn của con người."
+        "content": "Nhiều chuyên gia coi ChatGPT là bước đột phá trong lĩnh vực AI của năm 2022."
       },
       {
         "id": "D",
-        "content": "Hệ chuyên gia MYCIN là một ví dụ về AI mạnh."
+        "content": "ChatGPT có thể làm thơ, soạn nhạc, viết thư, thiết kế nhưng không thể sửa lỗi trong lập trình."
       }
     ],
     "correctAnswer": "C",
@@ -2050,19 +2050,19 @@ export const INITIAL_QUESTIONS: Question[] = [
     "options": [
       {
         "id": "A",
-        "content": "Hệ chuyên gia MYCIN sử dụng các kĩ thuật Học máy."
+        "content": "Các thành tựu hiện tại của AI đều là Trí tuệ nhân tạo tổng quát."
       },
       {
         "id": "B",
-        "content": "Google dịch là dịch vụ dịch thuật có trả phí do Google phát triển."
+        "content": "Phiên bản GPT-2 được huấn luyện trên hàng vạn văn bản thuộc nhiều lĩnh vực khác nhau trên Internet, bao gồm sách, bài báo, trang web và nhiều nguồn khác."
       },
       {
         "id": "C",
-        "content": "Các robot thông minh được coi là ứng dụng điển hình của AI trong lĩnh vực điều khiển."
+        "content": "Nhiều chuyên gia coi ChatGPT là bước đột phá trong lĩnh vực AI của năm 2022."
       },
       {
         "id": "D",
-        "content": "Hệ thống nhận dạng khuôn mặt là một ví dụ của trí tuệ nhân tạo tổng quát."
+        "content": "ChatGPT có thể làm thơ, soạn nhạc, viết thư, thiết kế nhưng không thể sửa lỗi trong lập trình."
       }
     ],
     "correctAnswer": "C",
@@ -2220,7 +2220,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "“Khả năng nắm bắt thông tin từ dữ liệu và điều chỉnh hành vi dựa trên thông tin mới” thể hiện đặc trưng nào của AI?",
     "options": [
       {
@@ -2237,7 +2237,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Khả năng học."
+        "content": "Khả năng học.\n1.3. Vận dụng"
       }
     ],
     "correctAnswer": "D",
@@ -2255,7 +2255,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Phương án nào sau đây là ứng dụng của AI trong lĩnh vực y học?",
     "options": [
       {
@@ -2290,7 +2290,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Hệ thống phân tích tài chính thuộc loại trí tuệ nhân tạo nào?",
     "options": [
       {
@@ -2325,7 +2325,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Siri không có tính năng nào sau đây?",
     "options": [
       {
@@ -2360,7 +2360,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Phương án nào sau đây không phải là ứng dụng của AI trong lĩnh vực sản xuất?",
     "options": [
       {
@@ -2395,7 +2395,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "AI có lợi ích như thế nào đối với khoa học và nghiên cứu?",
     "options": [
       {
@@ -2430,7 +2430,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "“Chia sẻ thông tin chính xác và đáng tin cậy, tránh lan truyền thông tin sai lệch hoặc tin đồn” thể hiện khía cạnh nào trong việc ứng xử nhân văn trong không gian mạng?",
     "options": [
       {
@@ -2465,7 +2465,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "AI có ảnh hưởng như thế nào tới lĩnh vực khoa học xã hội và nhân văn?",
     "options": [
       {
@@ -2500,7 +2500,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Thị giác máy tính (tiếng Anh: Computer vision), là một lĩnh vực trong khoa học máy tính và trí tuệ nhân tạo (AI) tập trung vào việc phát triển phương pháp và công nghệ để máy tính có khả năng nhận diện, hiểu và xử lý hình ảnh và video một cách tự động. Thị giác máy tính sử dụng các thuật toán và mô hình học máy để phân tích và rút trích thông tin từ dữ liệu hình ảnh, như các đặc trưng, đối tượng, mối quan hệ và bối cảnh. Vậy theo em, thị giác máy tính thực hiện được tác vụ nào sau đây?",
     "options": [
       {
@@ -2535,7 +2535,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Lĩnh vực nghiên cứu nào của AI tập trung vào việc xây dựng các thuật toán và mô hình có thể tạo nội dung (hình ảnh, âm thanh, văn bản) một cách tự động, được sử dụng trong nhiều lĩnh vực, bao gồm nghệ thuật, giải trí, quảng cáo và trò chơi?",
     "options": [
       {
@@ -2570,7 +2570,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Em hãy tìm hiểu trên Internet và cho biết phương án nào sau đây là tên của một ứng dụng AI giúp xây dựng trải nghiệm giao tiếp tự nhiên?",
     "options": [
       {
@@ -2605,7 +2605,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Em hãy tìm hiểu trên Internet và cho biết phương án nào sau đây là tên của một phần mềm AI giúp tạo hình ảnh dựa trên các miêu tả văn bản hoặc lời nói?",
     "options": [
       {
@@ -2640,7 +2640,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Hệ thống khuyến nghị trên Youtube là khả năng nào sau đây của AI?",
     "options": [
       {
@@ -2657,7 +2657,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Khả năng nhận thức."
+        "content": "Khả năng nhận thức.\nCâu13. Phương án nào sau đây KHÔNG phải là ứng dụng của AI trong lĩnh vực sản xuất?\nA. Phân tích tâm lý công nhân.B. Kiếm tra chất lượng sản phẩm.\nC. Quản lý tồn kho và dự báo nhu cầu.D. Tối ưu hoá quá trình lắp ráp."
       }
     ],
     "correctAnswer": "A",
@@ -2675,20 +2675,20 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Phương án nào sau đây KHÔNG phải là ứng dụng của AI trong lĩnh vực sản xuất?",
     "options": [
       {
         "id": "A",
-        "content": "Phân tích tâm lý công nhân."
+        "content": "Điều phối điều trị."
       },
       {
         "id": "B",
-        "content": "Kiếm tra chất lượng sản phẩm."
+        "content": "Quản lí tồn kho và dự báo nhu cầu."
       },
       {
         "id": "C",
-        "content": "Quản lý tồn kho và dự báo nhu cầu."
+        "content": "Kiểm tra chất lượng sản phẩm."
       },
       {
         "id": "D",
@@ -2710,7 +2710,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Phương án nào dưới đây nêu đúng về khả năng suy luận của AI?",
     "options": [
       {
@@ -2745,7 +2745,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Phát biểu nào sau đây phù hợp nhất khi nói về khả năng của Trí tuệ nhân tạo hẹp?",
     "options": [
       {
@@ -2780,7 +2780,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Ví dụ nào sau đây là một ứng dụng của AI yếu?",
     "options": [
       {
@@ -2793,14 +2793,14 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Không có phương án C"
+        "content": "MYCIN – hệ chuyên gia trong lĩnh vực y tế."
       },
       {
         "id": "D",
         "content": "Chatbot ChatGPT."
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -2815,7 +2815,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Phương án nào là phương án ĐÚNG khi nói về sự khác nhau giữa Trí tuệ nhân tạo hẹp (AI hẹp) và Trí tuệ nhân tạo tổng quát (AI mạnh)?",
     "options": [
       {
@@ -2850,7 +2850,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
     "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Hiện nay Trí tuệ nhân tạo KHÔNG có đặc trưng nào?",
     "options": [
       {
@@ -2867,7 +2867,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Khả năng giải quyết vấn đề."
+        "content": "Khả năng giải quyết vấn đề.\n2. CÂU HỎI TRẮC NGHIỆM ĐÚNG/SAI"
       }
     ],
     "correctAnswer": "C",
@@ -3659,14 +3659,13 @@ export const INITIAL_QUESTIONS: Question[] = [
     "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12A:\n- Ý a) : Sai (Hệ thống AI của công ty A có khả năng tự học và tự điều chỉnh các tiêu chí đánh giá ứng viên mà không cần sự can thiệp từ con người.)\n- Ý b) : Đúng (AI của công ty A có thể tạo ra kết quả không công bằng, thiên vị nếu dữ liệu huấn luyện ban đầu có sự thiên lệch.)\n- Ý c) : Sai (AI của công ty A chỉ đơn giản là làm theo các quy tắc cố định và không thể thích ứng với dữ liệu mới.)\n- Ý d) : Đúng (Một cách để khắc phục vấn đề thiên lệch trong AI là cung cấp cho hệ thống dữ liệu huấn luyện đa dạng và được cân bằng tốt.)",
     "sourceDocTitle": "Chuyên đề 12A. Giới thiệu trí tuệ nhân tạo (Google Drive)"
   },
-  // --- CÂU HỎI TRẮC NGHIỆM 4 LỰA CHỌN CHUYÊN ĐỀ 12B: KẾT NỐI MẠNG (72 CÂU) ---
   {
     "id": "Q-TIN-NET-01",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Lợi ích nào sau đây là quan trọng nhất của mạng xã hội là gì?",
     "options": [
       {
@@ -3701,7 +3700,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Mạng LAN là viết tắt của cụm từ nào?",
     "options": [
       {
@@ -3714,7 +3713,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Local Area ."
+        "content": "Local Area ."
       },
       {
         "id": "D",
@@ -3736,12 +3735,12 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Máy tính kết nối với nhau để:",
     "options": [
       {
         "id": "A",
-        "content": "Chia sẻ các thiết bị"
+        "content": "Chia sẻ các thiết bị"
       },
       {
         "id": "B",
@@ -3753,7 +3752,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Chia sẻ các thiết bị và trao đổi dữ liệu"
+        "content": "Chia sẻ các thiết bị và trao đổi dữ liệu"
       }
     ],
     "correctAnswer": "D",
@@ -3771,7 +3770,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Trường hợp nào không thích hợp để sử dụng mạng LAN?",
     "options": [
       {
@@ -3806,7 +3805,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phát biểu nào sau đây không chính xác?",
     "options": [
       {
@@ -3841,7 +3840,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Đâu không phải là ưu điểm của mạng không dây?",
     "options": [
       {
@@ -3876,7 +3875,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Đâu không phải ưu điểm của điện toán đám mây?",
     "options": [
       {
@@ -3911,7 +3910,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Đâu không phải là dịch vụ lưu trữ qua điện toán đám mây?",
     "options": [
       {
@@ -3946,7 +3945,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Những hạn chế của mạng xã hội?",
     "options": [
       {
@@ -3959,7 +3958,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Nguy cơ bị lừa đảo, đánh cắp thông tin cá nhân."
+        "content": "Nguy cơ bị lừa đảo, đánh cắp thông tin cá nhân."
       },
       {
         "id": "D",
@@ -3981,7 +3980,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Chúng ta nên làm gì để tự bảo vệ bản thân khi sử dụng mạng xã hội?",
     "options": [
       {
@@ -4016,7 +4015,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Để bảo vệ dữ liệu trên máy tính khi dùng internet, em cần làm gì?",
     "options": [
       {
@@ -4036,7 +4035,7 @@ export const INITIAL_QUESTIONS: Question[] = [
         "content": "Truy cập vào các liên kết lạ."
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "A",
     "hints": {
       "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
@@ -4051,7 +4050,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Điều nào sau đây được khuyến khích khi sử dụng các dịch vụ trên internet?",
     "options": [
       {
@@ -4086,7 +4085,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Chọn phương án sai. Khi sử dụng internet, có thể:",
     "options": [
       {
@@ -4121,7 +4120,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Lời khuyên nào sai khi em muốn bảo vệ máy tính và thông tin trên máy tính của mình?",
     "options": [
       {
@@ -4156,7 +4155,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Cách làm nào sau đây giúp phòng ngừa tác hại của Internet?",
     "options": [
       {
@@ -4191,7 +4190,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Con đường nào không lây, truyền virus:",
     "options": [
       {
@@ -4208,7 +4207,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Thẻ nhớ, US"
+        "content": "Thẻ nhớ, USB."
       }
     ],
     "correctAnswer": "C",
@@ -4226,7 +4225,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Đâu là tác hại khi tham gia internet?",
     "options": [
       {
@@ -4261,7 +4260,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Em sẽ làm gì trong các trường hợp sau: “Được một nhóm bạn truyền cho một địa chỉ website nhưng dặn là phải bí mật, không để người lớn biết”.",
     "options": [
       {
@@ -4296,7 +4295,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Đâu không phải là lợi ích của việc sử dụng mạng máy tính?",
     "options": [
       {
@@ -4331,7 +4330,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "E-Payment có nghĩa là gì?",
     "options": [
       {
@@ -4366,7 +4365,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phát biểu nào sao đây là sai ?",
     "options": [
       {
@@ -4401,7 +4400,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Điền vào chỗ chấm: “Nhờ vào mạng máy tính, người sử dụng có thể (1)….. để trao đổi (2)….. chia sẻ (3)….. và dùng chung các (4)….. trên mạng”.",
     "options": [
       {
@@ -4436,7 +4435,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Mạng LAN là mạng kết nối dùng trong phạm vi:",
     "options": [
       {
@@ -4456,7 +4455,7 @@ export const INITIAL_QUESTIONS: Question[] = [
         "content": "Trên toàn thế giới"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
@@ -4471,7 +4470,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phát biểu đúng về điện toán đám mây?",
     "options": [
       {
@@ -4506,7 +4505,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Điện toán đám mây không thể cung cấp những dịch vụ nào trong các dịch vụ sau:",
     "options": [
       {
@@ -4911,7 +4910,7 @@ export const INITIAL_QUESTIONS: Question[] = [
         "content": "Router"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "D",
     "hints": {
       "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
       "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
@@ -5416,7 +5415,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Trong quá trình chia sẻ máy in, bạn cần làm gì trên PC-A để máy in có thể được chia sẻ?",
     "options": [
       {
@@ -5451,7 +5450,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Để xem chi tiết kết nối mạng trên Windows 10, bạn cần làm gì?",
     "options": [
       {
@@ -5468,7 +5467,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Chọn Network Internet settings"
+        "content": "Chọn Network & Internet settings"
       }
     ],
     "correctAnswer": "D",
@@ -5486,7 +5485,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Phạm vi sử dụng của internet là:",
     "options": [
       {
@@ -5521,7 +5520,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Dịch vụ nào sau đây không là dịch vụ của điện toán đám mây?",
     "options": [
       {
@@ -5556,7 +5555,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Em truy cập trang mạng để xem tin tức thì ngẫu nhiên xem được một video có hình ảnh bạo lực mà em rất sợ. Em nên làm gì?",
     "options": [
       {
@@ -5591,7 +5590,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Đâu không phải là dịch vụ lưu trữ đám mây?",
     "options": [
       {
@@ -5626,7 +5625,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Trang web hiển thị đầu tiên khi ta truy cập vào website gọi là gì?",
     "options": [
       {
@@ -5661,7 +5660,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Địa chỉ trang Web https://igiaoduc.vn/ chữ “vn” trên địa chỉ trang web có ý nghĩa gì?",
     "options": [
       {
@@ -5696,7 +5695,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Phần mềm nào sau đây không phải trình duyệt WEB?",
     "options": [
       {
@@ -5731,7 +5730,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "DNS có nghĩa là gì?",
     "options": [
       {
@@ -5766,7 +5765,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Website là gì?",
     "options": [
       {
@@ -5801,7 +5800,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Tên miền trong địa chỉ website có .edu cho biết Website đó thuộc về?",
     "options": [
       {
@@ -5836,7 +5835,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Muốn kết nối các máy tính trong phạm vi gia đình thành một mạng, nên dùng loại thiết bị nào sau đây?",
     "options": [
       {
@@ -5871,7 +5870,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Internet là mạng toàn cầu hoạt động theo giao thức",
     "options": [
       {
@@ -5906,7 +5905,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Wi-Fi là một bộ tiêu chuẩn kĩ thuật truyền dữ liệu bằng … được sử dụng rộng rãi trong các mạng cục bộ. Điền cụm từ còn thiếu vào dấu ba chấm.",
     "options": [
       {
@@ -5941,7 +5940,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Mỗi thiết bị tham gia Internet đều phải có địa chỉ. Hiện nay (2024) có bao nhiêu loại địa chỉ IP?",
     "options": [
       {
@@ -5976,7 +5975,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Xác định địa chỉ IP tương ứng ở dạng thập phân của địa chỉ sau: 11000000 10101000 00000010 00000011",
     "options": [
       {
@@ -6011,7 +6010,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Lệnh nào của giao thức ICMP (Internet Control Message Protocol) giúp kiểm tra máy tính có kết nối được với một máy tính hay một thiết bị mạng hay không?",
     "options": [
       {
@@ -6046,7 +6045,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Điểm khác nhau của Hub và Switch là ở:",
     "options": [
       {
@@ -6081,7 +6080,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "IP động là gì?",
     "options": [
       {
@@ -6116,7 +6115,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Mệnh đề nào sau đây là SAI khi nói về việc kết nối máy tính và Access Point?",
     "options": [
       {
@@ -6151,7 +6150,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Một bạn học sinh cần thiết lập máy tính của mình thành máy cung cấp dịch vụ in cho các máy tính của các bạn khác trong phòng máy. Các bước bạn học sinh đã thực hiện bao gồm: Bước 1: Kết nối máy in với máy tính. Bước 2: Đặt cấu hình chia sẻ máy in. Bước 3: Bước 4: In thử từ máy tính khác trong mạng. Phương án nào sau đây là phù hợp nhất để điền vào Bước 3?",
     "options": [
       {
@@ -6180,7 +6179,6 @@ export const INITIAL_QUESTIONS: Question[] = [
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
-  // --- CÂU HỎI TRẮC NGHIỆM ĐÚNG / SAI CHUYÊN ĐỀ 12B: KẾT NỐI MẠNG (11 CÂU) ---
   {
     "id": "Q-TIN-TF-NET-01",
     "subjectId": "tin-hoc-12",
@@ -6610,14 +6608,13 @@ export const INITIAL_QUESTIONS: Question[] = [
     "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (IP tĩnh được gán cố định cho một thiết bị.)\n- Ý b) : Sai (IP tĩnh được thay đổi theo thời gian.)\n- Ý c) : Sai (Muốn thay đổi địa chỉ IP phải liên hệ với nhà cung cấp dịch vụ mạng.)\n- Ý d) : Sai (Địa chỉ IP tĩnh luôn có dạng: 192.168.2)",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
-  // --- CÂU HỎI TRẮC NGHIỆM 4 LỰA CHỌN CHUYÊN ĐỀ 10F: LẬP TRÌNH PYTHON (54 CÂU) ---
   {
     "id": "Q-TIN-PY-01",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Trong các đặc điểm sau, đặc điểm nào không phải là của ngôn ngữ lập trình bậc cao?",
     "options": [
       {
@@ -6652,7 +6649,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Quy tắc nào sau đây không đúng khi đặt tên biến trong Python?",
     "options": [
       {
@@ -6687,7 +6684,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Khi khai báo biến kiểu số nguyên, cú pháp nào là đúng?",
     "options": [
       {
@@ -6722,7 +6719,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Để nhập một giá trị số nguyên từ bàn phím và gán vào biến x, câu lệnh đúng trong Python là:",
     "options": [
       {
@@ -6757,7 +6754,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Cấu trúc đúng của một câu lệnh if trong Python là gì?",
     "options": [
       {
@@ -6770,11 +6767,11 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "if điều kiện: lệnh"
+        "content": "if <điều kiện: lệnh"
       },
       {
         "id": "D",
-        "content": "if điều kiện :"
+        "content": "if <điều kiện> :"
       }
     ],
     "correctAnswer": "D",
@@ -6792,7 +6789,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Trong quá trình thực hiện thuật toán, khi nào cần dùng cấu trúc rẽ nhánh?",
     "options": [
       {
@@ -6827,7 +6824,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Câu lệnh lặp nào sau đây sẽ lặp từ 0 đến 4?",
     "options": [
       {
@@ -6862,7 +6859,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phát biểu nào sau đây là sai?",
     "options": [
       {
@@ -6932,7 +6929,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Khi bạn tạo một chương trình con, điều gì sau đây là đúng?",
     "options": [
       {
@@ -6967,7 +6964,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Trong lập trình, xâu ký tự có thể được coi là một cấu trúc dữ liệu. Hãy cho biết đặc điểm chính nào của xâu ký tự giúp nó khác biệt với các kiểu dữ liệu khác?",
     "options": [
       {
@@ -7002,7 +6999,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Để khởi tạo danh sách b có 5 phần tử 1, 2, 3, 4, 5 ta dùng viết:",
     "options": [
       {
@@ -7022,7 +7019,7 @@ export const INITIAL_QUESTIONS: Question[] = [
         "content": "b = [1, 2, 3, 4, 5]"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "D",
     "hints": {
       "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
       "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
@@ -7037,7 +7034,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Ai đã phát triển Ngôn ngữ lập trình Python?",
     "options": [
       {
@@ -7072,7 +7069,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Ngôn ngữ Python được ra mắt lần đầu vào năm nào?",
     "options": [
       {
@@ -7107,7 +7104,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Ngôn ngữ nào gần với ngôn ngữ tự nhiên nhất?",
     "options": [
       {
@@ -7142,7 +7139,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Phần mở rộng nào sau đây là đúng của tệp Python?",
     "options": [
       {
@@ -7162,7 +7159,7 @@ export const INITIAL_QUESTIONS: Question[] = [
         "content": "p."
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
       "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
@@ -7177,7 +7174,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "VanDung",
     "content": "Giá trị của biểu thức Python sau sẽ là bao nhiêu?\n4 + 15 / 5",
     "options": [
       {
@@ -7212,7 +7209,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Điều nào sau đây được sử dụng để xác định một khối mã trong ngôn ngữ Python?",
     "options": [
       {
@@ -7225,7 +7222,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Dấu ngoặc ( )."
+        "content": "Dấu ngoặc ( )."
       },
       {
         "id": "D",
@@ -7247,7 +7244,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Thứ tự thực hiện các phép tính trong Python ở đáp án nào đúng?",
     "options": [
       {
@@ -7267,7 +7264,7 @@ export const INITIAL_QUESTIONS: Question[] = [
         "content": "(+, -), (*, /)."
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "B",
     "hints": {
       "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
       "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
@@ -7282,7 +7279,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "VanDung",
     "content": "Giá trị của biểu thức Python sau sẽ là bao nhiêu?\n6 – 6 / 2 + 4 * 5 – 6 / 2",
     "options": [
       {
@@ -7317,7 +7314,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Để kết thúc một phiên làm việc trong python, ta có thể?",
     "options": [
       {
@@ -7352,7 +7349,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "content": "Người tạo ra phiên bản đầu tiên của ngôn ngữ lập trình Python là người nước nào?",
     "options": [
       {
@@ -7369,7 +7366,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Bỉ. THÔNG HIỂU"
+        "content": "Bỉ.\nTHÔNG HIỂU"
       }
     ],
     "correctAnswer": "A",
@@ -7652,7 +7649,7 @@ export const INITIAL_QUESTIONS: Question[] = [
         "content": "Để tạo giao diện người dùng đẹp hơn"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
       "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
@@ -7667,7 +7664,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "ThongHieu",
+    "difficulty": "NhanBiet",
     "content": "Đoạn mã nào sau đây định nghĩa chính xác một chương trình con trong Python?",
     "options": [
       {
@@ -8037,7 +8034,7 @@ export const INITIAL_QUESTIONS: Question[] = [
         "content": "if, else."
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "D",
     "hints": {
       "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
       "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
@@ -8232,22 +8229,22 @@ export const INITIAL_QUESTIONS: Question[] = [
     "options": [
       {
         "id": "A",
-        "content": "giá trị :="
+        "content": "<giá trị> := A"
       },
       {
         "id": "B",
-        "content": "A = giá trị ."
+        "content": "A = <giá trị>"
       },
       {
         "id": "C",
-        "content": "giá trị ="
+        "content": "<giá trị> = A"
       },
       {
         "id": "D",
-        "content": ""
+        "content": "A := <giá trị>"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "B",
     "hints": {
       "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
       "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
@@ -8407,19 +8404,19 @@ export const INITIAL_QUESTIONS: Question[] = [
     "options": [
       {
         "id": "A",
-        "content": "$\\frac{a}{a+1} \\cdot (x-1)$"
+        "content": "aa+1*(x-1)."
       },
       {
         "id": "B",
-        "content": "$\\frac{a}{a+1}(x-1)$"
+        "content": "aa+1(x-1)."
       },
       {
         "id": "C",
-        "content": "$\\frac{a}{a+1} \\times (x-1)$"
+        "content": "aa+1 x (x-1)."
       },
       {
         "id": "D",
-        "content": "$\\frac{a}{x-1}(a+1)$"
+        "content": "ax-1(a+1).\nVẬN DỤNG"
       }
     ],
     "correctAnswer": "B",
@@ -8437,7 +8434,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Trong một chương trình, nếu bạn có biến x = 7.5 và y = 2.5, câu lệnh nào sau đây sẽ xuất ra kết quả là \"Tổng x và y là: 10.0\"?",
     "options": [
       {
@@ -8472,7 +8469,7 @@ export const INITIAL_QUESTIONS: Question[] = [
     "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 1: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "content": "Trong đoạn mã sau, nếu giá trị của biến y là 4, kết quả in ra sẽ là gì?\ny = 4 if y % 2 == 0: print(\"Là số chẵn\") else: print(\"Là số lẻ\")",
     "options": [
       {
@@ -8489,7 +8486,7 @@ export const INITIAL_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Lỗi cú pháp"
+        "content": "Lỗi cú pháp\n2. CÂU HỎI TRẮC NGHIỆM ĐÚNG / SAI"
       }
     ],
     "correctAnswer": "A",
@@ -8501,7 +8498,6 @@ export const INITIAL_QUESTIONS: Question[] = [
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
     "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
   },
-  // --- CÂU HỎI TRẮC NGHIỆM ĐÚNG / SAI CHUYÊN ĐỀ 10F: LẬP TRÌNH PYTHON (5 CÂU) ---
   {
     "id": "Q-TIN-TF-PY-01",
     "subjectId": "tin-hoc-12",
@@ -8791,5 +8787,110 @@ export const INITIAL_QUESTIONS: Question[] = [
     },
     "explanation": "Câu hỏi trắc nghiệm Đúng / Sai theo cấu trúc đề thi tốt nghiệp THPT từ tài liệu Chuyên đề 10F.",
     "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-NET-11",
+    "subjectId": "tin-hoc",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
+    "topicName": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng",
+    "chapterName": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng",
+    "difficulty": "ThongHieu",
+    "content": "Để bảo vệ dữ liệu trên máy tính khi dùng internet, em cần làm gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cài đặt và cập nhật phần mềm chống virus."
+      },
+      {
+        "id": "B",
+        "content": "Tải các phần mềm ứng dụng không rõ nguồn gốc về máy tính."
+      },
+      {
+        "id": "C",
+        "content": "Cung cấp thông tin cá nhân trên mạng xã hội."
+      },
+      {
+        "id": "D",
+        "content": "Truy cập vào các liên kết lạ."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại kiến thức về kết nối và an toàn mạng trong Chuyên đề 12B.",
+      "level2_formula": "Xem xét mục đích của thao tác kỹ thuật hoặc quy tắc an toàn khi sử dụng mạng.",
+      "level3_steps": "Đối chiếu từng lựa chọn A, B, C, D với quy trình chuẩn trong sách giáo khoa Tin học 12."
+    },
+    "explanation": "Câu hỏi bóc tách từ tài liệu Chuyên đề 12B. Phương án đúng: A theo chuẩn chương trình THPT.",
+    "sourceDocTitle": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng.docx (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-NET-42",
+    "subjectId": "tin-hoc",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
+    "topicName": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng",
+    "chapterName": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng",
+    "difficulty": "ThongHieu",
+    "content": "Tên miền cấp cao nhất (TLD) thường là gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Phần đuôi sau cùng của tên miền"
+      },
+      {
+        "id": "B",
+        "content": "Phần đầu của tên miền"
+      },
+      {
+        "id": "C",
+        "content": "Một phần của địa chỉ IP"
+      },
+      {
+        "id": "D",
+        "content": "Một loại giao thức mạng"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại kiến thức về kết nối và an toàn mạng trong Chuyên đề 12B.",
+      "level2_formula": "Xem xét mục đích của thao tác kỹ thuật hoặc quy tắc an toàn khi sử dụng mạng.",
+      "level3_steps": "Đối chiếu từng lựa chọn A, B, C, D với quy trình chuẩn trong sách giáo khoa Tin học 12."
+    },
+    "explanation": "Câu hỏi bóc tách từ tài liệu Chuyên đề 12B. Phương án đúng: A theo chuẩn chương trình THPT.",
+    "sourceDocTitle": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng.docx (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-NET-44",
+    "subjectId": "tin-hoc",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
+    "topicName": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng",
+    "chapterName": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng",
+    "difficulty": "ThongHieu",
+    "content": "Khi kết nối máy tính với Access Point trên Windows 10, bước đầu tiên bạn cần làm gì?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Kiểm tra địa chỉ IP"
+      },
+      {
+        "id": "B",
+        "content": "Nhập mật khẩu mạng Wi-Fi"
+      },
+      {
+        "id": "C",
+        "content": "Chọn tên mạng Wi-Fi"
+      },
+      {
+        "id": "D",
+        "content": "Mở trình duyệt web"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại kiến thức về kết nối và an toàn mạng trong Chuyên đề 12B.",
+      "level2_formula": "Xem xét mục đích của thao tác kỹ thuật hoặc quy tắc an toàn khi sử dụng mạng.",
+      "level3_steps": "Đối chiếu từng lựa chọn A, B, C, D với quy trình chuẩn trong sách giáo khoa Tin học 12."
+    },
+    "explanation": "Câu hỏi bóc tách từ tài liệu Chuyên đề 12B. Phương án đúng: C theo chuẩn chương trình THPT.",
+    "sourceDocTitle": "Chuyên đề 12B. Mạng máy tính và thiết bị mạng.docx (Google Drive)"
   }
 ];

@@ -38,9 +38,9 @@ export function extractDocxTextFromBuffer(buffer: Buffer): string {
           }
 
           if (xml) {
-            // Bảo toàn đánh dấu gạch chân (Underline), chỉ số trên (Superscript) và chỉ số dưới (Subscript)
             const processedXml = xml.replace(/<w:r\b[\s\S]*?<\/w:r>/g, (run) => {
-              const isUnderline = /<w:u\b/i.test(run);
+              const isUnderline =
+                /<w:u\b/i.test(run) && !/<w:u\b[^>]*\bval="none"/i.test(run);
               const isSuperscript = /vertAlign\b[^>]*\bval="superscript"/i.test(run);
               const isSubscript = /vertAlign\b[^>]*\bval="subscript"/i.test(run);
               const textMatch = run.match(/<w:t[^>]*>([\s\S]*?)<\/w:t>/g);

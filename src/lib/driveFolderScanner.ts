@@ -196,76 +196,26 @@ export function parseTextDocumentQuestions(
   if (!docText || docText.length < 30) return questions;
 
   const answerKeys = extractAnswerKeyTable(docText);
-  const lines = docText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+
+  // 1. Tách dòng thông minh: nếu "Câu X" bị dính vào cuối dòng trước thì tách ra thành dòng mới
+  const preprocessedText = docText.replace(
+    /(?<=[^\n])(?=(?:__U__)?Câu\s+\d+(?:\s*\([^)]*\))?[\s.:])/gi,
+    "\n"
+  );
+  const rawLines = preprocessedText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
 
   let currentLevel: "NhanBiet" | "ThongHieu" | "VanDung" | "VanDungCao" = "ThongHieu";
-  let currentHeader = "";
-  let currentQNum = 0;
-  let optA = "";
-  let optB = "";
-  let optC = "";
-  let optD = "";
-  let correctAns: "A" | "B" | "C" | "D" = "A";
-  let hasUnderlineAnswer = false;
-  let isInQuestion = false;
+  
+  interface RawQuestionGroup {
+    qNum: number;
+    level: "NhanBiet" | "ThongHieu" | "VanDung" | "VanDungCao";
+    lines: string[];
+  }
 
-  const flushQuestion = () => {
-    if (currentHeader && optA && optB) {
-      const qNum = currentQNum || questions.length + 1;
-      const finalAns = hasUnderlineAnswer
-        ? correctAns
-        : answerKeys.has(qNum)
-        ? answerKeys.get(qNum)!
-        : correctAns;
+  const groups: RawQuestionGroup[] = [];
+  let currentGroup: RawQuestionGroup | null = null;
 
-      const cleanHeader = currentHeader.replace(/__U__|__EU__/g, "").trim();
-      const cleanOptA = optA.replace(/__U__|__EU__/g, "").trim();
-      const cleanOptB = optB.replace(/__U__|__EU__/g, "").trim();
-      const cleanOptC = optC ? optC.replace(/__U__|__EU__/g, "").trim() : "Không có phương án C";
-      const cleanOptD = optD ? optD.replace(/__U__|__EU__/g, "").trim() : "Không có phương án D";
-
-      const qId = `Q-${subjectId.toUpperCase().slice(0, 3)}-${Date.now().toString().slice(-4)}-${qNum}`;
-
-      questions.push({
-        id: qId,
-        subjectId,
-        topicId,
-        topicName,
-        chapterName,
-        difficulty: currentLevel,
-        content: cleanHeader,
-        options: [
-          { id: "A", content: cleanOptA },
-          { id: "B", content: cleanOptB },
-          { id: "C", content: cleanOptC },
-          { id: "D", content: cleanOptD },
-        ],
-        correctAnswer: finalAns,
-        hints: {
-          level1_concept: `Nhớ lại định nghĩa và các đặc trưng cốt lõi trong bài học "${topicName}".`,
-          level2_formula: `Đọc kỹ giả thiết trong câu hỏi, áp dụng phương pháp loại trừ các phương án thiếu căn cứ hoặc phát biểu quá mức tuyệt đối.`,
-          level3_steps: `Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất.`,
-        },
-        explanation: `Câu hỏi bóc tách từ tài liệu "${fileName}". Phân tích nội dung để chọn phương án đúng nhất theo chuẩn chương trình THPT.`,
-        sourceDocTitle: `${fileName} (Google Drive)`,
-      });
-    }
-
-    currentHeader = "";
-    optA = "";
-    optB = "";
-    optC = "";
-    optD = "";
-    correctAns = "A";
-    hasUnderlineAnswer = false;
-    isInQuestion = false;
-  };
-
-  const optRegex = /(?:__U__)?([A-D])[.)](?:__EU__)?\s*([\s\S]*?)(?=(?:__U__)?[A-D][.)]|$)/g;
-
-  for (let i = 0; i < lines.length; i++) {
-    const rawLine = lines[i];
-
+  for (const rawLine of rawLines) {
     // Cập nhật mức độ câu hỏi
     if (/1\.1\.\s*Nhận biết/i.test(rawLine)) {
       currentLevel = "NhanBiet";
@@ -279,56 +229,144 @@ export function parseTextDocumentQuestions(
       currentLevel = "VanDung";
       continue;
     }
-    if (/2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI/i.test(rawLine) || /PHẦN II/i.test(rawLine)) {
-      if (isInQuestion) flushQuestion();
-      break; // Tạm dừng tại phần trắc nghiệm đúng sai để ưu tiên đề 4 lựa chọn
+    if (
+      /2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI/i.test(rawLine) ||
+      /PHẦN II/i.test(rawLine) ||
+      /2\.\s*CÂU TRẮC NGHIỆM ĐÚNG SAI/i.test(rawLine)
+    ) {
+      if (currentGroup) groups.push(currentGroup);
+      currentGroup = null;
+      break; // Ưu tiên phần trắc nghiệm nhiều lựa chọn
     }
 
-    // Phát hiện câu hỏi mới: "Câu 1.", "Câu 1:", "Bài 1:"
+    // Phát hiện câu hỏi mới: "Câu 1.", "Câu 1:", "Câu 1(B1-NB):"
     const cleanLine = rawLine.replace(/__U__|__EU__/g, "").trim();
-    const qMatch = cleanLine.match(/^Câu\s*(\d+)[\s.:]+([\s\S]*)/i);
+    const qMatch = cleanLine.match(/^Câu\s*(\d+)(?:\s*\([^)]*\))?[\s.:]+([\s\S]*)/i);
     if (qMatch) {
-      if (isInQuestion) flushQuestion();
-      isInQuestion = true;
-      currentQNum = parseInt(qMatch[1], 10);
-      currentHeader = qMatch[2].trim();
+      if (currentGroup) groups.push(currentGroup);
+      currentGroup = {
+        qNum: parseInt(qMatch[1], 10),
+        level: currentLevel,
+        lines: [rawLine],
+      };
       continue;
     }
 
-    if (!isInQuestion) continue;
-
-    // Phát hiện dòng chứa các phương án A, B, C, D
-    const testLine = cleanLine.replace(/^[ \t]+/, "");
-    if (/^[A-D][.)]/i.test(testLine)) {
-      optRegex.lastIndex = 0;
-      let m: RegExpExecArray | null;
-      while ((m = optRegex.exec(rawLine)) !== null) {
-        if (!m[0].trim()) continue;
-        const fullToken = m[0];
-        const letter = m[1].toUpperCase() as "A" | "B" | "C" | "D";
-        const content = m[2].trim();
-
-        // Nếu phương án có gạch chân trong Word (__U__) thì đây là đáp án đúng!
-        if (fullToken.includes("__U__") && !hasUnderlineAnswer) {
-          correctAns = letter;
-          hasUnderlineAnswer = true;
-        }
-
-        if (letter === "A") optA = content;
-        else if (letter === "B") optB = content;
-        else if (letter === "C") optC = content;
-        else if (letter === "D") optD = content;
-      }
-      continue;
-    }
-
-    // Nếu chưa gặp phương án A thì các dòng tiếp theo là phần thân câu hỏi
-    if (!optA && rawLine) {
-      currentHeader += " " + rawLine.replace(/__U__|__EU__/g, "");
+    if (currentGroup) {
+      currentGroup.lines.push(rawLine);
     }
   }
+  if (currentGroup) groups.push(currentGroup);
 
-  if (isInQuestion) flushQuestion();
+  // 2. Phân tích từng câu hỏi với bộ tìm phương án tuần tự (A -> B -> C -> D)
+  for (const g of groups) {
+    const firstLine = g.lines[0];
+    const headerMatch = firstLine.match(/^(?:__U__)?Câu\s+\d+(?:\s*\([^)]*\))?[\s.:]+/i);
+    const firstRest = headerMatch ? firstLine.slice(headerMatch[0].length) : firstLine;
+    const allQText = [firstRest, ...g.lines.slice(1)].join("\n").trim();
+
+    // Tìm vị trí token A, B, C, D tuần tự
+    const tokens: { letter: "A" | "B" | "C" | "D"; start: number; end: number; fullToken: string }[] = [];
+    const expectedLetters: ("A" | "B" | "C" | "D")[] = ["A", "B", "C", "D"];
+    let searchPos = 0;
+
+    for (const target of expectedLetters) {
+      // Regex hỗ trợ __U__ trước/sau ký tự hoặc bao quanh dấu chấm/ngoặc
+      const p = new RegExp(
+        `(?:__U__|__EU__|\\s)*${target}(?:__U__|__EU__|\\s)*[.):](?:__U__|__EU__|\\s)*`,
+        "i"
+      );
+      const sub = allQText.slice(searchPos);
+      const match = sub.match(p);
+      if (match && match.index !== undefined) {
+        const start = searchPos + match.index;
+        const end = start + match[0].length;
+        tokens.push({
+          letter: target,
+          start,
+          end,
+          fullToken: match[0],
+        });
+        searchPos = end;
+      } else {
+        break;
+      }
+    }
+
+    // Nếu không đủ 4 phương án thì bỏ qua câu lỗi hoặc trắc nghiệm đúng sai
+    if (tokens.length !== 4) continue;
+
+    const rawContent = allQText.slice(0, tokens[0].start).trim();
+    const rawOpts: Record<"A" | "B" | "C" | "D", string> = {
+      A: allQText.slice(tokens[0].end, tokens[1].start).trim(),
+      B: allQText.slice(tokens[1].end, tokens[2].start).trim(),
+      C: allQText.slice(tokens[2].end, tokens[3].start).trim(),
+      D: allQText.slice(tokens[3].end).trim(),
+    };
+
+    // Xác định đáp án đúng từ gạch chân __U__
+    let detectedAns: "A" | "B" | "C" | "D" = "A";
+    let hasUnderline = false;
+
+    for (const t of tokens) {
+      const letKey = t.letter;
+      const inToken = t.fullToken.includes("__U__");
+      const inContent = rawOpts[letKey].includes("__U__");
+      if (inToken || inContent) {
+        detectedAns = letKey;
+        hasUnderline = true;
+        break;
+      }
+    }
+
+    const finalAns = hasUnderline
+      ? detectedAns
+      : answerKeys.has(g.qNum)
+      ? answerKeys.get(g.qNum)!
+      : detectedAns;
+
+    const cleanMarkup = (s: string) =>
+      s
+        .replace(/__U__|__EU__/g, "")
+        .replace(/__SUP__/g, "<sup>")
+        .replace(/__ESUP__/g, "</sup>")
+        .replace(/__SUB__/g, "<sub>")
+        .replace(/__ESUB__/g, "</sub>")
+        .replace(/[ \t]+/g, " ")
+        .trim();
+
+    const cleanHeader = cleanMarkup(rawContent);
+    const cleanOptA = cleanMarkup(rawOpts.A);
+    const cleanOptB = cleanMarkup(rawOpts.B);
+    const cleanOptC = cleanMarkup(rawOpts.C);
+    const cleanOptD = cleanMarkup(rawOpts.D);
+
+    const qId = `Q-${subjectId.toUpperCase().slice(0, 3)}-${Date.now().toString().slice(-4)}-${g.qNum}`;
+
+    questions.push({
+      id: qId,
+      subjectId,
+      topicId,
+      topicName,
+      chapterName,
+      difficulty: g.level,
+      content: cleanHeader,
+      options: [
+        { id: "A", content: cleanOptA },
+        { id: "B", content: cleanOptB },
+        { id: "C", content: cleanOptC },
+        { id: "D", content: cleanOptD },
+      ],
+      correctAnswer: finalAns,
+      hints: {
+        level1_concept: `Nhớ lại định nghĩa và các đặc trưng cốt lõi trong bài học "${topicName}".`,
+        level2_formula: `Đọc kỹ giả thiết trong câu hỏi, áp dụng phương pháp loại trừ các phương án thiếu căn cứ hoặc phát biểu quá mức tuyệt đối.`,
+        level3_steps: `Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất.`,
+      },
+      explanation: `Câu hỏi bóc tách từ tài liệu "${fileName}". Phân tích nội dung để chọn phương án đúng nhất theo chuẩn chương trình THPT.`,
+      sourceDocTitle: `${fileName} (Google Drive)`,
+    });
+  }
 
   return questions;
 }
