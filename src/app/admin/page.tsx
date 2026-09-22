@@ -235,6 +235,34 @@ export default function AdminDashboardPage() {
     }
   }, [isAdmin, activeTab, selectedClass, selectedWeekId]);
 
+  // Tự động làm mới dữ liệu khi Thầy chuyển tab quay lại trang Admin
+  useEffect(() => {
+    if (!isAdmin) return;
+    const handleFocus = () => {
+      if (activeTab === "overview") fetchData(selectedClass);
+      else if (activeTab === "weekly") fetchWeeklyData(selectedWeekId, selectedClass);
+      else if (activeTab === "matrix") fetchMatrixData(selectedClass);
+    };
+    window.addEventListener("focus", handleFocus);
+    return () => window.removeEventListener("focus", handleFocus);
+  }, [isAdmin, activeTab, selectedClass, selectedWeekId]);
+
+  // Tự động làm mới dữ liệu ngầm mỗi 8 giây (Realtime Polling)
+  useEffect(() => {
+    if (!isAdmin) return;
+    const interval = setInterval(() => {
+      if (activeTab === "overview") {
+        fetchData(selectedClass);
+      } else if (activeTab === "weekly") {
+        fetchWeeklyData(selectedWeekId, selectedClass);
+      } else if (activeTab === "matrix") {
+        fetchMatrixData(selectedClass);
+      }
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [isAdmin, activeTab, selectedClass, selectedWeekId]);
+
   // Filtered Weeks for Selector (by Semester)
   const filteredWeeksBySemester = useMemo(() => {
     if (selectedSemester === "all") return allWeeks;
@@ -932,6 +960,18 @@ export default function AdminDashboardPage() {
         </div>
 
         <div className="flex items-center gap-2 self-end sm:self-auto flex-wrap">
+          {/* Huy hiệu Realtime Live */}
+          <div
+            className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-neu-sm bg-indigo-50/80 text-indigo-700 text-[11px] font-bold shadow-neu-flat-xs border border-indigo-200/60"
+            title="Dashboard tự động cập nhật kết quả làm bài của học sinh ngầm mỗi 8 giây"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span>Realtime (8s)</span>
+          </div>
+
           {/* Nút Kết Nối & Đồng Bộ Google Drive */}
           <button
             type="button"
@@ -2428,52 +2468,42 @@ export default function AdminDashboardPage() {
 
             <div className="space-y-3 text-xs text-slate-700 leading-relaxed">
               <p>
-                Để học sinh làm bài trên bất kỳ thiết bị nào (điện thoại, máy tính ở nhà) mà Thầy mở Dashboard là <strong>thấy ngay điểm số cập nhật tức thì</strong>, Thầy chỉ cần kết nối 1 Database Upstash Redis miễn phí trên Vercel theo 3 bước:
+                Để học sinh làm bài trên bất kỳ thiết bị nào (điện thoại, máy tính ở nhà) mà Thầy mở Dashboard là <strong>thấy ngay điểm số cập nhật tức thì theo thời gian thực</strong>, Thầy có thể kích hoạt Database Upstash Redis miễn phí 100% theo 1 trong 2 cách sau:
               </p>
 
-              <div className="space-y-2.5">
-                {/* Bước 1 */}
-                <div className="p-3 rounded-neu-sm bg-white/70 shadow-neu-flat-xs border border-white/90 space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] font-black flex items-center justify-center flex-shrink-0">
-                      1
-                    </span>
-                    <strong className="text-slate-800">Mở trang quản trị dự án trên Vercel:</strong>
-                  </div>
-                  <p className="text-slate-600 pl-7 text-[11px]">
-                    Truy cập <strong>vercel.com</strong> $\rightarrow$ Bấm vào dự án <strong>OnTNTHPT</strong> của Thầy.
-                  </p>
+              {/* Cách 1 */}
+              <div className="p-3 rounded-neu-sm bg-white/70 shadow-neu-flat-xs border border-white/90 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] font-black flex items-center justify-center flex-shrink-0">
+                    A
+                  </span>
+                  <strong className="text-slate-800">Cách 1: Tạo trực tiếp trên Vercel Storage (1-Click)</strong>
                 </div>
+                <ol className="list-decimal pl-7 text-[11px] text-slate-600 space-y-1">
+                  <li>Truy cập <strong>vercel.com</strong> $\rightarrow$ Mở dự án <strong>OnTNTHPT</strong>.</li>
+                  <li>Bấm tab <strong>Storage</strong> $\rightarrow$ <strong>Create Database</strong> $\rightarrow$ Chọn <strong>KV</strong> (hoặc <strong>Upstash Redis</strong>).</li>
+                  <li>Bấm <strong>Connect to Project</strong> $\rightarrow$ Chọn <strong>OnTNTHPT</strong> $\rightarrow$ Bấm <strong>Redeploy</strong> dự án.</li>
+                </ol>
+              </div>
 
-                {/* Bước 2 */}
-                <div className="p-3 rounded-neu-sm bg-white/70 shadow-neu-flat-xs border border-white/90 space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[11px] font-black flex items-center justify-center flex-shrink-0">
-                      2
-                    </span>
-                    <strong className="text-slate-800">Tạo Database KV / Upstash Redis miễn phí:</strong>
-                  </div>
-                  <p className="text-slate-600 pl-7 text-[11px]">
-                    Bấm vào tab <strong>Storage</strong> trên thanh menu $\rightarrow$ Bấm nút <strong>Create Database</strong> $\rightarrow$ Chọn <strong>KV</strong> (hoặc <strong>Upstash Redis</strong>) $\rightarrow$ Chọn gói <em>Hobby (Free)</em>.
-                  </p>
+              {/* Cách 2 */}
+              <div className="p-3 rounded-neu-sm bg-white/70 shadow-neu-flat-xs border border-white/90 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-emerald-600 text-white text-[11px] font-black flex items-center justify-center flex-shrink-0">
+                    B
+                  </span>
+                  <strong className="text-slate-800">Cách 2: Tạo trên Upstash.com (Miễn phí 100%, không cần thẻ)</strong>
                 </div>
-
-                {/* Bước 3 */}
-                <div className="p-3 rounded-neu-sm bg-white/70 shadow-neu-flat-xs border border-white/90 space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-emerald-600 text-white text-[11px] font-black flex items-center justify-center flex-shrink-0">
-                      3
-                    </span>
-                    <strong className="text-slate-800">Bấm Connect vào dự án:</strong>
-                  </div>
-                  <p className="text-slate-600 pl-7 text-[11px]">
-                    Bấm <strong>Connect to Project</strong> $\rightarrow$ Chọn dự án <strong>OnTNTHPT</strong>. Vercel sẽ tự động tạo 2 biến môi trường: <code>KV_REST_API_URL</code> và <code>KV_REST_API_TOKEN</code>.
-                  </p>
-                </div>
+                <ol className="list-decimal pl-7 text-[11px] text-slate-600 space-y-1">
+                  <li>Truy cập <strong>console.upstash.com</strong> $\rightarrow$ Đăng nhập bằng tài khoản Google (1 click).</li>
+                  <li>Bấm <strong>Create Database</strong> $\rightarrow$ Đặt tên <code>ontnthpt</code>, chọn Region <code>Singapore</code> $\rightarrow$ Bấm <strong>Create</strong>.</li>
+                  <li>Cuộn xuống mục <strong>REST API</strong> $\rightarrow$ Chọn tab <strong>.env</strong> $\rightarrow$ Copy 2 giá trị <code>UPSTASH_REDIS_REST_URL</code> và <code>UPSTASH_REDIS_REST_TOKEN</code>.</li>
+                  <li>Quay lại <strong>Vercel</strong> $\rightarrow$ Mở dự án <code>OnTNTHPT</code> $\rightarrow$ <strong>Settings</strong> $\rightarrow$ <strong>Environment Variables</strong> $\rightarrow$ Thêm 2 biến này vào $\rightarrow$ Bấm <strong>Redeploy</strong>.</li>
+                </ol>
               </div>
 
               <div className="p-3 rounded-neu-sm bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-medium leading-relaxed">
-                🎉 <strong>Hoàn tất:</strong> Sau khi Connect xong, Thầy chỉ cần bấm <strong>Redeploy</strong> trên Vercel. Ứng dụng đã được tích hợp sẵn mã nguồn tự nhận diện các biến này. Huy hiệu góc trên sẽ chuyển sang 🟢 <strong>Đã Kết Nối</strong> và mọi lượt làm bài của học sinh sẽ được lưu vĩnh viễn trên đám mây!
+                🎉 <strong>Hoàn tất:</strong> Sau khi hoàn tất 1 trong 2 cách trên và Redeploy, ứng dụng tự động chuyển huy hiệu sang 🟢 <strong>Đã Kết Nối</strong>. Mọi tiến trình làm bài của từng học sinh từ bất kỳ máy nào sẽ được lưu trữ vĩnh viễn và đồng bộ thời gian thực vào Dashboard của Thầy!
               </div>
             </div>
 

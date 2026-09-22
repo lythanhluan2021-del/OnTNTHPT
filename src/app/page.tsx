@@ -129,6 +129,34 @@ export default function AppHome() {
     }
   }, []);
 
+  // Tự động đồng bộ các lượt làm bài từ localStorage lên máy chủ khi học sinh đăng nhập
+  useEffect(() => {
+    if (!user) return;
+    try {
+      const raw = localStorage.getItem("thpt_attempts");
+      if (!raw) return;
+      const localAttempts: StudentAttempt[] = JSON.parse(raw);
+      if (Array.isArray(localAttempts) && localAttempts.length > 0) {
+        const enriched = localAttempts.map((att) => ({
+          ...att,
+          studentId: att.studentId || user.id || user.username,
+          studentName: att.studentName || user.fullName,
+          className: att.className || user.className,
+        }));
+        localStorage.setItem("thpt_attempts", JSON.stringify(enriched));
+        setAttempts(enriched);
+
+        fetch("/api/student/attempts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ attempts: enriched }),
+        }).catch((err) => console.warn("Lỗi đồng bộ attempts lên máy chủ:", err));
+      }
+    } catch {
+      // Ignored
+    }
+  }, [user]);
+
   // Thông tin tiêu đề hiển thị trên Header và trạng thái Lý thuyết
   const currentSubject = subjects.find((s) => s.id === selectedSubjectId);
   const currentTopic = currentSubject?.topics.find((t) => t.id === selectedTopicId);
@@ -233,8 +261,8 @@ export default function AppHome() {
       }
 
       const newAttempt: StudentAttempt = {
-        id: "att-" + Date.now(),
-        studentId: user?.id,
+        id: "att-" + Date.now() + "-" + Math.random().toString(36).slice(2, 6),
+        studentId: user?.id || user?.username,
         studentName: user?.fullName,
         className: user?.className,
         questionId: currentQuestion.id,
@@ -281,8 +309,8 @@ export default function AppHome() {
     }
 
     const newAttempt: StudentAttempt = {
-      id: "att-" + Date.now(),
-      studentId: user?.id,
+      id: "att-" + Date.now() + "-" + Math.random().toString(36).slice(2, 6),
+      studentId: user?.id || user?.username,
       studentName: user?.fullName,
       className: user?.className,
       questionId: currentQuestion.id,

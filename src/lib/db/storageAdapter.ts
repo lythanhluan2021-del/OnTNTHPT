@@ -132,6 +132,26 @@ const INITIAL_USERS: User[] = [
 // Dữ liệu làm bài mặc định ban đầu (rỗng, sẵn sàng đón học sinh làm bài thật)
 const INITIAL_ATTEMPTS: StudentAttempt[] = [];
 
+// Helper so khớp lượt làm bài với học sinh linh hoạt và chính xác
+export function matchStudentAttempt(attempt: StudentAttempt, student: User): boolean {
+  if (attempt.studentId) {
+    if (
+      attempt.studentId === student.id ||
+      attempt.studentId.toLowerCase() === student.username.toLowerCase()
+    ) {
+      return true;
+    }
+  }
+  if (attempt.studentName && student.fullName) {
+    if (attempt.studentName.trim().toLowerCase() === student.fullName.trim().toLowerCase()) {
+      if (!attempt.className || !student.className || attempt.className === student.className) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 export class StorageAdapter {
   static isCloudConnected(): boolean {
     return Boolean(getRedisClient());
@@ -302,17 +322,25 @@ export class StorageAdapter {
       try {
         const remoteAttempts = await redis.get<StudentAttempt[]>("thpt:attempts");
         if (remoteAttempts && Array.isArray(remoteAttempts)) {
-          // Tự động dọn dẹp các lượt làm bài mock data cũ
+          // Tự động dọn dẹp các lượt làm bài mock data cũ (CHỈ lọc các ID mock thử nghiệm)
+          const mockUserIds = new Set([
+            "hs-12a1-01", "hs-12a1-02", "hs-12a1-03", "hs-12a1-04", "hs-12a1-05",
+            "hs-12a2-01", "hs-12a2-02", "hs-12a3-01", "hs-12a3-02",
+          ]);
           const hasMock = remoteAttempts.some(
-            (a) => a.id.startsWith("att-") || (a.studentId ? a.studentId.startsWith("hs-12a") : false)
+            (a) => a.id.startsWith("att-mock-") || (a.studentId ? mockUserIds.has(a.studentId) : false)
           );
           if (hasMock) {
             const cleanedAttempts = remoteAttempts.filter(
-              (a) => !a.id.startsWith("att-") && !(a.studentId ? a.studentId.startsWith("hs-12a") : false)
+              (a) => !a.id.startsWith("att-mock-") && !(a.studentId && mockUserIds.has(a.studentId))
             );
             await redis.set("thpt:attempts", cleanedAttempts);
             globalForStorage.ontnAttemptsCache = cleanedAttempts;
-            return studentId ? cleanedAttempts.filter((a) => a.studentId === studentId) : cleanedAttempts;
+            return studentId
+              ? cleanedAttempts.filter(
+                  (a) => a.studentId === studentId || (a.studentName && a.studentName.toLowerCase() === studentId.toLowerCase())
+                )
+              : cleanedAttempts;
           }
 
           allAttempts = remoteAttempts;
@@ -346,7 +374,13 @@ export class StorageAdapter {
       }
     }
 
-    return studentId ? allAttempts.filter((a) => a.studentId === studentId) : allAttempts;
+    return studentId
+      ? allAttempts.filter(
+          (a) =>
+            a.studentId === studentId ||
+            (a.studentName && a.studentName.toLowerCase() === studentId.toLowerCase())
+        )
+      : allAttempts;
   }
 
   static async saveAttempt(attempt: StudentAttempt): Promise<void> {
@@ -422,11 +456,11 @@ export class StorageAdapter {
         "hs-12a2-01", "hs-12a2-02", "hs-12a3-01", "hs-12a3-02",
       ]);
       finalUsers = currentUsers.filter(
-        (u) => u.role === "admin" || (!mockIds.has(u.id) && !u.username.startsWith("hs12a"))
+        (u) => u.role === "admin" || !mockIds.has(u.id)
       );
       const allAttempts = await this.getAttempts();
       finalAttempts = allAttempts.filter(
-        (a) => !a.id.startsWith("att-") && !(a.studentId && mockIds.has(a.studentId))
+        (a) => !a.id.startsWith("att-mock-") && !(a.studentId && mockIds.has(a.studentId))
       );
     }
 
@@ -476,7 +510,7 @@ export class StorageAdapter {
     const allAttempts = await this.getAttempts();
 
     return filteredUsers.map((student) => {
-      const studentAttempts = allAttempts.filter((a) => a.studentId === student.id);
+      const studentAttempts = allAttempts.filter((a) => matchStudentAttempt(a, student));
       const totalQuestionsAttempted = studentAttempts.length;
       const correctAnswers = studentAttempts.filter((a) => a.isCorrect).length;
       const accuracyRate =
@@ -632,7 +666,7 @@ export class StorageAdapter {
 
     const students: StudentWeeklyProgress[] = filteredUsers.map((student) => {
       const weekAttempts = allAttempts.filter(
-        (a) => a.studentId === student.id && currentWeek.topicIds.includes(a.topicId)
+        (a) => matchStudentAttempt(a, student) && currentWeek.topicIds.includes(a.topicId)
       );
 
       const questionsAttempted = weekAttempts.length;
@@ -730,7 +764,7 @@ export class StorageAdapter {
     const allAttempts = await this.getAttempts();
 
     const rows: WeeklyMatrixRow[] = filteredUsers.map((student) => {
-      const studentAttempts = allAttempts.filter((a) => a.studentId === student.id);
+      const studentAttempts = allAttempts.filter((a) => matchStudentAttempt(a, student));
       const studentWeeks: WeeklyMatrixRow["weeks"] = {};
       let totalCompleted = 0;
 
