@@ -13,7 +13,7 @@ import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
 import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
 import { TheoryViewer } from "@/components/Theory/TheoryViewer";
 import { soundManager } from "@/lib/audioEffects";
-import { BookOpen } from "lucide-react";
+import { BookOpen, ListOrdered, CheckCheck } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { LoginModal } from "@/components/Auth/LoginModal";
 import { StudentLoginGate } from "@/components/Auth/StudentLoginGate";
@@ -445,22 +445,22 @@ export default function AppHome() {
         <main className="flex-1 max-w-md w-full mx-auto p-4 space-y-4">
           {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn) và Phần 2 (Đúng / Sai) */}
           {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0) && (
-            <div className="flex items-center p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1 text-xs font-bold">
+            <div className="flex items-center p-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1.5 text-xs font-bold">
               {currentHasTheory && (
                 <button
                   onClick={() => {
                     soundManager.playClick();
                     setActiveTab("theory");
                   }}
-                  className={`py-2 px-3 rounded-neu-xs flex items-center justify-center gap-1.5 transition-all ${
+                  className={`flex-1 py-2 px-2 rounded-neu-xs whitespace-nowrap flex items-center justify-center gap-1.5 transition-all ${
                     activeTab === "theory"
                       ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
-                      : "text-slate-700 hover:text-blue-700 shadow-neu-flat-xs active:shadow-neu-inset"
+                      : "text-slate-600 hover:text-blue-700 shadow-neu-flat-xs active:shadow-neu-inset"
                   }`}
-                  title="Xem toàn bộ lý thuyết đầy đủ 100%"
+                  title="Xem tóm tắt lý thuyết trọng tâm"
                 >
-                  <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-                  <span className="text-[11px] font-extrabold">Lý thuyết</span>
+                  <BookOpen className={`w-3.5 h-3.5 shrink-0 ${activeTab === "theory" ? "text-white" : "text-blue-600"}`} />
+                  <span className="text-xs font-bold">Lý thuyết</span>
                 </button>
               )}
 
@@ -472,17 +472,20 @@ export default function AppHome() {
                     setActiveQuestionFormat("mc");
                     setCurrentQuestionIndex(0);
                   }}
-                  className={`flex-1 py-2 px-2 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1.5 ${
+                  className={`flex-1 py-2 px-2 rounded-neu-xs whitespace-nowrap transition-all text-center flex items-center justify-center gap-1.5 ${
                     activeTab === "practice" && activeQuestionFormat === "mc"
                       ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
                       : "text-slate-600 hover:text-blue-700 shadow-neu-flat-xs active:shadow-neu-inset"
                   }`}
+                  title="Phần 1: Trắc nghiệm 4 lựa chọn"
                 >
-                  <span className="truncate">🔘 P1: 4 lựa chọn</span>
+                  <ListOrdered className={`w-3.5 h-3.5 shrink-0 ${activeTab === "practice" && activeQuestionFormat === "mc" ? "text-white" : "text-blue-600"}`} />
+                  <span className="sm:hidden text-xs font-bold">P1</span>
+                  <span className="hidden sm:inline text-xs font-bold">Phần 1: 4 lựa chọn</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold shrink-0 transition-colors ${
                       activeTab === "practice" && activeQuestionFormat === "mc"
-                        ? "bg-blue-100 text-blue-900"
+                        ? "bg-white/25 text-white"
                         : "bg-slate-200 text-slate-700"
                     }`}
                   >
@@ -499,17 +502,20 @@ export default function AppHome() {
                     setActiveQuestionFormat("tf");
                     setCurrentQuestionIndex(0);
                   }}
-                  className={`flex-1 py-2 px-2 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1.5 ${
+                  className={`flex-1 py-2 px-2 rounded-neu-xs whitespace-nowrap transition-all text-center flex items-center justify-center gap-1.5 ${
                     activeTab === "practice" && activeQuestionFormat === "tf"
                       ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
                       : "text-slate-600 hover:text-blue-700 shadow-neu-flat-xs active:shadow-neu-inset"
                   }`}
+                  title="Phần 2: Trắc nghiệm Đúng / Sai"
                 >
-                  <span className="truncate">⚖️ P2: Đúng / Sai</span>
+                  <CheckCheck className={`w-3.5 h-3.5 shrink-0 ${activeTab === "practice" && activeQuestionFormat === "tf" ? "text-white" : "text-indigo-600"}`} />
+                  <span className="sm:hidden text-xs font-bold">P2</span>
+                  <span className="hidden sm:inline text-xs font-bold">Phần 2: Đúng / Sai</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold shrink-0 transition-colors ${
                       activeTab === "practice" && activeQuestionFormat === "tf"
-                        ? "bg-blue-100 text-blue-900"
+                        ? "bg-white/25 text-white"
                         : "bg-slate-200 text-slate-700"
                     }`}
                   >
