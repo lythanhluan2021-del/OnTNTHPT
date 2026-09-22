@@ -887,280 +887,502 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
   ]
 },
   "tin-chuyen-de-12f-web": {
-  "subjectId": "tin-hoc-12",
-  "subjectName": "Tin học 12",
-  "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
-  "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
-  "docTitle": "Chuyên đề 12F. Tạo trang Web.docx (Google Drive)",
-  "objectives": [
-    "Hiểu và giải thích được cấu trúc của một trang web dưới dạng mã nguồn HTML (head, body, title, meta).",
-    "Sử dụng thành thạo các thẻ HTML để trình bày trang web: định dạng văn bản (<p>, <h1>-<h6>, <strong>, <em>, <mark>), siêu liên kết (<a>), danh sách (<ol>, <ul>, <li>), bảng biểu (<table>, <tr>, <td>, <th>).",
-    "Đưa các tệp dữ liệu đa phương tiện vào trang web (ảnh <img>, âm thanh <audio>, video <video>, khung nội tuyến <iframe>).",
-    "Thiết kế và xây dựng biểu mẫu web (<form>, các kiểu <input>, <select>, <textarea>, nút submit) để thu thập dữ liệu người dùng.",
-    "Hiểu và sử dụng được các thuộc tính CSS cơ bản: màu sắc, phông chữ, nền (background), đường viền (border), kích cỡ, khoảng cách (margin, padding).",
-    "Sử dụng linh hoạt các bộ chọn CSS (Selector): bộ chọn phần tử, bộ chọn lớp (.class), bộ chọn định danh (#id) và nắm vững thứ tự ưu tiên của bộ chọn."
-  ],
-  "sections": [
-    {
-      "id": "html-intro-structure",
-      "topicId": "tin-chuyen-de-12f-web",
-      "title": "1. Giới thiệu ngôn ngữ HTML & Cấu trúc trang web",
-      "icon": "Code",
-      "tag": "1. Khái niệm & Cấu trúc",
-      "summary": "Khái niệm phần tử, thẻ HTML (thẻ mở, thẻ đóng), thuộc tính và cấu trúc chuẩn của một tệp HTML (<html>, <head>, <title>, <meta>, <body>).",
-      "keyTerms": [
-        "HTML",
-        "HyperText Markup Language",
-        "Phần tử (Element)",
-        "Thẻ mở & thẻ đóng",
-        "Thuộc tính (Attribute)",
-        "head",
-        "body",
-        "title",
-        "meta",
-        "doctype"
-      ],
-      "content": [
-        {
-          "heading": "1.1. Khái niệm ngôn ngữ đánh dấu siêu văn bản HTML",
-          "text": "HTML (viết tắt của HyperText Markup Language) là ngôn ngữ đánh dấu siêu văn bản được sử dụng phổ biến nhất để thiết kế và xây dựng cấu trúc của các trang web. Phần tử HTML là các khối xây dựng cơ bản, định nghĩa các thành phần trên trang như: đoạn văn, tiêu đề, bảng biểu, hình ảnh, âm thanh và các liên kết."
-        },
-        {
-          "heading": "1.2. Cấu trúc tổng thể của một tài liệu HTML",
-          "text": "Toàn bộ nội dung của trang web được bao bọc bên trong cặp thẻ <html> và </html>. Cấu trúc chuẩn gồm hai phần chính: Phần đầu (<head>) và Phần thân (<body>).",
-          "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Tiêu đề hiển thị trên thanh trình duyệt</title>\n  </head>\n  <body>\n    <!-- Nội dung hiển thị trên trang web đặt tại đây -->\n  </body>\n</html>"
-        },
-        {
-          "heading": "Các thành phần cốt lõi trong tài liệu HTML",
-          "bulletPoints": [
-            {
-              "label": "Khai báo <!DOCTYPE html>",
-              "desc": "Dòng đầu tiên của tệp tin, giúp trình duyệt nhận biết phiên bản chuẩn HTML5 đang được sử dụng."
-            },
-            {
-              "label": "Phần đầu (<head>...</head>)",
-              "desc": "Chứa siêu dữ liệu (metadata), bảng mã ký tự UTF-8, tiêu đề trang (<title>) và các liên kết tới tệp định kiểu CSS hoặc script bên ngoài. Nội dung trong <head> không hiển thị trực tiếp trong vùng nội dung trình duyệt."
-            },
-            {
-              "label": "Phần thân (<body>...</body>)",
-              "desc": "Chứa toàn bộ nội dung mà người dùng nhìn thấy và tương tác: văn bản, hình ảnh, liên kết, bảng, biểu mẫu."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "html-text-formatting-links",
-      "topicId": "tin-chuyen-de-12f-web",
-      "title": "2. Định dạng văn bản & Siêu liên kết (Hyperlink)",
-      "icon": "FileText",
-      "tag": "2. Văn bản & Liên kết",
-      "summary": "Tổ chức đoạn văn (<p>), 6 cấp tiêu đề mục (<h1>-<h6>), các thẻ nhấn mạnh nội dung (<strong>, <em>, <mark>) và tạo siêu liên kết (<a>).",
-      "keyTerms": [
-        "Đoạn văn <p>",
-        "Tiêu đề <h1> đến <h6>",
-        "<strong> in đậm",
-        "<em> in nghiêng",
-        "<mark> tô sáng",
-        "Siêu liên kết <a>",
-        "Thuộc tính href",
-        "Đường dẫn tuyệt đối",
-        "Đường dẫn tương đối"
-      ],
-      "content": [
-        {
-          "heading": "2.1. Tổ chức đoạn văn bản và tiêu đề mục",
-          "text": "Việc tổ chức bố cục văn bản rõ ràng giúp người đọc dễ tiếp thu thông tin. HTML cung cấp cặp thẻ <p>...</p> để tạo đoạn văn riêng biệt và 6 cấp độ tiêu đề từ <h1> (lớn nhất, quan trọng nhất) giảm dần tới <h6> (nhỏ nhất). Mặc định các tiêu đề đều được trình duyệt in đậm."
-        },
-        {
-          "heading": "2.2. Làm nổi bật nội dung văn bản",
-          "bulletPoints": [
-            {
-              "label": "Thẻ <strong>...</strong>",
-              "desc": "In đậm nội dung, dùng để nhấn mạnh tầm quan trọng của từ khóa hoặc câu."
-            },
-            {
-              "label": "Thẻ <em>...</em>",
-              "desc": "In nghiêng nội dung, dùng để nhấn mạnh danh từ riêng, thuật ngữ hoặc lời thoại."
-            },
-            {
-              "label": "Thẻ <mark>...</mark>",
-              "desc": "Tô màu nền vàng cho nội dung được bao quanh, làm nổi bật điểm cần lưu ý như bút nhớ dòng."
-            }
-          ]
-        },
-        {
-          "heading": "2.3. Tạo siêu liên kết web (<a>)",
-          "text": "Phần tử <a> sử dụng thuộc tính href để chỉ định đích đến của liên kết:",
-          "code": "<a href=\"https://www.w3schools.com\">Truy cập trang W3Schools</a>\n<a href=\"gioithieu.html\">Trang Giới thiệu (đường dẫn tương đối)</a>",
-          "bulletPoints": [
-            {
-              "label": "Đường dẫn tuyệt đối",
-              "desc": "Chứa đầy đủ giao thức (http/https), tên miền và đường dẫn tới máy chủ trên Internet (Ví dụ: https://moet.gov.vn/tintuc)."
-            },
-            {
-              "label": "Đường dẫn tương đối",
-              "desc": "Chỉ định vị trí tương đối so với tệp hiện tại trong thư mục dự án, không cần giao thức hay tên miền (Ví dụ: ./images/anh1.jpg)."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "html-lists-and-tables",
-      "topicId": "tin-chuyen-de-12f-web",
-      "title": "3. Trình bày danh sách & Bảng biểu (List & Table)",
-      "icon": "ListOrdered",
-      "tag": "3. Danh sách & Bảng",
-      "summary": "Tạo danh sách có thứ tự (<ol>) và không thứ tự (<ul>), cấu trúc bảng biểu (<table>, <tr>, <td>, <th>) cùng các thuộc tính căn chỉnh.",
-      "keyTerms": [
-        "Danh sách có thứ tự <ol>",
-        "Danh sách không thứ tự <ul>",
-        "Mục danh sách <li>",
-        "Thuộc tính type, start",
-        "Bảng <table>",
-        "Hàng bảng <tr>",
-        "Ô dữ liệu <td>",
-        "Ô tiêu đề <th>",
-        "colspan & rowspan"
-      ],
-      "content": [
-        {
-          "heading": "3.1. Danh sách có thứ tự (<ol>) và không có thứ tự (<ul>)",
-          "text": "Mỗi mục trong danh sách được đặt trong cặp thẻ <li>...</li>:",
-          "bulletPoints": [
-            {
-              "label": "Danh sách xác định thứ tự (<ol>)",
-              "desc": "Được đánh số tự động (1, 2, 3...) hoặc chữ cái (A, B, C... qua thuộc tính type='A'). Thuộc tính start cho phép bắt đầu từ số tùy chọn."
-            },
-            {
-              "label": "Danh sách không xác định thứ tự (<ul>)",
-              "desc": "Các mục được biểu thị bằng dấu đầu dòng (mặc định là dấu chấm tròn disc, hoặc circle, square)."
-            }
-          ]
-        },
-        {
-          "heading": "3.2. Cấu trúc tạo bảng biểu trong HTML",
-          "text": "Bảng được định nghĩa bởi thẻ <table>, gồm nhiều hàng (<tr>). Trong mỗi hàng gồm ô tiêu đề (<th> - tự động in đậm và căn giữa) và ô dữ liệu (<td>):",
-          "code": "<table border=\"1\">\n  <tr>\n    <th>STT</th>\n    <th>Họ và tên</th>\n    <th>Điểm</th>\n  </tr>\n  <tr>\n    <td>1</td>\n    <td>Nguyễn Văn A</td>\n    <td>9.5</td>\n  </tr>\n</table>",
-          "bulletPoints": [
-            {
-              "label": "colspan=\"n\"",
-              "desc": "Hợp nhất n cột liền kề thành một ô duy nhất."
-            },
-            {
-              "label": "rowspan=\"n\"",
-              "desc": "Hợp nhất n hàng liền kề theo chiều dọc thành một ô duy nhất."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "html-multimedia-and-forms",
-      "topicId": "tin-chuyen-de-12f-web",
-      "title": "4. Đa phương tiện & Biểu mẫu tương tác (Media & Form)",
-      "icon": "Layout",
-      "tag": "4. Media & Biểu mẫu",
-      "summary": "Chèn hình ảnh (<img>), âm thanh (<audio>), video (<video>), khung nội tuyến (<iframe>) và thiết kế biểu mẫu (<form>, <input>, submit).",
-      "keyTerms": [
-        "Thẻ ảnh <img>",
-        "Thuộc tính src, alt",
-        "Thẻ âm thanh <audio>",
-        "Thẻ video <video>",
-        "Khung nội tuyến <iframe>",
-        "Biểu mẫu <form>",
-        "Phương thức GET / POST",
-        "Phần tử <input>",
-        "type=text, checkbox, radio, submit"
-      ],
-      "content": [
-        {
-          "heading": "4.1. Nhúng dữ liệu đa phương tiện",
-          "bulletPoints": [
-            {
-              "label": "Hình ảnh (<img>)",
-              "desc": "Thẻ đơn (không có thẻ đóng). Thuộc tính src chỉ định đường dẫn ảnh, alt cung cấp văn bản thay thế khi ảnh lỗi tải, width và height xác định kích thước."
-            },
-            {
-              "label": "Âm thanh (<audio>) & Video (<video>)",
-              "desc": "Dùng để phát tệp media trực tiếp trên trình duyệt. Thuộc tính controls kích hoạt thanh điều khiển phát/dừng/âm lượng."
-            },
-            {
-              "label": "Khung nội tuyến (<iframe>)",
-              "desc": "Cho phép nhúng một trang web khác hoặc video (YouTube, Google Maps) trực tiếp vào khung hiển thị trên trang hiện tại."
-            }
-          ]
-        },
-        {
-          "heading": "4.2. Xây dựng biểu mẫu tương tác (<form>)",
-          "text": "Biểu mẫu được dùng để thu thập thông tin người dùng gửi về máy chủ máy chủ xử lý:",
-          "code": "<form action=\"/submit\" method=\"POST\">\n  <label for=\"username\">Tên đăng nhập:</label>\n  <input type=\"text\" id=\"username\" name=\"username\">\n  <input type=\"submit\" value=\"Gửi dữ liệu\">\n</form>",
-          "bulletPoints": [
-            {
-              "label": "Phương thức GET",
-              "desc": "Dữ liệu được đính kèm trực tiếp lên thanh URL. Thường dùng khi tìm kiếm, bị giới hạn dung lượng và không an toàn cho mật khẩu."
-            },
-            {
-              "label": "Phương thức POST",
-              "desc": "Dữ liệu được gửi ngầm trong phần thân (body) của yêu cầu HTTP. Không giới hạn dung lượng và bảo mật tốt hơn đối với dữ liệu nhạy cảm."
-            },
-            {
-              "label": "Các kiểu <input>",
-              "desc": "type='text' (nhập chữ ngắn), 'password' (mật khẩu che dấu), 'checkbox' (hộp chọn nhiều), 'radio' (chọn 1 trong nhóm có cùng name), 'submit' (nút gửi form)."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "css-styling-selectors",
-      "topicId": "tin-chuyen-de-12f-web",
-      "title": "5. Định kiểu giao diện với CSS & Các bộ chọn (Selectors)",
-      "icon": "Palette",
-      "tag": "5. CSS & Bộ chọn",
-      "summary": "Cú pháp CSS (Selector { property: value }), các bộ chọn Element, Class (.class), ID (#id), mô hình hộp (Box model: margin, padding, border) và thứ tự ưu tiên.",
-      "keyTerms": [
-        "CSS",
-        "Cascading Style Sheets",
-        "Quy tắc CSS",
-        "Bộ chọn phần tử (tag)",
-        "Bộ chọn lớp (.class)",
-        "Bộ chọn định danh (#id)",
-        "Mức độ ưu tiên CSS",
-        "Mô hình hộp (Box Model)",
-        "margin, padding, border"
-      ],
-      "content": [
-        {
-          "heading": "5.1. Giới thiệu CSS và vai trò",
-          "text": "CSS (viết tắt của Cascading Style Sheets) là ngôn ngữ định kiểu dùng để kiểm soát cách hiển thị của các phần tử HTML trên màn hình (màu sắc, phông chữ, khoảng cách, bố cục). CSS giúp tách biệt hoàn toàn nội dung (HTML) và hình thức trình bày (CSS), giúp mã nguồn trang web gọn gàng và dễ bảo trì."
-        },
-        {
-          "heading": "5.2. Các loại bộ chọn (Selectors) trong CSS",
-          "bulletPoints": [
-            {
-              "label": "Bộ chọn phần tử (Element selector)",
-              "desc": "Áp dụng định dạng cho tất cả các phần tử cùng tên thẻ trong trang (Ví dụ: p { color: blue; } áp dụng cho mọi đoạn văn)."
-            },
-            {
-              "label": "Bộ chọn lớp (Class selector - .ten_lop)",
-              "desc": "Áp dụng cho mọi phần tử có thuộc tính class='ten_lop'. Có thể tái sử dụng nhiều lần trên một trang hoặc nhiều trang khác nhau."
-            },
-            {
-              "label": "Bộ chọn định danh (ID selector - #ten_id)",
-              "desc": "Áp dụng riêng biệt cho duy nhất một phần tử có id='ten_id' trên trang HTML. Mức độ ưu tiên cao hơn class và element."
-            }
-          ]
-        },
-        {
-          "heading": "5.3. Mức độ ưu tiên của bộ chọn CSS",
-          "text": "Khi có nhiều quy tắc định dạng áp dụng lên cùng một phần tử, trình duyệt ưu tiên theo thứ tự: Inline style (viết trực tiếp trong thuộc tính style của thẻ) > Bộ chọn định danh (#id) > Bộ chọn lớp (.class) > Bộ chọn phần tử (tag)."
-        }
-      ]
-    }
-  ]
-},
+    "subjectId": "tin-hoc-12",
+    "subjectName": "Tin học 12",
+    "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
+    "chapterName": "Chủ đề F: Tạo trang web (Chuyên đề Tin học 12)",
+    "docTitle": "Chuyên đề 12F. Tạo trang Web.docx (Biên soạn: Thầy Lý Thành Luân)",
+    "objectives": [
+      "Hiểu và giải thích được cấu trúc của một trang web dưới dạng HTML.",
+      "Sử dụng được các thẻ HTML để trình bày trang web:",
+      "+ Định dạng văn bản, phông chữ, tạo liên kết, danh sách.",
+      "+ Đưa các tệp dữ liệu đa phương tiện vào trang web (Ví dụ: ảnh, âm thanh, video).",
+      "+ Tạo bảng, khung (frame).",
+      "+ Tạo biểu mẫu.",
+      "Hiểu và sử dụng được một số thuộc tính cơ bản của CSS: màu sắc, phông chữ, nền, đường viền, kích cỡ,...",
+      "Sử dụng được các yếu tố của vùng chọn (selector) như: class, id, tag,...",
+      "Sử dụng được CSS làm trang web đẹp, đa dạng và sinh động hơn."
+    ],
+    "sections": [
+      {
+        "id": "12f-sec1-html-intro",
+        "topicId": "tin-chuyen-de-12f-web",
+        "title": "1. Làm quen với ngôn ngữ đánh dấu siêu văn bản",
+        "icon": "Code",
+        "tag": "1. Khái niệm & Cấu trúc HTML",
+        "summary": "1.1. Giới thiệu ngôn ngữ đánh dấu siêu văn bản HTML & 1.2. Cấu trúc của một văn bản HTML",
+        "keyTerms": [
+          "HTML",
+          "Phần tử (element)",
+          "Thẻ mở",
+          "Thẻ đóng",
+          "<html>",
+          "<head>",
+          "<title>",
+          "<meta>",
+          "<body>"
+        ],
+        "content": [
+          {
+            "heading": "1. Làm quen với ngôn ngữ đánh dấu siêu văn bản"
+          },
+          {
+            "heading": "1.1. Giới thiệu ngôn ngữ đánh dấu siêu văn bản HTML",
+            "text": "Khái niệm: phần tử là các đối tượng được HTML định nghĩa cho các thành phần của trang web như: tiêu đề mục, đoạn văn, bản biểu, hình ảnh, âm thanh và các siêu liên kết,…",
+            "image": "/images/theory_12f_rId7_image1.png",
+            "imageCaption": "Cấu trúc một phần tử HTML: thẻ mở, nội dung phần tử, và thẻ đóng"
+          },
+          {
+            "heading": "1.2. Cấu trúc của một văn bản HTML",
+            "text": "Nội dung và cấu trúc: được viết trong cặp thẻ mở <html> và thẻ đóng </html>",
+            "image": "/images/theory_12f_rId8_image2.png",
+            "imageCaption": "Cấu trúc tổng thể của một văn bản HTML"
+          },
+          {
+            "heading": "* Các thành phần của trang web:",
+            "bulletPoints": [
+              {
+                "label": "Phần đầu (head)",
+                "desc": "- Được viết trong cặp thẻ mở <head> và thẻ đóng </head>.\n- Tiêu đề được viết trong cặp thẻ mở <title> và thẻ đóng </title> và sẽ được hiển thị trên tiêu đề của cửa sổ trình duyệt web.\n- Phần tử meta khai báo thông tin liên quan đến bảng mã kí tự, từ khóa tìm kiếm, thông tin tác giả."
+              },
+              {
+                "label": "Phần thân (body)",
+                "desc": "Được viết trong cặp thẻ mở <body> và thẻ đóng </body> sẽ được hiển thị trên tiêu đề của cửa sổ trình duyệt web."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "12f-sec2-formatting-links",
+        "topicId": "tin-chuyen-de-12f-web",
+        "title": "2. Định dạng văn bản và tạo siêu liên kết",
+        "icon": "FileText",
+        "tag": "2. Đoạn văn, Tiêu đề, Định dạng & Liên kết",
+        "summary": "2.1. Tổ chức đoạn văn, 2.2. Tiêu đề mục (h1-h6), 2.3. Làm nổi bật (strong, em, mark), 2.4. Siêu liên kết (<a>, href, URL)",
+        "keyTerms": [
+          "<p>",
+          "<h1>-<h6>",
+          "<strong>",
+          "<em>",
+          "<mark>",
+          "<a>",
+          "href",
+          "URL",
+          "Giao thức",
+          "Tên miền",
+          "Đường dẫn"
+        ],
+        "content": [
+          {
+            "heading": "2. Định dạng văn bản và tạo siêu liên kết"
+          },
+          {
+            "heading": "2.1. Tổ chức các đoạn văn bản trong trang web",
+            "text": "- Vai trò: Việc tổ chức các đoạn văn bản trong trang web làm các ý được phân tách rõ ràng, giúp văn bản dễ hiểu, dễ đọc hơn đối với người dùng.\n- Cú pháp tạo đoạn văn bản: <p>Văn bản</p>",
+            "code": "<p>Văn bản</p>"
+          },
+          {
+            "heading": "2.2. Tạo tiêu đề mục",
+            "text": "- Các cấp độ tiêu đề mục: HTML hỗ trợ khai báo sáu tiêu đề mục được phân cấp, định nghĩa bởi các phần tử h1, h2, h3, h4, h5 và h6 tương ứng (h là viết tắt của heading và các chữ số cho biết cấp của tiêu đề mục).\n- Cú pháp khai báo các phần tử tạo tiêu đề mục:\n<Cấp của tiêu đề mục>Tiêu đề mục</Cấp của tiêu đề mục>\nTrong đó: Cấp của tiêu đề mục là một trong các phần tử h1, h2, h3, h4, h5, h6.\n- Hiển thị tiêu đề mục trên trình duyệt web:\n+ Kiểu chữ in đậm.\n+ Cỡ chữ khác nhau: Phần tử h1 tạo tiêu đề mục có cỡ chữ lớn nhất, cỡ chữ sẽ giảm dần theo các cấp từ h2 đến h6.",
+            "code": "<h1>Tiêu đề cấp 1 lớn nhất</h1>\n<h2>Tiêu đề cấp 2</h2>\n<h3>Tiêu đề cấp 3</h3>\n<h4>Tiêu đề cấp 4</h4>\n<h5>Tiêu đề cấp 5</h5>\n<h6>Tiêu đề cấp 6 nhỏ nhất</h6>"
+          },
+          {
+            "heading": "2.3. Làm nổi bật nội dung văn bản",
+            "text": "- Ý nghĩa: Việc làm nổi bật nội dung văn bản là cần thiết trong quá trình soạn thảo nội dung cho trang web vì không chỉ làm nổi bật nội dung mà còn giúp người soạn thảo nội dung trang web thể hiện được mục đích của tác giả.",
+            "bulletPoints": [
+              {
+                "label": "Phần tử <strong>",
+                "desc": "Cú pháp: <strong> Nội dung </strong>\nMục đích sử dụng: In đậm Nội dung, thường dùng để nhấn mạnh các nội dung quan trọng trong văn bản.",
+                "code": "<strong>Nội dung</strong>"
+              },
+              {
+                "label": "Phần tử <em>",
+                "desc": "Cú pháp: <em> Nội dung </em>\nMục đích sử dụng: In nghiêng Nội dung, thường dùng để nhấn mạnh các danh từ riêng hay thuật ngữ trong văn bản.",
+                "code": "<em>Nội dung</em>"
+              },
+              {
+                "label": "Phần tử <mark>",
+                "desc": "Cú pháp: <mark> Nội dung </mark>\nMục đích sử dụng: Tô màu vàng cho nền của Nội dung, thường dùng để làm nổi bật các nội dung cần chú ý trong văn bản.",
+                "code": "<mark>Nội dung</mark>"
+              }
+            ]
+          },
+          {
+            "heading": "2.4. Tạo siêu liên kết",
+            "text": "- HTML định nghĩa phần tử a để tạo các siêu liên kết.\n- Cú pháp khai báo phần tử a:\n<a href=\"URL\">Liên kết web</a>\nTrong đó:\n+ Thuộc tính href xác định địa chỉ của tài nguyên web trên Internet.\n+ URL (Uniform Resource Locator) có cấu trúc cơ bản như sau:\nGiao thức://Tên miền/Đường dẫn\n• Giao thức thường là http hoặc https.\n• Tên miền là địa chỉ máy chủ chứa tài nguyên web muốn liên kết, ví dụ: https://www.w3schools.com\n• Đường dẫn thường là sự kết hợp giữa tên các thư mục và tên tệp để xác định vị trí cụ thể của tài nguyên web muốn liên kết, ví dụ: /html/default.asp.\n+ Liên kết web thường là dãy kí tự được hiển thị trên trình duyệt web cho phép người dùng nháy chuột vào để đến tài nguyên liên kết.",
+            "code": "<a href=\"https://www.w3schools.com/html/default.asp\">Liên kết web</a>"
+          }
+        ]
+      },
+      {
+        "id": "12f-sec3-lists-tables",
+        "topicId": "tin-chuyen-de-12f-web",
+        "title": "3. Trình bày nội dung theo dạng danh sách, bảng biểu",
+        "icon": "Layers",
+        "tag": "3. Danh sách & Bảng biểu",
+        "summary": "3.1. Tạo danh sách (<ol>, thuộc tính start, <ul>) & 3.2. Tạo bảng (<table>, <tr>, <td>)",
+        "keyTerms": [
+          "<ol>",
+          "start",
+          "<ul>",
+          "<li>",
+          "<table>",
+          "<tr>",
+          "<td>",
+          "Hàng (tr)",
+          "Cột (td)"
+        ],
+        "content": [
+          {
+            "heading": "3. Trình bày nội dung theo dạng danh sách, bảng biểu"
+          },
+          {
+            "heading": "3.1. Tạo danh sách",
+            "text": "1. Tạo danh sách\n- Cú pháp tạo danh sách xác định thứ tự:\n<ol>\n<li> Nội dung 1 </li>\n….. \n<li> Nội dung 2 </li>\n</ol>\n\n- Lưu ý:\n+ Có thể xác định thứ tự bắt đầu của danh sách bằng cách gán một số nguyên khác cho thuộc tính start của khai báo phần tử ol.",
+            "image": "/images/theory_12f_rId10_image3.png",
+            "imageCaption": "Ví dụ sử dụng thuộc tính start trong danh sách xác định thứ tự <ol start=\"...\">",
+            "code": "<ol start=\"5\">\n  <li>Nội dung 1</li>\n  <li>Nội dung 2</li>\n</ol>"
+          },
+          {
+            "text": "- Cú pháp tạo danh sách không xác định thứ tự:\n<ul>\n<li> Nội dung 1 </li>\n….. \n<li> Nội dung 2 </li>\n</ul>",
+            "code": "<ul>\n  <li>Nội dung 1</li>\n  <li>Nội dung 2</li>\n</ul>"
+          },
+          {
+            "heading": "3.2. Tạo bảng",
+            "text": "- Html định nghĩa phần tử table để tạo bảng. Bảng gồm nhiều ô dữ liệu được tạo bằng các hàng và cột.\n- Cú pháp khai báo các phần tử tạo bảng:\n<table>\n<tr>\n<td> Dữ liệu </td>\n<td> Dữ liệu </td>\n</tr>\n</table>\nTrong đó:\n+ Hàng được khai báo bằng phần tử tr\n+ Cột được khai báo bằng phần tử td\n- Dữ liệu trong các ô thường là văn bản, hình ảnh, siêu liên kết,… Dữ liệu của bảng cũng có thể gồm các bảng khác.",
+            "code": "<table>\n  <tr>\n    <td>Dữ liệu ô 1 hàng 1</td>\n    <td>Dữ liệu ô 2 hàng 1</td>\n  </tr>\n  <tr>\n    <td>Dữ liệu ô 1 hàng 2</td>\n    <td>Dữ liệu ô 2 hàng 2</td>\n  </tr>\n</table>"
+          }
+        ]
+      },
+      {
+        "id": "12f-sec4-multimedia-frames",
+        "topicId": "tin-chuyen-de-12f-web",
+        "title": "4. Chèn hình ảnh, âm thanh, video và sử dụng khung",
+        "icon": "Compass",
+        "tag": "4. Hình ảnh, Âm thanh, Video & Khung",
+        "summary": "4.1. Chèn ảnh (<img>), 4.2. Chèn âm thanh (<audio>), 4.3. Chèn video (<video>), 4.4. Sử dụng khung (<iframe>)",
+        "keyTerms": [
+          "<img>",
+          "src",
+          "alt",
+          "width",
+          "height",
+          "<audio>",
+          "controls",
+          "<video>",
+          "<iframe>"
+        ],
+        "content": [
+          {
+            "heading": "4. Chèn hình ảnh, âm thanh, video và sử dụng khung"
+          },
+          {
+            "heading": "4.1. Chèn hình ảnh",
+            "text": "1. Chèn hình ảnh.\n* Cú pháp:\n<img src = “tên tệp ảnh” alt=”Nội dung” width=”chiều rộng” height=”chiều cao”>\n- Tên tệp ảnh có thể bao gồm cả đường dẫn\n- Theo mặc định giá trị chiều rộng, chiều cao theo đơn vị pixel, ảnh thường ở dạng JPG, PNG, GIF. Ảnh sẽ hiển thị theo kích thước ảnh gốc nếu không khai báo thuộc tính width, height.\nVí dụ:",
+            "image": "/images/theory_12f_rId11_image4.png",
+            "imageCaption": "Ví dụ minh họa cú pháp khai báo thẻ chèn hình ảnh <img>",
+            "code": "<img src=\"ten_tep_anh.jpg\" alt=\"Mô tả ảnh\" width=\"300\" height=\"200\">"
+          },
+          {
+            "heading": "4.2. Chèn âm thanh",
+            "text": "* Cú pháp:\n<audio src =”tên tệp âm thanh” controls> </audio>\nVí dụ: <audio src = \"nguoi thay.mp3\" controls></audio>",
+            "code": "<audio src=\"nguoi thay.mp3\" controls></audio>"
+          },
+          {
+            "heading": "4.3. Chèn video",
+            "text": "* Cú pháp:\n<video src =”tên tệp video” controls> </video>\nVí dụ:",
+            "image": "/images/theory_12f_rId12_image5.png",
+            "imageCaption": "Ví dụ minh họa cú pháp chèn video <video src=\"...\" controls>",
+            "code": "<video src=\"ten_tep_video.mp4\" controls></video>"
+          },
+          {
+            "text": "Lưu ý: Nếu tệp ảnh, âm thanh, video lưu trữ cùng thư mục với văn bản HTML thì thuộc tính src chỉ cần tên tệp mà không bao gồm đường dẫn."
+          },
+          {
+            "heading": "4.4. Sử dụng khung",
+            "text": "* Cú pháp:\n<iframe src=“url” width= “chiều rộng” height= “chiều cao”> </iframe>\nurl: là đường dẫn đến web cần nhúng.\nVí dụ: <iframe src=\"https://giaoduc.net.vn/\" width=\"300\" height=\"300\"> </iframe>",
+            "code": "<iframe src=\"https://giaoduc.net.vn/\" width=\"300\" height=\"300\"> </iframe>"
+          }
+        ]
+      },
+      {
+        "id": "12f-sec5-forms",
+        "topicId": "tin-chuyen-de-12f-web",
+        "title": "5. Tạo biểu mẫu",
+        "icon": "Sparkles",
+        "tag": "5. Biểu mẫu & Điều khiển nhập dữ liệu",
+        "summary": "5.1. Cấu trúc <form action method>, 5.2.1. Nhập ký tự <input type=text>, 5.2.2. Bảng các phần tử biểu mẫu",
+        "keyTerms": [
+          "<form>",
+          "action",
+          "method",
+          "GET",
+          "POST",
+          "<input>",
+          "type",
+          "name",
+          "value",
+          "<textarea>",
+          "<label>",
+          "radio",
+          "checkbox",
+          "password",
+          "<select>",
+          "<button>"
+        ],
+        "content": [
+          {
+            "heading": "5. Tạo biểu mẫu"
+          },
+          {
+            "heading": "5.1. Nhập dữ liệu thông qua biểu mẫu",
+            "text": "Trong đó:\n- Thuộc tính action xác định tài nguyên web sẽ tiếp nhận và xử lý dữ liệu mà người dùng vừa gởi đến máy chủ. Tài nguyên web thường là các chương trình viết bằng các ngôn ngữ lập trình như: Java, , PHP python, ...\n- Thuộc tính method xác định phương thức gởi: GET: hạn chế dung lượng, POST: không hạn chế dung lượng",
+            "code": "<form action=\"url\" method=\"GET/POST\">\n  Các điều khiển nhập dữ liệu\n</form>"
+          },
+          {
+            "heading": "5.2. Một số điều khiển hỗ trợ nhập dữ liệu thông dụng và nút lệnh"
+          },
+          {
+            "heading": "5.2.1. Nhập ký tự",
+            "text": "Trong đó:\n- Tên_điều_khiển được gán cho thuộc tính name. Thuộc tính name không phải là thuộc tính bắt buộc khai báo, nhưng tất cả các điều khiển thường được đặt tên để thuận lợi cho việc xử lí dữ liệu gửi từ biểu mẫu về máy chủ web.\n- Thuộc tính value nếu được khai báo thì Giá trị được gán là giá trị mặc định của ô text khi hiển thị trên màn hình trình duyệt web.",
+            "code": "<input type=\"text\" name=\"Tên_điều_khiển\" value=\"Giá trị\">"
+          },
+          {
+            "heading": "5.2.2. Một số phần tử của biểu mẫu",
+            "bulletPoints": [
+              {
+                "label": "<input>",
+                "desc": "Mục đích: Tạo một trường nhập dữ liệu văn bản (ô text).\nLưu ý: Đảm bảo sử dụng thuộc tính \"type\" phù hợp với dữ liệu bạn muốn nhập vào."
+              },
+              {
+                "label": "<textarea>",
+                "desc": "Mục đích: Tạo một ô văn bản nhiều dòng.\nLưu ý: Sử dụng rows và cols để điều chỉnh kích thước ô văn bản."
+              },
+              {
+                "label": "<label>",
+                "desc": "Mục đích: Nhãn liên kết với một trường nhập liệu.\nLưu ý: Sử dụng \"for\" để liên kết với mã của trường nhập liệu tương ứng."
+              },
+              {
+                "label": "<input> (radio)",
+                "desc": "Mục đích: Tạo một nút/ô chọn (radio).\nLưu ý: Sử dụng cùng một tên \"name\" cho các nút radio để tạo nhóm khi đó chỉ có một nút được chọn."
+              },
+              {
+                "label": "<input> (checkbox)",
+                "desc": "Mục đích: Tạo một ô lựa chọn/ hộp kiểm (checkbox).\nLưu ý: Sử dụng \"name\" để nhận biết các ô checkbox khi gửi dữ liệu. Có thể chọn nhiều ô chọn."
+              },
+              {
+                "label": "<input> (password)",
+                "desc": "Mục đích: Tạo một trường nhập mật khẩu.\nLưu ý: Sử dụng \"password\" để ẩn kí tự khi người dùng nhập mật khẩu."
+              },
+              {
+                "label": "<select>",
+                "desc": "Mục đích: Tạo một hộp chọn.\nLưu ý: Sử dụng thuộc tính “multiple” cho phép người dùng chọn nhiều lựa chọn."
+              },
+              {
+                "label": "<button>",
+                "desc": "Mục đích: Tạo một nút.\nLưu ý: Sử dụng “type” để xác định hành động mà nút thực hiện (submit, reset,...)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "12f-sec6-css-intro",
+        "topicId": "tin-chuyen-de-12f-web",
+        "title": "6. Làm quen với CSS",
+        "icon": "Cpu",
+        "tag": "6. CSS & Định dạng cơ bản",
+        "summary": "6.1. Bảng định dạng CSS, 6.2. Bộ chọn phần tử & Áp dụng CSS, 6.3. Thuộc tính màu sắc, phông chữ, đường viền",
+        "keyTerms": [
+          "CSS",
+          "Cascading Style Sheets",
+          "Bộ chọn (selector)",
+          "internal CSS",
+          "external CSS",
+          "color",
+          "background-color",
+          "font-family",
+          "font-size",
+          "border-style",
+          "border-color"
+        ],
+        "content": [
+          {
+            "heading": "6. Làm quen với CSS"
+          },
+          {
+            "heading": "6.1. Bảng định dạng CSS",
+            "text": "Bảng định dạng (Cascading Style Sheets-CSS) là ngôn ngữ được sử dụng để khai báo kiểu trình bày các phần tử HTML trong trang web. CSS thường gồm một số quy tắc định dạng. Mỗi quy tắc định danh như minh họa ở Hình 1 gồm bộ chọn (selector) và các khai báo thuộc tính CSS (css properties) để xác định kiểu trình bày cho phần tử, ví dụ: màu sắc, phông chữ, kích cỡ chữ, đường viền,…..",
+            "image": "/images/theory_12f_rId13_image6.png",
+            "imageCaption": "Hình 1: Cấu trúc của một quy tắc định dạng CSS gồm bộ chọn và các khai báo thuộc tính"
+          },
+          {
+            "text": "Sử dụng CSS giúp tách biệt khai báo nội dung với định dạng và trang trí trang web. Trình duyệt web áp dụng CSS bằng cách chọn các phần tử trong văn bản HTML khớp với bộ chọn trong CSS và sử dụng các quy tắc định dạng tương ứng để trình bày."
+          },
+          {
+            "heading": "6.2. Khai báo bộ chọn phần tử và áp dụng CSS",
+            "text": "Bộ chọn phần tử được khai báo như sau:\nTên_bộ_chọn_phần_tử{thuộc tính 1: giá trị;….;thuộc tính n: giá trị;}\nVí dụ 1: quy tắc định dạng ở Hình 2 xác định kiểu trình bày nội dung của phần tử p trong văn bản HTML có chữ màu đỏ và in đậm",
+            "image": "/images/theory_12f_rId14_image7.png",
+            "imageCaption": "Hình 2: Quy tắc định dạng phần tử p xác định chữ màu đỏ và in đậm"
+          },
+          {
+            "text": "Có hai cách khai báo để áp dụng CSS trong văn bản HTML được sử dụng phổ biến là: CSS (internal CSS), CSS ngoài (external CSS)\nKhai báo internal CSS thường được sử dụng khi muốn áp dụng CSS trong phạm vi một văn bản HTML. Các quy tắc định dạng internal CSS được viết trong cặp thẻ <style></style> và thường được đặt trong nội dung của phần tử head."
+          },
+          {
+            "heading": "6.3. Một số thuộc tính định dạng CSS"
+          },
+          {
+            "heading": "6.3.1. Thuộc tính định dạng màu sắc",
+            "text": "- Cách khai báo:",
+            "image": "/images/theory_12f_rId15_image8.png",
+            "imageCaption": "Cú pháp khai báo thuộc tính màu chữ: color: giá trị;"
+          },
+          {
+            "text": "Trong đó giá trị màu thường đc xác định bởi tên màu phổ biến như : red, green, blue, yellow, brown, ….\nThuộc tính background-color đạnh dạng màu nền, áp dụng được cho tất cả phần tử, được khai báo như sau:",
+            "image": "/images/theory_12f_rId16_image9.png",
+            "imageCaption": "Cú pháp khai báo thuộc tính màu nền: background-color: giá trị;"
+          },
+          {
+            "heading": "6.3.2. Thuộc tính định dạng phông chữ",
+            "text": "Thuộc tính font-family xác định tên phông chữ áp dụng đc cho tất cả phần tử HTML, đc khai báo như sau :",
+            "image": "/images/theory_12f_rId17_image10.png",
+            "imageCaption": "Cú pháp khai báo thuộc tính tên phông chữ: font-family: giá trị;"
+          },
+          {
+            "text": "Trong đó tên phông chữ là 1 hoặc nhiều tên phông chữ được ngăn cách nhau bởi dấu “,”. Chú ý nếu tên phông chữ có dấu cách thì phải đc đặt trong cặp dấu ngoặc kép(“”).\nThuộc tính font-size xác định kích cỡ chữ, áp dụng được cho tất cả phần tử, được khai báo như sau:",
+            "image": "/images/theory_12f_rId18_image11.png",
+            "imageCaption": "Cú pháp khai báo thuộc tính kích cỡ chữ: font-size: giá trị;"
+          },
+          {
+            "heading": "6.3.3. Thuộc tính định dạng đường viền",
+            "text": "Thuộc tính border-style xác định kiểu trình bày đường viền của phần tử, được khai báo như sau :",
+            "image": "/images/theory_12f_rId19_image12.png",
+            "imageCaption": "Cú pháp khai báo thuộc tính kiểu đường viền: border-style: giá trị;"
+          },
+          {
+            "text": "Một số kiểu trình bày thông dụng gồm dotted-đường viền là những dấu chấm liền nhau, solid-là 1 đường đậm liền nét\nThuộc tính border-color xác định màu đường viền của phần tử, được khai báo như sau:",
+            "image": "/images/theory_12f_rId20_image13.png",
+            "imageCaption": "Cú pháp khai báo thuộc tính màu đường viền: border-color: giá trị;"
+          },
+          {
+            "text": "Lưu ý: Định dạng thuộc tính border-color chỉ được áp dụng khi thuộc tính border-style được khai báo"
+          }
+        ]
+      },
+      {
+        "id": "12f-sec7-class-id-selectors",
+        "topicId": "tin-chuyen-de-12f-web",
+        "title": "7. Bộ chọn lớp, bộ chọn định danh",
+        "icon": "AlertTriangle",
+        "tag": "7. Bộ chọn lớp (.class) & Định danh (#id)",
+        "summary": "7.1. Bộ chọn lớp (.Tên_lớp), các thuộc tính cơ bản & 7.2. Bộ chọn định danh (#Tên_định_danh), mức ưu tiên",
+        "keyTerms": [
+          ".Tên_bộ_chọn_lớp",
+          "Bộ chọn lớp",
+          "#Tên_định_danh",
+          "Bộ chọn định danh",
+          "ID selector",
+          "Color",
+          "Font Size",
+          "Background Color",
+          "Margin",
+          "Padding",
+          "Border",
+          "Width",
+          "Height",
+          "Display",
+          "Position",
+          "Float",
+          "Opacity",
+          "Mức ưu tiên"
+        ],
+        "content": [
+          {
+            "heading": "7. Bộ chọn lớp, bộ chọn định danh"
+          },
+          {
+            "heading": "7.1. Bộ chọn lớp",
+            "text": "* Bộ chọn lớp được khai báo như sau:\n.Tên_bộ_chọn_lớp { thuộc tính 1: giá trị;…; thuộc tính n: giá trị;}\n\nTên_bộ_chọn_lớp: Đây là tên của lớp mà bạn muốn áp dụng kiểu CSS. Trong cấu trúc này, dấu chấm (.) đặt trước tên lớp để chỉ định rằng đây là một bộ chọn lớp.\n{...}: Dấu ngoặc nhọn này bao quanh một tập hợp các khối khai báo thuộc tính và giá trị. Nó giúp xác định phạm vi của các quy tắc CSS, chỉ áp dụng cho các phần tử thuộc lớp được định rõ.\nthuộc_tính_1, thuộc_tính_2, ..., thuộc_tính_n: Là các thuộc tính mà bạn muốn áp dụng cho phần tử thuộc lớp. Ví dụ, color, font-size, margin, padding,...\nMột số thuộc tính cơ bản:",
+            "code": ".Tên_bộ_chọn_lớp {\n  thuộc tính 1: giá trị;\n  thuộc tính 2: giá trị;\n}"
+          },
+          {
+            "heading": "Một số thuộc tính cơ bản:",
+            "bulletPoints": [
+              {
+                "label": "Color (Màu chữ):",
+                "desc": "Khai báo màu chữ bằng tên màu, mã Hex hoặc RGB:",
+                "code": "color: red;\ncolor: #00ff00;\ncolor: rgb(255, 0, 0);"
+              },
+              {
+                "label": "Font Size (Kích thước font):",
+                "desc": "Khai báo kích cỡ chữ theo pixel, em hoặc từ khóa:",
+                "code": "font-size: 16px;\nfont-size: 1.2em;\nfont-size: larger;"
+              },
+              {
+                "label": "Background Color (Màu nền):",
+                "desc": "Khai báo màu nền với Hex hoặc RGBA trong suốt:",
+                "code": "background-color: #ffffff;\nbackground-color: rgba(255, 0, 0, 0.5);"
+              },
+              {
+                "label": "Margin (Lề ngoài):",
+                "desc": "Khai báo lề ngoài của phần tử:",
+                "code": "margin: 10px;\nmargin: 5px 10px;\nmargin-top: 20px;"
+              },
+              {
+                "label": "Padding (Lề bên trong):",
+                "desc": "Khai báo lề bên trong phần tử:",
+                "code": "padding: 10px;\npadding: 5px 10px;\npadding-top: 20px;"
+              },
+              {
+                "label": "Border (Viền):",
+                "desc": "Khai báo độ dày, kiểu nét và màu viền:",
+                "code": "border: 1px solid #000000;\nborder: 2px dashed #333333;"
+              },
+              {
+                "label": "Width (Chiều rộng):",
+                "desc": "Khai báo chiều rộng phần tử:",
+                "code": "width: 200px;\nwidth: 50%;"
+              },
+              {
+                "label": "Height (Chiều cao):",
+                "desc": "Khai báo chiều cao phần tử:",
+                "code": "height: 150px;\nheight: auto;"
+              },
+              {
+                "label": "Display (Kiểu hiển thị):",
+                "desc": "Khai báo khối hiển thị block, inline hoặc ẩn none:",
+                "code": "display: block;\ndisplay: inline;\ndisplay: none;"
+              },
+              {
+                "label": "Position (Vị trí):",
+                "desc": "Khai báo vị trí tương đối, tuyệt đối hoặc cố định:",
+                "code": "position: relative;\nposition: absolute;\nposition: fixed;"
+              },
+              {
+                "label": "Float (Đặt phần tử nổi):",
+                "desc": "Khai báo trôi nổi sang trái hoặc phải:",
+                "code": "float: left;\nfloat: right;"
+              },
+              {
+                "label": "Opacity (Độ trong suốt):",
+                "desc": "Khai báo độ trong suốt từ 0 đến 1:",
+                "code": "opacity: 0.7;\nopacity: 1; (đối với độ trong suốt đầy đủ)"
+              }
+            ]
+          },
+          {
+            "text": "giá_trị_1, giá_trị_2, ..., giá_trị_n: Là giá trị tương ứng với mỗi thuộc tính. Ví dụ, nếu bạn muốn đặt màu chữ, bạn có thể sử dụng giá trị như \"blue\", \"red\", \"#FF0000\",...\n\n* Mục đích của bộ chọn lớp\nThường được dùng để khai báo các quy tắc định dạng được áp dụng chung cho nhiều phần tử trong văn bản html thay vì phải viết lặp lại các quy tắc này cho từng phần tử."
+          },
+          {
+            "heading": "7.2. Bộ chọn định danh",
+            "text": "Bộ chọn định danh trong CSS (còn được gọi là ID selector) cho phép định dạng (định kiểu) cho một phần tử cụ thể bằng cách sử dụng một định danh duy nhất của phần tử đó. Cú pháp khai báo như sau:\n#Tên_định_danh { thuộc_tính_1: giá_trị_1; ...thuộc_tính_n: giá_trị_n;}\n\nSau khi khai báo trong thẻ <style>, bộ chọn định danh chỉ được áp dụng cho phần tử có id chính xác là tieu_de. Một văn bản HTML chỉ nên có đúng một phần tử có id là tieu_de, nếu không dễ dẫn đến xung đột, làm giảm hiệu quả của css.\n\nBộ chọn định danh có mức ưu tiên cao hơn so với các bộ chọn khác như bộ chọn lớp (class) và bộ chọn phần tử (element). Do đó, các định dạng (định kiểu) quy định bởi bộ chọn định danh sẽ ghi đè định dạng (định kiểu) của các bộ chọn khác.\n\nBộ chọn định danh giúp định dạng một phần tử cụ thể một cách chính xác, song không sử dụng lại cho các phần tử khác được và dễ dẫn đến xung đột.",
+            "code": "#tieu_de {\n  color: blue;\n  font-size: 20px;\n}"
+          }
+        ]
+      }
+    ]
+  },
 };
 
 // Aliases cho các chủ đề trắc nghiệm và câu hỏi Đúng / Sai

@@ -13527,7 +13527,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   "chapterName": "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
   "difficulty": "VanDung",
   "type": "multiple_choice",
-  "content": "Để hiển thị nút lệnh , em chọn lệnh HTML nào sau đây?",
+  "content": "Để hiển thị nút lệnh ![](/images/theory_12f_rId24_image14.png), em chọn lệnh HTML nào sau đây?",
   "options": [
     {
       "id": "A",

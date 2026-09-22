@@ -112,6 +112,11 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({
       return stash(`${base}<sup class="font-semibold text-[0.8em] relative -top-1">${exp}</sup>`);
     });
 
+    // 6.5. Nhận diện ảnh markdown: ![alt](src) hoặc ảnh minh họa inline
+    text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
+      return stash(`<img src="${src}" alt="${alt || 'hình minh họa'}" class="inline-block max-h-7 align-middle mx-1 rounded border border-gray-300 shadow-sm" />`);
+    });
+
     // 7. Nhận diện các thẻ HTML trong Tin học 12 (ví dụ: <p>, <h1>, <a>, <img>, <table>, <html>, <head>, <title>, <form>, <input>, v.v.)
     // và các placeholder lập trình (ví dụ: <giá trị>, <điều kiện>, <tên biến>)
     text = text.replace(/<(\s*\/?[a-zA-Z\p{L}1-6!][^<>\n]*?)>/gu, (_, tagContent) => {
