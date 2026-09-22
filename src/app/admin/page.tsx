@@ -140,8 +140,8 @@ export default function AdminDashboardPage() {
   }, []);
 
   // 8. Admin Login Form (if not logged in as Admin)
-  const [adminUsernameInput, setAdminUsernameInput] = useState("admin");
-  const [adminPasswordInput, setAdminPasswordInput] = useState("admin");
+  const [adminUsernameInput, setAdminUsernameInput] = useState("");
+  const [adminPasswordInput, setAdminPasswordInput] = useState("");
   const [adminLoginError, setAdminLoginError] = useState("");
   const [isAdminLoggingIn, setIsAdminLoggingIn] = useState(false);
 
@@ -829,7 +829,35 @@ export default function AdminDashboardPage() {
     };
   };
 
-  // If Not Logged In as Admin, Show Secure Admin Authentication
+  // 1. Nếu đã đăng nhập với vai trò Học sinh mà cố tình truy cập /admin
+  if (isLoggedIn && !isAdmin) {
+    return (
+      <div className="min-h-screen bg-[#e6ecf5] flex items-center justify-center p-4">
+        <div className="w-full max-w-md bg-[#e6ecf5] rounded-neu shadow-neu-flat p-8 border border-white/70 space-y-5 text-center">
+          <div className="w-16 h-16 mx-auto rounded-neu bg-rose-100 flex items-center justify-center text-rose-600 shadow-neu-flat-xs">
+            <Lock className="w-8 h-8" />
+          </div>
+          <div className="space-y-1.5">
+            <h1 className="text-lg font-black text-slate-800">
+              Khu Vực Quản Trị Hạn Chế
+            </h1>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Tài khoản <strong>{user?.fullName}</strong> ({user?.className}) là tài khoản <strong>Học sinh</strong>, không có quyền truy cập trang Quản trị này.
+            </p>
+          </div>
+          <Link
+            href="/"
+            className="w-full py-3 rounded-neu font-bold text-sm text-white bg-blue-600 hover:bg-blue-700 shadow-neu-flat transition flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Quay lại trang Ôn Luyện</span>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // 2. Nếu chưa đăng nhập với vai trò Admin, hiển thị form xác thực quản trị bảo mật
   if (!isAdmin) {
     return (
       <div className="min-h-screen bg-[#e6ecf5] flex items-center justify-center p-4">
@@ -863,7 +891,7 @@ export default function AdminDashboardPage() {
                 value={adminUsernameInput}
                 onChange={(e) => setAdminUsernameInput(e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
-                placeholder="admin"
+                placeholder="Nhập tài khoản quản trị..."
               />
             </div>
 

@@ -3,16 +3,14 @@
 import React, { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { soundManager } from "@/lib/audioEffects";
-import { Lock, User, School, KeyRound, AlertCircle, X, GraduationCap } from "lucide-react";
+import { Lock, User, School, KeyRound, AlertCircle, Sparkles, BookOpen, GraduationCap } from "lucide-react";
 
-export const LoginModal: React.FC = () => {
-  const { isLoginModalOpen, closeLoginModal, login } = useAuth();
+export const StudentLoginGate: React.FC = () => {
+  const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  if (!isLoginModalOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,8 +28,6 @@ export const LoginModal: React.FC = () => {
 
     if (res.success) {
       soundManager.playSuccess();
-      setUsername("");
-      setPassword("");
     } else {
       soundManager.playError();
       setErrorMessage(res.message);
@@ -39,42 +35,42 @@ export const LoginModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="w-full max-w-md bg-[#e6ecf5] rounded-neu shadow-neu-flat p-6 relative border border-white/60 space-y-5">
-        {/* Nút đóng */}
-        <button
-          onClick={() => {
-            soundManager.playClick();
-            closeLoginModal();
-          }}
-          className="absolute top-4 right-4 p-2 rounded-full bg-[#e6ecf5] shadow-neu-flat-xs active:shadow-neu-inset text-slate-500 hover:text-slate-800 transition cursor-pointer"
-          aria-label="Đóng"
-        >
-          <X className="w-4 h-4" />
-        </button>
-
-        {/* Header */}
-        <div className="text-center space-y-1 pt-1">
-          <div className="w-12 h-12 mx-auto rounded-neu-sm bg-blue-100 flex items-center justify-center text-blue-700 shadow-neu-flat-xs mb-2">
-            <School className="w-6 h-6 text-blue-600" />
+    <div className="min-h-screen bg-[#e6ecf5] flex flex-col justify-center items-center p-4 antialiased">
+      <div className="w-full max-w-md bg-[#e6ecf5] rounded-neu shadow-neu-flat p-6 sm:p-8 border border-white/80 space-y-6">
+        {/* Header trường học & môn học */}
+        <div className="text-center space-y-2">
+          <div className="w-16 h-16 mx-auto rounded-neu bg-blue-100 flex items-center justify-center text-blue-700 shadow-neu-flat-xs">
+            <School className="w-8 h-8 text-blue-600" />
           </div>
-          <h2 className="text-lg font-black text-slate-800">
-            Cổng Đăng Nhập Học Sinh
-          </h2>
-          <p className="text-xs text-blue-700 font-bold">
-            Trường THPT Nguyễn Sinh Sắc
-          </p>
-          <p className="text-[11px] text-slate-500">
-            Phụ trách: Thầy Lý Thành Luân
+          <div className="space-y-1">
+            <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blue-100/80 text-blue-800 text-[10px] font-black uppercase tracking-wider shadow-neu-flat-xs">
+              <GraduationCap className="w-3.5 h-3.5" />
+              <span>Năm Học 2026 - 2027</span>
+            </span>
+            <h1 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
+              Hệ Thống Ôn Thi Tốt Nghiệp THPT
+            </h1>
+            <p className="text-xs font-bold text-blue-700">
+              Trường THPT Nguyễn Sinh Sắc
+            </p>
+            <p className="text-[11px] text-slate-500 font-medium">
+              Phụ trách chuyên môn: Thầy Lý Thành Luân
+            </p>
+          </div>
+        </div>
+
+        {/* Lời nhắn hướng dẫn học sinh */}
+        <div className="p-3 rounded-neu-sm bg-blue-50/70 border border-blue-200/60 text-[11px] text-blue-900 leading-relaxed space-y-1 shadow-neu-flat-xs">
+          <div className="flex items-center gap-1.5 font-bold">
+            <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+            <span>Khu vực ôn tập có hướng dẫn Socratic & AI:</span>
+          </div>
+          <p className="text-slate-600 text-[11px]">
+            Học sinh đăng nhập bằng tài khoản và mật khẩu do Thầy/Cô cấp để bắt đầu ôn luyện theo kế hoạch 35 tuần và lưu tiến trình bài làm theo thời gian thực.
           </p>
         </div>
 
-        {/* Lời nhắc */}
-        <div className="p-2.5 rounded-neu-sm bg-blue-50/70 border border-blue-200/60 text-[11px] text-blue-900 leading-relaxed shadow-neu-flat-xs">
-          Học sinh đăng nhập bằng tài khoản và mật khẩu do Thầy/Cô cấp để bắt đầu ôn luyện và lưu tiến trình học tập.
-        </div>
-
-        {/* Thông báo lỗi */}
+        {/* Thông báo lỗi nếu có */}
         {errorMessage && (
           <div className="p-3 rounded-neu-sm bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-start gap-2 shadow-neu-flat-xs animate-in slide-in-from-top-1">
             <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-rose-600" />
@@ -82,10 +78,10 @@ export const LoginModal: React.FC = () => {
           </div>
         )}
 
-        {/* Form đăng nhập */}
+        {/* Form đăng nhập dành riêng cho học sinh */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-700 px-1 flex items-center gap-1">
+            <label className="text-xs font-bold text-slate-700 px-1 flex items-center gap-1.5">
               <User className="w-3.5 h-3.5 text-blue-600" />
               <span>Tên đăng nhập (Mã học sinh):</span>
             </label>
@@ -102,7 +98,7 @@ export const LoginModal: React.FC = () => {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-700 px-1 flex items-center gap-1">
+            <label className="text-xs font-bold text-slate-700 px-1 flex items-center gap-1.5">
               <Lock className="w-3.5 h-3.5 text-blue-600" />
               <span>Mật khẩu:</span>
             </label>
@@ -125,11 +121,11 @@ export const LoginModal: React.FC = () => {
             ) : (
               <KeyRound className="w-4 h-4" />
             )}
-            <span>{isLoading ? "Đang xác thực..." : "Đăng Nhập"}</span>
+            <span>{isLoading ? "Đang xác thực tài khoản..." : "Đăng Nhập Vào Học"}</span>
           </button>
         </form>
 
-        {/* Ghi chú chân trang */}
+        {/* Hỗ trợ trợ cấp lại tài khoản */}
         <div className="text-center pt-2 border-t border-slate-300/50">
           <p className="text-[11px] text-slate-500 leading-normal">
             Chưa có tài khoản hoặc quên mật khẩu? <br />
@@ -137,6 +133,11 @@ export const LoginModal: React.FC = () => {
           </p>
         </div>
       </div>
+
+      {/* Footer nhỏ nhẹ */}
+      <footer className="mt-6 text-center text-[11px] text-slate-400 font-medium">
+        © 2026 Trường THPT Nguyễn Sinh Sắc • Ứng dụng Ôn Thi TN THPT Chuẩn Cấu Trúc GD1
+      </footer>
     </div>
   );
 };

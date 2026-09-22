@@ -16,9 +16,10 @@ import { soundManager } from "@/lib/audioEffects";
 import { BookOpen } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { LoginModal } from "@/components/Auth/LoginModal";
+import { StudentLoginGate } from "@/components/Auth/StudentLoginGate";
 
 export default function AppHome() {
-  const { user } = useAuth();
+  const { user, isLoggedIn, isAuthLoading } = useAuth();
 
   // 1. Data States
   const [subjects, setSubjects] = useState<Subject[]>(INITIAL_SUBJECTS);
@@ -388,6 +389,28 @@ export default function AppHome() {
     setCurrentQuestionIndex(0);
     setActiveTab("practice");
   };
+
+  // 1. Chờ khôi phục phiên đăng nhập từ trình duyệt (tránh chớp nháy giao diện)
+  if (isAuthLoading) {
+    return (
+      <div className="min-h-screen bg-[#e6ecf5] flex flex-col items-center justify-center p-4 antialiased">
+        <div className="p-6 rounded-neu bg-[#e6ecf5] shadow-neu-flat border border-white/80 flex flex-col items-center space-y-3 max-w-xs w-full text-center animate-pulse">
+          <div className="w-12 h-12 rounded-neu-sm bg-blue-100 flex items-center justify-center text-blue-600 shadow-neu-flat-xs">
+            <BookOpen className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 className="text-sm font-black text-slate-800">Đang Tải Dữ Liệu Ôn Tập...</h2>
+            <p className="text-[11px] text-slate-500 font-medium pt-0.5">Trường THPT Nguyễn Sinh Sắc</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 2. Bắt buộc học sinh phải đăng nhập mới được xem câu hỏi và làm bài
+  if (!isLoggedIn) {
+    return <StudentLoginGate />;
+  }
 
   return (
     <div className="min-h-screen bg-[#e6ecf5] flex flex-col antialiased">
