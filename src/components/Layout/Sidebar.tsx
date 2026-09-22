@@ -62,6 +62,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
     return { week, cleanName };
   };
 
+  // Helper bóc tách Tuần học và Tên chương / Chủ đề lớn
+  const parseChapterInfo = (rawChapter: string) => {
+    const weekMatch = rawChapter.match(/\((Tuần\s*[\d\s–-]+)\)/i);
+    const week = weekMatch ? weekMatch[1].trim() : null;
+    const cleanChapter = rawChapter.replace(/\s*\((Tuần\s*[\d\s–-]+)\)\s*$/i, "").trim();
+    return { week, cleanChapter };
+  };
+
   // Nhóm topics theo Chapter
   const groupedChapters = useMemo(() => {
     if (!currentSubject) return {};
@@ -325,49 +333,59 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 (acc, t) => acc + (t.totalQuestions || 0),
                 0
               );
+              const { week: chapterWeek, cleanChapter } = parseChapterInfo(chapterTitle);
 
               return (
                 <div
                   key={chapterTitle}
                   className={`rounded-neu-sm bg-[#e6ecf5] transition-all overflow-hidden ${
-                    hasActiveTopic ? "shadow-neu-flat border border-blue-200" : "shadow-neu-flat-xs"
+                    hasActiveTopic ? "shadow-neu-flat border border-blue-300/80" : "shadow-neu-flat-xs"
                   }`}
                 >
-                  {/* Accordion Chapter Header (Bấm để Thu gọn / Mở rộng) */}
+                  {/* Accordion Chapter Header - CẤP BẬC CHA (TIÊU ĐỀ LỚN) */}
                   <button
                     onClick={() => toggleChapter(chapterTitle)}
-                    className={`w-full text-left p-2.5 flex items-center justify-between gap-2 transition-colors ${
+                    className={`w-full text-left p-3 flex items-center justify-between gap-2.5 transition-colors ${
                       hasActiveTopic
-                        ? "bg-blue-50/70 text-blue-900"
-                        : "hover:bg-slate-200/40 text-slate-800"
+                        ? "bg-blue-100/50 text-blue-950"
+                        : "hover:bg-slate-200/50 text-slate-800"
                     }`}
                     aria-expanded={isExpanded}
                   >
-                    <div className="flex items-center gap-2 min-w-0 flex-1">
+                    <div className="flex items-start gap-2.5 min-w-0 flex-1">
                       <div
-                        className={`p-1 rounded-neu-xs shadow-neu-flat-xs flex-shrink-0 ${
+                        className={`p-1.5 rounded-neu-xs shadow-neu-flat-xs flex-shrink-0 mt-0.5 ${
                           hasActiveTopic ? "text-blue-600 bg-white" : "text-slate-600 bg-[#e6ecf5]"
                         }`}
                       >
                         {isExpanded ? (
-                          <FolderOpen className="w-3.5 h-3.5 text-blue-600" />
+                          <FolderOpen className="w-4 h-4 text-blue-600" />
                         ) : (
-                          <Folder className="w-3.5 h-3.5 text-slate-500" />
+                          <Folder className="w-4 h-4 text-slate-500" />
                         )}
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-xs font-extrabold text-slate-800 leading-snug break-words">
-                          {chapterTitle}
+                      <div className="min-w-0 flex-1 space-y-1">
+                        {/* Hàng nhãn chương: Huy hiệu tuần học lớn (nếu có) */}
+                        {chapterWeek && (
+                          <div className="flex items-center gap-1.5">
+                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200/80 shadow-neu-flat-xs">
+                              <Calendar className="w-3 h-3 text-blue-600 flex-shrink-0" />
+                              <span>{chapterWeek}</span>
+                            </span>
+                          </div>
+                        )}
+                        <h3 className="text-xs font-black text-slate-800 leading-snug break-words tracking-tight">
+                          {cleanChapter}
                         </h3>
-                        <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-medium mt-1">
-                          <span>{topicList.length} dạng bài</span>
+                        <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-semibold">
+                          <span>{topicList.length} bài học</span>
                           <span>•</span>
                           <span>{totalChapterQuestions} câu hỏi</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="p-1 rounded-neu-xs text-slate-500 shadow-neu-flat-xs flex-shrink-0">
+                    <div className="p-1 rounded-neu-xs text-slate-500 shadow-neu-flat-xs flex-shrink-0 self-center">
                       {isExpanded ? (
                         <ChevronDown className="w-3.5 h-3.5 text-blue-600" />
                       ) : (
@@ -376,59 +394,90 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     </div>
                   </button>
 
-                  {/* Danh sách các bài học / chủ đề bên trong chương khi mở rộng */}
+                  {/* Danh sách các bài học con - CẤP BẬC CON (TIÊU ĐỀ NHỎ BÊN TRONG CÓ NHÁNH CÂY TREE-LINE) */}
                   {isExpanded && (
-                    <div className="p-1.5 space-y-2 border-t border-slate-200/80 bg-slate-100/40">
-                      {topicList.map((topic) => {
-                        const isCurrent = topic.id === selectedTopicId;
-                        const { week, cleanName } = parseTopicInfo(topic.name);
+                    <div className="p-2.5 pt-2 bg-slate-200/30 border-t border-slate-200/90">
+                      {/* Vùng nhánh cây phân cấp (Tree Branch Guide) */}
+                      <div className="relative pl-3.5 ml-2 border-l-2 border-slate-300/80 space-y-2 py-0.5">
+                        {topicList.map((topic) => {
+                          const isCurrent = topic.id === selectedTopicId;
+                          const { week: topicWeek, cleanName } = parseTopicInfo(topic.name);
 
-                        return (
-                          <button
-                            key={topic.id}
-                            onClick={() => {
-                              soundManager.playClick();
-                              onSelectTopic(topic.id);
-                              if (typeof window !== "undefined" && window.innerWidth < 768) {
-                                onClose();
-                              }
-                            }}
-                            className={`w-full text-left p-2.5 rounded-neu-sm transition-all flex items-start justify-between gap-2 ${
-                              isCurrent
-                                ? "bg-[#e6ecf5] text-blue-800 shadow-neu-inset font-semibold border-l-3 border-blue-600"
-                                : "bg-[#e6ecf5] text-slate-700 shadow-neu-flat-xs hover:text-blue-600 active:shadow-neu-inset"
-                            }`}
-                          >
-                            <div className="flex-1 min-w-0 space-y-1">
-                              {/* Hàng huy hiệu: Tuần học nổi bật + Số lượng câu hỏi */}
-                              <div className="flex items-center gap-1.5 flex-wrap">
-                                {week && (
-                                  <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200/80 shadow-neu-flat-xs">
-                                    <Calendar className="w-3 h-3 text-blue-600 flex-shrink-0" />
-                                    <span>{week}</span>
-                                  </span>
-                                )}
-                                <span className="text-[10px] text-slate-500 font-medium">
-                                  {topic.totalQuestions} câu hỏi chuẩn
-                                </span>
-                              </div>
-
-                              {/* Tên bài học đầy đủ (KHÔNG CẮT BỚT - HIỂN THỊ 100%) */}
-                              <p className="text-xs font-bold text-slate-800 leading-snug break-words">
-                                {cleanName}
-                              </p>
-                            </div>
-
-                            <div className="pt-1 flex-shrink-0">
-                              <ChevronRight
-                                className={`w-4 h-4 transition-transform ${
-                                  isCurrent ? "text-blue-600 translate-x-0.5" : "text-slate-400"
+                          return (
+                            <div key={topic.id} className="relative">
+                              {/* Đường nhánh ngang nối từ cây phân cấp vào thẻ bài học con */}
+                              <span
+                                className={`absolute -left-[14px] top-4 w-2.5 h-0.5 transition-colors ${
+                                  isCurrent ? "bg-blue-600" : "bg-slate-300/90"
                                 }`}
                               />
+
+                              <button
+                                onClick={() => {
+                                  soundManager.playClick();
+                                  onSelectTopic(topic.id);
+                                  if (typeof window !== "undefined" && window.innerWidth < 768) {
+                                    onClose();
+                                  }
+                                }}
+                                className={`w-full text-left p-2.5 rounded-neu-sm transition-all flex items-start justify-between gap-2 ${
+                                  isCurrent
+                                    ? "bg-blue-50 text-blue-900 shadow-neu-inset font-bold border-l-3 border-blue-600"
+                                    : "bg-[#e6ecf5] text-slate-700 shadow-neu-flat-xs hover:text-blue-700 active:shadow-neu-inset"
+                                }`}
+                              >
+                                <div className="flex-1 min-w-0 space-y-1.5">
+                                  {/* Tên bài học rõ ràng */}
+                                  <p className="text-xs font-bold text-slate-800 leading-snug break-words">
+                                    {cleanName}
+                                  </p>
+
+                                  {/* Hàng thông tin chi tiết bài học con */}
+                                  <div className="flex items-center gap-1.5 flex-wrap">
+                                    {/* Tuần riêng nếu khác tuần chương */}
+                                    {topicWeek && topicWeek !== chapterWeek && (
+                                      <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+                                        <Calendar className="w-2.5 h-2.5 text-blue-600" />
+                                        <span>{topicWeek}</span>
+                                      </span>
+                                    )}
+
+                                    {/* Huy hiệu Lý thuyết nếu có */}
+                                    {topic.hasTheory && (
+                                      <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200/80 shadow-neu-flat-xs">
+                                        <BookOpen className="w-2.5 h-2.5 text-amber-600" />
+                                        <span>Lý thuyết</span>
+                                      </span>
+                                    )}
+
+                                    {/* Phân rã số lượng câu hỏi */}
+                                    <span className="text-[10px] text-slate-500 font-medium">
+                                      {topic.mcCount && topic.tfCount ? (
+                                        <span>
+                                          {topic.totalQuestions} câu{" "}
+                                          <span className="text-slate-400 font-normal">
+                                            ({topic.mcCount} TN • {topic.tfCount} Đ/S)
+                                          </span>
+                                        </span>
+                                      ) : (
+                                        <span>{topic.totalQuestions} câu hỏi</span>
+                                      )}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="pt-1 flex-shrink-0">
+                                  <ChevronRight
+                                    className={`w-4 h-4 transition-transform ${
+                                      isCurrent ? "text-blue-600 translate-x-0.5" : "text-slate-400"
+                                    }`}
+                                  />
+                                </div>
+                              </button>
                             </div>
-                          </button>
-                        );
-                      })}
+                          );
+                        })}
+                      </div>
                     </div>
                   )}
                 </div>

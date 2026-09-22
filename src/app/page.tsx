@@ -51,6 +51,7 @@ export default function AppHome() {
   const [isHintOpen, setIsHintOpen] = useState(false);
   const [isSocraticOpen, setIsSocraticOpen] = useState(false);
   const [questionStartTime, setQuestionStartTime] = useState<number>(Date.now());
+  const [activeQuestionFormat, setActiveQuestionFormat] = useState<"all" | "mc" | "tf">("mc");
 
   // 4. Google Drive Sync Status
   const [driveSyncStatus, setDriveSyncStatus] = useState<DriveSyncStatus>({
@@ -123,15 +124,67 @@ export default function AppHome() {
     }
   }, []);
 
-  // Lọc danh sách câu hỏi theo chủ đề đang chọn
-  const topicQuestions = useMemo(() => {
-    return questions.filter((q) => q.topicId === selectedTopicId);
+  // Thông tin tiêu đề hiển thị trên Header và trạng thái Lý thuyết
+  const currentSubject = subjects.find((s) => s.id === selectedSubjectId);
+  const currentTopic = currentSubject?.topics.find((t) => t.id === selectedTopicId);
+  const currentHasTheory = Boolean(
+    currentTopic?.hasTheory ||
+    selectedTopicId === "tin-ai-tri-tue-nhan-tao" ||
+    selectedTopicId === "tin-lap-trinh-python" ||
+    selectedTopicId === "tin-thiet-bi-giao-thuc-mang"
+  );
+
+  // Lọc toàn bộ câu hỏi theo chủ đề (hỗ trợ cả alias cũ nếu có trong bộ nhớ tạm)
+  const allTopicQuestions = useMemo(() => {
+    return questions.filter((q) => {
+      if (selectedTopicId === "tin-ai-tri-tue-nhan-tao") {
+        return q.topicId === "tin-ai-tri-tue-nhan-tao" || q.topicId === "tin-ai-dung-sai";
+      }
+      if (selectedTopicId === "tin-lap-trinh-python") {
+        return q.topicId === "tin-lap-trinh-python" || q.topicId === "tin-python-dung-sai";
+      }
+      if (selectedTopicId === "tin-thiet-bi-giao-thuc-mang") {
+        return q.topicId === "tin-thiet-bi-giao-thuc-mang" || q.topicId === "tin-mang-dung-sai";
+      }
+      return q.topicId === selectedTopicId;
+    });
   }, [questions, selectedTopicId]);
+
+  // Đếm số lượng câu hỏi trắc nghiệm 4 lựa chọn và Đúng / Sai
+  const mcQuestionsCount = useMemo(() => {
+    return allTopicQuestions.filter((q) => q.type !== "true_false").length;
+  }, [allTopicQuestions]);
+
+  const tfQuestionsCount = useMemo(() => {
+    return allTopicQuestions.filter((q) => q.type === "true_false").length;
+  }, [allTopicQuestions]);
+
+  // Tự động điều chỉnh định dạng nếu chủ đề không có dạng câu hỏi đang chọn
+  useEffect(() => {
+    if (activeQuestionFormat === "tf" && tfQuestionsCount === 0 && mcQuestionsCount > 0) {
+      setActiveQuestionFormat("mc");
+    } else if (activeQuestionFormat === "mc" && mcQuestionsCount === 0 && tfQuestionsCount > 0) {
+      setActiveQuestionFormat("tf");
+    }
+  }, [selectedTopicId, mcQuestionsCount, tfQuestionsCount, activeQuestionFormat]);
+
+  // Danh sách câu hỏi hiển thị theo định dạng đang chọn (MC hoặc TF)
+  const topicQuestions = useMemo(() => {
+    if (activeQuestionFormat === "mc") {
+      const mcList = allTopicQuestions.filter((q) => q.type !== "true_false");
+      return mcList.length > 0 ? mcList : allTopicQuestions;
+    }
+    if (activeQuestionFormat === "tf") {
+      const tfList = allTopicQuestions.filter((q) => q.type === "true_false");
+      return tfList.length > 0 ? tfList : allTopicQuestions;
+    }
+    return allTopicQuestions;
+  }, [allTopicQuestions, activeQuestionFormat]);
 
   // Câu hỏi hiện tại
   const currentQuestion = topicQuestions[currentQuestionIndex] || topicQuestions[0];
 
-  // Reset trạng thái câu hỏi khi chuyển câu hoặc chuyển chủ đề
+  // Reset trạng thái câu hỏi khi chuyển câu hoặc chuyển chủ đề hoặc đổi dạng bài
   useEffect(() => {
     setSelectedOption(null);
     setSelectedTF({});
@@ -139,16 +192,12 @@ export default function AppHome() {
     setHintLevel(0);
     setIsHintOpen(false);
     setQuestionStartTime(Date.now());
-  }, [currentQuestionIndex, selectedTopicId]);
+  }, [currentQuestionIndex, selectedTopicId, activeQuestionFormat]);
 
   // Chọn Đúng / Sai cho từng ý câu hỏi Phần 2
   const handleSelectTF = (itemId: string, value: boolean) => {
     setSelectedTF((prev) => ({ ...prev, [itemId]: value }));
   };
-
-  // Thông tin tiêu đề hiển thị trên Header
-  const currentSubject = subjects.find((s) => s.id === selectedSubjectId);
-  const currentTopic = currentSubject?.topics.find((t) => t.id === selectedTopicId);
 
   // Xử lý kiểm tra đáp án
   const handleCheckAnswer = () => {
@@ -472,223 +521,101 @@ export default function AppHome() {
 
         {/* Khung nội dung chính */}
         <main className="flex-1 max-w-md w-full mx-auto p-4 space-y-4">
+          {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn) và Phần 2 (Đúng / Sai) */}
+          {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0) && (
+            <div className="flex items-center p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1 text-xs font-bold">
+              {currentHasTheory && (
+                <button
+                  onClick={() => {
+                    soundManager.playClick();
+                    setActiveTab("theory");
+                  }}
+                  className={`py-2 px-3 rounded-neu-xs flex items-center justify-center gap-1.5 transition-all ${
+                    activeTab === "theory"
+                      ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
+                      : "text-slate-700 hover:text-blue-700 shadow-neu-flat-xs active:shadow-neu-inset"
+                  }`}
+                  title="Xem toàn bộ lý thuyết đầy đủ 100%"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="text-[11px] font-extrabold">Lý thuyết</span>
+                </button>
+              )}
+
+              {mcQuestionsCount > 0 && (
+                <button
+                  onClick={() => {
+                    soundManager.playClick();
+                    setActiveTab("practice");
+                    setActiveQuestionFormat("mc");
+                    setCurrentQuestionIndex(0);
+                  }}
+                  className={`flex-1 py-2 px-2 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1.5 ${
+                    activeTab === "practice" && activeQuestionFormat === "mc"
+                      ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
+                      : "text-slate-600 hover:text-blue-700 shadow-neu-flat-xs active:shadow-neu-inset"
+                  }`}
+                >
+                  <span className="truncate">🔘 P1: 4 lựa chọn</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                      activeTab === "practice" && activeQuestionFormat === "mc"
+                        ? "bg-blue-100 text-blue-900"
+                        : "bg-slate-200 text-slate-700"
+                    }`}
+                  >
+                    {mcQuestionsCount}
+                  </span>
+                </button>
+              )}
+
+              {tfQuestionsCount > 0 && (
+                <button
+                  onClick={() => {
+                    soundManager.playClick();
+                    setActiveTab("practice");
+                    setActiveQuestionFormat("tf");
+                    setCurrentQuestionIndex(0);
+                  }}
+                  className={`flex-1 py-2 px-2 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1.5 ${
+                    activeTab === "practice" && activeQuestionFormat === "tf"
+                      ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
+                      : "text-slate-600 hover:text-blue-700 shadow-neu-flat-xs active:shadow-neu-inset"
+                  }`}
+                >
+                  <span className="truncate">⚖️ P2: Đúng / Sai</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                      activeTab === "practice" && activeQuestionFormat === "tf"
+                        ? "bg-blue-100 text-blue-900"
+                        : "bg-slate-200 text-slate-700"
+                    }`}
+                  >
+                    {tfQuestionsCount}
+                  </span>
+                </button>
+              )}
+            </div>
+          )}
+
           {activeTab === "theory" ? (
             /* Tab Tóm Tắt & Tra Cứu Lý Thuyết Trọng Tâm */
             <TheoryViewer
               topicId={selectedTopicId}
               onStartPractice={(part) => {
-                if (selectedTopicId.startsWith("tin-ai")) {
-                  if (part === "tf") {
-                    setSelectedTopicId("tin-ai-dung-sai");
-                  } else {
-                    setSelectedTopicId("tin-ai-tri-tue-nhan-tao");
-                  }
-                } else if (
-                  selectedTopicId.startsWith("tin-thiet-bi") ||
-                  selectedTopicId.startsWith("tin-mang") ||
-                  selectedTopicId.startsWith("tin-giao-thuc") ||
-                  selectedTopicId.startsWith("tin-chia-se")
-                ) {
-                  if (part === "tf") {
-                    setSelectedTopicId("tin-mang-dung-sai");
-                  } else {
-                    setSelectedTopicId("tin-thiet-bi-giao-thuc-mang");
-                  }
-                } else if (
-                  selectedTopicId.startsWith("tin-lap-trinh") ||
-                  selectedTopicId.startsWith("tin-python")
-                ) {
-                  if (part === "tf") {
-                    setSelectedTopicId("tin-python-dung-sai");
-                  } else {
-                    setSelectedTopicId("tin-lap-trinh-python");
-                  }
+                setActiveTab("practice");
+                if (part === "tf" && tfQuestionsCount > 0) {
+                  setActiveQuestionFormat("tf");
+                } else {
+                  setActiveQuestionFormat("mc");
                 }
                 setCurrentQuestionIndex(0);
-                setActiveTab("practice");
               }}
             />
           ) : activeTab === "practice" ? (
             <>
               {currentQuestion ? (
                 <>
-                  {/* Bộ chuyển đổi nhanh giữa Lý thuyết, Phần 1 (Nhiều lựa chọn) và Phần 2 (Đúng / Sai) - CHUYÊN ĐỀ 10F: PYTHON */}
-                  {selectedSubjectId === "tin-hoc-12" &&
-                    (selectedTopicId === "tin-lap-trinh-python" ||
-                      selectedTopicId === "tin-python-dung-sai") && (
-                      <div className="flex items-center p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1 text-xs font-bold">
-                        <button
-                          onClick={() => {
-                            soundManager.playClick();
-                            setActiveTab("theory");
-                          }}
-                          className="py-2 px-2 rounded-neu-xs text-slate-700 hover:text-blue-700 flex items-center justify-center gap-1 transition-all shadow-neu-flat-xs active:shadow-neu-inset"
-                          title="Xem tóm tắt lý thuyết Chuyên đề 10F: Lập trình Python"
-                        >
-                          <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-                          <span className="text-[11px] font-extrabold">Lý thuyết</span>
-                        </button>
-
-                        <button
-                          onClick={() => {
-                            soundManager.playClick();
-                            setSelectedTopicId("tin-lap-trinh-python");
-                            setCurrentQuestionIndex(0);
-                          }}
-                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
-                            selectedTopicId === "tin-lap-trinh-python"
-                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
-                              : "text-slate-600 hover:text-blue-700"
-                          }`}
-                        >
-                          <span className="truncate">🔘 P1: 4 lựa chọn</span>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                            selectedTopicId === "tin-lap-trinh-python" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
-                          }`}>
-                            {questions.filter((q) => q.topicId === "tin-lap-trinh-python").length || 54}
-                          </span>
-                        </button>
-
-                        <button
-                          onClick={() => {
-                            soundManager.playClick();
-                            setSelectedTopicId("tin-python-dung-sai");
-                            setCurrentQuestionIndex(0);
-                          }}
-                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
-                            selectedTopicId === "tin-python-dung-sai"
-                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
-                              : "text-slate-600 hover:text-blue-700"
-                          }`}
-                        >
-                          <span className="truncate">⚖️ P2: Đúng / Sai</span>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                            selectedTopicId === "tin-python-dung-sai" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
-                          }`}>
-                            {questions.filter((q) => q.topicId === "tin-python-dung-sai").length || 5}
-                          </span>
-                        </button>
-                      </div>
-                  )}
-                  {/* Bộ chuyển đổi nhanh giữa Lý thuyết, Phần 1 (Nhiều lựa chọn) và Phần 2 (Đúng / Sai) - CHỦ ĐỀ 1: AI */}
-                  {selectedSubjectId === "tin-hoc-12" &&
-                    (selectedTopicId === "tin-ai-tri-tue-nhan-tao" || selectedTopicId === "tin-ai-dung-sai") && (
-                      <div className="flex items-center p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1 text-xs font-bold">
-                        <button
-                          onClick={() => {
-                            soundManager.playClick();
-                            setActiveTab("theory");
-                          }}
-                          className="py-2 px-2 rounded-neu-xs text-slate-700 hover:text-blue-700 flex items-center justify-center gap-1 transition-all shadow-neu-flat-xs active:shadow-neu-inset"
-                          title="Xem tóm tắt lý thuyết Chủ đề 1: Trí tuệ nhân tạo"
-                        >
-                          <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-                          <span className="text-[11px] font-extrabold">Lý thuyết</span>
-                        </button>
-
-                        <button
-                          onClick={() => {
-                            soundManager.playClick();
-                            setSelectedTopicId("tin-ai-tri-tue-nhan-tao");
-                            setCurrentQuestionIndex(0);
-                          }}
-                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
-                            selectedTopicId === "tin-ai-tri-tue-nhan-tao"
-                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
-                              : "text-slate-600 hover:text-blue-700"
-                          }`}
-                        >
-                          <span className="truncate">🔘 P1: 4 lựa chọn</span>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                            selectedTopicId === "tin-ai-tri-tue-nhan-tao" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
-                          }`}>
-                            {questions.filter((q) => q.topicId === "tin-ai-tri-tue-nhan-tao").length || 76}
-                          </span>
-                        </button>
-
-                        <button
-                          onClick={() => {
-                            soundManager.playClick();
-                            setSelectedTopicId("tin-ai-dung-sai");
-                            setCurrentQuestionIndex(0);
-                          }}
-                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
-                            selectedTopicId === "tin-ai-dung-sai"
-                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
-                              : "text-slate-600 hover:text-blue-700"
-                          }`}
-                        >
-                          <span className="truncate">⚖️ P2: Đúng / Sai</span>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                            selectedTopicId === "tin-ai-dung-sai" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
-                          }`}>
-                            {questions.filter((q) => q.topicId === "tin-ai-dung-sai").length || 20}
-                          </span>
-                        </button>
-                      </div>
-                  )}
-
-                  {/* Bộ chuyển đổi nhanh giữa Lý thuyết, Phần 1 (Nhiều lựa chọn) và Phần 2 (Đúng / Sai) - CHỦ ĐỀ 2: MẠNG MÁY TÍNH */}
-                  {selectedSubjectId === "tin-hoc-12" &&
-                    (selectedTopicId === "tin-thiet-bi-giao-thuc-mang" ||
-                      selectedTopicId === "tin-mang-dung-sai" ||
-                      selectedTopicId === "tin-giao-thuc-mang" ||
-                      selectedTopicId === "tin-chia-se-tai-nguyen-mang") && (
-                      <div className="flex items-center p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1 text-xs font-bold">
-                        <button
-                          onClick={() => {
-                            soundManager.playClick();
-                            setActiveTab("theory");
-                          }}
-                          className="py-2 px-2 rounded-neu-xs text-slate-700 hover:text-blue-700 flex items-center justify-center gap-1 transition-all shadow-neu-flat-xs active:shadow-neu-inset"
-                          title="Xem tóm tắt lý thuyết Chủ đề 2: Mạng máy tính"
-                        >
-                          <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-                          <span className="text-[11px] font-extrabold">Lý thuyết</span>
-                        </button>
-
-                        <button
-                          onClick={() => {
-                            soundManager.playClick();
-                            setSelectedTopicId("tin-thiet-bi-giao-thuc-mang");
-                            setCurrentQuestionIndex(0);
-                          }}
-                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
-                            selectedTopicId === "tin-thiet-bi-giao-thuc-mang"
-                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
-                              : "text-slate-600 hover:text-blue-700"
-                          }`}
-                        >
-                          <span className="truncate">🔘 P1: 4 lựa chọn</span>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                            selectedTopicId === "tin-thiet-bi-giao-thuc-mang" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
-                          }`}>
-                            {questions.filter((q) => q.topicId === "tin-thiet-bi-giao-thuc-mang").length || 72}
-                          </span>
-                        </button>
-
-                        <button
-                          onClick={() => {
-                            soundManager.playClick();
-                            setSelectedTopicId("tin-mang-dung-sai");
-                            setCurrentQuestionIndex(0);
-                          }}
-                          className={`flex-1 py-2 px-1.5 rounded-neu-xs transition-all text-center flex items-center justify-center gap-1 ${
-                            selectedTopicId === "tin-mang-dung-sai"
-                              ? "bg-blue-600 text-white shadow-neu-blue font-extrabold"
-                              : "text-slate-600 hover:text-blue-700"
-                          }`}
-                        >
-                          <span className="truncate">⚖️ P2: Đúng / Sai</span>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                            selectedTopicId === "tin-mang-dung-sai" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-700"
-                          }`}>
-                            {questions.filter((q) => q.topicId === "tin-mang-dung-sai").length || 11}
-                          </span>
-                        </button>
-                      </div>
-                  )}
-
                   {/* Thẻ câu hỏi và các phương án */}
                   <QuestionCard
                     question={currentQuestion}

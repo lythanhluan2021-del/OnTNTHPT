@@ -41,6 +41,9 @@ export interface Topic {
   subjectId: string;
   chapter: string;
   totalQuestions: number;
+  mcCount?: number;
+  tfCount?: number;
+  hasTheory?: boolean;
 }
 
 export interface Subject {

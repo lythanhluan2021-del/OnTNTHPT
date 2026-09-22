@@ -9,157 +9,159 @@ export const INITIAL_SUBJECTS: Subject[] = [
       // Tuần 2 - 6: Luyện tập NNLT Python (Tin học 10)
       {
         id: "tin-lap-trinh-python",
-        name: "Ôn tập: Trắc nghiệm 4 lựa chọn Python (Tuần 2 – 6)",
+        name: "Chuyên đề 10F: Lập trình cơ bản Python",
         subjectId: "tin-hoc-12",
-        chapter: "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-        totalQuestions: 54,
-      },
-      {
-        id: "tin-python-dung-sai",
-        name: "Ôn tập: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
-        subjectId: "tin-hoc-12",
-        chapter: "Phần 1: Lập trình cơ bản Python (Tin học 10)",
-        totalQuestions: 5,
+        chapter: "Phần 1: Lập trình cơ bản Python (Tuần 2 – 6)",
+        totalQuestions: 59,
+        mcCount: 54,
+        tfCount: 5,
+        hasTheory: true,
       },
 
       // Tuần 7: Ôn tập chủ đề 1 (Tin học 12) - Trí tuệ nhân tạo (AI)
       {
         id: "tin-ai-tri-tue-nhan-tao",
-        name: "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
+        name: "Chuyên đề 12A: Giới thiệu Trí tuệ Nhân tạo",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
-        totalQuestions: 76,
-      },
-      {
-        id: "tin-ai-dung-sai",
-        name: "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
-        totalQuestions: 20,
+        chapter: "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tuần 7)",
+        totalQuestions: 96,
+        mcCount: 76,
+        tfCount: 20,
+        hasTheory: true,
       },
 
       // Tuần 8 - 10: Mạng máy tính & Internet (Chuyên đề 12B)
       {
         id: "tin-thiet-bi-giao-thuc-mang",
-        name: "Ôn tập: Một số thiết bị mạng thông dụng (Tuần 8 – 10)",
+        name: "Chuyên đề 12B: Mạng máy tính và Internet",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-        totalQuestions: 72,
-      },
-      {
-        id: "tin-mang-dung-sai",
-        name: "Ôn tập: Trắc nghiệm Đúng / Sai Mạng máy tính (Tuần 8 – 10)",
-        subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
-        totalQuestions: 11,
+        chapter: "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
+        totalQuestions: 83,
+        mcCount: 72,
+        tfCount: 11,
+        hasTheory: true,
       },
 
       // Tuần 11: Đạo đức, pháp luật & văn hoá số
       {
         id: "tin-dao-duc-phap-luat-so",
-        name: "Ôn tập: Giao tiếp và ứng xử trong không gian mạng (Tuần 11)",
+        name: "Giao tiếp và ứng xử trong không gian mạng",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tin học 12)",
+        chapter: "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
         totalQuestions: 3,
+        mcCount: 3,
       },
 
       // Tuần 12 - 20: Tạo trang web với HTML & CSS
       {
         id: "tin-html-cau-truc-dinh-dang",
-        name: "Ôn tập: HTML và cấu trúc trang web (Tuần 12)",
+        name: "Bài 1: HTML và cấu trúc trang web",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 4,
+        mcCount: 4,
       },
       {
         id: "tin-html-dinh-dang-van-ban",
-        name: "Ôn tập: Định dạng văn bản (Tuần 13)",
+        name: "Bài 2: Định dạng văn bản",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
+        mcCount: 3,
       },
       {
         id: "tin-html-danh-sach-bang",
-        name: "Ôn tập: Tạo danh sách, bảng (Tuần 14)",
+        name: "Bài 3: Tạo danh sách, bảng",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
+        mcCount: 3,
       },
       {
         id: "tin-html-tao-lien-ket",
-        name: "Ôn tập: Tạo liên kết (Tuần 15)",
+        name: "Bài 4: Tạo liên kết",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
+        mcCount: 3,
       },
       {
         id: "tin-html-da-phuong-tien-form",
-        name: "Ôn tập: Chèn tệp tin đa phương tiện và khung nội tuyến (Tuần 16)",
+        name: "Bài 5: Chèn tệp tin đa phương tiện và khung nội tuyến",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 4,
+        mcCount: 4,
       },
       {
         id: "tin-html-bieu-mau-form",
-        name: "Ôn tập: Tạo biểu mẫu (Tuần 18)",
+        name: "Bài 6: Tạo biểu mẫu (Form)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
+        mcCount: 3,
       },
       {
         id: "tin-css-khai-niem-vai-tro",
-        name: "Ôn tập: Khái niệm, vai trò của CSS; Định dạng văn bản & Màu sắc (Tuần 19)",
+        name: "Bài 7: Khái niệm & vai trò của CSS",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 3,
+        mcCount: 3,
       },
       {
         id: "tin-css-bo-chon-dinh-dang",
-        name: "Ôn tập: Định dạng khung, các mức ưu tiên của bộ chọn (Tuần 20)",
+        name: "Bài 8: Định dạng khung và các mức ưu tiên bộ chọn",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tin học 12)",
+        chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
         totalQuestions: 4,
+        mcCount: 4,
       },
 
       // Tuần 21 - 23: Hướng nghiệp với tin học
       {
         id: "tin-huong-nghiep-dich-vu",
-        name: "Ôn tập chủ đề: Hướng nghiệp với tin học (Tin học 10, 11, 12) (Tuần 21)",
+        name: "Hướng nghiệp với tin học (Lớp 10, 11, 12)",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 5: Hướng nghiệp với tin học (Tin học 10, 11, 12)",
+        chapter: "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
         totalQuestions: 3,
+        mcCount: 3,
       },
       {
         id: "tin-huong-nghiep-ict",
-        name: "Ôn tập chủ đề 6,7 _ICT (Tin học 12) (Tuần 22 – 23)",
+        name: "Hướng nghiệp ngành ICT",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 5: Hướng nghiệp với tin học (Tin học 10, 11, 12)",
+        chapter: "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
         totalQuestions: 4,
+        mcCount: 4,
       },
 
       // Tuần 26 - 29: Cơ sở dữ liệu lớp 11
       {
         id: "tin-co-so-du-lieu-sql",
-        name: "Ôn thi TN.THPT: Chủ đề CSDL lớp 11 (Tuần 26 – 29)",
+        name: "Hệ quản trị CSDL quan hệ và SQL",
         subjectId: "tin-hoc-12",
-        chapter: "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tin học 11)",
+        chapter: "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
         totalQuestions: 4,
+        mcCount: 4,
       },
 
       // Tuần 24 - 25 & 30 - 35: Luyện giải đề tổng hợp & Đề mẫu
       {
         id: "tin-giai-de-tong-hop",
-        name: "Ôn tập: Giải đề tổng hợp (Tuần 24 – 25)",
+        name: "Giải đề tổng hợp",
         subjectId: "tin-hoc-12",
-        chapter: "Luyện giải đề thi tốt nghiệp THPT",
+        chapter: "Luyện giải đề thi tốt nghiệp THPT (Tuần 24 – 25 & 30 – 35)",
         totalQuestions: 4,
+        mcCount: 4,
       },
       {
         id: "tin-giai-de-mau",
-        name: "Giải đề mẫu chuẩn tốt nghiệp THPT (Tuần 30 – 35)",
+        name: "Giải đề mẫu chuẩn tốt nghiệp THPT",
         subjectId: "tin-hoc-12",
-        chapter: "Luyện giải đề thi tốt nghiệp THPT",
+        chapter: "Luyện giải đề thi tốt nghiệp THPT (Tuần 24 – 25 & 30 – 35)",
         totalQuestions: 4,
+        mcCount: 4,
       },
     ],
   },
@@ -2878,7 +2880,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-01",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -2917,7 +2919,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-02",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -2956,7 +2958,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-03",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -2995,7 +2997,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-04",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -3034,7 +3036,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-05",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -3073,7 +3075,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-06",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -3112,7 +3114,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-07",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -3151,7 +3153,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-08",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -3190,7 +3192,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-09",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -3229,7 +3231,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-10",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -3268,7 +3270,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-11",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -3307,7 +3309,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-12",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -3346,7 +3348,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-13",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -3385,7 +3387,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-14",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -3424,7 +3426,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-15",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "VanDung",
@@ -3463,7 +3465,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-16",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "VanDung",
@@ -3502,7 +3504,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-17",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "VanDung",
@@ -3541,7 +3543,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-18",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "VanDung",
@@ -3580,7 +3582,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-19",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "VanDung",
@@ -3619,7 +3621,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-20",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-ai-dung-sai",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
     "topicName": "Ôn tập chủ đề 1: Trắc nghiệm Đúng / Sai (AI) (Tuần 7)",
     "chapterName": "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tin học 12)",
     "difficulty": "VanDung",
@@ -6180,7 +6182,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-01",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -6219,7 +6221,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-02",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -6258,7 +6260,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-03",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -6297,7 +6299,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-04",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "NhanBiet",
@@ -6336,7 +6338,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-05",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -6375,7 +6377,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-06",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -6414,7 +6416,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-07",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -6453,7 +6455,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-08",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "ThongHieu",
@@ -6492,7 +6494,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-09",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
@@ -6531,7 +6533,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-10",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
@@ -6570,7 +6572,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-NET-11",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-mang-dung-sai",
+    "topicId": "tin-thiet-bi-giao-thuc-mang",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Mạng máy tính",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tin học 12)",
     "difficulty": "VanDung",
@@ -8501,7 +8503,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-PY-01",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-python-dung-sai",
+    "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
     "difficulty": "VanDung",
@@ -8559,7 +8561,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-PY-02",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-python-dung-sai",
+    "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
     "difficulty": "VanDung",
@@ -8617,7 +8619,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-PY-03",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-python-dung-sai",
+    "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
     "difficulty": "VanDung",
@@ -8675,7 +8677,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-PY-04",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-python-dung-sai",
+    "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
     "difficulty": "VanDung",
@@ -8733,7 +8735,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-TF-PY-05",
     "subjectId": "tin-hoc-12",
-    "topicId": "tin-python-dung-sai",
+    "topicId": "tin-lap-trinh-python",
     "topicName": "Phần 2: Trắc nghiệm Đúng / Sai Python (Tuần 2 – 6)",
     "chapterName": "Phần 1: Lập trình cơ bản Python (Tin học 10)",
     "difficulty": "VanDung",
