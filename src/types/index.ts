@@ -150,3 +150,66 @@ export interface AdminDashboardOverview {
   isCloudConnected?: boolean;
 }
 
+// =================== KẾ HOẠCH ÔN TẬP THEO TUẦN (GD1) ===================
+export interface WeekPlanItem {
+  id: string; // e.g. "tuan-02-06", "tuan-07", etc.
+  weekDisplay: string; // "Tuần 2 – 6", "Tuần 7", ...
+  weekNumber: number; // Tuần bắt đầu (2, 7, 8, ...)
+  weekNumbers: number[]; // [2, 3, 4, 5, 6] hoặc [7]
+  title: string; // "Luyện tập NNLT Python", "Giới thiệu Trí tuệ Nhân tạo", ...
+  chapter: string; // "Phần 1: Luyện tập NNLT Python (Tuần 2 – 6)"
+  periods: number; // Số tiết (ví dụ: 10, 2, 6)
+  topicIds: string[]; // ['tin-lap-trinh-python']
+  subjectId: string; // 'tin-hoc-12'
+  semester: 1 | 2;
+  totalTargetQuestions: number; // Tổng số câu hỏi chỉ tiêu của tuần
+}
+
+export interface StudentWeeklyProgress {
+  studentId: string;
+  username: string;
+  fullName: string;
+  className: string;
+  weekId: string;
+  questionsAttempted: number;
+  totalWeekQuestions: number;
+  correctAnswers: number;
+  accuracyRate: number; // 0 - 100%
+  score: number; // Thang điểm 10
+  timeSpentMinutes: number;
+  hintsUsed: number;
+  status: "HoanThanh" | "DangLam" | "ChuaThamGia";
+  lastActiveAt?: number;
+}
+
+export interface WeeklyProgressOverview {
+  week: WeekPlanItem;
+  totalStudents: number;
+  participatedCount: number; // Số HS đã làm ít nhất 1 câu
+  completedCount: number; // Số HS đã hoàn thành >= 80% câu hỏi tuần
+  completionRate: number; // (completedCount / totalStudents) * 100
+  averageScore: number; // Điểm trung bình tuần của các HS đã tham gia
+  passRate: number; // Tỷ lệ HS đạt >= 5.0đ trong tuần
+  atRiskCount: number; // Số HS < 5.0đ trong tuần
+  notStartedCount: number; // Số HS chưa làm câu nào của tuần
+  students: StudentWeeklyProgress[];
+}
+
+export interface WeeklyMatrixRow {
+  studentId: string;
+  username: string;
+  fullName: string;
+  className: string;
+  weeks: Record<
+    string,
+    {
+      status: "HoanThanh" | "DangLam" | "ChuaThamGia";
+      score: number;
+      completedCount: number;
+      totalCount: number;
+    }
+  >;
+  totalCompletedWeeks: number;
+}
+
+

@@ -35,10 +35,23 @@ import {
   Cloud,
   Database,
   ExternalLink,
+  Calendar,
+  Grid,
+  BarChart3,
 } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { useAuth } from "@/contexts/AuthContext";
-import { StudentProgressSummary, AdminDashboardOverview, StudentAttempt, User } from "@/types";
+import {
+  StudentProgressSummary,
+  AdminDashboardOverview,
+  StudentAttempt,
+  User,
+  WeekPlanItem,
+  StudentWeeklyProgress,
+  WeeklyProgressOverview,
+  WeeklyMatrixRow,
+} from "@/types";
+import { WEEKLY_PLAN } from "@/data/weeklyPlan";
 
 export default function AdminDashboardPage() {
   const { user, isLoggedIn, isAdmin, login, logout } = useAuth();
@@ -81,6 +94,21 @@ export default function AdminDashboardPage() {
   const [newPasswordVal, setNewPasswordVal] = useState("123");
   const [isResetting, setIsResetting] = useState(false);
 
+  // 6. Weekly Plan & Matrix States
+  const [activeTab, setActiveTab] = useState<"overview" | "weekly" | "matrix">("overview");
+  const [allWeeks, setAllWeeks] = useState<WeekPlanItem[]>(WEEKLY_PLAN);
+  const [selectedWeekId, setSelectedWeekId] = useState<string>("tuan-02-06");
+  const [selectedSemester, setSelectedSemester] = useState<1 | 2 | "all">("all");
+  const [weeklyOverview, setWeeklyOverview] = useState<WeeklyProgressOverview | null>(null);
+  const [isWeeklyLoading, setIsWeeklyLoading] = useState(false);
+  const [weeklySearchQuery, setWeeklySearchQuery] = useState("");
+  const [weeklyStatusFilter, setWeeklyStatusFilter] = useState<"all" | "completed" | "inProgress" | "notStarted">("all");
+
+  const [matrixWeeks, setMatrixWeeks] = useState<WeekPlanItem[]>([]);
+  const [matrixRows, setMatrixRows] = useState<WeeklyMatrixRow[]>([]);
+  const [isMatrixLoading, setIsMatrixLoading] = useState(false);
+  const [matrixSearchQuery, setMatrixSearchQuery] = useState("");
+
   // 6. Admin Login Form (if not logged in as Admin)
   const [adminUsernameInput, setAdminUsernameInput] = useState("admin");
   const [adminPasswordInput, setAdminPasswordInput] = useState("admin");
@@ -118,13 +146,104 @@ export default function AdminDashboardPage() {
     }
   };
 
+  // Fetch Weekly Data
+  const fetchWeeklyData = async (weekId = selectedWeekId, cls = selectedClass) => {
+    try {
+      setIsWeeklyLoading(true);
+      const res = await fetch(`/api/admin/weekly-progress?weekId=${weekId}&class=${cls}`);
+      const data = await res.json();
+      if (data.success) {
+        if (data.allWeeks) setAllWeeks(data.allWeeks);
+        setWeeklyOverview({
+          week: data.week,
+          totalStudents: data.totalStudents,
+          participatedCount: data.participatedCount,
+          completedCount: data.completedCount,
+          completionRate: data.completionRate,
+          averageScore: data.averageScore,
+          passRate: data.passRate,
+          atRiskCount: data.atRiskCount,
+          notStartedCount: data.notStartedCount,
+          students: data.students,
+        });
+      }
+    } catch (err) {
+      console.error("Lỗi nạp tiến độ tuần:", err);
+    } finally {
+      setIsWeeklyLoading(false);
+    }
+  };
+
+  // Fetch Matrix Data
+  const fetchMatrixData = async (cls = selectedClass) => {
+    try {
+      setIsMatrixLoading(true);
+      const res = await fetch(`/api/admin/weekly-progress?mode=matrix&class=${cls}`);
+      const data = await res.json();
+      if (data.success) {
+        setMatrixWeeks(data.weeks || []);
+        setMatrixRows(data.rows || []);
+      }
+    } catch (err) {
+      console.error("Lỗi nạp ma trận tiến độ:", err);
+    } finally {
+      setIsMatrixLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (isAdmin) {
-      fetchData(selectedClass);
+      if (activeTab === "overview") {
+        fetchData(selectedClass);
+      } else if (activeTab === "weekly") {
+        fetchWeeklyData(selectedWeekId, selectedClass);
+      } else if (activeTab === "matrix") {
+        fetchMatrixData(selectedClass);
+      }
     } else {
       setIsLoading(false);
     }
-  }, [isAdmin, selectedClass]);
+  }, [isAdmin, activeTab, selectedClass, selectedWeekId]);
+
+  // Filtered Weeks for Selector (by Semester)
+  const filteredWeeksBySemester = useMemo(() => {
+    if (selectedSemester === "all") return allWeeks;
+    return allWeeks.filter((w) => w.semester === selectedSemester);
+  }, [allWeeks, selectedSemester]);
+
+  // Filtered Weekly Students
+  const filteredWeeklyStudents = useMemo(() => {
+    if (!weeklyOverview) return [];
+    return weeklyOverview.students.filter((st) => {
+      if (weeklySearchQuery.trim()) {
+        const q = weeklySearchQuery.toLowerCase();
+        const matchName = st.fullName.toLowerCase().includes(q);
+        const matchUser = st.username.toLowerCase().includes(q);
+        const matchClass = st.className.toLowerCase().includes(q);
+        if (!matchName && !matchUser && !matchClass) return false;
+      }
+      if (weeklyStatusFilter !== "all") {
+        if (weeklyStatusFilter === "completed" && st.status !== "HoanThanh") return false;
+        if (weeklyStatusFilter === "inProgress" && st.status !== "DangLam") return false;
+        if (weeklyStatusFilter === "notStarted" && st.status !== "ChuaThamGia") return false;
+      }
+      return true;
+    });
+  }, [weeklyOverview, weeklySearchQuery, weeklyStatusFilter]);
+
+  // Filtered Matrix Rows
+  const filteredMatrixRows = useMemo(() => {
+    if (!matrixRows) return [];
+    if (!matrixSearchQuery.trim()) return matrixRows;
+    const q = matrixSearchQuery.toLowerCase();
+    return matrixRows.filter((r) => {
+      return (
+        r.fullName.toLowerCase().includes(q) ||
+        r.username.toLowerCase().includes(q) ||
+        r.className.toLowerCase().includes(q)
+      );
+    });
+  }, [matrixRows, matrixSearchQuery]);
 
   // Handle Admin Quick Login
   const handleAdminLogin = async (e: React.FormEvent) => {
@@ -382,6 +501,63 @@ export default function AdminDashboardPage() {
     document.body.removeChild(link);
   };
 
+  // Export Weekly Report CSV
+  const exportWeeklyCSV = () => {
+    if (!weeklyOverview) return;
+    soundManager.playClick();
+
+    const headers = [
+      "STT",
+      "Mã Học Sinh",
+      "Họ và Tên",
+      "Lớp",
+      "Chuyên Đề Tuần",
+      "Số Câu Đã Làm",
+      "Tổng Câu Tuần",
+      "Số Câu Đúng",
+      "Tỷ Lệ Đúng (%)",
+      "Điểm Số (Thang 10)",
+      "Thời Gian Làm (Phút)",
+      "Số Lần Dùng Gợi Ý",
+      "Trạng Thái Hoàn Thành",
+    ];
+
+    const rows = weeklyOverview.students.map((s, idx) => [
+      idx + 1,
+      `"${s.username}"`,
+      `"${s.fullName}"`,
+      `"${s.className}"`,
+      `"${weeklyOverview.week.weekDisplay}: ${weeklyOverview.week.title}"`,
+      s.questionsAttempted,
+      s.totalWeekQuestions,
+      s.correctAnswers,
+      `${s.accuracyRate}%`,
+      s.score,
+      s.timeSpentMinutes,
+      s.hintsUsed,
+      `"${
+        s.status === "HoanThanh"
+          ? "Đã hoàn thành"
+          : s.status === "DangLam"
+          ? "Đang làm dở"
+          : "Chưa tham gia"
+      }"`,
+    ]);
+
+    const csvContent = "\uFEFF" + [headers.join(","), ...rows.map((e) => e.join(","))].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute(
+      "download",
+      `Bao_Cao_Tien_Do_${weeklyOverview.week.id}_${selectedClass}_${new Date().toISOString().slice(0, 10)}.csv`
+    );
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   // Handle Reset Mock Data
   const handleResetData = async () => {
     const confirmed = window.confirm(
@@ -580,8 +756,67 @@ export default function AdminDashboardPage() {
       </div>
 
       <div className="max-w-7xl mx-auto space-y-6">
-        {/* KPI Metric Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
+        {/* Navigation Tabs Bar */}
+        <div className="flex items-center gap-2 p-1.5 bg-[#e6ecf5] rounded-neu shadow-neu-inset-sm max-w-fit flex-wrap">
+          <button
+            onClick={() => {
+              soundManager.playClick();
+              setActiveTab("overview");
+            }}
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+              activeTab === "overview"
+                ? "bg-blue-600 text-white shadow-neu-blue"
+                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+            }`}
+          >
+            <BarChart3 className="w-3.5 h-3.5" />
+            <span>Tổng Quan Toàn Trường</span>
+          </button>
+
+          <button
+            onClick={() => {
+              soundManager.playClick();
+              setActiveTab("weekly");
+              if (!weeklyOverview) {
+                fetchWeeklyData(selectedWeekId, selectedClass);
+              }
+            }}
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+              activeTab === "weekly"
+                ? "bg-blue-600 text-white shadow-neu-blue"
+                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+            }`}
+          >
+            <Calendar className="w-3.5 h-3.5" />
+            <span>Tiến Độ Theo Kế Hoạch Tuần</span>
+          </button>
+
+          <button
+            onClick={() => {
+              soundManager.playClick();
+              setActiveTab("matrix");
+              if (matrixRows.length === 0) {
+                fetchMatrixData(selectedClass);
+              }
+            }}
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+              activeTab === "matrix"
+                ? "bg-blue-600 text-white shadow-neu-blue"
+                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+            }`}
+          >
+            <Grid className="w-3.5 h-3.5" />
+            <span>Ma Trận 35 Tuần Toàn Khóa</span>
+          </button>
+        </div>
+
+        {/* ======================================================== */}
+        {/* TAB 1: TỔNG QUAN TOÀN TRƯỜNG */}
+        {/* ======================================================== */}
+        {activeTab === "overview" && (
+          <>
+            {/* KPI Metric Cards */}
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
           {/* Sĩ số học sinh */}
           <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between">
             <div className="flex items-center justify-between text-slate-500">
@@ -1035,6 +1270,533 @@ export default function AdminDashboardPage() {
             </table>
           </div>
         </div>
+        </>
+      )}
+
+      {/* ======================================================== */}
+      {/* TAB 2: TIẾN ĐỘ THEO KẾ HOẠCH TUẦN (35 TUẦN GD1) */}
+      {/* ======================================================== */}
+      {activeTab === "weekly" && (
+        <div className="space-y-6">
+          {/* 1. Header & Controls of Weekly Plan */}
+          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 space-y-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-blue-600" />
+                  <h2 className="text-sm font-black text-slate-800 uppercase tracking-wide">
+                    Theo Dõi Tiến Độ Theo Kế Hoạch Tuần (35 Tuần GD1)
+                  </h2>
+                </div>
+                <p className="text-xs text-slate-500 font-medium mt-0.5">
+                  Bám sát Kế hoạch ôn tập Giai đoạn 1 (KH ON TAP GD1_MOI.docx) - Trường THPT Nguyễn Sinh Sắc
+                </p>
+              </div>
+
+              {/* Học kỳ & Lớp selectors */}
+              <div className="flex items-center gap-2 flex-wrap">
+                {/* Học kỳ Pill Selector */}
+                <div className="flex items-center gap-1 bg-[#e6ecf5] p-1 rounded-neu-sm shadow-neu-inset-sm">
+                  <button
+                    onClick={() => setSelectedSemester("all")}
+                    className={`px-2.5 py-1 text-xs font-bold rounded transition cursor-pointer ${
+                      selectedSemester === "all"
+                        ? "bg-blue-600 text-white shadow-neu-blue"
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    Cả Năm (35 Tuần)
+                  </button>
+                  <button
+                    onClick={() => setSelectedSemester(1)}
+                    className={`px-2.5 py-1 text-xs font-bold rounded transition cursor-pointer ${
+                      selectedSemester === 1
+                        ? "bg-blue-600 text-white shadow-neu-blue"
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    Học Kỳ I (Tuần 2–18)
+                  </button>
+                  <button
+                    onClick={() => setSelectedSemester(2)}
+                    className={`px-2.5 py-1 text-xs font-bold rounded transition cursor-pointer ${
+                      selectedSemester === 2
+                        ? "bg-blue-600 text-white shadow-neu-blue"
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    Học Kỳ II (Tuần 19–35)
+                  </button>
+                </div>
+
+                {/* Lọc theo lớp */}
+                <div className="flex items-center gap-1 bg-[#e6ecf5] px-2.5 py-1.5 rounded-neu-sm shadow-neu-inset-sm">
+                  <Users className="w-3.5 h-3.5 text-blue-600" />
+                  <select
+                    value={selectedClass}
+                    onChange={(e) => {
+                      setSelectedClass(e.target.value);
+                      fetchWeeklyData(selectedWeekId, e.target.value);
+                    }}
+                    className="bg-transparent text-xs font-bold text-slate-700 focus:outline-none cursor-pointer"
+                  >
+                    <option value="all">Tất cả các lớp</option>
+                    {overview?.classes?.map((c) => (
+                      <option key={c} value={c}>
+                        Lớp {c}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* Week Selector Carousel / Cards */}
+            <div className="pt-2 border-t border-slate-300/60">
+              <label className="text-xs font-bold text-slate-600 block mb-2">
+                Chọn chuyên đề tuần cần theo dõi ({filteredWeeksBySemester.length} mốc chuyên đề):
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 max-h-48 overflow-y-auto pr-1">
+                {filteredWeeksBySemester.map((w) => {
+                  const isSelected = w.id === selectedWeekId;
+                  return (
+                    <button
+                      key={w.id}
+                      onClick={() => {
+                        soundManager.playClick();
+                        setSelectedWeekId(w.id);
+                        fetchWeeklyData(w.id, selectedClass);
+                      }}
+                      className={`p-2.5 rounded-neu-sm text-left transition flex flex-col justify-between border cursor-pointer ${
+                        isSelected
+                          ? "bg-blue-600 text-white border-blue-700 shadow-neu-blue"
+                          : "bg-[#e6ecf5] hover:bg-white/60 text-slate-700 border-white/70 shadow-neu-flat-xs active:shadow-neu-inset"
+                      }`}
+                    >
+                      <div>
+                        <div className="flex items-center justify-between">
+                          <span className={`text-[11px] font-black uppercase ${isSelected ? "text-blue-100" : "text-blue-700"}`}>
+                            {w.weekDisplay}
+                          </span>
+                          <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded-full ${isSelected ? "bg-white/20 text-white" : "bg-slate-200 text-slate-600"}`}>
+                            HK{w.semester} • {w.periods}t
+                          </span>
+                        </div>
+                        <h4 className={`text-xs font-bold mt-1 line-clamp-2 leading-tight ${isSelected ? "text-white" : "text-slate-800"}`}>
+                          {w.title}
+                        </h4>
+                      </div>
+                      <div className={`text-[10px] font-medium mt-2 pt-1 border-t flex items-center justify-between ${isSelected ? "border-white/20 text-blue-100" : "border-slate-300/60 text-slate-500"}`}>
+                        <span>Chỉ tiêu:</span>
+                        <span className="font-bold">{w.totalTargetQuestions} câu</span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* 2. Selected Week Details & KPI Metric Cards */}
+          {isWeeklyLoading ? (
+            <div className="bg-[#e6ecf5] p-12 rounded-neu shadow-neu-flat text-center space-y-3">
+              <RefreshCw className="w-8 h-8 text-blue-600 animate-spin mx-auto" />
+              <p className="text-xs font-bold text-slate-600">Đang tổng hợp dữ liệu tuần từ Đám mây Redis...</p>
+            </div>
+          ) : weeklyOverview ? (
+            <div className="space-y-6">
+              {/* Banner Tuần Đang Chọn */}
+              <div className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-4 sm:p-5 rounded-neu shadow-neu-flat flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/15 text-[11px] font-extrabold uppercase tracking-wide">
+                    <span>{weeklyOverview.week.weekDisplay}</span>
+                    <span>•</span>
+                    <span>Học kỳ {weeklyOverview.week.semester}</span>
+                    <span>•</span>
+                    <span>Thời lượng: {weeklyOverview.week.periods} tiết</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-black leading-tight">
+                    {weeklyOverview.week.title}
+                  </h3>
+                  <p className="text-xs text-blue-100/90 font-medium">
+                    {weeklyOverview.week.chapter} • Chỉ tiêu: {weeklyOverview.week.totalTargetQuestions} câu hỏi
+                  </p>
+                </div>
+
+                <button
+                  onClick={exportWeeklyCSV}
+                  className="self-start md:self-auto px-4 py-2.5 rounded-neu-sm bg-white hover:bg-blue-50 text-blue-800 font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-2 flex-shrink-0 cursor-pointer"
+                >
+                  <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
+                  <span>Xuất Báo Cáo Tuần (CSV)</span>
+                </button>
+              </div>
+
+              {/* 4 Thẻ KPI của Tuần */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                {/* Tỷ lệ hoàn thành tuần */}
+                <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between">
+                  <div className="flex items-center justify-between text-slate-500">
+                    <span className="text-xs font-bold">Hoàn Thành Tuần</span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <div className="mt-2">
+                    <span className="text-2xl sm:text-3xl font-black text-emerald-700">
+                      {weeklyOverview.completionRate}%
+                    </span>
+                    <span className="text-xs text-slate-500 font-semibold ml-1.5">
+                      ({weeklyOverview.completedCount}/{weeklyOverview.totalStudents} HS)
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-emerald-600 font-medium mt-1">
+                    Đạt ≥ 5.0đ hoặc đủ số câu tuần
+                  </p>
+                </div>
+
+                {/* Điểm trung bình tuần */}
+                <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between">
+                  <div className="flex items-center justify-between text-slate-500">
+                    <span className="text-xs font-bold">Điểm Trung Bình Tuần</span>
+                    <TrendingUp className="w-4 h-4 text-indigo-600" />
+                  </div>
+                  <div className="mt-2 flex items-baseline gap-1">
+                    <span className={`text-2xl sm:text-3xl font-black ${weeklyOverview.averageScore >= 6.0 ? "text-indigo-700" : "text-amber-600"}`}>
+                      {weeklyOverview.averageScore}
+                    </span>
+                    <span className="text-xs text-slate-500 font-semibold">/ 10</span>
+                  </div>
+                  <div className="text-[11px] font-semibold mt-1 flex items-center gap-1 text-slate-600">
+                    <span>Mục tiêu GD1:</span>
+                    <span className="font-bold text-indigo-600">≥ 6.00đ</span>
+                  </div>
+                </div>
+
+                {/* Đang làm / Đã tham gia */}
+                <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between">
+                  <div className="flex items-center justify-between text-slate-500">
+                    <span className="text-xs font-bold">Đã Bắt Đầu Làm</span>
+                    <Clock className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div className="mt-2">
+                    <span className="text-2xl sm:text-3xl font-black text-blue-700">
+                      {weeklyOverview.participatedCount}
+                    </span>
+                    <span className="text-xs text-slate-500 font-semibold ml-1.5">
+                      / {weeklyOverview.totalStudents} HS
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-blue-600 font-medium mt-1">
+                    Đã làm ít nhất 1 câu tuần này
+                  </p>
+                </div>
+
+                {/* Báo động: Chưa tham gia tuần này */}
+                <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between">
+                  <div className="flex items-center justify-between text-slate-500">
+                    <span className="text-xs font-bold">Chưa Làm Bài Tuần Này</span>
+                    <AlertTriangle className="w-4 h-4 text-rose-600" />
+                  </div>
+                  <div className="mt-2">
+                    <span className={`text-2xl sm:text-3xl font-black ${weeklyOverview.notStartedCount > 0 ? "text-rose-600" : "text-slate-600"}`}>
+                      {weeklyOverview.notStartedCount}
+                    </span>
+                    <span className="text-xs text-slate-500 font-semibold ml-1.5">học sinh</span>
+                  </div>
+                  <p className="text-[11px] text-rose-600 font-medium mt-1">
+                    Cần GV nhắc nhở nộp bài
+                  </p>
+                </div>
+              </div>
+
+              {/* 3. Bảng Chi Tiết Học Sinh Theo Tuần */}
+              <div className="bg-[#e6ecf5] rounded-neu shadow-neu-flat border border-white/60 overflow-hidden">
+                {/* Toolbar lọc học sinh trong tuần */}
+                <div className="p-4 border-b border-slate-300/60 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <h4 className="text-sm font-black text-slate-800">
+                      Danh Sách Tiến Độ Học Sinh: {weeklyOverview.week.weekDisplay}
+                    </h4>
+                    <span className="text-xs text-slate-500 font-semibold">
+                      ({filteredWeeklyStudents.length} học sinh hiển thị)
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {/* Lọc trạng thái tuần */}
+                    <div className="flex items-center gap-1 bg-[#e6ecf5] px-2.5 py-1.5 rounded-neu-sm shadow-neu-inset-sm">
+                      <Filter className="w-3.5 h-3.5 text-blue-600" />
+                      <select
+                        value={weeklyStatusFilter}
+                        onChange={(e) => setWeeklyStatusFilter(e.target.value as any)}
+                        className="bg-transparent text-xs font-bold text-slate-700 focus:outline-none cursor-pointer"
+                      >
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="completed">Đã hoàn thành tuần</option>
+                        <option value="inProgress">Đang làm dở</option>
+                        <option value="notStarted">Chưa làm bài</option>
+                      </select>
+                    </div>
+
+                    {/* Tìm kiếm tên / mã */}
+                    <div className="flex items-center gap-2 bg-[#e6ecf5] px-3 py-1.5 rounded-neu-sm shadow-neu-inset min-w-[200px]">
+                      <Search className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                      <input
+                        type="text"
+                        value={weeklySearchQuery}
+                        onChange={(e) => setWeeklySearchQuery(e.target.value)}
+                        placeholder="Tìm học sinh trong tuần..."
+                        className="w-full bg-transparent text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none"
+                      />
+                      {weeklySearchQuery && (
+                        <button onClick={() => setWeeklySearchQuery("")} className="text-slate-400 hover:text-slate-600 cursor-pointer">
+                          <X className="w-3 h-3" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bảng bảng điểm tuần */}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs">
+                    <thead className="bg-slate-200/60 text-slate-600 uppercase font-bold text-[10px] tracking-wider border-b border-slate-300">
+                      <tr>
+                        <th className="py-3 px-3 text-center w-12">STT</th>
+                        <th className="py-3 px-3">Mã HS</th>
+                        <th className="py-3 px-3">Họ và Tên</th>
+                        <th className="py-3 px-3 text-center">Lớp</th>
+                        <th className="py-3 px-3 text-center">Số Câu Làm</th>
+                        <th className="py-3 px-3 text-center">Số Câu Đúng</th>
+                        <th className="py-3 px-3 text-center">Tỷ Lệ Đúng</th>
+                        <th className="py-3 px-3 text-center">Điểm Tuần</th>
+                        <th className="py-3 px-3 text-center">Thời Gian</th>
+                        <th className="py-3 px-3 text-center">Trạng Thái Tuần</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-300/40">
+                      {filteredWeeklyStudents.length === 0 ? (
+                        <tr>
+                          <td colSpan={10} className="py-10 text-center text-slate-500 font-medium">
+                            Không có học sinh nào phù hợp với bộ lọc hiện tại.
+                          </td>
+                        </tr>
+                      ) : (
+                        filteredWeeklyStudents.map((st, idx) => (
+                          <tr key={st.studentId} className="hover:bg-blue-50/40 transition">
+                            <td className="py-3 px-3 text-center font-bold text-slate-500">{idx + 1}</td>
+                            <td className="py-3 px-3 font-mono font-bold text-slate-700">{st.username}</td>
+                            <td className="py-3 px-3 font-bold text-slate-800">{st.fullName}</td>
+                            <td className="py-3 px-3 text-center font-bold text-blue-700">{st.className}</td>
+                            <td className="py-3 px-3 text-center font-bold text-slate-700">
+                              {st.questionsAttempted} / {st.totalWeekQuestions}
+                            </td>
+                            <td className="py-3 px-3 text-center font-bold text-emerald-700">{st.correctAnswers}</td>
+                            <td className="py-3 px-3 text-center">
+                              <span className={`font-bold ${st.accuracyRate >= 70 ? "text-emerald-700" : st.accuracyRate >= 50 ? "text-blue-700" : "text-amber-600"}`}>
+                                {st.questionsAttempted > 0 ? `${st.accuracyRate}%` : "—"}
+                              </span>
+                            </td>
+                            <td className="py-3 px-3 text-center">
+                              {st.questionsAttempted > 0 ? (
+                                <span className={`px-2 py-0.5 rounded-full font-black text-xs ${st.score >= 8.0 ? "bg-emerald-100 text-emerald-800" : st.score >= 5.0 ? "bg-blue-100 text-blue-800" : "bg-rose-100 text-rose-800"}`}>
+                                  {st.score.toFixed(1)} đ
+                                </span>
+                              ) : (
+                                <span className="text-slate-400 font-bold">—</span>
+                              )}
+                            </td>
+                            <td className="py-3 px-3 text-center text-slate-600 font-medium">
+                              {st.timeSpentMinutes > 0 ? `${st.timeSpentMinutes}p` : "—"}
+                            </td>
+                            <td className="py-3 px-3 text-center">
+                              {st.status === "HoanThanh" && (
+                                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-[10px]">
+                                  Đã Hoàn Thành
+                                </span>
+                              )}
+                              {st.status === "DangLam" && (
+                                <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-extrabold text-[10px]">
+                                  Đang Làm Dở
+                                </span>
+                              )}
+                              {st.status === "ChuaThamGia" && (
+                                <span className="px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 font-bold text-[10px]">
+                                  Chưa Tham Gia
+                                </span>
+                              )}
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          ) : null}
+        </div>
+      )}
+
+      {/* ======================================================== */}
+      {/* TAB 3: MA TRẬN TIẾN ĐỘ 35 TUẦN TOÀN KHÓA */}
+      {/* ======================================================== */}
+      {activeTab === "matrix" && (
+        <div className="space-y-6">
+          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Grid className="w-5 h-5 text-indigo-600" />
+                  <h2 className="text-sm font-black text-slate-800 uppercase tracking-wide">
+                    Ma Trận Tiến Độ Toàn Khóa (35 Tuần Ôn Tập)
+                  </h2>
+                </div>
+                <p className="text-xs text-slate-500 font-medium mt-0.5">
+                  Xem toàn cảnh mức độ hoàn thành bài tập của từng học sinh qua tất cả các tuần học trong năm.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 flex-wrap">
+                {/* Lọc theo lớp */}
+                <div className="flex items-center gap-1 bg-[#e6ecf5] px-2.5 py-1.5 rounded-neu-sm shadow-neu-inset-sm">
+                  <Users className="w-3.5 h-3.5 text-indigo-600" />
+                  <select
+                    value={selectedClass}
+                    onChange={(e) => {
+                      setSelectedClass(e.target.value);
+                      fetchMatrixData(e.target.value);
+                    }}
+                    className="bg-transparent text-xs font-bold text-slate-700 focus:outline-none cursor-pointer"
+                  >
+                    <option value="all">Tất cả các lớp</option>
+                    {overview?.classes?.map((c) => (
+                      <option key={c} value={c}>
+                        Lớp {c}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Tìm kiếm */}
+                <div className="flex items-center gap-2 bg-[#e6ecf5] px-3 py-1.5 rounded-neu-sm shadow-neu-inset min-w-[180px]">
+                  <Search className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                  <input
+                    type="text"
+                    value={matrixSearchQuery}
+                    onChange={(e) => setMatrixSearchQuery(e.target.value)}
+                    placeholder="Tìm theo tên học sinh..."
+                    className="w-full bg-transparent text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Chú giải trạng thái (Legend) */}
+            <div className="flex items-center gap-4 text-xs font-bold pt-2 border-t border-slate-300/60 flex-wrap">
+              <span className="text-slate-500 font-medium">Chú giải:</span>
+              <div className="flex items-center gap-1.5 text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded text-[10px]">
+                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                <span>Đã hoàn thành tuần (≥ 5.0đ)</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-amber-800 bg-amber-100 px-2 py-0.5 rounded text-[10px]">
+                <Clock className="w-3 h-3 text-amber-600" />
+                <span>Đang làm dở</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-slate-500 bg-slate-200 px-2 py-0.5 rounded text-[10px]">
+                <span>— Chưa tham gia</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bảng Ma Trận Cuộn Ngang */}
+          {isMatrixLoading ? (
+            <div className="bg-[#e6ecf5] p-12 rounded-neu shadow-neu-flat text-center space-y-3">
+              <RefreshCw className="w-8 h-8 text-indigo-600 animate-spin mx-auto" />
+              <p className="text-xs font-bold text-slate-600">Đang tổng hợp ma trận 35 tuần từ Đám mây Redis...</p>
+            </div>
+          ) : (
+            <div className="bg-[#e6ecf5] rounded-neu shadow-neu-flat border border-white/60 overflow-hidden">
+              <div className="overflow-x-auto max-h-[70vh]">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead className="bg-slate-200/90 text-slate-700 uppercase font-bold text-[10px] tracking-wider sticky top-0 z-20 shadow-sm">
+                    <tr>
+                      <th className="py-3 px-3 text-center sticky left-0 z-30 bg-slate-200/95 w-12 border-r border-slate-300">
+                        STT
+                      </th>
+                      <th className="py-3 px-3 sticky left-12 z-30 bg-slate-200/95 min-w-[140px] border-r border-slate-300">
+                        Họ và Tên
+                      </th>
+                      <th className="py-3 px-2 text-center sticky left-[188px] z-30 bg-slate-200/95 w-16 border-r border-slate-300">
+                        Lớp
+                      </th>
+                      <th className="py-3 px-2 text-center sticky left-[252px] z-30 bg-slate-200/95 w-20 border-r border-slate-300 text-indigo-700">
+                        Đã Đạt
+                      </th>
+                      {matrixWeeks.map((w) => (
+                        <th
+                          key={w.id}
+                          className="py-2.5 px-2 text-center min-w-[90px] border-r border-slate-300"
+                          title={`${w.weekDisplay}: ${w.title}`}
+                        >
+                          <div className="text-[10px] font-black text-blue-700">{w.weekDisplay}</div>
+                          <div className="text-[9px] text-slate-500 font-medium truncate max-w-[85px]">
+                            {w.title.split(":")[0]}
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-300/40">
+                    {filteredMatrixRows.length === 0 ? (
+                      <tr>
+                        <td colSpan={matrixWeeks.length + 4} className="py-10 text-center text-slate-500 font-medium">
+                          Không có học sinh nào phù hợp.
+                        </td>
+                      </tr>
+                    ) : (
+                      filteredMatrixRows.map((row, idx) => (
+                        <tr key={row.studentId} className="hover:bg-blue-50/40 transition">
+                          <td className="py-2.5 px-3 text-center font-bold text-slate-500 sticky left-0 z-10 bg-[#e6ecf5] border-r border-slate-300">
+                            {idx + 1}
+                          </td>
+                          <td className="py-2.5 px-3 font-bold text-slate-800 sticky left-12 z-10 bg-[#e6ecf5] border-r border-slate-300 whitespace-nowrap">
+                            {row.fullName}
+                          </td>
+                          <td className="py-2.5 px-2 text-center font-bold text-blue-700 sticky left-[188px] z-10 bg-[#e6ecf5] border-r border-slate-300">
+                            {row.className}
+                          </td>
+                          <td className="py-2.5 px-2 text-center font-black text-indigo-700 sticky left-[252px] z-10 bg-[#e6ecf5] border-r border-slate-300">
+                            {row.totalCompletedWeeks}/{matrixWeeks.length}
+                          </td>
+                          {matrixWeeks.map((w) => {
+                            const cell = row.weeks[w.id];
+                            return (
+                              <td key={w.id} className="py-2 px-2 text-center border-r border-slate-300/50">
+                                {cell?.status === "HoanThanh" ? (
+                                  <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-extrabold text-[10px] shadow-neu-flat-xs">
+                                    <Check className="w-2.5 h-2.5 text-emerald-600" />
+                                    <span>{cell.score.toFixed(1)}đ</span>
+                                  </span>
+                                ) : cell?.status === "DangLam" ? (
+                                  <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[10px]">
+                                    {cell.completedCount} câu
+                                  </span>
+                                ) : (
+                                  <span className="text-slate-300 font-bold">—</span>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
       </div>
 
       {/* ======================================================== */}

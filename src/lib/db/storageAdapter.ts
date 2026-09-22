@@ -2,7 +2,17 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 import { Redis } from "@upstash/redis";
-import { User, StudentAttempt, StudentProgressSummary, AdminDashboardOverview } from "@/types";
+import {
+  User,
+  StudentAttempt,
+  StudentProgressSummary,
+  AdminDashboardOverview,
+  WeekPlanItem,
+  StudentWeeklyProgress,
+  WeeklyProgressOverview,
+  WeeklyMatrixRow,
+} from "@/types";
+import { WEEKLY_PLAN, getAllWeeklyPlans, getWeeklyPlanById } from "@/data/weeklyPlan";
 
 const IS_SERVERLESS = Boolean(
   process.env.VERCEL ||
@@ -520,6 +530,22 @@ export class StorageAdapter {
         status = "NguyCoYeu";
       }
 
+      // Tính toán các tuần học sinh đã hoàn thành bài tập thực tế
+      const completedWeeks: number[] = [];
+      WEEKLY_PLAN.forEach((w) => {
+        const weekAttempts = studentAttempts.filter((a) => w.topicIds.includes(a.topicId));
+        if (weekAttempts.length > 0) {
+          const correct = weekAttempts.filter((a) => a.isCorrect).length;
+          const score = (correct / weekAttempts.length) * 10;
+          if (score >= 5.0 || weekAttempts.length >= Math.min(w.totalTargetQuestions, 5)) {
+            w.weekNumbers.forEach((wn) => {
+              if (!completedWeeks.includes(wn)) completedWeeks.push(wn);
+            });
+          }
+        }
+      });
+      completedWeeks.sort((a, b) => a - b);
+
       return {
         studentId: student.id,
         username: student.username,
@@ -532,7 +558,7 @@ export class StorageAdapter {
         totalTimeMinutes,
         socraticHintsUsed,
         weakTopics,
-        completedWeeks: [2, 3, 7], // Mẫu các tuần hoàn thành
+        completedWeeks,
         lastActiveAt: lastAttempt ? lastAttempt.timestamp : student.lastLoginAt,
         status,
       };
@@ -587,5 +613,167 @@ export class StorageAdapter {
       recentActivities,
       isCloudConnected: Boolean(getRedisClient()),
     };
+  }
+
+  // =================== TIẾN ĐỘ THEO KẾ HOẠCH TUẦN (GD1) ===================
+
+  static async getWeeklyProgress(weekId?: string, className?: string): Promise<WeeklyProgressOverview> {
+    const allWeeks = getAllWeeklyPlans();
+    const currentWeek = (weekId ? getWeeklyPlanById(weekId) : null) || allWeeks[0];
+
+    const allUsers = await this.getUsers();
+    const studentUsers = allUsers.filter((u) => u.role === "student");
+    const filteredUsers =
+      className && className !== "all"
+        ? studentUsers.filter((u) => u.className === className)
+        : studentUsers;
+
+    const allAttempts = await this.getAttempts();
+
+    const students: StudentWeeklyProgress[] = filteredUsers.map((student) => {
+      const weekAttempts = allAttempts.filter(
+        (a) => a.studentId === student.id && currentWeek.topicIds.includes(a.topicId)
+      );
+
+      const questionsAttempted = weekAttempts.length;
+      const correctAnswers = weekAttempts.filter((a) => a.isCorrect).length;
+      const accuracyRate =
+        questionsAttempted > 0 ? Math.round((correctAnswers / questionsAttempted) * 100) : 0;
+      const score =
+        questionsAttempted > 0
+          ? Number(((correctAnswers / questionsAttempted) * 10).toFixed(1))
+          : 0;
+      const timeSpentMinutes = Math.round(
+        weekAttempts.reduce((sum, a) => sum + (a.timeSpentSeconds || 0), 0) / 60
+      );
+      const hintsUsed = weekAttempts.reduce(
+        (sum, a) => sum + (a.hintsViewed || 0) + (a.socraticQuestionsAsked || 0),
+        0
+      );
+
+      let status: StudentWeeklyProgress["status"] = "ChuaThamGia";
+      if (questionsAttempted === 0) {
+        status = "ChuaThamGia";
+      } else if (
+        questionsAttempted >= Math.min(currentWeek.totalTargetQuestions, 5) &&
+        score >= 5.0
+      ) {
+        status = "HoanThanh";
+      } else {
+        status = "DangLam";
+      }
+
+      const lastAttempt = weekAttempts.sort((a, b) => b.timestamp - a.timestamp)[0];
+
+      return {
+        studentId: student.id,
+        username: student.username,
+        fullName: student.fullName,
+        className: student.className || "12A1",
+        weekId: currentWeek.id,
+        questionsAttempted,
+        totalWeekQuestions: currentWeek.totalTargetQuestions,
+        correctAnswers,
+        accuracyRate,
+        score,
+        timeSpentMinutes,
+        hintsUsed,
+        status,
+        lastActiveAt: lastAttempt ? lastAttempt.timestamp : undefined,
+      };
+    });
+
+    const totalStudents = filteredUsers.length;
+    const participatedStudents = students.filter((s) => s.questionsAttempted > 0);
+    const participatedCount = participatedStudents.length;
+    const completedCount = students.filter((s) => s.status === "HoanThanh").length;
+    const completionRate = totalStudents > 0 ? Math.round((completedCount / totalStudents) * 100) : 0;
+
+    const averageScore =
+      participatedCount > 0
+        ? Number(
+            (
+              participatedStudents.reduce((sum, s) => sum + s.score, 0) /
+              participatedCount
+            ).toFixed(2)
+          )
+        : 0;
+
+    const passedCount = participatedStudents.filter((s) => s.score >= 5.0).length;
+    const passRate = participatedCount > 0 ? Math.round((passedCount / participatedCount) * 100) : 0;
+    const atRiskCount = participatedStudents.filter((s) => s.score < 5.0).length;
+    const notStartedCount = students.filter((s) => s.status === "ChuaThamGia").length;
+
+    return {
+      week: currentWeek,
+      totalStudents,
+      participatedCount,
+      completedCount,
+      completionRate,
+      averageScore,
+      passRate,
+      atRiskCount,
+      notStartedCount,
+      students,
+    };
+  }
+
+  static async getWeeklyMatrix(className?: string): Promise<{ weeks: WeekPlanItem[]; rows: WeeklyMatrixRow[] }> {
+    const weeks = getAllWeeklyPlans();
+    const allUsers = await this.getUsers();
+    const studentUsers = allUsers.filter((u) => u.role === "student");
+    const filteredUsers =
+      className && className !== "all"
+        ? studentUsers.filter((u) => u.className === className)
+        : studentUsers;
+
+    const allAttempts = await this.getAttempts();
+
+    const rows: WeeklyMatrixRow[] = filteredUsers.map((student) => {
+      const studentAttempts = allAttempts.filter((a) => a.studentId === student.id);
+      const studentWeeks: WeeklyMatrixRow["weeks"] = {};
+      let totalCompleted = 0;
+
+      weeks.forEach((w) => {
+        const wAttempts = studentAttempts.filter((a) => w.topicIds.includes(a.topicId));
+        const questionsAttempted = wAttempts.length;
+        const correctAnswers = wAttempts.filter((a) => a.isCorrect).length;
+        const score =
+          questionsAttempted > 0
+            ? Number(((correctAnswers / questionsAttempted) * 10).toFixed(1))
+            : 0;
+
+        let status: "HoanThanh" | "DangLam" | "ChuaThamGia" = "ChuaThamGia";
+        if (questionsAttempted === 0) {
+          status = "ChuaThamGia";
+        } else if (
+          questionsAttempted >= Math.min(w.totalTargetQuestions, 5) &&
+          score >= 5.0
+        ) {
+          status = "HoanThanh";
+          totalCompleted++;
+        } else {
+          status = "DangLam";
+        }
+
+        studentWeeks[w.id] = {
+          status,
+          score,
+          completedCount: questionsAttempted,
+          totalCount: w.totalTargetQuestions,
+        };
+      });
+
+      return {
+        studentId: student.id,
+        username: student.username,
+        fullName: student.fullName,
+        className: student.className || "12A1",
+        weeks: studentWeeks,
+        totalCompletedWeeks: totalCompleted,
+      };
+    });
+
+    return { weeks, rows };
   }
 }
