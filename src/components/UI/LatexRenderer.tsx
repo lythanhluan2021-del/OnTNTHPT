@@ -101,10 +101,10 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({
       return stash(`<sub class="font-semibold text-[0.8em] relative -bottom-1">${inner}</sub>`);
     });
     text = text.replace(/<b>([\s\S]*?)<\/b>/gi, (_, inner) => {
-      return stash(`<strong class="font-semibold text-slate-900 dark:text-slate-100">${inner}</strong>`);
+      return stash(`<strong class="font-semibold text-slate-900">${inner}</strong>`);
     });
     text = text.replace(/<strong>([\s\S]*?)<\/strong>/gi, (_, inner) => {
-      return stash(`<strong class="font-semibold text-slate-900 dark:text-slate-100">${inner}</strong>`);
+      return stash(`<strong class="font-semibold text-slate-900">${inner}</strong>`);
     });
 
     // 6. Tự động nhận diện ký hiệu số mũ dạng X^2, R^2, x^n khi không ở trong KaTeX
@@ -114,14 +114,14 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({
 
     // 7. Nhận diện các thẻ HTML trong Tin học 12 (ví dụ: <p>, <h1>, <a>, <img>, <table>, <html>, <head>, <title>, <form>, <input>, v.v.)
     // và các placeholder lập trình (ví dụ: <giá trị>, <điều kiện>, <tên biến>)
-    text = text.replace(/<([a-zA-Z\p{L}1-6!/][^<>\n]*?)>/gu, (_, tagContent) => {
+    text = text.replace(/<(\s*\/?[a-zA-Z\p{L}1-6!][^<>\n]*?)>/gu, (_, tagContent) => {
       const escapedTag = tagContent
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;");
       return stash(
-        `<code class="font-mono text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/40 px-1.5 py-0.5 rounded text-[0.88em] font-semibold border border-pink-200 dark:border-pink-800/50 shadow-sm inline-block mx-0.5">&lt;${escapedTag}&gt;</code>`
+        `<code class="font-mono text-blue-700 bg-white px-1.5 py-0.5 rounded text-[0.88em] font-semibold border border-blue-200 shadow-sm inline-block mx-0.5">&lt;${escapedTag}&gt;</code>`
       );
     });
 
