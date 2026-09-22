@@ -445,7 +445,7 @@ export default function AppHome() {
         <main className="flex-1 max-w-md w-full mx-auto p-4 space-y-4">
           {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn) và Phần 2 (Đúng / Sai) */}
           {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0) && (
-            <div className="flex items-center p-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1.5 text-xs font-bold">
+            <div data-version="v2.1-icons" className="flex items-center p-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm gap-1.5 text-xs font-bold">
               {currentHasTheory && (
                 <button
                   onClick={() => {
@@ -480,8 +480,7 @@ export default function AppHome() {
                   title="Phần 1: Trắc nghiệm 4 lựa chọn"
                 >
                   <ListOrdered className={`w-3.5 h-3.5 shrink-0 ${activeTab === "practice" && activeQuestionFormat === "mc" ? "text-white" : "text-blue-600"}`} />
-                  <span className="sm:hidden text-xs font-bold">P1</span>
-                  <span className="hidden sm:inline text-xs font-bold">Phần 1: 4 lựa chọn</span>
+                  <span className="text-xs font-bold">Phần 1</span>
                   <span
                     className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold shrink-0 transition-colors ${
                       activeTab === "practice" && activeQuestionFormat === "mc"
@@ -510,8 +509,7 @@ export default function AppHome() {
                   title="Phần 2: Trắc nghiệm Đúng / Sai"
                 >
                   <CheckCheck className={`w-3.5 h-3.5 shrink-0 ${activeTab === "practice" && activeQuestionFormat === "tf" ? "text-white" : "text-indigo-600"}`} />
-                  <span className="sm:hidden text-xs font-bold">P2</span>
-                  <span className="hidden sm:inline text-xs font-bold">Phần 2: Đúng / Sai</span>
+                  <span className="text-xs font-bold">Phần 2</span>
                   <span
                     className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold shrink-0 transition-colors ${
                       activeTab === "practice" && activeQuestionFormat === "tf"
