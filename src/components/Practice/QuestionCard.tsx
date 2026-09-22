@@ -85,9 +85,9 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
   return (
     <div className="space-y-4">
-      {/* Khung thẻ câu hỏi với Viền chuyển sắc mỏng xoay chuyển quanh viền (Animated Rotating Gradient Border) */}
-      <div className="relative p-[1.5px] rounded-[18px] overflow-hidden bg-slate-200/50 shadow-[0_10px_28px_-6px_rgba(37,99,235,0.14)]">
-        {/* Vệt chuyển sắc mỏng xoay chuyển liên tục 360 độ xung quanh khung câu hỏi */}
+      {/* Khung thẻ câu hỏi với Viền chuyển sắc mỏng xoay quanh (Chỉ viền có hiệu ứng chuyển sắc, không áp dụng lên nền) */}
+      <div className="relative p-[1.5px] rounded-neu overflow-hidden shadow-neu-flat bg-slate-300/60">
+        {/* Vệt chuyển sắc mỏng xoay chuyển liên tục 360 độ xung quanh viền khung */}
         <div
           className="absolute -inset-[200%] animate-[spin_5s_linear_infinite] pointer-events-none"
           style={{
@@ -96,14 +96,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           }}
         />
 
-        {/* Nội dung Thẻ đề bài Kính Cường Lực Gorilla Glass trong suốt, phảng phất sắc xanh êm dịu (nguyên bản Thầy thích) */}
-        <div className="relative z-10 overflow-hidden p-4 sm:p-5 rounded-[16.5px] bg-gradient-to-br from-white/95 via-sky-50/35 to-blue-100/25 backdrop-blur-md space-y-3">
-          {/* Vệt sáng khúc xạ quang học của kính cường lực */}
-          <div className="absolute -top-12 -right-12 w-36 h-36 bg-gradient-to-br from-blue-400/15 via-indigo-300/10 to-transparent rounded-full blur-2xl pointer-events-none" />
-          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-tr from-sky-400/10 to-transparent rounded-full blur-xl pointer-events-none" />
-
-          <div className="relative z-10 flex items-center justify-between text-xs">
-            <span className="font-extrabold text-blue-700 bg-white/80 border border-blue-100/80 px-2.5 py-1 rounded-full shadow-xs backdrop-blur-xs flex items-center gap-1.5">
+        {/* Nội dung Thẻ đề bài: Nền chuẩn Neumorphic #e6ecf5 đồng nhất, KHÔNG chuyển sắc nền */}
+        <div className="relative z-10 p-4 sm:p-5 rounded-[16.5px] bg-[#e6ecf5] space-y-3">
+          <div className="flex items-center justify-between text-xs">
+            <span className="font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-neu-sm shadow-neu-flat-xs flex items-center gap-1.5">
               <span>Câu {currentIndex + 1} / {totalInTopic}</span>
               {isTrueFalse && (
                 <span className="text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded-full font-bold">
@@ -112,7 +108,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               )}
             </span>
             <span
-              className={`font-semibold px-2.5 py-0.5 rounded-full border text-[11px] shadow-xs backdrop-blur-xs bg-white/70 ${badge.color}`}
+              className={`font-semibold px-2 py-0.5 rounded-full border text-[11px] ${badge.color}`}
             >
               {badge.label}
             </span>
@@ -120,24 +116,24 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
           {/* Nguồn tài liệu trích xuất */}
           {question.sourceDocTitle && (
-            <div className="relative z-10 inline-flex items-center gap-1.5 text-[11px] text-slate-500 bg-white/50 px-2.5 py-0.5 rounded-full border border-slate-200/60 max-w-full">
-              <FileText className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+            <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium">
+              <FileText className="w-3.5 h-3.5 text-blue-500" />
               <span className="truncate">{question.sourceDocTitle}</span>
             </div>
           )}
 
           {/* Nội dung câu hỏi / Tình huống */}
-          <div className="relative z-10 text-slate-900 text-sm sm:text-base font-semibold leading-relaxed pt-1">
+          <div className="text-slate-800 text-sm sm:text-base font-medium leading-relaxed pt-1">
             <LatexRenderer content={question.content} />
           </div>
 
           {/* Điểm số dạng Đúng / Sai khi đã làm xong */}
           {hasAnswered && tfScore && (
-            <div className="relative z-10 mt-2 p-2.5 rounded-neu-sm bg-blue-50/90 border border-blue-200/80 shadow-xs flex items-center justify-between text-xs font-semibold text-blue-900">
+            <div className="mt-2 p-2.5 rounded-neu-sm bg-blue-50/80 border border-blue-200 flex items-center justify-between text-xs font-semibold text-blue-900">
               <span>
                 Kết quả: Đúng <strong>{tfScore.correctCount}/{tfScore.total}</strong> ý
               </span>
-              <span className="bg-blue-600 text-white px-2 py-0.5 rounded-full text-xs font-bold shadow-xs">
+              <span className="bg-blue-600 text-white px-2 py-0.5 rounded-full text-xs font-bold">
                 +{tfScore.score} điểm THPT
               </span>
             </div>
