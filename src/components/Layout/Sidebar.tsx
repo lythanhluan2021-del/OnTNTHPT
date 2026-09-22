@@ -13,7 +13,6 @@ import {
   X,
   Layers,
   GraduationCap,
-  CloudDownload,
   Search,
   Folder,
   FolderOpen,
@@ -30,7 +29,6 @@ interface SidebarProps {
   onSelectSubject: (subjectId: string) => void;
   selectedTopicId: string;
   onSelectTopic: (topicId: string) => void;
-  onOpenDriveModal: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -41,7 +39,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onSelectSubject,
   selectedTopicId,
   onSelectTopic,
-  onOpenDriveModal,
 }) => {
   const currentSubject =
     subjects.find((s) => s.id === selectedSubjectId) || subjects[0];
@@ -242,25 +239,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
               );
             })}
           </div>
-        </div>
-
-        {/* Google Drive Status Bar button */}
-        <div className="px-3 pb-2">
-          <button
-            onClick={() => {
-              soundManager.playClick();
-              onOpenDriveModal();
-            }}
-            className="w-full flex items-center justify-between p-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-xs active:shadow-neu-inset text-xs font-medium text-slate-700 hover:text-blue-600 transition"
-          >
-            <span className="flex items-center gap-2">
-              <CloudDownload className="w-4 h-4 text-emerald-600" />
-              <span>Nguồn Google Drive</span>
-            </span>
-            <span className="text-[10px] bg-emerald-100 text-emerald-700 font-semibold px-2 py-0.5 rounded-full">
-              Khép kín
-            </span>
-          </button>
         </div>
 
         {/* Search box for quick lesson filter */}

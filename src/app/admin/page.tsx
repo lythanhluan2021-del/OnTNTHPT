@@ -38,6 +38,7 @@ import {
   Calendar,
   Grid,
   BarChart3,
+  CloudDownload,
 } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { useAuth } from "@/contexts/AuthContext";
@@ -50,8 +51,13 @@ import {
   StudentWeeklyProgress,
   WeeklyProgressOverview,
   WeeklyMatrixRow,
+  DriveSyncStatus,
+  Subject,
+  Question,
 } from "@/types";
 import { WEEKLY_PLAN } from "@/data/weeklyPlan";
+import { INITIAL_QUESTIONS, INITIAL_SUBJECTS } from "@/data/sampleBank";
+import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
 
 export default function AdminDashboardPage() {
   const { user, isLoggedIn, isAdmin, login, logout } = useAuth();
@@ -109,7 +115,31 @@ export default function AdminDashboardPage() {
   const [isMatrixLoading, setIsMatrixLoading] = useState(false);
   const [matrixSearchQuery, setMatrixSearchQuery] = useState("");
 
-  // 6. Admin Login Form (if not logged in as Admin)
+  // 7. Google Drive Sync States
+  const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
+  const [adminSubjects, setAdminSubjects] = useState<Subject[]>(INITIAL_SUBJECTS);
+  const [selectedSubjectId, setSelectedSubjectId] = useState<string>("tin-hoc-12");
+  const [driveSyncStatus, setDriveSyncStatus] = useState<DriveSyncStatus>({
+    status: "idle",
+    totalImported: INITIAL_QUESTIONS.length,
+  });
+
+  // Nạp môn học tùy chỉnh từ localStorage (nếu có từ trước)
+  useEffect(() => {
+    try {
+      const savedSubjects = localStorage.getItem("thpt_custom_subjects");
+      if (savedSubjects) {
+        const parsed = JSON.parse(savedSubjects);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setAdminSubjects(parsed);
+        }
+      }
+    } catch {
+      // Ignored
+    }
+  }, []);
+
+  // 8. Admin Login Form (if not logged in as Admin)
   const [adminUsernameInput, setAdminUsernameInput] = useState("admin");
   const [adminPasswordInput, setAdminPasswordInput] = useState("admin");
   const [adminLoginError, setAdminLoginError] = useState("");
@@ -592,6 +622,185 @@ export default function AdminDashboardPage() {
     }
   };
 
+  // Xử lý đồng bộ dữ liệu từ Google Drive (theo từng môn học hoặc tất cả)
+  const handleDriveSync = async (
+    sheetUrl: string,
+    targetSubjectId?: string
+  ): Promise<boolean> => {
+    try {
+      setDriveSyncStatus((prev) => ({ ...prev, status: "syncing", message: undefined }));
+
+      const res = await fetch("/api/drive-sync", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sheetUrl }),
+      });
+
+      const json = await res.json();
+      if (!res.ok || json.error) {
+        throw new Error(json.error || "Không thể đồng bộ từ Google Drive");
+      }
+
+      const { questions: newQuestions, subjects: newSubjects } = json.data;
+
+      if (!newQuestions || newQuestions.length === 0) {
+        throw new Error("Không có câu hỏi hợp lệ trong bảng tính Google Drive này!");
+      }
+
+      let currentQuestions: Question[] = [];
+      try {
+        const savedQ = localStorage.getItem("thpt_custom_questions");
+        currentQuestions = savedQ ? JSON.parse(savedQ) : INITIAL_QUESTIONS;
+      } catch {
+        currentQuestions = INITIAL_QUESTIONS;
+      }
+
+      let updatedQuestions = newQuestions;
+
+      if (targetSubjectId) {
+        const normalized = newQuestions.map((q: any) => ({
+          ...q,
+          subjectId: targetSubjectId,
+        }));
+        const otherQuestions = currentQuestions.filter((q) => q.subjectId !== targetSubjectId);
+        updatedQuestions = [...otherQuestions, ...normalized];
+
+        if (newSubjects && newSubjects.length > 0) {
+          const newTopics = newSubjects[0].topics.map((t: any) => ({
+            ...t,
+            subjectId: targetSubjectId,
+          }));
+          const updatedSubjects = adminSubjects.map((s) =>
+            s.id === targetSubjectId ? { ...s, topics: newTopics } : s
+          );
+          setAdminSubjects(updatedSubjects);
+          try {
+            localStorage.setItem("thpt_custom_subjects", JSON.stringify(updatedSubjects));
+          } catch {
+            // ignore
+          }
+        }
+      } else {
+        updatedQuestions = newQuestions;
+        if (newSubjects && newSubjects.length > 0) {
+          setAdminSubjects(newSubjects);
+          try {
+            localStorage.setItem("thpt_custom_subjects", JSON.stringify(newSubjects));
+          } catch {
+            // ignore
+          }
+        }
+      }
+
+      try {
+        localStorage.setItem("thpt_custom_questions", JSON.stringify(updatedQuestions));
+      } catch {
+        // Quota full fallback
+      }
+
+      soundManager.playSuccess();
+      setDriveSyncStatus({
+        status: "success",
+        totalImported: updatedQuestions.length,
+        sheetUrl,
+        lastSyncedAt: Date.now(),
+        message: `Đã nạp thành công ${newQuestions.length} câu hỏi chuẩn từ Google Drive!`,
+      });
+      return true;
+    } catch (err: any) {
+      soundManager.playError();
+      setDriveSyncStatus((prev) => ({
+        ...prev,
+        status: "error",
+        message: err.message,
+      }));
+      throw err;
+    }
+  };
+
+  // Xử lý quét tự động toàn bộ thư mục OnTNTHPT qua Service Account
+  const handleScanFolder = async (
+    targetFolderId: string,
+    serviceAccountKey: string
+  ): Promise<{ count: number; subjectsCount: number; tree: any }> => {
+    const res = await fetch("/api/drive-folder-sync", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        folderId: targetFolderId,
+        serviceAccount: serviceAccountKey,
+      }),
+    });
+
+    const json = await res.json();
+    if (!res.ok || json.error) {
+      throw new Error(json.error + (json.hint ? ` (${json.hint})` : ""));
+    }
+
+    const { questions: scannedQuestions, subjects: scannedSubjects, tree } = json.data;
+
+    if (scannedQuestions && scannedQuestions.length > 0) {
+      let currentQuestions: Question[] = [];
+      try {
+        const savedQ = localStorage.getItem("thpt_custom_questions");
+        currentQuestions = savedQ ? JSON.parse(savedQ) : INITIAL_QUESTIONS;
+      } catch {
+        currentQuestions = INITIAL_QUESTIONS;
+      }
+      const initialIds = new Set(scannedQuestions.map((q: any) => q.id));
+      const mergedQuestions = [
+        ...scannedQuestions,
+        ...currentQuestions.filter((q) => !initialIds.has(q.id)),
+      ];
+      try {
+        localStorage.setItem("thpt_custom_questions", JSON.stringify(mergedQuestions));
+      } catch {
+        // Fallback
+      }
+    }
+
+    if (scannedSubjects && scannedSubjects.length > 0) {
+      const mergedSubjects = INITIAL_SUBJECTS.map((initSubj) => {
+        const found = scannedSubjects.find((s: any) => s.id === initSubj.id);
+        if (found && found.topics && found.topics.length > 0) {
+          const updatedTopics = initSubj.topics.map((initTop) => {
+            const foundTop = found.topics.find((t: any) => t.id === initTop.id);
+            if (foundTop && (foundTop.totalQuestions || 0) > initTop.totalQuestions) {
+              return { ...initTop, totalQuestions: foundTop.totalQuestions };
+            }
+            return initTop;
+          });
+          return {
+            ...initSubj,
+            topics: updatedTopics,
+          };
+        }
+        return initSubj;
+      });
+
+      setAdminSubjects(mergedSubjects);
+      try {
+        localStorage.setItem("thpt_custom_subjects", JSON.stringify(mergedSubjects));
+      } catch {
+        // Fallback
+      }
+    }
+
+    soundManager.playSuccess();
+    setDriveSyncStatus({
+      status: "success",
+      totalImported: json.count,
+      lastSyncedAt: Date.now(),
+      message: `Đã quét và nạp thành công ${json.count} câu hỏi từ ${json.subjectsCount} môn!`,
+    });
+
+    return {
+      count: json.count,
+      subjectsCount: json.subjectsCount,
+      tree,
+    };
+  };
+
   // If Not Logged In as Admin, Show Secure Admin Authentication
   if (!isAdmin) {
     return (
@@ -723,6 +932,23 @@ export default function AdminDashboardPage() {
         </div>
 
         <div className="flex items-center gap-2 self-end sm:self-auto flex-wrap">
+          {/* Nút Kết Nối & Đồng Bộ Google Drive */}
+          <button
+            type="button"
+            onClick={() => {
+              soundManager.playClick();
+              setIsDriveModalOpen(true);
+            }}
+            className="p-2 sm:px-3 sm:py-2 rounded-neu-sm bg-emerald-50 hover:bg-emerald-100 text-emerald-800 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-2 transition cursor-pointer border border-emerald-300/70"
+            title="Quản lý kết nối & đồng bộ Ngân hàng câu hỏi từ Google Drive"
+          >
+            <CloudDownload className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+            <span className="inline">Nguồn Google Drive</span>
+            <span className="text-[10px] bg-emerald-200/90 text-emerald-800 font-extrabold px-2 py-0.5 rounded-full">
+              Khép kín
+            </span>
+          </button>
+
           <button
             onClick={() => fetchData(selectedClass)}
             disabled={isRefreshing}
@@ -2263,6 +2489,17 @@ export default function AdminDashboardPage() {
           </div>
         </div>
       )}
+
+      {/* Modal Quản lý & Đồng bộ Ngân hàng câu hỏi Google Drive */}
+      <DriveSyncModal
+        isOpen={isDriveModalOpen}
+        onClose={() => setIsDriveModalOpen(false)}
+        syncStatus={driveSyncStatus}
+        subjects={adminSubjects}
+        selectedSubjectId={selectedSubjectId}
+        onSync={handleDriveSync}
+        onScanFolder={handleScanFolder}
+      />
     </div>
   );
 }

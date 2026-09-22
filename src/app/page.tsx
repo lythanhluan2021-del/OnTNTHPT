@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { Question, StudentAttempt, Subject, Topic, DriveSyncStatus } from "@/types";
+import { Question, StudentAttempt, Subject, Topic } from "@/types";
 import { INITIAL_QUESTIONS, INITIAL_SUBJECTS } from "@/data/sampleBank";
 import { Sidebar } from "@/components/Layout/Sidebar";
 import { Header } from "@/components/Layout/Header";
@@ -10,10 +10,8 @@ import { QuestionCard } from "@/components/Practice/QuestionCard";
 import { StepHintPanel } from "@/components/Practice/StepHintPanel";
 import { SocraticTutorDrawer } from "@/components/Practice/SocraticTutorDrawer";
 import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
-import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
 import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
 import { TheoryViewer } from "@/components/Theory/TheoryViewer";
-import { parseGoogleSheetData } from "@/lib/driveSync";
 import { soundManager } from "@/lib/audioEffects";
 import { BookOpen } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -34,7 +32,6 @@ export default function AppHome() {
   );
   const [activeTab, setActiveTab] = useState<"practice" | "analytics" | "theory">("practice");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
 
   // Mặc định mở sidebar trên màn hình máy tính (>= 768px)
   useEffect(() => {
@@ -56,12 +53,6 @@ export default function AppHome() {
   const [isSocraticOpen, setIsSocraticOpen] = useState(false);
   const [questionStartTime, setQuestionStartTime] = useState<number>(Date.now());
   const [activeQuestionFormat, setActiveQuestionFormat] = useState<"all" | "mc" | "tf">("mc");
-
-  // 4. Google Drive Sync Status
-  const [driveSyncStatus, setDriveSyncStatus] = useState<DriveSyncStatus>({
-    status: "idle",
-    totalImported: INITIAL_QUESTIONS.length,
-  });
 
   // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage với cơ chế kiểm soát phiên bản chuẩn KH GD1
   useEffect(() => {
@@ -370,170 +361,6 @@ export default function AppHome() {
     setActiveTab("practice");
   };
 
-  // Xử lý đồng bộ dữ liệu từ Google Drive (theo từng môn học hoặc tất cả)
-  const handleDriveSync = async (
-    sheetUrl: string,
-    targetSubjectId?: string
-  ): Promise<boolean> => {
-    try {
-      setDriveSyncStatus((prev) => ({ ...prev, status: "syncing", message: undefined }));
-      
-      const res = await fetch("/api/drive-sync", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sheetUrl }),
-      });
-
-      const json = await res.json();
-      if (!res.ok || json.error) {
-        throw new Error(json.error || "Không thể đồng bộ từ Google Drive");
-      }
-
-      const { questions: newQuestions, subjects: newSubjects } = json.data;
-
-      if (!newQuestions || newQuestions.length === 0) {
-        throw new Error("Không có câu hỏi hợp lệ trong bảng tính Google Drive này!");
-      }
-
-      let updatedQuestions = newQuestions;
-
-      // Nếu đồng bộ cho 1 môn cụ thể trong thư mục riêng
-      if (targetSubjectId) {
-        const normalized = newQuestions.map((q: any) => ({
-          ...q,
-          subjectId: targetSubjectId,
-        }));
-        const otherQuestions = questions.filter((q) => q.subjectId !== targetSubjectId);
-        updatedQuestions = [...otherQuestions, ...normalized];
-        setQuestions(updatedQuestions);
-
-        if (newSubjects && newSubjects.length > 0) {
-          const newTopics = newSubjects[0].topics.map((t: any) => ({
-            ...t,
-            subjectId: targetSubjectId,
-          }));
-          setSubjects((prev) =>
-            prev.map((s) => (s.id === targetSubjectId ? { ...s, topics: newTopics } : s))
-          );
-          setSelectedSubjectId(targetSubjectId);
-          if (newTopics.length > 0) {
-            setSelectedTopicId(newTopics[0].id);
-          }
-        }
-      } else {
-        // Đồng bộ tổng quát
-        setQuestions(newQuestions);
-        if (newSubjects && newSubjects.length > 0) {
-          setSubjects(newSubjects);
-          setSelectedSubjectId(newSubjects[0].id);
-          if (newSubjects[0].topics.length > 0) {
-            setSelectedTopicId(newSubjects[0].topics[0].id);
-          }
-        }
-      }
-
-      setCurrentQuestionIndex(0);
-
-      // Lưu trữ an toàn trong localStorage
-      try {
-        localStorage.setItem("thpt_custom_questions", JSON.stringify(updatedQuestions));
-      } catch {
-        // Quota full fallback
-      }
-
-      setDriveSyncStatus({
-        status: "success",
-        totalImported: updatedQuestions.length,
-        sheetUrl,
-        lastSyncedAt: Date.now(),
-        message: `Đã nạp thành công ${newQuestions.length} câu hỏi chuẩn từ Google Drive!`,
-      });
-      return true;
-    } catch (err: any) {
-      setDriveSyncStatus((prev) => ({
-        ...prev,
-        status: "error",
-        message: err.message,
-      }));
-      throw err;
-    }
-  };
-
-  // Xử lý quét tự động toàn bộ thư mục OnTNTHPT qua Service Account
-  const handleScanFolder = async (
-    targetFolderId: string,
-    serviceAccountKey: string
-  ): Promise<{ count: number; subjectsCount: number; tree: any }> => {
-    const res = await fetch("/api/drive-folder-sync", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        folderId: targetFolderId,
-        serviceAccount: serviceAccountKey,
-      }),
-    });
-
-    const json = await res.json();
-    if (!res.ok || json.error) {
-      throw new Error(json.error + (json.hint ? ` (${json.hint})` : ""));
-    }
-
-    const { questions: scannedQuestions, subjects: scannedSubjects, tree } = json.data;
-
-    if (scannedQuestions && scannedQuestions.length > 0) {
-      const initialIds = new Set(scannedQuestions.map((q: any) => q.id));
-      const mergedQuestions = [
-        ...scannedQuestions,
-        ...INITIAL_QUESTIONS.filter((q) => !initialIds.has(q.id)),
-      ];
-      setQuestions(mergedQuestions);
-      try {
-        localStorage.setItem("thpt_custom_questions", JSON.stringify(mergedQuestions));
-      } catch {
-        // Fallback
-      }
-    }
-
-    if (scannedSubjects && scannedSubjects.length > 0) {
-      const mergedSubjects = INITIAL_SUBJECTS.map((initSubj) => {
-        const found = scannedSubjects.find((s: any) => s.id === initSubj.id);
-        if (found && found.topics && found.topics.length > 0) {
-          const updatedTopics = initSubj.topics.map((initTop) => {
-            const foundTop = found.topics.find((t: any) => t.id === initTop.id);
-            if (foundTop && (foundTop.totalQuestions || 0) > initTop.totalQuestions) {
-              return { ...initTop, totalQuestions: foundTop.totalQuestions };
-            }
-            return initTop;
-          });
-          return {
-            ...initSubj,
-            topics: updatedTopics,
-          };
-        }
-        return initSubj;
-      });
-
-      setSubjects(mergedSubjects);
-      setSelectedSubjectId(mergedSubjects[0].id);
-      if (mergedSubjects[0].topics.length > 0) {
-        setSelectedTopicId(mergedSubjects[0].topics[0].id);
-      }
-      try {
-        localStorage.setItem("thpt_custom_subjects", JSON.stringify(mergedSubjects));
-      } catch {
-        // Fallback
-      }
-    }
-
-    setCurrentQuestionIndex(0);
-
-    return {
-      count: json.count,
-      subjectsCount: json.subjectsCount,
-      tree,
-    };
-  };
-
   return (
     <div className="min-h-screen bg-[#e6ecf5] flex flex-col antialiased">
       {/* Sidebar bên trái chứa toàn bộ cấu trúc bài học */}
@@ -545,7 +372,6 @@ export default function AppHome() {
         onSelectSubject={handleSelectSubject}
         selectedTopicId={selectedTopicId}
         onSelectTopic={handleSelectTopic}
-        onOpenDriveModal={() => setIsDriveModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -686,16 +512,13 @@ export default function AppHome() {
                   <div className="h-20" />
                 </>
               ) : (
-                <div className="p-6 rounded-neu bg-[#e6ecf5] shadow-neu-flat text-center space-y-3">
-                  <p className="text-sm text-slate-600">
-                    Chủ đề này chưa có câu hỏi trong dữ liệu Google Drive.
+                <div className="p-6 rounded-neu bg-[#e6ecf5] shadow-neu-flat text-center space-y-2">
+                  <p className="text-sm font-bold text-slate-700">
+                    Chủ đề này hiện chưa có câu hỏi ôn tập
                   </p>
-                  <button
-                    onClick={() => setIsDriveModalOpen(true)}
-                    className="py-2 px-4 rounded-neu-sm bg-blue-600 text-white shadow-neu-blue font-semibold text-xs"
-                  >
-                    Đồng bộ từ Google Drive
-                  </button>
+                  <p className="text-xs text-slate-500">
+                    Thầy cô quản trị viên sẽ sớm cập nhật ngân hàng câu hỏi mới từ Google Drive.
+                  </p>
                 </div>
               )}
             </>
@@ -740,17 +563,6 @@ export default function AppHome() {
           question={currentQuestion}
         />
       )}
-
-      {/* Hộp thoại kết nối & đồng bộ Google Drive */}
-      <DriveSyncModal
-        isOpen={isDriveModalOpen}
-        onClose={() => setIsDriveModalOpen(false)}
-        syncStatus={driveSyncStatus}
-        subjects={subjects}
-        selectedSubjectId={selectedSubjectId}
-        onSync={handleDriveSync}
-        onScanFolder={handleScanFolder}
-      />
 
       {/* Hộp thoại chuyển đổi môn ôn tập thông minh */}
       <SubjectSwitchModal
