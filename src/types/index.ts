@@ -56,6 +56,9 @@ export interface Subject {
 
 export interface StudentAttempt {
   id: string;
+  studentId?: string;
+  studentName?: string;
+  className?: string;
   questionId: string;
   subjectId: string;
   topicId: string;
@@ -94,3 +97,55 @@ export interface DriveSyncStatus {
   status: "idle" | "syncing" | "success" | "error";
   message?: string;
 }
+
+// =================== AUTH & QUẢN LÝ HỌC SINH ===================
+export type UserRole = "admin" | "teacher" | "student";
+
+export interface User {
+  id: string;
+  username: string;
+  fullName: string;
+  role: UserRole;
+  className?: string;
+  schoolYear?: string;
+  isActive: boolean;
+  createdAt: number;
+  lastLoginAt?: number;
+  password?: string; // Lưu ý chỉ dùng nội bộ server
+}
+
+export interface StudentProgressSummary {
+  studentId: string;
+  username: string;
+  fullName: string;
+  className: string;
+  totalQuestionsAttempted: number;
+  correctAnswers: number;
+  accuracyRate: number; // 0 - 100%
+  estimatedScore: number; // Thang điểm 10 THPT
+  totalTimeMinutes: number;
+  socraticHintsUsed: number;
+  weakTopics: string[]; // Các chủ đề có tỷ lệ đúng < 50%
+  completedWeeks: number[]; // Các tuần học đã làm bài
+  lastActiveAt?: number;
+  status: "XuatSac" | "Dat" | "CanCoGang" | "NguyCoYeu" | "ChuaThamGia";
+}
+
+export interface AdminDashboardOverview {
+  totalStudents: number;
+  activeStudents: number;
+  averageScore: number;
+  passRate: number; // Tỷ lệ >= 5.0đ
+  targetPassRate: number; // 73% theo KH GD1
+  targetAverageScore: number; // 6.00 theo KH GD1
+  atRiskCount: number; // Số học sinh < 5.0đ
+  classes: string[];
+  recentActivities: {
+    studentName: string;
+    className: string;
+    topicName: string;
+    isCorrect: boolean;
+    timestamp: number;
+  }[];
+}
+

@@ -79,6 +79,10 @@ class SoundManager {
     });
   }
 
+  public playSuccess() {
+    this.playCorrect();
+  }
+
   /**
    * Âm thanh nhẹ nhàng khi trả lời CHƯA ĐÚNG (động viên học sinh xem gợi ý)
    */
@@ -107,6 +111,10 @@ class SoundManager {
       osc.start(startTime + idx * 0.12);
       osc.stop(startTime + idx * 0.12 + 0.35);
     });
+  }
+
+  public playError() {
+    this.playIncorrect();
   }
 
   /**

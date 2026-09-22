@@ -16,6 +16,8 @@ export const viewport: Viewport = {
   themeColor: "#e6ecf5",
 };
 
+import { AuthProvider } from "@/contexts/AuthContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className="bg-[#e6ecf5] min-h-screen text-slate-800 antialiased selection:bg-blue-200">
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

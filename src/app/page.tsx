@@ -16,8 +16,12 @@ import { TheoryViewer } from "@/components/Theory/TheoryViewer";
 import { parseGoogleSheetData } from "@/lib/driveSync";
 import { soundManager } from "@/lib/audioEffects";
 import { BookOpen } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { LoginModal } from "@/components/Auth/LoginModal";
 
 export default function AppHome() {
+  const { user } = useAuth();
+
   // 1. Data States
   const [subjects, setSubjects] = useState<Subject[]>(INITIAL_SUBJECTS);
   const [questions, setQuestions] = useState<Question[]>(INITIAL_QUESTIONS);
@@ -239,6 +243,9 @@ export default function AppHome() {
 
       const newAttempt: StudentAttempt = {
         id: "att-" + Date.now(),
+        studentId: user?.id,
+        studentName: user?.fullName,
+        className: user?.className,
         questionId: currentQuestion.id,
         subjectId: currentQuestion.subjectId,
         topicId: currentQuestion.topicId,
@@ -260,6 +267,15 @@ export default function AppHome() {
       } catch {
         // Storage error handled
       }
+
+      // Tự động đồng bộ kết quả lên máy chủ nếu học sinh đã đăng nhập
+      if (user) {
+        fetch("/api/student/attempts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newAttempt),
+        }).catch((err) => console.warn("Lỗi đồng bộ kết quả:", err));
+      }
       return;
     }
 
@@ -275,6 +291,9 @@ export default function AppHome() {
 
     const newAttempt: StudentAttempt = {
       id: "att-" + Date.now(),
+      studentId: user?.id,
+      studentName: user?.fullName,
+      className: user?.className,
       questionId: currentQuestion.id,
       subjectId: currentQuestion.subjectId,
       topicId: currentQuestion.topicId,
@@ -294,6 +313,15 @@ export default function AppHome() {
       localStorage.setItem("thpt_attempts", JSON.stringify(updatedAttempts));
     } catch {
       // Storage error handled
+    }
+
+    // Tự động đồng bộ kết quả lên máy chủ nếu học sinh đã đăng nhập
+    if (user) {
+      fetch("/api/student/attempts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newAttempt),
+      }).catch((err) => console.warn("Lỗi đồng bộ kết quả:", err));
     }
   };
 
@@ -732,6 +760,9 @@ export default function AppHome() {
         selectedSubjectId={selectedSubjectId}
         onSelectSubject={handleSelectSubject}
       />
+
+      {/* Cổng đăng nhập cho Học sinh & Giáo viên */}
+      <LoginModal />
     </div>
   );
 }

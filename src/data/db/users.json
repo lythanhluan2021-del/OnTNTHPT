@@ -1,0 +1,117 @@
+[
+  {
+    "id": "usr-admin",
+    "username": "admin",
+    "fullName": "Thầy Lý Thành Luân (Quản trị viên)",
+    "role": "admin",
+    "isActive": true,
+    "password": "admin",
+    "createdAt": 1726000000000,
+    "lastLoginAt": 1790070758648
+  },
+  {
+    "id": "hs-12a1-01",
+    "username": "hs12a1_01",
+    "fullName": "Nguyễn Văn An",
+    "role": "student",
+    "className": "12A1",
+    "schoolYear": "2026-2027",
+    "isActive": true,
+    "password": "123",
+    "createdAt": 1726000000000,
+    "lastLoginAt": 1790070758635
+  },
+  {
+    "id": "hs-12a1-02",
+    "username": "hs12a1_02",
+    "fullName": "Trần Thị Bích",
+    "role": "student",
+    "className": "12A1",
+    "schoolYear": "2026-2027",
+    "isActive": true,
+    "password": "123",
+    "createdAt": 1726000000000,
+    "lastLoginAt": 1790063558555
+  },
+  {
+    "id": "hs-12a1-03",
+    "username": "hs12a1_03",
+    "fullName": "Lê Hoàng Long",
+    "role": "student",
+    "className": "12A1",
+    "schoolYear": "2026-2027",
+    "isActive": true,
+    "password": "123",
+    "createdAt": 1726000000000,
+    "lastLoginAt": 1790068958555
+  },
+  {
+    "id": "hs-12a1-04",
+    "username": "hs12a1_04",
+    "fullName": "Phạm Minh Tuấn",
+    "role": "student",
+    "className": "12A1",
+    "schoolYear": "2026-2027",
+    "isActive": true,
+    "password": "123",
+    "createdAt": 1726000000000,
+    "lastLoginAt": 1789984358555
+  },
+  {
+    "id": "hs-12a1-05",
+    "username": "hs12a1_05",
+    "fullName": "Võ Kim Ngân",
+    "role": "student",
+    "className": "12A1",
+    "schoolYear": "2026-2027",
+    "isActive": true,
+    "password": "123",
+    "createdAt": 1726000000000
+  },
+  {
+    "id": "hs-12a2-01",
+    "username": "hs12a2_01",
+    "fullName": "Đặng Quốc Bảo",
+    "role": "student",
+    "className": "12A2",
+    "schoolYear": "2026-2027",
+    "isActive": true,
+    "password": "123",
+    "createdAt": 1726000000000,
+    "lastLoginAt": 1790056358555
+  },
+  {
+    "id": "hs-12a2-02",
+    "username": "hs12a2_02",
+    "fullName": "Huỳnh Mỹ Duyên",
+    "role": "student",
+    "className": "12A2",
+    "schoolYear": "2026-2027",
+    "isActive": true,
+    "password": "123",
+    "createdAt": 1726000000000
+  },
+  {
+    "id": "hs-12a3-01",
+    "username": "hs12a3_01",
+    "fullName": "Mai Tấn Tài",
+    "role": "student",
+    "className": "12A3",
+    "schoolYear": "2026-2027",
+    "isActive": true,
+    "password": "123",
+    "createdAt": 1726000000000,
+    "lastLoginAt": 1790041958555
+  },
+  {
+    "id": "hs-12a3-02",
+    "username": "hs12a3_02",
+    "fullName": "Nguyễn Thùy Linh",
+    "role": "student",
+    "className": "12A3",
+    "schoolYear": "2026-2027",
+    "isActive": true,
+    "password": "123",
+    "createdAt": 1726000000000
+  }
+]
