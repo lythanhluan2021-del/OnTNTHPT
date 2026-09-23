@@ -20,7 +20,10 @@ import {
   AlertTriangle,
   BookmarkCheck,
   X,
-  ZoomIn
+  ZoomIn,
+  ShieldAlert,
+  Users,
+  HeartHandshake
 } from "lucide-react";
 import { LatexRenderer } from "../UI/LatexRenderer";
 import { ImageZoomModal } from "../UI/ImageZoomModal";
@@ -107,6 +110,12 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
         return <Sparkles className="w-5 h-5 text-purple-600" />;
       case "AlertTriangle":
         return <AlertTriangle className="w-5 h-5 text-rose-600" />;
+      case "ShieldAlert":
+        return <ShieldAlert className="w-5 h-5 text-red-600" />;
+      case "Users":
+        return <Users className="w-5 h-5 text-sky-600" />;
+      case "HeartHandshake":
+        return <HeartHandshake className="w-5 h-5 text-pink-600" />;
       default:
         return <FileText className="w-5 h-5 text-blue-600" />;
     }

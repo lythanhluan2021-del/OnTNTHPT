@@ -45,11 +45,13 @@ export const INITIAL_SUBJECTS: Subject[] = [
       // Tuần 11: Đạo đức, pháp luật & văn hoá số [2 tiết]
       {
         id: "tin-dao-duc-phap-luat-so",
-        name: "Ôn tập: Giao tiếp và ứng xử trong không gian mạng",
+        name: "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
-        totalQuestions: 3,
-        mcCount: 3,
+        totalQuestions: 73,
+        mcCount: 58,
+        tfCount: 15,
+        hasTheory: true,
       },
 
       // Tuần 12 - 20: Tạo trang web với HTML & CSS (Chuyên đề 12F) [14 tiết - trừ Tuần 17 KTHK I]
@@ -14136,5 +14138,2678 @@ export const INITIAL_QUESTIONS: Question[] = [
   },
   "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Tải hình ảnh lên một trang web chia sẻ ảnh và lấy link để ch...)\n- Ý b) : Đúng (Sử dụng thẻ <img> trong HTML để chèn hình ảnh trực tiếp từ m...)\n- Ý c) : Sai (Chèn hình ảnh bằng cách sử dụng phần mềm xử lý văn bản và sa...)\n- Ý d) : Sai (Gửi email cho bạn bè và nhờ họ chèn hình ảnh vào trang web g...)",
   "sourceDocTitle": "Chuyên đề 12F. Tạo trang Web (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-01",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Khi tham gia thế giới ảo, hành vi nào sau đây được coi là nhân văn?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tấn công và đe dọa người khác."
+    },
+    {
+      "id": "B",
+      "content": "Khinh bỉ và chế nhạo người khác."
+    },
+    {
+      "id": "C",
+      "content": "Đồng cảm và hỗ trợ người khác."
+    },
+    {
+      "id": "D",
+      "content": "Gây rối và quấy rối trên mạng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Đồng cảm và hỗ trợ người khác khi họ gặp khó khăn là biểu hiện cốt lõi của tính nhân văn trong không gian mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-02",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Nên làm gì với các mật khẩu dùng trên mạng của mình?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cho bạn bè biết mật khẩu nếu quên còn hỏi bạn."
+    },
+    {
+      "id": "B",
+      "content": "Thay mật khẩu thường xuyên và không cho bất cứ ai biết."
+    },
+    {
+      "id": "C",
+      "content": "Sử dụng cùng một mật khẩu cho mọi thứ."
+    },
+    {
+      "id": "D",
+      "content": "Đặt mật khẩu dễ đoán cho khỏi quên."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Để bảo mật tài khoản cá nhân, cần đặt mật khẩu mạnh, thay đổi thường xuyên và tuyệt đối không chia sẻ cho bất kỳ ai.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-03",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Quy tắc tuân thủ, tôn trọng pháp luật là?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tuân thủ pháp luật Việt Nam, chỉ tôn trọng quyền và lợi ích hợp pháp của tổ chức."
+    },
+    {
+      "id": "B",
+      "content": "Tuân thủ pháp luật Việt Nam, tôn trọng quyền và lợi ích hợp pháp của cá nhân và tổ chức."
+    },
+    {
+      "id": "C",
+      "content": "Tuân thủ pháp luật Việt Nam, chỉ cần tôn trọng lợi ích hợp pháp của cá nhân và tổ chức."
+    },
+    {
+      "id": "D",
+      "content": "Tuân thủ pháp luật Việt Nam, chỉ tôn trọng quyền và lợi ích hợp pháp của cá nhân."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Quy tắc tuân thủ pháp luật đòi hỏi tôn trọng quyền và lợi ích hợp pháp của cả cá nhân và tổ chức.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-04",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thuật ngữ \"Phishing\" là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Việc lừa đảo để lấy cắp thông tin cá nhân bằng các trang web uy tín."
+    },
+    {
+      "id": "B",
+      "content": "Việc lừa đảo để lấy cắp thông tin cá nhân bằng các trang web giả."
+    },
+    {
+      "id": "C",
+      "content": "Việc chiếm đoạt tài sản cá nhân."
+    },
+    {
+      "id": "D",
+      "content": "Việc cung cấp và bổ sung thông tin cá nhân."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Phishing (tấn công giả mạo) là hình thức lừa đảo nhằm lấy cắp thông tin cá nhân (tài khoản, mật khẩu, thẻ tín dụng) bằng cách tạo dựng các trang web, email giả mạo.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-05",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Đâu là nguyên tắc để hạn chế thiệt hại khi nghi ngờ bị lừa qua mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Nếu đã bị thiệt hại, không cần báo ngay cho cơ quan chức năng."
+    },
+    {
+      "id": "B",
+      "content": "Nếu đã lỡ chia sẻ thông tin về thẻ tín dụng, không cần báo cho ngân hàng biết."
+    },
+    {
+      "id": "C",
+      "content": "Nếu tài khoản bị ảnh hưởng có liên quan đến nhà trường hay một cơ quan, tổ chức, cần thông báo ngay."
+    },
+    {
+      "id": "D",
+      "content": "Không thay đổi mật khẩu các tài khoản bị ảnh hưởng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Khi tài khoản liên quan đến cơ quan, nhà trường bị xâm phạm, phải thông báo ngay cho quản trị viên/cơ quan để kịp thời ngăn chặn thiệt hại lan rộng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-06",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Đặc điểm nào dưới đây KHÔNG phải là ưu điểm của giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thực hiện ở mọi lúc, mọi nơi."
+    },
+    {
+      "id": "B",
+      "content": "Tiết kiệm thời gian và chi phí."
+    },
+    {
+      "id": "C",
+      "content": "Nhận phản hồi ngay lập tức khi giao tiếp."
+    },
+    {
+      "id": "D",
+      "content": "Mở rộng kết nối xã hội."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Giao tiếp trên không gian mạng phần lớn là không đồng bộ (như gửi email, tin nhắn diễn đàn), do đó không phải lúc nào cũng nhận được phản hồi ngay lập tức.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-07",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương thức nào dưới đây là giao tiếp đồng bộ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Gọi điện thoại."
+    },
+    {
+      "id": "B",
+      "content": "Gửi thư điện tử."
+    },
+    {
+      "id": "C",
+      "content": "Đăng bài trên diễn đàn."
+    },
+    {
+      "id": "D",
+      "content": "Để lại lời nhắn."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Gọi điện thoại (hoặc gọi video) yêu cầu hai bên cùng tham gia tương tác trực tiếp tại một thời điểm nên là giao tiếp đồng bộ.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-08",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Nguy cơ nào dưới đây liên quan đến bảo mật và quyền riêng tư trong giao tiếp mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tiết kiệm chi phí."
+    },
+    {
+      "id": "B",
+      "content": "Có thể bị lộ thông tin cá nhân."
+    },
+    {
+      "id": "C",
+      "content": "Tăng khả năng tương tác."
+    },
+    {
+      "id": "D",
+      "content": "Kết nối bạn bè nhanh chóng."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Nguy cơ lớn về bảo mật và quyền riêng tư là việc bị lộ hoặc bị đánh cắp thông tin cá nhân, mật khẩu tài khoản.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-09",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào dưới đây KHÔNG phải là ứng xử nhân văn trên không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cảm thông với người khác."
+    },
+    {
+      "id": "B",
+      "content": "Chỉ trích gay gắt với bất kể ai khi họ làm sai."
+    },
+    {
+      "id": "C",
+      "content": "Tôn trọng quyền riêng tư của người khác."
+    },
+    {
+      "id": "D",
+      "content": "Sử dụng ngôn ngữ đúng mực."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Chỉ trích gay gắt, mạt sát người khác là hành vi thiếu văn hóa, không thể hiện tính nhân văn trong không gian mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-10",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Ý nghĩa của ứng xử nhân văn trên không gian mạng là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tăng sự xung đột và hiểu lầm."
+    },
+    {
+      "id": "B",
+      "content": "Giảm sự kết nối giữa mọi người."
+    },
+    {
+      "id": "C",
+      "content": "Gây ảnh hưởng tiêu cực đến xã hội."
+    },
+    {
+      "id": "D",
+      "content": "Góp phần lan tỏa những giá trị nhân văn."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án D. Ứng xử nhân văn giúp tạo ra hiệu ứng tích cực, xây dựng môi trường mạng lành mạnh và lan tỏa các giá trị nhân văn tốt đẹp.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-11",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Hình thức lừa đảo lấy cắp thông tin cá nhân bằng các trang web giả là hình thức lừa đảo nào dưới đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lừa đảo qua mạng xã hội."
+    },
+    {
+      "id": "B",
+      "content": "Lừa đảo tài chính."
+    },
+    {
+      "id": "C",
+      "content": "Lừa đảo đầu tư."
+    },
+    {
+      "id": "D",
+      "content": "Lừa đảo phishing."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án D. Lừa đảo phishing là phương thức tấn công giả mạo các trang web chính thống để chiếm đoạt thông tin đăng nhập, dữ liệu thẻ tín dụng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-12",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Dấu hiệu nào sau đây cho thấy một trang web có thể không an toàn?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Địa chỉ trang web bắt đầu bằng https://."
+    },
+    {
+      "id": "B",
+      "content": "Có nhiều quảng cáo không liên quan và tên miền có lỗi chính tả."
+    },
+    {
+      "id": "C",
+      "content": "Trang web có chứng chỉ số hợp lệ."
+    },
+    {
+      "id": "D",
+      "content": "Trang web có thông tin tác giả rõ ràng."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Trang web tràn ngập quảng cáo, biểu tượng cảnh báo bảo mật hoặc tên miền sai lệch chính tả là dấu hiệu điển hình của trang web lừa đảo, độc hại.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-13",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Điều gì nên được thực hiện khi phát hiện một trang web lừa đảo?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chia sẻ cho nhiều người cùng biết mà không cảnh báo."
+    },
+    {
+      "id": "B",
+      "content": "Cung cấp thông tin giả để thử nghiệm."
+    },
+    {
+      "id": "C",
+      "content": "Báo cáo trang web cho cơ quan chức năng hoặc tổ chức bảo vệ người tiêu dùng."
+    },
+    {
+      "id": "D",
+      "content": "Tiếp tục truy cập và sử dụng dịch vụ bình thường."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Cần báo cáo cho cơ quan chức năng, cơ sở quản lý an ninh mạng hoặc tính năng báo cáo lừa đảo của trình duyệt để ngăn chặn trang web đó tiếp tục hoạt động.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-14",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Hình thức nào sau đây KHÔNG phải là giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Gửi thư điện tử (email)."
+    },
+    {
+      "id": "B",
+      "content": "Gửi thư tay qua bưu điện."
+    },
+    {
+      "id": "C",
+      "content": "Nhắn tin qua ứng dụng Zalo."
+    },
+    {
+      "id": "D",
+      "content": "Họp trực tuyến qua Zoom."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Gửi thư tay qua bưu điện là hình thức chuyển phát vật lý truyền thống, không sử dụng công nghệ số và mạng máy tính.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-15",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Đặc điểm nào sau đây KHÔNG đúng về giao tiếp trực tuyến?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Có thể thực hiện mọi lúc, mọi nơi khi có mạng Internet."
+    },
+    {
+      "id": "B",
+      "content": "Hỗ trợ nhiều phương thức: văn bản, âm thanh, hình ảnh, video."
+    },
+    {
+      "id": "C",
+      "content": "Chỉ có thể thực hiện qua máy tính."
+    },
+    {
+      "id": "D",
+      "content": "Có thể kết nối nhiều người ở xa nhau cùng lúc."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Giao tiếp trực tuyến hiện nay có thể thực hiện trên điện thoại thông minh, máy tính bảng, đồng hồ thông minh và tivi thông minh, không chỉ giới hạn ở máy tính.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-16",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Ứng dụng nào dưới đây được biết đến như một nền tảng mạng xã hội?",
+  "options": [
+    {
+      "id": "A",
+      "content": "WhatsApp"
+    },
+    {
+      "id": "B",
+      "content": "Twitter (X)"
+    },
+    {
+      "id": "C",
+      "content": "Google Drive"
+    },
+    {
+      "id": "D",
+      "content": "Microsoft Word"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Twitter (nay là X) là một trong những nền tảng mạng xã hội phổ biến nhất thế giới.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-17",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào dưới đây đúng khi nói về ưu điểm của giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Giúp tiết kiệm thời gian di chuyển."
+    },
+    {
+      "id": "B",
+      "content": "Chỉ cho phép giao tiếp một chiều."
+    },
+    {
+      "id": "C",
+      "content": "Giúp người dùng dễ dàng kết nối với nhau."
+    },
+    {
+      "id": "D",
+      "content": "Không cần thiết bị công nghệ để giao tiếp."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Ưu điểm nổi bật của không gian mạng là giúp mọi người dễ dàng kết nối, tương tác và mở rộng mối quan hệ xã hội bất chấp khoảng cách.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-18",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Dịch vụ nào sau đây KHÔNG phải là một ứng dụng nhắn tin?",
+  "options": [
+    {
+      "id": "A",
+      "content": "WhatsApp."
+    },
+    {
+      "id": "B",
+      "content": "Telegram."
+    },
+    {
+      "id": "C",
+      "content": "Snapchat."
+    },
+    {
+      "id": "D",
+      "content": "Google Drive."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án D. Google Drive là dịch vụ lưu trữ và đồng bộ dữ liệu đám mây, không phải là ứng dụng nhắn tin tức thời (chat app).",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-19",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào dưới đây là nhược điểm của giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Trao đổi trong không gian mạng có độ trễ nhất định do đường truyền và nền tảng công nghệ."
+    },
+    {
+      "id": "B",
+      "content": "Không thể diễn ra mọi lúc, mọi nơi, chỉ cho phép số lượng nhỏ người dùng cùng tham gia một lúc."
+    },
+    {
+      "id": "C",
+      "content": "Khó mở rộng khả năng tương tác, kết nối nhiều người có cùng sở thích, quan điểm hoặc nhu cầu."
+    },
+    {
+      "id": "D",
+      "content": "Phương tiện giao tiếp không đa dạng, phụ thuộc khoảng cách địa lí của các thiết bị."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Độ trễ kỹ thuật của đường truyền, mất mạng hoặc lỗi máy chủ là một hạn chế thường gặp của giao tiếp mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-20",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Nguyên tắc nào sau đây là cần thiết khi giao tiếp trong không gian mạng để đảm bảo an toàn thông tin?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chia sẻ mật khẩu với bạn bè thân thiết để nhờ trợ giúp."
+    },
+    {
+      "id": "B",
+      "content": "Đăng tải địa chỉ nhà và số điện thoại lên công khai trang cá nhân."
+    },
+    {
+      "id": "C",
+      "content": "Luôn kiểm tra nguồn gốc thông tin trước khi chia sẻ."
+    },
+    {
+      "id": "D",
+      "content": "Nhấp vào tất cả các liên kết được gửi qua tin nhắn từ người lạ."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Kiểm tra và xác minh nguồn gốc thông tin giúp phòng ngừa lừa đảo, phát tán mã độc và tin giả trên không gian mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-21",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Yếu tố nào dưới đây có thể gây ra hiểu lầm trong giao tiếp trực tuyến?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thiếu ngữ điệu và biểu cảm khuôn mặt trong văn bản."
+    },
+    {
+      "id": "B",
+      "content": "Thông điệp quá rõ ràng và chi tiết."
+    },
+    {
+      "id": "C",
+      "content": "Sử dụng đầy đủ các biểu tượng cảm xúc (emoji)."
+    },
+    {
+      "id": "D",
+      "content": "Cuộc gọi video có hình ảnh sắc nét."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Do thiếu các tín hiệu phi ngôn ngữ (ngữ điệu giọng nói, ánh mắt, nụ cười), tin nhắn văn bản rất dễ bị người đọc suy diễn sai lệch cảm xúc.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-22",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Yếu tố nào dưới đây KHÔNG làm giảm hiệu quả của giao tiếp trực tuyến?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sự phân tán bởi các thông báo mạng xã hội."
+    },
+    {
+      "id": "B",
+      "content": "Sự rõ ràng và mạch lạc trong thông điệp."
+    },
+    {
+      "id": "C",
+      "content": "Đường truyền mạng Internet không ổn định."
+    },
+    {
+      "id": "D",
+      "content": "Sử dụng từ viết tắt tùy tiện, sai ngữ pháp."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Thông điệp được trình bày rõ ràng, mạch lạc sẽ nâng cao hiệu quả giao tiếp chứ không làm giảm hiệu quả.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-23",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Thuật ngữ “Phishing” dùng để nói về hành vi nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lừa đảo tài sản ngoài đời thực."
+    },
+    {
+      "id": "B",
+      "content": "Lấy cắp thông tin cá nhân trên mạng."
+    },
+    {
+      "id": "C",
+      "content": "Lừa đảo tình cảm qua thư từ."
+    },
+    {
+      "id": "D",
+      "content": "Lừa đảo qua mạng xã hội đơn thuần."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Bản chất của kỹ thuật Phishing là dụ dỗ nạn nhân cung cấp thông tin nhạy cảm (tài khoản, mật khẩu, mã OTP) trên các giao diện giả mạo.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-24",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Dấu hiệu nào sau đây giúp nhận biết lừa đảo qua mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thông tin liên hệ rõ ràng, minh bạch."
+    },
+    {
+      "id": "B",
+      "content": "Địa chỉ email chính thức từ tên miền doanh nghiệp."
+    },
+    {
+      "id": "C",
+      "content": "Tên miền dễ nhớ, đúng quy chuẩn."
+    },
+    {
+      "id": "D",
+      "content": "Lỗi chính tả trong tên miền hoặc trong nội dung tin nhắn."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án D. Kẻ lừa đảo thường dùng các tên miền gần giống (ví dụ thay chữ 'l' bằng số '1') hoặc văn bản có lỗi dịch thuật, lỗi chính tả sơ sài.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-25",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Hình thức lừa đảo nào thường yêu cầu người dùng trả phí vận chuyển để nhận quà hoặc giải thưởng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lừa đảo mua sắm trực tuyến."
+    },
+    {
+      "id": "B",
+      "content": "Lừa đảo thẻ tín dụng."
+    },
+    {
+      "id": "C",
+      "content": "Lừa đảo đầu tư sinh lời."
+    },
+    {
+      "id": "D",
+      "content": "Lừa đảo quà tặng (hoặc giải thưởng)."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án D. Chiêu trò thông báo trúng thưởng hoặc tặng quà miễn phí nhưng yêu cầu trả trước tiền phí đóng gói/vận chuyển rồi chiếm đoạt là hình thức lừa đảo quà tặng phổ biến.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-26",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Hình thức tạo tài khoản giả mạo các gian hàng trực tuyến uy tín là biểu hiện của hình thức lừa đảo nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lừa đảo trúng thưởng tặng quà."
+    },
+    {
+      "id": "B",
+      "content": "Lừa đảo chiếm đoạt tiền đặt cọc hoặc bán hàng giả."
+    },
+    {
+      "id": "C",
+      "content": "Lừa đảo để đánh cắp thông tin cá nhân."
+    },
+    {
+      "id": "D",
+      "content": "Lừa đảo từ thiện."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Theo mục 1.1 tóm tắt lý thuyết, tạo tài khoản giả mạo gian hàng uy tín là phương thức lừa đảo nhằm chiếm đoạt tiền đặt cọc hoặc bán hàng giả/hàng kém chất lượng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-27",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Tên miền lừa đảo thường có đặc điểm nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tên miền lừa đảo thường có tên miền ngắn, dễ nhầm lẫn, đuôi lạ và thiếu thông tin bảo mật."
+    },
+    {
+      "id": "B",
+      "content": "Tên miền lừa đảo thường có đuôi phổ biến như .edu hoặc .gov."
+    },
+    {
+      "id": "C",
+      "content": "Tên miền lừa đảo thường có tên miền dài và rất khó đọc."
+    },
+    {
+      "id": "D",
+      "content": "Tên miền lừa đảo thường có tên miền giống hệt tên miền của các trang web chính thức."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Kẻ lừa đảo thường dùng các đuôi miền lạ, viết biến tấu chữ cái dễ gây nhầm lẫn và không có chứng chỉ bảo mật HTTPS.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-28",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào dưới đây mô tả đúng về giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Là hình thức giao tiếp sử dụng công cụ công nghệ số."
+    },
+    {
+      "id": "B",
+      "content": "Là hình thức giao tiếp trực tiếp mặt đối mặt."
+    },
+    {
+      "id": "C",
+      "content": "Là hình thức giao tiếp sử dụng ngôn ngữ cơ thể là chủ yếu."
+    },
+    {
+      "id": "D",
+      "content": "Là hình thức giao tiếp trực tiếp qua thư từ bưu điện."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Giao tiếp trong không gian mạng là quá trình trao đổi thông tin được thực hiện thông qua các thiết bị và công cụ công nghệ kỹ thuật số kết nối mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-29",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Dịch vụ nào sau đây KHÔNG phải dịch vụ giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Dịch vụ thư điện tử."
+    },
+    {
+      "id": "B",
+      "content": "Dịch vụ mạng xã hội Facebook."
+    },
+    {
+      "id": "C",
+      "content": "Dịch vụ \"bác sĩ gia đình\" chăm sóc sức khỏe tại nhà."
+    },
+    {
+      "id": "D",
+      "content": "Dịch vụ nhắn tin trực tuyến Zalo."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Bác sĩ đến tận nhà khám bệnh trực tiếp là dịch vụ y tế truyền thống trong đời thực, không phải dịch vụ giao tiếp mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-30",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào dưới đây KHÔNG phải là nhược điểm của giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Giới hạn về thời gian và địa điểm."
+    },
+    {
+      "id": "B",
+      "content": "Có khả năng bị xâm phạm quyền riêng tư."
+    },
+    {
+      "id": "C",
+      "content": "Tạo cơ hội kết nối nhiều người có chung sở thích."
+    },
+    {
+      "id": "D",
+      "content": "Khó xác định chính xác danh tính người giao tiếp."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Tạo cơ hội kết nối những người có chung sở thích là ƯU ĐIỂM lớn của mạng xã hội và không gian mạng, không phải nhược điểm.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-31",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào dưới đây đúng khi nói về ưu điểm của giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hỗ trợ người khuyết tật dễ dàng giao tiếp."
+    },
+    {
+      "id": "B",
+      "content": "Dễ dàng kiểm soát nguồn thông tin."
+    },
+    {
+      "id": "C",
+      "content": "Không bị ảnh hưởng bởi các sự cố kĩ thuật đường truyền."
+    },
+    {
+      "id": "D",
+      "content": "Có độ tin cậy cao."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Các công cụ chuyển văn bản thành giọng nói, phụ đề tự động trên không gian mạng giúp người khuyết tật hòa nhập và giao tiếp thuận lợi hơn.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-32",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Theo Quyết định số 874/QĐ-BTTTT ngày 17 tháng 6 năm 2021, văn bản nào dưới đây được Bộ Thông tin và Truyền thông ban hành có liên quan đến trao đổi thông tin trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Bộ luật về An ninh mạng."
+    },
+    {
+      "id": "B",
+      "content": "Bộ quy tắc ứng xử trên mạng xã hội."
+    },
+    {
+      "id": "C",
+      "content": "Bộ quy tắc giao tiếp trên không gian mạng."
+    },
+    {
+      "id": "D",
+      "content": "Bộ quy tắc bảo đảm an ninh mạng."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Ngày 17/6/2021, Bộ Thông tin và Truyền thông ban hành Quyết định số 874/QĐ-BTTTT về \"Bộ quy tắc ứng xử trên mạng xã hội\" nhằm xây dựng chuẩn mực đạo đức và văn hóa số.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-33",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Vấn đề nào sau đây có thể gặp phải khi thường xuyên chia sẻ thông tin cá nhân của mình để giao tiếp trên không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tạo ra sự phụ thuộc vào giao tiếp trực tiếp."
+    },
+    {
+      "id": "B",
+      "content": "Dễ bị hacker tấn công và đánh cắp thông tin cá nhân."
+    },
+    {
+      "id": "C",
+      "content": "Giảm tốc độ truyền đạt thông tin trong giao tiếp."
+    },
+    {
+      "id": "D",
+      "content": "Hạn chế sự truyền tải cảm xúc và tương tác trực tiếp."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Việc chia sẻ bừa bãi thông tin cá nhân sẽ khiến người dùng trở thành mục tiêu của tin tặc để đánh cắp danh tính, mã OTP, tống tiền hoặc lừa đảo.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-34",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Bạn Lan đang sử dụng internet thì thấy một tin nhắn từ bạn thân B: “Cậu cho mình vay 1 triệu mình đưa mẹ đi khám”. Nếu là Lan bạn nên làm gì ngay lúc này?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Gọi điện thoại trực tiếp cho B để kiểm tra và xác minh lại thông tin, nếu đúng thì mới hỗ trợ."
+    },
+    {
+      "id": "B",
+      "content": "Chuyển tiền ngay cho B để kịp thời giúp đỡ bạn bè."
+    },
+    {
+      "id": "C",
+      "content": "Không quan tâm và chặn tin nhắn của B ngay lập tức."
+    },
+    {
+      "id": "D",
+      "content": "Đi hỏi vay người khác để chuyển tiền giúp bạn."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Kẻ gian thường hack tài khoản người quen để nhắn tin vay tiền gấp; cách xử lý đúng đắn nhất là gọi điện thoại trực tiếp hoặc gặp mặt để xác thực.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-35",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi đọc được một bài viết hoặc thông tin có thể là tin đồn hoặc thông tin giả trên mạng, hành vi nào sau đây là văn minh và an toàn nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lan truyền thông tin ngay để cảnh báo bạn bè."
+    },
+    {
+      "id": "B",
+      "content": "Phản bác và chỉ trích tác giả bài viết gay gắt dưới phần bình luận."
+    },
+    {
+      "id": "C",
+      "content": "Kiểm tra và xác minh thông tin từ các cơ quan báo chí chính thống trước khi chia sẻ."
+    },
+    {
+      "id": "D",
+      "content": "Kêu gọi mọi người cùng vào tấn công trang cá nhân của tác giả."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Nguyên tắc văn minh trên mạng là luôn kiểm chứng nguồn tin từ báo đài chính thống, không like/share tin đồn chưa được kiểm chứng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-36",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Một nhóm học sinh rủ nhau lập hội hack các tài khoản Facebook để nhắn tin lừa đảo chiếm đoạt tiền. Mức xử lý theo quy định của pháp luật đối với hành vi này là như thế nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tử hình."
+    },
+    {
+      "id": "B",
+      "content": "Tù chung thân cho mọi trường hợp."
+    },
+    {
+      "id": "C",
+      "content": "Tùy vào số tiền lừa đảo chiếm đoạt và mức độ nghiêm trọng của sự việc để xử lý hành chính hoặc hình sự."
+    },
+    {
+      "id": "D",
+      "content": "Chỉ bị nhà trường và gia đình quở trách vì còn là học sinh."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Tùy thuộc vào giá trị tài sản chiếm đoạt và hậu quả gây ra, hành vi lừa đảo qua mạng sẽ bị xử phạt vi phạm hành chính hoặc bị truy cứu trách nhiệm hình sự theo Bộ luật Hình sự.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-37",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong một diễn đàn trực tuyến về nghệ thuật, bạn Thành nhận được một bình luận phê phán mang tính xây dựng nhưng dùng từ ngữ thẳng thắn. Bạn Thành nên xử lý như thế nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Xóa bài viết phê phán và chặn ngay tài khoản người bình luận."
+    },
+    {
+      "id": "B",
+      "content": "Trả lời bình luận bằng cách giải thích ý kiến của mình một cách lịch sự, cầu thị."
+    },
+    {
+      "id": "C",
+      "content": "Gửi tin nhắn riêng đe dọa người vừa bình luận."
+    },
+    {
+      "id": "D",
+      "content": "Dùng tài khoản ẩn danh để vào lăng mạ người bình luận."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Lịch sự giải thích quan điểm, tôn trọng ý kiến đa chiều và tiếp thu góp ý có tính xây dựng là biểu hiện của văn hóa ứng xử trực tuyến chuẩn mực.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-38",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây là SAI khi nói về giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Gọi điện thoại qua Zalo là giao tiếp đồng bộ."
+    },
+    {
+      "id": "B",
+      "content": "Gửi tin nhắn là giao tiếp không đồng bộ."
+    },
+    {
+      "id": "C",
+      "content": "Hầu hết các giao tiếp trên không gian mạng là đồng bộ."
+    },
+    {
+      "id": "D",
+      "content": "Giao tiếp không đồng bộ cho phép người nhận đọc và trả lời vào thời điểm thích hợp."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C là phát biểu SAI vì đa số các hình thức giao tiếp trên không gian mạng (email, tin nhắn mạng xã hội, diễn đàn) là giao tiếp KHÔNG đồng bộ.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-39",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi giao tiếp trên không gian mạng, người dùng NÊN thực hiện điều nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Nhắn tin hoặc gọi điện vào khung giờ nghỉ ngơi khuya muộn để đối phương đọc sớm."
+    },
+    {
+      "id": "B",
+      "content": "Sử dụng từ ngữ ngắn gọn, các ký hiệu viết tắt tối nghĩa để tiết kiệm thời gian."
+    },
+    {
+      "id": "C",
+      "content": "Tự bảo vệ thông tin cá nhân quan trọng (số điện thoại, căn cước công dân, địa chỉ nhà)."
+    },
+    {
+      "id": "D",
+      "content": "Chia sẻ các thông tin giật gân, chưa kiểm chứng lên các hội nhóm công khai."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Tự ý thức bảo vệ thông tin cá nhân nhạy cảm là nguyên tắc cơ bản để bảo đảm an toàn trên mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-40",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây là ĐÚNG khi so sánh giao tiếp trực tiếp với giao tiếp qua mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Giao tiếp qua mạng diễn tả cảm xúc trọn vẹn và chân thực hơn giao tiếp trực tiếp."
+    },
+    {
+      "id": "B",
+      "content": "Giao tiếp qua mạng mang lại cảm giác gắn kết và thân mật hơn gặp mặt trực tiếp."
+    },
+    {
+      "id": "C",
+      "content": "Giao tiếp trực tiếp giúp xây dựng mối quan hệ bền chặt hơn nhờ đầy đủ ngôn ngữ cơ thể và biểu cảm."
+    },
+    {
+      "id": "D",
+      "content": "Giao tiếp trực tiếp thường tiết kiệm chi phí đi lại hơn giao tiếp qua mạng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Giao tiếp trực tiếp cho phép người tham gia quan sát ánh mắt, nụ cười, cử chỉ và ngữ điệu giọng nói, giúp xây dựng mối quan hệ tin cậy và bền chặt hơn.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-41",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Lợi ích nổi bật của việc lưu trữ thông tin trao đổi qua không gian mạng là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cho phép một số lượng lớn người dùng cùng nói chuyện cùng lúc mà không bị ngắt quãng."
+    },
+    {
+      "id": "B",
+      "content": "Dễ dàng lưu trữ và tra cứu, tham khảo lại nội dung trao đổi sau này khi cần."
+    },
+    {
+      "id": "C",
+      "content": "Giúp người dùng giảm sự tự ti của bản thân khi nói chuyện trực tiếp."
+    },
+    {
+      "id": "D",
+      "content": "Tránh hoàn toàn việc bị lộ thông tin cá nhân."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Khác với lời nói truyền miệng, các văn bản email, tài liệu trao đổi trên mạng đều có lịch sử lưu trữ để đối chiếu, làm chứng và tham khảo lâu dài.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-42",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong các hành vi sau, đâu là hành vi ứng xử nhân văn trên không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thường xuyên khoe khoang sự giàu có để câu tương tác trên mạng xã hội."
+    },
+    {
+      "id": "B",
+      "content": "Kêu gọi quyên góp từ thiện vào tài khoản cá nhân không rõ ràng nguồn gốc."
+    },
+    {
+      "id": "C",
+      "content": "Kiểm chứng thông tin trước khi chia sẻ và lan tỏa những việc làm tốt, tấm gương sáng trong xã hội."
+    },
+    {
+      "id": "D",
+      "content": "Sử dụng công nghệ Deepfake để tạo video cắt ghép đùa cợt bạn bè."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Tinh thần trách nhiệm khi chia sẻ thông tin và việc lan tỏa những hình ảnh tích cực, nhân ái là biểu hiện rõ nét của lối sống nhân văn trên mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-43",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Yếu tố nào sau đây có thể làm tăng khả năng xảy ra hiểu lầm trong giao tiếp trực tuyến?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sử dụng ngôn ngữ rõ ràng, đủ câu đủ chữ."
+    },
+    {
+      "id": "B",
+      "content": "Giao tiếp thường xuyên và cởi mở."
+    },
+    {
+      "id": "C",
+      "content": "Thiếu ngữ điệu của giọng nói và biểu cảm nét mặt."
+    },
+    {
+      "id": "D",
+      "content": "Sử dụng hình ảnh minh họa chân thực."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Giao tiếp văn bản thiếu ngữ điệu âm thanh và sắc thái cảm xúc, dễ khiến người đọc hiểu nhầm giọng điệu của người viết.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-44",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Tại sao việc lắng nghe và tôn trọng ý kiến của người khác lại quan trọng trong giao tiếp trực tuyến?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Để có thể phản hồi một cách chính xác và hiệu quả."
+    },
+    {
+      "id": "B",
+      "content": "Để thể hiện sự không quan tâm đến cuộc trò chuyện."
+    },
+    {
+      "id": "C",
+      "content": "Việc lắng nghe ý kiến của người khác giúp xây dựng mối quan hệ tốt hơn và tạo ra sự hiểu biết lẫn nhau."
+    },
+    {
+      "id": "D",
+      "content": "Để có thể chiếm ưu thế và áp đặt quan điểm trong cuộc trò chuyện."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Tôn trọng quan điểm khác biệt và biết lắng nghe là nền tảng để tạo nên sự đồng cảm, hiểu biết và xây dựng cộng đồng trực tuyến văn minh.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-45",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Bạn A tham gia diễn đàn về sức khỏe tinh thần và chia sẻ tâm sự của mình. Một số thành viên đã chỉ trích, chế giễu khiến bạn A tổn thương. Tình huống này phản ánh vấn đề gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thiếu sự tôn trọng và đồng cảm trong giao tiếp mạng."
+    },
+    {
+      "id": "B",
+      "content": "Thiếu thông tin và công cụ hỗ trợ."
+    },
+    {
+      "id": "C",
+      "content": "Thiếu phần mềm bảo mật thiết bị."
+    },
+    {
+      "id": "D",
+      "content": "Tốc độ đường truyền mạng không ổn định."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Hành vi chế giễu nỗi đau hay câu chuyện của người khác là sự thiếu văn hóa và thiếu lòng trắc ẩn, thiếu tôn trọng đối phương.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-46",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong một nhóm Facebook về công nghệ, bạn D đăng tải bài viết về sản phẩm mới nhưng đưa các số liệu kỹ thuật sai lệch và hình ảnh chưa kiểm chứng. Vấn đề của bài viết này là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thiếu sự tương tác."
+    },
+    {
+      "id": "B",
+      "content": "Thiếu sự chính xác và tin cậy."
+    },
+    {
+      "id": "C",
+      "content": "Thiếu tính đa dạng của ngôn ngữ."
+    },
+    {
+      "id": "D",
+      "content": "Thiếu quyền quản trị viên."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Đưa tin tức sai lệch, số liệu chưa kiểm chứng vi phạm tính trung thực và làm mất độ tin cậy của thông tin trên mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-47",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong một buổi họp trực tuyến, bạn A thường xuyên bị gián đoạn bởi tiếng ồn xung quanh và chất lượng micro rè, ngắt quãng. Điều này phản ánh hạn chế nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thiếu tập trung và thiếu chất lượng âm thanh / kỹ thuật truyền tải."
+    },
+    {
+      "id": "B",
+      "content": "Thiếu kỹ năng sử dụng máy tính."
+    },
+    {
+      "id": "C",
+      "content": "Thiếu tính bảo mật dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Thiếu thời gian làm việc."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Môi trường ồn ào và thiết bị âm thanh không đảm bảo sẽ làm giảm khả năng tập trung và chất lượng truyền đạt trong các cuộc họp trực tuyến.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-48",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong môi trường trực tuyến, người dùng NÊN làm gì để bảo vệ thông tin cá nhân của mình?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chia sẻ công khai thông tin với mọi người để tạo sự tin tưởng."
+    },
+    {
+      "id": "B",
+      "content": "Chỉ cung cấp thông tin cần thiết và sử dụng các cài đặt bảo vệ quyền riêng tư."
+    },
+    {
+      "id": "C",
+      "content": "Đăng tải toàn bộ giấy tờ tùy thân lên mạng xã hội."
+    },
+    {
+      "id": "D",
+      "content": "Không cần quan tâm đến cài đặt mật khẩu tài khoản."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Để tránh bị xâm phạm đời tư, người dùng chỉ nên cung cấp thông tin thực sự cần thiết và kích hoạt các chế độ bảo mật, xác thực 2 lớp.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-49",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Theo Quyết định số 874/QĐ-BTTTT ngày 17 tháng 6 năm 2021, văn bản nào dưới đây được Bộ Thông tin và Truyền thông ban hành có liên quan đến việc trao đổi thông tin trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Bộ luật về An ninh mạng."
+    },
+    {
+      "id": "B",
+      "content": "Bộ quy tắc ứng xử trên mạng xã hội."
+    },
+    {
+      "id": "C",
+      "content": "Bộ quy tắc giao tiếp trên không gian mạng."
+    },
+    {
+      "id": "D",
+      "content": "Bộ quy tắc bảo đảm an ninh mạng."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Văn bản chính thức do Bộ Thông tin và Truyền thông ban hành ngày 17/6/2021 là \"Bộ quy tắc ứng xử trên mạng xã hội\".",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-50",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cơ quan nào dưới đây có trách nhiệm thực hiện quản lý nhà nước về thông tin trên mạng xã hội và truyền thông tại Việt Nam?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Bộ Công an."
+    },
+    {
+      "id": "B",
+      "content": "Bộ Quốc phòng."
+    },
+    {
+      "id": "C",
+      "content": "Bộ Thông tin và Truyền thông."
+    },
+    {
+      "id": "D",
+      "content": "Bộ Tư pháp."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Bộ Thông tin và Truyền thông là cơ quan quản lý nhà nước về bưu chính, viễn thông, công nghệ thông tin và thông tin điện tử trên mạng.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-51",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Làm thế nào để nhận biết mình có thể đã vô tình bị lừa qua mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Nếu nhận được yêu cầu cung cấp thông tin cá nhân, mã OTP từ người lạ hoặc phát hiện các giao dịch trừ tiền bất thường trên tài khoản."
+    },
+    {
+      "id": "B",
+      "content": "Nếu không sử dụng Internet trong một khoảng thời gian dài."
+    },
+    {
+      "id": "C",
+      "content": "Nếu thấy quảng cáo xuất hiện trên trang báo điện tử."
+    },
+    {
+      "id": "D",
+      "content": "Nếu nhận được thư chúc mừng sinh nhật từ bạn bè."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Xuất hiện các biến động số dư bất thường, bị đổi mật khẩu ngoài ý muốn hoặc bị kẻ lạ yêu cầu gửi mã OTP là dấu hiệu rõ ràng đã bị tấn công lừa đảo.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-52",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Tại sao cần đặt mình vào vị trí của người khác khi giao tiếp trên mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Để tăng cường sự cạnh tranh và tranh cãi trên mạng."
+    },
+    {
+      "id": "B",
+      "content": "Để tránh phải lắng nghe ý kiến của người khác."
+    },
+    {
+      "id": "C",
+      "content": "Cần đặt mình vào vị trí người khác để tăng cường sự thông cảm, hiểu biết và tránh gây tổn thương tinh thần cho nhau."
+    },
+    {
+      "id": "D",
+      "content": "Để thể hiện sự vượt trội của bản thân so với người khác."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án C. Đặt mình vào vị trí của đối phương giúp ta thấu hiểu cảm xúc, thận trọng hơn trong từng câu chữ và gìn giữ văn hóa giao tiếp lịch thiệp.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-53",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Hành động nào sau đây NÊN TRÁNH khi ai đó mắc lỗi hoặc có sơ suất với bạn trên không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Nhắn tin riêng góp ý nhẹ nhàng và mang tính xây dựng."
+    },
+    {
+      "id": "B",
+      "content": "Công khai chỉ trích, bêu riếu hoặc xỉ nhục người đó trên diễn đàn chung."
+    },
+    {
+      "id": "C",
+      "content": "Bỏ qua những lỗi nhỏ và thể hiện sự rộng lượng."
+    },
+    {
+      "id": "D",
+      "content": "Lắng nghe lời giải thích và xin lỗi của đối phương."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Bêu riếu, xúc phạm danh dự người khác trước đám đông mạng là hành vi kích động bắt nạt tập thể, cần tuyệt đối tránh.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-54",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Ngôn từ bất lịch sự, khiêu khích có thể dẫn đến hậu quả gì trong giao tiếp trực tuyến?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Khuyến khích sự hợp tác và đoàn kết giữa các thành viên."
+    },
+    {
+      "id": "B",
+      "content": "Giúp cuộc trò chuyện trở nên sôi nổi và thú vị hơn."
+    },
+    {
+      "id": "C",
+      "content": "Nâng cao uy tín của người phát ngôn."
+    },
+    {
+      "id": "D",
+      "content": "Gây hiểu lầm, leo thang xung đột và tổn thương cảm xúc của người khác."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án D. Lời lẽ thô lỗ, khiêu khích dễ thổi bùng lên các cuộc khẩu chiến, gây thù hằn và ảnh hưởng nặng nề đến tâm lý người tham gia.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-55",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi ứng xử trong không gian mạng, nguyên tắc nào sau đây người tham gia giao tiếp luôn phải ghi nhớ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Luôn bảo vệ quan điểm của mình bằng mọi giá, không nhượng bộ."
+    },
+    {
+      "id": "B",
+      "content": "Lịch sự, tôn trọng người khác và tuân thủ các quy định của pháp luật."
+    },
+    {
+      "id": "C",
+      "content": "Chia sẻ mọi thông tin cá nhân lên trang mạng để chứng minh sự minh bạch."
+    },
+    {
+      "id": "D",
+      "content": "Được tự do xúc phạm người khác vì không gian mạng là thế giới ảo."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Thế giới ảo nhưng trách nhiệm thực: hành xử văn minh, tôn trọng người khác và tuân thủ pháp luật là nguyên tắc bất di bất dịch.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-56",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi ứng xử trong không gian mạng, người tham gia KHÔNG NÊN thực hiện hành vi nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tôn trọng pháp luật và tôn trọng quyền riêng tư của mọi người."
+    },
+    {
+      "id": "B",
+      "content": "Sẵn sàng chịu trách nhiệm với những phát ngôn và bài đăng của mình."
+    },
+    {
+      "id": "C",
+      "content": "Chia sẻ, lan tỏa những tấm gương người tốt, việc tốt."
+    },
+    {
+      "id": "D",
+      "content": "Phát tán các thông tin không rõ nguồn gốc, thông tin chưa được kiểm chứng hoặc vi phạm pháp luật."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án D. Phát tán tin giả, thông tin thất thiệt chưa kiểm chứng là hành vi vi phạm pháp luật an ninh mạng và làm nhiễu loạn dư luận.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-57",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Nội dung nào dưới đây KHÔNG phải là hạn chế thường gặp khi giao tiếp trong không gian mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Giao tiếp không bị giới hạn bởi không gian và thời gian."
+    },
+    {
+      "id": "B",
+      "content": "Thiếu các tín hiệu phi ngôn ngữ như nét mặt, ánh mắt, ngôn ngữ cơ thể."
+    },
+    {
+      "id": "C",
+      "content": "Nguy cơ rò rỉ dữ liệu và xâm phạm quyền riêng tư."
+    },
+    {
+      "id": "D",
+      "content": "Sự cố mạng hoặc thiết bị làm gián đoạn cuộc trò chuyện."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án A. Không bị giới hạn bởi không gian và thời gian là ƯU ĐIỂM lớn của không gian mạng, không phải là hạn chế.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-MC-58",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Đặc điểm \"thiếu sự gần gũi, thân thiết\" khi giao tiếp trong không gian mạng chủ yếu là do nguyên nhân nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Mọi người dễ dàng giả mạo danh tính của mình trên mạng."
+    },
+    {
+      "id": "B",
+      "content": "Người dùng chỉ tiếp xúc qua màn hình, thiếu các yếu tố ngôn ngữ cơ thể và cảm xúc trực tiếp."
+    },
+    {
+      "id": "C",
+      "content": "Đường truyền mạng Internet không có tốc độ cao."
+    },
+    {
+      "id": "D",
+      "content": "Thời gian giao tiếp trên mạng quá ngắn so với gặp trực tiếp."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nhớ lại kiến thức về văn hóa ứng xử, phòng chống lừa đảo mạng hoặc ưu/nhược điểm của giao tiếp trực tuyến.",
+    "level2_formula": "Xác định từ khóa chính trong câu hỏi (Ví dụ: 'Phishing', 'Văn hóa ứng xử', 'Ưu điểm', 'Quyết định 874/QĐ-BTTTT') để loại trừ các phương án sai.",
+    "level3_steps": "Đối chiếu nội dung câu hỏi với chuẩn mực đạo đức, quy tắc pháp luật và bài học Chuyên đề 11D, 12D để chọn đáp án chính xác nhất."
+  },
+  "explanation": "Đáp án B. Việc ngăn cách bởi màn hình thiết bị và thiếu đi hơi ấm, giọng nói, ánh mắt trực tiếp khiến giao tiếp mạng khó tạo được sự thân mật, gắn kết sâu sắc như gặp gỡ ngoài đời.",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11D12D-TF-01",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Nguyên tắc để hạn chế thiệt hại nếu nghi ngờ rằng mình có thể vô tình bị lừa qua mạng, hãy đánh giá các hành vi sau đây:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Đổi mật khẩu và kích hoạt xác minh 2 bước ngay lập tức sẽ chặn kẻ gian tiếp tục truy cập trái phép vào tài khoản.)\n- Ý b) : Sai (Sai. Khi đã bị thiệt hại tài sản hoặc lộ dữ liệu, cần trình báo ngay cơ quan công an / cơ quan an ninh mạng để kịp thời điều tra xử lý.)\n- Ý c) : Đúng (Đúng. Báo ngay cho ngân hàng phát hành thẻ để kịp thời phong tỏa tài khoản, ngăn chặn các giao dịch chuyển tiền trái phép.)\n- Ý d) : Sai (Sai. Tuyệt đối không chuyển tiền khi nhận được yêu cầu bất ngờ từ người lạ hoặc qua tin nhắn mạng xã hội chưa được xác thực.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Lập tức thay đổi mật khẩu cho những tài khoản giao tiếp qua mạng bị ảnh hưởng. Cần thiết lập xác minh hai bước cho những tài khoản quan trọng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Nếu đã bị thiệt hại, không cần báo cho cơ quan chức năng biết vì khó có thể tìm lại được.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Nếu đã lỡ chia sẻ thông tin về thẻ tín dụng, tài khoản cá nhân, hãy báo ngay cho ngân hàng biết để khóa thẻ/khóa tài khoản.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Thực hiện thao tác chuyển tiền ngay khi có yêu cầu chuyển khoản lạ mà không cần kiểm tra, xác minh thông tin.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-02",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Những hành vi nào dưới đây có thể dẫn đến vi phạm pháp luật khi sử dụng Internet?",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Hành vi đe dọa, xúc phạm danh dự nhân phẩm người khác trên mạng vi phạm Luật An ninh mạng.)\n- Ý b) : Đúng (Đúng. Phát tán thông tin sai sự thật, văn hóa phẩm độc hại là hành vi bị pháp luật nghiêm cấm.)\n- Ý c) : Đúng (Đúng. Vi phạm bản quyền sở hữu trí tuệ trên mạng internet sẽ bị xử lý vi phạm theo Luật Sở hữu trí tuệ.)\n- Ý d) : Sai (Sai. Đây là hành vi đúng đắn và chuẩn mực của công dân số, không phải hành vi vi phạm pháp luật.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Bắt nạt hoặc tiếp tay cho kẻ bắt nạt, đe dọa người khác trên mạng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Lan truyền tin giả, bài viết xuyên tạc sự thật, hình ảnh đồi trụy hoặc kích động bạo lực.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Ăn cắp thông tin, sao chép trái phép tài liệu trên mạng (vi phạm bản quyền tác giả).",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Tuân thủ pháp luật Việt Nam, tôn trọng quyền và lợi ích hợp pháp của cá nhân và tổ chức.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-03",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Hiện nay giao tiếp qua không gian mạng đang là xu thế trong xã hội hiện đại. Hãy đánh giá các đặc điểm sau:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Không gian mạng xóa bỏ rào cản địa lý, kết nối toàn cầu nhanh chóng.)\n- Ý b) : Đúng (Đúng. Việc liên lạc qua Internet giúp tiết kiệm tối đa chi phí đi lại và tổ chức.)\n- Ý c) : Sai (Sai. Phần lớn các trao đổi trên mạng (email, tin nhắn, bài đăng mạng xã hội) là giao tiếp không đồng bộ.)\n- Ý d) : Đúng (Đúng. Sự đa dạng của các công cụ kỹ thuật số cho phép người dùng tùy chọn kênh tương tác tối ưu.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Giao tiếp qua mạng cho phép kết nối với người ở bất kỳ đâu trên thế giới, mở rộng mối quan hệ và cơ hội hợp tác.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Nhiều nền tảng giao tiếp trực tuyến miễn phí hoặc có chi phí rất thấp so với việc gặp mặt trực tiếp.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Đa số các giao tiếp trong không gian mạng là giao tiếp đồng bộ.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Có nhiều hình thức giao tiếp như nhắn tin, gọi video, hội thảo trực tuyến, giúp người dùng lựa chọn theo nhu cầu.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-04",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Giao tiếp qua không gian mạng có rất nhiều ưu điểm song bên cạnh đó cũng tồn tại nhiều rủi ro và nguy cơ tiềm ẩn:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Lạm dụng Internet gây lối sống thụ động, mỏi mắt, rối loạn giấc ngủ và giảm tương tác thực tế.)\n- Ý b) : Sai (Sai. Giao tiếp qua mạng không thể thay thế hoàn toàn gặp gỡ trực tiếp vì thiếu vắng sự biểu đạt cảm xúc và tiếp xúc thể chất.)\n- Ý c) : Đúng (Đúng. Môi trường mạng luôn tiềm ẩn nguy cơ tin tặc đánh cắp dữ liệu cá nhân.)\n- Ý d) : Đúng (Đúng. Tội phạm mạng thường lợi dụng sự ẩn danh để dàn dựng nhiều kịch bản lừa đảo tinh vi.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Nghiện Internet dẫn đến ảnh hưởng tiêu cực đến sức khỏe thể chất và đời sống tinh thần.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Giao tiếp trong không gian mạng có thể thay thế hoàn toàn cho phương pháp giao tiếp trực tiếp.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Dữ liệu cá nhân dễ bị rò rỉ hoặc bị đánh cắp qua các cuộc tấn công mạng, khiến người dùng gặp rủi ro về bảo mật.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Xuất hiện nhiều hình thức lừa đảo trong giao tiếp qua mạng, từ lừa đảo tài chính đến lừa đảo tình cảm.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-05",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Ứng xử nhân văn trên không gian mạng góp phần tạo nên một cộng đồng tốt đẹp. Hãy đánh giá các hành vi sau:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Sai. Tiết lộ thông tin riêng tư của người khác khi chưa được phép là hành vi vi phạm đạo đức và pháp luật.)\n- Ý b) : Sai (Sai. Cần góp ý văn minh, mang tính xây dựng, không tham gia bạo lực mạng hay kích động tẩy chay độc hại.)\n- Ý c) : Đúng (Đúng. Ý thức trách nhiệm với phát ngôn và hành vi cá nhân là nền tảng của văn hóa ứng xử nhân văn.)\n- Ý d) : Đúng (Đúng. Sự cảm thông, lắng nghe và chia sẻ chân thành giúp lan tỏa hơi ấm tình người trong thế giới ảo.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Tiết lộ thông tin cá nhân của người khác mà không có sự đồng ý, bao gồm cả hình ảnh và thông tin nhạy cảm.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Lên án gay gắt, mạt sát tập thể mỗi khi phát hiện có người làm việc sai sót trên mạng xã hội.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Nhận thức rằng những gì mình đăng tải có thể ảnh hưởng đến người khác và sẵn sàng đứng ra nhận trách nhiệm về lời nói và hành động của mình.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Thấu hiểu và chia sẻ cảm xúc của người khác, thể hiện sự đồng cảm khi họ chia sẻ vấn đề cá nhân khó khăn.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-06",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Minh thường xuyên chia sẻ hình ảnh và thông tin cá nhân của mình lên mạng xã hội mà không để ý đến các quyền cài đặt riêng tư. Bạn An đưa ra các nhận định sau:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Các nền tảng đều cung cấp tính năng phân quyền: chỉ bạn bè, nhóm cụ thể hoặc chỉ mình tôi.)\n- Ý b) : Sai (Sai. Nếu đặt bài viết ở chế độ công khai, bất kỳ ai trên Internet đều có thể thu thập thông tin của Minh.)\n- Ý c) : Đúng (Đúng. Báo cáo tài khoản mạo danh hoặc bài viết vi phạm quyền riêng tư là biện pháp bảo vệ bản thân hiệu quả.)\n- Ý d) : Sai (Sai. Người dùng luôn có quyền tự xóa bài đăng, gỡ ảnh hoặc yêu cầu nhà cung cấp dịch vụ xóa dữ liệu cá nhân theo quy định.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Minh có thể kiểm soát ai được xem thông tin cá nhân của mình trên mạng xã hội thông qua cài đặt quyền riêng tư.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Minh nên tự động chia sẻ mọi thông tin cá nhân lên mạng xã hội mà không lo lắng, vì mạng xã hội sẽ tự động bảo vệ dữ liệu cho người dùng.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Nếu cảm thấy lo lắng hoặc thông tin cá nhân của mình bị người khác sử dụng trái mục đích, Minh có thể báo cáo vi phạm cho ban quản trị mạng xã hội.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Minh không có quyền yêu cầu các nền tảng trực tuyến xóa các thông tin cá nhân của mình đã tải lên trước đó.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-07",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong một buổi hoạt động ngoại khóa tìm hiểu về an toàn thông tin trên Internet, các bạn học sinh thảo luận về cách bảo mật thông tin tài khoản. Hãy đánh giá các ý kiến sau:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Sai. Mật khẩu là bí mật tuyệt đối của cá nhân, không được chia sẻ cho bất kỳ ai kể cả bạn thân.)\n- Ý b) : Đúng (Đúng. Đổi mật khẩu định kỳ giúp vô hiệu hóa nguy cơ nếu mật khẩu cũ từng bị lộ trên các tệp rò rỉ dữ liệu.)\n- Ý c) : Sai (Sai. Cài đặt thêm phần mềm diệt virus/bảo mật chuyên dụng và cập nhật thường xuyên giúp chống lại các mã độc mới tinh vi.)\n- Ý d) : Đúng (Đúng. Đa phần các vụ cài mã độc gián điệp hay đánh cắp tài khoản đều bắt nguồn từ việc nhấp vào link lạ.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Chỉ nên chia sẻ mật khẩu với những người bạn thân tin tưởng để đảm bảo an toàn tài khoản.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Thay đổi mật khẩu định kỳ giúp giảm thiểu nguy cơ bị xâm nhập tài khoản ngoài ý muốn.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Cài đặt phần mềm bảo mật là không cần thiết vì hệ điều hành đã có sẵn chức năng bảo mật hoàn hảo.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Cảnh giác và không nhấp vào các liên kết hoặc tệp đính kèm không rõ nguồn gốc giúp bảo vệ dữ liệu cá nhân.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-08",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Lan tham khảo tài liệu trên Internet và thấy một bản báo cáo đề tài từng đạt giải thưởng cấp tỉnh. Lan tải về máy nhưng biết tài liệu này có bản quyền. Đánh giá các phát biểu sau:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Tôn trọng quyền tác giả và trích dẫn nguồn minh bạch là quy tắc đạo đức học thuật bắt buộc.)\n- Ý b) : Sai (Sai. Bản quyền tác phẩm vẫn được pháp luật bảo hộ trên không gian mạng; sao chép toàn bộ để dự thi là vi phạm bản quyền.)\n- Ý c) : Đúng (Đúng. Đạo văn hoặc sao chép công trình nghiên cứu của người khác để dự thi sẽ bị hủy kết quả và xử lý kỷ luật.)\n- Ý d) : Sai (Sai. Phát tán tác phẩm có bản quyền không được phép là hành vi xâm phạm quyền tác giả.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Lan nên xin phép tác giả hoặc ghi rõ nguồn gốc khi sử dụng các phần trích dẫn từ tài liệu có bản quyền.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Tài liệu trên Internet thì bất cứ ai cũng có thể tự do sao chép làm của mình cho mục đích học tập mà không cần xin phép.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Lan có thể bị xử lý vi phạm bản quyền nếu sao chép nguyên văn và đăng ký dự thi mang tên mình.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Lan có thể thoải mái chia sẻ phát tán tài liệu có bản quyền lên các hội nhóm công khai mà không cần ghi nguồn.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-09",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Hương là tình nguyện viên tích cực, cô thường xuyên chia sẻ những câu chuyện và hình ảnh thiện nguyện ý nghĩa trên mạng xã hội. Đánh giá các ý kiến sau:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Những câu chuyện người tốt việc tốt giúp lan tỏa năng lượng tích cực và xây dựng cộng đồng nhân văn.)\n- Ý b) : Sai (Sai. Môi trường mạng rất cần những thông điệp đẹp để lấn át những tin tức độc hại, tiêu cực.)\n- Ý c) : Đúng (Đúng. Khuyến khích điều thiện tạo nên hiệu ứng xã hội tích cực, gắn kết mọi người.)\n- Ý d) : Sai (Sai. Mạng xã hội là kênh truyền thông cộng đồng mạnh mẽ để kết nối và kêu gọi tương trợ đồng bào khi gặp khó khăn.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Việc Hương chia sẻ những nội dung tích cực giúp truyền cảm hứng và lan tỏa lòng nhân ái đến nhiều người.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Chia sẻ tích cực trên mạng xã hội là không cần thiết vì người khác có thể tự tìm thấy niềm vui riêng.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Hành động khuyến khích người khác nói lời hay và làm việc thiện sẽ giúp tạo ra cộng đồng mạng văn minh.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Nên hạn chế tuyệt đối việc chia sẻ các hoạt động thiện nguyện vì mạng xã hội chỉ là nơi giải trí cá nhân.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-10",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Khi phát hiện một bài viết mang tính xúc phạm, nhục mạ người khác trên mạng xã hội, Nam quyết định không tham gia bình luận mà báo cáo bài viết vi phạm:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Không hùa theo bạo lực mạng và báo cáo vi phạm là hành động ứng xử rất văn minh.)\n- Ý b) : Sai (Sai. Việc nhảy vào chửi bới, công kích ngược lại sẽ làm leo thang bạo lực ngôn từ và biến mình thành người vi phạm.)\n- Ý c) : Đúng (Đúng. Báo cáo vi phạm giúp thuật toán và ban quản trị nhanh chóng gỡ bỏ nội dung xấu độc.)\n- Ý d) : Sai (Sai. Quyền tự do ngôn luận không bao gồm quyền xúc phạm, bôi nhọ danh dự hay vi phạm pháp luật đối với người khác.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Nam đã thể hiện sự tôn trọng và tính nhân văn trong cách ứng xử trước các nội dung tiêu cực trên mạng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Nam nên viết thêm những bình luận công kích người đăng bài để bảo vệ nạn nhân một cách gay gắt.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Báo cáo bài viết vi phạm cho ban quản trị là cách xử lý đúng đắn để ngăn chặn nội dung độc hại lan truyền.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Nam không nên làm gì cả vì mỗi cá nhân đều có quyền tuyệt đối đăng bất cứ nội dung gì họ muốn lên trang cá nhân.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-11",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Bạn C có một bức ảnh chụp chung với bạn D và vài người bạn trong một buổi họp mặt và muốn đăng lên mạng xã hội. Đánh giá cách xử lý của bạn C:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Sai. Không được tự ý đăng ảnh rõ mặt người khác khi chưa có sự đồng ý của họ.)\n- Ý b) : Đúng (Đúng. Hỏi ý kiến trước khi đăng ảnh thể hiện sự tôn trọng quyền riêng tư của bạn bè.)\n- Ý c) : Sai (Sai. Dù tag ai thì bức ảnh vẫn công khai hình ảnh của những người chưa đồng ý.)\n- Ý d) : Đúng (Đúng. Đây là cách ứng xử lịch sự, tôn trọng mong muốn riêng tư của người khác.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Bạn C đăng ảnh lên mà không hỏi ý kiến ai vì cho rằng buổi họp mặt vui vẻ không có gì nhạy cảm.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Bạn C hỏi ý kiến tất cả mọi người có mặt trong ảnh trước khi đăng để đảm bảo không ai cảm thấy khó chịu.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Bạn C đăng ảnh lên công khai nhưng chỉ gắn thẻ (tag) tên những người bạn thân thiết nhất.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Nếu có người không đồng ý xuất hiện, bạn C có thể chỉnh sửa cắt ảnh hoặc chỉ đăng hình ảnh của cá nhân mình.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-12",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Bạn A kết bạn với B trên diễn đàn du lịch. B giới thiệu là người bản xứ khu vực X và chia sẻ nhiều kinh nghiệm. Tuy nhiên, B là sinh viên ngành khác, không học về lịch sử du lịch. Đánh giá tính xác thực của thông tin từ B:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Sai. Kinh nghiệm cá nhân có thể mang tính chủ quan hoặc nhầm lẫn, không thể coi là tuyệt đối chuẩn xác.)\n- Ý b) : Đúng (Đúng. Cần kiểm chứng lại qua sách báo, cổng thông tin du lịch chính thức của địa phương.)\n- Ý c) : Sai (Sai. Không thể dùng chia sẻ diễn đàn không được kiểm định để làm tài liệu nghiên cứu.)\n- Ý d) : Đúng (Đúng. Luôn duy trì tư duy phản biện và cẩn trọng với thông tin truyền miệng trên không gian mạng.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Thông tin của B chắc chắn có tính chân thực tuyệt đối vì là người sinh sống tại đó.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Thông tin của B thiếu cơ sở kiểm chứng khoa học, cần phải đối chiếu với các nguồn tài liệu chính thống.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Có độ chính xác cao và có thể trích dẫn làm tài liệu khoa học mà không cần tra cứu thêm.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Tính chân thực không rõ ràng, cần phải thận trọng khi tiếp nhận và sử dụng những thông tin này.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-13",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Tính nhân văn thể hiện trong các tình huống giao tiếp trên không gian mạng sau đây là đúng hay sai?",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Tác phong nghiêm túc khi học online thể hiện sự tôn trọng công sức của giáo viên và tập thể lớp.)\n- Ý b) : Sai (Sai. Lắng nghe và tôn trọng lẫn nhau là yếu tố quyết định sự thành bại và chất lượng của buổi thảo luận.)\n- Ý c) : Đúng (Đúng. Thái độ nhã nhặn giúp gắn kết mọi người và tạo lập môi trường giao lưu lành mạnh.)\n- Ý d) : Sai (Sai. Bảo vệ môi trường sống chung của cộng đồng là một hành động mang tính nhân văn sâu sắc.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Việc ăn mặc lịch sự và thái độ nghiêm túc khi tham gia lớp học trực tuyến thể hiện tính nhân văn và sự tôn trọng thầy cô, bạn bè.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Việc lắng nghe và tôn trọng ý kiến của người khác trong giao tiếp trực tuyến không ảnh hưởng gì đến chất lượng cuộc thảo luận.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Tôn trọng và cư xử lịch thiệp trong các cuộc thảo luận trên mạng xã hội giúp xây dựng mối quan hệ tích cực giữa các thành viên.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Tham gia diễn đàn bảo vệ môi trường chỉ là một hình thức giao tiếp bình thường, không liên quan gì đến tính nhân văn.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-14",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong một nhóm thảo luận trực tuyến, thành viên E đưa ra ý kiến. Thành viên F không đồng ý và có hành động chỉ trích cùng lời đe dọa với E. Đánh giá cách xử lý của E:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Sai (Sai. Khi bị đe dọa, không nên coi thường mà cần có biện pháp an toàn ngăn chặn nguy cơ.)\n- Ý b) : Đúng (Đúng. Giữ bình tĩnh giúp không làm bùng phát thêm tranh cãi tiêu cực.)\n- Ý c) : Sai (Sai. Đáp trả bằng ngôn từ thô bạo sẽ biến cuộc thảo luận thành vi phạm quy tắc ứng xử của nhóm.)\n- Ý d) : Đúng (Đúng. Báo cáo vi phạm cho quản trị viên là cách xử lý văn minh và hiệu quả để duy trì nội quy nhóm.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Thành viên E bỏ qua bình luận của F và tiếp tục thảo luận mà không có bất kỳ biện pháp bảo vệ mình.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Thành viên E giữ bình tĩnh, giải thích lại quan điểm của mình một cách chừng mực để duy trì không khí tôn trọng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Thành viên E đáp trả F bằng những lời lẽ gay gắt, thô lỗ để bảo vệ quan điểm của mình.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Thành viên E thu thập bằng chứng và báo cáo hành vi quấy rối, đe dọa của F với quản trị viên nhóm.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11D12D-TF-15",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-dao-duc-phap-luat-so",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong một diễn đàn quốc tế, một thành viên chia sẻ video về văn hóa truyền thống của nước mình nhưng một số người khác lại để lại bình luận chế giễu, thiếu tôn trọng. Đánh giá các ý kiến sau:",
+  "hints": {
+    "level1_concept": "Đọc kỹ từng mệnh đề và đối chiếu với các nguyên tắc ứng xử văn minh, quy tắc bảo mật và phòng tránh lừa đảo trên mạng.",
+    "level2_formula": "Xác định tính đúng/sai của từng ý a, b, c, d dựa trên cơ sở pháp luật, đạo đức và sự an toàn thông tin cá nhân.",
+    "level3_steps": "Đánh giá lần lượt từng ý a), b), c), d) để chọn Đúng (True) hoặc Sai (False) tương ứng."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng (Đúng. Kỳ thị, miệt thị văn hóa dân tộc khác là hành vi đi ngược lại chuẩn mực đạo đức quốc tế.)\n- Ý b) : Sai (Sai. Phê phán phiến diện mà không tìm hiểu nguồn gốc văn hóa là thái độ định kiến và hẹp hòi.)\n- Ý c) : Sai (Sai. Mọi nền tảng trực tuyến đều có tiêu chuẩn cộng đồng nghiêm cấm hành vi thù hằn và phân biệt đối xử.)\n- Ý d) : Đúng (Đúng. Tôn trọng sự đa dạng văn hóa là giá trị cốt lõi của tính nhân văn trong kỷ nguyên số toàn cầu.)",
+  "sourceDocTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Bình luận chế giễu, không tôn trọng phong tục và truyền thống của một nền văn hóa khác là hành vi thiếu văn minh, không đúng mực.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Người khác có toàn quyền chỉ trích gay gắt văn hóa của một quốc gia mà không cần phải tìm hiểu hay tôn trọng sự khác biệt.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Mọi người nên cảm thấy tự do công kích văn hóa của người khác vì không gian mạng không có quy tắc ràng buộc.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Khuyến khích mọi người tìm hiểu và tôn trọng sự khác biệt văn hóa là cách tốt nhất để duy trì một môi trường giao tiếp tích cực, đoàn kết.",
+      "correctAnswer": true
+    }
+  ]
 }
 ];

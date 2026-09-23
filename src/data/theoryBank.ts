@@ -1383,6 +1383,293 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
       }
     ]
   },
+  "tin-dao-duc-phap-luat-so": {
+  "subjectId": "tin-hoc-12",
+  "subjectName": "Tin học 12",
+  "topicName": "Chuyên đề 11D, 12D: Đạo đức, pháp luật & văn hóa số",
+  "chapterName": "Chủ đề 3: Đạo đức, pháp luật & văn hoá số (Tuần 11)",
+  "docTitle": "Chuyên đề 11D, 12D - DD, VH, PL TRONG MT SO.docx (Google Drive)",
+  "objectives": [
+    "Phân tích được một số dạng lừa đảo phổ biến trên mạng và những biện pháp phòng tránh.",
+    "Giao tiếp được trên mạng qua email, chat, mạng xã hội... và trong môi trường số một cách văn minh.",
+    "Phân tích được ưu và nhược điểm về giao tiếp trong thế giới ảo qua các ví dụ cụ thể.",
+    "Phân tích được tính nhân văn trong ứng xử ở một số tình huống tham gia thế giới ảo."
+  ],
+  "sections": [
+    {
+      "id": "sec-1-lua-dao-qua-mang",
+      "topicId": "tin-dao-duc-phap-luat-so",
+      "title": "1. Lừa đảo qua mạng",
+      "icon": "AlertTriangle",
+      "tag": "1. Các dạng lừa đảo & Phòng tránh",
+      "summary": "1.1. Một số dạng lừa đảo, 1.2. Dấu hiệu (Phishing) & lời khuyên, 1.3. Nguyên tắc hạn chế thiệt hại",
+      "keyTerms": [
+        "Phishing",
+        "Lừa đảo qua mạng",
+        "Trang web giả",
+        "Lấy cắp thông tin cá nhân",
+        "Xác minh 2 bước",
+        "Mật khẩu"
+      ],
+      "content": [
+        {
+          "heading": "1. Lừa đảo qua mạng"
+        },
+        {
+          "heading": "1.1. Một số dạng lừa đảo",
+          "bulletPoints": [
+            {
+              "desc": "Lừa đảo trúng thưởng, tặng quà để lấy tiền phí vận chuyển."
+            },
+            {
+              "desc": "Lừa đảo chiếm tiền đặt cọc hoặc bán hàng giả."
+            },
+            {
+              "desc": "Lừa đảo để lấy cắp thông tin cá nhân."
+            }
+          ]
+        },
+        {
+          "heading": "1.2. Dấu hiệu lừa đảo và lời khuyên phòng ngừa",
+          "text": "- Phishing: lừa đảo để lấy cắp thông tin cá nhân bằng các trang web giả.\n- Một số dấu hiệu: các lỗi chính tả, ngữ pháp; tên miền không khớp; email, tin nhắn từ người lạ; các yêu cầu cung cấp thông tin cá nhân bất thường hoặc các đường link lạ dẫn đến giao diện giả mạo."
+        },
+        {
+          "heading": "1.3. Nguyên tắc để hạn chế thiệt hại",
+          "bulletPoints": [
+            {
+              "desc": "Lập tức thay đổi mật khẩu cho những tài khoản giao tiếp qua mạng bị ảnh hưởng. Cần thiết lập xác minh hai bước cho những tài khoản quan trọng."
+            },
+            {
+              "desc": "Nếu tài khoản bị ảnh hưởng có liên quan đến nhà trường hay một cơ quan, tổ chức, cần thông báo ngay cho quản trị viên hoặc người có trách nhiệm."
+            },
+            {
+              "desc": "Nếu đã lỡ chia sẻ thông tin về thẻ tín dụng, tài khoản cá nhân, hãy báo ngay cho ngân hàng biết."
+            },
+            {
+              "desc": "Nếu đã bị thiệt hại, hãy báo ngay cho cơ quan chức năng để kịp thời điều tra và xử lý."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-2-van-hoa-ung-xu",
+      "topicId": "tin-dao-duc-phap-luat-so",
+      "title": "2. Văn hóa ứng xử trên mạng",
+      "icon": "FileText",
+      "tag": "2. Quy tắc nền tảng & Ứng xử",
+      "summary": "2.1. Quy tắc nền tảng: Thế giới ảo, cuộc sống thực & 2.2. Các nguyên tắc cốt lõi về văn hóa ứng xử",
+      "keyTerms": [
+        "Văn hóa ứng xử",
+        "Thế giới ảo - Cuộc sống thực",
+        "Tôn trọng quyền riêng tư",
+        "Văn hóa nhóm",
+        "Trách nhiệm xã hội"
+      ],
+      "content": [
+        {
+          "heading": "2. Văn hóa ứng xử trên mạng"
+        },
+        {
+          "heading": "2.1. Quy tắc nền tảng: Thế giới ảo, cuộc sống thực",
+          "text": "Trên không gian mạng, các tiêu chuẩn về hành xử có đạo đức, có văn hóa, tuân thủ pháp luật cũng như trong cuộc sống thực. Mọi hành vi trên không gian mạng đều có hậu quả thực tế và phải chịu trách nhiệm trước pháp luật.\nTrong cuộc sống thực, hầu hết mọi người đều tuân thủ pháp luật, hành xử lịch sự, có văn hóa. Một số nguyên tắc dưới đây giúp duy trì các giá trị đạo đức và văn hóa khi giao tiếp trong thế giới ảo."
+        },
+        {
+          "heading": "2.2. Một số nguyên tắc về ứng xử trên mạng",
+          "bulletPoints": [
+            {
+              "label": "Đặt mình vào vị trí người khác:",
+              "desc": "Trước khi đăng tải hoặc bình luận, hãy suy nghĩ xem người khác sẽ cảm thấy thế nào để tránh gây tổn thương."
+            },
+            {
+              "label": "Rộng lượng với người khác, không gây chiến trên mạng:",
+              "desc": "Bình tĩnh, kiềm chế trước các bất đồng quan điểm; không sử dụng từ ngữ xúc phạm hoặc khiêu khích."
+            },
+            {
+              "label": "Tôn trọng “văn hóa nhóm”:",
+              "desc": "Mỗi diễn đàn, cộng đồng trực tuyến đều có nội quy riêng; cần tìm hiểu và tuân thủ quy tắc của nhóm."
+            },
+            {
+              "label": "Tôn trọng thời gian và công sức của người khác:",
+              "desc": "Không gửi tin nhắn rác, không tag người khác bừa bãi vào các nội dung không liên quan."
+            },
+            {
+              "label": "Tôn trọng quyền riêng tư của người khác:",
+              "desc": "Không chia sẻ thông tin, hình ảnh riêng tư của người khác khi chưa được họ đồng ý."
+            },
+            {
+              "label": "Không lợi dụng vị thế của mình để làm việc xấu:",
+              "desc": "Không dùng quyền quản trị, sức ảnh hưởng mạng để bắt nạt hoặc trục lợi cá nhân."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-3-uu-diem-giao-tiep-mang",
+      "topicId": "tin-dao-duc-phap-luat-so",
+      "title": "3. Ưu điểm của giao tiếp trong không gian mạng",
+      "icon": "Sparkles",
+      "tag": "3. Ưu điểm & Lợi ích",
+      "summary": "3.1. Mọi lúc mọi nơi, 3.2. Mở rộng kết nối xã hội, 3.3. Tiết kiệm chi phí, 3.4. Cải thiện kĩ năng giao tiếp",
+      "keyTerms": [
+        "Mọi lúc mọi nơi",
+        "Kết nối xã hội",
+        "Tiết kiệm chi phí",
+        "Lưu trữ thông tin",
+        "Cải thiện kĩ năng"
+      ],
+      "content": [
+        {
+          "heading": "3. Ưu điểm của giao tiếp trong không gian mạng",
+          "text": "Nhờ các phương tiện kĩ thuật số, phương thức/công cụ giao tiếp trực tuyến đa dạng (email/thư điện tử, tin nhắn, mạng xã hội, phòng họp trực tuyến...), giao tiếp trong không gian mạng đem lại nhiều ưu điểm vượt trội:"
+        },
+        {
+          "heading": "3.1. Thực hiện ở mọi lúc, mọi nơi",
+          "text": "Giao tiếp không phụ thuộc vào thời gian và địa điểm cũng như không bị hạn chế về khoảng cách địa lí; hỗ trợ người dùng có thể làm việc và học tập linh hoạt."
+        },
+        {
+          "heading": "3.2. Mở rộng kết nối xã hội và khả năng tương tác",
+          "text": "Cho phép một số lượng lớn người tham gia cùng một lúc với các công cụ giao tiếp đa dạng. Những người cùng sở thích, quan điểm có thể dễ dàng tìm thấy nhau, hợp tác và chia sẻ kiến thức dù ở bất kỳ đâu trên thế giới."
+        },
+        {
+          "heading": "3.3. Tiết kiệm thời gian và công sức hoặc chi phí",
+          "text": "Không gian mạng mở rộng khả năng thực hiện giao tiếp, tiết kiệm đáng kể thời gian và chi phí đi lại, ăn ở so với gặp mặt trực tiếp; dễ dàng lưu trữ và tra cứu lại thông tin trao đổi sau này."
+        },
+        {
+          "heading": "3.4. Có thể cải thiện kĩ năng giao tiếp",
+          "text": "Không gian mạng góp phần xoá bỏ mặc cảm, giảm nhẹ các rào cản như tính nhút nhát, e dè ở bước đầu giao tiếp; hỗ trợ người khuyết tật tham gia trao đổi thông tin bình đẳng."
+        }
+      ]
+    },
+    {
+      "id": "sec-4-han-che-giao-tiep-mang",
+      "topicId": "tin-dao-duc-phap-luat-so",
+      "title": "4. Hạn chế của giao tiếp trong không gian mạng",
+      "icon": "Cpu",
+      "tag": "4. Rủi ro & Hạn chế",
+      "summary": "4.1. Thiếu ngôn ngữ hình thể, 4.2. Giảm hiệu quả, 4.3. Nghiện Internet, 4.4. Nguy cơ bảo mật & riêng tư, 4.5. Phụ thuộc công nghệ",
+      "keyTerms": [
+        "Phi ngôn ngữ",
+        "Nghiện Internet",
+        "Rò rỉ dữ liệu",
+        "Bảo mật thông tin",
+        "Bắt nạt trên mạng",
+        "Giao tiếp không đồng bộ"
+      ],
+      "content": [
+        {
+          "heading": "4. Hạn chế của giao tiếp trong không gian mạng",
+          "text": "Bên cạnh những ưu điểm, giao tiếp trong không gian mạng có những hạn chế hoặc gặp phải những vấn đề sau:"
+        },
+        {
+          "heading": "4.1. Thiếu ngôn ngữ hình thể, thiếu tín hiệu cảm xúc",
+          "text": "Một số phương thức giao tiếp trên không gian mạng như thư điện tử hay tin nhắn thiếu ngôn ngữ hình thể, thiếu các tín hiệu cảm xúc, thiếu âm điệu của tiếng nói. Điều này có thể xảy ra hiểu lầm vì diễn giải sai ý nghĩa của lời văn. Thiếu tín hiệu phi ngôn ngữ (nét mặt, ngôn ngữ cơ thể và biểu cảm giọng nói) sẽ gây khó khăn trong truyền đạt cảm xúc và dẫn đến hiểu lầm không đáng có. Tín hiệu phi ngôn ngữ không được truyền tải, nhận diện một cách đầy đủ, tiềm ẩn khả năng thiếu trung thực và độ tin cậy. Ví dụ, tội phạm giả mạo đơn vị, tổ chức hoặc cá nhân tin cậy để lừa đảo người dùng."
+        },
+        {
+          "heading": "4.2. Giảm hiệu quả giao tiếp",
+          "text": "Giao tiếp trong không gian mạng có thể làm giảm kĩ năng viết, sai chính tả, sai ngữ pháp, sử dụng từ viết tắt tuỳ tiện. Đôi khi giao tiếp thiếu tập trung, bị phân tán, giảm hiệu quả tương tác. Ví dụ, học sinh đang học trực tuyến nhưng bị sao nhãng bởi tin nhắn, email, điện thoại."
+        },
+        {
+          "heading": "4.3. Nghiện Internet",
+          "text": "Nghiện Internet/nghiện mạng có thể gây tổn hại tinh thần và vật chất. Thói quen lạm dụng công nghệ tạo ra sự lười biếng. Ví dụ, gửi tin nhắn đến một người ở ngay cùng phòng thay vì đến gần để trò chuyện trực tiếp. Dành quá nhiều thời gian trên không gian mạng để giao lưu dẫn đến ít trải nghiệm cuộc sống thực, ngây ngô trong giao tiếp, khó hoà nhập với cộng đồng. Giao tiếp trong không gian mạng cũng có thể dẫn đến trải nghiệm giao tiếp kém hiệu quả so với giao tiếp trực tiếp."
+        },
+        {
+          "heading": "4.4. Nguy cơ về bảo mật, quyền riêng tư",
+          "text": "Giao tiếp trong không gian mạng có thể gặp một số rủi ro về bảo mật và quyền riêng tư: bị lộ hoặc mất thông tin cá nhân, bị lộ mật khẩu, bị tấn công mạng, bị xâm phạm dữ liệu, các thông tin riêng tư và nhạy cảm; bị rình rập, quấy rối, bắt nạt. Việc dùng cùng mật khẩu cho nhiều tài khoản hoặc mật khẩu dễ đoán có thể bị mạo danh, đánh cắp hoặc thay đổi thông tin. Trong không gian mạng, kẻ xấu dễ dàng giấu mặt, tạo các bản sao không đầy đủ của bản thân hoặc giả mạo thông tin, làm người khác khó đánh giá tính chân thật của thông tin và sự thật về người đối diện."
+        },
+        {
+          "heading": "4.5. Phụ thuộc vào phương tiện giao tiếp kĩ thuật số",
+          "text": "Giao tiếp trong không gian mạng có thể gặp sự cố mất kết nối mạng và phần mềm không tương thích, gây cản trở giao tiếp, dẫn đến giao tiếp bị trì hoãn, gián đoạn, mất tính tự nhiên. Ví dụ, đang họp trực tuyến hoặc gửi email do kết nối Internet chập chờn nên thông tin không được truyền tải đầy đủ và đúng cách có thể dẫn đến hiểu lầm, chậm trễ trong công việc. Do đó, giao tiếp trong không gian mạng đòi hỏi sự chú ý trong quản lí tài nguyên mạng, quản lí kĩ thuật chặt chẽ để đảm bảo tính an toàn và ổn định của mạng."
+        }
+      ]
+    },
+    {
+      "id": "sec-5-ung-xu-nhan-van",
+      "topicId": "tin-dao-duc-phap-luat-so",
+      "title": "5. Ứng xử nhân văn trong không gian mạng",
+      "icon": "Compass",
+      "tag": "5. Tính nhân văn & Hành động đẹp",
+      "summary": "5.1. Đồng cảm & thấu hiểu, 5.2. Ứng xử có văn hóa, 5.3. Lan tỏa việc tốt, 5.4. Phê phán hành vi xấu văn minh",
+      "keyTerms": [
+        "Tính nhân văn",
+        "Đồng cảm",
+        "Người tốt việc tốt",
+        "Thông tin kiểm chứng",
+        "Quyết định 874/QĐ-BTTTT",
+        "Bộ quy tắc ứng xử MXH"
+      ],
+      "content": [
+        {
+          "heading": "5. Ứng xử nhân văn trong không gian mạng",
+          "text": "Ứng xử nhân văn trên không gian mạng nhằm góp phần tạo ra hiệu ứng xã hội tích cực, lan tỏa những giá trị nhân văn. Tính nhân văn và ứng xử nhân văn trong không gian mạng thể hiện qua những khía cạnh sau:"
+        },
+        {
+          "heading": "5.1. Hiểu và đồng cảm khi tham gia không gian mạng",
+          "bulletPoints": [
+            {
+              "desc": "Đồng cảm khi biết tin tức về thiên tai, thảm hoạ gây thiệt hại về tài sản vật chất hay tính mạng con người với đồng bào của mình."
+            },
+            {
+              "desc": "Cảm thông với người khác và hiểu được những khó khăn mà họ gặp phải. Cố gắng đặt mình vào hoàn cảnh của người khác để có thể hiểu được những suy nghĩ, tình cảm, vấn đề của họ. Khi thấu hiểu được người khác, ta sẽ có khả năng giúp đỡ họ hiệu quả hơn."
+            }
+          ]
+        },
+        {
+          "heading": "5.2. Ứng xử có văn hoá, thể hiện tính nhân văn trên không gian mạng",
+          "bulletPoints": [
+            {
+              "desc": "Không mạo danh, giả làm người khác với bất kì mục đích gì, kể cả là vui đùa, giải trí. Không tiếp tay cho kẻ bắt nạt, quấy rối trên không gian mạng; không tham gia phát tán những nội dung có tính bắt nạt, quấy rối."
+            },
+            {
+              "desc": "Đưa tin phản ánh chân thực và ca ngợi người tốt, việc tốt. Chia sẻ thông tin chính xác và đáng tin cậy, tránh lan truyền thông tin sai lệch hoặc tin đồn. Tránh gửi nội dung thư rác hoặc quảng cáo không liên quan đến nội dung chính của cuộc trò chuyện."
+            },
+            {
+              "desc": "Tôn trọng quyền riêng tư, không phát tán thông tin riêng tư của người khác mà không được sự cho phép của họ; tôn trọng quan điểm và suy nghĩ của mỗi người, không bắt buộc họ phải chấp nhận hoặc chia sẻ quan điểm của mình, cũng như không châm chọc làm người khác tổn thương."
+            },
+            {
+              "desc": "Sử dụng ngôn ngữ đúng mực, không sử dụng ngôn ngữ nhạy cảm, lăng mạ, châm chọc, phỉ báng hoặc phân biệt chủng tộc, giới tính, tôn giáo. Khi trao đổi với người khác trên mạng xã hội, nếu không cùng quan điểm cần trao đổi một cách lịch sự trên cơ sở tôn trọng quan điểm của mỗi cá nhân, không sử dụng từ ngữ khiêu khích, phân biệt chủng tộc, sắc tộc, giới tính hoặc tôn giáo để tấn công cá nhân."
+            }
+          ]
+        },
+        {
+          "heading": "5.3. Ủng hộ và tham gia việc tốt trên không gian mạng",
+          "bulletPoints": [
+            {
+              "desc": "Ủng hộ, đánh giá cao và ca ngợi những việc làm tích cực, con người tốt, việc làm tốt; vận động mọi người ủng hộ và tham gia trực tiếp hỗ trợ đồng bào bị thiệt hại về tài sản, tính mạng trong thiên tai, thảm hoạ."
+            },
+            {
+              "desc": "Luôn sẵn sàng giúp đỡ, hỗ trợ người khác khi họ gặp khó khăn hoặc cần sự giúp đỡ, kể cả khi đó chỉ là lời động viên, chia sẻ chân thành để xây dựng một cộng đồng trực tuyến mạnh mẽ, cùng nhau vượt qua khó khăn và phát triển."
+            },
+            {
+              "desc": "Không chia sẻ hay truyền tải những thông tin về hoàn cảnh khó khăn mà chưa tìm hiểu rõ ràng; đánh giá chính xác mức độ của thông tin để có giải pháp hỗ trợ phù hợp."
+            },
+            {
+              "desc": "Kêu gọi mọi người chỉ đăng tải thông tin đã được kiểm chứng, không vi phạm pháp luật; lan tỏa những hình ảnh tích cực về các hoạt động tình nguyện, tránh sử dụng từ ngữ kích động, tiêu cực, hỗ trợ những người yếu thế, tôn trọng sự khác biệt để tạo ra một xã hội trực tuyến tích cực."
+            }
+          ]
+        },
+        {
+          "heading": "5.4. Phê phán và phản đối những việc xấu trên không gian mạng",
+          "bulletPoints": [
+            {
+              "desc": "Bày tỏ sự không đồng tình và phê phán; phản đối việc bắt nạt, quấy rối."
+            },
+            {
+              "desc": "Phát hiện và phê phán các hành vi tiêu cực một cách có văn hóa, đạo đức."
+            },
+            {
+              "desc": "Phê phán các hiện tượng tiêu cực như: lối sống ảo (như sống ảo để câu like, khoe khoang), việc lan truyền thông tin sai lệch, và hiện tượng AI làm mất giá trị thông tin thật."
+            },
+            {
+              "desc": "Phê phán những thông tin không rõ nguồn gốc, chưa được kiểm chứng, vi phạm pháp luật, và sử dụng ngôn từ tục tĩu, kích động."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+},
 };
 
 // Aliases cho các chủ đề trắc nghiệm và câu hỏi Đúng / Sai
@@ -1395,4 +1682,6 @@ TOPIC_THEORY_MAP["tin-html-dung-sai"] = TOPIC_THEORY_MAP["tin-chuyen-de-12f-web"
 TOPIC_THEORY_MAP["tin-12f"] = TOPIC_THEORY_MAP["tin-chuyen-de-12f-web"];
 TOPIC_THEORY_MAP["tin-tao-trang-web-html-css"] = TOPIC_THEORY_MAP["tin-chuyen-de-12f-web"];
 TOPIC_THEORY_MAP["tin-html-cau-truc-dinh-dang"] = TOPIC_THEORY_MAP["tin-chuyen-de-12f-web"];
+TOPIC_THEORY_MAP["tin-dao-duc-dung-sai"] = TOPIC_THEORY_MAP["tin-dao-duc-phap-luat-so"];
+TOPIC_THEORY_MAP["tin-11d-12d"] = TOPIC_THEORY_MAP["tin-dao-duc-phap-luat-so"];
 
