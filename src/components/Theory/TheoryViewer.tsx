@@ -19,9 +19,11 @@ import {
   Compass,
   AlertTriangle,
   BookmarkCheck,
-  X
+  X,
+  ZoomIn
 } from "lucide-react";
 import { LatexRenderer } from "../UI/LatexRenderer";
+import { ImageZoomModal } from "../UI/ImageZoomModal";
 
 interface TheoryViewerProps {
   topicId: string;
@@ -38,6 +40,11 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
     "ai-characteristics": true,
   });
   const [showObjectives, setShowObjectives] = useState(false);
+  const [activeZoomImage, setActiveZoomImage] = useState<{
+    src: string;
+    alt?: string;
+    caption?: string;
+  } | null>(null);
 
   // Lấy dữ liệu lý thuyết theo chủ đề
   const theoryData = TOPIC_THEORY_MAP[topicId] || TOPIC_THEORY_MAP["tin-ai-tri-tue-nhan-tao"];
@@ -282,14 +289,62 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
 
                         {/* Hình ảnh bài học (nếu có) */}
                         {block.image && (
-                          <div className="my-2.5 p-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm flex flex-col items-center">
-                            <img
-                              src={block.image}
-                              alt={block.imageCaption || "Hình minh họa bài học"}
-                              className="max-h-72 w-auto object-contain rounded border border-slate-300/80 shadow-sm"
-                            />
+                          <div className="my-3 p-2.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm flex flex-col items-center group relative">
+                            {/* Thanh thao tác nhanh ngay trên/cạnh ảnh */}
+                            <div className="w-full flex items-center justify-between gap-2 mb-2 px-1">
+                              <span className="text-[11px] font-semibold text-slate-600 truncate flex items-center gap-1.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                                <span className="truncate">{block.imageCaption || "Hình minh họa bài học"}</span>
+                              </span>
+
+                              {/* Nút Zoom ngay cạnh ảnh */}
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  soundManager.playClick();
+                                  setActiveZoomImage({
+                                    src: block.image!,
+                                    alt: block.imageCaption || "Hình minh họa bài học",
+                                    caption: block.imageCaption,
+                                  });
+                                }}
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-neu-xs bg-[#e6ecf5] shadow-neu-flat hover:shadow-neu-flat-sm active:shadow-neu-inset-xs text-[11px] font-bold text-blue-700 hover:text-blue-800 transition-all flex-shrink-0 border border-blue-200/60"
+                                title="Phóng to ảnh để quan sát rõ hơn trên điện thoại"
+                              >
+                                <ZoomIn className="w-3.5 h-3.5 text-blue-600" />
+                                <span>Phóng to</span>
+                              </button>
+                            </div>
+
+                            {/* Vùng ảnh có thể nhấp trực tiếp để phóng to */}
+                            <div
+                              onClick={() => {
+                                soundManager.playClick();
+                                setActiveZoomImage({
+                                  src: block.image!,
+                                  alt: block.imageCaption || "Hình minh họa bài học",
+                                  caption: block.imageCaption,
+                                });
+                              }}
+                              className="relative cursor-zoom-in rounded-lg overflow-hidden max-w-full group/img flex items-center justify-center bg-white p-1 border border-slate-300/80 shadow-sm"
+                              title="Nhấn vào ảnh hoặc nút Phóng to để xem chi tiết"
+                            >
+                              <img
+                                src={block.image}
+                                alt={block.imageCaption || "Hình minh họa bài học"}
+                                className="max-h-72 w-auto object-contain rounded transition-transform duration-200 group-hover/img:scale-[1.01]"
+                              />
+                              {/* Lớp phủ gợi ý khi lướt chuột */}
+                              <div className="absolute inset-0 bg-slate-900/15 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center pointer-events-none rounded">
+                                <span className="px-3 py-1.5 rounded-full bg-slate-900/85 text-white text-[11px] font-semibold shadow-lg flex items-center gap-1.5 backdrop-blur-sm">
+                                  <ZoomIn className="w-3.5 h-3.5 text-blue-300" />
+                                  Chạm để phóng to
+                                </span>
+                              </div>
+                            </div>
+
                             {block.imageCaption && (
-                              <span className="text-[11px] text-slate-500 font-medium italic mt-1.5 text-center">
+                              <span className="text-[11px] text-slate-500 font-medium italic mt-2 text-center">
                                 {block.imageCaption}
                               </span>
                             )}
@@ -391,6 +446,15 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Cửa sổ phóng to hình ảnh toàn màn hình */}
+      <ImageZoomModal
+        isOpen={!!activeZoomImage}
+        src={activeZoomImage?.src || ""}
+        alt={activeZoomImage?.alt}
+        caption={activeZoomImage?.caption}
+        onClose={() => setActiveZoomImage(null)}
+      />
     </div>
   );
 };
