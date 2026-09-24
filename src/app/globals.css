@@ -6,6 +6,13 @@
 :root {
   --bg-neu: #e6ecf5;
   --text-neu: #1e293b;
+  color-scheme: light;
+}
+
+html.dark {
+  --bg-neu: #13171e;
+  --text-neu: #f1f5f9;
+  color-scheme: dark;
 }
 
 body {
@@ -16,6 +23,12 @@ body {
   padding: 0;
   -webkit-tap-highlight-color: transparent;
   user-select: text;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark body {
+  background-color: #13171e;
+  color: #f1f5f9;
 }
 
 /* Tối ưu thanh cuộn Neumorphism */
@@ -37,6 +50,18 @@ body {
   background: #94a3b8;
 }
 
+html.dark ::-webkit-scrollbar-track {
+  background: #13171e;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2a3240;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3b4659;
+}
+
 /* Ẩn scrollbar khi cần */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -44,4 +69,52 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ================= DARK MODE NEUMORPHISM OVERRIDES ================= */
+html.dark .shadow-neu-flat {
+  box-shadow: 6px 6px 14px #0c0f14, -6px -6px 14px #1e2633 !important;
+}
+
+html.dark .shadow-neu-flat-sm {
+  box-shadow: 4px 4px 10px #0c0f14, -4px -4px 10px #1e2633 !important;
+}
+
+html.dark .shadow-neu-flat-xs {
+  box-shadow: 2px 2px 5px #0c0f14, -2px -2px 5px #1e2633 !important;
+}
+
+html.dark .shadow-neu-inset {
+  box-shadow: inset 4px 4px 8px #0c0f14, inset -4px -4px 8px #1e2633 !important;
+}
+
+html.dark .shadow-neu-inset-sm {
+  box-shadow: inset 2px 2px 5px #0c0f14, inset -2px -2px 5px #1e2633 !important;
+}
+
+html.dark .shadow-neu-blue {
+  box-shadow: 4px 4px 12px rgba(37, 99, 235, 0.45), -2px -2px 8px rgba(30, 41, 59, 0.5) !important;
+}
+
+html.dark .bg-\[\#e6ecf5\] {
+  background-color: #1a1f26 !important;
+}
+
+html.dark .text-slate-800 {
+  color: #f1f5f9 !important;
+}
+
+html.dark .text-slate-700 {
+  color: #e2e8f0 !important;
+}
+
+html.dark .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+html.dark .border-slate-300\/60,
+html.dark .border-slate-300\/80,
+html.dark .border-slate-300,
+html.dark .border-slate-200 {
+  border-color: rgba(51, 65, 85, 0.6) !important;
 }

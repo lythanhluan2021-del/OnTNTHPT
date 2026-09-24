@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { Question, StudentAttempt, Subject, Topic } from "@/types";
+import { Question, StudentAttempt, Subject, Topic, MockExam, ExamResult } from "@/types";
 import { INITIAL_QUESTIONS, INITIAL_SUBJECTS } from "@/data/sampleBank";
 import { Sidebar } from "@/components/Layout/Sidebar";
 import { Header } from "@/components/Layout/Header";
@@ -23,6 +23,10 @@ import { HtmlCssIde } from "@/components/HtmlCssIde/HtmlCssIde";
 import { HtmlCssIdeDrawer } from "@/components/HtmlCssIde/HtmlCssIdeDrawer";
 import { SqlIde } from "@/components/SqlStudio/SqlIde";
 import { SqlIdeDrawer } from "@/components/SqlStudio/SqlIdeDrawer";
+import { MockExamView } from "@/components/Exam/MockExamView";
+import { ExamResultModal } from "@/components/Exam/ExamResultModal";
+import { QuestionPalette } from "@/components/Practice/QuestionPalette";
+import { generateMockExam } from "@/data/mockExamGenerator";
 
 export default function AppHome() {
   const { user, isLoggedIn, isAuthLoading } = useAuth();
@@ -85,6 +89,68 @@ export default function AppHome() {
   const [isSocraticOpen, setIsSocraticOpen] = useState(false);
   const [questionStartTime, setQuestionStartTime] = useState<number>(Date.now());
   const [activeQuestionFormat, setActiveQuestionFormat] = useState<"all" | "mc" | "tf">("mc");
+
+  // 4. Mock Exam (Thi thử 50 phút chuẩn Bộ GD&ĐT) States
+  const [activeMockExam, setActiveMockExam] = useState<MockExam | null>(null);
+  const [examResult, setExamResult] = useState<ExamResult | null>(null);
+  const [isExamResultModalOpen, setIsExamResultModalOpen] = useState(false);
+  const [reviewModeResult, setReviewModeResult] = useState<ExamResult | null>(null);
+
+  const handleStartMockExam = () => {
+    soundManager.playClick();
+    const newExam = generateMockExam(
+      questions,
+      `Đề thi thử Tốt nghiệp THPT 2026 - Môn Tin học (${new Date().toLocaleDateString("vi-VN")})`
+    );
+    setActiveMockExam(newExam);
+    setReviewModeResult(null);
+    setExamResult(null);
+    setIsExamResultModalOpen(false);
+  };
+
+  const handleFinishMockExam = (result: ExamResult) => {
+    setExamResult(result);
+    setIsExamResultModalOpen(true);
+    // Lưu lịch sử thi thử
+    try {
+      const savedExams = localStorage.getItem("thpt_mock_exam_results");
+      const list = savedExams ? JSON.parse(savedExams) : [];
+      list.unshift(result);
+      localStorage.setItem("thpt_mock_exam_results", JSON.stringify(list.slice(0, 50)));
+    } catch {
+      // Ignored
+    }
+  };
+
+  const handleReviewExam = () => {
+    setReviewModeResult(examResult);
+    setIsExamResultModalOpen(false);
+  };
+
+  const handleRetakeExam = () => {
+    setIsExamResultModalOpen(false);
+    handleStartMockExam();
+  };
+
+  const handleExitExam = () => {
+    setActiveMockExam(null);
+    setReviewModeResult(null);
+    setIsExamResultModalOpen(false);
+  };
+
+  const isPracticeQuestionAnswered = (idx: number) => {
+    const q = topicQuestions[idx];
+    if (!q) return false;
+    return attempts.some((att) => att.questionId === q.id);
+  };
+
+  const isPracticeQuestionCorrect = (idx: number): boolean | null => {
+    const q = topicQuestions[idx];
+    if (!q) return null;
+    const atts = attempts.filter((att) => att.questionId === q.id);
+    if (atts.length === 0) return null;
+    return atts[atts.length - 1].isCorrect;
+  };
 
   // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage với cơ chế kiểm soát phiên bản chuẩn KH GD1
   useEffect(() => {
@@ -466,6 +532,29 @@ export default function AppHome() {
     return <StudentLoginGate />;
   }
 
+  // 3. Chế độ Thi thử Tốt nghiệp THPT 50 phút chuẩn Bộ GD&ĐT
+  if (activeMockExam) {
+    return (
+      <>
+        <MockExamView
+          exam={activeMockExam}
+          studentName={user?.fullName || "Học sinh THPT"}
+          className={user?.className}
+          initialReviewResult={reviewModeResult}
+          onFinishExam={handleFinishMockExam}
+          onExitExam={handleExitExam}
+        />
+        <ExamResultModal
+          isOpen={isExamResultModalOpen}
+          result={examResult}
+          onReviewExam={handleReviewExam}
+          onRetakeExam={handleRetakeExam}
+          onClose={handleExitExam}
+        />
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#e6ecf5] flex flex-col antialiased">
       {/* Sidebar bên trái chứa toàn bộ cấu trúc bài học */}
@@ -496,6 +585,7 @@ export default function AppHome() {
           isPythonTopic={isPythonTopic}
           isWebTopic={isWebTopic}
           isSqlTopic={isSqlTopic}
+          onStartMockExam={handleStartMockExam}
         />
 
         {/* Khung nội dung chính */}
@@ -733,6 +823,19 @@ export default function AppHome() {
             <>
               {currentQuestion ? (
                 <>
+                  {/* Bảng ma trận điều hướng câu hỏi nhanh 1-chạm */}
+                  {topicQuestions.length > 1 && (
+                    <QuestionPalette
+                      totalQuestions={topicQuestions.length}
+                      currentIndex={currentQuestionIndex}
+                      onSelectIndex={(idx) => {
+                        setCurrentQuestionIndex(idx);
+                      }}
+                      isAnswered={isPracticeQuestionAnswered}
+                      isCorrect={isPracticeQuestionCorrect}
+                    />
+                  )}
+
                   {/* Thẻ câu hỏi và các phương án */}
                   <QuestionCard
                     question={currentQuestion}

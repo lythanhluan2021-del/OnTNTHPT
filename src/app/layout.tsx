@@ -17,6 +17,7 @@ export const viewport: Viewport = {
 };
 
 import { AuthProvider } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 export default function RootLayout({
   children,
@@ -24,9 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
-      <body className="bg-[#e6ecf5] min-h-screen text-slate-800 antialiased selection:bg-blue-200">
-        <AuthProvider>{children}</AuthProvider>
+    <html lang="vi" suppressHydrationWarning>
+      <body className="bg-[#e6ecf5] dark:bg-[#13171e] min-h-screen text-slate-800 dark:text-slate-100 antialiased selection:bg-blue-200">
+        <ThemeProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

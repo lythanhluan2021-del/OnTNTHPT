@@ -212,4 +212,52 @@ export interface WeeklyMatrixRow {
   totalCompletedWeeks: number;
 }
 
+export type ThemeMode = "light" | "dark";
+
+export interface MockExamQuestion extends Question {
+  examIndex: number;
+  part: "mc" | "tf";
+}
+
+export interface MockExam {
+  id: string;
+  title: string;
+  subjectId: string;
+  durationMinutes: number;
+  totalQuestions: number;
+  questions: MockExamQuestion[];
+  createdAt: number;
+}
+
+export interface ExamAnswerState {
+  mcAnswers: Record<string, "A" | "B" | "C" | "D" | null>;
+  tfAnswers: Record<string, Record<string, boolean | null>>;
+  flaggedQuestions: Record<string, boolean>;
+}
+
+export interface ExamResult {
+  examId: string;
+  examTitle: string;
+  studentName: string;
+  className?: string;
+  startTime: number;
+  endTime: number;
+  timeSpentSeconds: number;
+  tabSwitchCount: number;
+  mcScore: number;
+  tfScore: number;
+  totalScore: number;
+  totalCorrectMc: number;
+  totalCorrectTfStatements: number;
+  details: {
+    questionId: string;
+    type: "multiple_choice" | "true_false";
+    studentAnswer: any;
+    correctAnswer: any;
+    isCorrect: boolean;
+    earnedScore: number;
+    maxScore: number;
+  }[];
+}
+
 

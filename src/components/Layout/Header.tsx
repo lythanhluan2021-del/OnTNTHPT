@@ -19,9 +19,13 @@ import {
   Terminal,
   Globe,
   Database,
+  Sun,
+  Moon,
+  Timer,
 } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { useAuth } from "@/contexts/AuthContext";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface HeaderProps {
   onToggleSidebar: () => void;
@@ -33,6 +37,7 @@ interface HeaderProps {
   isPythonTopic?: boolean;
   isWebTopic?: boolean;
   isSqlTopic?: boolean;
+  onStartMockExam?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -45,8 +50,10 @@ export const Header: React.FC<HeaderProps> = ({
   isPythonTopic = false,
   isWebTopic = false,
   isSqlTopic = false,
+  onStartMockExam,
 }) => {
   const { user, isLoggedIn, isAdmin, openLoginModal, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [isSoundOn, setIsSoundOn] = useState(soundManager.isEnabled());
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -116,6 +123,19 @@ export const Header: React.FC<HeaderProps> = ({
               title={isSoundOn ? "Âm thanh: Đang bật (Bấm để tắt)" : "Âm thanh: Đang tắt (Bấm để bật)"}
             >
               {isSoundOn ? <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
+            </button>
+
+            {/* Nút chuyển đổi Giao diện Tối / Sáng */}
+            <button
+              onClick={toggleTheme}
+              className="p-1.5 rounded-lg text-slate-500 hover:text-amber-500 dark:hover:text-amber-400 transition-all"
+              title={theme === "dark" ? "Chuyển sang Giao diện Sáng" : "Chuyển sang Giao diện Tối"}
+            >
+              {theme === "dark" ? (
+                <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-600" />
+              )}
             </button>
 
             <button
@@ -214,6 +234,21 @@ export const Header: React.FC<HeaderProps> = ({
               <BarChart3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           </div>
+
+          {/* Nút Thi thử 50p chuẩn Bộ GD&ĐT */}
+          {onStartMockExam && (
+            <button
+              onClick={() => {
+                soundManager.playClick();
+                onStartMockExam();
+              }}
+              className="flex items-center gap-1 py-1 px-2 sm:px-2.5 rounded-neu-sm bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-xs shadow-neu-blue active:shadow-neu-blue-pressed hover:brightness-110 transition flex-shrink-0"
+              title="Bắt đầu thi thử Tốt nghiệp THPT 50 phút chuẩn Bộ GD&ĐT"
+            >
+              <Timer className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Thi Thử</span>
+            </button>
+          )}
 
           {/* User Profile / Login Button */}
           <div className="relative" ref={menuRef}>
