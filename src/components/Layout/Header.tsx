@@ -16,17 +16,19 @@ import {
   ShieldCheck,
   LayoutDashboard,
   GraduationCap,
+  Terminal,
 } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { useAuth } from "@/contexts/AuthContext";
 
 interface HeaderProps {
   onToggleSidebar: () => void;
-  activeTab: "practice" | "analytics" | "theory";
-  onChangeTab: (tab: "practice" | "analytics" | "theory") => void;
+  activeTab: "practice" | "analytics" | "theory" | "ide";
+  onChangeTab: (tab: "practice" | "analytics" | "theory" | "ide") => void;
   subjectTitle: string;
   topicTitle: string;
   onOpenSubjectModal: () => void;
+  isPythonTopic?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -36,6 +38,7 @@ export const Header: React.FC<HeaderProps> = ({
   subjectTitle,
   topicTitle,
   onOpenSubjectModal,
+  isPythonTopic = false,
 }) => {
   const { user, isLoggedIn, isAdmin, openLoginModal, logout } = useAuth();
   const [isSoundOn, setIsSoundOn] = useState(soundManager.isEnabled());
@@ -138,6 +141,23 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <BookOpenCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
+
+            {isPythonTopic && (
+              <button
+                onClick={() => {
+                  soundManager.playClick();
+                  onChangeTab("ide");
+                }}
+                className={`p-1.5 rounded-lg transition-all ${
+                  activeTab === "ide"
+                    ? "bg-[#e6ecf5] text-blue-600 shadow-neu-flat-xs font-bold"
+                    : "text-slate-500 hover:text-blue-600"
+                }`}
+                title="Python IDE - Chạy thử chương trình"
+              >
+                <Terminal className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
+              </button>
+            )}
 
             <button
               onClick={() => {

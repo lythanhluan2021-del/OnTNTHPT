@@ -23,7 +23,9 @@ import {
   ZoomIn,
   ShieldAlert,
   Users,
-  HeartHandshake
+  HeartHandshake,
+  Play,
+  Terminal,
 } from "lucide-react";
 import { LatexRenderer } from "../UI/LatexRenderer";
 import { ImageZoomModal } from "../UI/ImageZoomModal";
@@ -31,11 +33,13 @@ import { ImageZoomModal } from "../UI/ImageZoomModal";
 interface TheoryViewerProps {
   topicId: string;
   onStartPractice: (part?: "mc" | "tf") => void;
+  onOpenIdeWithCode?: (codeSnippet: string) => void;
 }
 
 export const TheoryViewer: React.FC<TheoryViewerProps> = ({
   topicId,
   onStartPractice,
+  onOpenIdeWithCode,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -362,8 +366,30 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
 
                         {/* Khối mã nguồn Code (nếu có) */}
                         {block.code && (
-                          <div className="my-2 p-2.5 rounded-neu-sm bg-slate-900 text-slate-100 font-mono text-xs overflow-x-auto shadow-inner">
-                            <pre className="whitespace-pre">{block.code}</pre>
+                          <div className="my-2.5 rounded-neu-sm overflow-hidden bg-slate-900 border border-slate-800 shadow-inner">
+                            <div className="px-3 py-1.5 bg-slate-950/90 border-b border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
+                              <span className="text-slate-400 flex items-center gap-1.5 font-medium">
+                                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                                <span>{topicId.includes("python") ? "Python 3" : "Mã nguồn"}</span>
+                              </span>
+                              {topicId.includes("python") && onOpenIdeWithCode && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    soundManager.playClick();
+                                    onOpenIdeWithCode(block.code!);
+                                  }}
+                                  className="flex items-center gap-1 px-2 py-0.5 rounded bg-blue-600 hover:bg-blue-500 text-white font-sans text-[10px] font-bold shadow-xs active:scale-95 transition-all"
+                                  title="Nạp và chạy thử đoạn mã này trong Python IDE"
+                                >
+                                  <Play className="w-2.5 h-2.5 fill-current" />
+                                  <span>Chạy trong IDE</span>
+                                </button>
+                              )}
+                            </div>
+                            <div className="p-2.5 text-slate-100 font-mono text-xs overflow-x-auto">
+                              <pre className="whitespace-pre">{block.code}</pre>
+                            </div>
                           </div>
                         )}
 

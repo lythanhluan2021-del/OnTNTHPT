@@ -3,7 +3,7 @@
 import React from "react";
 import { Question } from "@/types";
 import { LatexRenderer } from "../UI/LatexRenderer";
-import { Check, X, Bookmark, FileText, CheckCircle2, XCircle } from "lucide-react";
+import { Check, X, Bookmark, FileText, CheckCircle2, XCircle, Terminal } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 
 interface QuestionCardProps {
@@ -16,6 +16,7 @@ interface QuestionCardProps {
   selectedTF?: Record<string, boolean | null>;
   onSelectTF?: (itemId: string, value: boolean) => void;
   hasAnswered: boolean;
+  onOpenIde?: (codeSnippet?: string) => void;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -27,8 +28,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   selectedTF = {},
   onSelectTF,
   hasAnswered,
+  onOpenIde,
 }) => {
   const isTrueFalse = question.type === "true_false" && question.tfItems && question.tfItems.length > 0;
+  const isPythonQuestion =
+    question.topicId === "tin-lap-trinh-python" ||
+    question.topicId === "tin-python-dung-sai" ||
+    question.topicName?.toLowerCase().includes("python");
 
   const getDifficultyBadge = (difficulty: string) => {
     switch (difficulty) {
@@ -126,6 +132,24 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           <div className="text-slate-800 text-sm sm:text-base font-medium leading-relaxed pt-1">
             <LatexRenderer content={question.content} />
           </div>
+
+          {/* Nút mở nhanh Python IDE để học sinh thử nghiệm trực tiếp */}
+          {isPythonQuestion && onOpenIde && (
+            <div className="pt-1.5 flex items-center justify-end">
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  onOpenIde();
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm bg-[#e6ecf5] text-blue-700 hover:text-blue-800 text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset hover:bg-blue-50/80 transition-all border border-blue-200/70"
+                title="Mở trình soạn thảo Python IDE để chạy thử và kiểm chứng câu hỏi này"
+              >
+                <Terminal className="w-3.5 h-3.5 text-blue-600" />
+                <span>Mở Python IDE thử nghiệm</span>
+              </button>
+            </div>
+          )}
 
           {/* Điểm số dạng Đúng / Sai khi đã làm xong */}
           {hasAnswered && tfScore && (

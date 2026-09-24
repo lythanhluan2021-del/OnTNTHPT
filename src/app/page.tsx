@@ -13,10 +13,12 @@ import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
 import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
 import { TheoryViewer } from "@/components/Theory/TheoryViewer";
 import { soundManager } from "@/lib/audioEffects";
-import { BookOpen, ListOrdered, CheckCheck } from "lucide-react";
+import { BookOpen, ListOrdered, CheckCheck, Terminal } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { LoginModal } from "@/components/Auth/LoginModal";
 import { StudentLoginGate } from "@/components/Auth/StudentLoginGate";
+import { PythonIde } from "@/components/PythonIde/PythonIde";
+import { PythonIdeDrawer } from "@/components/PythonIde/PythonIdeDrawer";
 
 export default function AppHome() {
   const { user, isLoggedIn, isAuthLoading } = useAuth();
@@ -31,8 +33,11 @@ export default function AppHome() {
   const [selectedTopicId, setSelectedTopicId] = useState<string>(
     INITIAL_SUBJECTS[0].topics[0].id
   );
-  const [activeTab, setActiveTab] = useState<"practice" | "analytics" | "theory">("practice");
+  const [activeTab, setActiveTab] = useState<"practice" | "analytics" | "theory" | "ide">("practice");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [ideCodeToRun, setIdeCodeToRun] = useState<string | undefined>(undefined);
+  const [isIdeDrawerOpen, setIsIdeDrawerOpen] = useState(false);
+  const [ideDrawerCode, setIdeDrawerCode] = useState<string | undefined>(undefined);
 
   // Mặc định mở sidebar trên màn hình máy tính (>= 768px)
   useEffect(() => {
@@ -166,6 +171,11 @@ export default function AppHome() {
     selectedTopicId === "tin-ai-tri-tue-nhan-tao" ||
     selectedTopicId === "tin-lap-trinh-python" ||
     selectedTopicId === "tin-thiet-bi-giao-thuc-mang"
+  );
+  const isPythonTopic = Boolean(
+    selectedTopicId === "tin-lap-trinh-python" ||
+    selectedTopicId === "tin-python-dung-sai" ||
+    currentTopic?.name?.toLowerCase().includes("python")
   );
 
   // Lọc toàn bộ câu hỏi theo chủ đề (hỗ trợ cả alias cũ nếu có trong bộ nhớ tạm)
@@ -439,13 +449,18 @@ export default function AppHome() {
           subjectTitle={currentSubject?.name || "Môn học"}
           topicTitle={currentTopic?.name || "Chủ đề"}
           onOpenSubjectModal={() => setIsSubjectModalOpen(true)}
+          isPythonTopic={isPythonTopic}
         />
 
         {/* Khung nội dung chính */}
-        <main className="flex-1 max-w-md w-full mx-auto p-4 space-y-4">
-          {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn) và Phần 2 (Đúng / Sai) thiết kế chuẩn Neumorphic đồng bộ với nút chọn môn */}
-          {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0) && (
-            <div className="flex items-center gap-2 p-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm">
+        <main
+          className={`flex-1 w-full mx-auto p-3 sm:p-4 space-y-4 ${
+            activeTab === "ide" ? "max-w-4xl" : "max-w-md"
+          }`}
+        >
+          {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn), Phần 2 (Đúng / Sai) và Chạy Code (IDE) */}
+          {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0 || isPythonTopic) && (
+            <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm">
               {currentHasTheory && (
                 <button
                   onClick={() => {
@@ -539,10 +554,39 @@ export default function AppHome() {
                   </div>
                 </button>
               )}
+
+              {isPythonTopic && (
+                <button
+                  onClick={() => {
+                    soundManager.playClick();
+                    setActiveTab("ide");
+                  }}
+                  className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
+                    activeTab === "ide"
+                      ? "bg-[#e6ecf5] text-blue-600 shadow-neu-inset font-bold"
+                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
+                  }`}
+                  title="Mở trình soạn thảo & Chạy code Python"
+                >
+                  <Terminal
+                    className={`w-4 h-4 ${
+                      activeTab === "ide" ? "text-blue-600" : "text-emerald-600"
+                    }`}
+                  />
+                  <span className="truncate w-full text-center leading-tight">
+                    Chạy Code
+                  </span>
+                </button>
+              )}
             </div>
           )}
 
-          {activeTab === "theory" ? (
+          {activeTab === "ide" ? (
+            /* Tab Trình soạn thảo & Chạy Code Python */
+            <div className="w-full pb-20 animate-fade-in">
+              <PythonIde initialCode={ideCodeToRun} />
+            </div>
+          ) : activeTab === "theory" ? (
             /* Tab Tóm Tắt & Tra Cứu Lý Thuyết Trọng Tâm */
             <TheoryViewer
               topicId={selectedTopicId}
@@ -554,6 +598,10 @@ export default function AppHome() {
                   setActiveQuestionFormat("mc");
                 }
                 setCurrentQuestionIndex(0);
+              }}
+              onOpenIdeWithCode={(codeSnippet) => {
+                setIdeCodeToRun(codeSnippet);
+                setActiveTab("ide");
               }}
             />
           ) : activeTab === "practice" ? (
@@ -570,6 +618,12 @@ export default function AppHome() {
                     selectedTF={selectedTF}
                     onSelectTF={handleSelectTF}
                     hasAnswered={hasAnswered}
+                    onOpenIde={(codeSnippet) => {
+                      if (codeSnippet) {
+                        setIdeDrawerCode(codeSnippet);
+                      }
+                      setIsIdeDrawerOpen(true);
+                    }}
                   />
 
                   {/* Bảng Gợi ý Socratic theo từng bậc */}
@@ -644,6 +698,13 @@ export default function AppHome() {
         subjects={subjects}
         selectedSubjectId={selectedSubjectId}
         onSelectSubject={handleSelectSubject}
+      />
+
+      {/* Cửa sổ Python IDE Drawer nổi để học sinh thử nghiệm code khi đang làm bài */}
+      <PythonIdeDrawer
+        isOpen={isIdeDrawerOpen}
+        onClose={() => setIsIdeDrawerOpen(false)}
+        initialCode={ideDrawerCode}
       />
 
       {/* Cổng đăng nhập cho Học sinh & Giáo viên */}
