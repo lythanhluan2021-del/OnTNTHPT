@@ -8,6 +8,7 @@ import {
   sanitizeTutorResponse,
 } from "@/lib/socraticEngine";
 import { LatexRenderer } from "../UI/LatexRenderer";
+import { ApiKeyModal } from "./ApiKeyModal";
 import {
   X,
   Send,
@@ -17,6 +18,8 @@ import {
   Sparkles,
   HelpCircle,
   Lightbulb,
+  Key,
+  Zap,
 } from "lucide-react";
 
 interface SocraticTutorDrawerProps {
@@ -43,6 +46,20 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
   const [messages, setMessages] = useState<SocraticMessage[]>([]);
   const [inputText, setInputText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState(false);
+  const [hasCustomKey, setHasCustomKey] = useState(false);
+  const [currentModel, setCurrentModel] = useState("gemini-3.8-flash");
+
+  // Đồng bộ trạng thái API Key từ LocalStorage
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedKey = localStorage.getItem("custom_gemini_api_key") || "";
+      const savedModel =
+        localStorage.getItem("custom_gemini_model") || "gemini-3.8-flash";
+      setHasCustomKey(!!savedKey);
+      setCurrentModel(savedModel);
+    }
+  }, [isOpen]);
 
   // Khởi tạo lại hội thoại khi mở drawer hoặc đổi câu hỏi
   useEffect(() => {
@@ -75,29 +92,64 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
     setInputText("");
     setIsTyping(true);
 
-    // Tính toán câu trả lời Socratic
-    setTimeout(() => {
-      const studentQuestionsCount = messages.filter((m) => m.sender === "student").length;
-      const rawAnswer = generateSocraticGuidance(
+    const studentQuestionsCount = messages.filter((m) => m.sender === "student").length;
+    const customApiKey =
+      typeof window !== "undefined"
+        ? localStorage.getItem("custom_gemini_api_key") || ""
+        : "";
+    const model =
+      typeof window !== "undefined"
+        ? localStorage.getItem("custom_gemini_model") || "gemini-3.8-flash"
+        : "gemini-3.8-flash";
+
+    // Gửi yêu cầu tới Backend API tích hợp Gemini 3 thực thụ
+    fetch("/api/socratic", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         question,
-        text,
-        studentQuestionsCount,
+        prompt: text,
+        historyCount: studentQuestionsCount,
         selectedOption,
-        isCorrect
-      );
-      // Chạy qua Guardrail kiểm duyệt bảo mật đáp án
-      const safeAnswer = sanitizeTutorResponse(rawAnswer, question);
-
-      const tutorMsg: SocraticMessage = {
-        id: "t-" + Date.now(),
-        sender: "tutor",
-        text: safeAnswer,
-        timestamp: Date.now(),
-      };
-
-      setMessages((prev) => [...prev, tutorMsg]);
-      setIsTyping(false);
-    }, 600);
+        isCorrect,
+        customApiKey,
+        model,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const answerText =
+          data.response || "Thầy chưa nhận được phản hồi. Em hãy thử gửi lại nhé!";
+        const tutorMsg: SocraticMessage = {
+          id: "t-" + Date.now(),
+          sender: "tutor",
+          text: answerText,
+          timestamp: Date.now(),
+        };
+        setMessages((prev) => [...prev, tutorMsg]);
+      })
+      .catch((err) => {
+        console.warn("Lỗi kết nối /api/socratic, kích hoạt Offline Engine:", err);
+        // Fallback tức thì sang bộ máy nội bộ nếu mất mạng
+        const rawAnswer = generateSocraticGuidance(
+          question,
+          text,
+          studentQuestionsCount,
+          selectedOption,
+          isCorrect
+        );
+        const safeAnswer = sanitizeTutorResponse(rawAnswer, question);
+        const tutorMsg: SocraticMessage = {
+          id: "t-" + Date.now(),
+          sender: "tutor",
+          text: safeAnswer,
+          timestamp: Date.now(),
+        };
+        setMessages((prev) => [...prev, tutorMsg]);
+      })
+      .finally(() => {
+        setIsTyping(false);
+      });
   };
 
   // Các gợi ý câu hỏi nhanh tùy biến theo chuyên đề
@@ -144,113 +196,150 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
   const quickPrompts = getQuickPrompts();
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end md:justify-center md:items-center bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm transition-opacity">
-      <div className="w-full max-w-lg bg-[#e6ecf5] dark:bg-[#1a1f26] rounded-t-neu-lg md:rounded-neu shadow-neu-flat dark:shadow-[8px_8px_20px_#12151a,-8px_-8px_20px_#222932] max-h-[85vh] h-[80vh] flex flex-col overflow-hidden border border-slate-300/40 dark:border-slate-800">
-        {/* Tutor Header */}
-        <div className="p-3.5 border-b border-slate-300/70 dark:border-slate-800 flex items-center justify-between bg-[#e6ecf5] dark:bg-[#1f252e] shadow-neu-flat-xs dark:shadow-none">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-neu-blue">
-              <Bot className="w-4 h-4" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <h3 className="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm">
-                  Trợ Lý Socratic 2.0
-                </h3>
-                <span className="flex items-center gap-1 text-[10px] bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 px-1.5 py-0.2 rounded-full font-medium border border-emerald-300/50 dark:border-emerald-800/60">
-                  <ShieldCheck className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-                  Bảo vệ đáp án • GDPT 2018
-                </span>
+    <>
+      <div className="fixed inset-0 z-50 flex flex-col justify-end md:justify-center md:items-center bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm transition-opacity">
+        <div className="w-full max-w-lg bg-[#e6ecf5] dark:bg-[#1a1f26] rounded-t-neu-lg md:rounded-neu shadow-neu-flat dark:shadow-[8px_8px_20px_#12151a,-8px_-8px_20px_#222932] max-h-[85vh] h-[80vh] flex flex-col overflow-hidden border border-slate-300/40 dark:border-slate-800">
+          {/* Tutor Header */}
+          <div className="p-3.5 border-b border-slate-300/70 dark:border-slate-800 flex items-center justify-between bg-[#e6ecf5] dark:bg-[#1f252e] shadow-neu-flat-xs dark:shadow-none">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-neu-blue">
+                <Bot className="w-4 h-4" />
               </div>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400">
-                Định hướng tư duy phản tư • Tuyệt đối không cho đáp án
-              </p>
+              <div>
+                <div className="flex items-center gap-1.5">
+                  <h3 className="font-bold text-slate-800 dark:text-slate-100 text-xs sm:text-sm">
+                    Trợ Lý Socratic AI
+                  </h3>
+                  <span className="flex items-center gap-1 text-[10px] bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 px-1.5 py-0.2 rounded-full font-medium border border-emerald-300/50 dark:border-emerald-800/60">
+                    <ShieldCheck className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                    GDPT 2018
+                  </span>
+                </div>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400">
+                  Gợi mở tư duy phản tư • Tuyệt đối không cho đáp án
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <button
+                type="button"
+                onClick={() => setIsApiKeyModalOpen(true)}
+                className={`px-2 py-1 rounded-neu-xs text-[10px] font-bold flex items-center gap-1 transition shadow-neu-flat-xs dark:shadow-none active:shadow-neu-inset cursor-pointer ${
+                  hasCustomKey
+                    ? "bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800"
+                    : "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800 animate-pulse"
+                }`}
+                title="Cấu hình Google Gemini AI Key miễn phí"
+              >
+                <Key className="w-3 h-3 text-blue-600 dark:text-blue-400" />
+                <span>
+                  {hasCustomKey ? "Gemini 3 (AI Thực)" : "Bật AI Thực (Miễn phí)"}
+                </span>
+                <Sparkles className="w-2.5 h-2.5 text-amber-500" />
+              </button>
+
+              <button
+                onClick={onClose}
+                className="p-1.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat dark:shadow-none active:shadow-neu-inset text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition"
+                title="Đóng cửa sổ"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
           </div>
-          <button
-            onClick={onClose}
-            className="p-1.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat dark:shadow-none active:shadow-neu-inset text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition"
-            title="Đóng cửa sổ"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
 
-        {/* Message history */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-3">
-          {messages.map((msg) => (
-            <div
-              key={msg.id}
-              className={`flex gap-2.5 ${
-                msg.sender === "student" ? "justify-end" : "justify-start"
-              }`}
-            >
-              {msg.sender === "tutor" && (
-                <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-[10px] mt-1 shadow-neu-blue">
-                  <Bot className="w-3.5 h-3.5" />
-                </div>
-              )}
+          {/* Message history */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+            {messages.map((msg) => (
               <div
-                className={`max-w-[85%] p-3 rounded-neu-sm text-xs sm:text-sm leading-relaxed ${
-                  msg.sender === "student"
-                    ? "bg-blue-600 text-white shadow-neu-blue rounded-tr-none"
-                    : "bg-[#e6ecf5] dark:bg-[#222934] text-slate-800 dark:text-slate-100 shadow-neu-flat-sm dark:shadow-none rounded-tl-none border border-slate-200 dark:border-slate-700/60"
+                key={msg.id}
+                className={`flex gap-2.5 ${
+                  msg.sender === "student" ? "justify-end" : "justify-start"
                 }`}
               >
-                <LatexRenderer content={msg.text} />
-              </div>
-              {msg.sender === "student" && (
-                <div className="w-6 h-6 rounded-full bg-slate-300 dark:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center flex-shrink-0 text-[10px] mt-1">
-                  <User className="w-3.5 h-3.5" />
+                {msg.sender === "tutor" && (
+                  <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-[10px] mt-1 shadow-neu-blue">
+                    <Bot className="w-3.5 h-3.5" />
+                  </div>
+                )}
+                <div
+                  className={`max-w-[85%] p-3 rounded-neu-sm text-xs sm:text-sm leading-relaxed ${
+                    msg.sender === "student"
+                      ? "bg-blue-600 text-white shadow-neu-blue rounded-tr-none"
+                      : "bg-[#e6ecf5] dark:bg-[#222934] text-slate-800 dark:text-slate-100 shadow-neu-flat-sm dark:shadow-none rounded-tl-none border border-slate-200 dark:border-slate-700/60"
+                  }`}
+                >
+                  <LatexRenderer content={msg.text} />
                 </div>
-              )}
-            </div>
-          ))}
+                {msg.sender === "student" && (
+                  <div className="w-6 h-6 rounded-full bg-slate-300 dark:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center flex-shrink-0 text-[10px] mt-1">
+                    <User className="w-3.5 h-3.5" />
+                  </div>
+                )}
+              </div>
+            ))}
 
-          {isTyping && (
-            <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs pl-8">
-              <span className="animate-pulse">Trợ lý Socratic đang phân tích dữ liệu...</span>
-            </div>
-          )}
-        </div>
+            {isTyping && (
+              <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs pl-8">
+                <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
+                <span className="animate-pulse">
+                  {hasCustomKey
+                    ? `Trợ lý Gemini 3 đang suy luận phản hồi Socratic...`
+                    : "Trợ lý Socratic đang phân tích dữ liệu..."}
+                </span>
+              </div>
+            )}
+          </div>
 
-        {/* Quick Suggestion Chips */}
-        <div className="px-3 py-2 border-t border-slate-300/40 dark:border-slate-800/80 flex items-center gap-2 overflow-x-auto no-scrollbar bg-slate-200/40 dark:bg-[#1a1f26]">
-          {quickPrompts.map((prompt, idx) => (
+          {/* Quick Suggestion Chips */}
+          <div className="px-3 py-2 border-t border-slate-300/40 dark:border-slate-800/80 flex items-center gap-2 overflow-x-auto no-scrollbar bg-slate-200/40 dark:bg-[#1a1f26]">
+            {quickPrompts.map((prompt, idx) => (
+              <button
+                key={idx}
+                onClick={() => handleSendMessage(prompt)}
+                className="text-[11px] whitespace-nowrap py-1 px-2.5 rounded-full bg-[#e6ecf5] dark:bg-[#222934] shadow-neu-flat-xs dark:shadow-none active:shadow-neu-inset text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1 font-medium border border-slate-300/60 dark:border-slate-700/60 transition cursor-pointer"
+              >
+                <Sparkles className="w-3 h-3 text-amber-500 flex-shrink-0" />
+                <span>{prompt}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Input box */}
+          <div className="p-3 border-t border-slate-300/60 dark:border-slate-800 bg-[#e6ecf5] dark:bg-[#1f252e] flex items-center gap-2">
+            <input
+              type="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+              placeholder="Hỏi về lý thuyết, bẫy sai, cách suy luận..."
+              className="flex-1 py-2 px-3 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#181d24] shadow-neu-inset-sm dark:shadow-none text-xs sm:text-sm text-slate-800 dark:text-slate-100 outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 border border-transparent dark:border-slate-700/70 focus:border-blue-500"
+            />
             <button
-              key={idx}
-              onClick={() => handleSendMessage(prompt)}
-              className="text-[11px] whitespace-nowrap py-1 px-2.5 rounded-full bg-[#e6ecf5] dark:bg-[#222934] shadow-neu-flat-xs dark:shadow-none active:shadow-neu-inset text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1 font-medium border border-slate-300/60 dark:border-slate-700/60 transition"
+              onClick={() => handleSendMessage()}
+              disabled={!inputText.trim()}
+              className={`p-2.5 rounded-neu-sm font-semibold transition ${
+                inputText.trim()
+                  ? "bg-blue-600 text-white shadow-neu-blue active:shadow-neu-blue-pressed hover:bg-blue-700 cursor-pointer"
+                  : "bg-slate-300 dark:bg-slate-800 text-slate-400 dark:text-slate-600 opacity-60 cursor-not-allowed"
+              }`}
             >
-              <Sparkles className="w-3 h-3 text-amber-500 flex-shrink-0" />
-              <span>{prompt}</span>
+              <Send className="w-4 h-4" />
             </button>
-          ))}
-        </div>
-
-        {/* Input box */}
-        <div className="p-3 border-t border-slate-300/60 dark:border-slate-800 bg-[#e6ecf5] dark:bg-[#1f252e] flex items-center gap-2">
-          <input
-            type="text"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-            placeholder="Hỏi về lý thuyết, bẫy sai, cách suy luận..."
-            className="flex-1 py-2 px-3 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#181d24] shadow-neu-inset-sm dark:shadow-none text-xs sm:text-sm text-slate-800 dark:text-slate-100 outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500 border border-transparent dark:border-slate-700/70 focus:border-blue-500"
-          />
-          <button
-            onClick={() => handleSendMessage()}
-            disabled={!inputText.trim()}
-            className={`p-2.5 rounded-neu-sm font-semibold transition ${
-              inputText.trim()
-                ? "bg-blue-600 text-white shadow-neu-blue active:shadow-neu-blue-pressed hover:bg-blue-700"
-                : "bg-slate-300 dark:bg-slate-800 text-slate-400 dark:text-slate-600 opacity-60 cursor-not-allowed"
-            }`}
-          >
-            <Send className="w-4 h-4" />
-          </button>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Modal Cấu hình & Hướng dẫn lấy Key Gemini miễn phí */}
+      <ApiKeyModal
+        isOpen={isApiKeyModalOpen}
+        onClose={() => setIsApiKeyModalOpen(false)}
+        onKeySaved={(newKey, newModel) => {
+          setHasCustomKey(!!newKey);
+          setCurrentModel(newModel);
+        }}
+      />
+    </>
   );
 };
