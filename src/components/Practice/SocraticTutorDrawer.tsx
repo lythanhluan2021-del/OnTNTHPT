@@ -34,10 +34,16 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
 }) => {
   const getInitialMessage = (): string => {
     if (hasAnswered && isCorrect === false && selectedOption) {
+      const chosenOpt = question.options?.find((o) => o.id === selectedOption);
+      const chosenContent = chosenOpt ? ` "${chosenOpt.content}"` : "";
+
       return (
-        `Chào em! Thầy nhận thấy em vừa chọn **phương án ${selectedOption}** nhưng hệ thống báo chưa chính xác.\n\n` +
-        `Đừng lo lắng! Trong môn Tin học 12, đây là câu hỏi có các bẫy khái niệm rất dễ nhầm lẫn. Thầy sẽ đồng hành để giúp em bóc tách từng dữ kiện và tìm ra mấu chốt vấn đề nhé!\n\n` +
-        `Em nghĩ điều kiện nào trong đề bài có thể ảnh hưởng đến kết quả này?`
+        `Chào em! Thầy nhận thấy em vừa chọn **phương án ${selectedOption}**${chosenContent} nhưng câu trả lời này chưa chính xác.\n\n` +
+        `🔍 **Phân tích nguyên nhân & bẫy tư duy:**\n` +
+        `• **Khái niệm trọng tâm:** ${question.hints.level1_concept}\n` +
+        `• **Quy tắc phương pháp:** ${question.hints.level2_formula}\n\n` +
+        `⚠️ **Vì sao dễ nhầm sang ${selectedOption}?** Trong đề thi THPT, phương án ${selectedOption} thường là phương án gây nhiễu vì có một đặc điểm gần giống nhưng lại vi phạm một điều kiện then chốt của câu hỏi.\n\n` +
+        `❓ Em hãy đối chiếu lại: Trong câu hỏi có từ khóa nào (như *không phải*, *chỉ*, *tất cả*, *bắt buộc*) mà phương án ${selectedOption} chưa thỏa mãn không?`
       );
     }
     if (hasAnswered && isCorrect === true) {
@@ -48,7 +54,8 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
     }
     return (
       `Chào em! Thầy là Trợ lý Socratic đồng hành ôn thi Tin học THPT. Thầy sẽ giúp em phân tích phương pháp tư duy dựa trên tài liệu **"${question.sourceDocTitle || "Tài liệu môn Tin học"}"**.\n\n` +
-      `Em đang gặp khó khăn hay băn khoăn ở bước nào trong câu hỏi này?`
+      `📌 **Khái niệm then chốt:** ${question.hints.level1_concept}\n\n` +
+      `Em đang gặp khó khăn hay băn khoăn ở bước nào trong câu hỏi này? Hãy chia sẻ cùng Thầy nhé!`
     );
   };
 
@@ -119,9 +126,10 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
 
     if (hasAnswered && isCorrect === false) {
       return [
-        "Tại sao phương án em chọn lại sai?",
+        `Vì sao chọn ${selectedOption || "phương án này"} lại sai?`,
         "Chỉ ra bẫy thường gặp trong câu này",
         "Nhắc lại khái niệm trọng tâm",
+        "Hướng dẫn từng bước suy luận đúng",
       ];
     }
     if (topicId.includes("python") || topicName.toLowerCase().includes("python")) {

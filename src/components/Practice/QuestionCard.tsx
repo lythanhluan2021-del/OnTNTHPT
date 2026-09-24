@@ -329,13 +329,35 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
           {/* Điểm số dạng Đúng / Sai khi đã làm xong */}
           {hasAnswered && tfScore && (
-            <div className="mt-2 p-2.5 rounded-neu-sm bg-blue-50/80 border border-blue-200 flex items-center justify-between text-xs font-semibold text-blue-900">
+            <div className="mt-2 p-2.5 rounded-neu-sm bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 flex items-center justify-between text-xs font-semibold text-blue-900 dark:text-blue-200">
               <span>
                 Kết quả: Đúng <strong>{tfScore.correctCount}/{tfScore.total}</strong> ý
               </span>
               <span className="bg-blue-600 text-white px-2 py-0.5 rounded-full text-xs font-bold">
                 +{tfScore.score} điểm THPT
               </span>
+            </div>
+          )}
+
+          {/* Nút 1-chạm hỏi Trợ lý Socratic AI ngay trong đề bài của từng chủ đề */}
+          {onAskAiTutor && !hasAnswered && (
+            <div className="pt-2 border-t border-slate-200/60 dark:border-slate-800 flex items-center justify-between gap-2">
+              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                Chưa hiểu rõ câu hỏi này?
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  onAskAiTutor();
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-blue-700 dark:text-blue-300 shadow-neu-flat-xs dark:shadow-none active:shadow-neu-inset hover:text-blue-800 dark:hover:text-blue-200 border border-blue-300/60 dark:border-blue-700/60 transition cursor-pointer"
+                title="Hỏi Trợ lý Socratic AI gợi ý tư duy cho câu này"
+              >
+                <Bot className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <span>Hỏi Trợ lý AI gợi ý tư duy</span>
+                <Sparkles className="w-3 h-3 text-amber-500" />
+              </button>
             </div>
           )}
         </div>
@@ -504,6 +526,60 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       {/* Phân tích lời giải và Trợ lý Socratic AI sau khi hoàn thành */}
       {hasAnswered && (
         <div className="space-y-3">
+          {/* Thông báo phân tích nguyên nhân nếu làm SAI */}
+          {!isTrueFalse && selectedOption && selectedOption !== question.correctAnswer && (
+            <div className="p-3.5 rounded-neu-sm bg-rose-50/90 dark:bg-rose-950/40 border-2 border-rose-400 dark:border-rose-800/80 space-y-2.5 shadow-neu-flat-xs">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-rose-800 dark:text-rose-300 font-bold text-xs sm:text-sm">
+                  <XCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 flex-shrink-0" />
+                  <span>Chưa chính xác (Bạn đã chọn phương án {selectedOption})</span>
+                </div>
+              </div>
+              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                Trong kỳ thi tốt nghiệp THPT, hiểu rõ <strong>nguyên nhân vì sao phương án mình chọn là bẫy</strong> sẽ giúp em khắc sâu kiến thức và không bao giờ lặp lại lỗi sai tương tự.
+              </p>
+              {onAskAiTutor && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    onAskAiTutor();
+                  }}
+                  className="w-full py-2.5 px-3 rounded-neu-sm bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-neu-blue active:scale-[0.99] transition cursor-pointer"
+                >
+                  <Bot className="w-4 h-4 text-white flex-shrink-0" />
+                  <span>🤖 Hỏi Trợ lý Socratic AI: Tại sao em chọn {selectedOption} lại sai?</span>
+                  <Sparkles className="w-3.5 h-3.5 text-amber-300 flex-shrink-0" />
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* Thông báo nếu làm ĐÚNG */}
+          {!isTrueFalse && selectedOption && selectedOption === question.correctAnswer && (
+            <div className="p-3 rounded-neu-sm bg-emerald-50/90 dark:bg-emerald-950/40 border-2 border-emerald-400 dark:border-emerald-800/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 shadow-neu-flat-xs">
+              <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-bold text-xs sm:text-sm">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+                <span>Chính xác! Bạn đã chọn đúng phương án {selectedOption}.</span>
+              </div>
+              {onAskAiTutor && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    onAskAiTutor();
+                  }}
+                  className="self-end sm:self-auto py-1.5 px-3 rounded-neu-xs bg-emerald-100 dark:bg-emerald-900/60 hover:bg-emerald-200 text-emerald-900 dark:text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition cursor-pointer"
+                >
+                  <Bot className="w-3.5 h-3.5" />
+                  <span>Đào sâu cùng AI</span>
+                  <Sparkles className="w-3 h-3 text-amber-500" />
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* Khung phân tích lời giải chi tiết */}
           {question.explanation && (
             <div className="p-4 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-neu-inset dark:shadow-none space-y-2 border-l-4 border-emerald-500 border border-slate-300/40 dark:border-slate-800">
               <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-800 dark:text-emerald-400 uppercase">
@@ -516,14 +592,18 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             </div>
           )}
 
-          {/* Nút hành động hỏi Socratic AI Tutor */}
+          {/* Nút hành động hỏi Socratic AI Tutor tổng quát */}
           {onAskAiTutor && (
             <button
-              onClick={onAskAiTutor}
-              className="w-full py-2.5 px-3 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] hover:bg-blue-50 dark:hover:bg-blue-950/40 border border-blue-500/40 dark:border-blue-700/50 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center justify-center gap-2 shadow-neu-flat-xs dark:shadow-none active:shadow-neu-inset transition"
+              type="button"
+              onClick={() => {
+                soundManager.playClick();
+                onAskAiTutor();
+              }}
+              className="w-full py-2.5 px-3 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] hover:bg-blue-50 dark:hover:bg-blue-950/40 border border-blue-500/40 dark:border-blue-700/50 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center justify-center gap-2 shadow-neu-flat-xs dark:shadow-none active:shadow-neu-inset transition cursor-pointer"
             >
               <Bot className="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0" />
-              <span>Chưa hiểu rõ câu này? Hỏi Trợ lý Socratic AI tư duy</span>
+              <span>Chưa hiểu rõ câu này? Hỏi Trợ lý Socratic AI giải thích nguyên nhân</span>
               <Sparkles className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
             </button>
           )}
