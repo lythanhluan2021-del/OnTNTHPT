@@ -26,6 +26,7 @@ import {
   HeartHandshake,
   Play,
   Terminal,
+  Globe,
 } from "lucide-react";
 import { LatexRenderer } from "../UI/LatexRenderer";
 import { ImageZoomModal } from "../UI/ImageZoomModal";
@@ -34,12 +35,14 @@ interface TheoryViewerProps {
   topicId: string;
   onStartPractice: (part?: "mc" | "tf") => void;
   onOpenIdeWithCode?: (codeSnippet: string) => void;
+  onOpenWebIdeWithCode?: (codeSnippet: string) => void;
 }
 
 export const TheoryViewer: React.FC<TheoryViewerProps> = ({
   topicId,
   onStartPractice,
   onOpenIdeWithCode,
+  onOpenWebIdeWithCode,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -370,7 +373,13 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                             <div className="px-3 py-1.5 bg-slate-950/90 border-b border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
                               <span className="text-slate-400 flex items-center gap-1.5 font-medium">
                                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                                <span>{topicId.includes("python") ? "Python 3" : "Mã nguồn"}</span>
+                                <span>
+                                  {topicId.includes("python")
+                                    ? "Python 3"
+                                    : topicId.includes("web") || topicId.includes("12f") || topicId.includes("html")
+                                    ? "HTML / CSS"
+                                    : "Mã nguồn"}
+                                </span>
                               </span>
                               {topicId.includes("python") && onOpenIdeWithCode && (
                                 <button
@@ -384,6 +393,20 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                                 >
                                   <Play className="w-2.5 h-2.5 fill-current" />
                                   <span>Chạy trong IDE</span>
+                                </button>
+                              )}
+                              {(topicId.includes("web") || topicId.includes("12f") || topicId.includes("html")) && onOpenWebIdeWithCode && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    soundManager.playClick();
+                                    onOpenWebIdeWithCode(block.code!);
+                                  }}
+                                  className="flex items-center gap-1 px-2 py-0.5 rounded bg-blue-600 hover:bg-blue-500 text-white font-sans text-[10px] font-bold shadow-xs active:scale-95 transition-all"
+                                  title="Nạp và xem thử đoạn mã này trong Web IDE"
+                                >
+                                  <Globe className="w-2.5 h-2.5" />
+                                  <span>Xem trong Web IDE</span>
                                 </button>
                               )}
                             </div>

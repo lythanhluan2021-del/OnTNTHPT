@@ -13,12 +13,14 @@ import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
 import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
 import { TheoryViewer } from "@/components/Theory/TheoryViewer";
 import { soundManager } from "@/lib/audioEffects";
-import { BookOpen, ListOrdered, CheckCheck, Terminal } from "lucide-react";
+import { BookOpen, ListOrdered, CheckCheck, Terminal, Globe } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { LoginModal } from "@/components/Auth/LoginModal";
 import { StudentLoginGate } from "@/components/Auth/StudentLoginGate";
 import { PythonIde } from "@/components/PythonIde/PythonIde";
 import { PythonIdeDrawer } from "@/components/PythonIde/PythonIdeDrawer";
+import { HtmlCssIde } from "@/components/HtmlCssIde/HtmlCssIde";
+import { HtmlCssIdeDrawer } from "@/components/HtmlCssIde/HtmlCssIdeDrawer";
 
 export default function AppHome() {
   const { user, isLoggedIn, isAuthLoading } = useAuth();
@@ -33,7 +35,7 @@ export default function AppHome() {
   const [selectedTopicId, setSelectedTopicId] = useState<string>(
     INITIAL_SUBJECTS[0].topics[0].id
   );
-  const [activeTab, setActiveTab] = useState<"practice" | "analytics" | "theory" | "ide">("practice");
+  const [activeTab, setActiveTab] = useState<"practice" | "analytics" | "theory" | "ide" | "web-ide">("practice");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [ideCodeToRun, setIdeCodeToRun] = useState<string | undefined>(undefined);
   const [isIdeDrawerOpen, setIsIdeDrawerOpen] = useState(false);
@@ -42,6 +44,15 @@ export default function AppHome() {
   const [ideDrawerTitle, setIdeDrawerTitle] = useState<string | undefined>(undefined);
   const [ideDrawerTargetAnswer, setIdeDrawerTargetAnswer] = useState<string | undefined>(undefined);
   const [ideDrawerQuestionNumber, setIdeDrawerQuestionNumber] = useState<number | string | undefined>(undefined);
+
+  // Web IDE (HTML & CSS) States
+  const [webIdeCodeToRun, setWebIdeCodeToRun] = useState<{ html?: string; css?: string } | undefined>(undefined);
+  const [isWebIdeDrawerOpen, setIsWebIdeDrawerOpen] = useState(false);
+  const [webIdeDrawerHtml, setWebIdeDrawerHtml] = useState<string | undefined>(undefined);
+  const [webIdeDrawerCss, setWebIdeDrawerCss] = useState<string | undefined>(undefined);
+  const [webIdeDrawerTitle, setWebIdeDrawerTitle] = useState<string | undefined>(undefined);
+  const [webIdeDrawerTargetAnswer, setWebIdeDrawerTargetAnswer] = useState<string | undefined>(undefined);
+  const [webIdeDrawerQuestionNumber, setWebIdeDrawerQuestionNumber] = useState<number | string | undefined>(undefined);
 
   // Mặc định mở sidebar trên màn hình máy tính (>= 768px)
   useEffect(() => {
@@ -180,6 +191,13 @@ export default function AppHome() {
     selectedTopicId === "tin-lap-trinh-python" ||
     selectedTopicId === "tin-python-dung-sai" ||
     currentTopic?.name?.toLowerCase().includes("python")
+  );
+  const isWebTopic = Boolean(
+    selectedTopicId === "tin-chuyen-de-12f-web" ||
+    selectedTopicId === "tin-12f" ||
+    selectedTopicId === "tin-tao-trang-web-html-css" ||
+    currentTopic?.name?.toLowerCase().includes("html") ||
+    currentTopic?.name?.toLowerCase().includes("trang web")
   );
 
   // Lọc toàn bộ câu hỏi theo chủ đề (hỗ trợ cả alias cũ nếu có trong bộ nhớ tạm)
@@ -454,16 +472,17 @@ export default function AppHome() {
           topicTitle={currentTopic?.name || "Chủ đề"}
           onOpenSubjectModal={() => setIsSubjectModalOpen(true)}
           isPythonTopic={isPythonTopic}
+          isWebTopic={isWebTopic}
         />
 
         {/* Khung nội dung chính */}
         <main
           className={`flex-1 w-full mx-auto p-3 sm:p-4 space-y-4 ${
-            activeTab === "ide" ? "max-w-4xl" : "max-w-md"
+            activeTab === "ide" || activeTab === "web-ide" ? "max-w-5xl" : "max-w-md"
           }`}
         >
-          {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn), Phần 2 (Đúng / Sai) và Chạy Code (IDE) */}
-          {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0 || isPythonTopic) && (
+          {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn), Phần 2 (Đúng / Sai), Chạy Code Python & Web IDE */}
+          {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0 || isPythonTopic || isWebTopic) && (
             <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm">
               {currentHasTheory && (
                 <button
@@ -582,6 +601,30 @@ export default function AppHome() {
                   </span>
                 </button>
               )}
+
+              {isWebTopic && (
+                <button
+                  onClick={() => {
+                    soundManager.playClick();
+                    setActiveTab("web-ide");
+                  }}
+                  className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
+                    activeTab === "web-ide"
+                      ? "bg-[#e6ecf5] text-blue-600 shadow-neu-inset font-bold"
+                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
+                  }`}
+                  title="Mở trình soạn thảo & Xem trước HTML & CSS (Web IDE)"
+                >
+                  <Globe
+                    className={`w-4 h-4 ${
+                      activeTab === "web-ide" ? "text-blue-600" : "text-blue-600"
+                    }`}
+                  />
+                  <span className="truncate w-full text-center leading-tight">
+                    Web IDE
+                  </span>
+                </button>
+              )}
             </div>
           )}
 
@@ -589,6 +632,14 @@ export default function AppHome() {
             /* Tab Trình soạn thảo & Chạy Code Python */
             <div className="w-full pb-20 animate-fade-in">
               <PythonIde initialCode={ideCodeToRun} />
+            </div>
+          ) : activeTab === "web-ide" ? (
+            /* Tab Trình soạn thảo & Xem trước HTML & CSS Web IDE */
+            <div className="w-full pb-20 animate-fade-in">
+              <HtmlCssIde
+                initialHtml={webIdeCodeToRun?.html}
+                initialCss={webIdeCodeToRun?.css}
+              />
             </div>
           ) : activeTab === "theory" ? (
             /* Tab Tóm Tắt & Tra Cứu Lý Thuyết Trọng Tâm */
@@ -606,6 +657,17 @@ export default function AppHome() {
               onOpenIdeWithCode={(codeSnippet) => {
                 setIdeCodeToRun(codeSnippet);
                 setActiveTab("ide");
+              }}
+              onOpenWebIdeWithCode={(codeSnippet) => {
+                if (codeSnippet.includes("<") || codeSnippet.includes("<!DOCTYPE")) {
+                  setWebIdeCodeToRun({ html: codeSnippet, css: "" });
+                } else {
+                  setWebIdeCodeToRun({
+                    html: `<div class="box">\n  <h3>Ví dụ thực hành</h3>\n  <p>Đoạn văn được áp dụng kiểu CSS.</p>\n</div>`,
+                    css: codeSnippet,
+                  });
+                }
+                setActiveTab("web-ide");
               }}
             />
           ) : activeTab === "practice" ? (
@@ -631,6 +693,18 @@ export default function AppHome() {
                       setIdeDrawerTargetAnswer(targetAnswer);
                       setIdeDrawerQuestionNumber(questionNumber);
                       setIsIdeDrawerOpen(true);
+                    }}
+                    onOpenWebIde={(htmlSnippet, cssSnippet, title, targetAnswer, questionNumber) => {
+                      if (htmlSnippet !== undefined) {
+                        setWebIdeDrawerHtml(htmlSnippet);
+                      }
+                      if (cssSnippet !== undefined) {
+                        setWebIdeDrawerCss(cssSnippet);
+                      }
+                      setWebIdeDrawerTitle(title);
+                      setWebIdeDrawerTargetAnswer(targetAnswer);
+                      setWebIdeDrawerQuestionNumber(questionNumber);
+                      setIsWebIdeDrawerOpen(true);
                     }}
                   />
 
@@ -717,6 +791,17 @@ export default function AppHome() {
         exerciseTitle={ideDrawerTitle}
         exerciseTargetAnswer={ideDrawerTargetAnswer}
         exerciseQuestionNumber={ideDrawerQuestionNumber}
+      />
+
+      {/* Cửa sổ Web IDE (HTML & CSS) Drawer nổi để học sinh xem trước trang web khi đang làm bài */}
+      <HtmlCssIdeDrawer
+        isOpen={isWebIdeDrawerOpen}
+        onClose={() => setIsWebIdeDrawerOpen(false)}
+        initialHtml={webIdeDrawerHtml}
+        initialCss={webIdeDrawerCss}
+        exerciseTitle={webIdeDrawerTitle}
+        exerciseTargetAnswer={webIdeDrawerTargetAnswer}
+        exerciseQuestionNumber={webIdeDrawerQuestionNumber}
       />
 
       {/* Cổng đăng nhập cho Học sinh & Giáo viên */}

@@ -3,9 +3,10 @@
 import React from "react";
 import { Question } from "@/types";
 import { LatexRenderer } from "../UI/LatexRenderer";
-import { Check, X, Bookmark, FileText, CheckCircle2, XCircle, Terminal } from "lucide-react";
+import { Check, X, Bookmark, FileText, CheckCircle2, XCircle, Terminal, Globe } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { PYTHON_QUESTION_EXERCISES } from "@/data/pythonQuestionCodes";
+import { HTML_CSS_QUESTION_EXERCISES } from "@/data/htmlCssTemplates";
 
 interface QuestionCardProps {
   question: Question;
@@ -24,6 +25,13 @@ interface QuestionCardProps {
     targetAnswer?: string,
     questionNumber?: number | string
   ) => void;
+  onOpenWebIde?: (
+    htmlSnippet?: string,
+    cssSnippet?: string,
+    exerciseTitle?: string,
+    targetAnswer?: string,
+    questionNumber?: number | string
+  ) => void;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -36,12 +44,21 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   onSelectTF,
   hasAnswered,
   onOpenIde,
+  onOpenWebIde,
 }) => {
   const isTrueFalse = question.type === "true_false" && question.tfItems && question.tfItems.length > 0;
   const isPythonQuestion =
     question.topicId === "tin-lap-trinh-python" ||
     question.topicId === "tin-python-dung-sai" ||
     question.topicName?.toLowerCase().includes("python");
+
+  const isWebQuestion =
+    question.topicId === "tin-chuyen-de-12f-web" ||
+    question.topicId === "tin-12f" ||
+    question.topicId === "tin-tao-trang-web-html-css" ||
+    question.topicName?.toLowerCase().includes("html") ||
+    question.topicName?.toLowerCase().includes("trang web") ||
+    Boolean(HTML_CSS_QUESTION_EXERCISES[question.id]);
 
   const getDifficultyBadge = (difficulty: string) => {
     switch (difficulty) {
@@ -182,6 +199,54 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   <Terminal className="w-3.5 h-3.5 text-blue-600" />
                   <span>
                     {questionExercise ? "🧪 Chạy thử bài này trong IDE (1-Click)" : "Mở Python IDE"}
+                  </span>
+                </button>
+              </div>
+            );
+          })()}
+
+          {/* Nút xem thử nghiệm bài tập này trong HTML & CSS Web IDE */}
+          {isWebQuestion && onOpenWebIde && (() => {
+            const webExercise = HTML_CSS_QUESTION_EXERCISES[question.id];
+            return (
+              <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-slate-200/60 mt-1.5">
+                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium">
+                  {webExercise ? (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 font-bold text-[10px] border border-blue-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                      Có sẵn mã HTML/CSS thực hành
+                    </span>
+                  ) : (
+                    <span className="text-[11px] text-slate-500">Môi trường xem trước Web (Sandbox)</span>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    if (webExercise) {
+                      onOpenWebIde(
+                        webExercise.html,
+                        webExercise.css,
+                        webExercise.title,
+                        webExercise.targetAnswer,
+                        webExercise.questionNumber
+                      );
+                    } else {
+                      onOpenWebIde(undefined, undefined, `Thực hành câu ${currentIndex + 1}`);
+                    }
+                  }}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset transition-all ${
+                    webExercise
+                      ? "bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-700 hover:text-blue-900 border border-blue-300/80 hover:border-blue-400"
+                      : "bg-[#e6ecf5] text-slate-700 hover:text-blue-700 border border-slate-300/60"
+                  }`}
+                  title="Mở trình soạn thảo Web IDE để xem trang web hiển thị và kiểm chứng câu hỏi này"
+                >
+                  <Globe className="w-3.5 h-3.5 text-blue-600" />
+                  <span>
+                    {webExercise ? "🌐 Xem thử trong Web IDE (1-Click)" : "Mở Web IDE"}
                   </span>
                 </button>
               </div>
