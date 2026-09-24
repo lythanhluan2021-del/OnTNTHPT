@@ -89,7 +89,7 @@ export default function AppHome() {
   // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage với cơ chế kiểm soát phiên bản chuẩn KH GD1
   useEffect(() => {
     try {
-      const STRUCTURE_VERSION = "2026_GD1_V8_CHUYEN_DE_11F";
+      const STRUCTURE_VERSION = "2026_GD1_V9_CHUYEN_DE_12E";
       const currentVer = localStorage.getItem("thpt_structure_version");
 
       if (currentVer !== STRUCTURE_VERSION) {
@@ -206,6 +206,8 @@ export default function AppHome() {
   const isWebTopic = Boolean(
     selectedTopicId === "tin-chuyen-de-12f-web" ||
     selectedTopicId === "tin-12f" ||
+    selectedTopicId === "tin-chuyen-de-12e-web" ||
+    selectedTopicId === "tin-12e" ||
     selectedTopicId === "tin-tao-trang-web-html-css" ||
     currentTopic?.name?.toLowerCase().includes("html") ||
     currentTopic?.name?.toLowerCase().includes("trang web")

@@ -1,4 +1,5 @@
 import { Question, Subject } from "../types";
+import { CHUYEN_DE_12E_QUESTIONS } from "./questions12e";
 
 export const INITIAL_SUBJECTS: Subject[] = [
   {
@@ -63,6 +64,17 @@ export const INITIAL_SUBJECTS: Subject[] = [
         totalQuestions: 146,
         mcCount: 132,
         tfCount: 14,
+        hasTheory: true,
+      },
+      // Tuần 12 - 20: Thực hành phần mềm tạo trang web (Chuyên đề 12E - Tin học ứng dụng ICT)
+      {
+        id: "tin-chuyen-de-12e-web",
+        name: "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 4: Thực hành phần mềm tạo trang web (Tuần 12 – 20)",
+        totalQuestions: 113,
+        mcCount: 89,
+        tfCount: 24,
         hasTheory: true,
       },
 
@@ -24485,5 +24497,6 @@ export const INITIAL_QUESTIONS: Question[] = [
       "correctAnswer": true
     }
   ]
-}
+},
+...CHUYEN_DE_12E_QUESTIONS
 ];

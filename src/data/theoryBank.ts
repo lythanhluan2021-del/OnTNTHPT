@@ -2174,3 +2174,9 @@ TOPIC_THEORY_MAP["tin-nhom-nghe-dich-vu-quan-tri"] = TOPIC_THEORY_MAP["tin-huong
 TOPIC_THEORY_MAP["tin-chuyen-de-11f"] = TOPIC_THEORY_MAP["tin-co-so-du-lieu-sql"];
 TOPIC_THEORY_MAP["tin-11f"] = TOPIC_THEORY_MAP["tin-co-so-du-lieu-sql"];
 TOPIC_THEORY_MAP["tin-csdl-quan-he"] = TOPIC_THEORY_MAP["tin-co-so-du-lieu-sql"];
+
+import { CHUYEN_DE_12E_THEORY } from "./theory12e";
+TOPIC_THEORY_MAP["tin-chuyen-de-12e-web"] = CHUYEN_DE_12E_THEORY;
+TOPIC_THEORY_MAP["tin-chuyen-de-12e"] = CHUYEN_DE_12E_THEORY;
+TOPIC_THEORY_MAP["tin-12e"] = CHUYEN_DE_12E_THEORY;
+TOPIC_THEORY_MAP["tin-thuc-hanh-tao-web"] = CHUYEN_DE_12E_THEORY;

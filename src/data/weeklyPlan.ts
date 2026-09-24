@@ -67,7 +67,7 @@ export const WEEKLY_PLAN: WeekPlanItem[] = [
     title: "Bài 1: HTML và cấu trúc trang web",
     chapter: "Chủ đề 4: Tạo trang web với HTML & CSS (Tuần 12 – 20)",
     periods: 2,
-    topicIds: ["tin-chuyen-de-12f-web", "tin-html-cau-truc-dinh-dang"],
+    topicIds: ["tin-chuyen-de-12f-web", "tin-chuyen-de-12e-web", "tin-html-cau-truc-dinh-dang"],
     subjectId: "tin-hoc-12",
     semester: 1,
     totalTargetQuestions: 22,
