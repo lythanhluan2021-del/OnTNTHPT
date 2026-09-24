@@ -27,6 +27,7 @@ import {
   Play,
   Terminal,
   Globe,
+  Database,
 } from "lucide-react";
 import { LatexRenderer } from "../UI/LatexRenderer";
 import { ImageZoomModal } from "../UI/ImageZoomModal";
@@ -36,6 +37,7 @@ interface TheoryViewerProps {
   onStartPractice: (part?: "mc" | "tf") => void;
   onOpenIdeWithCode?: (codeSnippet: string) => void;
   onOpenWebIdeWithCode?: (codeSnippet: string) => void;
+  onOpenSqlIdeWithCode?: (codeSnippet: string) => void;
 }
 
 export const TheoryViewer: React.FC<TheoryViewerProps> = ({
@@ -43,6 +45,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
   onStartPractice,
   onOpenIdeWithCode,
   onOpenWebIdeWithCode,
+  onOpenSqlIdeWithCode,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -378,6 +381,8 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                                     ? "Python 3"
                                     : topicId.includes("web") || topicId.includes("12f") || topicId.includes("html")
                                     ? "HTML / CSS"
+                                    : topicId.includes("sql") || topicId.includes("11f") || topicId.includes("csdl")
+                                    ? "Truy vấn SQL"
                                     : "Mã nguồn"}
                                 </span>
                               </span>
@@ -407,6 +412,20 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                                 >
                                   <Globe className="w-2.5 h-2.5" />
                                   <span>Xem trong Web IDE</span>
+                                </button>
+                              )}
+                              {(topicId.includes("sql") || topicId.includes("11f") || topicId.includes("csdl")) && onOpenSqlIdeWithCode && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    soundManager.playClick();
+                                    onOpenSqlIdeWithCode(block.code!);
+                                  }}
+                                  className="flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-sans text-[10px] font-bold shadow-xs active:scale-95 transition-all"
+                                  title="Nạp và chạy thử truy vấn SQL này trong SQL Studio"
+                                >
+                                  <Database className="w-2.5 h-2.5" />
+                                  <span>Chạy trong SQL Studio</span>
                                 </button>
                               )}
                             </div>

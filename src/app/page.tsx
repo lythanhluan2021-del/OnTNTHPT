@@ -13,7 +13,7 @@ import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
 import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
 import { TheoryViewer } from "@/components/Theory/TheoryViewer";
 import { soundManager } from "@/lib/audioEffects";
-import { BookOpen, ListOrdered, CheckCheck, Terminal, Globe } from "lucide-react";
+import { BookOpen, ListOrdered, CheckCheck, Terminal, Globe, Database } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { LoginModal } from "@/components/Auth/LoginModal";
 import { StudentLoginGate } from "@/components/Auth/StudentLoginGate";
@@ -21,6 +21,8 @@ import { PythonIde } from "@/components/PythonIde/PythonIde";
 import { PythonIdeDrawer } from "@/components/PythonIde/PythonIdeDrawer";
 import { HtmlCssIde } from "@/components/HtmlCssIde/HtmlCssIde";
 import { HtmlCssIdeDrawer } from "@/components/HtmlCssIde/HtmlCssIdeDrawer";
+import { SqlIde } from "@/components/SqlStudio/SqlIde";
+import { SqlIdeDrawer } from "@/components/SqlStudio/SqlIdeDrawer";
 
 export default function AppHome() {
   const { user, isLoggedIn, isAuthLoading } = useAuth();
@@ -35,7 +37,7 @@ export default function AppHome() {
   const [selectedTopicId, setSelectedTopicId] = useState<string>(
     INITIAL_SUBJECTS[0].topics[0].id
   );
-  const [activeTab, setActiveTab] = useState<"practice" | "analytics" | "theory" | "ide" | "web-ide">("practice");
+  const [activeTab, setActiveTab] = useState<"practice" | "analytics" | "theory" | "ide" | "web-ide" | "sql-ide">("practice");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [ideCodeToRun, setIdeCodeToRun] = useState<string | undefined>(undefined);
   const [isIdeDrawerOpen, setIsIdeDrawerOpen] = useState(false);
@@ -53,6 +55,15 @@ export default function AppHome() {
   const [webIdeDrawerTitle, setWebIdeDrawerTitle] = useState<string | undefined>(undefined);
   const [webIdeDrawerTargetAnswer, setWebIdeDrawerTargetAnswer] = useState<string | undefined>(undefined);
   const [webIdeDrawerQuestionNumber, setWebIdeDrawerQuestionNumber] = useState<number | string | undefined>(undefined);
+
+  // SQL Studio (CSDL & Truy vấn SQL) States
+  const [sqlCodeToRun, setSqlCodeToRun] = useState<string | undefined>(undefined);
+  const [sqlDatasetIdToRun, setSqlDatasetIdToRun] = useState<string | undefined>(undefined);
+  const [isSqlDrawerOpen, setIsSqlDrawerOpen] = useState(false);
+  const [sqlDrawerQuery, setSqlDrawerQuery] = useState<string | undefined>(undefined);
+  const [sqlDrawerDatasetId, setSqlDrawerDatasetId] = useState<string | undefined>(undefined);
+  const [sqlDrawerTitle, setSqlDrawerTitle] = useState<string | undefined>(undefined);
+  const [sqlDrawerTargetQuestionId, setSqlDrawerTargetQuestionId] = useState<string | undefined>(undefined);
 
   // Mặc định mở sidebar trên màn hình máy tính (>= 768px)
   useEffect(() => {
@@ -198,6 +209,15 @@ export default function AppHome() {
     selectedTopicId === "tin-tao-trang-web-html-css" ||
     currentTopic?.name?.toLowerCase().includes("html") ||
     currentTopic?.name?.toLowerCase().includes("trang web")
+  );
+  const isSqlTopic = Boolean(
+    selectedTopicId === "tin-co-so-du-lieu-sql" ||
+    selectedTopicId === "tin-chuyen-de-11f" ||
+    selectedTopicId === "tin-11f" ||
+    selectedTopicId === "tin-csdl-quan-he" ||
+    currentTopic?.name?.toLowerCase().includes("csdl") ||
+    currentTopic?.name?.toLowerCase().includes("cơ sở dữ liệu") ||
+    currentTopic?.name?.toLowerCase().includes("sql")
   );
 
   // Lọc toàn bộ câu hỏi theo chủ đề (hỗ trợ cả alias cũ nếu có trong bộ nhớ tạm)
@@ -473,16 +493,17 @@ export default function AppHome() {
           onOpenSubjectModal={() => setIsSubjectModalOpen(true)}
           isPythonTopic={isPythonTopic}
           isWebTopic={isWebTopic}
+          isSqlTopic={isSqlTopic}
         />
 
         {/* Khung nội dung chính */}
         <main
           className={`flex-1 w-full mx-auto p-3 sm:p-4 space-y-4 ${
-            activeTab === "ide" || activeTab === "web-ide" ? "max-w-5xl" : "max-w-md"
+            activeTab === "ide" || activeTab === "web-ide" || activeTab === "sql-ide" ? "max-w-5xl" : "max-w-md"
           }`}
         >
-          {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn), Phần 2 (Đúng / Sai), Chạy Code Python & Web IDE */}
-          {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0 || isPythonTopic || isWebTopic) && (
+          {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn), Phần 2 (Đúng / Sai), Chạy Code Python, Web IDE & SQL Studio */}
+          {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0 || isPythonTopic || isWebTopic || isSqlTopic) && (
             <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm">
               {currentHasTheory && (
                 <button
@@ -625,6 +646,30 @@ export default function AppHome() {
                   </span>
                 </button>
               )}
+
+              {isSqlTopic && (
+                <button
+                  onClick={() => {
+                    soundManager.playClick();
+                    setActiveTab("sql-ide");
+                  }}
+                  className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
+                    activeTab === "sql-ide"
+                      ? "bg-[#e6ecf5] text-emerald-700 shadow-neu-inset font-bold"
+                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-emerald-700"
+                  }`}
+                  title="Mở SQL Studio & Truy vấn Cơ sở dữ liệu mẫu"
+                >
+                  <Database
+                    className={`w-4 h-4 ${
+                      activeTab === "sql-ide" ? "text-emerald-600" : "text-emerald-600"
+                    }`}
+                  />
+                  <span className="truncate w-full text-center leading-tight">
+                    SQL Studio
+                  </span>
+                </button>
+              )}
             </div>
           )}
 
@@ -639,6 +684,14 @@ export default function AppHome() {
               <HtmlCssIde
                 initialHtml={webIdeCodeToRun?.html}
                 initialCss={webIdeCodeToRun?.css}
+              />
+            </div>
+          ) : activeTab === "sql-ide" ? (
+            /* Tab Trực quan hóa & Truy vấn CSDL SQL Studio */
+            <div className="w-full pb-20 animate-fade-in">
+              <SqlIde
+                initialQuery={sqlCodeToRun}
+                initialDatasetId={sqlDatasetIdToRun}
               />
             </div>
           ) : activeTab === "theory" ? (
@@ -668,6 +721,10 @@ export default function AppHome() {
                   });
                 }
                 setActiveTab("web-ide");
+              }}
+              onOpenSqlIdeWithCode={(codeSnippet) => {
+                setSqlCodeToRun(codeSnippet);
+                setActiveTab("sql-ide");
               }}
             />
           ) : activeTab === "practice" ? (
@@ -705,6 +762,13 @@ export default function AppHome() {
                       setWebIdeDrawerTargetAnswer(targetAnswer);
                       setWebIdeDrawerQuestionNumber(questionNumber);
                       setIsWebIdeDrawerOpen(true);
+                    }}
+                    onOpenSqlIde={(query, datasetId, title, targetQuestionId) => {
+                      setSqlDrawerQuery(query);
+                      setSqlDrawerDatasetId(datasetId);
+                      setSqlDrawerTitle(title);
+                      setSqlDrawerTargetQuestionId(targetQuestionId);
+                      setIsSqlDrawerOpen(true);
                     }}
                   />
 
@@ -802,6 +866,16 @@ export default function AppHome() {
         exerciseTitle={webIdeDrawerTitle}
         exerciseTargetAnswer={webIdeDrawerTargetAnswer}
         exerciseQuestionNumber={webIdeDrawerQuestionNumber}
+      />
+
+      {/* Cửa sổ SQL Studio Drawer nổi để học sinh truy vấn CSDL khi đang làm bài */}
+      <SqlIdeDrawer
+        isOpen={isSqlDrawerOpen}
+        onClose={() => setIsSqlDrawerOpen(false)}
+        initialQuery={sqlDrawerQuery}
+        initialDatasetId={sqlDrawerDatasetId}
+        exerciseTitle={sqlDrawerTitle}
+        exerciseTargetQuestionId={sqlDrawerTargetQuestionId}
       />
 
       {/* Cổng đăng nhập cho Học sinh & Giáo viên */}

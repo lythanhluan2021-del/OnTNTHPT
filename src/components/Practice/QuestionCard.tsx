@@ -3,10 +3,11 @@
 import React from "react";
 import { Question } from "@/types";
 import { LatexRenderer } from "../UI/LatexRenderer";
-import { Check, X, Bookmark, FileText, CheckCircle2, XCircle, Terminal, Globe } from "lucide-react";
+import { Check, X, Bookmark, FileText, CheckCircle2, XCircle, Terminal, Globe, Database } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { PYTHON_QUESTION_EXERCISES } from "@/data/pythonQuestionCodes";
 import { HTML_CSS_QUESTION_EXERCISES } from "@/data/htmlCssTemplates";
+import { SQL_QUESTION_EXERCISES } from "@/data/sqlDatasets";
 
 interface QuestionCardProps {
   question: Question;
@@ -32,6 +33,12 @@ interface QuestionCardProps {
     targetAnswer?: string,
     questionNumber?: number | string
   ) => void;
+  onOpenSqlIde?: (
+    query?: string,
+    datasetId?: string,
+    exerciseTitle?: string,
+    targetQuestionId?: string
+  ) => void;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -45,6 +52,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   hasAnswered,
   onOpenIde,
   onOpenWebIde,
+  onOpenSqlIde,
 }) => {
   const isTrueFalse = question.type === "true_false" && question.tfItems && question.tfItems.length > 0;
   const isPythonQuestion =
@@ -59,6 +67,18 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     question.topicName?.toLowerCase().includes("html") ||
     question.topicName?.toLowerCase().includes("trang web") ||
     Boolean(HTML_CSS_QUESTION_EXERCISES[question.id]);
+
+  const isSqlQuestion =
+    question.topicId === "tin-co-so-du-lieu-sql" ||
+    question.topicId === "tin-chuyen-de-11f" ||
+    question.topicId === "tin-11f" ||
+    question.topicId === "tin-csdl-quan-he" ||
+    question.topicName?.toLowerCase().includes("csdl") ||
+    question.topicName?.toLowerCase().includes("cơ sở dữ liệu") ||
+    Boolean(SQL_QUESTION_EXERCISES[question.id]) ||
+    question.content.toLowerCase().includes("sql") ||
+    question.content.toLowerCase().includes("select ") ||
+    question.content.toLowerCase().includes("inner join");
 
   const getDifficultyBadge = (difficulty: string) => {
     switch (difficulty) {
@@ -247,6 +267,58 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   <Globe className="w-3.5 h-3.5 text-blue-600" />
                   <span>
                     {webExercise ? "🌐 Xem thử trong Web IDE (1-Click)" : "Mở Web IDE"}
+                  </span>
+                </button>
+              </div>
+            );
+          })()}
+
+          {/* Nút kiểm tra/thực hành nhanh trên SQL Studio */}
+          {isSqlQuestion && onOpenSqlIde && (() => {
+            const sqlExercise = SQL_QUESTION_EXERCISES[question.id];
+            return (
+              <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-slate-200/60 mt-1.5">
+                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium">
+                  {sqlExercise ? (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px] border border-emerald-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      Có sẵn CSDL &amp; câu lệnh SQL mẫu
+                    </span>
+                  ) : (
+                    <span className="text-[11px] text-slate-500">Môi trường thử nghiệm SQL Studio</span>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    if (sqlExercise) {
+                      onOpenSqlIde(
+                        sqlExercise.runnableQuery,
+                        sqlExercise.datasetId,
+                        sqlExercise.title,
+                        question.id
+                      );
+                    } else {
+                      onOpenSqlIde(
+                        undefined,
+                        undefined,
+                        `SQL Studio - Câu ${currentIndex + 1}`,
+                        question.id
+                      );
+                    }
+                  }}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset transition-all ${
+                    sqlExercise
+                      ? "bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 hover:text-emerald-900 border border-emerald-300/80 hover:border-emerald-400"
+                      : "bg-[#e6ecf5] text-slate-700 hover:text-emerald-700 border border-slate-300/60"
+                  }`}
+                  title="Mở SQL Studio với cơ sở dữ liệu mẫu thực tế để truy vấn và kiểm chứng câu hỏi này"
+                >
+                  <Database className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>
+                    {sqlExercise ? "⚡ Thử nghiệm trong SQL Studio (1-Click)" : "Mở SQL Studio"}
                   </span>
                 </button>
               </div>

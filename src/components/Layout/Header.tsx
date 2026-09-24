@@ -18,19 +18,21 @@ import {
   GraduationCap,
   Terminal,
   Globe,
+  Database,
 } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { useAuth } from "@/contexts/AuthContext";
 
 interface HeaderProps {
   onToggleSidebar: () => void;
-  activeTab: "practice" | "analytics" | "theory" | "ide" | "web-ide";
-  onChangeTab: (tab: "practice" | "analytics" | "theory" | "ide" | "web-ide") => void;
+  activeTab: "practice" | "analytics" | "theory" | "ide" | "web-ide" | "sql-ide";
+  onChangeTab: (tab: "practice" | "analytics" | "theory" | "ide" | "web-ide" | "sql-ide") => void;
   subjectTitle: string;
   topicTitle: string;
   onOpenSubjectModal: () => void;
   isPythonTopic?: boolean;
   isWebTopic?: boolean;
+  isSqlTopic?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -42,6 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSubjectModal,
   isPythonTopic = false,
   isWebTopic = false,
+  isSqlTopic = false,
 }) => {
   const { user, isLoggedIn, isAdmin, openLoginModal, logout } = useAuth();
   const [isSoundOn, setIsSoundOn] = useState(soundManager.isEnabled());
@@ -176,6 +179,23 @@ export const Header: React.FC<HeaderProps> = ({
                 title="Web IDE - Trình soạn thảo & Xem trước HTML & CSS"
               >
                 <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600" />
+              </button>
+            )}
+
+            {isSqlTopic && (
+              <button
+                onClick={() => {
+                  soundManager.playClick();
+                  onChangeTab("sql-ide");
+                }}
+                className={`p-1.5 rounded-lg transition-all ${
+                  activeTab === "sql-ide"
+                    ? "bg-[#e6ecf5] text-emerald-700 shadow-neu-flat-xs font-bold"
+                    : "text-slate-500 hover:text-emerald-600"
+                }`}
+                title="SQL Studio - Truy vấn & Kiểm chứng CSDL"
+              >
+                <Database className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
               </button>
             )}
 
