@@ -78,7 +78,7 @@ export default function AppHome() {
   // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage với cơ chế kiểm soát phiên bản chuẩn KH GD1
   useEffect(() => {
     try {
-      const STRUCTURE_VERSION = "2026_GD1_V6_CHUYEN_DE_12F";
+      const STRUCTURE_VERSION = "2026_GD1_V7_CHUYEN_DE_12G";
       const currentVer = localStorage.getItem("thpt_structure_version");
 
       if (currentVer !== STRUCTURE_VERSION) {

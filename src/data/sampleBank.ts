@@ -69,11 +69,13 @@ export const INITIAL_SUBJECTS: Subject[] = [
       // Tuần 21 - 23: Hướng nghiệp với tin học [6 tiết]
       {
         id: "tin-huong-nghiep-dich-vu",
-        name: "Hướng nghiệp với tin học (Tin học 10, 11, 12) (Tuần 21)",
+        name: "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
-        totalQuestions: 3,
-        mcCount: 3,
+        totalQuestions: 73,
+        mcCount: 62,
+        tfCount: 11,
+        hasTheory: true,
       },
       {
         id: "tin-huong-nghiep-ict",
@@ -16808,6 +16810,2668 @@ export const INITIAL_QUESTIONS: Question[] = [
     {
       "id": "d",
       "content": "Khuyến khích mọi người tìm hiểu và tôn trọng sự khác biệt văn hóa là cách tốt nhất để duy trì một môi trường giao tiếp tích cực, đoàn kết.",
+      "correctAnswer": true
+    }
+  ]
+}
+,
+{
+  "id": "Q-TIN-12G-MC-01",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây mô tả đúng về nghề Sửa chữa và bảo trì máy tính?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Yêu cầu phải biết lập trinh."
+    },
+    {
+      "id": "B",
+      "content": "Không đòi hỏi kĩ năng giao tiếp."
+    },
+    {
+      "id": "C",
+      "content": "Yêu cầu phải biết điều chỉnh, tối ưu hoá các thông số cấu hình cho hệ điều hành và các phần mềm ứng dụng."
+    },
+    {
+      "id": "D",
+      "content": "Yêu cầu phải biểt sử dụng thành thạo tất cả những phần mềm ứng dụng thường gặp trong máy tính của người dùng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Yêu cầu phải biết điều chỉnh, tối ưu hoá các thông số cấu hình cho hệ điều hành và các phần mềm ứng dụng.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-02",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây mô tả đúng về nghề Quản trị mạng và hệ thống?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kĩ thuật viên công nghệ thông tin là người phụ trách công việc Quản trị mạng và hệ thống."
+    },
+    {
+      "id": "B",
+      "content": "Người Quản trị mạng và hệ thống nhất thiết phải lập trình thành thạo."
+    },
+    {
+      "id": "C",
+      "content": "Để trở thành người Quản trị mạng và hệ thống cần phải được đào tạo một cách bài bản ở các bậc học tiếp theo."
+    },
+    {
+      "id": "D",
+      "content": "Trong các văn bản pháp luật, không có nội dung nào liên quan đến công việc của người quán trị mạng và hệ thống."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Để trở thành người Quản trị mạng và hệ thống cần phải được đào tạo một cách bài bản ở các bậc học tiếp theo.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-03",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây mô tà sai về nghề Bảo mật hệ thống thông tin?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cần có hiểu biết sâu về các phương thức tấn công mạng, phương thức lây lan và phá hoại của các phần mềm độc hại."
+    },
+    {
+      "id": "B",
+      "content": "Phải có khả năng thiết lập và vận hành hệ thống bảo vệ cho mạng LAN."
+    },
+    {
+      "id": "C",
+      "content": "Phải biết lắp đặt, sửa chữa, thay thế các bộ phận hay linh kiện bị hỏng trong máy tính."
+    },
+    {
+      "id": "D",
+      "content": "Có nhiều ngành học ở bậc học tiếp theo đang đào tạo nhân lực cho nghề Bảo mật hệ thống thông tin, chẳng hạn như: An ninh mạng, Quản trị mạng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Phải biết lắp đặt, sửa chữa, thay thế các bộ phận hay linh kiện bị hỏng trong máy tính.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-04",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Nhiệm vụ nào sau đây là công việc chính của một kĩ sư quản trị mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phát triển và triển khai các biện pháp bảo mật mạng để ngăn chặn các cuộc tấn công từ hacker."
+    },
+    {
+      "id": "B",
+      "content": "Cài đặt phần cứng và phần mềm cho hệ thống mạng."
+    },
+    {
+      "id": "C",
+      "content": "Xây dựng các hệ thống quản lí CSDL trên mạng để lưu trữ thông tin quan trọng của doanh nghiệp."
+    },
+    {
+      "id": "D",
+      "content": "Phân tích và xác định nhu cầu về hệ thống thông tin của tổ chức."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo Chuyên đề 12G: Phát triển và triển khai các biện pháp bảo mật mạng để ngăn chặn các cuộc tấn công từ hacker.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-05",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong lĩnh vực Sửa chữa và bảo trì máy tính, vai trò chính của kĩ thuật viên là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Xây dựng CSDL."
+    },
+    {
+      "id": "B",
+      "content": "Phân tích dữ liệu."
+    },
+    {
+      "id": "C",
+      "content": "Sửa chữa và bảo trì phần cứng máy tính."
+    },
+    {
+      "id": "D",
+      "content": "Phát triển ứng dụng di động."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Sửa chữa và bảo trì phần cứng máy tính.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-06",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Chuyên gia phân tích thiết kế hệ thống thường làm công việc gì sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phân tích và thiết kế trang web."
+    },
+    {
+      "id": "B",
+      "content": "Phân tích và lập kế hoạch cho hệ thống thông tin."
+    },
+    {
+      "id": "C",
+      "content": "Bảo trì hệ thống thông tin."
+    },
+    {
+      "id": "D",
+      "content": "Phân tích dữ liệu và dự báo xu hướng phát triển."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Phân tích và lập kế hoạch cho hệ thống thông tin.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-07",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Bảo mật hệ thống thông tin đóng vai trò như thế nào trong doanh nghiệp?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Bảo vệ thông tin cá nhân của nhân viên."
+    },
+    {
+      "id": "B",
+      "content": "Ngăn chặn các cuộc tấn công mạng."
+    },
+    {
+      "id": "C",
+      "content": "Tăng cường tương tác trực tuyến."
+    },
+    {
+      "id": "D",
+      "content": "Quản lí hệ thống máy chủ."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Ngăn chặn các cuộc tấn công mạng.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-08",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Đối với nhóm nghề Sửa chữa và bảo trì máy tính, yêu cầu cần có kiến thức và kĩ năng gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hiểu biết về lập trình máy tính và thành thạo một ngôn ngữ lập trình."
+    },
+    {
+      "id": "B",
+      "content": "Kĩ năng sửa chữa và thay thế linh kiện phần cứng máy tính."
+    },
+    {
+      "id": "C",
+      "content": "Kiến thức về phân tích dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Nắm vững về quản lí dự án công nghệ thông tin."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Kĩ năng sửa chữa và thay thế linh kiện phần cứng máy tính.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-09",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phương án nào sau đây là kĩ năng không cần thiết đối với nhân lực trong nghề bảo mật hệ thống thông tin?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kĩ năng phát hiện và phòng ngừa các cuộc tấn công mạng."
+    },
+    {
+      "id": "B",
+      "content": "Kĩ năng phân tích và đánh giá các rủi ro bảo mật."
+    },
+    {
+      "id": "C",
+      "content": "Kĩ năng phân tích dữ liệu và phát hiện lỗ hổng bảo mật."
+    },
+    {
+      "id": "D",
+      "content": "Kĩ năng phân tích và quản trị CSDL."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo Chuyên đề 12G: Kĩ năng phân tích và quản trị CSDL.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-10",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Ngành học liên quan ở các bậc học tiếp theo sau giáo dục phổ thông cho nhóm nghề quản trị mạng là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Khoa học máy tính."
+    },
+    {
+      "id": "B",
+      "content": "Hệ thống thông tin quản lí."
+    },
+    {
+      "id": "C",
+      "content": "Quản trị kinh doanh."
+    },
+    {
+      "id": "D",
+      "content": "Kĩ thuật mạng máy tính."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo Chuyên đề 12G: Kĩ thuật mạng máy tính.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-11",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Nhu cầu nhân lực của xã hội trong hiện tại và tương lai gần về nhóm nghề Bảo mật hệ thống thông tin là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Giảm dần do sự phát triển của công nghệ tự động hoá."
+    },
+    {
+      "id": "B",
+      "content": "Tăng cao do nguy cơ tấn công mạng ngày càng gia tăng."
+    },
+    {
+      "id": "C",
+      "content": "Ôn định với nhu cầu hiện tại và không có xu hướng thay đổi trong tương lai."
+    },
+    {
+      "id": "D",
+      "content": "Giảm do chuyển sang các nghề khác như quản lí dữ liệu, lập trình hệ thống...."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Tăng cao do nguy cơ tấn công mạng ngày càng gia tăng.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-12",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Lí do chính nào dẫn đến sự gia tăng nhu cầu tuyển dụng nhân lực trong lĩnh vực Quản trị và bảo trì hệ thống?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sự suy thoái trong việc phát triển các ứng dụng công nghệ thông tin."
+    },
+    {
+      "id": "B",
+      "content": "Sự phát triển mạnh mẽ của ngành công nghiệp số."
+    },
+    {
+      "id": "C",
+      "content": "Sự tự động hoá trong quản trị hệ thống, giảm thiểu nguy cơ lỗi do con người."
+    },
+    {
+      "id": "D",
+      "content": "Sự thay đổi xu hướng sử dụng máy tính và mạng lưới trong doanh nghiệp."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Sự tự động hoá trong quản trị hệ thống, giảm thiểu nguy cơ lỗi do con người.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-13",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Tình huống nào sau đây mô tả không chính xác về ứng dụng của công nghệ thông tin trong các lĩnh vực khác nhau của đời sống?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Trong lĩnh vực y tế, các hệ thống thông tin y tế điện tử có thể lưu trữ và chia sẻ thông tin bệnh án của bệnh nhân giữa các cơ sở y tế khác nhau."
+    },
+    {
+      "id": "B",
+      "content": "Trong lĩnh vực giáo dục, các nền tảng học trực tuyến có thể cung cấp tài liệu học tập và bài giảng trực tuyến cho học sinh."
+    },
+    {
+      "id": "C",
+      "content": "Trong lĩnh vực tài chính, công nghệ blockchain có thể được sử dụng để tăng cường tính bảo mật và minh bạch trong giao dịch tiền điện tử và chứng khoán."
+    },
+    {
+      "id": "D",
+      "content": "Trong lĩnh vực xây dựng, công nghệ thông tin không thể sử dụng để mô phỏng và thiết kế các dự án xây dựng trước khi thực hiện thực tế."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo Chuyên đề 12G: Trong lĩnh vực xây dựng, công nghệ thông tin không thể sử dụng để mô phỏng và thiết kế các dự án xây dựng trước khi thực hiện thực tế.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-14",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Lĩnh vực nào không phải là thành phần của công nghệ thông tin?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lập trình"
+    },
+    {
+      "id": "B",
+      "content": "Quản trị mạng"
+    },
+    {
+      "id": "C",
+      "content": "Thiết kế đồ họa"
+    },
+    {
+      "id": "D",
+      "content": "Nông nghiệp"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo Chuyên đề 12G: Nông nghiệp",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-15",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Kỹ năng nào là quan trọng nhất đối với một lập trình viên?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Giải quyết vấn đề"
+    },
+    {
+      "id": "B",
+      "content": "Quản lý thời gian"
+    },
+    {
+      "id": "C",
+      "content": "Giao tiếp"
+    },
+    {
+      "id": "D",
+      "content": "Làm việc nhóm"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo Chuyên đề 12G: Giải quyết vấn đề",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-16",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Dịch vụ sửa chữa và bảo trì máy tính có nhiệm vụ gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chỉ bảo trì phần cứng."
+    },
+    {
+      "id": "B",
+      "content": "Hỗ trợ kỹ thuật cho người dùng."
+    },
+    {
+      "id": "C",
+      "content": "Chỉ sửa chữa phần mềm."
+    },
+    {
+      "id": "D",
+      "content": "Chỉ cung cấp phần mềm mới."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Hỗ trợ kỹ thuật cho người dùng.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-17",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Người làm nghề sửa chữa và bảo trì máy tính cần thực hiện công việc gì liên quan tới phần cứng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chỉ cài đặt phần mềm."
+    },
+    {
+      "id": "B",
+      "content": "Kiểm soát và duy trì hoạt động của máy tính."
+    },
+    {
+      "id": "C",
+      "content": "Lắp đặt phần mềm bảo mật."
+    },
+    {
+      "id": "D",
+      "content": "Cập nhật hệ điều hành."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Kiểm soát và duy trì hoạt động của máy tính.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-18",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Một trong những công việc liên quan đến phần mềm trong sửa chữa và bảo trì máy tính là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thay thế bo mạch chủ."
+    },
+    {
+      "id": "B",
+      "content": "Lắp đặt thêm thiết bị mạng."
+    },
+    {
+      "id": "C",
+      "content": "Cài đặt, cấu hình các phần mềm thông dụng."
+    },
+    {
+      "id": "D",
+      "content": "Thay màn hình có độ phân giải cao."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Cài đặt, cấu hình các phần mềm thông dụng.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-19",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Khi sửa chữa phần cứng, điều gì cần được xác định?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Loại phần mềm đang sử dụng"
+    },
+    {
+      "id": "B",
+      "content": "Nguyên nhân hỏng thiết bị"
+    },
+    {
+      "id": "C",
+      "content": "Địa chỉ IP của máy tính"
+    },
+    {
+      "id": "D",
+      "content": "Phiên bản hệ điều hành"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Nguyên nhân hỏng thiết bị",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-20",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Một trong những kỹ năng mềm cần thiết cho người làm nghề sửa chữa và bảo trì máy tính là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kỹ năng thiết kế đồ họa"
+    },
+    {
+      "id": "B",
+      "content": "Kỹ năng giao tiếp"
+    },
+    {
+      "id": "C",
+      "content": "Kỹ năng lập trình web"
+    },
+    {
+      "id": "D",
+      "content": "Kỹ năng kế toán"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Kỹ năng giao tiếp",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-21",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Ngành học nào sau đây liên quan đến dịch vụ sửa chữa và bảo trì máy tính?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kỹ thuật sửa chữa, lắp ráp máy tính"
+    },
+    {
+      "id": "B",
+      "content": "Kỹ thuật xây dựng"
+    },
+    {
+      "id": "C",
+      "content": "Kỹ thuật điện tử viễn thông"
+    },
+    {
+      "id": "D",
+      "content": "Kỹ thuật cơ khí"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo Chuyên đề 12G: Kỹ thuật sửa chữa, lắp ráp máy tính",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-22",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Người làm nghề sửa chữa và bảo trì máy tính cần có kiến thức gì về mạng máy tính?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chỉ biết cách lắp đặt phần cứng"
+    },
+    {
+      "id": "B",
+      "content": "Có kiến thức cơ bản về kết nối và cấu hình mạng"
+    },
+    {
+      "id": "C",
+      "content": "Chỉ cần biết cài đặt phần mềm"
+    },
+    {
+      "id": "D",
+      "content": "Chỉ cần hiểu về hệ điều hành"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Có kiến thức cơ bản về kết nối và cấu hình mạng",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-23",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Ngành học nào chú trọng đào tạo về nguyên lý hoạt động và giải quyết các vấn đề phức tạp?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Trung cấp nghề"
+    },
+    {
+      "id": "B",
+      "content": "Cao đẳng nghề"
+    },
+    {
+      "id": "C",
+      "content": "Đại học"
+    },
+    {
+      "id": "D",
+      "content": "Đào tạo ngắn hạn"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Đại học",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-24",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Một trong những nhiệm vụ chính của người làm nghề sửa chữa và bảo trì máy tính liên quan đến phần mềm là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thay ổ cứng"
+    },
+    {
+      "id": "B",
+      "content": "Cài đặt hoặc cập nhật driver"
+    },
+    {
+      "id": "C",
+      "content": "Lắp ráp linh kiện máy tính"
+    },
+    {
+      "id": "D",
+      "content": "Bảo trì mạng cục bộ"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Cài đặt hoặc cập nhật driver",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-25",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Một trong những yêu cầu kiến thức chung cho nghề sửa chữa và bảo trì máy tính là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kỹ năng kế toán"
+    },
+    {
+      "id": "B",
+      "content": "Kỹ năng lập trình Java"
+    },
+    {
+      "id": "C",
+      "content": "Kiến thức về phần cứng"
+    },
+    {
+      "id": "D",
+      "content": "Kiến thức về nghệ thuật"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Kiến thức về phần cứng",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-26",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Chuyên gia quản trị mạng có nhiệm vụ chính nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thiết kế đồ họa"
+    },
+    {
+      "id": "B",
+      "content": "Quản lý và duy trì hệ thống mạng"
+    },
+    {
+      "id": "C",
+      "content": "Lập trình phần mềm ứng dụng"
+    },
+    {
+      "id": "D",
+      "content": "Kiểm thử phần mềm"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Quản lý và duy trì hệ thống mạng",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-27",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Trong bảo mật hệ thống thông tin, chuyên gia cần hiểu biết về gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phát triển web"
+    },
+    {
+      "id": "B",
+      "content": "Tối ưu hóa công cụ tìm kiếm (SEO)"
+    },
+    {
+      "id": "C",
+      "content": "Phương thức tấn công mạng như DoS"
+    },
+    {
+      "id": "D",
+      "content": "Thiết kế giao diện người dùng"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Phương thức tấn công mạng như DoS",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-28",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Kỹ năng mềm quan trọng nhất mà chuyên gia quản trị hệ thống cần có là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kỹ năng vẽ đồ họa"
+    },
+    {
+      "id": "B",
+      "content": "Kỹ năng giao tiếp và quản lý thời gian"
+    },
+    {
+      "id": "C",
+      "content": "Kỹ năng nấu ăn"
+    },
+    {
+      "id": "D",
+      "content": "Kỹ năng lái xe"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Kỹ năng giao tiếp và quản lý thời gian",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-29",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Điều nào sau đây là một phần của công việc quản trị và bảo trì hệ thống?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phát triển phần mềm mới"
+    },
+    {
+      "id": "B",
+      "content": "Quản lý hệ điều hành và xử lý sự cố hệ thống"
+    },
+    {
+      "id": "C",
+      "content": "Thiết kế ứng dụng di động"
+    },
+    {
+      "id": "D",
+      "content": "Tiếp thị kỹ thuật số"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Quản lý hệ điều hành và xử lý sự cố hệ thống",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-30",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Tại sao nhu cầu về chuyên gia bảo mật thông tin ngày càng tăng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Do sự phát triển của lĩnh vực giải trí"
+    },
+    {
+      "id": "B",
+      "content": "Do nguy cơ tấn công mạng ngày càng phức tạp"
+    },
+    {
+      "id": "C",
+      "content": "Do sự phát triển của thể thao điện tử"
+    },
+    {
+      "id": "D",
+      "content": "Do nhu cầu về game trực tuyến"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Do nguy cơ tấn công mạng ngày càng phức tạp",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-31",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Một trong những yêu cầu chính đối với chuyên gia quản trị mạng là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kỹ năng chỉnh sửa video"
+    },
+    {
+      "id": "B",
+      "content": "Kỹ năng nấu ăn"
+    },
+    {
+      "id": "C",
+      "content": "Kiến thức về cấu trúc và hoạt động của mạng máy tính"
+    },
+    {
+      "id": "D",
+      "content": "Kỹ năng viết lách"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Kiến thức về cấu trúc và hoạt động của mạng máy tính",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-32",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Trong lĩnh vực quản trị hệ thống, điều gì là quan trọng nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Khả năng sáng tạo"
+    },
+    {
+      "id": "B",
+      "content": "Khả năng lập trình"
+    },
+    {
+      "id": "C",
+      "content": "Kiến thức sâu về quản lý hệ điều hành"
+    },
+    {
+      "id": "D",
+      "content": "Khả năng thiết kế đồ họa"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Kiến thức sâu về quản lý hệ điều hành",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-33",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Các cơ sở giáo dục ở Việt Nam cung cấp ngành học nào liên quan đến nhóm nghề quản trị?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Y học"
+    },
+    {
+      "id": "B",
+      "content": "Nghệ thuật biểu diễn"
+    },
+    {
+      "id": "C",
+      "content": "Quản trị mạng máy tính"
+    },
+    {
+      "id": "D",
+      "content": "Du lịch"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Quản trị mạng máy tính",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-34",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Lý do gì khiến chuyên gia quản trị hệ thống cần hiểu về luật pháp và quy định?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Để phát triển ứng dụng di động"
+    },
+    {
+      "id": "B",
+      "content": "Để tạo ra trò chơi điện tử"
+    },
+    {
+      "id": "C",
+      "content": "Để tuân thủ các quy định về bảo mật thông tin"
+    },
+    {
+      "id": "D",
+      "content": "Để viết sách"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Để tuân thủ các quy định về bảo mật thông tin",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-35",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Mức độ tăng trưởng nhân lực trong ngành quản trị hệ thống thông tin là do yếu tố nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sự phát triển của ngành nông nghiệp"
+    },
+    {
+      "id": "B",
+      "content": "Cuộc cách mạng công nghiệp 4.0"
+    },
+    {
+      "id": "C",
+      "content": "Sự giảm sút trong ngành công nghiệp"
+    },
+    {
+      "id": "D",
+      "content": "Tăng trưởng trong ngành thời trang"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Cuộc cách mạng công nghiệp 4.0",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-36",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Quản trị và bảo trì hệ thống bao gồm những công việc gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Quản lí và duy trì hệ thống mạng máy tính của tổ chức."
+    },
+    {
+      "id": "B",
+      "content": "Phát triển và triển khai biện pháp bảo mật, giám sát mạng để phát hiện sự xâm nhập trái phép và xử lí các vụ việc liên quan đến bảo mật."
+    },
+    {
+      "id": "C",
+      "content": "Cài đặt, cấu hình và bảo mật mạng, theo dõi hiệu suất, xử lí sự cố mạng và đảm bảo mạng luôn hoạt động ổn định."
+    },
+    {
+      "id": "D",
+      "content": "Cài đặt, cập nhật và xử lí sự cố để đảm bảo sự ổn định và hiệu suất làm việc của hệ thống."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Phát triển và triển khai biện pháp bảo mật, giám sát mạng để phát hiện sự xâm nhập trái phép và xử lí các vụ việc liên quan đến bảo mật.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-37",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Vì sao người làm việc trong nhóm nghề quản trị trong ngành Công nghệ thông tin cần có kiến thức về Luật pháp và tuân thủ quy định?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Để nắm được cách xử lí hiệu quả các sự cố hệ thống, sửa lỗi phần mềm và phần cứng, đảm bảo sự ổn định của hệ thống."
+    },
+    {
+      "id": "B",
+      "content": "Để nắm được cấu trúc và hoạt động của mạng máy tính, bao gồm giao thức mạng, phân tích lưu lượng mạng và các thiết bị mạng."
+    },
+    {
+      "id": "C",
+      "content": "Để có hiểu biết và tuân thủ luật pháp, các quy định, cũng như các tiêu chuẩn quốc tế hiện hành về bảo mật thông tin và an ninh mạng."
+    },
+    {
+      "id": "D",
+      "content": "Để nắm được các phương thức tấn công mạng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Để có hiểu biết và tuân thủ luật pháp, các quy định, cũng như các tiêu chuẩn quốc tế hiện hành về bảo mật thông tin và an ninh mạng.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-38",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Yếu tố nào sau đây không liên quan đến an ninh mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sự gia tăng nhanh chóng của dữ liệu, dẫn đến nhu cầu chuyển đổi sang sử dụng dịch vụ đám mây an toàn của các đơn vị, tổ chức."
+    },
+    {
+      "id": "B",
+      "content": "Sự gia tăng số lượng và chủng loại các thiết bị công nghệ thông tin, từ máy tính cá nhân đến thiết bị IoT."
+    },
+    {
+      "id": "C",
+      "content": "Các đơn vị, tổ chức, các cơ quan chính phủ cũng ngày càng chú trọng đến việc tuân thủ các quy định an ninh thông tin và bảo vệ dữ liệu cá nhân."
+    },
+    {
+      "id": "D",
+      "content": "Nguy cơ tấn công hệ thống thông tin ngày càng phức tạp với những phương thức tấn công đa dạng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Các đơn vị, tổ chức, các cơ quan chính phủ cũng ngày càng chú trọng đến việc tuân thủ các quy định an ninh thông tin và bảo vệ dữ liệu cá nhân.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-39",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Vì sao người làm nghề sửa chữa, bảo trì máy tính cần có kĩ năng giao tiếp?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Để biết cách tìm kiếm, tra cứu tài liệu hướng dẫn, thông tin hữu ích được chia sẻ trên Internet và phương pháp khắc phục lỗi."
+    },
+    {
+      "id": "B",
+      "content": "Để hoàn thành dự án sửa chữa, bảo trì trong thời gian quy định và đáp ứng yêu cầu của khách hàng."
+    },
+    {
+      "id": "C",
+      "content": "Để hiểu các yêu cầu của người dùng từ đó có thể giải thích và tư vấn cho họ các giải pháp kĩ thuật một cách dễ hiểu."
+    },
+    {
+      "id": "D",
+      "content": "Để có hiểu biết về công nghệ mới."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Để hiểu các yêu cầu của người dùng từ đó có thể giải thích và tư vấn cho họ các giải pháp kĩ thuật một cách dễ hiểu.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-40",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Vì sao người làm nghề sửa chữa, bảo trì máy tính cần có kĩ năng quản lí thời gian?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Để hoàn thành dự án sửa chữa, bảo trì trong thời gian quy định và đáp ứng yêu cầu của khách hàng."
+    },
+    {
+      "id": "B",
+      "content": "Để có hiểu biết về công nghệ mới."
+    },
+    {
+      "id": "C",
+      "content": "Để biết cách tìm kiếm, tra cứu tài liệu hướng dẫn, thông tin hữu ích được chia sẻ trên Internet và phương pháp khắc phục lỗi."
+    },
+    {
+      "id": "D",
+      "content": "Để hiểu các yêu cầu của người dùng từ đó có thể giải thích và tư vấn cho họ các giải pháp kĩ thuật một cách dễ hiểu."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo Chuyên đề 12G: Để hoàn thành dự án sửa chữa, bảo trì trong thời gian quy định và đáp ứng yêu cầu của khách hàng.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-41",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Kĩ năng nào dưới đây KHÔNG cần thiết đối với một kĩ thuật viên CNTT?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sửa chữa các lỗi thường gặp của máy tính."
+    },
+    {
+      "id": "B",
+      "content": "Cài đặt phần mềm."
+    },
+    {
+      "id": "C",
+      "content": "Phân tích, thiết kế hệ thống."
+    },
+    {
+      "id": "D",
+      "content": "Lắp ráp máy tính."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Phân tích, thiết kế hệ thống.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-42",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Kĩ năng nào dưới đây KHÔNG cần thiết đối với chuyên viên an toàn thông tin?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Bảo vệ thông tin tránh các truy cập bất hợp pháp."
+    },
+    {
+      "id": "B",
+      "content": "Kiểm tra các thành phần phần cứng máy tính như RAM, ổ cứng."
+    },
+    {
+      "id": "C",
+      "content": "Bảo đảm hệ thống thông tin sẵn sàng, tin cậy."
+    },
+    {
+      "id": "D",
+      "content": "Nghiên cứu, thử nghiệm và đề xuất các giải pháp bảo mật."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Kiểm tra các thành phần phần cứng máy tính như RAM, ổ cứng.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-43",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi máy tính không thể kết nối với Internet, phương án nào sau đây KHÔNG phải là cách giải quyết vấn đề đối với một kĩ thuật viên Công nghệ thông tin?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kiểm tra kết nối mạng."
+    },
+    {
+      "id": "B",
+      "content": "Kiểm tra cài đặt IP."
+    },
+    {
+      "id": "C",
+      "content": "Cài đặt lại hệ điều hành."
+    },
+    {
+      "id": "D",
+      "content": "Liên hệ với đơn vị cung cấp đường truyền mạng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Cài đặt lại hệ điều hành.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-44",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để cải thiện hiệu suất hoạt động của máy tính, phương án nào sau đây KHÔNG nên thực hiện ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "cập nhật hệ điều hành và các phần mềm ứng dụng."
+    },
+    {
+      "id": "B",
+      "content": "kiểm tra và loại bỏ các phần mềm ứng dụng độc hại."
+    },
+    {
+      "id": "C",
+      "content": "tăng thêm dung lượng bộ nhớ RAM."
+    },
+    {
+      "id": "D",
+      "content": "cài đặt càng nhiều phần mềm ứng dụng càng tốt."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo Chuyên đề 12G: cài đặt càng nhiều phần mềm ứng dụng càng tốt.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-45",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Kĩ năng nào sau đây KHÔNG cần thiết đối với chuyên viên quản trị mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lập trình điều khiển thiết bị bay không người lái (Drone)."
+    },
+    {
+      "id": "B",
+      "content": "Cách sử dụng và xử lí các lỗi thường gặp của bộ phần mềm Microsoft Office."
+    },
+    {
+      "id": "C",
+      "content": "Kiến thức về hệ thống mạng, thông tin hạ tầng kĩ thuật phần cứng."
+    },
+    {
+      "id": "D",
+      "content": "Kiến thức về phần mềm có liên quan về bảo mật dữ liệu."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo Chuyên đề 12G: Lập trình điều khiển thiết bị bay không người lái (Drone).",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-46",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Sao lưu dữ liệu của hệ thống máy tính là nhiệm vụ của nhân viên nào dưới đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kĩ thuật viên sửa chữa và bảo trì máy tính."
+    },
+    {
+      "id": "B",
+      "content": "Nhân viên quản trị hệ thống mạng."
+    },
+    {
+      "id": "C",
+      "content": "Nhân viên quản trị và bảo trì hệ thống."
+    },
+    {
+      "id": "D",
+      "content": "Nhân viên bảo mật hệ thống thông tin."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Nhân viên quản trị và bảo trì hệ thống.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-47",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Kĩ năng nào sau đây KHÔNG là yêu cầu bắt buộc đối với một nhân viên quản trị mạng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hiểu biết về hệ điều hành và phần cứng máy tính."
+    },
+    {
+      "id": "B",
+      "content": "Khả năng lập trình phần mềm ứng dụng."
+    },
+    {
+      "id": "C",
+      "content": "Hiểu biết về giao thức mạng và bảo mật mạng."
+    },
+    {
+      "id": "D",
+      "content": "Kĩ năng giao tiếp và làm việc nhóm."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Khả năng lập trình phần mềm ứng dụng.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-48",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi hệ thống máy tính bị tấn công DDoS (Distributed Denial of Service – tấn công từ chối dịch vụ phân tán), một quản trị viên mạng sẽ phải làm gì sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tắt hệ thống để ngăn chặn cuộc tấn công."
+    },
+    {
+      "id": "B",
+      "content": "Cập nhật trạng thái trên mạng xã hội."
+    },
+    {
+      "id": "C",
+      "content": "Triển khai các biện pháp bảo mật và khôi phục dịch vụ của hệ thống."
+    },
+    {
+      "id": "D",
+      "content": "Thay đổi mật khẩu của tất cả người dùng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Triển khai các biện pháp bảo mật và khôi phục dịch vụ của hệ thống.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-49",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Công việc hằng ngày của một chuyên viên bảo mật hệ thống thông tin là gì sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thiết kế giao diện người dùng cho ứng dụng nội bộ của đơn vị."
+    },
+    {
+      "id": "B",
+      "content": "Phân tích và ngăn chặn các mối đe doạ bảo mật đối với cơ sở dữ liệu và hệ thống máy tính của đơn vị."
+    },
+    {
+      "id": "C",
+      "content": "Lập trình xây dựng các ứng dụng đời sống cho đơn vị."
+    },
+    {
+      "id": "D",
+      "content": "Sáng tạo nội dung cho trang web của đơn vị"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Phân tích và ngăn chặn các mối đe doạ bảo mật đối với cơ sở dữ liệu và hệ thống máy tính của đơn vị.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-50",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi tìm kiếm thông tin về các khoa học trực tuyến thông tin nào sau đây là quan trọng nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tên của người thiết kế khóa học"
+    },
+    {
+      "id": "B",
+      "content": "Nội dung, thời gian khóa đào tạo, chi phí và đánh giá của người học."
+    },
+    {
+      "id": "C",
+      "content": "Số lượng các video bài giảng được thực hiện."
+    },
+    {
+      "id": "D",
+      "content": "Màu sắc và các tin tay của website thông tin."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Nội dung, thời gian khóa đào tạo, chi phí và đánh giá của người học.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-51",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi tìm hiểu về các ngành đào tạo về Công nghệ thông tin, thông tin nào sau đây là quan trọng nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Giáo trình học tập có được biên soạn bằng tiếng Anh hay không."
+    },
+    {
+      "id": "B",
+      "content": "Màu sắc, hình dáng của chứng chỉ khoá học."
+    },
+    {
+      "id": "C",
+      "content": "Mức độ công nhận của các cơ quan tuyển dụng, quy trình học tập để đạt được chứng chỉ và các chi phí liên quan."
+    },
+    {
+      "id": "D",
+      "content": "Số lượng người đã được cấp chứng chỉ."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Mức độ công nhận của các cơ quan tuyển dụng, quy trình học tập để đạt được chứng chỉ và các chi phí liên quan.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-52",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi đọc thông báo tuyển dụng nghề nghiệp có liên quan đến lĩnh vực Công nghệ thông tin, thông tin nào sau đây là quan trọng nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Mức thu nhập chính thức của người lao động."
+    },
+    {
+      "id": "B",
+      "content": "Thông tin của đơn vị tuyển dụng (số lượng nhân viên, mức độ ứng dụng công nghệ thông tin trong công việc)."
+    },
+    {
+      "id": "C",
+      "content": "Cơ hội nghề nghiệp, phù hợp với định hướng phát triển cá nhân của em hay không."
+    },
+    {
+      "id": "D",
+      "content": "Yêu cầu công việc, kĩ năng và các chứng chỉ cần có đối với ứng viên, mức lương và quyền lợi của người lao động."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo Chuyên đề 12G: Yêu cầu công việc, kĩ năng và các chứng chỉ cần có đối với ứng viên, mức lương và quyền lợi của người lao động.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-53",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi tìm kiếm thông tin về một ngành nghề thuộc lĩnh vực CNTT, thông tin nào sau đây là quan trọng nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tên của những chuyên gia đầu ngành tại địa phương em dự kiến làm việc."
+    },
+    {
+      "id": "B",
+      "content": "Yêu cầu công việc, những kĩ năng cần thiết, các chứng chỉ cần trang bị, cơ hội nghề nghiệp tại địa phương em dự kiến làm việc."
+    },
+    {
+      "id": "C",
+      "content": "Số lượng và tầm vóc các doanh nghiệp đang hoạt động cùng ngành nghề tại khu vực và trên thế giới."
+    },
+    {
+      "id": "D",
+      "content": "Mức thu nhập trung bình và mức thu nhập kì vọng đạt được của nhân lực hoạt động trong ngành."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Yêu cầu công việc, những kĩ năng cần thiết, các chứng chỉ cần trang bị, cơ hội nghề nghiệp tại địa phương em dự kiến làm việc.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-54",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Kênh truyền thông nào sau đây được sử dụng để tham khảo, trao đổi ý kiến về các thông tin tuyển dụng, hướng nghiệp các ngành nghề trong lĩnh vực CNTT một cách hiệu quả?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Facebook."
+    },
+    {
+      "id": "B",
+      "content": "Instagram."
+    },
+    {
+      "id": "C",
+      "content": "TikTok"
+    },
+    {
+      "id": "D",
+      "content": "Tin nhắn SMS."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo Chuyên đề 12G: Facebook.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-55",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi nhận được một cơ hội việc làm hấp dẫn trong lĩnh vực CNTT từ một người ban trên mạng xã hội, cần ưu tiên thực hiện việc nào sau đây trước khi nộp hồ sơ ứng tuyển",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chia sẻ cơ hội việc làm với mọi người."
+    },
+    {
+      "id": "B",
+      "content": "Thảo luận thêm với người thân, bạn bè để nhận được các ý kiến phản biện về cân nhắc khả năng phù hợp của bản thân."
+    },
+    {
+      "id": "C",
+      "content": "Giữ bí mật thông tin, nhanh chóng thực hiện các yêu cầu và nộp hồ sơ ứng tuyển."
+    },
+    {
+      "id": "D",
+      "content": "Bỏ qua, xem như thông tin quảng cáo tuyển dụng ảo."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Thảo luận thêm với người thân, bạn bè để nhận được các ý kiến phản biện về cân nhắc khả năng phù hợp của bản thân.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-56",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong ngành giáo dục, chuyên viên CNTT thường được phân công phụ trách nhiệm vụ nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phát triển phần mềm giáo dục."
+    },
+    {
+      "id": "B",
+      "content": "Quản lí hệ thống máy tính của trường học."
+    },
+    {
+      "id": "C",
+      "content": "Tạo các nội dung số hoá."
+    },
+    {
+      "id": "D",
+      "content": "Phát triển phần mềm giáo dục, quản lí hệ thống máy tính của trường học, tạo các nội dung số hoá.."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo Chuyên đề 12G: Phát triển phần mềm giáo dục, quản lí hệ thống máy tính của trường học, tạo các nội dung số hoá..",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-57",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong ngành công nghiệp, chuyên viên CNTT thường được phân công phụ trách nhiệm vụ nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Quản lí và phát triển hệ thống tự động hoá."
+    },
+    {
+      "id": "B",
+      "content": "Quản lí dữ liệu sản xuất."
+    },
+    {
+      "id": "C",
+      "content": "Bảo mật thông tin của doanh nghiệp."
+    },
+    {
+      "id": "D",
+      "content": "Quản lí và phát triển hệ thống tự động hoá, quản lí dữ liệu sản xuất, bảo mật thông tin của doanh nghiệp."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo Chuyên đề 12G: Quản lí và phát triển hệ thống tự động hoá, quản lí dữ liệu sản xuất, bảo mật thông tin của doanh nghiệp.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-58",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong ngành y tế, chuyên viên CNTT thường được phân công phụ trách nhiệm vụ nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Quản lí và phát triển hệ thống thông tin bệnh viện."
+    },
+    {
+      "id": "B",
+      "content": "sao lưu và bảo mật dữ liệu điều trị của bệnh nhân."
+    },
+    {
+      "id": "C",
+      "content": "hỗ trợ kĩ thuật trong quá trình vận hành các thiết bị y tế."
+    },
+    {
+      "id": "D",
+      "content": "Quản lí và phát triển hệ thống thông tin bệnh viện, sao lưu và bảo mật dữ liệu điều trị của bệnh nhân, hỗ trợ kĩ thuật trong quá trình vận hành các thiết bị y tế ."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo Chuyên đề 12G: Quản lí và phát triển hệ thống thông tin bệnh viện, sao lưu và bảo mật dữ liệu điều trị của bệnh nhân, hỗ trợ kĩ thuật trong quá trình vận hành các thiết bị y tế .",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-59",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong ngành y tế, chuyên viên CNTT đảm bảo dữ liệu y tế được bảo mật bằng phương pháp nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lưu trữ dữ liệu trên máy tính cá nhân."
+    },
+    {
+      "id": "B",
+      "content": "Chia sẻ dữ liệu với mọi người trong nhóm tin học."
+    },
+    {
+      "id": "C",
+      "content": "Mã hoá dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Lưu trữ dữ liệu trong email."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo Chuyên đề 12G: Mã hoá dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-60",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong một dự án phát triển phần mềm giáo dục, chuyên viên CNTT cần phải thực hiện công việc nào sau đây để đảm bảo phần mềm đáp ứng được nhu cầu của người dùng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phát triển phần mềm một cách độc lập, không cần phản hồi từ người dùng."
+    },
+    {
+      "id": "B",
+      "content": "Phát triển phần mềm dựa trên các phản hồi từ người dùng, liên tục cập nhật."
+    },
+    {
+      "id": "C",
+      "content": "Phát triển phần mềm dựa trên kinh nghiệm cá nhân."
+    },
+    {
+      "id": "D",
+      "content": "Phát triển phần mềm theo chỉ đạo đặt hàng từ đơn vị quản lí giáo dục."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Phát triển phần mềm dựa trên các phản hồi từ người dùng, liên tục cập nhật.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-61",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Chương trình đào tạo ngành CNTT thường gồm những môn học nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lập trình, Cấu trúc dữ liệu, Hệ thống thông tin."
+    },
+    {
+      "id": "B",
+      "content": "Kế toán, Quản trị doanh nghiệp, Quảng cáo trực tuyến."
+    },
+    {
+      "id": "C",
+      "content": "Văn học, Lịch sử, Phân tích dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Tin học văn phòng, Thiết kế chế bản, Quản lí dự án."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo Chuyên đề 12G: Lập trình, Cấu trúc dữ liệu, Hệ thống thông tin.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-MC-62",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi tìm hiểu về cơ sở vật chất của một cơ sở đào tạo CNTT, cần đặc biệt quan tâm đến những cơ sở vật chất nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phòng tập thể dục thể thao, bể bơi, sân bóng đá."
+    },
+    {
+      "id": "B",
+      "content": "Phòng học hiện đại, phòng thực hành, hệ thống máy tính và thiết bị học tập."
+    },
+    {
+      "id": "C",
+      "content": "Nhà hàng, khách sạn, cửa hàng gần trường."
+    },
+    {
+      "id": "D",
+      "content": "Bệnh viện, phòng khám, hiệu thuốc gần trường."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững đặc điểm, nhiệm vụ và yêu cầu chuyên môn của các nhóm nghề CNTT: Sửa chữa & bảo trì máy tính, Quản trị mạng và hệ thống, Bảo mật hệ thống thông tin.",
+    "level2_formula": "Xác định rõ vị trí công việc (Kĩ thuật viên CNTT, Quản trị mạng/hệ thống, Kĩ sư an toàn thông tin) hoặc yêu cầu về kỹ năng/pháp luật trong câu hỏi.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với nội dung bài học Chuyên đề 12G để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo Chuyên đề 12G: Phòng học hiện đại, phòng thực hành, hệ thống máy tính và thiết bị học tập.",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-12G-TF-01",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Công ty ABC vừa phát triển một phần mềm quản lý khách hàng (CRM) để cải thiện mối quan hệ với khách hàng và tối ưu hóa quy trình bán hàng. Sau khi triển khai, bộ phận IT phát hiện rằng một số nhân viên gặp khó khăn trong việc sử dụng phần mềm mới do thiếu đào tạo. Trong cuộc họp với các bộ phận, giám đốc yêu cầu tăng cường đào tạo cho nhân viên để đảm bảo tất cả mọi người có thể sử dụng phần mềm hiệu quả. Bộ phận IT đã đề xuất một chương trình đào tạo và tài liệu hướng dẫn để giúp nhân viên làm quen với hệ thống mới.",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Đào tạo nhân viên giúp họ làm quen với giao diện và quy trình, tối ưu hiệu quả sử dụng.)\n- Ý b): Sai (Sai. Tài liệu hướng dẫn là tài liệu tra cứu không thể thiếu khi triển khai bất kỳ hệ thống mới nào.)\n- Ý c): Sai (Sai. Đào tạo không đồng bộ dẫn đến sai sót trong dữ liệu và giảm hiệu suất chung của doanh nghiệp.)\n- Ý d): Đúng (Đúng. Phần mềm liên tục cập nhật phiên bản và tính năng mới đòi hỏi việc bồi dưỡng liên tục.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Đào tạo nhân viên là một yếu tố quan trọng để đảm bảo họ có thể sử dụng phần mềm CRM hiệu quả.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Việc cung cấp tài liệu hướng dẫn là không cần thiết vì phần mềm đã có giao diện thân thiện với người dùng.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Chỉ cần một số nhân viên được đào tạo là đủ, vì những người khác có thể học từ họ.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Đào tạo liên tục là cần thiết để cập nhật cho nhân viên về các tính năng mới của phần mềm.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-02",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Nhóm IT của một trường đại học XYZ đã quyết định chuyển đổi từ hệ thống quản lý học sinh truyền thống sang một hệ thống quản lý học tập trực tuyến (LMS) để nâng cao trải nghiệm học tập cho sinh viên. Sau khi triển khai, một số giảng viên phản ánh rằng họ gặp khó khăn trong việc đưa bài giảng lên hệ thống mới và quản lý thông tin sinh viên. Trong một cuộc họp với ban giám hiệu, một giảng viên đề xuất tổ chức các buổi đào tạo để giúp giảng viên làm quen với hệ thống.",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Hệ thống LMS tự động hóa việc lưu trữ, chia sẻ và theo dõi tiến độ bài giảng.)\n- Ý b): Sai (Sai. Trong kỷ nguyên chuyển đổi số, làm chủ LMS là yêu cầu bắt buộc đối với giảng viên.)\n- Ý c): Đúng (Đúng. Đào tạo giúp giải quyết khó khăn kỹ thuật và thúc đẩy chuyển đổi số thành công.)\n- Ý d): Sai (Sai. Hệ thống luôn cần được cập nhật bản vá bảo mật và cải tiến tính năng định kỳ.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Chuyển đổi sang hệ thống LMS giúp giảng viên tiết kiệm thời gian trong việc quản lý tài liệu giảng dạy.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Giảng viên không cần thiết phải biết cách sử dụng hệ thống LMS nếu họ đã quen với việc giảng dạy truyền thống.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Các buổi đào tạo cho giảng viên là cần thiết để họ có thể sử dụng hệ thống một cách hiệu quả.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Việc cập nhật hệ thống LMS là không cần thiết nếu nó hoạt động ổn định.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-03",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong một công ty công nghệ thông tin, nhân viên IT thường xuyên phải xử lý các sự cố mạng. Gần đây, công ty đã triển khai một hệ thống mạng mới với nhiều thiết bị kết nối khác nhau, bao gồm máy chủ, router, và switch. Trong quá trình làm việc, nhân viên phát hiện rằng một số thiết bị không thể kết nối với Internet, dẫn đến sự gián đoạn trong công việc của các phòng ban khác.",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Đây là năng lực cốt lõi của nhân viên quản trị mạng.)\n- Ý b): Sai (Sai. Hệ thống mạng doanh nghiệp đòi hỏi switch, router, firewall và hạ tầng cáp phức tạp.)\n- Ý c): Đúng (Đúng. Giám sát định kỳ giúp phát hiện sớm nguy cơ nghẽn mạng và lỗ hổng bảo mật.)\n- Ý d): Đúng (Đúng. Đảm bảo tính liên tục của hệ thống mạng là nhiệm vụ sống còn của IT.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Nhân viên IT phải có kiến thức về cách cấu hình và khắc phục sự cố mạng để đảm bảo hệ thống hoạt động liên tục.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Chỉ cần có một router là đủ để thiết lập mạng cho toàn bộ công ty.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Nhân viên IT cần phải thường xuyên kiểm tra, theo dõi hệ thống mạng ngay cả khi đang hoạt động bình thường.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Việc phát hiện và khắc phục sự cố mạng là một phần quan trọng trong công việc của nhân viên IT.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-04",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong một bệnh viện lớn, nhóm IT đang chịu trách nhiệm nâng cấp hệ thống phần mềm quản lý bệnh nhân để cải thiện quy trình tiếp nhận và điều trị. Sau khi cài đặt phiên bản mới, các bác sĩ nhận thấy rằng dữ liệu bệnh nhân không được đồng bộ hóa chính xác giữa các khoa phòng, dẫn đến sự chậm trễ trong việc cập nhật hồ sơ y tế. Giám đốc bệnh viện yêu cầu nhóm IT phải giải quyết vấn đề này ngay lập tức để không làm ảnh hưởng đến quá trình khám chữa bệnh.",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Đồng bộ dữ liệu phụ thuộc trực tiếp vào đường truyền mạng và toàn vẹn cơ sở dữ liệu.)\n- Ý b): Sai (Sai. Bắt buộc phải thử nghiệm (pilot testing) trên nhóm nhỏ trước khi phát hành diện rộng.)\n- Ý c): Sai (Sai. Bác sĩ không có chuyên môn IT, cần thông báo ngay cho đội kỹ thuật để xử lý khẩn cấp.)\n- Ý d): Đúng (Đúng. Hướng dẫn người dùng là một trong 3 nhiệm vụ trụ cột của Kĩ thuật viên CNTT.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Nhóm IT cần phải kiểm tra kết nối mạng và cơ sở dữ liệu để tìm ra nguyên nhân gây ra sự cố không đồng bộ hóa.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Việc cập nhật phần mềm không cần phải kiểm tra trước trên một nhóm nhỏ người dùng trước khi triển khai toàn diện.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Các bác sĩ không cần phải báo cáo sự cố phần mềm cho nhóm IT vì họ có thể tự xử lý được.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Nhóm IT phải đảm bảo rằng các bác sĩ được hướng dẫn sử dụng phiên bản phần mềm mới sau khi nâng cấp.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-05",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Một trường tiểu học đã quyết định lắp đặt một phòng máy tính mới để phục vụ việc học tin học cho học sinh. Nhóm kỹ thuật viên IT được giao nhiệm vụ lắp ráp máy tính, cài đặt hệ điều hành và các phần mềm học tập. Trong quá trình cài đặt, kỹ thuật viên phát hiện một số máy tính không nhận diện được chuột và bàn phím, điều này gây trở ngại cho kế hoạch khai giảng lớp học tin học sắp tới.",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Lỗi không nhận thiết bị ngoại vi thường do cổng kết nối lỏng hoặc thiếu/lỗi driver.)\n- Ý b): Sai (Sai. Hiểu biết phần cứng là yêu cầu bắt buộc hàng đầu của kĩ thuật viên sửa chữa, lắp ráp.)\n- Ý c): Đúng (Đúng. Bảo vệ thiết bị trường học khỏi mã độc và virus là trách nhiệm của IT.)\n- Ý d): Sai (Sai. Giáo viên cần được hướng dẫn cấu hình và tính năng phòng máy mới để vận hành tiết dạy thuận lợi.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Kỹ thuật viên IT cần kiểm tra kết nối phần cứng và cài đặt lại driver nếu cần thiết.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Việc lắp ráp máy tính không đòi hỏi kỹ thuật viên phải có kiến thức về phần cứng máy tính.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Kỹ thuật viên IT phải đảm bảo tất cả các máy tính đều được cài đặt phần mềm bảo vệ khỏi mã độc.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Kỹ thuật viên có thể bỏ qua việc hướng dẫn giáo viên cách sử dụng máy tính mới vì họ đã có kinh nghiệm.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-06",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Một tổ chức tài chính đang chuẩn bị triển khai các biện pháp bảo mật mới nhằm bảo vệ dữ liệu khách hàng khỏi các cuộc tấn công mạng ngày càng gia tăng. Trong quá trình đánh giá an ninh mạng, chuyên viên bảo mật phát hiện rằng hệ thống mạng nội bộ có nhiều lỗ hổng chưa được vá, và nhiều nhân viên vẫn sử dụng mật khẩu yếu. Giám đốc điều hành đã yêu cầu bộ phận IT lập kế hoạch nâng cao nhận thức bảo mật cho toàn bộ nhân viên và triển khai các giải pháp an ninh mạng mạnh mẽ hơn.",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Quét và vá lỗ hổng định kỳ là nhiệm vụ trọng yếu của chuyên viên an toàn thông tin.)\n- Ý b): Sai (Sai. Mật khẩu cần được thay đổi định kỳ và đáp ứng tiêu chuẩn phức tạp để tránh bị rò rỉ.)\n- Ý c): Sai (Sai. Con người là mắt xích yếu nhất trong bảo mật; nâng cao nhận thức bảo mật là tối quan trọng.)\n- Ý d): Đúng (Đúng. Tường lửa (Firewall) và IDS/IPS là lớp phòng thủ cốt lõi của mạng tài chính.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Chuyên viên bảo mật cần phải thường xuyên kiểm tra và vá các lỗ hổng bảo mật trong hệ thống mạng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Nhân viên không cần phải thay đổi mật khẩu thường xuyên nếu mật khẩu của họ đủ dài.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Tổ chức không cần phải đào tạo nhân viên về an ninh mạng vì đã có phần mềm bảo vệ.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Việc cài đặt tường lửa và hệ thống phát hiện xâm nhập là cần thiết để bảo vệ hệ thống khỏi các cuộc tấn công từ bên ngoài.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-07",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong một công ty truyền thông, nhóm IT phát hiện rằng hệ thống lưu trữ dữ liệu của họ sắp hết dung lượng do số lượng video và hình ảnh chất lượng cao ngày càng tăng. Để giải quyết vấn đề này, giám đốc công nghệ (CTO) đã đề xuất chuyển đổi một phần dữ liệu sang hệ thống lưu trữ đám mây. Tuy nhiên, một số thành viên trong nhóm IT lo ngại về vấn đề bảo mật và chi phí duy trì dịch vụ đám mây hàng tháng.",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Điện toán đám mây cho phép mở rộng (scalability) dung lượng nhanh chóng theo nhu cầu.)\n- Ý b): Sai (Sai. Bảo mật đám mây tuân theo mô hình trách nhiệm chia sẻ (shared responsibility model); công ty vẫn quản lý phân quyền và dữ liệu.)\n- Ý c): Đúng (Đúng. Đánh giá TCO (tổng chi phí sở hữu) là bước bắt buộc trước khi chuyển đổi hạ tầng.)\n- Ý d): Đúng (Đúng. Cần có kế hoạch di chuyển dữ liệu (data migration) từng giai đoạn để đảm bảo tính liên tục.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Lưu trữ đám mây giúp công ty mở rộng dung lượng lưu trữ một cách linh hoạt mà không cần mua thêm phần cứng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Bảo mật dữ liệu trên đám mây hoàn toàn do nhà cung cấp dịch vụ chịu trách nhiệm, công ty không cần quan tâm.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Công ty cần phải đánh giá chi phí dài hạn trước khi quyết định chuyển sang sử dụng dịch vụ đám mây.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Việc di chuyển dữ liệu lớn lên đám mây có thể gây ra gián đoạn tạm thời đối với công việc của công ty nếu không được lập kế hoạch cẩn thận.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-08",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Một trường trung học phổ thông đang tổ chức kỳ thi học kỳ trực tuyến cho học sinh. Bộ phận kỹ thuật IT của trường có nhiệm vụ đảm bảo rằng hệ thống máy chủ và đường truyền Internet hoạt động ổn định trong suốt thời gian diễn ra kỳ thi. Trong khi kỳ thi đang diễn ra, một lượng lớn học sinh truy cập đồng thời làm cho hệ thống máy chủ bị quá tải, khiến nhiều học sinh không thể nộp bài đúng hạn.",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Kiểm thử tải (stress/load testing) là khâu bắt buộc trước các sự kiện trực tuyến lớn.)\n- Ý b): Sai (Sai. Quá tải máy chủ do hàng nghìn kết nối đồng thời làm treo cổng dịch vụ của nhà trường.)\n- Ý c): Đúng (Đúng. Mở rộng tài nguyên máy chủ và băng thông giúp đáp ứng lượng truy cập đỉnh điểm.)\n- Ý d): Đúng (Đúng. Cân bằng tải (load balancing) và máy chủ dự phòng giúp phân tán áp lực truy cập hiệu quả.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Bộ phận IT cần phải dự đoán và kiểm tra khả năng chịu tải của hệ thống máy chủ trước khi kỳ thi diễn ra.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Học sinh không thể nộp bài là do mạng Internet cá nhân của họ chứ không liên quan đến máy chủ của trường.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Việc nâng cấp băng thông Internet và dung lượng máy chủ là giải pháp cần thiết để tránh tình trạng quá tải trong tương lai.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Bộ phận IT có thể sử dụng hệ thống máy chủ dự phòng để chia tải trong các kỳ thi có lượng truy cập lớn.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-09",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Hãy nhận định tính đúng hoặc sai của các phát biểu sau về công việc của người làm nghề sửa chữa và bảo trì máy tính:",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Sai (Sai. Kĩ thuật viên còn làm việc với phần mềm và hướng dẫn người dùng.)\n- Ý b): Đúng (Đúng. Theo bài học Chuyên đề 12G, người sửa chữa bảo trì thường được gọi là Kĩ thuật viên CNTT.)\n- Ý c): Sai (Sai. Hướng dẫn người dùng là một trong 3 mảng công việc chính được quy định.)\n- Ý d): Đúng (Đúng. Đây là năng lực giải quyết vấn đề cốt lõi của người làm nghề.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Người làm nghề sửa chữa và bảo trì máy tính chỉ làm việc với phần cứng máy tính và thiết bị số.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Kĩ thuật viên công nghệ thông tin là một tên gọi khác của người làm nghề sửa chữa và bảo trì máy tính.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Người làm nghề sửa chữa và bảo trì máy tính không cần phải hướng dẫn người sử dụng.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Người làm nghề sửa chữa và bảo trì máy tính cần phải có khả năng đưa ra giải pháp xử lí các sự cố, tình huống xảy ra trong máy tính.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-10",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Hãy nhận định tính đúng hoặc sai của các phát biểu sau về nhiệm vụ của chuyên viên Công nghệ thông tin trong các lĩnh vực:",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Sai (Sai. Chuyên viên CNTT còn phát triển phần mềm giáo dục, quản lý hệ thống LMS và số hóa tài liệu.)\n- Ý b): Sai (Sai. Hồ sơ bệnh án điện tử là dữ liệu cực kỳ nhạy cảm cần được mã hóa và bảo mật nghiêm ngặt.)\n- Ý c): Đúng (Đúng. CNTT kết hợp tự động hóa và phân tích dữ liệu sản xuất giúp tối ưu hiệu suất máy móc.)\n- Ý d): Đúng (Đúng. Kĩ năng giao tiếp giúp giải thích vấn đề kỹ thuật và hỗ trợ đồng nghiệp, khách hàng hiệu quả.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Trong ngành giáo dục, chuyên viên Công nghệ thông tin chỉ có nhiệm vụ duy nhất là quản lí hệ thống máy tính của nhà trường.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Trong ngành y tế, chuyên viên Công nghệ thông tin không cần phải phụ trách nhiệm vụ bảo mật dữ liệu y tế.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Trong ngành công nghiệp, chuyên viên Công nghệ thông tin có thể đề xuất được các cải tiến để nâng cao hiệu suất máy móc.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Chuyên viên Công nghệ thông tin cần có kĩ năng trình bày và giao tiếp tốt.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-12G-TF-11",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-huong-nghiep-dich-vu",
+  "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+  "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Hãy nhận định tính đúng hoặc sai của các phát biểu sau về những việc cần lưu ý khi tìm hiểu thông tin đào tạo của một số cơ sở đào tạo Công nghệ thông tin:",
+  "hints": {
+    "level1_concept": "Đọc kĩ bối cảnh tình huống thực tế và đối chiếu vai trò, nhiệm vụ chuyên môn của nhân viên CNTT trong cơ quan, trường học, bệnh viện hoặc doanh nghiệp.",
+    "level2_formula": "Phân tích từng mệnh đề (a, b, c, d) dựa trên quy trình vận hành hệ thống, an toàn an ninh mạng và các kĩ năng nghề nghiệp.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề và đưa ra căn cứ chuyên môn xác đáng theo bài học Chuyên đề 12G."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Sai (Sai. Học phí chỉ là một yếu tố; quan trọng hàng đầu là chất lượng đào tạo, chương trình và giảng viên.)\n- Ý b): Sai (Sai. Ngành CNTT bắt buộc phải có phòng thực hành hiện đại, máy tính và thiết bị mạng cấu hình tốt.)\n- Ý c): Đúng (Đúng. Đội ngũ giảng viên trình độ cao, giàu kinh nghiệm thực tế quyết định chất lượng đầu ra.)\n- Ý d): Đúng (Đúng. Tỷ lệ sinh viên có việc làm và đối tác doanh nghiệp là thước đo uy tín của trường.)",
+  "sourceDocTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Quan tâm nhất khi chọn lựa cơ sở đào tạo là học phí.",
+      "correctAnswer": false
+    },
+    {
+      "id": "b",
+      "content": "Không cần quan tâm đến điều kiện cơ sở vật chất khi lựa chọn cơ sở đào tạo Công nghệ thông tin.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Khi tìm hiểu lựa chọn cơ sở đào tạo Công nghệ thông tin, thông tin về lực lượng giảng viên trực tiếp giảng dạy các môn học là một trong những thông tin mang tính quyết định.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Cơ hội việc làm sau khi tốt nghiệp là một yếu tố quan trọng cần xem xét khi chọn lựa cơ sở đào tạo Công nghệ thông tin.",
       "correctAnswer": true
     }
   ]

@@ -1670,6 +1670,265 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
     }
   ]
 },
+  "tin-huong-nghiep-dich-vu": {
+    "subjectId": "tin-hoc-12",
+    "subjectName": "Tin học 12",
+    "topicName": "Chuyên đề 12G: Giới thiệu nhóm nghề dịch vụ và quản trị",
+    "chapterName": "Chủ đề 5: Hướng nghiệp với tin học (Tuần 21 – 23)",
+    "docTitle": "Chuyên đề 12G. Giới thiệu nhóm nghề dịch vụ và quản trị.docx",
+    "objectives": [
+      "Trình bày được thông tin hướng nghiệp nhóm nghề Dịch vụ và Quản trị (Sửa chữa và bảo trì máy tính, Quản trị mạng, Bảo mật hệ thống thông tin, Quản trị và bảo trì hệ thống).",
+      "Nêu được những nét sơ lược về công việc chính mà người làm nghề phải thực hiện.",
+      "Xác định được yêu cầu thiết yếu về kiến thức và kĩ năng cần có để làm nghề.",
+      "Nêu được các ngành học có liên quan ở các bậc học tiếp theo (Đại học, Cao đẳng).",
+      "Đánh giá được nhu cầu nhân lực của xã hội trong hiện tại và tương lai gần về nhóm nghề đó.",
+      "Tự tìm kiếm và khai thác được thông tin hướng nghiệp qua các chương trình đào tạo, thông báo tuyển dụng nhân lực,... về một vài ngành nghề khác trong lĩnh vực tin học.",
+      "Giao lưu được với bạn bè qua các kênh truyền thông số để tham khảo và trao đổi ý kiến về các thông tin trên."
+    ],
+    "sections": [
+      {
+        "id": "nghe-sua-chua-bao-tri-may-tinh",
+        "topicId": "tin-huong-nghiep-dich-vu",
+        "title": "1. Nghề Sửa chữa và bảo trì máy tính (Kĩ thuật viên CNTT)",
+        "icon": "Layers",
+        "tag": "1. Sửa chữa & bảo trì máy tính",
+        "summary": "Công việc của Kĩ thuật viên CNTT (phần cứng, phần mềm, hỗ trợ người dùng), kiến thức kỹ năng thiết yếu, ngành học đào tạo và nhu cầu việc làm.",
+        "keyTerms": [
+          "Kĩ thuật viên công nghệ thông tin",
+          "Phần cứng máy tính",
+          "Thiết bị số",
+          "Linh kiện",
+          "Hệ điều hành",
+          "Phần mềm ứng dụng",
+          "Bản vá",
+          "Khôi phục dữ liệu",
+          "Phần mềm độc hại",
+          "Mạng LAN",
+          "Internet",
+          "Kĩ thuật máy tính",
+          "Mạng máy tính"
+        ],
+        "content": [
+          {
+            "heading": "1.1. Công việc chính mà người làm nghề phải thực hiện",
+            "text": "Người sửa chữa và bảo trì máy tính thường được gọi là Kĩ thuật viên công nghệ thông tin. Công việc của họ có thể chia thành ba mảng chính:",
+            "bulletPoints": [
+              {
+                "label": "Làm việc với phần cứng máy tính và thiết bị số",
+                "desc": "Tìm hiểu nguyên nhân và khắc phục lỗi phần cứng. Lắp đặt, sửa chữa, thay thế các bộ phận, linh kiện bị hỏng. Bổ sung, nâng cấp, thay thế các bộ phận, linh kiện."
+              },
+              {
+                "label": "Làm việc với phần mềm",
+                "desc": "Cài đặt, nâng cấp, bổ sung, gỡ bỏ các trình ứng dụng, trình điều khiển và hệ điều hành. Thực hiện các thao tác thiết lập, điều chỉnh cấu hình để tối ưu hoá hoạt động của phần mềm. Cài đặt các bản vá hay phiên bản nâng cấp. Khôi phục dữ liệu bị hỏng. Kết nối máy tính vào mạng, cài đặt phần mềm bảo vệ máy khỏi phần mềm độc hại."
+              },
+              {
+                "label": "Hướng dẫn người sử dụng",
+                "desc": "Hướng dẫn người dùng sử dụng phần mềm, máy tính và các thiết bị số sao cho đúng cách và hiệu quả."
+              }
+            ]
+          },
+          {
+            "heading": "1.2. Yêu cầu về kiến thức và kĩ năng cần có để làm nghề",
+            "text": "Để làm tốt công việc, Kĩ thuật viên công nghệ thông tin cần trang bị đầy đủ kiến thức chuyên môn và phẩm chất nghề nghiệp:",
+            "bulletPoints": [
+              {
+                "label": "Kiến thức chuyên môn",
+                "desc": "Cần được đào tạo cơ bản về phần cứng máy tính và thiết bị ngoại vi. Hiểu biết về hoạt động của hệ thống máy tính. Có kiến thức cơ bản về hệ điều hành và các phần mềm ứng dụng phổ biến. Có kiến thức cơ bản về mạng máy tính, biết cách kết nối máy tính vào mạng LAN và Internet."
+              },
+              {
+                "label": "Kĩ năng thực hành",
+                "desc": "Có kĩ năng sửa chữa, lắp ráp, thay thế, cài đặt một hệ thống bao gồm máy tính PC và các thiết bị ngoại vi, thiết bị mạng cùng với hệ điều hành và các phần mềm ứng dụng kèm theo. Biết cách cài đặt, thiết lập và điều chỉnh cấu hình cho hệ điều hành và các phần mềm ứng dụng thông thường. Biết cách phát hiện và loại bỏ phần mềm độc hại trên máy tính. Xác định, khắc phục được các lỗi thường xảy ra với phần cứng và phần mềm của máy tính và thiết bị số. Có khả năng đưa ra giải pháp xử lí các sự cố, tình huống xảy ra trong máy tính."
+              },
+              {
+                "label": "Phẩm chất và năng lực cốt lõi",
+                "desc": "Khả năng giao tiếp để hướng dẫn người dùng hay phối hợp với đồng nghiệp. Khả năng học hỏi, tự cập nhật kiến thức không ngừng. Biết cách tìm kiếm, tham khảo tài liệu hướng dẫn trên Internet và các nguồn khác. Kĩ năng phân tích tình huống và giải quyết vấn đề."
+              }
+            ]
+          },
+          {
+            "heading": "1.3. Ngành học có liên quan ở các bậc học tiếp theo",
+            "text": "Nếu muốn trở thành Kĩ thuật viên công nghệ thông tin, học sinh có thể theo học những ngành học sau đây:",
+            "bulletPoints": [
+              {
+                "label": "Công nghệ thông tin (Information Technology)",
+                "desc": "Ngành học trang bị những kiến thức nền tảng về Công nghệ thông tin."
+              },
+              {
+                "label": "Kĩ thuật máy tính (Computer Engineering)",
+                "desc": "Ngành học liên quan đến phần cứng máy tính, thiết kế vi mạch."
+              },
+              {
+                "label": "Mạng máy tính (Computer Networking)",
+                "desc": "Ngành học tập trung vào việc thiết kế, thiết lập cấu hình, quản trị mạng máy tính."
+              },
+              {
+                "label": "Nhóm ngành Máy tính và CNTT",
+                "desc": "Nhìn chung các ngành đào tạo thuộc nhóm ngành Máy tính và Công nghệ thông tin đều cung cấp những kiến thức và kĩ năng cần thiết."
+              }
+            ]
+          },
+          {
+            "heading": "1.4. Nhu cầu nhân lực trong hiện tại và tương lai gần",
+            "text": "Công nghệ thông tin ngày càng phát triển, máy tính hiện diện ở hầu hết các gia đình, cơ quan, công sở. Hiện tại và trong tương lai gần, vị trí Kĩ thuật viên công nghệ thông tin luôn có nhu cầu tuyển dụng cao."
+          }
+        ]
+      },
+      {
+        "id": "nghe-quan-tri-mang-va-he-thong",
+        "topicId": "tin-huong-nghiep-dich-vu",
+        "title": "2. Nghề Quản trị mạng và hệ thống",
+        "icon": "Compass",
+        "tag": "2. Quản trị mạng & hệ thống",
+        "summary": "Phân biệt Quản trị mạng và Quản trị hệ thống, yêu cầu kiến thức kỹ năng, ngành học đào tạo và nhu cầu nhân lực trong kỷ nguyên chuyển đổi số.",
+        "keyTerms": [
+          "Quản trị mạng",
+          "Quản trị hệ thống",
+          "Hiệu năng mạng",
+          "Tường lửa",
+          "Phần mềm độc hại",
+          "Tấn công mạng",
+          "Lưu lượng",
+          "Độ trễ",
+          "Luật An ninh mạng",
+          "Luật Sở hữu trí tuệ",
+          "Chuyển đổi số"
+        ],
+        "content": [
+          {
+            "heading": "2.1. Công việc chính mà người làm nghề phải thực hiện",
+            "text": "Công việc này đôi khi được tách thành hai mảng: Quản trị mạng và Quản trị hệ thống. Công việc của người Quản trị mạng và người Quản trị hệ thống có nhiều điểm giống nhau.",
+            "bulletPoints": [
+              {
+                "label": "Công việc Quản trị mạng (Network Administrator)",
+                "desc": "Thiết lập mạng, điều chỉnh các thông số cấu hình để nâng cao hiệu năng mạng. Giám sát các thiết bị mạng, vận hành và quản lí các hoạt động của mạng. Bảo vệ mạng trước các nguy cơ như: phần mềm độc hại, tấn công mạng, truy cập trái phép, đánh cắp hay phá hoại dữ liệu, phá hoại hoạt động của hệ thống mạng, nhân viên thực hiện những hành vi trái quy định, không phù hợp. Khắc phục các sự cố mạng. Hỗ trợ người dùng, giúp họ kết nối, truy cập mạng và giải quyết các sự cố."
+              },
+              {
+                "label": "Công việc Quản trị hệ thống (System Administrator)",
+                "desc": "Xác định nhu cầu của người dùng trong cơ quan, lập kế hoạch, chiến lược đảm bảo an toàn thông tin. Lập ra chính sách, quy trình đối với người dùng nội bộ trong hệ thống. Quản lí và duy trì hoạt động của toàn bộ hệ thống thông tin của cơ quan tổ chức, bao gồm cả phần cứng và phần mềm. Cài đặt, nâng cấp các thiết bị và phần mềm, xử lí sự cố để đảm bảo hệ thống hoạt động ổn định với hiệu suất cao."
+              }
+            ]
+          },
+          {
+            "heading": "2.2. Yêu cầu về kiến thức và kĩ năng cần có để làm nghề",
+            "text": "Nghề Quản trị mạng và hệ thống đòi hỏi nền tảng kiến thức sâu rộng và kĩ năng chuyên nghiệp:",
+            "bulletPoints": [
+              {
+                "label": "Kiến thức về Mạng máy tính",
+                "desc": "Nắm được nguyên lí, cấu trúc và cơ chế hoạt động của mạng máy tính; Có khả năng lắp đặt thiết bị mạng, cài đặt hệ điều hành và các phần mềm tiện ích mạng, chẩn đoán và khắc phục sự cố để duy trì hoạt động mạng; Có khả năng thiết lập, tối ưu hoá cấu hình của các thiết bị và phần mềm mạng."
+              },
+              {
+                "label": "Kiến thức về Bảo mật thông tin",
+                "desc": "Nắm được các phương thức tấn công mạng, cách hoạt động của các phần mềm độc hại và cách triển khai các biện pháp phòng chống; Có khả năng kiểm tra phát hiện những lỗ hổng bảo mật, cài đặt tường lửa, hệ thống phát hiện và phòng chống xâm nhập."
+              },
+              {
+                "label": "Kiến thức về Quản lí hệ thống",
+                "desc": "Biết cách sử dụng các công cụ giám sát để theo dõi, phân tích các thông số mạng (tốc độ truyền dữ liệu, lưu lượng, độ trễ) từ đó tiến hành các thao tác điều chỉnh, tối ưu hoá mạng."
+              },
+              {
+                "label": "Kiến thức Pháp luật & Kĩ năng mềm",
+                "desc": "Kiến thức về những nội dung liên quan được quy định trong Luật An ninh mạng, Luật Sở hữu trí tuệ, bộ quy tắc ứng xử trên mạng xã hội và các văn bản pháp luật khác. Kĩ năng giao tiếp và hỗ trợ người dùng."
+              }
+            ]
+          },
+          {
+            "heading": "2.3. Ngành học có liên quan ở các bậc học tiếp theo",
+            "text": "Nhằm đào tạo người Quản trị mạng và hệ thống, ở bậc Đại học hay Cao đẳng có các ngành:",
+            "bulletPoints": [
+              {
+                "label": "Mạng máy tính và truyền thông",
+                "desc": "Đào tạo chuyên sâu về kiến trúc mạng, giao thức truyền thông và hệ thống mạng diện rộng."
+              },
+              {
+                "label": "Quản trị mạng",
+                "desc": "Đào tạo kỹ năng thiết kế, cấu hình, vận hành và bảo vệ hệ thống mạng máy tính."
+              },
+              {
+                "label": "Quản trị và bảo trì hệ thống",
+                "desc": "Đào tạo quản lý phần cứng, hệ điều hành máy chủ và duy trì hoạt động thông suốt của hạ tầng CNTT."
+              }
+            ]
+          },
+          {
+            "heading": "2.4. Nhu cầu nhân lực trong hiện tại và tương lai gần",
+            "text": "Quản trị mạng và hệ thống là một trong những yếu tố quan trọng quyết định hiệu suất công việc của cơ quan, tổ chức, doanh nghiệp. Mạng máy tính là công cụ tiên quyết, gắn bó mật thiết với chuyển đổi số. Trong bối cảnh đất nước đang đẩy mạnh chuyển đổi số trong mọi mặt của đời sống xã hội, nhu cầu về nhân lực quản trị mạng và hệ thống thông tin luôn duy trì ở mức cao. Trên quy mô toàn cầu, sự phát triển của công nghệ số tạo ra môi trường làm việc đa quốc gia, buộc các doanh nghiệp hay tổ chức phải thích ứng khiến cho nhu cầu của họ về nhân lực Quản trị mạng và hệ thống ngày càng tăng."
+          }
+        ]
+      },
+      {
+        "id": "nghe-bao-mat-he-thong-thong-tin",
+        "topicId": "tin-huong-nghiep-dich-vu",
+        "title": "3. Nghề Bảo mật hệ thống thông tin (Kĩ sư an toàn thông tin)",
+        "icon": "ShieldAlert",
+        "tag": "3. Bảo mật hệ thống thông tin",
+        "summary": "Nhiệm vụ của Kĩ sư an toàn thông tin, triển khai giải pháp an ninh, phát hiện lỗ hổng, số liệu thực tế an ninh mạng Việt Nam 2023 và nhu cầu nhân lực cấp thiết.",
+        "keyTerms": [
+          "Kĩ sư an toàn thông tin",
+          "Bảo mật hệ thống thông tin",
+          "Mã độc",
+          "Tin nhắn rác",
+          "Tấn công mạng",
+          "Lỗ hổng bảo mật",
+          "Tường lửa",
+          "Hệ thống phát hiện xâm nhập",
+          "An ninh mạng",
+          "An toàn thông tin",
+          "Chuyển đổi số"
+        ],
+        "content": [
+          {
+            "heading": "3.1. Công việc chính mà người làm nghề phải thực hiện",
+            "text": "Kĩ sư an toàn thông tin phụ trách việc bảo mật dữ liệu, bảo vệ hệ thống trước các nguy cơ về mã độc, tin nhắn rác, thao tác bất cẩn của người dùng, hành vi truy cập bất hợp pháp và các hình thức tấn công mạng. Họ có nhiệm vụ triển khai hệ thống bảo mật cho cơ quan, phát triển các chính sách bảo mật để đảm bảo an toàn cho dữ liệu và hệ thống thông tin tác nghiệp. Cụ thể là:",
+            "bulletPoints": [
+              {
+                "label": "Triển khai an ninh",
+                "desc": "Triển khai các công cụ, giải pháp an ninh để bảo vệ hệ thống."
+              },
+              {
+                "label": "Giám sát & Cảnh báo",
+                "desc": "Sử dụng các công cụ giám sát để theo dõi hoạt động của hệ thống, cảnh báo và xử lí khi có dấu hiệu đáng ngờ."
+              },
+              {
+                "label": "Thiết lập quy tắc an toàn",
+                "desc": "Thiết lập và hướng dẫn người dùng thực hiện các quy tắc an toàn thông tin."
+              },
+              {
+                "label": "Khắc phục lỗ hổng",
+                "desc": "Phát hiện và khắc phục những lỗ hổng về an toàn thông tin."
+              }
+            ]
+          },
+          {
+            "heading": "3.2 & 3.3. Yêu cầu về kiến thức và kĩ năng cần có để làm nghề",
+            "text": "Tương tự như công việc của người Quản trị mạng và hệ thống, chuyên gia Bảo mật hệ thống thông tin cần:",
+            "bulletPoints": [
+              {
+                "label": "Phương thức tấn công & Phòng chống",
+                "desc": "Nắm được các phương thức tấn công mạng, cách hoạt động của các phần mềm độc hại và cách triển khai các biện pháp phòng chống."
+              },
+              {
+                "label": "Kiểm tra lỗ hổng & Hệ thống an ninh",
+                "desc": "Có khả năng kiểm tra phát hiện những lỗ hổng bảo mật, cài đặt tường lửa, hệ thống phát hiện và phòng chống xâm nhập."
+              }
+            ]
+          },
+          {
+            "heading": "3.4. Ngành học có liên quan ở các bậc học tiếp theo",
+            "text": "Nhiều ngành học đã và đang đào tạo nhân lực cho nghề Bảo mật hệ thống thông tin như:",
+            "bulletPoints": [
+              {
+                "label": "Các ngành đào tạo trọng điểm",
+                "desc": "An ninh mạng, Quản trị mạng, Mạng máy tính và truyền thông, An toàn thông tin, Quản trị và bảo trì hệ thống, Bảo mật hệ thống thông tin."
+              }
+            ]
+          },
+          {
+            "heading": "3.5. Nhu cầu nhân lực trong hiện tại và tương lai gần",
+            "text": "Công cuộc chuyển đổi số đang làm gia tăng nhanh chóng khối lượng và giá trị của dữ liệu người dùng, nhưng điều này cũng kéo theo sự gia tăng nguy cơ về an ninh mạng. Theo số liệu thống kê, năm 2023 ghi nhận 13 900 vụ tấn công mạng vào các tổ chức tại Việt Nam, tăng 9,5% so với năm 2022 (Nguồn: VTV). Các phương thức, thủ đoạn tấn công ngày càng tinh vi, phức tạp. Các đơn vị, cơ quan tổ chức ngày càng chú trọng việc bảo vệ an toàn dữ liệu và an ninh mạng. Những yếu tố này dẫn đến nhu cầu ngày càng cao về nhân lực trong ngành Bảo mật hệ thống thông tin."
+          }
+        ]
+      }
+    ]
+  },
 };
 
 // Aliases cho các chủ đề trắc nghiệm và câu hỏi Đúng / Sai
@@ -1684,4 +1943,6 @@ TOPIC_THEORY_MAP["tin-tao-trang-web-html-css"] = TOPIC_THEORY_MAP["tin-chuyen-de
 TOPIC_THEORY_MAP["tin-html-cau-truc-dinh-dang"] = TOPIC_THEORY_MAP["tin-chuyen-de-12f-web"];
 TOPIC_THEORY_MAP["tin-dao-duc-dung-sai"] = TOPIC_THEORY_MAP["tin-dao-duc-phap-luat-so"];
 TOPIC_THEORY_MAP["tin-11d-12d"] = TOPIC_THEORY_MAP["tin-dao-duc-phap-luat-so"];
-
+TOPIC_THEORY_MAP["tin-chuyen-de-12g"] = TOPIC_THEORY_MAP["tin-huong-nghiep-dich-vu"];
+TOPIC_THEORY_MAP["tin-12g"] = TOPIC_THEORY_MAP["tin-huong-nghiep-dich-vu"];
+TOPIC_THEORY_MAP["tin-nhom-nghe-dich-vu-quan-tri"] = TOPIC_THEORY_MAP["tin-huong-nghiep-dich-vu"];
