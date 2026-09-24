@@ -481,6 +481,177 @@ FROM HOADON INNER JOIN THUOCBAN ON HOADON.MaHD = THUOCBAN.MaHD
 GROUP BY HOADON.NgayBan`
       }
     ]
+  },
+
+  // 5. Quản lý Bán hàng & Siêu thị mini
+  {
+    id: "db-ban-hang",
+    name: "🛒 Quản lý Bán hàng & Siêu thị",
+    icon: "ShoppingCart",
+    description: "CSDL bán lẻ quản lý danh mục sản phẩm, khách hàng, hóa đơn thanh toán và doanh thu.",
+    tables: [
+      {
+        name: "KHACHHANG",
+        description: "Bảng lưu trữ thông tin khách hàng thân thiết",
+        columns: [
+          { name: "MaKH", type: "VARCHAR(10)", isPrimary: true, description: "Mã khách hàng (Khóa chính)" },
+          { name: "TenKH", type: "VARCHAR(50)", description: "Họ và tên khách hàng" },
+          { name: "DiaChi", type: "VARCHAR(100)", description: "Địa chỉ cư trú" },
+          { name: "DienThoai", type: "VARCHAR(15)", description: "Số điện thoại liên hệ" }
+        ],
+        sampleData: [
+          { MaKH: "KH01", TenKH: "Trần Anh Tuấn", DiaChi: "Lấp Vò, Đồng Tháp", DienThoai: "0912345678" },
+          { MaKH: "KH02", TenKH: "Lê Thị Hồng", DiaChi: "Sa Đéc, Đồng Tháp", DienThoai: "0987654321" },
+          { MaKH: "KH03", TenKH: "Nguyễn Văn Hậu", DiaChi: "TP. Cao Lãnh, Đồng Tháp", DienThoai: "0909123456" },
+          { MaKH: "KH04", TenKH: "Võ Minh Trí", DiaChi: "Lai Vung, Đồng Tháp", DienThoai: "0933987654" }
+        ]
+      },
+      {
+        name: "MATHANG",
+        description: "Bảng danh mục các mặt hàng trong siêu thị",
+        columns: [
+          { name: "MaMH", type: "VARCHAR(10)", isPrimary: true, description: "Mã mặt hàng (Khóa chính)" },
+          { name: "TenMH", type: "VARCHAR(100)", description: "Tên mặt hàng / sản phẩm" },
+          { name: "DonViTinh", type: "VARCHAR(20)", description: "Đơn vị tính (Hộp, Chai, Gói, Túi)" },
+          { name: "DonGia", type: "INT", description: "Đơn giá niêm yết (VNĐ)" }
+        ],
+        sampleData: [
+          { MaMH: "MH01", TenMH: "Sữa tươi tiệt trùng Vinamilk 1L", DonViTinh: "Hộp", DonGia: 36000 },
+          { MaMH: "MH02", TenMH: "Gạo thơm ST25 Thượng hạng", DonViTinh: "Túi 5Kg", DonGia: 185000 },
+          { MaMH: "MH03", TenMH: "Dầu ăn thực vật Neptune Gold 2L", DonViTinh: "Chai", DonGia: 130000 },
+          { MaMH: "MH04", TenMH: "Bánh quy bơ Danisa 454g", DonViTinh: "Hộp", DonGia: 145000 },
+          { MaMH: "MH05", TenMH: "Nước mắm Phú Quốc truyền thống", DonViTinh: "Chai", DonGia: 65000 }
+        ]
+      },
+      {
+        name: "HOADON",
+        description: "Bảng lưu thông tin các hóa đơn mua hàng",
+        columns: [
+          { name: "SoHD", type: "INT", isPrimary: true, description: "Số hóa đơn (Khóa chính)" },
+          { name: "MaKH", type: "VARCHAR(10)", isForeign: true, refTable: "KHACHHANG", refColumn: "MaKH", description: "Mã khách hàng mua" },
+          { name: "NgayLap", type: "DATE", description: "Ngày lập hóa đơn" },
+          { name: "TongTien", type: "INT", description: "Tổng tiền hóa đơn (VNĐ)" }
+        ],
+        sampleData: [
+          { SoHD: 1001, MaKH: "KH01", NgayLap: "2026-09-10", TongTien: 221000 },
+          { SoHD: 1002, MaKH: "KH02", NgayLap: "2026-09-12", TongTien: 315000 },
+          { SoHD: 1003, MaKH: "KH01", NgayLap: "2026-09-15", TongTien: 185000 },
+          { SoHD: 1004, MaKH: "KH03", NgayLap: "2026-09-18", TongTien: 355000 },
+          { SoHD: 1005, MaKH: "KH04", NgayLap: "2026-09-20", TongTien: 145000 }
+        ]
+      },
+      {
+        name: "CHITIET_HD",
+        description: "Bảng chi tiết các mặt hàng trong từng hóa đơn",
+        columns: [
+          { name: "SoHD", type: "INT", isForeign: true, refTable: "HOADON", refColumn: "SoHD", description: "Số hóa đơn" },
+          { name: "MaMH", type: "VARCHAR(10)", isForeign: true, refTable: "MATHANG", refColumn: "MaMH", description: "Mã mặt hàng" },
+          { name: "SoLuong", type: "INT", description: "Số lượng mua" },
+          { name: "ThanhTien", type: "INT", description: "Thành tiền (Số lượng * Đơn giá)" }
+        ],
+        sampleData: [
+          { SoHD: 1001, MaMH: "MH01", SoLuong: 1, ThanhTien: 36000 },
+          { SoHD: 1001, MaMH: "MH02", SoLuong: 1, ThanhTien: 185000 },
+          { SoHD: 1002, MaMH: "MH03", SoLuong: 1, ThanhTien: 130000 },
+          { SoHD: 1002, MaMH: "MH02", SoLuong: 1, ThanhTien: 185000 },
+          { SoHD: 1003, MaMH: "MH02", SoLuong: 1, ThanhTien: 185000 },
+          { SoHD: 1004, MaMH: "MH04", SoLuong: 2, ThanhTien: 290000 },
+          { SoHD: 1004, MaMH: "MH05", SoLuong: 1, ThanhTien: 65000 },
+          { SoHD: 1005, MaMH: "MH04", SoLuong: 1, ThanhTien: 145000 }
+        ]
+      }
+    ],
+    initSql: `
+DROP TABLE IF EXISTS CHITIET_HD;
+DROP TABLE IF EXISTS HOADON;
+DROP TABLE IF EXISTS MATHANG;
+DROP TABLE IF EXISTS KHACHHANG;
+
+CREATE TABLE KHACHHANG (
+  MaKH STRING PRIMARY KEY,
+  TenKH STRING,
+  DiaChi STRING,
+  DienThoai STRING
+);
+
+INSERT INTO KHACHHANG VALUES
+  ('KH01', 'Trần Anh Tuấn', 'Lấp Vò, Đồng Tháp', '0912345678'),
+  ('KH02', 'Lê Thị Hồng', 'Sa Đéc, Đồng Tháp', '0987654321'),
+  ('KH03', 'Nguyễn Văn Hậu', 'TP. Cao Lãnh, Đồng Tháp', '0909123456'),
+  ('KH04', 'Võ Minh Trí', 'Lai Vung, Đồng Tháp', '0933987654');
+
+CREATE TABLE MATHANG (
+  MaMH STRING PRIMARY KEY,
+  TenMH STRING,
+  DonViTinh STRING,
+  DonGia INT
+);
+
+INSERT INTO MATHANG VALUES
+  ('MH01', 'Sữa tươi tiệt trùng Vinamilk 1L', 'Hộp', 36000),
+  ('MH02', 'Gạo thơm ST25 Thượng hạng', 'Túi 5Kg', 185000),
+  ('MH03', 'Dầu ăn thực vật Neptune Gold 2L', 'Chai', 130000),
+  ('MH04', 'Bánh quy bơ Danisa 454g', 'Hộp', 145000),
+  ('MH05', 'Nước mắm Phú Quốc truyền thống', 'Chai', 65000);
+
+CREATE TABLE HOADON (
+  SoHD INT PRIMARY KEY,
+  MaKH STRING,
+  NgayLap DATE,
+  TongTien INT
+);
+
+INSERT INTO HOADON VALUES
+  (1001, 'KH01', '2026-09-10', 221000),
+  (1002, 'KH02', '2026-09-12', 315000),
+  (1003, 'KH01', '2026-09-15', 185000),
+  (1004, 'KH03', '2026-09-18', 355000),
+  (1005, 'KH04', '2026-09-20', 145000);
+
+CREATE TABLE CHITIET_HD (
+  SoHD INT,
+  MaMH STRING,
+  SoLuong INT,
+  ThanhTien INT
+);
+
+INSERT INTO CHITIET_HD VALUES
+  (1001, 'MH01', 1, 36000),
+  (1001, 'MH02', 1, 185000),
+  (1002, 'MH03', 1, 130000),
+  (1002, 'MH02', 1, 185000),
+  (1003, 'MH02', 1, 185000),
+  (1004, 'MH04', 2, 290000),
+  (1004, 'MH05', 1, 65000),
+  (1005, 'MH04', 1, 145000);
+`,
+    sampleQueries: [
+      {
+        name: "🏷️ Mặt hàng có giá trên 100,000đ",
+        description: "Truy vấn danh mục các mặt hàng có đơn giá từ 100,000đ trở lên sắp xếp giảm dần.",
+        query: `SELECT MaMH, TenMH, DonGia, DonViTinh
+FROM MATHANG
+WHERE DonGia >= 100000
+ORDER BY DonGia DESC`
+      },
+      {
+        name: "🛍️ Danh sách khách hàng kèm tổng tiền mua sắm",
+        description: "Kết nối 2 bảng KHACHHANG và HOADON để tra cứu lịch sử mua hàng của khách.",
+        query: `SELECT KHACHHANG.TenKH, KHACHHANG.DienThoai, HOADON.SoHD, HOADON.NgayLap, HOADON.TongTien
+FROM KHACHHANG
+INNER JOIN HOADON ON KHACHHANG.MaKH = HOADON.MaKH
+ORDER BY HOADON.NgayLap DESC`
+      },
+      {
+        name: "📊 Doanh thu và số lượng bán theo từng mặt hàng",
+        description: "Sử dụng hàm SUM() và GROUP BY kết hợp INNER JOIN để tính tổng doanh thu từng sản phẩm.",
+        query: `SELECT MATHANG.TenMH, SUM(CHITIET_HD.SoLuong) AS TongSoLuongBan, SUM(CHITIET_HD.ThanhTien) AS TongDoanhThu
+FROM MATHANG
+INNER JOIN CHITIET_HD ON MATHANG.MaMH = CHITIET_HD.MaMH
+GROUP BY MATHANG.TenMH
+ORDER BY TongDoanhThu DESC`
+      }
+    ]
   }
 ];
 

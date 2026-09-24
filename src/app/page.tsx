@@ -26,6 +26,7 @@ import { SqlIdeDrawer } from "@/components/SqlStudio/SqlIdeDrawer";
 import { MockExamView } from "@/components/Exam/MockExamView";
 import { ExamResultModal } from "@/components/Exam/ExamResultModal";
 import { QuestionPalette } from "@/components/Practice/QuestionPalette";
+import { WeeklyGoalCard } from "@/components/Practice/WeeklyGoalCard";
 import { generateMockExam } from "@/data/mockExamGenerator";
 
 export default function AppHome() {
@@ -823,6 +824,13 @@ export default function AppHome() {
             <>
               {currentQuestion ? (
                 <>
+                  {/* Nhiệm vụ học tập theo tuần chuẩn Kế hoạch GD1 */}
+                  <WeeklyGoalCard
+                    selectedTopicId={selectedTopicId}
+                    attempts={attempts}
+                    onSelectTopic={handleSelectTopic}
+                  />
+
                   {/* Bảng ma trận điều hướng câu hỏi nhanh 1-chạm */}
                   {topicQuestions.length > 1 && (
                     <QuestionPalette

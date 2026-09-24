@@ -39,6 +39,7 @@ import {
   Grid,
   BarChart3,
   CloudDownload,
+  Printer,
 } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { useAuth } from "@/contexts/AuthContext";
@@ -58,6 +59,7 @@ import {
 import { WEEKLY_PLAN } from "@/data/weeklyPlan";
 import { INITIAL_QUESTIONS, INITIAL_SUBJECTS } from "@/data/sampleBank";
 import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
+import { PrintableReportModal } from "@/components/Admin/PrintableReportModal";
 
 export default function AdminDashboardPage() {
   const { user, isLoggedIn, isAdmin, login, logout } = useAuth();
@@ -80,6 +82,7 @@ export default function AdminDashboardPage() {
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
   const [isCloudHelpModalOpen, setIsCloudHelpModalOpen] = useState(false);
+  const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
   const [activeStudent, setActiveStudent] = useState<StudentProgressSummary | null>(null);
 
   // 4. Form States for Single / Bulk Creation
@@ -1305,6 +1308,18 @@ export default function AdminDashboardPage() {
             >
               <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
               <span className="hidden sm:inline">Xuất Báo Cáo</span>
+            </button>
+
+            <button
+              onClick={() => {
+                soundManager.playClick();
+                setIsPrintModalOpen(true);
+              }}
+              className="px-3 py-2 rounded-neu-sm bg-[#e6ecf5] hover:bg-blue-50 text-blue-700 font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1.5 border border-blue-300/60"
+              title="Xem và in biên bản báo cáo PDF chuẩn sư phạm A4"
+            >
+              <Printer className="w-3.5 h-3.5 text-blue-600" />
+              <span className="hidden sm:inline">In Báo Cáo (PDF)</span>
             </button>
 
             <button
@@ -2557,6 +2572,15 @@ export default function AdminDashboardPage() {
         selectedSubjectId={selectedSubjectId}
         onSync={handleDriveSync}
         onScanFolder={handleScanFolder}
+      />
+
+      {/* Modal Báo cáo Sư phạm & In ấn PDF chuẩn A4 */}
+      <PrintableReportModal
+        isOpen={isPrintModalOpen}
+        onClose={() => setIsPrintModalOpen(false)}
+        students={students}
+        overview={overview}
+        selectedClass={selectedClass}
       />
     </div>
   );
