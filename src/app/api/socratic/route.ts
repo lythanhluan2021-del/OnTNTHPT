@@ -24,8 +24,8 @@ async function callGeminiApi(
       },
     ],
     generationConfig: {
-      temperature: 0.3,
-      maxOutputTokens: 350,
+      temperature: 0.4,
+      maxOutputTokens: 1500, // Đảm bảo đủ token cho cả chuỗi suy luận (thinking) và câu trả lời hoàn chỉnh
     },
   };
 
@@ -46,11 +46,17 @@ async function callGeminiApi(
   }
 
   const data = await response.json();
-  const text =
-    data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "";
+  const candidate = data?.candidates?.[0];
+  const parts = candidate?.content?.parts || [];
+  const text = parts
+    .map((p: any) => p.text || "")
+    .filter(Boolean)
+    .join("\n")
+    .trim();
 
-  if (!text) {
-    throw new Error("Gemini không trả về nội dung hợp lệ.");
+  // Đảm bảo không trả về mẩu câu cụt ngắn bất thường
+  if (!text || text.length < 25) {
+    throw new Error("Gemini trả về phản hồi chưa hoàn chỉnh hoặc bị ngắt quãng.");
   }
 
   return text;
@@ -190,14 +196,13 @@ export async function POST(req: NextRequest) {
     const systemInstruction = `Bạn là Trợ lý Gia sư Socratic đồng hành ôn thi Tốt nghiệp THPT môn Tin học (Chương trình GDPT 2018).
 
 NGUYÊN TẮC SƯ PHẠM CỐT LÕI (BẮT BUỘC TUÂN THỦ):
-1. TUYỆT ĐỐI KHÔNG NÓI ĐÁP ÁN ĐÚNG TRỰC TIẾP (không nói "hãy chọn C", "đáp án là C").
-2. TRẢ LỜI CỰC KỲ NGẮN GỌN & SÚC TÍCH: Chỉ từ 3 đến tối đa 5 dòng (dưới 70 từ).
-3. ĐI THẲNG VÀO TRỌNG TÂM CÂU HỎI CỤ THỂ:
-   - Nếu học sinh chọn sai phương án, hãy giải thích ngay BẪY TƯ DUY của phương án đó (vì sao phương án đó vi phạm hoặc không thỏa mãn yêu cầu đề bài).
-   - Nêu ngắn gọn 1 nguyên lý/khái niệm cốt lõi của câu hỏi.
-   - Kết thúc bằng 1 câu hỏi gợi mở để học sinh tự đối chiếu từ khóa trong đề.
-4. Định dạng Markdown rõ ràng với in đậm (**từ khóa**) và gạch đầu dòng (•) để học sinh nắm bắt trong 3 giây.
-5. Không chào hỏi thủ tục, không rườm rà.`;
+1. TUYỆT ĐỐI KHÔNG TIẾT LỘ ĐÁP ÁN ĐÚNG TRỰC TIẾP (không nói "hãy chọn C", "đáp án là C").
+2. TRẢ LỜI CỰC KỲ NGẮN GỌN & SÚC TÍCH: Chỉ từ 3 đến tối đa 5 dòng.
+3. ĐI THẲNG VÀO TRỌNG TÂM CÂU HỎI VÀ HOÀN THÀNH ĐẦY ĐỦ CẢ 3 Ý:
+   • **Bản chất kiến thức:** 1 câu ngắn nêu nguyên lý cốt lõi câu hỏi đề cập.
+   • **Bẫy cần lưu ý:** 1 câu phân tích bẫy tư duy hoặc lý do phương án chọn bị sai/loại trừ.
+   • **Gợi mở suy luận:** 1 câu hỏi định hướng để học sinh tự đối chiếu từ khóa và tìm ra đáp án.
+4. Định dạng Markdown in đậm (**từ khóa**). Tuyệt đối không dừng giữa chừng, không chào hỏi rườm rà.`;
 
     const userMessage = `NGỮ CẢNH CÂU HỎI THI THPT:
 - Đề bài: ${question.content}
@@ -211,7 +216,7 @@ ${optionsText}
 YÊU CẦU CỦA HỌC SINH:
 "${prompt}"
 
-Hãy phản hồi theo phương pháp Socratic cực kỳ ngắn gọn (3-4 dòng), giải thích chính xác nguyên nhân câu hỏi này và gợi mở suy luận!`;
+Hãy hoàn thiện câu trả lời đầy đủ 3 ý trên theo phương pháp Socratic ngắn gọn và chuẩn xác!`;
 
     try {
       const result = await callGeminiWithFallback(
