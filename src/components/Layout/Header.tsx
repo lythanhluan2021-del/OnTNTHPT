@@ -76,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   return (
-    <header className="sticky top-0 z-30 bg-[#e6ecf5] px-3 sm:px-4 py-2.5 border-b border-slate-300/60 shadow-neu-flat-sm">
+    <header className="sticky top-0 z-30 bg-[#e6ecf5] dark:bg-[#1a1f26] px-3 sm:px-4 py-2.5 border-b border-slate-300/60 dark:border-slate-800 shadow-neu-flat-sm">
       <div className="max-w-4xl mx-auto flex items-center justify-between gap-1.5 sm:gap-2">
         {/* Left: Hamburger menu toggle */}
         <button
@@ -84,10 +84,10 @@ export const Header: React.FC<HeaderProps> = ({
             soundManager.playClick();
             onToggleSidebar();
           }}
-          className="p-2 sm:p-2.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat active:shadow-neu-inset text-slate-700 transition flex-shrink-0"
+          className="p-2 sm:p-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat active:shadow-neu-inset text-slate-700 dark:text-slate-300 transition flex-shrink-0"
           aria-label="Mở danh mục bài học"
         >
-          <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-slate-800" />
+          <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-slate-800 dark:text-slate-200" />
         </button>
 
         {/* Center: Subject & Topic name with clickable subject switcher */}
@@ -97,13 +97,13 @@ export const Header: React.FC<HeaderProps> = ({
               soundManager.playClick();
               onOpenSubjectModal();
             }}
-            className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50/80 px-2 py-0.5 rounded-full shadow-neu-flat-xs active:shadow-neu-inset transition max-w-full"
+            className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 bg-blue-50/80 dark:bg-blue-950/70 px-2 py-0.5 rounded-full shadow-neu-flat-xs active:shadow-neu-inset transition max-w-full"
             title="Bấm để đổi môn học khác"
           >
             <span className="truncate">{subjectTitle}</span>
-            <ChevronDown className="w-3 h-3 text-blue-600 flex-shrink-0" />
+            <ChevronDown className="w-3 h-3 text-blue-600 dark:text-blue-400 flex-shrink-0" />
           </button>
-          <h1 className="text-xs sm:text-sm font-extrabold text-slate-800 truncate leading-tight pt-0.5">
+          <h1 className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-100 truncate leading-tight pt-0.5">
             {topicTitle}
           </h1>
         </div>
@@ -111,14 +111,14 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Right: Sound toggle, Tabs & User Auth Profile */}
         <div className="flex items-center gap-1.5 flex-shrink-0">
           {/* Nhóm chuyển Tab */}
-          <div className="flex items-center gap-0.5 sm:gap-1 p-0.5 sm:p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm">
+          <div className="flex items-center gap-0.5 sm:gap-1 p-0.5 sm:p-1 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#151922] shadow-neu-inset-sm">
             {/* Nút bật/tắt âm thanh */}
             <button
               onClick={handleToggleSound}
               className={`p-1.5 rounded-lg transition-all ${
                 isSoundOn
-                  ? "bg-[#e6ecf5] text-blue-600 shadow-neu-flat-xs font-bold"
-                  : "text-slate-400 hover:text-slate-600"
+                  ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-flat-xs font-bold"
+                  : "text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300"
               }`}
               title={isSoundOn ? "Âm thanh: Đang bật (Bấm để tắt)" : "Âm thanh: Đang tắt (Bấm để bật)"}
             >
@@ -145,8 +145,8 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`p-1.5 rounded-lg transition-all ${
                 activeTab === "theory"
-                  ? "bg-[#e6ecf5] text-blue-600 shadow-neu-flat-xs font-bold"
-                  : "text-slate-500 hover:text-slate-700"
+                  ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-flat-xs font-bold"
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
               }`}
               title="Tóm tắt Lý thuyết bài học"
             >
@@ -160,8 +160,8 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`p-1.5 rounded-lg transition-all ${
                 activeTab === "practice"
-                  ? "bg-[#e6ecf5] text-blue-600 shadow-neu-flat-xs font-bold"
-                  : "text-slate-500 hover:text-slate-700"
+                  ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-flat-xs font-bold"
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
               }`}
               title="Luyện tập câu hỏi"
             >

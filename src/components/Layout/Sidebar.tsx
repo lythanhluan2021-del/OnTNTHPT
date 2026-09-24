@@ -316,8 +316,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
               return (
                 <div
                   key={chapterTitle}
-                  className={`rounded-neu-sm bg-[#e6ecf5] transition-all overflow-hidden ${
-                    hasActiveTopic ? "shadow-neu-flat border border-blue-300/80" : "shadow-neu-flat-xs"
+                  className={`rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1a1f26] transition-all overflow-hidden ${
+                    hasActiveTopic
+                      ? "shadow-neu-flat border border-blue-300/80 dark:border-blue-800"
+                      : "shadow-neu-flat-xs border border-transparent dark:border-white/5"
                   }`}
                 >
                   {/* Accordion Chapter Header - CẤP BẬC CHA (TIÊU ĐỀ LỚN) */}
@@ -325,37 +327,39 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     onClick={() => toggleChapter(chapterTitle)}
                     className={`w-full text-left p-3 flex items-center justify-between gap-2.5 transition-colors ${
                       hasActiveTopic
-                        ? "bg-blue-100/50 text-blue-950"
-                        : "hover:bg-slate-200/50 text-slate-800"
+                        ? "bg-blue-100/50 dark:bg-blue-950/40 text-blue-950 dark:text-blue-200"
+                        : "hover:bg-slate-200/50 dark:hover:bg-slate-800/50 text-slate-800 dark:text-slate-200"
                     }`}
                     aria-expanded={isExpanded}
                   >
                     <div className="flex items-start gap-2.5 min-w-0 flex-1">
                       <div
                         className={`p-1.5 rounded-neu-xs shadow-neu-flat-xs flex-shrink-0 mt-0.5 ${
-                          hasActiveTopic ? "text-blue-600 bg-white" : "text-slate-600 bg-[#e6ecf5]"
+                          hasActiveTopic
+                            ? "text-blue-600 dark:text-blue-400 bg-white dark:bg-blue-900/60"
+                            : "text-slate-600 dark:text-slate-400 bg-[#e6ecf5] dark:bg-[#202734]"
                         }`}
                       >
                         {isExpanded ? (
-                          <FolderOpen className="w-4 h-4 text-blue-600" />
+                          <FolderOpen className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                         ) : (
-                          <Folder className="w-4 h-4 text-slate-500" />
+                          <Folder className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                         )}
                       </div>
                       <div className="min-w-0 flex-1 space-y-1">
                         {/* Hàng nhãn chương: Huy hiệu tuần học lớn (nếu có) */}
                         {chapterWeek && (
                           <div className="flex items-center gap-1.5">
-                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200/80 shadow-neu-flat-xs">
-                              <Calendar className="w-3 h-3 text-blue-600 flex-shrink-0" />
+                            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800 shadow-neu-flat-xs">
+                              <Calendar className="w-3 h-3 text-blue-600 dark:text-blue-400 flex-shrink-0" />
                               <span>{chapterWeek}</span>
                             </span>
                           </div>
                         )}
-                        <h3 className="text-xs font-black text-slate-800 leading-snug break-words tracking-tight">
+                        <h3 className="text-xs font-black text-slate-800 dark:text-slate-100 leading-snug break-words tracking-tight">
                           {cleanChapter}
                         </h3>
-                        <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-semibold">
+                        <div className="flex items-center gap-1.5 text-[10px] text-slate-500 dark:text-slate-400 font-semibold">
                           <span>{topicList.length} bài học</span>
                           <span>•</span>
                           <span>{totalChapterQuestions} câu hỏi</span>
@@ -363,9 +367,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       </div>
                     </div>
 
-                    <div className="p-1 rounded-neu-xs text-slate-500 shadow-neu-flat-xs flex-shrink-0 self-center">
+                    <div className="p-1 rounded-neu-xs text-slate-500 dark:text-slate-400 shadow-neu-flat-xs flex-shrink-0 self-center">
                       {isExpanded ? (
-                        <ChevronDown className="w-3.5 h-3.5 text-blue-600" />
+                        <ChevronDown className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                       ) : (
                         <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                       )}
@@ -374,9 +378,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                   {/* Danh sách các bài học con - CẤP BẬC CON (TIÊU ĐỀ NHỎ BÊN TRONG CÓ NHÁNH CÂY TREE-LINE) */}
                   {isExpanded && (
-                    <div className="p-2.5 pt-2 bg-slate-200/30 border-t border-slate-200/90">
+                    <div className="p-2.5 pt-2 bg-slate-200/30 dark:bg-slate-900/50 border-t border-slate-200/90 dark:border-slate-800">
                       {/* Vùng nhánh cây phân cấp (Tree Branch Guide) */}
-                      <div className="relative pl-3.5 ml-2 border-l-2 border-slate-300/80 space-y-2 py-0.5">
+                      <div className="relative pl-3.5 ml-2 border-l-2 border-slate-300/80 dark:border-slate-700 space-y-2 py-0.5">
                         {topicList.map((topic) => {
                           const isCurrent = topic.id === selectedTopicId;
                           const { week: topicWeek, cleanName } = parseTopicInfo(topic.name);
@@ -386,7 +390,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                               {/* Đường nhánh ngang nối từ cây phân cấp vào thẻ bài học con */}
                               <span
                                 className={`absolute -left-[14px] top-4 w-2.5 h-0.5 transition-colors ${
-                                  isCurrent ? "bg-blue-600" : "bg-slate-300/90"
+                                  isCurrent
+                                    ? "bg-blue-600 dark:bg-blue-400"
+                                    : "bg-slate-300/90 dark:bg-slate-700"
                                 }`}
                               />
 
@@ -400,13 +406,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
                                 }}
                                 className={`w-full text-left p-2.5 rounded-neu-sm transition-all flex items-start justify-between gap-2 ${
                                   isCurrent
-                                    ? "bg-blue-50 text-blue-900 shadow-neu-inset font-bold border-l-3 border-blue-600"
-                                    : "bg-[#e6ecf5] text-slate-700 shadow-neu-flat-xs hover:text-blue-700 active:shadow-neu-inset"
+                                    ? "bg-blue-50 dark:bg-blue-950/70 text-blue-900 dark:text-blue-100 shadow-neu-inset font-bold border-l-4 border-blue-600 dark:border-blue-400"
+                                    : "bg-[#e6ecf5] dark:bg-[#1a1f26] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs hover:text-blue-700 dark:hover:text-blue-400 active:shadow-neu-inset"
                                 }`}
                               >
                                 <div className="flex-1 min-w-0 space-y-1.5">
                                   {/* Tên bài học rõ ràng */}
-                                  <p className="text-xs font-bold text-slate-800 leading-snug break-words">
+                                  <p className="text-xs font-bold text-slate-800 dark:text-slate-100 leading-snug break-words">
                                     {cleanName}
                                   </p>
 
@@ -414,26 +420,26 @@ export const Sidebar: React.FC<SidebarProps> = ({
                                   <div className="flex items-center gap-1.5 flex-wrap">
                                     {/* Tuần riêng nếu khác tuần chương */}
                                     {topicWeek && topicWeek !== chapterWeek && (
-                                      <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-                                        <Calendar className="w-2.5 h-2.5 text-blue-600" />
+                                      <span className="inline-flex items-center gap-1 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                                        <Calendar className="w-2.5 h-2.5 text-blue-600 dark:text-blue-400" />
                                         <span>{topicWeek}</span>
                                       </span>
                                     )}
 
                                     {/* Huy hiệu Lý thuyết nếu có */}
                                     {topic.hasTheory && (
-                                      <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200/80 shadow-neu-flat-xs">
-                                        <BookOpen className="w-2.5 h-2.5 text-amber-600" />
+                                      <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200/80 dark:border-amber-800/80 shadow-neu-flat-xs">
+                                        <BookOpen className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
                                         <span>Lý thuyết</span>
                                       </span>
                                     )}
 
                                     {/* Phân rã số lượng câu hỏi */}
-                                    <span className="text-[10px] text-slate-500 font-medium">
+                                    <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
                                       {topic.mcCount && topic.tfCount ? (
                                         <span>
                                           {topic.totalQuestions} câu{" "}
-                                          <span className="text-slate-400 font-normal">
+                                          <span className="text-slate-400 dark:text-slate-500 font-normal">
                                             ({topic.mcCount} TN • {topic.tfCount} Đ/S)
                                           </span>
                                         </span>

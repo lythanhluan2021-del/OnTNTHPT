@@ -85,27 +85,27 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       case "NhanBiet":
         return {
           label: "Nhận biết",
-          color: "text-emerald-700 bg-emerald-100 border-emerald-300",
+          color: "text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-800",
         };
       case "ThongHieu":
         return {
           label: "Thông hiểu",
-          color: "text-blue-700 bg-blue-100 border-blue-300",
+          color: "text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-950/60 border-blue-300 dark:border-blue-800",
         };
       case "VanDung":
         return {
           label: "Vận dụng",
-          color: "text-amber-700 bg-amber-100 border-amber-300",
+          color: "text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/60 border-amber-300 dark:border-amber-800",
         };
       case "VanDungCao":
         return {
           label: "Vận dụng cao",
-          color: "text-purple-700 bg-purple-100 border-purple-300",
+          color: "text-purple-700 dark:text-purple-300 bg-purple-100 dark:bg-purple-950/60 border-purple-300 dark:border-purple-800",
         };
       default:
         return {
           label: "Chuẩn THPT",
-          color: "text-slate-700 bg-slate-100 border-slate-300",
+          color: "text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700",
         };
     }
   };
@@ -146,10 +146,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           }}
         />
 
-        {/* Nội dung Thẻ đề bài: Nền chuẩn Neumorphic #e6ecf5 đồng nhất, KHÔNG chuyển sắc nền */}
-        <div className="relative z-10 p-4 sm:p-5 rounded-[16.5px] bg-[#e6ecf5] space-y-3">
+        {/* Nội dung Thẻ đề bài: Nền chuẩn Neumorphic #e6ecf5 đồng nhất */}
+        <div className="relative z-10 p-4 sm:p-5 rounded-[16.5px] bg-[#e6ecf5] dark:bg-[#1a1f26] space-y-3">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-neu-sm shadow-neu-flat-xs flex items-center gap-1.5">
+            <span className="font-extrabold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 rounded-neu-sm shadow-neu-flat-xs flex items-center gap-1.5 border border-transparent dark:border-blue-800/60">
               <span>Câu {currentIndex + 1} / {totalInTopic}</span>
               {isTrueFalse && (
                 <span className="text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded-full font-bold">
@@ -166,14 +166,14 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
           {/* Nguồn tài liệu trích xuất */}
           {question.sourceDocTitle && (
-            <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium">
+            <div className="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
               <FileText className="w-3.5 h-3.5 text-blue-500" />
               <span className="truncate">{question.sourceDocTitle}</span>
             </div>
           )}
 
           {/* Nội dung câu hỏi / Tình huống */}
-          <div className="text-slate-800 text-sm sm:text-base font-medium leading-relaxed pt-1">
+          <div className="text-slate-800 dark:text-slate-100 text-sm sm:text-base font-medium leading-relaxed pt-1">
             <LatexRenderer content={question.content} />
           </div>
 
@@ -350,18 +350,18 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             const isCorrect = question.correctAnswer === opt.id;
 
             let optionStyle =
-              "bg-[#e6ecf5] text-slate-700 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-700";
+              "bg-[#e6ecf5] dark:bg-[#1a1f26] text-slate-700 dark:text-slate-200 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-700 dark:hover:text-blue-400";
 
             if (isSelected && !hasAnswered) {
               optionStyle =
-                "bg-[#e6ecf5] text-blue-700 shadow-neu-inset border-2 border-blue-500/40 font-semibold";
+                "bg-[#e6ecf5] dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 shadow-neu-inset border-2 border-blue-500/40 dark:border-blue-500 font-semibold";
             } else if (hasAnswered) {
               if (isCorrect) {
                 optionStyle =
-                  "bg-emerald-50 text-emerald-900 border-2 border-emerald-500 shadow-neu-flat-xs font-semibold";
+                  "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-200 border-2 border-emerald-500 shadow-neu-flat-xs font-semibold";
               } else if (isSelected && !isCorrect) {
                 optionStyle =
-                  "bg-rose-50 text-rose-900 border-2 border-rose-500 shadow-neu-flat-xs";
+                  "bg-rose-50 dark:bg-rose-950/60 text-rose-900 dark:text-rose-200 border-2 border-rose-500 shadow-neu-flat-xs";
               }
             }
 
@@ -386,7 +386,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                       ? "bg-emerald-600 text-white"
                       : hasAnswered && isSelected && !isCorrect
                       ? "bg-rose-600 text-white"
-                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-xs"
+                      : "bg-[#e6ecf5] dark:bg-[#202734] text-slate-600 dark:text-slate-300 shadow-neu-flat-xs"
                   }`}
                 >
                   {opt.id}
@@ -413,7 +413,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       {/* DẠNG 2: CÂU HỎI TRẮC NGHIỆM ĐÚNG / SAI (MỖI Ý a, b, c, d) */}
       {isTrueFalse && question.tfItems && (
         <div className="space-y-3">
-          <div className="text-xs font-bold text-slate-500 uppercase tracking-wider px-1">
+          <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider px-1">
             Chọn Đúng (Đ) hoặc Sai (S) cho từng ý dưới đây:
           </div>
 
@@ -426,21 +426,21 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             return (
               <div
                 key={item.id}
-                className={`p-3.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-sm space-y-2.5 transition-all ${
+                className={`p-3.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-neu-flat-sm space-y-2.5 transition-all ${
                   isAnswered
                     ? isItemCorrect
-                      ? "border-2 border-emerald-500 bg-emerald-50/40"
+                      ? "border-2 border-emerald-500 bg-emerald-50/40 dark:bg-emerald-950/40"
                       : isItemWrong
-                      ? "border-2 border-rose-500 bg-rose-50/40"
+                      ? "border-2 border-rose-500 bg-rose-50/40 dark:bg-rose-950/40"
                       : ""
                     : ""
                 }`}
               >
                 <div className="flex items-start gap-2.5">
-                  <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-800 font-extrabold text-xs flex items-center justify-center flex-shrink-0 shadow-neu-flat-xs">
+                  <span className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 font-extrabold text-xs flex items-center justify-center flex-shrink-0 shadow-neu-flat-xs">
                     {item.id})
                   </span>
-                  <div className="flex-1 text-xs sm:text-sm text-slate-800 font-medium leading-relaxed pt-0.5">
+                  <div className="flex-1 text-xs sm:text-sm text-slate-800 dark:text-slate-100 font-medium leading-relaxed pt-0.5">
                     <LatexRenderer content={item.content} />
                   </div>
                 </div>
@@ -459,7 +459,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                     className={`px-3 py-1.5 rounded-neu-sm text-xs font-bold transition-all flex items-center gap-1.5 ${
                       userChoice === true
                         ? "bg-emerald-600 text-white shadow-neu-inset"
-                        : "bg-[#e6ecf5] text-emerald-800 shadow-neu-flat-xs active:shadow-neu-inset"
+                        : "bg-[#e6ecf5] dark:bg-[#202734] text-emerald-800 dark:text-emerald-300 shadow-neu-flat-xs active:shadow-neu-inset"
                     } ${
                       hasAnswered && item.correctAnswer === true
                         ? "ring-2 ring-emerald-500 ring-offset-1 font-extrabold"
@@ -482,7 +482,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                     className={`px-3 py-1.5 rounded-neu-sm text-xs font-bold transition-all flex items-center gap-1.5 ${
                       userChoice === false
                         ? "bg-rose-600 text-white shadow-neu-inset"
-                        : "bg-[#e6ecf5] text-rose-800 shadow-neu-flat-xs active:shadow-neu-inset"
+                        : "bg-[#e6ecf5] dark:bg-[#202734] text-rose-800 dark:text-rose-300 shadow-neu-flat-xs active:shadow-neu-inset"
                     } ${
                       hasAnswered && item.correctAnswer === false
                         ? "ring-2 ring-rose-500 ring-offset-1 font-extrabold"

@@ -96,25 +96,95 @@ html.dark .shadow-neu-blue {
   box-shadow: 4px 4px 12px rgba(37, 99, 235, 0.45), -2px -2px 8px rgba(30, 41, 59, 0.5) !important;
 }
 
+/* Nền Neumorphic xám nhạt mặc định tự động đổi sang màu than chì sâu */
 html.dark .bg-\[\#e6ecf5\] {
   background-color: #1a1f26 !important;
 }
 
+/* Chuyển các nền sáng sang nền tối hài hòa, tránh lóa mắt */
+html.dark .bg-blue-50,
+html.dark .bg-blue-50\/80 {
+  background-color: rgba(30, 58, 138, 0.35) !important;
+}
+
+html.dark .bg-blue-100,
+html.dark .bg-blue-100\/50 {
+  background-color: rgba(30, 58, 138, 0.45) !important;
+}
+
+html.dark .bg-emerald-50 {
+  background-color: rgba(6, 78, 59, 0.35) !important;
+}
+
+html.dark .bg-emerald-100 {
+  background-color: rgba(6, 78, 59, 0.45) !important;
+}
+
+html.dark .bg-rose-50 {
+  background-color: rgba(136, 19, 55, 0.35) !important;
+}
+
+html.dark .bg-rose-100 {
+  background-color: rgba(136, 19, 55, 0.45) !important;
+}
+
+html.dark .bg-amber-50 {
+  background-color: rgba(120, 53, 15, 0.35) !important;
+}
+
+html.dark .bg-amber-100 {
+  background-color: rgba(120, 53, 15, 0.45) !important;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-slate-100 {
+  background-color: #1e2633 !important;
+}
+
+html.dark .bg-slate-200,
+html.dark .bg-slate-200\/30,
+html.dark .bg-slate-200\/50 {
+  background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+html.dark .bg-slate-300 {
+  background-color: #242c38 !important;
+}
+
+html.dark .bg-white {
+  background-color: #202732 !important;
+}
+
+/* Đổi màu văn bản tối sang sáng trên nền tối */
 html.dark .text-slate-800 {
-  color: #f1f5f9 !important;
+  color: #f1f5f9;
 }
 
 html.dark .text-slate-700 {
-  color: #e2e8f0 !important;
+  color: #e2e8f0;
 }
 
 html.dark .text-slate-600 {
-  color: #94a3b8 !important;
+  color: #94a3b8;
+}
+
+html.dark .text-blue-950,
+html.dark .text-blue-900 {
+  color: #bfdbfe !important;
+}
+
+html.dark .text-blue-800,
+html.dark .text-blue-700 {
+  color: #93c5fd !important;
 }
 
 html.dark .border-slate-300\/60,
+html.dark .border-slate-300\/70,
 html.dark .border-slate-300\/80,
 html.dark .border-slate-300,
-html.dark .border-slate-200 {
+html.dark .border-slate-200,
+html.dark .border-slate-200\/60,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/90 {
   border-color: rgba(51, 65, 85, 0.6) !important;
 }
