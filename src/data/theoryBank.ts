@@ -1929,6 +1929,231 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
       }
     ]
   },
+  "tin-co-so-du-lieu-sql": {
+    "subjectId": "tin-hoc-12",
+    "subjectName": "Tin học 12",
+    "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+    "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+    "docTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx",
+    "objectives": [
+      "Nhận biết được nhu cầu lưu trữ dữ liệu và khai thác thông tin cho bài toán quản lí.",
+      "Diễn đạt được khái niệm hệ Cơ sở dữ liệu, các khái niệm cơ bản trong mô hình Cơ sở dữ liệu quan hệ như quan hệ (bảng), khoá, khoá ngoài, truy vấn, cập nhật dữ liệu,...",
+      "Nêu được những khái niệm cơ bản của hệ Cơ sở dữ liệu. Giải thích được các khái niệm đó qua ví dụ minh hoạ.",
+      "Phân biệt được hai loại kiến trúc hệ Cơ sở dữ liệu là tập trung và phân tán.",
+      "Nêu được tầm quan trọng và một số biện pháp bảo mật hệ Cơ sở dữ liệu."
+    ],
+    "sections": [
+      {
+        "id": "baitoan-quan-li-va-khai-niem-csdl",
+        "topicId": "tin-co-so-du-lieu-sql",
+        "title": "1. Bài toán quản lí và các khái niệm cơ bản trong cơ sở dữ liệu",
+        "icon": "Layers",
+        "tag": "1. Khái niệm CSDL",
+        "summary": "Nhu cầu quản lý, thao tác cập nhật (thêm, sửa, xoá), mục đích khai thác thông tin, định nghĩa CSDL, 4 nhóm chức năng Hệ QTCSDL và phân biệt hệ CSDL tập trung vs phân tán.",
+        "keyTerms": [
+          "Bài toán quản lí",
+          "Lưu trữ dữ liệu",
+          "Cập nhật dữ liệu",
+          "Khai thác thông tin",
+          "Cơ sở dữ liệu (CSDL)",
+          "CSDL tập trung",
+          "CSDL phân tán",
+          "Hệ quản trị CSDL (DBMS)",
+          "Hệ cơ sở dữ liệu"
+        ],
+        "content": [
+          {
+            "heading": "1.1. Bài toán quản lí và nhu cầu lưu trữ dữ liệu",
+            "text": "Bài toán quản lí trong thực tế rất đa dạng từ những bài toán quản lí cho các tổ chức lớn tới những nhu cầu quản lí của riêng cá nhân: quản lí nhân sự, quản lí tài chính, quản lí học sinh, quản lí thiết bị, quản lí chi tiêu cá nhân,... Việc quản lí một tổ chức gắn liền với những dữ liệu phản ánh thông tin về hoạt động của tổ chức đó.",
+            "bulletPoints": [
+              {
+                "label": "Thao tác cập nhật dữ liệu",
+                "desc": "Các dữ liệu cần được lưu trữ và liên tục cập nhật để phản ánh kịp thời những thay đổi diễn ra trên thực tế. Cập nhật dữ liệu bao gồm các thao tác: thêm, sửa, xoá dữ liệu."
+              },
+              {
+                "label": "Mục đích khai thác thông tin",
+                "desc": "Mục đích của việc lưu trữ và cập nhật dữ liệu là để khai thác thông tin, phục vụ cho việc điều hành công việc và ra quyết định của người quản lí. Một số việc khai thác thông tin thường gặp là: tìm kiếm dữ liệu, thống kê, lập báo cáo."
+              },
+              {
+                "label": "Định nghĩa Cơ sở dữ liệu (CSDL)",
+                "desc": "Tập hợp dữ liệu làm cơ sở cho việc quản lí các hoạt động của một tổ chức, được số hoá để máy tính có thể lưu trữ, truy cập, cập nhật và xử lí, được gọi là một cơ sở dữ liệu (CSDL)."
+              }
+            ]
+          },
+          {
+            "heading": "1.2. Phân biệt CSDL tập trung và CSDL phân tán",
+            "text": "Tùy theo cấu trúc vật lý và vị trí lưu trữ dữ liệu trên mạng máy tính, CSDL được chia thành 2 loại:",
+            "bulletPoints": [
+              {
+                "label": "Cơ sở dữ liệu tập trung",
+                "desc": "Khi tập hợp dữ liệu được lưu trữ trên một máy tính thì ta gọi là cơ sở dữ liệu tập trung."
+              },
+              {
+                "label": "Cơ sở dữ liệu phân tán",
+                "desc": "Khi tập hợp dữ liệu được phân tán trên các máy tính khác nhau của một mạng máy tính thì ta gọi là cơ sở dữ liệu phân tán. Trong đó, mỗi nơi (site) của mạng máy tính có khả năng xử lí độc lập và thực hiện các ứng dụng cục bộ. Mỗi nơi cũng tham gia thực hiện ít nhất một ứng dụng toàn cục, yêu cầu truy xuất dữ liệu tại nhiều nơi bằng cách dùng hệ thống truyền thông con."
+              }
+            ]
+          },
+          {
+            "heading": "1.3. Hệ quản trị CSDL và 4 nhóm chức năng",
+            "text": "Để hỗ trợ người dùng tương tác với CSDL qua các giao diện dễ hiểu, dễ dùng, người ta đã xây dựng những bộ phần mềm (hệ thống chương trình) chuyên dụng gọi là hệ quản trị CSDL với các nhóm chức năng:",
+            "bulletPoints": [
+              {
+                "label": "Nhóm chức năng định nghĩa dữ liệu",
+                "desc": "Khai báo kiểu dữ liệu, cấu trúc dữ liệu và các ràng buộc toàn vẹn đối với dữ liệu."
+              },
+              {
+                "label": "Nhóm chức năng cập nhật và truy xuất dữ liệu",
+                "desc": "Thực hiện thao tác thêm, sửa, xoá dữ liệu cũng như tìm kiếm, trích xuất dữ liệu theo yêu cầu."
+              },
+              {
+                "label": "Nhóm chức năng bảo mật, an toàn CSDL",
+                "desc": "Phân quyền truy cập, xác thực người dùng, sao lưu và phục hồi dữ liệu khi có sự cố."
+              },
+              {
+                "label": "Nhóm chức năng giao diện lập trình ứng dụng (API)",
+                "desc": "Cung cấp các công cụ và giao tiếp lập trình để các phần mềm ứng dụng kết nối và khai thác CSDL."
+              }
+            ]
+          },
+          {
+            "heading": "1.4. Khái niệm Hệ cơ sở dữ liệu",
+            "text": "Hệ cơ sở dữ liệu của một đơn vị là cách gọi chung một tập hợp gồm: CSDL của tổ chức, hệ quản trị CSDL và các phần mềm ứng dụng có các giao diện tương tác với CSDL đáp ứng được nhu cầu quản lí của đơn vị đó. Có hai loại hệ cơ sở dữ liệu: Hệ cơ sở dữ liệu tập trung (quản lý dữ liệu tập trung trong một CSDL đặt trên một máy tính) và Hệ cơ sở dữ liệu phân tán (cho phép người dùng truy cập dữ liệu được lưu trữ ở nhiều máy tính khác nhau của mạng máy tính)."
+          }
+        ]
+      },
+      {
+        "id": "co-so-du-lieu-quan-he",
+        "topicId": "tin-co-so-du-lieu-sql",
+        "title": "2. Cơ sở dữ liệu quan hệ",
+        "icon": "Layers",
+        "tag": "2. Mô hình quan hệ",
+        "summary": "Cấu trúc bảng, hàng (bản ghi), cột (trường/thuộc tính), kiểu dữ liệu, định nghĩa khóa, khóa chính, ràng buộc khóa và khóa ngoài tham chiếu toàn vẹn.",
+        "keyTerms": [
+          "Cơ sở dữ liệu quan hệ",
+          "Bảng (Table)",
+          "Bản ghi (Record / Hàng)",
+          "Trường (Field / Cột)",
+          "Kiểu dữ liệu",
+          "Khóa",
+          "Khóa chính (Primary Key)",
+          "Ràng buộc khóa",
+          "Khóa ngoài (Foreign Key)",
+          "Bảng tham chiếu",
+          "Ràng buộc khóa ngoài",
+          "Toàn vẹn tham chiếu"
+        ],
+        "content": [
+          {
+            "heading": "2.1. Cấu trúc CSDL quan hệ: Bảng, Bản ghi và Trường",
+            "text": "Cơ sở dữ liệu quan hệ là CSDL lưu trữ dữ liệu dưới dạng các bảng có quan hệ với nhau. Trong đó, mỗi bảng gồm các hàng và cột:",
+            "bulletPoints": [
+              {
+                "label": "Bản ghi (Record / Hàng)",
+                "desc": "Mỗi hàng của bảng được gọi là bản ghi (record), là tập hợp các thông tin về một đối tượng cụ thể được quản lí trong bảng."
+              },
+              {
+                "label": "Trường (Field / Cột / Thuộc tính)",
+                "desc": "Mỗi cột trong bảng được gọi là trường (field) thể hiện thuộc tính của đối tượng được quản lí trong bảng. Mỗi trường có dữ liệu cùng một kiểu và được gọi là kiểu dữ liệu của trường."
+              }
+            ]
+          },
+          {
+            "heading": "2.2. Khóa và Khóa chính (Primary Key)",
+            "text": "Để phân biệt các bản ghi và bảo đảm tính toàn vẹn dữ liệu:",
+            "bulletPoints": [
+              {
+                "label": "Khái niệm Khóa",
+                "desc": "Khóa của một bảng là một hay một nhóm trường mà mỗi giá trị của nó xác định duy nhất một bản ghi ở trong bảng và ta không thể bỏ đi trường nào mà tập hợp các trường còn lại vẫn có tính chất xác định duy nhất một bản ghi trong bảng."
+              },
+              {
+                "label": "Khóa chính (Primary Key)",
+                "desc": "Khi bảng có nhiều hơn một khóa, người ta có thể chọn một trong các khóa đó làm khóa chính của bảng và thường chọn khóa có số lượng trường ít nhất."
+              },
+              {
+                "label": "Ràng buộc khóa",
+                "desc": "Việc cập nhật dữ liệu cho một bảng cũng phải thoả mãn yêu cầu không làm xuất hiện hai bản ghi có giá trị khóa giống nhau. Yêu cầu này còn được gọi là ràng buộc khóa."
+              }
+            ]
+          },
+          {
+            "heading": "2.3. Khóa ngoài (Foreign Key) và Ràng buộc toàn vẹn tham chiếu",
+            "text": "Liên kết dữ liệu giữa các bảng trong CSDL quan hệ được thực hiện qua khóa ngoài:",
+            "bulletPoints": [
+              {
+                "label": "Khái niệm Khóa ngoài",
+                "desc": "Mỗi bảng (A) có thể có trường hay nhóm các trường (K) làm thành khóa chính ở một bảng khác (B). Khi đó, A được gọi là bảng tham chiếu, B được gọi là bảng được tham chiếu và K được gọi là khóa ngoài của bảng A. Hai bảng A và B được gọi là có quan hệ với nhau qua khóa ngoài K của bảng A."
+              },
+              {
+                "label": "Ràng buộc khóa ngoài (Toàn vẹn tham chiếu)",
+                "desc": "Đảm bảo tính tham chiếu đầy đủ giữa các bảng có quan hệ với nhau cũng là một phần của việc đảm bảo tính toàn vẹn của dữ liệu. Ràng buộc này áp dụng cho khóa ngoài nên được gọi là ràng buộc khóa ngoài. Cụ thể, ràng buộc khóa ngoài là yêu cầu mọi giá trị của khóa ngoài trong bảng tham chiếu phải xuất hiện trong giá trị khóa ở bảng được tham chiếu."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "truy-van-trong-csdl-sql",
+        "topicId": "tin-co-so-du-lieu-sql",
+        "title": "3. Truy vấn trong cơ sở dữ liệu (Ngôn ngữ SQL)",
+        "icon": "Terminal",
+        "tag": "3. Truy vấn SQL",
+        "summary": "Khái niệm truy vấn dữ liệu, cấu trúc cơ bản câu lệnh SELECT FROM WHERE, cú pháp kết hợp dữ liệu bảng bằng INNER JOIN ON và điều kiện kết nối.",
+        "keyTerms": [
+          "Truy vấn (Query)",
+          "SQL",
+          "SELECT",
+          "FROM",
+          "WHERE",
+          "INNER JOIN",
+          "ON",
+          "Toán tử so sánh",
+          "Điều kiện kết nối",
+          "Toán tử logic"
+        ],
+        "content": [
+          {
+            "heading": "3.1. Khái niệm truy vấn và Ngôn ngữ SQL",
+            "text": "Truy vấn trong cơ sở dữ liệu là một phát biểu thể hiện yêu cầu của người dùng đối với CSDL. Đó có thể là yêu cầu thao tác trên dữ liệu: thêm, sửa, xoá bản ghi,... Đó cũng có thể là yêu cầu khai thác CSDL. Mỗi hệ quản trị CSDL có ngôn ngữ truy vấn của nó. Đối với các hệ quản trị CSDL quan hệ, ngôn ngữ truy vấn phổ biến nhất cho đến nay là SQL (Structured Query Language)."
+          },
+          {
+            "heading": "3.2. Cấu trúc câu lệnh truy vấn cơ bản trong SQL",
+            "text": "Cấu trúc cơ bản của một câu truy vấn viết bằng ngôn ngữ SQL:",
+            "code": "SELECT <dữ liệu cần lấy>\nFROM <tên bảng>\nWHERE <điều kiện chọn>;",
+            "bulletPoints": [
+              {
+                "label": "Dữ liệu cần lấy (SELECT)",
+                "desc": "Là tên các trường dữ liệu cần đưa ra kết quả."
+              },
+              {
+                "label": "Tên bảng (FROM)",
+                "desc": "Là tên của bảng trong CSDL được truy cập để lấy dữ liệu."
+              },
+              {
+                "label": "Điều kiện chọn (WHERE)",
+                "desc": "Là biểu thức logic cho việc chọn các bản ghi đưa ra kết quả."
+              }
+            ]
+          },
+          {
+            "heading": "3.3. Ghép nối bảng với INNER JOIN",
+            "text": "Để kết hợp dữ liệu từ các bảng theo cách ghép nối các bản ghi thoả mãn một điều kiện nào đó (điều kiện kết nối), SQL sử dụng từ khoá JOIN trong mệnh đề FROM. Trong đó, INNER JOIN được dùng phổ biến nhất.",
+            "code": "SELECT <dữ liệu cần lấy>\nFROM <bảng 1> INNER JOIN <bảng 2> ON <điều kiện kết nối>\nWHERE <điều kiện chọn>;",
+            "bulletPoints": [
+              {
+                "label": "Điều kiện kết nối (ON)",
+                "desc": "Điều kiện kết nối là điều kiện để ghép nối hai bản ghi ở bảng 1 và bảng 2, có dạng: bảng 1.Trường A <toán tử so sánh> bảng 2.Trường B. Toán tử so sánh có thể là =, <, <=, >, >=, <>."
+              },
+              {
+                "label": "Trường hợp phổ biến",
+                "desc": "Trên thực tế, điều kiện kết nối được sử dụng phổ biến nhất là sự trùng khớp giá trị trên một trường chung của hai bảng kết nối (thường là khóa ngoài bảng 1 = khóa chính bảng 2)."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
 };
 
 // Aliases cho các chủ đề trắc nghiệm và câu hỏi Đúng / Sai
@@ -1946,3 +2171,6 @@ TOPIC_THEORY_MAP["tin-11d-12d"] = TOPIC_THEORY_MAP["tin-dao-duc-phap-luat-so"];
 TOPIC_THEORY_MAP["tin-chuyen-de-12g"] = TOPIC_THEORY_MAP["tin-huong-nghiep-dich-vu"];
 TOPIC_THEORY_MAP["tin-12g"] = TOPIC_THEORY_MAP["tin-huong-nghiep-dich-vu"];
 TOPIC_THEORY_MAP["tin-nhom-nghe-dich-vu-quan-tri"] = TOPIC_THEORY_MAP["tin-huong-nghiep-dich-vu"];
+TOPIC_THEORY_MAP["tin-chuyen-de-11f"] = TOPIC_THEORY_MAP["tin-co-so-du-lieu-sql"];
+TOPIC_THEORY_MAP["tin-11f"] = TOPIC_THEORY_MAP["tin-co-so-du-lieu-sql"];
+TOPIC_THEORY_MAP["tin-csdl-quan-he"] = TOPIC_THEORY_MAP["tin-co-so-du-lieu-sql"];

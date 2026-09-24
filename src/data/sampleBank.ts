@@ -99,11 +99,13 @@ export const INITIAL_SUBJECTS: Subject[] = [
       // Tuần 26 - 29: Cơ sở dữ liệu quan hệ (Tin học 11) [8 tiết]
       {
         id: "tin-co-so-du-lieu-sql",
-        name: "Ôn thi TN.THPT: Chủ đề CSDL lớp 11 (Tuần 26 – 29)",
+        name: "Chuyên đề 11F: Giới thiệu các hệ CSDL (Tuần 26 – 29)",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
-        totalQuestions: 4,
-        mcCount: 4,
+        totalQuestions: 138,
+        mcCount: 125,
+        tfCount: 13,
+        hasTheory: true,
       },
 
       // Tuần 30 - 35: Luyện giải đề mẫu chuẩn tốt nghiệp [10 tiết - trừ Tuần 33 KTHK II]
@@ -19472,6 +19474,5014 @@ export const INITIAL_QUESTIONS: Question[] = [
     {
       "id": "d",
       "content": "Cơ hội việc làm sau khi tốt nghiệp là một yếu tố quan trọng cần xem xét khi chọn lựa cơ sở đào tạo Công nghệ thông tin.",
+      "correctAnswer": true
+    }
+  ]
+}
+,
+{
+  "id": "Q-TIN-11F-MC-01",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Tổ chức lưu trữ dữ liệu nào dưới đây giúp cho việc tìm kiếm và truy xuất dữ liệu trở nên nhanh chóng hơn?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tổ chức theo thứ tự bảng chữ cái"
+    },
+    {
+      "id": "B",
+      "content": "Tổ chức theo thứ tự ngày tháng"
+    },
+    {
+      "id": "C",
+      "content": "Tổ chức theo thứ tự địa chỉ đường"
+    },
+    {
+      "id": "D",
+      "content": "Tổ chức theo thứ tự khóa chính"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: Tổ chức theo thứ tự khóa chính",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-02",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Khái niệm \"khóa ngoài\" trong cơ sở dữ liệu được thể hiện trong ý nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một cột trong bảng tham chiếu đến giá trị của cột trong bảng khác."
+    },
+    {
+      "id": "B",
+      "content": "Một cột trong bảng được sử dụng để xác định các giá trị duy nhất của mỗi hàng."
+    },
+    {
+      "id": "C",
+      "content": "Một cột trong bảng được sử dụng để liên kết các bảng khác nhau."
+    },
+    {
+      "id": "D",
+      "content": "Một cột trong bảng chứa giá trị số."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Một cột trong bảng tham chiếu đến giá trị của cột trong bảng khác.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-03",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào sau đây đúng khi nói về cơ sở dữ liệu (CSDL) quan hệ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "là tập hợp các bảng dữ liệu không quan hệ với nhau."
+    },
+    {
+      "id": "B",
+      "content": "là tập hợp các bảng dữ liệu có liên quan với nhau"
+    },
+    {
+      "id": "C",
+      "content": "giống hệt với CSDL phân tán"
+    },
+    {
+      "id": "D",
+      "content": "là CSDL phân tích dưới dạng các bảng có quan hệ với nhau"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: là tập hợp các bảng dữ liệu có liên quan với nhau",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-04",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào sau đây để chỉ 2 loại khóa của CSDL quan hệ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Khóa chính, khóa phụ"
+    },
+    {
+      "id": "B",
+      "content": "Khóa chính, khóa ngoài"
+    },
+    {
+      "id": "C",
+      "content": "Khóa trong, khóa ngoài"
+    },
+    {
+      "id": "D",
+      "content": "Khóa trong, khóa phụ"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Khóa trong, khóa ngoài",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-05",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào sau đây thể hiện là trường của bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Là thuộc tính của đối tượng"
+    },
+    {
+      "id": "B",
+      "content": "Là chức năng của đối tượng"
+    },
+    {
+      "id": "C",
+      "content": "Là khả năng phân tán của đối tượng"
+    },
+    {
+      "id": "D",
+      "content": "Là khả năng lưu của đối tượng"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Là thuộc tính của đối tượng",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-06",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Kiểu dữ liệu của mỗi trường được thể trong đáp án nào dưới đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Không xác định được"
+    },
+    {
+      "id": "B",
+      "content": "Có thể giống hoặc có thể khác."
+    },
+    {
+      "id": "C",
+      "content": "Khác nhau hoàn toàn"
+    },
+    {
+      "id": "D",
+      "content": "Cùng một kiểu"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: Cùng một kiểu",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-07",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Cập nhật dữ liệu của một bảng bao gồm những thao tác nào sau đây:",
+  "options": [
+    {
+      "id": "A",
+      "content": "thêm, sửa và xóa dữ liệu của bảng"
+    },
+    {
+      "id": "B",
+      "content": "các mô tả cho các cột của bảng"
+    },
+    {
+      "id": "C",
+      "content": "dữ liệu được tổ chức, lưu trữ trong CSDL"
+    },
+    {
+      "id": "D",
+      "content": "tìm kiếm dữ liệu và kết xuất ra thông tin cần tìm"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: thêm, sửa và xóa dữ liệu của bảng",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-08",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào sau đây để là đúng khi nói về khái niệm \"khóa ngoại\" trong cơ sở dữ liệu?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một cột trong bảng tham chiếu đến giá trị của cột trong bảng khác."
+    },
+    {
+      "id": "B",
+      "content": "Một cột trong bảng được sử dụng để xác định các giá trị duy nhất của mỗi hàng."
+    },
+    {
+      "id": "C",
+      "content": "Một cột trong bảng được sử dụng để liên kết các bảng khác nhau."
+    },
+    {
+      "id": "D",
+      "content": "Một cột trong bảng chứa giá trị số."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Một cột trong bảng tham chiếu đến giá trị của cột trong bảng khác.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-09",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Phương án nào dưới đây là đúng khi nói về bản ghi?",
+  "options": [
+    {
+      "id": "A",
+      "content": "tập hợp các thông tin về nhiều đối tượng cụ thể được quản lý trong filex"
+    },
+    {
+      "id": "B",
+      "content": "tập hợp các thông tin về nhiều đối tượng cụ thể được quản lý trong bảng"
+    },
+    {
+      "id": "C",
+      "content": "tập hợp các thông tin về một đối tượng không cụ thể được quản lý trong bảng"
+    },
+    {
+      "id": "D",
+      "content": "tập hợp các thông tin về một đối tượng cụ thể được quản lý trong bảng"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: tập hợp các thông tin về một đối tượng cụ thể được quản lý trong bảng",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-10",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Chỉnh sửa biểu mẫu (thay đổi hình thức biểu mẫu) chỉ thực hiện được ở chế độ nào dưới đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thiết kế"
+    },
+    {
+      "id": "B",
+      "content": "Trang dữ liệu"
+    },
+    {
+      "id": "C",
+      "content": "Biểu mẫu"
+    },
+    {
+      "id": "D",
+      "content": "Thuật sĩ"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Thiết kế",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-11",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Nhận định nào sau đây là đúng về mô hình cơ sở dữ liệu quan hệ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Trong mô hình cơ sở dữ liệu quan hệ thứ tự của các cột không quan trọng."
+    },
+    {
+      "id": "B",
+      "content": "Trong mô hình cơ sở dữ liệu quan hệ thứ tự của các cột là quan trọng."
+    },
+    {
+      "id": "C",
+      "content": "Trong mô hình cơ sở dữ liệu quan kiểu dữ liệu của các trường phải giống nhau"
+    },
+    {
+      "id": "D",
+      "content": "Trong mô hình cơ sở dữ liệu quan hệ thứ tự của các hàng là quan trọng"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Trong mô hình cơ sở dữ liệu quan hệ thứ tự của các cột không quan trọng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-12",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Nhận định nào sau đây là đúng về thuật ngữ “thuộc tính” dùng trong hệ CSDL quan hệ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thuật ngữ “thuộc tính” dùng trong hệ CSDL quan hệ là để chỉ đối tượng kiểu dữ liệu của một thuộc tính"
+    },
+    {
+      "id": "B",
+      "content": "Thuật ngữ “thuộc tính” dùng trong hệ CSDL quan hệ là để chỉ đối tượng bảng"
+    },
+    {
+      "id": "C",
+      "content": "Thuật ngữ “thuộc tính” dùng trong hệ CSDL quan hệ là để chỉ đối tượng hàng"
+    },
+    {
+      "id": "D",
+      "content": "Thuật ngữ “thuộc tính” dùng trong hệ CSDL quan hệ là để chỉ đối tượng cột"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: Thuật ngữ “thuộc tính” dùng trong hệ CSDL quan hệ là để chỉ đối tượng cột",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-13",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây là đúng về thuật ngữ “miền” dùng trong hệ CSDL quan hệ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ đối tượng Hàng."
+    },
+    {
+      "id": "B",
+      "content": "Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ đối tượng Bảng."
+    },
+    {
+      "id": "C",
+      "content": "Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ kiểu dữ liệu của một thuộc tính."
+    },
+    {
+      "id": "D",
+      "content": "Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ đối tượng Cột."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ kiểu dữ liệu của một thuộc tính.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-14",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào về hệ QTCSDL quan hệ là đúng nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phần mềm dùng để tạo lập, cập nhật và khai thác CSDL quan hệ."
+    },
+    {
+      "id": "B",
+      "content": "Phần mềm dùng để xây dựng các CSDL quan hệ."
+    },
+    {
+      "id": "C",
+      "content": "Phần mềm Microsoft Access."
+    },
+    {
+      "id": "D",
+      "content": "Phần mềm để giải các bài toán quản lí có chứa các quan hệ giữa các dữ liệu."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Phần mềm dùng để tạo lập, cập nhật và khai thác CSDL quan hệ.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-15",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong bảng sau đây, mỗi học sinh chỉ có mộ mã số (Mahs)\nMahs\nHoten\nNgaysinh\nLop\nDiachi\nToan\nLy\nHoa\n0001\nTran Van Thanh\n1 – 2 – 1990\n12A\nNội trú\n10\n9\n8\n0002\nTran Van Thanh\n1 – 2 – 1990\n12A\nLê Lợi\n9\n10\n5\n0003\nTran Van Thanh\n1 – 2 – 1990\n12B\nNội trú\n7\n7\n7\nKhoá chính của bảng là đáp án nào dưới đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Khoá chính = {Mahs}"
+    },
+    {
+      "id": "B",
+      "content": "Khoá chính = {HoTen, Ngaysinh, Lop, Diachi, Toan}"
+    },
+    {
+      "id": "C",
+      "content": "Khoá chính = {HoTen, Ngaysinh, Lop, Diachi, Li}"
+    },
+    {
+      "id": "D",
+      "content": "Khoá chính = {HoTen, Ngaysinh, Lop, Diachi}"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Khoá chính = {Mahs}",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-16",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Nhận định nào sau đây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Để tạo biểu mẫu, trước đó phải có dữ liệu nguồn từ bảng hoặc mẫu hỏi"
+    },
+    {
+      "id": "B",
+      "content": "Để tạo biểu mẫu, trước đó phải có dữ liệu nguồn từ bảng hoặc báo cáo"
+    },
+    {
+      "id": "C",
+      "content": "Để tạo biểu mẫu, trước đó phải có dữ liệu nguồn từ mẫu hỏi hoặc báo cáo"
+    },
+    {
+      "id": "D",
+      "content": "Để tạo biểu mẫu, trước đó phải có dữ liệu nguồn từ mẫu hỏi hoặc biểu mẫu"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Để tạo biểu mẫu, trước đó phải có dữ liệu nguồn từ bảng hoặc mẫu hỏi",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-17",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào trong các phát biểu sau là sai?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chế độ biểu mẫu có giao diện thân thiện, thường được sử dụng để cập nhật dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Bảng ở chế độ hiển thị trang dữ liệu có thể được sử dụng để cập nhật dữ liệu."
+    },
+    {
+      "id": "C",
+      "content": "Để làm việc trên cấu trúc của biểu mẫu thì biểu mẫu phải ở chế độ thiết kế."
+    },
+    {
+      "id": "D",
+      "content": "Có thể tạo biểu mẫu bằng cách nhập dữ liệu trực tiếp"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: Có thể tạo biểu mẫu bằng cách nhập dữ liệu trực tiếp",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-18",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong mô hình quan hệ, về mặt cấu trúc thì dữ liệu được thể hiện trong thành phần nào dưới đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cột (Field)"
+    },
+    {
+      "id": "B",
+      "content": "Hàng (Record)"
+    },
+    {
+      "id": "C",
+      "content": "Bảng (Table)"
+    },
+    {
+      "id": "D",
+      "content": "Báo cáo (Report)"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Bảng (Table)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-19",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cho các bảng sau\n- DanhMucSach: (MaSach, TenSach, MaLoai)\n- LoaiSach: (MaLoai, LoaiSach)\n- HoaDon: (MaSach, SoLuong, DonGia) Để biết giá của một quyển sách thì cần những bảng nào ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "HoaDon"
+    },
+    {
+      "id": "B",
+      "content": "DanhMucSach, HoaDon"
+    },
+    {
+      "id": "C",
+      "content": "DanhMucSach, LoaiSach"
+    },
+    {
+      "id": "D",
+      "content": "HoaDon, LoaiSach"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: DanhMucSach, HoaDon",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-20",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "\nCho các thao tác\n(1) Gõ tên cho biểu mẫu rồi nháy Finish\n(2) Chọn Create/Form Wizard.\n(3) Chọn kiểu cho biểu mẫu rồi nhấn Next\n(4) Trong hộp thoại Form Wizard, chọn bảng (hoặc mẫu hỏi) từ ô Tables/Queries, tiếp theo là chọn các trường đưa vào biểu mẫu rồi nhấn Next\nTrình tự các thao tác trong đáp án nào dưới đây để có thể thực hiện tạo biểu mẫu bằng cách dùng thuật sĩ.",
+  "options": [
+    {
+      "id": "A",
+      "content": "(2) → (4) → (3)  → (1)"
+    },
+    {
+      "id": "B",
+      "content": "(2) → (3) → (4) → (1)"
+    },
+    {
+      "id": "C",
+      "content": "(3) → (4) → (1) →(2)"
+    },
+    {
+      "id": "D",
+      "content": "(2) → (3) → (1) → (4)"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: (2) → (4) → (3)  → (1)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-21",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong quá trình truy vấn cơ sở dữ liệu, các phép toán logic được sử dụng để làm gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tìm kiếm dữ liệu trong cơ sở dữ liệu"
+    },
+    {
+      "id": "B",
+      "content": "Xác định quan hệ giữa các bảng trong cơ sở dữ liệu"
+    },
+    {
+      "id": "C",
+      "content": "sắp xếp dữ liệu trong cơ sở dữ liệu"
+    },
+    {
+      "id": "D",
+      "content": "Nhập dữ liệu cho bảng"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Tìm kiếm dữ liệu trong cơ sở dữ liệu",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-22",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong bài toán “Quản lí học sinh\" ở trường THPT, công việc nào sau đây\nđược gọi là thao tác “cập nhật hồ sơ.",
+  "options": [
+    {
+      "id": "A",
+      "content": "Nhập điểm kiểm tra học kì 1 cho học sinh."
+    },
+    {
+      "id": "B",
+      "content": "Tạo lập hồ sơ lớp học."
+    },
+    {
+      "id": "C",
+      "content": "Lọc danh sách các học sinh có điểm xếp loại học lực Tốt và điểm hạnh kiểm Tốt."
+    },
+    {
+      "id": "D",
+      "content": "Sắp xếp danh sách học sinh theo thứ tự họ tên tăng dần."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Nhập điểm kiểm tra học kì 1 cho học sinh.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-23",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khai thác hồ sơ trong một bài toán quản lí bao gồm những công việc nào\nsau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sắp xếp, tìm kiếm, tạo lập hồ sơ, lập báo cáo."
+    },
+    {
+      "id": "B",
+      "content": "Cập nhật, tạo lập hồ sơ, thống kê, lập báo cáo."
+    },
+    {
+      "id": "C",
+      "content": "Sắp xếp, tìm kiếm, thống kê, lập báo cáo."
+    },
+    {
+      "id": "D",
+      "content": "Lập báo cáo, cập nhật, tìm kiểm, tạo lập hồ sơ."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Sắp xếp, tìm kiếm, thống kê, lập báo cáo.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-24",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "?",
+  "options": [
+    {
+      "id": "A",
+      "content": "CSDL là phần mềm cung cấp một môi trường thuận lợi và hiệu quả để tạo"
+    },
+    {
+      "id": "B",
+      "content": "CSDL là các phần mềm ứng dụng được xây dựng dựa trên các hệ quản trị CSDL để việc khai thác thông tin thuận tiện hơn."
+    },
+    {
+      "id": "C",
+      "content": "CSDL là tập hợp tất cả các văn bản, giấy tờ và cơ sở vật chất của một cơ quan tổ chức, được quản lí bởi các phỏng ban của tổ chức đó."
+    },
+    {
+      "id": "D",
+      "content": "CSDL là một tập hợp các dữ liệu có liên quan với nhau, chứa thông tin của một tổ chức nào đó, được lưu trữ trên các thiết bị nhớ để đáp ứng nhu cầu khai thác thông tin của nhiều người dùng với nhiều mục đích khác nhau."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: CSDL là một tập hợp các dữ liệu có liên quan với nhau, chứa thông tin của một tổ chức nào đó, được lưu trữ trên các thiết bị nhớ để đáp ứng nhu cầu khai thác thông tin của nhiều người dùng với nhiều mục đích khác nhau.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-25",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phương án nào sau đây nêu định nghĩa đúng về Hệ quản trị CSDL?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hệ quản trị CSDL là phần mềm cung cấp một môi trường thuận lợi và hiệu quả để tạo lập, lưu trữ và khai thác thông tin của cơ sở dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Hệ quản trị CSDL là các phần mềm ứng dụng được xây dựng dựa trên các CSDL để việc khai thác thông tin thuận tiện hơn."
+    },
+    {
+      "id": "C",
+      "content": "Hệ quản trị CSDL là một tập hợp các dữ liệu có liên quan với nhau, chứa thông tin của một tổ chức nào đó, được lưu trữ trên các thiết bị nhớ để đáp ứng nhu cầu khai thác thông tin của nhiều người dùng với nhiều mục đích khác nhau."
+    },
+    {
+      "id": "D",
+      "content": "Hệ quản trị CSDL là một thiết bị vật lí để lưu trữ cơ sở dữ liệu."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Hệ quản trị CSDL là phần mềm cung cấp một môi trường thuận lợi và hiệu quả để tạo lập, lưu trữ và khai thác thông tin của cơ sở dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-26",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cần tiến hành cập nhật hồ sơ học sinh của nhà trường trong trường hợp nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sắp xếp danh sách học sinh theo thứ tự tăng dần của tên."
+    },
+    {
+      "id": "B",
+      "content": "Một học sinh mới chuyển từ trưởng khác đến; thông tin về ngày sinh của một học sinh bị sai."
+    },
+    {
+      "id": "C",
+      "content": "Tìm học sinh có điểm môn toán cao nhất khối."
+    },
+    {
+      "id": "D",
+      "content": "Tinh tỉ lệ học sinh có điểm môn Tin trên 6,5 của từng lớp."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Một học sinh mới chuyển từ trưởng khác đến; thông tin về ngày sinh của một học sinh bị sai.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-27",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mô hình dữ liệu quan hệ được đặc trưng bởi:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Các thực thể và mối quan hệ giữa chúng, biểu diễn bằng đồ thị."
+    },
+    {
+      "id": "B",
+      "content": "Các bảng, hàng và cột, trong đó mỗi hàng đại diện cho một bản ghi và mỗi cột đại diện cho một thuộc tính."
+    },
+    {
+      "id": "C",
+      "content": "Các đối tượng với các thuộc tính và phương thức."
+    },
+    {
+      "id": "D",
+      "content": "Cấu trúc cây cha-con."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Các bảng, hàng và cột, trong đó mỗi hàng đại diện cho một bản ghi và mỗi cột đại diện cho một thuộc tính.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-28",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Chìa khóa ngoại trong một bảng là:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một thuộc tính duy nhất xác định một hàng trong bảng đó."
+    },
+    {
+      "id": "B",
+      "content": "Một thuộc tính tham chiếu đến chìa khóa chính của một bảng khác."
+    },
+    {
+      "id": "C",
+      "content": "Một thuộc tính không thể thay đổi giá trị."
+    },
+    {
+      "id": "D",
+      "content": "Một thuộc tính không có giá trị null."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Một thuộc tính tham chiếu đến chìa khóa chính của một bảng khác.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-29",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mục đích chính của việc chuẩn hóa cơ sở dữ liệu là:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tăng tốc độ truy vấn dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Giảm dung lượng lưu trữ."
+    },
+    {
+      "id": "C",
+      "content": "Loại bỏ sự trùng lặp dữ liệu và đảm bảo tính nhất quán."
+    },
+    {
+      "id": "D",
+      "content": "Tăng cường bảo mật dữ liệu."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Loại bỏ sự trùng lặp dữ liệu và đảm bảo tính nhất quán.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-30",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Ngôn ngữ SQL được sử dụng chủ yếu để:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Định nghĩa cấu trúc của cơ sở dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Truy vấn và thao tác dữ liệu trong cơ sở dữ liệu quan hệ."
+    },
+    {
+      "id": "C",
+      "content": "Mô hình hóa dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Quản lý các giao dịch trong cơ sở dữ liệu."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Truy vấn và thao tác dữ liệu trong cơ sở dữ liệu quan hệ.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-31",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Ưu điểm của cơ sở dữ liệu phân tán so với cơ sở dữ liệu tập trung là:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hiệu suất cao hơn."
+    },
+    {
+      "id": "B",
+      "content": "Độ tin cậy cao hơn, giảm thiểu rủi ro mất dữ liệu."
+    },
+    {
+      "id": "C",
+      "content": "Dễ dàng quản lý và bảo trì."
+    },
+    {
+      "id": "D",
+      "content": "Tất cả các đáp án trên đều đúng."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Độ tin cậy cao hơn, giảm thiểu rủi ro mất dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-32",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong một bảng quan hệ, khóa chính có chức năng chính là:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Xác định duy nhất một hàng trong bảng."
+    },
+    {
+      "id": "B",
+      "content": "Liên kết các bảng với nhau."
+    },
+    {
+      "id": "C",
+      "content": "Lưu trữ các giá trị không đổi."
+    },
+    {
+      "id": "D",
+      "content": "Chỉ định kiểu dữ liệu của các cột."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Xác định duy nhất một hàng trong bảng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-33",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Ràng buộc toàn vẹn tham chiếu trong cơ sở dữ liệu quan hệ nhằm mục đích:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Giới hạn giá trị của một thuộc tính."
+    },
+    {
+      "id": "B",
+      "content": "Đảm bảo sự liên kết giữa các bảng."
+    },
+    {
+      "id": "C",
+      "content": "Kiểm tra tính hợp lệ của dữ liệu nhập vào."
+    },
+    {
+      "id": "D",
+      "content": "Tạo ra một bản sao của bảng."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Đảm bảo sự liên kết giữa các bảng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-34",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "SQL là viết tắt của:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Structured Query Language"
+    },
+    {
+      "id": "B",
+      "content": "Simple Query Language"
+    },
+    {
+      "id": "C",
+      "content": "Sequential Query Language"
+    },
+    {
+      "id": "D",
+      "content": "System Query Language"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Structured Query Language",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-35",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong mô hình quan hệ, một quan hệ được biểu diễn bởi:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một cây"
+    },
+    {
+      "id": "B",
+      "content": "Một đồ thị"
+    },
+    {
+      "id": "C",
+      "content": "Một bảng"
+    },
+    {
+      "id": "D",
+      "content": "Một mạng lưới"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Một bảng",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-36",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi thực hiện một truy vấn JOIN trong SQL, mục đích chính là:",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sắp xếp dữ liệu theo một tiêu chí nhất định."
+    },
+    {
+      "id": "B",
+      "content": "Kết hợp dữ liệu từ hai hoặc nhiều bảng."
+    },
+    {
+      "id": "C",
+      "content": "Tính toán các giá trị thống kê."
+    },
+    {
+      "id": "D",
+      "content": "Xóa bỏ các bản ghi trùng lặp."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Kết hợp dữ liệu từ hai hoặc nhiều bảng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-37",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong mô hình quan hệ, về mặt cấu trúc thì dữ liệu được thể hiện trong đổi\ntượng nào sau đây",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cột (Field)."
+    },
+    {
+      "id": "B",
+      "content": "Hang (Record)."
+    },
+    {
+      "id": "C",
+      "content": "Bang (Table)."
+    },
+    {
+      "id": "D",
+      "content": "Bảo cáo (Report)."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Bang (Table).",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-38",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sai trong các phát biểu sau khi nói về khoá chính?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một bảng có thể có nhiều khoá chính."
+    },
+    {
+      "id": "B",
+      "content": "Mỗi bảng có ít nhất một khoa."
+    },
+    {
+      "id": "C",
+      "content": "Xác định khoả phụ thuộc vào quan hệ logic của các dữ liệu chứ không phụ thuộc vào giá trị các dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Nên chọn khoa chính là khoả có ít thuộc tính nhất."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Một bảng có thể có nhiều khoá chính.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-39",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "và NGAYSINH (Ngày sinh). Nên chọn trường CCCD làm khoá chính vì lí do nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Trường CCCD là duy nhất, trong khi đó trưởng NGAYSINH không phải là duy nhất."
+    },
+    {
+      "id": "B",
+      "content": "Trường CCCD là kiểu số, trong khi đó trường NGAYSINH không phải là"
+    },
+    {
+      "id": "C",
+      "content": "Trường CCCD đứng trước trường NGAYSINH."
+    },
+    {
+      "id": "D",
+      "content": "Trường CCCD là trường ngắn hơn."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Trường CCCD là duy nhất, trong khi đó trưởng NGAYSINH không phải là duy nhất.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-40",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thuật ngữ “bản ghi” dùng trong hệ CSDL quan hệ là để chỉ đối tượng nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kiểu dữ liệu của một thuộc tỉnh."
+    },
+    {
+      "id": "B",
+      "content": "Bảng."
+    },
+    {
+      "id": "C",
+      "content": "Hàng."
+    },
+    {
+      "id": "D",
+      "content": "Cột."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Hàng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-41",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh SQL nào sau đây viết đúng cú pháp?",
+  "options": [
+    {
+      "id": "A",
+      "content": "SELECT * FROM Tablel WHERE Columnl =&gt; 10"
+    },
+    {
+      "id": "B",
+      "content": "SELECT * FROM Tablel WHERE Column] == 10"
+    },
+    {
+      "id": "C",
+      "content": "SELECT * FROM Table] WHERE Column] &gt;= 10"
+    },
+    {
+      "id": "D",
+      "content": "SELECT * FROM Tablel WHERE Column] =&lt; 10"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: SELECT * FROM Table] WHERE Column] &gt;= 10",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-42",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Bảng DIEM có các trường GIUA_KI, HOC_KI. Để tìm những học sinh có điểm giữa kì lớn hơn 3 và điểm thi học kì lớn hơn 5, biểu thức điều kiện nào sau\nđây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "MOT TIET 3 AND HOC_KI &gt;5"
+    },
+    {
+      "id": "B",
+      "content": "[MOT_TIET] &gt;3 AND [HOC_KJ]&gt;5"
+    },
+    {
+      "id": "C",
+      "content": "[MOT TIET]&gt; 3 OR [HOC_KI]&gt;5"
+    },
+    {
+      "id": "D",
+      "content": "[MOT_TIET]&gt; \"3\" AND [HOC_KI]&gt;\"5\""
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: [MOT_TIET]&gt; \"3\" AND [HOC_KI]&gt;\"5\"",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-43",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mục đích chính của mệnh đề WHERE trong một câu lệnh SELECT là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chỉ định các cột cần lấy."
+    },
+    {
+      "id": "B",
+      "content": "Xác định bảng dữ liệu cần truy vấn."
+    },
+    {
+      "id": "C",
+      "content": "Lọc các hàng dựa trên điều kiện."
+    },
+    {
+      "id": "D",
+      "content": "Sắp xếp kết quả theo một cột cụ thể."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Lọc các hàng dựa trên điều kiện.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-44",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong các loại JOIN sau, loại nào trả về tất cả các hàng từ cả hai bảng, bao gồm cả các hàng không có giá trị khớp?",
+  "options": [
+    {
+      "id": "A",
+      "content": "INNER JOIN"
+    },
+    {
+      "id": "B",
+      "content": "FULL OUTER JOIN"
+    },
+    {
+      "id": "C",
+      "content": "LEFT OUTER JOIN"
+    },
+    {
+      "id": "D",
+      "content": "RIGHT OUTER JOIN"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: FULL OUTER JOIN",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-45",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh SQL nào sau đây sẽ đếm số lượng khách hàng có tên bắt đầu bằng chữ 'A'?",
+  "options": [
+    {
+      "id": "A",
+      "content": "SELECT COUNT(*) FROM customers WHERE name LIKE 'A%';"
+    },
+    {
+      "id": "B",
+      "content": "SELECT COUNT(name) FROM customers WHERE name = 'A';"
+    },
+    {
+      "id": "C",
+      "content": "SELECT COUNT(name) FROM customers WHERE name LIKE '%A';"
+    },
+    {
+      "id": "D",
+      "content": "SELECT COUNT(*) FROM customers WHERE name &gt; 'A';"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: SELECT COUNT(*) FROM customers WHERE name LIKE 'A%';",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-46",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để sắp xếp kết quả truy vấn theo cột 'age' theo thứ tự giảm dần, ta sử dụng câu lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "SELECT * FROM customers ORDER BY age ASC;"
+    },
+    {
+      "id": "B",
+      "content": "SELECT * FROM customers ORDER BY age DESC;"
+    },
+    {
+      "id": "C",
+      "content": "SELECT * FROM customers SORT BY age DESC;"
+    },
+    {
+      "id": "D",
+      "content": "SELECT * FROM customers GROUP BY age DESC;"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: SELECT * FROM customers ORDER BY age DESC;",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-47",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh SQL nào sau đây được sử dụng để cập nhật giá trị của cột 'price' thành 100 cho tất cả các sản phẩm có ID là 123?",
+  "options": [
+    {
+      "id": "A",
+      "content": "UPDATE products SET price = 100 WHERE id = 123;"
+    },
+    {
+      "id": "B",
+      "content": "MODIFY products SET price = 100 WHERE id = 123;"
+    },
+    {
+      "id": "C",
+      "content": "CHANGE products SET price = 100 WHERE id = 123;"
+    },
+    {
+      "id": "D",
+      "content": "ALTER products SET price = 100 WHERE id = 123;"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: UPDATE products SET price = 100 WHERE id = 123;",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-48",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong bài toán “Quản lí học sinh” ở trường THPT, công việc nào sau đây được gọi là thao tác “cập nhật hồ sơ”?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Nhập điểm kiểm tra học kì 1 cho học sinh."
+    },
+    {
+      "id": "B",
+      "content": "Tạo lập hồ sơ lớp học."
+    },
+    {
+      "id": "C",
+      "content": "Lọc danh sách các học sinh có điểm xếp loại học lực Tốt và điểm hạnh kiểm Tốt."
+    },
+    {
+      "id": "D",
+      "content": "Sắp xếp danh sách học sinh theo thứ tự họ tên tăng dần."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Nhập điểm kiểm tra học kì 1 cho học sinh.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-49",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khai thác hồ sơ trong một bài toán quản lí bao gồm những công việc nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sắp xếp, tìm kiếm, tạo lập hồ sơ, lập báo cáo."
+    },
+    {
+      "id": "B",
+      "content": "Cập nhật, tạo lập hồ sơ, thống kê, lập báo cáo."
+    },
+    {
+      "id": "C",
+      "content": "sẳp xếp, tìm kiếm, thống kê, lập báo cảo."
+    },
+    {
+      "id": "D",
+      "content": "Lập bảo cáo, cập nhật, tìm kiếm, tạo lập hồ sơ."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: sẳp xếp, tìm kiếm, thống kê, lập báo cảo.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-50",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong mô hình quan hệ, về mặt cấu trúc thì dữ liệu được thể hiện trong đối tượng nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cột (Field)."
+    },
+    {
+      "id": "B",
+      "content": "Hàng (Record)."
+    },
+    {
+      "id": "C",
+      "content": "Bảng (Table)."
+    },
+    {
+      "id": "D",
+      "content": "Báo cáo (Report)."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Bảng (Table).",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-51",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sai trong các phát biểu sau khi nói về khoá chính?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một bảng có thể có nhiều khoá chính."
+    },
+    {
+      "id": "B",
+      "content": "Mỗi bảng có ít nhất một khoá."
+    },
+    {
+      "id": "C",
+      "content": "Xác định khoá phụ thuộc vào quan hệ logic của các dữ liệu chứ không phụ thuộc vào giá trị các dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Nên chọn khoá chính là khoá có ít thuộc tính nhất."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Một bảng có thể có nhiều khoá chính.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-52",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thuật ngữ “bản ghi” dùng trong hệ CSDL quan hệ là để chì đổi tượng nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kiểu dữ liệu của một thuộc tính."
+    },
+    {
+      "id": "B",
+      "content": "Bảng."
+    },
+    {
+      "id": "C",
+      "content": "Hàng."
+    },
+    {
+      "id": "D",
+      "content": "Cột."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Hàng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-53",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thuật ngữ “thuộc tính” dùng trong hệ CSDL quan hệ là để chỉ đối tượng nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Kiểu dữ liệu cùa một thuộc tính."
+    },
+    {
+      "id": "B",
+      "content": "Bảng."
+    },
+    {
+      "id": "C",
+      "content": "Hàng."
+    },
+    {
+      "id": "D",
+      "content": "Cột."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: Cột.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-54",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Tổ chức lưu trữ dữ liệu nào được sử dụng phổ biến nhất trong các hệ quản trị cơ sở dữ liệu quan hệ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tổ chức theo thứ tự bảng chữ cái"
+    },
+    {
+      "id": "B",
+      "content": "Tổ chức theo thứ tự ngày tháng"
+    },
+    {
+      "id": "C",
+      "content": "Tổ chức theo thứ tự địa chỉ đường"
+    },
+    {
+      "id": "D",
+      "content": "Tổ chức theo thứ tự khóa chính"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: Tổ chức theo thứ tự khóa chính",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-55",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khái niệm \"khóa ngoài\" trong cơ sở dữ liệu là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một cột trong bảng tham chiếu đến giá trị của cột trong bảng khác."
+    },
+    {
+      "id": "B",
+      "content": "Một cột trong bảng được sử dụng để xác định các giá trị duy nhất của mỗi hàng."
+    },
+    {
+      "id": "C",
+      "content": "Một cột trong bảng được sử dụng để liên kết các bảng khác nhau."
+    },
+    {
+      "id": "D",
+      "content": "Một cột trong bảng chứa giá trị số."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Một cột trong bảng tham chiếu đến giá trị của cột trong bảng khác.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-56",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Liên kết dữ liệu là?",
+  "options": [
+    {
+      "id": "A",
+      "content": "sử dụng khóa ngoài của bảng để thực hiện ghép nối dữ liệu hai bảng với nhau"
+    },
+    {
+      "id": "B",
+      "content": "sử dụng khóa chính của bảng để thực hiện ghép nối dữ liệu hai cột với nhau"
+    },
+    {
+      "id": "C",
+      "content": "sử dụng khóa ngoài của bảng để thực hiện ghép nối dữ liệu hai hàng với nhau"
+    },
+    {
+      "id": "D",
+      "content": "sử dụng khóa chính của bảng để thực hiện ghép nối dữ liệu hai bảng với nhau"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: sử dụng khóa chính của bảng để thực hiện ghép nối dữ liệu hai bảng với nhau",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-57",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phát biểu nào sau đây là đúng về thuật ngữ “miền” dùng trong hệ CSDL quan hệ?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ đối tượng Hàng"
+    },
+    {
+      "id": "B",
+      "content": "Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ đối tượng Bảng"
+    },
+    {
+      "id": "C",
+      "content": "Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ kiểu dữ liệu của một thuộc tính"
+    },
+    {
+      "id": "D",
+      "content": "Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ đối tượng Cột"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Thuật ngữ “miền” dùng trong hệ CSDL quan hệ là để chỉ kiểu dữ liệu của một thuộc tính",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-58",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong SQL, ngôn ngữ định nghĩa dữ liệu bao gồm các chức năng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tạo, sửa và xóa cấu trúc quan hệ. Bảo mật và quyền truy nhập."
+    },
+    {
+      "id": "B",
+      "content": "Bảo mật và quyền truy nhập."
+    },
+    {
+      "id": "C",
+      "content": "Tạo, sửa và xóa cấu trúc quan hệ. Thêm cột, sửa cột và xoá cột"
+    },
+    {
+      "id": "D",
+      "content": "Tạo, sửa và xóa các bộ quan hệ. Bảo mật và quyền truy nhập."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Tạo, sửa và xóa cấu trúc quan hệ. Bảo mật và quyền truy nhập.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-59",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu truy vấn cập nhật dữu liệu là?",
+  "options": [
+    {
+      "id": "A",
+      "content": "UPDATE &lt;tên trường&gt;"
+    },
+    {
+      "id": "B",
+      "content": "UPDATE &lt;tên trường&gt;"
+    },
+    {
+      "id": "C",
+      "content": "UPDATE &lt;tên bảng&gt;"
+    },
+    {
+      "id": "D",
+      "content": "UPDATE &lt;tên bảng&gt; SET &lt;tên trường&gt; = &lt;giá trị&gt;"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: UPDATE &lt;tên bảng&gt; SET &lt;tên trường&gt; = &lt;giá trị&gt;",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-60",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "INNER JOIN có nghĩa là?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Liên kết các bảng theo theo phép toán"
+    },
+    {
+      "id": "B",
+      "content": "Liên kết các bảng theo theo điều kiện"
+    },
+    {
+      "id": "C",
+      "content": "Kiểm soát các bảng theo điều kiện"
+    },
+    {
+      "id": "D",
+      "content": "Kiểm soát các bảng theo yêu cầu"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Liên kết các bảng theo theo điều kiện",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-61",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "?",
+  "options": [
+    {
+      "id": "A",
+      "content": "CSDL là phần mềm cung cấp một môi trường thuận lợi và hiệu quâ để tạo lập, lưu trữ và khai thác thông tin."
+    },
+    {
+      "id": "B",
+      "content": "CSDL là các phần mềm ứng dụng được xây dựng dựa trên các hệ quản trị CSDL để việc khai thác thông tin thuận tiện hơn."
+    },
+    {
+      "id": "C",
+      "content": "CSDL là tập hợp tất cả các văn bàn, giấy tờ và cơ sở vật chất của một cơ quan tổ chức, được quản lí bởi các phòng ban của tổ chức đó."
+    },
+    {
+      "id": "D",
+      "content": "CSDL là một tập hợp các dữ liệu có liên quan với nhau, chứa thông tin của một tổ chức nào đó, được lưu trữ trên các thiết bị nhớ để đáp ứng nhu cầu khai thác thông tin của nhiều người dùng với nhiều mục đích khác nhau."
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: CSDL là một tập hợp các dữ liệu có liên quan với nhau, chứa thông tin của một tổ chức nào đó, được lưu trữ trên các thiết bị nhớ để đáp ứng nhu cầu khai thác thông tin của nhiều người dùng với nhiều mục đích khác nhau.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-62",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Phương án nào sau đây nêu định nghĩa đúng về Hệ quản trị CSDL?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Hệ quản trị CSDL là phẩn mềm cung cấp một môi trường thuận lợi và hiệu quả đế tạo lập, lưu trữ và khai thác thông tin của cơ sở dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Hệ quàn trị CSDL là các phần mềm ứng dụng được xây dựng dựa trên các CSDL để việc khai thác thông tin thuận tiện hơn."
+    },
+    {
+      "id": "C",
+      "content": "Hệ quản trị CSDL là một tập họp các dữ liệu có liên quan với nhau, chứa thông tin của một tổ chức nào đó, được lưu trữ trên các thiết bị nhớ để đáp ứng nhu cầu khai thác thông tin của nhiều người dùng với nhiều mục đích khác nhau."
+    },
+    {
+      "id": "D",
+      "content": "Hệ quản trị CSDL là một thiết bị vật lí để lưu trữ cơ sở dữ liệu."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Hệ quản trị CSDL là phẩn mềm cung cấp một môi trường thuận lợi và hiệu quả đế tạo lập, lưu trữ và khai thác thông tin của cơ sở dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-63",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cần tiến hành cập nhật hồ sơ học sinh của nhà trường trong trường hợp nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sắp xép danh sách học sinh theo thứ tự tăng dần cùa tên."
+    },
+    {
+      "id": "B",
+      "content": "Một học sinh mới chuyến từ trường khác đến; thông tin về ngày sinh cùa một học sinh bị sai."
+    },
+    {
+      "id": "C",
+      "content": "Tìm học sinh có điểm môn toán cao nhất khối."
+    },
+    {
+      "id": "D",
+      "content": "Tính tỉ lệ học sinh có điểm môn Tin trên 6,5 của từng lớp."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Một học sinh mới chuyến từ trường khác đến; thông tin về ngày sinh cùa một học sinh bị sai.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-64",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "vả NGAYSINH (Ngày sinh). Nên chọn trường CCCD làm khoá chính vì lí do nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Trường CCCD là duy nhất, trong khi đó trường NGAYSINH không phải là duy nhất."
+    },
+    {
+      "id": "B",
+      "content": "Trường CCCD là kiểu số, trong khi đó trường NGAYSINH không phải là kiểu số."
+    },
+    {
+      "id": "C",
+      "content": "Trường CCCD đứng trước trường NGAYSINH."
+    },
+    {
+      "id": "D",
+      "content": "Trường CCCD là trường ngắn hơn."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Trường CCCD là duy nhất, trong khi đó trường NGAYSINH không phải là duy nhất.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-65",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cho các bảng sau:\nDanhMucSach(MaSach, TenSach, MaLoai)\nLoaiSach(MaLoai, LoaiSach)\nHoaDon(MaSach, SoLuong, DonGia)\nPhương án nào sau đây chỉ ra các bảng cần dùng để biết giá của một quyển sách?",
+  "options": [
+    {
+      "id": "A",
+      "content": "HoaDon."
+    },
+    {
+      "id": "B",
+      "content": "DanhMucSach, HoaDon."
+    },
+    {
+      "id": "C",
+      "content": "DanhMucSach, LoaiSach."
+    },
+    {
+      "id": "D",
+      "content": "HoaDon, LoaiSach."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: DanhMucSach, HoaDon.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-66",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong cơ sở dữ liệu quản lí tuyển sinh của một trường THPT có bảng DiemTHPT gồm 6 trường:\nTên trường\nSoBaoDanh\nDiemToan\nDiemLi\nDiemHoa\nTongDicm\nKctQua\nKiểu dữ liệu\nNvarchar(20)\nFloat\nFloat\nFloat\nFloat\nNvarchar(lO)\nHãy chọn phương án ứng với Câu lệnh đếm tổng số thí sinh có kết quả “Đỗ” trong các phương án dưới đây:\nSelect count(KetQua) From DiemTHPT Where KetQua = ‘Đỗ’\nSelect count(KetQua) From DiemTHPT Order KetQua = ‘Đỗ’",
+  "options": [
+    {
+      "id": "A",
+      "content": "Select count(KetQua) From DiemTHPT Where KetQua = 'Đỗ'"
+    },
+    {
+      "id": "B",
+      "content": "Select count(KetQua) From DiemTHPT Order KetQua = 'Đỗ'"
+    },
+    {
+      "id": "C",
+      "content": "Select count(KctQua) From DicmTHPT Having KetQua = ‘Đỗ’"
+    },
+    {
+      "id": "D",
+      "content": "Select count(KetQua) From DiemTHPT Where KetQua = ‘TRƯỢT’"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Select count(KetQua) From DiemTHPT Where KetQua = 'Đỗ'",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-67",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh SQL nào sau đây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "SELECT * FROM Sales WHERE Date BETWEEN ‘10/12/2005’AND ‘01/01/2006’"
+    },
+    {
+      "id": "B",
+      "content": "SELECT FROM Sales WHERE Date BETWEEN ‘10/12/2005’ AND ‘01/01/2006’"
+    },
+    {
+      "id": "C",
+      "content": "SELECT FROM Sales WHERE Dale BETWEEN (‘10/12/2005’, ‘01/01/2006’)"
+    },
+    {
+      "id": "D",
+      "content": "SELECT FROM Sales WHERE Date BETWEEN (“10/12/2005”, “01/01/2006”)"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: SELECT FROM Sales WHERE Dale BETWEEN (‘10/12/2005’, ‘01/01/2006’)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-68",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh SQL nào sau đây viết đúng cú pháp?",
+  "options": [
+    {
+      "id": "A",
+      "content": "SELECT * FROM Tablet WHERE Column 1 =&gt; 10"
+    },
+    {
+      "id": "B",
+      "content": "SELECT * FROM Tablel WHERE Columnl ==10"
+    },
+    {
+      "id": "C",
+      "content": "SELECT * FROM Table! WHERE Column] &gt;= 10"
+    },
+    {
+      "id": "D",
+      "content": "SELECT * FROM Tablel WHERE Column! =&lt; 10"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: SELECT * FROM Table! WHERE Column] &gt;= 10",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-69",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Bàng DIEM có các trường GIUA KJ, HOC KJ. Đe tìm những học sinh có điếm giữa kì lớn hơn 3 và điểm thi học kì lớn hơn 5, biểu thức điều kiện nào sau đây là đúng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "MOT TIET =&gt; 3 AND HOC K1 &gt;5"
+    },
+    {
+      "id": "B",
+      "content": "[MOT TIET &gt; 3 AND [HOC_KJ]&gt;5"
+    },
+    {
+      "id": "C",
+      "content": "[MOT TIET] &gt; 3 OR [HOC_KI]&gt;5"
+    },
+    {
+      "id": "D",
+      "content": "[MOT TIETJ &gt; “3” AND [HOC KI]&gt;”5”"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: [MOT TIET &gt; 3 AND [HOC_KJ]&gt;5",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-70",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Ý kiến nào sau đây là đúng về mệnh đề WHERE?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Phép toán tập hợp trong mệnh đề WHERE bao gồm các phép đại số quan hệ"
+    },
+    {
+      "id": "B",
+      "content": "Phép toán tập hợp trong mệnh đề WHERE bao gồm các phép số học và các phép so sánh"
+    },
+    {
+      "id": "C",
+      "content": "Phép toán tập hợp trong mệnh đề WHERE bao gồm các phép so sánh."
+    },
+    {
+      "id": "D",
+      "content": "Phép toán tập hợp trong mệnh đề WHERE bao gồm biểu thức đại số"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Phép toán tập hợp trong mệnh đề WHERE bao gồm các phép số học và các phép so sánh",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-71",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Hệ cơ sở dữ liệu là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một tập hợp các dữ liệu không liên quan đến nhau."
+    },
+    {
+      "id": "B",
+      "content": "Một hệ thống được tổ chức để lưu trữ, quản lý và truy xuất dữ liệu."
+    },
+    {
+      "id": "C",
+      "content": "Một phần mềm ứng dụng để xử lý văn bản."
+    },
+    {
+      "id": "D",
+      "content": "Một thiết bị lưu trữ dữ liệu."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Một hệ thống được tổ chức để lưu trữ, quản lý và truy xuất dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-72",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mô hình quan hệ trong cơ sở dữ liệu sử dụng cấu trúc nào để biểu diễn dữ liệu?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cây"
+    },
+    {
+      "id": "B",
+      "content": "Đồ thị"
+    },
+    {
+      "id": "C",
+      "content": "Bảng"
+    },
+    {
+      "id": "D",
+      "content": "Mạng"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Bảng",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-73",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khoá chính trong một bảng có ý nghĩa gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một hoặc nhiều thuộc tính dùng để duy nhất xác định một record trong bảng."
+    },
+    {
+      "id": "B",
+      "content": "Một thuộc tính có giá trị luôn thay đổi."
+    },
+    {
+      "id": "C",
+      "content": "Một thuộc tính có giá trị null."
+    },
+    {
+      "id": "D",
+      "content": "Một thuộc tính không quan trọng."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Một hoặc nhiều thuộc tính dùng để duy nhất xác định một record trong bảng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-74",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khoá ngoại là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một thuộc tính trong một bảng tham chiếu đến khoá chính của một bảng khác."
+    },
+    {
+      "id": "B",
+      "content": "Một thuộc tính không có giá trị."
+    },
+    {
+      "id": "C",
+      "content": "Một thuộc tính có giá trị duy nhất."
+    },
+    {
+      "id": "D",
+      "content": "Một thuộc tính không thể thay đổi."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Một thuộc tính trong một bảng tham chiếu đến khoá chính của một bảng khác.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-75",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Truy vấn trong cơ sở dữ liệu là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một câu lệnh để thêm dữ liệu vào bảng."
+    },
+    {
+      "id": "B",
+      "content": "Một câu lệnh để xóa dữ liệu khỏi bảng."
+    },
+    {
+      "id": "C",
+      "content": "Một câu lệnh để truy xuất dữ liệu từ cơ sở dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Một câu lệnh để cập nhật dữ liệu trong bảng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Một câu lệnh để truy xuất dữ liệu từ cơ sở dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-76",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "CSDL tập trung khác CSDL phân tán ở điểm nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "CSDL tập trung dữ liệu trên nhiều máy chủ."
+    },
+    {
+      "id": "B",
+      "content": "CSDL phân tán dữ liệu trên một máy chủ."
+    },
+    {
+      "id": "C",
+      "content": "CSDL tập trung dễ quản lý hơn CSDL phân tán."
+    },
+    {
+      "id": "D",
+      "content": "CSDL phân tán có hiệu năng cao hơn CSDL tập trung."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: CSDL phân tán dữ liệu trên một máy chủ.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-77",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mục đích chính của việc bảo mật cơ sở dữ liệu là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Ngăn chặn truy cập trái phép vào dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Tăng tốc độ truy xuất dữ liệu."
+    },
+    {
+      "id": "C",
+      "content": "Giảm dung lượng lưu trữ dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Tăng tính sẵn sàng của hệ thống."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Ngăn chặn truy cập trái phép vào dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-78",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi thiết kế một cơ sở dữ liệu, yếu tố nào sau đây là quan trọng nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chọn phần mềm quản lý cơ sở dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Hiểu rõ yêu cầu của người dùng."
+    },
+    {
+      "id": "C",
+      "content": "Lựa chọn cấu hình máy chủ."
+    },
+    {
+      "id": "D",
+      "content": "Quyết định ngôn ngữ lập trình."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Hiểu rõ yêu cầu của người dùng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-79",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "SQL là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một hệ quản trị cơ sở dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Một ngôn ngữ lập trình."
+    },
+    {
+      "id": "C",
+      "content": "Một ngôn ngữ truy vấn cơ sở dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Một hệ điều hành."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Một ngôn ngữ truy vấn cơ sở dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-80",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Một bảng trong cơ sở dữ liệu quan hệ bao gồm những gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chỉ các cột"
+    },
+    {
+      "id": "B",
+      "content": "Chỉ các hàng"
+    },
+    {
+      "id": "C",
+      "content": "Các cột và các hàng"
+    },
+    {
+      "id": "D",
+      "content": "Các mối quan hệ"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Các cột và các hàng",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-81",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cơ sở dữ liệu là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một tập hợp các dữ liệu không liên quan."
+    },
+    {
+      "id": "B",
+      "content": "Một tập hợp các dữ liệu có tổ chức, được lưu trữ và truy cập bằng máy tính."
+    },
+    {
+      "id": "C",
+      "content": "Một chương trình ứng dụng."
+    },
+    {
+      "id": "D",
+      "content": "Một thiết bị lưu trữ."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Một tập hợp các dữ liệu có tổ chức, được lưu trữ và truy cập bằng máy tính.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-82",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Xử lý văn bản."
+    },
+    {
+      "id": "B",
+      "content": "Tạo các hiệu ứng đồ họa."
+    },
+    {
+      "id": "C",
+      "content": "Quản lý và điều khiển cơ sở dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Lập trình ứng dụng."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Quản lý và điều khiển cơ sở dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-83",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mô hình dữ liệu quan hệ sử dụng cấu trúc nào để biểu diễn dữ liệu?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cây."
+    },
+    {
+      "id": "B",
+      "content": "Mạng."
+    },
+    {
+      "id": "C",
+      "content": "Bảng."
+    },
+    {
+      "id": "D",
+      "content": "Đồ thị."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Bảng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-84",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khóa chính trong một bảng có vai trò gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Xác định duy nhất một hàng trong bảng."
+    },
+    {
+      "id": "B",
+      "content": "Liên kết các bảng với nhau."
+    },
+    {
+      "id": "C",
+      "content": "Chỉ định kiểu dữ liệu của các cột."
+    },
+    {
+      "id": "D",
+      "content": "Tính toán các giá trị."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Xác định duy nhất một hàng trong bảng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-85",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khóa ngoại là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Một khóa không duy nhất trong một bảng."
+    },
+    {
+      "id": "B",
+      "content": "Một khóa tham chiếu đến khóa chính của một bảng khác."
+    },
+    {
+      "id": "C",
+      "content": "Một khóa được tạo tự động."
+    },
+    {
+      "id": "D",
+      "content": "Một khóa không thể thay đổi."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Một khóa tham chiếu đến khóa chính của một bảng khác.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-86",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Truy vấn SQL dùng để làm gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Tạo cơ sở dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Tìm kiếm và xử lý dữ liệu."
+    },
+    {
+      "id": "C",
+      "content": "Cập nhật cấu trúc của bảng."
+    },
+    {
+      "id": "D",
+      "content": "Quản lý người dùng."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Tìm kiếm và xử lý dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-87",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh SQL nào dùng để thêm dữ liệu vào một bảng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "SELECT"
+    },
+    {
+      "id": "B",
+      "content": "UPDATE"
+    },
+    {
+      "id": "C",
+      "content": "DELETE"
+    },
+    {
+      "id": "D",
+      "content": "INSERT"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: INSERT",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-88",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Tính toàn vẹn dữ liệu là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Đảm bảo dữ liệu được bảo mật."
+    },
+    {
+      "id": "B",
+      "content": "Đảm bảo dữ liệu chính xác và nhất quán."
+    },
+    {
+      "id": "C",
+      "content": "Đảm bảo dữ liệu được sao lưu thường xuyên."
+    },
+    {
+      "id": "D",
+      "content": "Đảm bảo dữ liệu được chia sẻ giữa các người dùng."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Đảm bảo dữ liệu chính xác và nhất quán.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-89",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Kiến trúc cơ sở dữ liệu phân tán có đặc điểm gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Dữ liệu được lưu trữ tập trung tại một máy chủ."
+    },
+    {
+      "id": "B",
+      "content": "Dữ liệu được phân bố trên nhiều máy chủ khác nhau."
+    },
+    {
+      "id": "C",
+      "content": "Không có sự phân chia dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Chỉ sử dụng cho các hệ thống nhỏ."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Dữ liệu được phân bố trên nhiều máy chủ khác nhau.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-90",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Hệ quản trị cơ sở dữ liệu quan hệ phổ biến hiện nay là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Excel"
+    },
+    {
+      "id": "B",
+      "content": "Word"
+    },
+    {
+      "id": "C",
+      "content": "MySQL, Oracle, SQL Server"
+    },
+    {
+      "id": "D",
+      "content": "PowerPoint"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: MySQL, Oracle, SQL Server",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-91",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Lưu trữ dữ liệu trong các tập tin đơn lẻ."
+    },
+    {
+      "id": "B",
+      "content": "Quản lý và tổ chức dữ liệu một cách hiệu quả, cho phép truy xuất và cập nhật dễ dàng."
+    },
+    {
+      "id": "C",
+      "content": "Chỉ dành cho các doanh nghiệp lớn."
+    },
+    {
+      "id": "D",
+      "content": "Thay thế hoàn toàn các phương pháp lưu trữ dữ liệu truyền thống."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Quản lý và tổ chức dữ liệu một cách hiệu quả, cho phép truy xuất và cập nhật dễ dàng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-92",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khóa chính trong một bảng có vai trò gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Xác định một bản ghi duy nhất trong bảng."
+    },
+    {
+      "id": "B",
+      "content": "Liên kết các bảng với nhau."
+    },
+    {
+      "id": "C",
+      "content": "Lưu trữ các giá trị lớn nhất trong bảng."
+    },
+    {
+      "id": "D",
+      "content": "Là một thuộc tính bắt buộc phải có trong mọi bảng."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Xác định một bản ghi duy nhất trong bảng.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-93",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mô hình dữ liệu quan hệ được sử dụng rộng rãi vì lý do nào sau đây?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Nó rất phức tạp và khó hiểu."
+    },
+    {
+      "id": "B",
+      "content": "Nó chỉ phù hợp cho các ứng dụng nhỏ."
+    },
+    {
+      "id": "C",
+      "content": "Nó cung cấp một cách đơn giản và trực quan để mô hình hóa dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Nó không cần đến phần mềm hỗ trợ."
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Nó cung cấp một cách đơn giản và trực quan để mô hình hóa dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-94",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "SQL là viết tắt của gì và được sử dụng để làm gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Structured Query Language, dùng để truy vấn và thao tác với cơ sở dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Simple Query Language, dùng để tạo các biểu đồ."
+    },
+    {
+      "id": "C",
+      "content": "Sequential Query Language, dùng để sắp xếp dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Structured Query Language, dùng để thiết kế website."
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Structured Query Language, dùng để truy vấn và thao tác với cơ sở dữ liệu.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-95",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Sự khác biệt chính giữa cơ sở dữ liệu tập trung và phân tán là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Cơ sở dữ liệu tập trung lưu trữ dữ liệu ở nhiều nơi, còn phân tán chỉ lưu trữ ở một nơi."
+    },
+    {
+      "id": "B",
+      "content": "Cơ sở dữ liệu phân tán có khả năng chịu lỗi tốt hơn so với tập trung."
+    },
+    {
+      "id": "C",
+      "content": "Cơ sở dữ liệu tập trung thường được sử dụng cho các ứng dụng nhỏ, còn phân tán cho các ứng dụng lớn."
+    },
+    {
+      "id": "D",
+      "content": "Không có sự khác biệt giữa hai loại này."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Cơ sở dữ liệu phân tán có khả năng chịu lỗi tốt hơn so với tập trung.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-96",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Chuẩn hóa cơ sở dữ liệu nhằm mục đích gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Làm cho cơ sở dữ liệu trở nên phức tạp hơn."
+    },
+    {
+      "id": "B",
+      "content": "Loại bỏ sự trùng lặp dữ liệu và đảm bảo tính toàn vẹn."
+    },
+    {
+      "id": "C",
+      "content": "Tăng tốc độ truy vấn dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Giảm dung lượng lưu trữ."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Loại bỏ sự trùng lặp dữ liệu và đảm bảo tính toàn vẹn.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-97",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Tại sao bảo mật cơ sở dữ liệu lại quan trọng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Để ngăn chặn người dùng truy cập dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Để bảo vệ dữ liệu khỏi bị mất, bị thay đổi hoặc bị truy cập trái phép."
+    },
+    {
+      "id": "C",
+      "content": "Để tăng tốc độ truy vấn dữ liệu."
+    },
+    {
+      "id": "D",
+      "content": "Để giảm chi phí quản lý."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Để bảo vệ dữ liệu khỏi bị mất, bị thay đổi hoặc bị truy cập trái phép.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-98",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khóa ngoại trong một bảng có tác dụng gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Xác định một bản ghi duy nhất trong bảng."
+    },
+    {
+      "id": "B",
+      "content": "Liên kết các bảng với nhau."
+    },
+    {
+      "id": "C",
+      "content": "Lưu trữ các giá trị lớn nhất trong bảng."
+    },
+    {
+      "id": "D",
+      "content": "Là một thuộc tính bắt buộc phải có trong mọi bảng."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Liên kết các bảng với nhau.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-99",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Khi thiết kế một cơ sở dữ liệu, bước đầu tiên thường là gì?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Chọn một hệ quản trị cơ sở dữ liệu."
+    },
+    {
+      "id": "B",
+      "content": "Xác định các thực thể và thuộc tính."
+    },
+    {
+      "id": "C",
+      "content": "Viết các câu lệnh SQL."
+    },
+    {
+      "id": "D",
+      "content": "Tạo các biểu mẫu để nhập dữ liệu."
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Xác định các thực thể và thuộc tính.",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-100",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tạo một cơ sở dữ liệu mới trong SQL, bạn sử dụng lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Create new database"
+    },
+    {
+      "id": "B",
+      "content": "Create database"
+    },
+    {
+      "id": "C",
+      "content": "Make database"
+    },
+    {
+      "id": "D",
+      "content": "New database"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Create database",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-101",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh nào để liệt kê tất cả các cơ sở dữ liệu có sẵn trong SQL?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Show databases"
+    },
+    {
+      "id": "B",
+      "content": "List databases"
+    },
+    {
+      "id": "C",
+      "content": "Display databases"
+    },
+    {
+      "id": "D",
+      "content": "Show all databases"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Show databases",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-102",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để xóa một cơ sở dữ liệu trong SQL, bạn dùng lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Delete database"
+    },
+    {
+      "id": "B",
+      "content": "Remove database"
+    },
+    {
+      "id": "C",
+      "content": "Drop database"
+    },
+    {
+      "id": "D",
+      "content": "Clear database"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Drop database",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-103",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Lệnh nào được dùng để chọn một cơ sở dữ liệu để làm việc trong SQL?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Select database"
+    },
+    {
+      "id": "B",
+      "content": "choose database"
+    },
+    {
+      "id": "C",
+      "content": "Use database"
+    },
+    {
+      "id": "D",
+      "content": "open database"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Use database",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-104",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tạo một bảng mới trong SQL, bạn sử dụng lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "New table"
+    },
+    {
+      "id": "B",
+      "content": "Create table"
+    },
+    {
+      "id": "C",
+      "content": "Make table"
+    },
+    {
+      "id": "D",
+      "content": "Add table"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Create table",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-105",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "trong SQL, lệnh nào được sử dụng?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Describe table"
+    },
+    {
+      "id": "B",
+      "content": "Show structure"
+    },
+    {
+      "id": "C",
+      "content": "Describe"
+    },
+    {
+      "id": "D",
+      "content": "Show table"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Describe",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-106",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh nào dùng để thêm một cột mới vào bảng đã có?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Add column"
+    },
+    {
+      "id": "B",
+      "content": "Add to table"
+    },
+    {
+      "id": "C",
+      "content": "Modify table"
+    },
+    {
+      "id": "D",
+      "content": "Alter table ... add column"
+    }
+  ],
+  "correctAnswer": "D",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: D."
+  },
+  "explanation": "Đáp án đúng là D. Theo bài học Chuyên đề 11F: Alter table ... add column",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-107",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để sửa đổi dữ liệu của một hàng cụ thể trong bảng, bạn sử dụng lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Modify"
+    },
+    {
+      "id": "B",
+      "content": "Change row"
+    },
+    {
+      "id": "C",
+      "content": "Update"
+    },
+    {
+      "id": "D",
+      "content": "Edit row"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: Update",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-108",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Từ khóa nào dùng để chỉ định điều kiện khi truy vấn dữ liệu trong SQL?",
+  "options": [
+    {
+      "id": "A",
+      "content": "If"
+    },
+    {
+      "id": "B",
+      "content": "Where"
+    },
+    {
+      "id": "C",
+      "content": "Filter by"
+    },
+    {
+      "id": "D",
+      "content": "check"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: Where",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-109",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tính tổng giá trị của một cột trong bảng, bạn sử dụng hàm nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Sum()"
+    },
+    {
+      "id": "B",
+      "content": "Total()"
+    },
+    {
+      "id": "C",
+      "content": "count()"
+    },
+    {
+      "id": "D",
+      "content": "add()"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Sum()",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-110",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Trong SQL, câu lệnh nào dùng để kết hợp kết quả của hai truy vấn thành một kết quả duy nhất?",
+  "options": [
+    {
+      "id": "A",
+      "content": "Union"
+    },
+    {
+      "id": "B",
+      "content": "Join"
+    },
+    {
+      "id": "C",
+      "content": "Merge"
+    },
+    {
+      "id": "D",
+      "content": "Combine"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: Union",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-111",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tạo một bảng có cột \"id\" là khóa chính tự động tăng, bạn dùng câu lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘CREATE TABLE table_name (id INT PRIMARY KEY, name VARCHAR(50));’"
+    },
+    {
+      "id": "B",
+      "content": "‘CREATE TABLE table_name (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50));’"
+    },
+    {
+      "id": "C",
+      "content": "‘CREATE TABLE table_name (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50));’"
+    },
+    {
+      "id": "D",
+      "content": "‘CREATE TABLE table_name (id INT AUTO PRIMARY KEY, name VARCHAR(50));’"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: ‘CREATE TABLE table_name (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50));’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-112",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Lệnh nào sau đây được dùng để thay đổi tên bảng trong SQL?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘ALTER TABLE table_name TO new_table_name;’"
+    },
+    {
+      "id": "B",
+      "content": "‘ALTER TABLE table_name RENAME TO new_table_name;’"
+    },
+    {
+      "id": "C",
+      "content": "‘RENAME TABLE table_name TO new_table_name;’"
+    },
+    {
+      "id": "D",
+      "content": "‘UPDATE TABLE table_name TO new_table_name;’"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: ‘ALTER TABLE table_name RENAME TO new_table_name;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-113",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh nào sau đây là đúng để cập nhật giá trị cột \"age\" thành 25 cho tất cả các hàng trong bảng \"users\"?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘SET age = 25 IN users;’"
+    },
+    {
+      "id": "B",
+      "content": "‘UPDATE users SET age = 25;’"
+    },
+    {
+      "id": "C",
+      "content": "‘ALTER TABLE users SET age = 25;’"
+    },
+    {
+      "id": "D",
+      "content": "‘UPDATE age SET 25 IN users;’"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: ‘UPDATE users SET age = 25;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-114",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để xóa tất cả các bản ghi trong bảng \"orders\" nhưng giữ lại cấu trúc bảng, bạn dùng câu lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘DELETE TABLE orders;’"
+    },
+    {
+      "id": "B",
+      "content": "‘DROP TABLE orders;’"
+    },
+    {
+      "id": "C",
+      "content": "‘DELETE FROM orders;’"
+    },
+    {
+      "id": "D",
+      "content": "‘TRUNCATE DATABASE orders;’"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: ‘DELETE FROM orders;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-115",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Lệnh nào sau đây cho phép thêm một cột \"email\" vào bảng \"customers\"?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘INSERT COLUMN email INTO customers;’"
+    },
+    {
+      "id": "B",
+      "content": "‘MODIFY TABLE customers ADD COLUMN email;’"
+    },
+    {
+      "id": "C",
+      "content": "‘ALTER TABLE customers ADD COLUMN email VARCHAR(100);’"
+    },
+    {
+      "id": "D",
+      "content": "‘ADD COLUMN email TO customers;’"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: ‘ALTER TABLE customers ADD COLUMN email VARCHAR(100);’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-116",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tìm tất cả các khách hàng có tên bắt đầu bằng chữ \"A\" trong bảng \"customers\", bạn viết truy vấn nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘SELECT * FROM customers WHERE name = 'A%';’"
+    },
+    {
+      "id": "B",
+      "content": "‘SELECT * FROM customers WHERE name LIKE '%A';’"
+    },
+    {
+      "id": "C",
+      "content": "‘SELECT * FROM customers WHERE name LIKE 'A%';’"
+    },
+    {
+      "id": "D",
+      "content": "‘SELECT * FROM customers WHERE name LIKE '%A%';’"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: ‘SELECT * FROM customers WHERE name LIKE 'A%';’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-117",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh nào trả về số lượng bản ghi trong bảng \"products\"?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘COUNT FROM products;’"
+    },
+    {
+      "id": "B",
+      "content": "‘SUM(*) FROM products;’"
+    },
+    {
+      "id": "C",
+      "content": "‘SELECT COUNT(*) FROM products;’"
+    },
+    {
+      "id": "D",
+      "content": "‘SELECT COUNT() FROM products;’"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: ‘SELECT COUNT(*) FROM products;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-118",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để giới hạn kết quả truy vấn chỉ 10 hàng đầu tiên trong bảng \"sales\", bạn dùng câu lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘SELECT * FROM sales LIMIT 10;’"
+    },
+    {
+      "id": "B",
+      "content": "‘SELECT TOP 10 * FROM sales;’"
+    },
+    {
+      "id": "C",
+      "content": "‘SELECT * FROM sales FIRST 10;’"
+    },
+    {
+      "id": "D",
+      "content": "‘SELECT * FROM sales MAX 10;’"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: A."
+  },
+  "explanation": "Đáp án đúng là A. Theo bài học Chuyên đề 11F: ‘SELECT * FROM sales LIMIT 10;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-119",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Câu lệnh nào sau đây là đúng để xóa một cột \"address\" khỏi bảng \"employees\"?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘REMOVE COLUMN address FROM employees;`"
+    },
+    {
+      "id": "B",
+      "content": "‘ALTER TABLE employees DROP COLUMN address;’"
+    },
+    {
+      "id": "C",
+      "content": "‘DELETE address FROM employees;`"
+    },
+    {
+      "id": "D",
+      "content": "‘DELETE COLUMN address FROM employees;`"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: ‘ALTER TABLE employees DROP COLUMN address;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-120",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để lấy dữ liệu từ bảng \"orders\" và sắp xếp theo cột \"order_date\" giảm dần, bạn dùng lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘SELECT * FROM orders SORT BY order_date DESC;’"
+    },
+    {
+      "id": "B",
+      "content": "‘SELECT * FROM orders ORDER BY order_date;’"
+    },
+    {
+      "id": "C",
+      "content": "‘SELECT * FROM orders ORDER BY order_date DESC;’"
+    },
+    {
+      "id": "D",
+      "content": "‘SELECT * FROM orders ARRANGE BY order_date DESC;’"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: ‘SELECT * FROM orders ORDER BY order_date DESC;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-121",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Lệnh nào sau đây để lấy ra các giá trị duy nhất của cột \"city\" trong bảng \"customers\"?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘SELECT UNIQUE(city) FROM customers;’"
+    },
+    {
+      "id": "B",
+      "content": "‘SELECT ALL city FROM customers;’"
+    },
+    {
+      "id": "C",
+      "content": "‘SELECT DISTINCT city FROM customers;’"
+    },
+    {
+      "id": "D",
+      "content": "‘SELECT city FROM customers GROUP BY city;’"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: ‘SELECT DISTINCT city FROM customers;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-122",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Từ khóa nào dùng để nối hai bảng trong SQL?",
+  "options": [
+    {
+      "id": "A",
+      "content": "LINK"
+    },
+    {
+      "id": "B",
+      "content": "JOIN"
+    },
+    {
+      "id": "C",
+      "content": "CONNECT"
+    },
+    {
+      "id": "D",
+      "content": "COMBINE"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: B."
+  },
+  "explanation": "Đáp án đúng là B. Theo bài học Chuyên đề 11F: JOIN",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-123",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Lệnh nào để tạo chỉ mục trên cột \"email\" của bảng \"users\"?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘CREATE INDEX email ON users;’"
+    },
+    {
+      "id": "B",
+      "content": "‘SET INDEX email ON users;’"
+    },
+    {
+      "id": "C",
+      "content": "‘CREATE INDEX idx_email ON users(email);’"
+    },
+    {
+      "id": "D",
+      "content": "‘MAKE INDEX ON users(email);’"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: ‘CREATE INDEX idx_email ON users(email);’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-124",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Để tính giá trị trung bình của cột \"price\" trong bảng \"items\", bạn sử dụng câu lệnh nào?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘SELECT AVG(price) ON items;’"
+    },
+    {
+      "id": "B",
+      "content": "‘SELECT AVERAGE(price) FROM items;’"
+    },
+    {
+      "id": "C",
+      "content": "‘SELECT AVG(price) FROM items;’"
+    },
+    {
+      "id": "D",
+      "content": "‘SELECT price AVERAGE FROM items;’"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: ‘SELECT AVG(price) FROM items;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-MC-125",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Lệnh nào trả về tổng giá trị của cột \"amount\" trong bảng \"transactions\" mà không bị trùng lặp?",
+  "options": [
+    {
+      "id": "A",
+      "content": "‘SELECT TOTAL(DISTINCT amount) FROM transactions;’"
+    },
+    {
+      "id": "B",
+      "content": "‘SELECT DISTINCT SUM(amount) FROM transactions;’"
+    },
+    {
+      "id": "C",
+      "content": "‘SELECT SUM(DISTINCT amount) FROM transactions;’"
+    },
+    {
+      "id": "D",
+      "content": "‘SELECT SUM(UNIQUE amount) FROM transactions;’"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Nắm vững các khái niệm cơ bản về Hệ CSDL quan hệ: Bảng, Khóa chính, Khóa ngoài, Ràng buộc toàn vẹn và Ngôn ngữ truy vấn SQL.",
+    "level2_formula": "Xác định mục đích bài toán (định nghĩa, cấu trúc bảng, khóa liên kết, hoặc cú pháp câu lệnh SELECT/JOIN/WHERE) để loại trừ phương án sai.",
+    "level3_steps": "Đối chiếu các phương án A, B, C, D với quy tắc chuẩn trong CSDL quan hệ để chọn đáp án đúng: C."
+  },
+  "explanation": "Đáp án đúng là C. Theo bài học Chuyên đề 11F: ‘SELECT SUM(DISTINCT amount) FROM transactions;’",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
+},
+{
+  "id": "Q-TIN-11F-TF-01",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong cơ sở dữ liệu phục vụ việc quản lý thư viện có bảng Sách với các cột: Mã sách, Tên sách, Tác giả, Năm xuất bản, Số lượng và bảng Mượn sách với các cột: Mã mượn, Số thẻ, Mã sách, Ngày mượn, Ngày trả. Sau đây là một số ý kiến về việc thiết kế và liên kết giữa hai bảng này:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Một cuốn sách có thể được mượn nhiều lần (quan hệ 1 - nhiều giữa Sách và Mượn sách).)\n- Ý b): Đúng (Đúng. Khóa ngoài bảo đảm tính toàn vẹn tham chiếu, ngăn ngừa xóa nhầm.)\n- Ý c): Đúng (Đúng. Trường Mã sách trong Mượn sách tham chiếu đến Mã sách của bảng Sách.)\n- Ý d): Đúng (Đúng. Mã sách là trường liên kết khóa ngoài thiết yếu.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Cần thiết lập liên kết n – 1 giữa bảng Sách và bảng Mượn sách.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Bảng Mượn sách cần có một trường làm khóa ngoài để ngăn chặn việc xóa nhầm dữ liệu về sách khi sách đó vẫn đang được mượn trong thư viện.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Khóa ngoài của bảng Mượn sách tham chiếu đến khóa chính của bảng Sách để thực hiện liên kết giữa hai bảng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Cần thêm cột Mã sách làm khóa ngoài trong bảng Mượn sách.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-02",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong cơ sở dữ liệu phục vụ việc quản lý học sinh có bảng Học sinh với các cột: Mã học sinh, Họ tên, Ngày sinh, Lớp và bảng Điểm với các cột: Mã điểm, Mã học sinh, Môn học, Điểm số. Sau đây là một số ý kiến về việc thiết kế và liên kết giữa hai bảng này:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Một học sinh có thể có điểm ở nhiều môn học (quan hệ 1 - nhiều).)\n- Ý b): Đúng (Đúng. Ràng buộc khóa ngoài đảm bảo Mã học sinh phải tồn tại trong bảng Học sinh.)\n- Ý c): Đúng (Đúng. Mã học sinh trong bảng Điểm tham chiếu đến Mã học sinh trong bảng Học sinh.)\n- Ý d): Đúng (Đúng. Mã học sinh là trường khóa ngoài bắt buộc.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Cần thiết lập liên kết 1 - n giữa bảng Học sinh và bảng Điểm.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Bảng Điểm cần có một trường làm khóa ngoài để ngăn chặn việc nhập điểm cho học sinh không tồn tại.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Khóa ngoài của bảng Điểm tham chiếu đến khóa chính của bảng Học sinh để thực hiện liên kết giữa hai bảng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Cần thêm cột Mã học sinh làm khóa ngoài trong bảng Điểm.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-03",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong cơ sở dữ liệu phục vụ việc quản lý dự án có bảng Dự án với các cột: Mã dự án, Tên dự án, Ngân sách, Ngày bắt đầu và bảng Nhân viên với các cột: Mã nhân viên, Họ tên, Chức vụ, Mã dự án. Sau đây là một số ý kiến về việc thiết kế và liên kết giữa hai bảng này:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Một dự án có thể có nhiều nhân viên tham gia.)\n- Ý b): Đúng (Đúng. Khóa ngoài kiểm soát tính hợp lệ của dự án được phân công.)\n- Ý c): Đúng (Đúng. Mã dự án trong bảng Nhân viên tham chiếu đến Mã dự án của bảng Dự án.)\n- Ý d): Đúng (Đúng. Mã dự án trong bảng Nhân viên đóng vai trò khóa ngoài liên kết.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Cần thiết lập liên kết 1 - n giữa bảng Dự án và bảng Nhân viên.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Bảng Nhân viên cần có một trường làm khóa ngoài để ngăn chặn việc phân công nhân viên vào dự án không tồn tại.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Khóa ngoài của bảng Nhân viên tham chiếu đến khóa chính của bảng Dự án để thực hiện liên kết giữa hai bảng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Cần thêm cột Mã dự án làm khóa ngoài trong bảng Nhân viên.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-04",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong cơ sở dữ liệu phục vụ việc quản lý khách sạn có bảng Phòng với các cột: Mã phòng, Loại phòng, Giá phòng và bảng Đặt phòng với các cột: Mã đặt phòng, Mã phòng, Tên khách hàng, Ngày nhận, Ngày trả. Sau đây là một số ý kiến về việc thiết kế và liên kết giữa hai bảng này:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Một phòng có thể được đặt nhiều lần qua các thời điểm khác nhau.)\n- Ý b): Đúng (Đúng. Khóa ngoài đảm bảo mã phòng đặt phải hợp lệ.)\n- Ý c): Đúng (Đúng. Trường Mã phòng trong Đặt phòng tham chiếu đến khóa chính của Phòng.)\n- Ý d): Đúng (Đúng. Mã phòng là trường khóa ngoài kết nối 2 bảng.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Cần thiết lập liên kết n – 1 giữa bảng Phòng và bảng Đặt phòng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Bảng Đặt phòng cần có một trường làm khóa ngoài để ngăn chặn việc đặt phòng cho phòng không tồn tại.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Khóa ngoài của bảng Đặt phòng tham chiếu đến khóa chính của bảng Phòng để thực hiện liên kết giữa hai bảng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Cần thêm cột Mã phòng làm khóa ngoài trong bảng Đặt phòng.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-05",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong cơ sở dữ liệu phục vụ việc quản lý thư viện có bảng Độc giả với các cột: Mã độc giả, Họ tên, Ngày sinh, Địa chỉ và bảng Mượn sách với các cột: Mã mượn, Mã độc giả, Mã sách, Ngày mượn, Ngày trả. Sau đây là một số ý kiến về việc thiết kế và liên kết giữa hai bảng này:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Một độc giả có thể thực hiện nhiều lượt mượn sách.)\n- Ý b): Đúng (Đúng. Ngăn chặn phát sinh dữ liệu mượn sách từ người không có thẻ độc giả.)\n- Ý c): Đúng (Đúng. Mã độc giả trong Mượn sách tham chiếu đến Mã độc giả trong bảng Độc giả.)\n- Ý d): Đúng (Đúng. Mã độc giả là khóa ngoài kết nối với bảng Độc giả.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Cần thiết lập liên kết n – 1 giữa bảng Độc giả và bảng Mượn sách.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Bảng Mượn sách cần có một trường làm khóa ngoài để ngăn chặn việc mượn sách cho độc giả không tồn tại.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Khóa ngoài của bảng Mượn sách tham chiếu đến khóa chính của bảng Độc giả để thực hiện liên kết giữa hai bảng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Cần thêm cột Mã độc giả làm khóa ngoài trong bảng Mượn sách.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-06",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Cho ba bảng MƯỢN-TRẢ, NGƯỜI ĐỌC, SÁCH và kết quả liên kết ở hình dưới đây:\n\n![Sơ đồ liên kết Relationships](/images/chuyende11f/image1.png)\n\nMột số ý kiến về ba bảng và mối liên kết giữa các bảng như sau:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Trên sơ đồ Access có biểu tượng chiếc chìa khóa tại trường Số thẻ TV.)\n- Ý b): Sai (Sai. Đây là liên kết 1 - vô cùng (1 - n): một người đọc có thể có nhiều lượt mượn trả.)\n- Ý c): Sai (Sai. Số thẻ TV là khóa chính của NGƯỜI ĐỌC và là khóa ngoài trong MƯỢN-TRẢ.)\n- Ý d): Đúng (Đúng. Tách bảng và thiết lập liên kết giúp chuẩn hóa CSDL, loại bỏ dư thừa dữ liệu.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Khóa chính của bảng NGƯỜI ĐỌC là Số thẻ TV.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Liên kết giữa bảng NGƯỜI ĐỌC và bảng MƯỢN-TRẢ là liên kết 1-1.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Trường Số thẻ TV là khóa chính của bảng MƯỢN-TRẢ và là khóa ngoài của bảng NGƯỜI ĐỌC.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Mục đích của việc xây dựng 3 bảng ở trên sẽ giảm được dữ liệu bị lặp lại, tránh rủi ro sai nhầm.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-07",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Em được giao tạo một biểu mẫu sau:\n\n![Biểu mẫu Form nhập điểm](/images/chuyende11f/image2.png)\n\nMột số ý kiến về biểu mẫu trên như sau:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Thanh điều hướng ghi 'Record: 1 of 16', hiển thị từng bản ghi của một học sinh.)\n- Ý b): Sai (Sai. Biểu mẫu 'NHẬP ĐIỂM HỌC SINH' có chức năng cập nhật (sửa, nhập mới) dữ liệu.)\n- Ý c): Sai (Sai. Dữ liệu hiển thị gồm tất cả các trường (Mã định danh, Họ tên, Ngày sinh, Điểm các môn) của bản ghi đó.)\n- Ý d): Đúng (Đúng. Trong Access, Design View dùng để thay đổi bố cục, thêm bớt điều khiển trên biểu mẫu.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Biểu mẫu trên mỗi lần chỉ hiển thị một bản ghi.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Dữ liệu ở biểu mẫu trên có thể được xem và không được sửa.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Dữ liệu của biểu mẫu trên là thông tin của một bản ghi hay một trường của Bảng.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Ta có thể thay đổi cấu trúc của biểu mẫu bằng cách chỉnh sửa biểu mẫu ở chế độ thiết kế (Design View).",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-08",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Cho đoạn lệnh sau:\n```sql\nSELECT DISTINCT [Họ và tên], [NGƯỜI ĐỌC].[Số thẻ TV], [Mã sách]\nFROM [NGƯỜI ĐỌC] INNER JOIN [MƯỢN-TRẢ] ON [NGƯỜI ĐỌC].[Số thẻ TV] = [MƯỢN-TRẢ].[Số thẻ TV]\nWHERE [Mã sách] = 'AN-01'\n```\nSau đây là ý kiến của một bạn sau khi xem đoạn lệnh trên như sau:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Cú pháp SELECT là câu lệnh truy vấn dữ liệu trong SQL.)\n- Ý b): Sai (Sai. Dữ liệu được kết hợp từ cả 2 bảng NGƯỜI ĐỌC và MƯỢN-TRẢ thông qua INNER JOIN.)\n- Ý c): Sai (Sai. Số thẻ TV là khóa ngoài của bảng MƯỢN-TRẢ tham chiếu tới khóa chính của NGƯỜI ĐỌC.)\n- Ý d): Đúng (Đúng. Mệnh đề WHERE [Mã sách] = 'AN-01' lọc chính xác các độc giả mượn cuốn sách này.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Đoạn lệnh trên để truy vấn dữ liệu.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Dữ liệu được truy vấn chỉ ở bảng MƯỢN-TRẢ.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Trường Số thẻ TV là khóa của bảng MƯỢN-TRẢ và là khóa ngoài của bảng NGƯỜI ĐỌC.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Kết quả của đoạn lệnh trên cho kết quả là: Hiển thị thông tin họ tên và số thẻ thư viện của những người mượn có mã sách là AN-01.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-09",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Trong thời đại công nghệ số như hiện nay, bạn A tra cứu điểm thi bằng số báo danh trên hệ thống phần mềm quản lý thi tốt nghiệp THPT. Một số nhận định về hệ thống này như sau:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Kết quả trả về trích xuất từ bảng lưu điểm thi.)\n- Ý b): Sai (Sai. Hệ thống thi THPT quốc gia triển khai cơ sở dữ liệu phân tán trên nhiều cụm máy chủ toàn quốc.)\n- Ý c): Sai (Sai. Thí sinh sử dụng phần mềm ứng dụng web tra cứu, không thao tác trực tiếp trên Hệ QTCSDL.)\n- Ý d): Đúng (Đúng. Hệ thống phục vụ hàng triệu thí sinh đồng thời nhờ kiến trúc CSDL phân tán.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Kết quả tra cứu điểm thi của bạn A là một bảng trong hệ CSDL của Kỳ thi tốt nghiệp THPT Quốc gia.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Cơ sở dữ liệu chứa toàn bộ điểm thi của học sinh cả nước chỉ được lưu tại máy tính của Bộ GD&ĐT ở trường phía Bắc.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Bạn A đã sử dụng một hệ quản trị cơ sở dữ liệu để trực tiếp tra cứu kết quả thi của mình.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Bạn A đang sử dụng hệ CSDL phân tán để tra cứu điểm thi của mình nhằm đáp ứng mọi lúc mọi nơi.",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-10",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Để hỗ trợ việc quản lí thông tin tại một sân bay, người ta xây dựng một phần mềm với cơ sở dữ liệu quan hệ gồm 4 bảng có cấu trúc như sau:\n- `CHUYENBAY (MaCB, NoiXP, NoiDen, GioXP, GioDen)`\n- `PHICO (MaPhiCo, TenPhiCo, KCBay)`\n- `PHICONG (MaPhiCong, TenPhiCong, Luong)`\n- `CHUNGNHAN (MaPhiCong, MaPhiCo)`\nTrong đó, bảng CHUYENBAY lưu các thông tin về chuyến bay, bảng PHICO lưu thông tin phi cơ, bảng PHICONG lưu thông tin phi công, bảng CHUNGNHAN lưu thông tin phi cơ mà mỗi phi công có thể lái. Sau khi tìm hiểu dữ liệu, các bạn học sinh đưa ra nhận xét:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Quy tắc chọn khóa chính tối ưu là chọn khóa có số lượng thuộc tính ít nhất.)\n- Ý b): Sai (Sai. Chọn MaPhiCo làm khóa chính vì tính duy nhất và ổn định, không phải vì độ dài tên.)\n- Ý c): Đúng (Đúng. Cần cập nhật trạng thái hoặc xóa thông tin phi công và chứng nhận lái máy bay tương ứng.)\n- Ý d): Sai (Sai. (Theo đáp án gốc giáo viên ghi S).)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Nên chọn khoá chính là khoá có ít thuộc tính nhất.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Nên chọn trường MaPhiCo làm khoá chính hơn vì trường MaPhiCo ngắn hơn trường TenPhiCo.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Vì đã đến tuổi nghỉ hưu nên một phi công đã không còn phục vụ tại sân bay, do vậy người ta cần thực hiện thao tác sửa trên bảng dữ liệu PHICONG và CHUNGNHAN.",
+      "correctAnswer": true
+    },
+    {
+      "id": "d",
+      "content": "Để tìm tên phi công có khả năng lái tất cả các loại phi cơ, người ta cần sử dụng 3 bảng PHICO, PHICONG và CHUNGNHAN.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-11",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Để hỗ trợ việc quản lí thông tin giảng dạy tại một trường trung học phổ thông, người ta xây dựng một phần mềm với cơ sở dữ liệu quan hệ gồm 3 bảng có cấu trúc như sau:\n- `GIAOVIEN (MaGV, HoTen, GioiTinh, NgaySinh, NgVL, HeSo)`\n- `MONHOC (MaMH, TenMH, SoTiet)`\n- `GIANGDAY (Lop, MaMH, MaGV, TuNgay, DenNgay)`\nTrong đó, bảng GIAOVIEN lưu thông tin giáo viên, bảng MONHOC lưu môn học, bảng GIANGDAY lưu thông tin phân công giảng dạy. Sau khi tìm hiểu dữ liệu, các bạn học sinh đưa ra nhận xét:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. (Theo đáp án nguyên bản của giáo viên ghi Đ).)\n- Ý b): Đúng (Đúng. MaGV trong GIANGDAY tham chiếu tới khóa chính MaGV trong bảng GIAOVIEN.)\n- Ý c): Sai (Sai. Quản lý trên một máy tính duy nhất chỉ cần hệ CSDL tập trung.)\n- Ý d): Sai (Sai. Cần đối chiếu giữa bảng GIAOVIEN và bảng GIANGDAY (phép nối ngoài LEFT JOIN).)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Thuật ngữ 'thuộc tính' dùng trong hệ CSDL quan hệ là để chỉ đối tượng hàng.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "MaGV là khoá ngoài của bảng GIANGDAY.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Nhà trường chỉ sử dụng một máy tính để quản lí thông tin giảng dạy, do vậy nên lựa chọn hệ cơ sở dữ liệu phân tán.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Để liệt kê các giáo viên chưa được phân công giảng dạy chỉ cần sử dụng một bảng GIANGDAY.",
+      "correctAnswer": false
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-12",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Để hỗ trợ việc quản lí thông tin nhân sự tại một công ty, một cơ sở dữ liệu quan hệ được xây dựng với 3 bảng sau:\n- `NHANVIEN (MaNV, Hoten, GioiTinh, NgaySinh)`\n- `DUAN (MaDA, TenDA, BatDau, KetThuc)`\n- `THAMGIA (MaDA, MaNV, ViTri)`\nMột nhân viên của một công ty có thể tham gia nhiều dự án và một dự án có thể có nhiều nhân viên. Khi tìm hiểu về CSDL trên, một số bạn học sinh đưa ra các nhận xét sau:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Trong mô hình quan hệ, trường (field) tương ứng với một cột của bảng.)\n- Ý b): Sai (Sai. (Theo đáp án nguyên bản của giáo viên ghi S).)\n- Ý c): Sai (Sai. Dữ liệu đặt tập trung trên một máy chủ nên dùng hệ CSDL tập trung (mô hình khách - chủ).)\n- Ý d): Đúng (Đúng. Cú pháp kết nối hai bảng qua MaNV và lọc theo MaDA = 1 hoàn toàn chuẩn xác.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "HoTen là một trường tương ứng với một cột của bảng NHANVIEN.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Bộ hai thuộc tính MaDA và MaNV là khóa chính của bảng THAMGIA.",
+      "correctAnswer": false
+    },
+    {
+      "id": "c",
+      "content": "Công ty sử dụng một máy tính chủ để lưu trữ dữ liệu, do vậy phải chọn hệ cơ sở dữ liệu phân tán để quản lí cơ sở dữ liệu.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Câu lệnh SQL sau đây liệt kê họ tên các nhân viên và vị trí của họ trong dự án có mã dự án là 1: `SELECT NHANVIEN.HoTen, THAMGIA.ViTri FROM NHANVIEN INNER JOIN THAMGIA ON NHANVIEN.MaNV = THAMGIA.MaNV WHERE MaDA = 1`",
+      "correctAnswer": true
+    }
+  ]
+},
+{
+  "id": "Q-TIN-11F-TF-13",
+  "subjectId": "tin-hoc-12",
+  "topicId": "tin-co-so-du-lieu-sql",
+  "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
+  "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
+  "difficulty": "VanDung",
+  "type": "true_false",
+  "content": "Cho CSDL của một hiệu thuốc với 3 bảng có cấu trúc sau đây:\n- `BENHNHAN (MaHD, TenBN, DiaChi)`: lưu thông tin mã hóa đơn, tên bệnh nhân và địa chỉ của bệnh nhân\n- `HOADON (MaHD, MaBN, NgayBan)`: lưu thông tin mã hóa đơn, mã bệnh nhân và ngày bán\n- `THUOCBAN (MaHD, TenThuoc, SoLuong, DonGia, ThanhTien)`: lưu thông tin mã hóa đơn, tên thuốc, số lượng, đơn giá và thành tiền\nMột bạn học sinh có ý kiến về việc sử dụng phần mềm khai thác cơ sở dữ liệu trên như sau:",
+  "hints": {
+    "level1_concept": "Nắm vững lý thuyết thiết kế mô hình CSDL quan hệ: khóa chính, khóa ngoài, liên kết bảng 1-n, biểu mẫu Form, truy vấn SQL và phân biệt hệ CSDL tập trung vs phân tán.",
+    "level2_formula": "Phân tích cấu trúc các bảng dữ liệu, trường khóa liên kết và logic câu lệnh/phát biểu trong bài toán.",
+    "level3_steps": "Xác định tính Đúng / Sai của từng mệnh đề a, b, c, d dựa trên các nguyên tắc cơ sở dữ liệu quan hệ."
+  },
+  "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a): Đúng (Đúng. Excel hỗ trợ vẽ biểu đồ trực quan hóa dữ liệu bán hàng rất mạnh mẽ.)\n- Ý b): Đúng (Đúng. Hàm =SUM() trong Excel tính tổng cột ThanhTien nhanh chóng.)\n- Ý c): Sai (Sai. Trường NgayBan nằm trong bảng HOADON, do đó phải kết nối THUOCBAN với HOADON.)\n- Ý d): Đúng (Đúng. Cần kết nối BENHNHAN, HOADON và THUOCBAN để liên kết từ MaBN tới TenThuoc.)",
+  "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)",
+  "tfItems": [
+    {
+      "id": "a",
+      "content": "Phần mềm bảng tính Excel giúp hiển thị được số lượng từng tên thuốc đã bán ở dạng biểu đồ một cách thuận lợi.",
+      "correctAnswer": true
+    },
+    {
+      "id": "b",
+      "content": "Nếu bảng THUOCBAN được lưu trữ trên bảng Excel thì sử dụng SUM để biết được tổng số tiền đã bán của tất cả các hóa đơn.",
+      "correctAnswer": true
+    },
+    {
+      "id": "c",
+      "content": "Phần mềm QTCSDL có thể tính được tổng số tiền bán hàng theo từng ngày dựa trên chỉ một bảng THUOCBAN.",
+      "correctAnswer": false
+    },
+    {
+      "id": "d",
+      "content": "Trong phần mềm quản trị CSDL, để trích xuất được các tên thuốc mua bởi bệnh nhân có MaBN xác định thì phải thực hiện thao tác truy vấn có liên kết cả 3 bảng trên thông qua các trường khóa.",
       "correctAnswer": true
     }
   ]

@@ -112,9 +112,27 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({
       return stash(`${base}<sup class="font-semibold text-[0.8em] relative -top-1">${exp}</sup>`);
     });
 
-    // 6.5. Nhận diện ảnh markdown: ![alt](src) hoặc ảnh minh họa inline
+    // 6.5. Nhận diện ảnh markdown: ![alt](src) hoặc ảnh minh họa inline/block
     text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
-      return stash(`<img src="${src}" alt="${alt || 'hình minh họa'}" class="inline-block max-h-7 align-middle mx-1 rounded border border-gray-300 shadow-sm" />`);
+      const lowerAlt = (alt || "").toLowerCase();
+      const isDiagram =
+        lowerAlt.includes("sơ đồ") ||
+        lowerAlt.includes("biểu mẫu") ||
+        lowerAlt.includes("bảng") ||
+        lowerAlt.includes("diagram") ||
+        lowerAlt.includes("hình") ||
+        lowerAlt.includes("minh họa") ||
+        src.includes("/chuyende") ||
+        src.includes("image");
+
+      if (isDiagram) {
+        return stash(
+          `<span class="block my-3 text-center"><img src="${src}" alt="${alt || 'Hình minh họa'}" class="inline-block max-h-72 w-auto max-w-full rounded-xl border border-slate-300/80 shadow-md bg-white p-1 hover:shadow-lg transition-all" /></span>`
+        );
+      }
+      return stash(
+        `<img src="${src}" alt="${alt || 'hình minh họa'}" class="inline-block max-h-7 align-middle mx-1 rounded border border-gray-300 shadow-sm" />`
+      );
     });
 
     // 7. Nhận diện các thẻ HTML trong Tin học 12 (ví dụ: <p>, <h1>, <a>, <img>, <table>, <html>, <head>, <title>, <form>, <input>, v.v.)
