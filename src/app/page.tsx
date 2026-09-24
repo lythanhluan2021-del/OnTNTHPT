@@ -883,6 +883,7 @@ export default function AppHome() {
                       setSqlDrawerTargetQuestionId(targetQuestionId);
                       setIsSqlDrawerOpen(true);
                     }}
+                    onAskAiTutor={() => setIsSocraticOpen(true)}
                   />
 
                   {/* Bảng Gợi ý Socratic theo từng bậc */}
@@ -947,6 +948,15 @@ export default function AppHome() {
           isOpen={isSocraticOpen}
           onClose={() => setIsSocraticOpen(false)}
           question={currentQuestion}
+          selectedOption={selectedOption}
+          hasAnswered={hasAnswered}
+          isCorrect={
+            hasAnswered
+              ? currentQuestion.type === "true_false"
+                ? true
+                : selectedOption === currentQuestion.correctAnswer
+              : undefined
+          }
         />
       )}
 

@@ -260,4 +260,22 @@ export interface ExamResult {
   }[];
 }
 
+// =================== ĐÁNH GIÁ NĂNG LỰC TIN HỌC GDPT 2018 ===================
+export type CompetencyCode = "NLa" | "NLb" | "NLc" | "NLd" | "NLe";
+
+export interface CompetencyScore {
+  code: CompetencyCode;
+  shortName: string;
+  fullName: string;
+  description: string;
+  score: number; // 0 - 100%
+  totalAttempted: number;
+  correctCount: number;
+  status: "XuatSac" | "Dat" | "CanLuyenTap" | "ChuaThamGia";
+  recommendedTopicId: string;
+  recommendedTopicName: string;
+  actionAdvice: string;
+}
+
+
 

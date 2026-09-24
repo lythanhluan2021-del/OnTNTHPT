@@ -40,6 +40,7 @@ import {
   BarChart3,
   CloudDownload,
   Printer,
+  Compass,
 } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { useAuth } from "@/contexts/AuthContext";
@@ -60,6 +61,7 @@ import { WEEKLY_PLAN } from "@/data/weeklyPlan";
 import { INITIAL_QUESTIONS, INITIAL_SUBJECTS } from "@/data/sampleBank";
 import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
 import { PrintableReportModal } from "@/components/Admin/PrintableReportModal";
+import { CompetencyRadarCard } from "@/components/Analytics/CompetencyRadarCard";
 
 export default function AdminDashboardPage() {
   const { user, isLoggedIn, isAdmin, login, logout } = useAuth();
@@ -104,7 +106,7 @@ export default function AdminDashboardPage() {
   const [isResetting, setIsResetting] = useState(false);
 
   // 6. Weekly Plan & Matrix States
-  const [activeTab, setActiveTab] = useState<"overview" | "weekly" | "matrix">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "weekly" | "matrix" | "competencies">("overview");
   const [allWeeks, setAllWeeks] = useState<WeekPlanItem[]>(WEEKLY_PLAN);
   const [selectedWeekId, setSelectedWeekId] = useState<string>("tuan-02-06");
   const [selectedSemester, setSelectedSemester] = useState<1 | 2 | "all">("all");
@@ -1105,6 +1107,21 @@ export default function AdminDashboardPage() {
             <Grid className="w-3.5 h-3.5" />
             <span>Ma Trận 35 Tuần Toàn Khóa</span>
           </button>
+
+          <button
+            onClick={() => {
+              soundManager.playClick();
+              setActiveTab("competencies");
+            }}
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+              activeTab === "competencies"
+                ? "bg-blue-600 text-white shadow-neu-blue"
+                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+            }`}
+          >
+            <Compass className="w-3.5 h-3.5" />
+            <span>Radar 5 Mạch Năng Lực</span>
+          </button>
         </div>
 
         {/* ======================================================== */}
@@ -2104,6 +2121,59 @@ export default function AdminDashboardPage() {
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* ======================================================== */}
+      {/* TAB 4: PHÂN TÍCH 5 MẠCH NĂNG LỰC GDPT 2018 TOÀN TRƯỜNG */}
+      {/* ======================================================== */}
+      {activeTab === "competencies" && (
+        <div className="space-y-6">
+          <div className="bg-[#e6ecf5] p-5 rounded-neu shadow-neu-flat border border-white/60 space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h2 className="text-base sm:text-lg font-black text-slate-800 flex items-center gap-2">
+                  <Compass className="w-5 h-5 text-blue-600" />
+                  <span>
+                    Đánh Giá Năng Lực Tin Học GDPT 2018 - {selectedClass === "all" ? "Toàn Trường" : `Lớp ${selectedClass}`}
+                  </span>
+                </h2>
+                <p className="text-xs text-slate-500 font-medium">
+                  Tổng hợp mức độ đạt được của 5 mạch năng lực cốt lõi theo Thông tư 32/2018/TT-BGDĐT
+                </p>
+              </div>
+
+              {/* Bộ lọc Lớp */}
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-slate-600">Lớp học:</span>
+                <select
+                  value={selectedClass}
+                  onChange={(e) => {
+                    setSelectedClass(e.target.value);
+                  }}
+                  className="px-3 py-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-xs font-bold text-slate-700 outline-none"
+                >
+                  <option value="all">Tất cả các lớp</option>
+                  {(overview?.classes || []).map((c) => (
+                    <option key={c} value={c}>
+                      Lớp {c}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-2xl mx-auto">
+            <CompetencyRadarCard
+              questions={INITIAL_QUESTIONS}
+              attempts={
+                selectedClass === "all"
+                  ? attempts
+                  : attempts.filter((a) => a.className === selectedClass)
+              }
+            />
+          </div>
         </div>
       )}
       </div>

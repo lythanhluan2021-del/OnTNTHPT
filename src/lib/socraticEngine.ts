@@ -22,7 +22,7 @@ export function sanitizeTutorResponse(
       if (pattern.test(text)) {
         text = text.replace(
           pattern,
-          "hãy xem lại công thức và tự kiểm tra phương án phù hợp nhé"
+          "hãy xem lại tài liệu và tự đối chiếu phương án phù hợp nhé"
         );
       }
     }
@@ -39,7 +39,7 @@ export function sanitizeTutorResponse(
         // Thay thế bằng gợi mở suy luận
         text = text.replace(
           rawContent,
-          "[giá trị bạn cần tự tính từ công thức trên]"
+          "[khái niệm cốt lõi em cần đối chiếu từ đề bài]"
         );
       }
     }
@@ -49,17 +49,19 @@ export function sanitizeTutorResponse(
 }
 
 /**
- * BỘ MÁY GIA SƯ SOCRATIC (SOCRATIC TUTOR ENGINE)
- * Dựa 100% vào tài liệu Google Drive được cung cấp
+ * BỘ MÁY GIA SƯ SOCRATIC 2.0 (SOCRATIC TUTOR ENGINE)
+ * Phân tích chuyên sâu theo từng chủ đề Tin học THPT & nhận diện phản xạ tư duy sai
  */
 export function generateSocraticGuidance(
   question: Question,
   userPrompt: string,
-  historyCount: number
+  historyCount: number,
+  studentChoice?: string | null,
+  isCorrect?: boolean
 ): string {
   const promptLower = userPrompt.toLowerCase().trim();
 
-  // Kiểm tra nếu học sinh hỏi xin đáp án trực tiếp
+  // 1. KIỂM TRA HỌC SINH HỎI XIN ĐÁP ÁN TRỰC TIẾP
   const askingForDirectAnswer =
     promptLower.includes("đáp án") ||
     promptLower.includes("kết quả") ||
@@ -74,14 +76,138 @@ export function generateSocraticGuidance(
 
   if (askingForDirectAnswer) {
     return (
-      `Thầy/Cô không thể cung cấp đáp án trực tiếp cho em vì mục tiêu là giúp em nắm vững phương pháp để tự tin trong phòng thi tốt nghiệp THPT!\n\n` +
-      `📌 **Tài liệu từ Google Drive chỉ dẫn:**\n` +
+      `Thầy/Cô không thể cung cấp đáp án trực tiếp cho em vì mục tiêu của chúng ta là rèn luyện năng lực giải quyết vấn đề để em tự tin bước vào kỳ thi Tốt nghiệp THPT!\n\n` +
+      `📌 **Gợi ý phương pháp từ tài liệu:**\n` +
       `• **Lý thuyết trọng tâm:** ${question.hints.level1_concept}\n` +
-      `• **Câu hỏi gợi mở cho em:** Em đã thử áp dụng công thức: "${question.hints.level2_formula}" vào các dữ kiện của đề bài chưa? Hãy thử viết ra nháp xem em đang vướng ở bước nào nhé!`
+      `• **Câu hỏi định hướng:** Em hãy đối chiếu dữ kiện đề bài với nguyên tắc: "${question.hints.level2_formula}". Em đang băn khoăn giữa những yếu tố nào? Hãy chia sẻ cùng Thầy/Cô nhé!`
     );
   }
 
-  // Nếu học sinh hỏi về công thức / lý thuyết
+  // 2. HỌC SINH VỪA CHỌN SAI VÀ CẦN PHÂN TÍCH BẪY TƯ DUY
+  if (
+    (studentChoice && isCorrect === false) ||
+    promptLower.includes("tại sao sai") ||
+    promptLower.includes("vì sao sai") ||
+    promptLower.includes("em làm sai")
+  ) {
+    const chosenOption = question.options?.find((opt) => opt.id === studentChoice);
+    const chosenText = chosenOption ? `"${chosenOption.content}"` : `phương án ${studentChoice}`;
+
+    return (
+      `Thầy nhận thấy em đang băn khoăn về ${chosenText}.\n\n` +
+      `⚠️ **Phân tích bẫy tư duy thường gặp:**\n` +
+      `Trong các đề thi tốt nghiệp, người ra đề thường đưa ra các phương án nhiễu có vẻ rất quen thuộc nhưng lại vi phạm một điều kiện then chốt của câu hỏi.\n\n` +
+      `🔍 **Hãy kiểm tra lại:**\n` +
+      `• **Quy tắc cốt lõi:** ${question.hints.level1_concept}\n` +
+      `• **Điểm khác biệt:** ${question.hints.level2_formula}\n\n` +
+      `👉 Em hãy đọc kỹ lại từ khóa trong câu hỏi (ví dụ: *không đúng*, *duy nhất*, *tối thiểu*, *bắt buộc*) xem có bỏ sót điều kiện nào không nhé!`
+    );
+  }
+
+  // 3. TƯ VẤN THEO TỪNG CHUYÊN ĐỀ TIN HỌC CỤ THỂ
+  const topicId = question.topicId || "";
+  const topicName = question.topicName || "";
+
+  // A. Chuyên đề Lập trình Python
+  if (topicId.includes("python") || topicName.toLowerCase().includes("python")) {
+    if (
+      promptLower.includes("chạy") ||
+      promptLower.includes("lỗi") ||
+      promptLower.includes("vòng lặp") ||
+      promptLower.includes("hàm")
+    ) {
+      return (
+        `🐍 **Kỹ thuật lần vết thuật toán Python (Code Tracing):**\n\n` +
+        `• **Gợi ý bước làm:** Hãy kẻ một bảng nháp gồm các cột tương ứng với các biến trong bài.\n` +
+        `• **Theo dõi từng bước:** ${question.hints.level3_steps}\n` +
+        `• **Lưu ý đặc biệt:** Chú ý thứ tự thực hiện phép toán, chỉ số mảng bắt đầu từ 0 và bước nhảy trong hàm \`range()\`. Em có thể bấm nút **"Chạy Code"** ở trên để kiểm chứng trực tiếp!`
+      );
+    }
+  }
+
+  // B. Chuyên đề Cơ sở dữ liệu & SQL
+  if (
+    topicId.includes("sql") ||
+    topicId.includes("csdl") ||
+    topicName.toLowerCase().includes("csdl")
+  ) {
+    if (
+      promptLower.includes("join") ||
+      promptLower.includes("select") ||
+      promptLower.includes("where") ||
+      promptLower.includes("bảng")
+    ) {
+      return (
+        `🗄️ **Tư duy truy vấn CSDL quan hệ:**\n\n` +
+        `• **Mục tiêu truy vấn:** Hãy xác định rõ dữ liệu cần lấy nằm ở những bảng nào và có khóa ngoại liên kết ra sao.\n` +
+        `• **Nguyên tắc:** ${question.hints.level1_concept}\n` +
+        `• **Cú pháp then chốt:** ${question.hints.level2_formula}\n` +
+        `• **Gợi ý hành động:** Em hãy thử mở module **SQL Studio** trên thanh điều hướng để xem sơ đồ bảng và thử câu lệnh mẫu nhé!`
+      );
+    }
+  }
+
+  // C. Chuyên đề Tạo trang Web (HTML / CSS)
+  if (
+    topicId.includes("web") ||
+    topicId.includes("12f") ||
+    topicId.includes("12e") ||
+    topicName.toLowerCase().includes("web")
+  ) {
+    if (
+      promptLower.includes("thẻ") ||
+      promptLower.includes("css") ||
+      promptLower.includes("html") ||
+      promptLower.includes("giao diện")
+    ) {
+      return (
+        `🌐 **Tư duy cấu trúc trang Web HTML & CSS:**\n\n` +
+        `• **Ý nghĩa thẻ ngữ nghĩa (Semantic Tags):** Mỗi phần tử trên trang web đảm nhận một vai trò (ví dụ: \`<header>\`, \`<nav>\`, \`<section>\`, \`<footer>\`).\n` +
+        `• **Quy tắc cần nhớ:** ${question.hints.level1_concept}\n` +
+        `• **Gợi ý định dạng:** ${question.hints.level2_formula}\n` +
+        `• Em có thể chuyển sang tab **"Web IDE"** để gõ thẻ và quan sát trực tiếp kết quả hiển thị trên trình duyệt!`
+      );
+    }
+  }
+
+  // D. Chuyên đề Mạng máy tính & An toàn mạng
+  if (
+    topicId.includes("mang") ||
+    topicName.toLowerCase().includes("mạng") ||
+    topicName.toLowerCase().includes("internet")
+  ) {
+    if (
+      promptLower.includes("router") ||
+      promptLower.includes("switch") ||
+      promptLower.includes("ip") ||
+      promptLower.includes("giao thức")
+    ) {
+      return (
+        `📡 **Tư duy Kiến trúc Mạng & Giao thức:**\n\n` +
+        `• **Khái niệm then chốt:** ${question.hints.level1_concept}\n` +
+        `• **Phân biệt vai trò:** Hãy nhớ nguyên tắc: Thiết bị nào hoạt động ở tầng Mạng (chuyển tiếp gói tin theo IP) và thiết bị nào hoạt động ở tầng Liên kết dữ liệu (chuyển tiếp khung tin theo MAC).\n` +
+        `• **Phương pháp:** ${question.hints.level2_formula}`
+      );
+    }
+  }
+
+  // E. Chuyên đề Trí tuệ nhân tạo (AI)
+  if (topicId.includes("ai") || topicName.toLowerCase().includes("nhân tạo")) {
+    if (
+      promptLower.includes("học máy") ||
+      promptLower.includes("mô hình") ||
+      promptLower.includes("huấn luyện")
+    ) {
+      return (
+        `🤖 **Tư duy về Hệ thống Trí tuệ Nhân tạo (AI):**\n\n` +
+        `• **Bản chất vấn đề:** ${question.hints.level1_concept}\n` +
+        `• **Dấu hiệu nhận biết:** Hãy phân biệt rõ: Dữ liệu huấn luyện đã có sẵn nhãn (Supervised) hay chưa có nhãn (Unsupervised), hay tương tác nhận phần thưởng (Reinforcement).\n` +
+        `• **Định hướng:** ${question.hints.level2_formula}`
+      );
+    }
+  }
+
+  // 4. HỌC SINH HỎI VỀ CÔNG THỨC / LÝ THUYẾT NÓI CHUNG
   if (
     promptLower.includes("công thức") ||
     promptLower.includes("định lý") ||
@@ -89,34 +215,34 @@ export function generateSocraticGuidance(
     promptLower.includes("khái niệm")
   ) {
     return (
-      `📖 **Trích xuất từ tài liệu [${question.sourceDocTitle || "Tài liệu học tập"}]:**\n\n` +
-      `• **Lý thuyết cần nắm:** ${question.hints.level1_concept}\n\n` +
-      `💡 **Phương pháp giải quyết:** ${question.hints.level2_formula}\n\n` +
-      `👉 Em hãy thử quan sát dữ kiện đề bài cho và đối chiếu với các đại lượng trong công thức trên nhé!`
+      `📖 **Trích xuất từ tài liệu ôn tập [${question.sourceDocTitle || "Tài liệu môn Tin học"}]:**\n\n` +
+      `• **Khái niệm trọng tâm:** ${question.hints.level1_concept}\n\n` +
+      `💡 **Phương pháp tiếp cận:** ${question.hints.level2_formula}\n\n` +
+      `👉 Em hãy quan sát các yếu tố trong câu hỏi và đối chiếu với khái niệm trên nhé!`
     );
   }
 
-  // Phản hồi Socratic theo tiến trình hỏi
+  // 5. TIẾN TRÌNH THOẠI SOCRATIC THEO BẬC
   if (historyCount === 0) {
     return (
-      `Chào em! Để làm bài này một cách chắc chắn, chúng ta cùng phân tích theo tài liệu ôn tập nhé:\n\n` +
-      `1️⃣ **Bước 1 (Xác định dạng bài):** Đây là dạng bài *${question.topicName}* ở mức độ *${question.difficulty}*.\n` +
-      `2️⃣ **Gợi ý cốt lõi:** ${question.hints.level1_concept}\n\n` +
-      `❓ Em hãy cho thầy biết: Từ dữ kiện của đề bài, em đã rút ra được những thông số nào rồi?`
+      `Chào em! Để làm câu này thật chuẩn xác, chúng ta cùng phân tích theo từng bước nhé:\n\n` +
+      `1️⃣ **Dạng bài:** *${question.topicName}* (Mức độ *${question.difficulty}*).\n` +
+      `2️⃣ **Nguyên lý trọng tâm:** ${question.hints.level1_concept}\n\n` +
+      `❓ Em hãy xác định: Đề bài đang yêu cầu tìm kiếm/khẳng định điều gì? Em đã nắm được từ khóa then chốt chưa?`
     );
   } else if (historyCount === 1) {
     return (
-      `Rất tốt! Bước tiếp theo chúng ta chuyển sang thiết lập phương trình / công thức:\n\n` +
+      `Rất tốt! Chúng ta cùng đi vào phân tích logic phương pháp:\n\n` +
       `💡 **Hướng dẫn phương pháp:** ${question.hints.level2_formula}\n\n` +
-      `🎯 **Chi tiết từng bước suy luận:**\n${question.hints.level3_steps}\n\n` +
-      `Em hãy thử thay số vào và so sánh với 4 phương án xem nhé!`
+      `🎯 **Các bước suy luận gợi ý:**\n${question.hints.level3_steps}\n\n` +
+      `Em hãy thử đối chiếu từng phương án với các bước trên xem phương án nào thỏa mãn đầy đủ nhất nhé!`
     );
   } else {
     return (
-      `Em đang đi rất đúng hướng! Hãy bình tĩnh xử lý bước cuối cùng:\n\n` +
-      `🔍 Hãy kiểm tra lại các điều kiện biên (điều kiện xác định, dấu của hệ số, hoặc đổi đơn vị chuẩn).\n` +
-      `Nguồn tài liệu nhắc nhở: *"${question.hints.level1_concept}"*\n\n` +
-      `Khi tính ra nháp, phương án nào trong số các lựa chọn làm em cảm thấy tự tin nhất?`
+      `Em đang tư duy rất tích cực! Hãy kiểm tra bước cuối cùng:\n\n` +
+      `🔍 Hãy rà soát lại các phương án gây nhiễu và kiểm tra điều kiện biên.\n` +
+      `Quy tắc nhắc nhở: *"${question.hints.level1_concept}"*\n\n` +
+      `Sau khi đối chiếu, em thấy phương án nào là câu trả lời thỏa đáng nhất?`
     );
   }
 }

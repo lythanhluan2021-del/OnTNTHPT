@@ -3,7 +3,7 @@
 import React from "react";
 import { Question } from "@/types";
 import { LatexRenderer } from "../UI/LatexRenderer";
-import { Check, X, Bookmark, FileText, CheckCircle2, XCircle, Terminal, Globe, Database } from "lucide-react";
+import { Check, X, Bookmark, FileText, CheckCircle2, XCircle, Terminal, Globe, Database, Bot, Sparkles } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { PYTHON_QUESTION_EXERCISES } from "@/data/pythonQuestionCodes";
 import { HTML_CSS_QUESTION_EXERCISES } from "@/data/htmlCssTemplates";
@@ -39,6 +39,7 @@ interface QuestionCardProps {
     exerciseTitle?: string,
     targetQuestionId?: string
   ) => void;
+  onAskAiTutor?: () => void;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -53,6 +54,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   onOpenIde,
   onOpenWebIde,
   onOpenSqlIde,
+  onAskAiTutor,
 }) => {
   const isTrueFalse = question.type === "true_false" && question.tfItems && question.tfItems.length > 0;
   const isPythonQuestion =
@@ -499,16 +501,32 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
         </div>
       )}
 
-      {/* Phân tích lời giải sau khi làm xong */}
-      {hasAnswered && question.explanation && (
-        <div className="p-4 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset space-y-2 border-l-4 border-emerald-500">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-800 uppercase">
-            <Bookmark className="w-4 h-4" />
-            <span>Phân tích lời giải sau khi hoàn thành:</span>
-          </div>
-          <div className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-            <LatexRenderer content={question.explanation} />
-          </div>
+      {/* Phân tích lời giải và Trợ lý Socratic AI sau khi hoàn thành */}
+      {hasAnswered && (
+        <div className="space-y-3">
+          {question.explanation && (
+            <div className="p-4 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-neu-inset dark:shadow-none space-y-2 border-l-4 border-emerald-500 border border-slate-300/40 dark:border-slate-800">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-800 dark:text-emerald-400 uppercase">
+                <Bookmark className="w-4 h-4" />
+                <span>Phân tích lời giải sau khi hoàn thành:</span>
+              </div>
+              <div className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                <LatexRenderer content={question.explanation} />
+              </div>
+            </div>
+          )}
+
+          {/* Nút hành động hỏi Socratic AI Tutor */}
+          {onAskAiTutor && (
+            <button
+              onClick={onAskAiTutor}
+              className="w-full py-2.5 px-3 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] hover:bg-blue-50 dark:hover:bg-blue-950/40 border border-blue-500/40 dark:border-blue-700/50 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center justify-center gap-2 shadow-neu-flat-xs dark:shadow-none active:shadow-neu-inset transition"
+            >
+              <Bot className="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+              <span>Chưa hiểu rõ câu này? Hỏi Trợ lý Socratic AI tư duy</span>
+              <Sparkles className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
+            </button>
+          )}
         </div>
       )}
     </div>
