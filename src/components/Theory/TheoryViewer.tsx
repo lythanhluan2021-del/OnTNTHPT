@@ -109,65 +109,65 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
   const renderIcon = (iconName: string) => {
     switch (iconName) {
       case "History":
-        return <History className="w-5 h-5 text-amber-600" />;
+        return <History className="w-5 h-5 text-amber-600 dark:text-amber-400" />;
       case "Cpu":
-        return <Cpu className="w-5 h-5 text-blue-600" />;
+        return <Cpu className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
       case "Layers":
-        return <Layers className="w-5 h-5 text-indigo-600" />;
+        return <Layers className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />;
       case "Compass":
-        return <Compass className="w-5 h-5 text-emerald-600" />;
+        return <Compass className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />;
       case "Sparkles":
-        return <Sparkles className="w-5 h-5 text-purple-600" />;
+        return <Sparkles className="w-5 h-5 text-purple-600 dark:text-purple-400" />;
       case "AlertTriangle":
-        return <AlertTriangle className="w-5 h-5 text-rose-600" />;
+        return <AlertTriangle className="w-5 h-5 text-rose-600 dark:text-rose-400" />;
       case "ShieldAlert":
-        return <ShieldAlert className="w-5 h-5 text-red-600" />;
+        return <ShieldAlert className="w-5 h-5 text-red-600 dark:text-red-400" />;
       case "Users":
-        return <Users className="w-5 h-5 text-sky-600" />;
+        return <Users className="w-5 h-5 text-sky-600 dark:text-sky-400" />;
       case "HeartHandshake":
-        return <HeartHandshake className="w-5 h-5 text-pink-600" />;
+        return <HeartHandshake className="w-5 h-5 text-pink-600 dark:text-pink-400" />;
       default:
-        return <FileText className="w-5 h-5 text-blue-600" />;
+        return <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
     }
   };
 
   return (
     <div className="space-y-4 pb-20 max-w-md mx-auto">
       {/* Banner tiêu đề Neumorphic */}
-      <div className="p-4 rounded-neu bg-[#e6ecf5] shadow-neu-flat space-y-3">
-        <div className="flex items-center justify-between">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100/90 text-blue-800 text-[11px] font-bold tracking-wide">
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>NỘI DUNG LÝ THUYẾT ĐẦY ĐỦ (NGUYÊN BẢN)</span>
+      <div className="p-4 rounded-neu bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-neu-flat dark:shadow-[6px_6px_16px_#12151a,-6px_-6px_16px_#222932] space-y-3 border border-transparent dark:border-slate-800">
+        <div className="flex items-center justify-between gap-2">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-950/70 text-blue-800 dark:text-blue-300 text-[11px] font-bold tracking-wide border border-blue-200 dark:border-blue-800/60 shadow-neu-flat-xs dark:shadow-none">
+            <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+            <span>NỘI DUNG LÝ THUYẾT NGUYÊN BẢN</span>
           </span>
-          <span className="text-[10px] text-slate-500 font-medium truncate max-w-[140px]" title={theoryData.docTitle}>
+          <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium truncate max-w-[130px]" title={theoryData.docTitle}>
             {theoryData.docTitle}
           </span>
         </div>
 
         <div>
-          <h2 className="text-base font-extrabold text-slate-800 leading-tight">
+          <h2 className="text-base font-extrabold text-slate-800 dark:text-slate-100 leading-tight">
             {theoryData.topicName}
           </h2>
-          <p className="text-xs text-slate-600 mt-1">
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
             Giữ nguyên vẹn 100% nội dung lý thuyết từ tài liệu bài giảng gốc, được trình bày mạch lạc, trực quan giúp bạn nắm chắc kiến thức trước khi luyện đề.
           </p>
         </div>
 
         {/* Thanh tìm kiếm nhanh */}
         <div className="relative">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm khái niệm: MYCIN, Dartmouth, Turing, ANI, AGI..."
-            className="w-full pl-9 pr-8 py-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full pl-9 pr-8 py-2 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1f252e] shadow-neu-inset-sm dark:shadow-none text-xs text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none border border-transparent dark:border-slate-700/70 focus:border-blue-500"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -175,29 +175,29 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
         </div>
 
         {/* Nút thao tác nhanh: Mục tiêu cần đạt & Thu/Mở tất cả */}
-        <div className="flex items-center justify-between pt-1 text-[11px] font-semibold text-slate-600">
+        <div className="flex items-center justify-between pt-1 text-[11px] font-semibold text-slate-600 dark:text-slate-400">
           <button
             onClick={() => {
               soundManager.playClick();
               setShowObjectives((prev) => !prev);
             }}
-            className="inline-flex items-center gap-1 text-blue-700 hover:underline"
+            className="inline-flex items-center gap-1 text-blue-700 dark:text-blue-400 hover:underline"
           >
-            <BookmarkCheck className="w-3.5 h-3.5" />
+            <BookmarkCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>{showObjectives ? "Ẩn mục tiêu cần đạt" : "Xem mục tiêu cần đạt"}</span>
           </button>
 
           <div className="flex items-center gap-2">
             <button
               onClick={() => handleToggleAll(true)}
-              className="hover:text-blue-700 transition"
+              className="hover:text-blue-700 dark:hover:text-blue-400 transition"
             >
               Mở tất cả
             </button>
             <span>•</span>
             <button
               onClick={() => handleToggleAll(false)}
-              className="hover:text-blue-700 transition"
+              className="hover:text-blue-700 dark:hover:text-blue-400 transition"
             >
               Thu gọn
             </button>
@@ -206,15 +206,15 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
 
         {/* Khối mục tiêu cần đạt (khi mở) */}
         {showObjectives && (
-          <div className="p-3 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm space-y-2 border-l-4 border-blue-600 text-xs">
-            <div className="font-bold text-blue-900 flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-blue-600" />
+          <div className="p-3 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1f252e] shadow-neu-inset-sm dark:shadow-none space-y-2 border-l-4 border-blue-600 text-xs border border-transparent dark:border-slate-800">
+            <div className="font-bold text-blue-900 dark:text-blue-300 flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span>Yêu cầu cần đạt chuẩn Chương trình GDPT 2018:</span>
             </div>
-            <ul className="space-y-1.5 text-slate-700 pl-1">
+            <ul className="space-y-1.5 text-slate-700 dark:text-slate-300 pl-1">
               {theoryData.objectives.map((obj, idx) => (
                 <li key={idx} className="flex items-start gap-2 leading-relaxed">
-                  <span className="font-bold text-blue-600 mt-0.5">•</span>
+                  <span className="font-bold text-blue-600 dark:text-blue-400 mt-0.5">•</span>
                   <span>{obj}</span>
                 </li>
               ))}
@@ -226,13 +226,13 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
       {/* Danh sách các thẻ lý thuyết Accordion */}
       <div className="space-y-3">
         {filteredSections.length === 0 ? (
-          <div className="p-6 rounded-neu bg-[#e6ecf5] shadow-neu-flat text-center space-y-2">
-            <p className="text-xs text-slate-500 font-medium">
+          <div className="p-6 rounded-neu bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-neu-flat dark:shadow-none text-center space-y-2 border border-transparent dark:border-slate-800">
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
               Không tìm thấy nội dung phù hợp với từ khóa &quot;{searchQuery}&quot;.
             </p>
             <button
               onClick={() => setSearchQuery("")}
-              className="text-xs text-blue-600 font-bold hover:underline"
+              className="text-xs text-blue-600 dark:text-blue-400 font-bold hover:underline"
             >
               Xóa bộ lọc tìm kiếm
             </button>
@@ -244,35 +244,35 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
             return (
               <div
                 key={section.id}
-                className="rounded-neu bg-[#e6ecf5] shadow-neu-flat overflow-hidden transition-all duration-200"
+                className="rounded-neu bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-neu-flat dark:shadow-[5px_5px_12px_#12151a,-5px_-5px_12px_#222932] overflow-hidden transition-all duration-200 border border-transparent dark:border-slate-800"
               >
                 {/* Header của từng thẻ lý thuyết */}
                 <button
                   onClick={() => toggleSection(section.id)}
-                  className="w-full text-left p-3.5 sm:p-4 flex items-center justify-between gap-3 hover:bg-slate-200/40 transition-colors"
+                  className="w-full text-left p-3.5 sm:p-4 flex items-center justify-between gap-3 hover:bg-slate-200/40 dark:hover:bg-slate-800/40 transition-colors"
                 >
                   <div className="flex items-center gap-2.5 flex-1 min-w-0">
-                    <div className="p-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-xs flex-shrink-0">
+                    <div className="p-2 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1f252e] shadow-neu-flat-xs dark:shadow-none flex-shrink-0 border border-transparent dark:border-slate-800">
                       {renderIcon(section.icon)}
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200/80 text-slate-700 shadow-neu-flat-xs">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 shadow-neu-flat-xs dark:shadow-none border border-transparent dark:border-slate-700">
                           {section.tag}
                         </span>
                       </div>
-                      <h3 className="text-xs sm:text-sm font-extrabold text-slate-800 truncate mt-0.5">
+                      <h3 className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-100 truncate mt-0.5">
                         {section.title}
                       </h3>
                       {!isExpanded && (
-                        <p className="text-[11px] text-slate-500 truncate mt-0.5">
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
                           {section.summary}
                         </p>
                       )}
                     </div>
                   </div>
 
-                  <div className="p-1 rounded-neu-xs text-slate-500 shadow-neu-flat-xs flex-shrink-0">
+                  <div className="p-1 rounded-neu-xs text-slate-500 dark:text-slate-400 shadow-neu-flat-xs dark:shadow-none flex-shrink-0">
                     {isExpanded ? (
                       <ChevronUp className="w-4 h-4" />
                     ) : (
@@ -283,10 +283,10 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
 
                 {/* Nội dung chi tiết khi mở thẻ */}
                 {isExpanded && (
-                  <div className="px-3.5 sm:px-4 pb-4 pt-1 space-y-3.5 border-t border-slate-300/60">
+                  <div className="px-3.5 sm:px-4 pb-4 pt-1 space-y-3.5 border-t border-slate-300/60 dark:border-slate-800">
                     {/* Giới thiệu trọng tâm mục */}
-                    <div className="p-2.5 rounded-neu-sm bg-blue-50/80 border-l-3 border-blue-500 text-xs text-blue-950 font-medium flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                    <div className="p-2.5 rounded-neu-sm bg-blue-50/80 dark:bg-blue-950/40 border-l-3 border-blue-500 text-xs text-blue-950 dark:text-blue-200 font-medium flex items-center gap-1.5 border border-transparent dark:border-blue-900/40">
+                      <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
                       <span>{section.summary}</span>
                     </div>
 
@@ -294,24 +294,24 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                     {section.content.map((block, bIdx) => (
                       <div key={bIdx} className="space-y-2 text-xs">
                         {block.heading && (
-                          <h4 className="font-extrabold text-slate-800 text-xs flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0" />
+                          <h4 className="font-extrabold text-slate-800 dark:text-slate-100 text-xs flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 flex-shrink-0" />
                             <LatexRenderer content={block.heading} />
                           </h4>
                         )}
 
                         {block.text && (
-                          <div className="text-slate-700 leading-relaxed pl-1">
+                          <div className="text-slate-700 dark:text-slate-300 leading-relaxed pl-1">
                             <LatexRenderer content={block.text} />
                           </div>
                         )}
 
                         {/* Hình ảnh bài học (nếu có) */}
                         {block.image && (
-                          <div className="my-3 p-2.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm flex flex-col items-center group relative">
+                          <div className="my-3 p-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1f252e] shadow-neu-inset-sm dark:shadow-none flex flex-col items-center group relative border border-transparent dark:border-slate-800">
                             {/* Thanh thao tác nhanh ngay trên/cạnh ảnh */}
                             <div className="w-full flex items-center justify-between gap-2 mb-2 px-1">
-                              <span className="text-[11px] font-semibold text-slate-600 truncate flex items-center gap-1.5">
+                              <span className="text-[11px] font-semibold text-slate-600 dark:text-slate-300 truncate flex items-center gap-1.5">
                                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
                                 <span className="truncate">{block.imageCaption || "Hình minh họa bài học"}</span>
                               </span>
@@ -327,10 +327,10 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                                     caption: block.imageCaption,
                                   });
                                 }}
-                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-neu-xs bg-[#e6ecf5] shadow-neu-flat hover:shadow-neu-flat-sm active:shadow-neu-inset-xs text-[11px] font-bold text-blue-700 hover:text-blue-800 transition-all flex-shrink-0 border border-blue-200/60"
+                                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-neu-xs bg-[#e6ecf5] dark:bg-[#222934] shadow-neu-flat dark:shadow-none active:shadow-neu-inset-xs text-[11px] font-bold text-blue-700 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-200 transition-all flex-shrink-0 border border-blue-200/60 dark:border-slate-700"
                                 title="Phóng to ảnh để quan sát rõ hơn trên điện thoại"
                               >
-                                <ZoomIn className="w-3.5 h-3.5 text-blue-600" />
+                                <ZoomIn className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                                 <span>Phóng to</span>
                               </button>
                             </div>
@@ -345,7 +345,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                                   caption: block.imageCaption,
                                 });
                               }}
-                              className="relative cursor-zoom-in rounded-lg overflow-hidden max-w-full group/img flex items-center justify-center bg-white p-1 border border-slate-300/80 shadow-sm"
+                              className="relative cursor-zoom-in rounded-lg overflow-hidden max-w-full group/img flex items-center justify-center bg-white p-1 border border-slate-300/80 dark:border-slate-700 shadow-sm"
                               title="Nhấn vào ảnh hoặc nút Phóng to để xem chi tiết"
                             >
                               <img
@@ -363,7 +363,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                             </div>
 
                             {block.imageCaption && (
-                              <span className="text-[11px] text-slate-500 font-medium italic mt-2 text-center">
+                              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium italic mt-2 text-center">
                                 {block.imageCaption}
                               </span>
                             )}
@@ -440,22 +440,22 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                             {block.bulletPoints.map((point, pIdx) => (
                               <div
                                 key={pIdx}
-                                className="p-3 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm space-y-1.5"
+                                className="p-3 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1f252e] shadow-neu-inset-sm dark:shadow-none space-y-1.5 border border-transparent dark:border-slate-800"
                               >
                                 {point.label && (
-                                  <div className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
-                                    <span className="text-blue-600">▪</span>
+                                  <div className="font-bold text-slate-900 dark:text-slate-100 text-xs flex items-center gap-1.5">
+                                    <span className="text-blue-600 dark:text-blue-400">▪</span>
                                     <LatexRenderer content={point.label} />
                                   </div>
                                 )}
-                                <div className="text-slate-700 text-xs leading-relaxed">
+                                <div className="text-slate-700 dark:text-slate-300 text-xs leading-relaxed pl-3.5">
                                   <LatexRenderer content={point.desc} />
                                 </div>
                                 {point.example && (
-                                  <div className="pt-1.5 mt-1 border-t border-slate-300/70 flex items-start gap-1.5 text-[11px] text-emerald-900 font-medium">
-                                    <Lightbulb className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                                  <div className="pt-1.5 mt-1 border-t border-slate-300/70 dark:border-slate-800 flex items-start gap-1.5 text-[11px] text-emerald-900 dark:text-emerald-300 font-medium pl-3.5">
+                                    <Lightbulb className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
                                     <div className="leading-snug">
-                                      <span className="font-bold text-emerald-800">Ví dụ thực tế: </span>
+                                      <span className="font-bold text-emerald-800 dark:text-emerald-400">Ví dụ thực tế: </span>
                                       <LatexRenderer content={point.example} />
                                     </div>
                                   </div>
@@ -469,7 +469,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
 
                     {/* Từ khóa trọng tâm ôn thi */}
                     <div className="pt-2">
-                      <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                      <div className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">
                         Từ khóa hay gặp trong đề thi:
                       </div>
                       <div className="flex flex-wrap gap-1.5">
@@ -477,7 +477,7 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
                           <button
                             key={tIdx}
                             onClick={() => setSearchQuery(term)}
-                            className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#e6ecf5] shadow-neu-flat-xs text-blue-700 active:shadow-neu-inset transition"
+                            className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#e6ecf5] dark:bg-[#1f252e] shadow-neu-flat-xs dark:shadow-none text-blue-700 dark:text-blue-300 active:shadow-neu-inset border border-transparent dark:border-slate-800 transition"
                           >
                             #{term}
                           </button>
@@ -493,11 +493,11 @@ export const TheoryViewer: React.FC<TheoryViewerProps> = ({
       </div>
 
       {/* Thanh nút hành động chuyển sang Luyện tập */}
-      <div className="p-4 rounded-neu bg-[#e6ecf5] shadow-neu-flat space-y-2.5 text-center">
-        <div className="text-xs font-extrabold text-slate-800">
+      <div className="p-4 rounded-neu bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-neu-flat dark:shadow-[6px_6px_16px_#12151a,-6px_-6px_16px_#222932] space-y-2.5 text-center border border-transparent dark:border-slate-800">
+        <div className="text-xs font-extrabold text-slate-800 dark:text-slate-100">
           Bạn đã nắm vững lý thuyết phần này?
         </div>
-        <p className="text-[11px] text-slate-600">
+        <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
           Hãy củng cố kiến thức ngay bằng cách thử sức với các câu hỏi nhiều lựa chọn hoặc câu hỏi Đúng / Sai chuẩn ma trận thi tốt nghiệp THPT!
         </p>
         <div className="grid grid-cols-2 gap-2 pt-1">

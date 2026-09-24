@@ -597,7 +597,7 @@ export default function AppHome() {
         >
           {/* Bộ chuyển đổi nhanh 1-chạm giữa Lý thuyết, Phần 1 (4 lựa chọn), Phần 2 (Đúng / Sai), Chạy Code Python, Web IDE & SQL Studio */}
           {activeTab !== "analytics" && (currentHasTheory || tfQuestionsCount > 0 || isPythonTopic || isWebTopic || isSqlTopic) && (
-            <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm">
+            <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#181d24] shadow-neu-inset-sm dark:shadow-none border border-transparent dark:border-slate-800">
               {currentHasTheory && (
                 <button
                   onClick={() => {
@@ -606,12 +606,12 @@ export default function AppHome() {
                   }}
                   className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
                     activeTab === "theory"
-                      ? "bg-[#e6ecf5] text-blue-600 shadow-neu-inset font-bold"
-                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
+                      ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-inset dark:shadow-none font-bold border border-transparent dark:border-blue-600/50"
+                      : "bg-[#e6ecf5] dark:bg-[#181d24] text-slate-600 dark:text-slate-400 shadow-neu-flat-sm dark:shadow-none active:shadow-neu-inset hover:text-blue-600 dark:hover:text-blue-300"
                   }`}
                   title="Xem tóm tắt lý thuyết trọng tâm"
                 >
-                  <BookOpen className={`w-4 h-4 ${activeTab === "theory" ? "text-blue-600" : "text-blue-500"}`} />
+                  <BookOpen className={`w-4 h-4 ${activeTab === "theory" ? "text-blue-600 dark:text-blue-400" : "text-blue-500 dark:text-slate-400"}`} />
                   <span className="truncate w-full text-center leading-tight">
                     Lý thuyết
                   </span>
@@ -628,16 +628,16 @@ export default function AppHome() {
                   }}
                   className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
                     activeTab === "practice" && activeQuestionFormat === "mc"
-                      ? "bg-[#e6ecf5] text-blue-600 shadow-neu-inset font-bold"
-                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
+                      ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-inset dark:shadow-none font-bold border border-transparent dark:border-blue-600/50"
+                      : "bg-[#e6ecf5] dark:bg-[#181d24] text-slate-600 dark:text-slate-400 shadow-neu-flat-sm dark:shadow-none active:shadow-neu-inset hover:text-blue-600 dark:hover:text-blue-300"
                   }`}
                   title="Phần 1: Trắc nghiệm 4 lựa chọn"
                 >
                   <ListOrdered
                     className={`w-4 h-4 ${
                       activeTab === "practice" && activeQuestionFormat === "mc"
-                        ? "text-blue-600"
-                        : "text-indigo-600"
+                        ? "text-blue-600 dark:text-blue-400"
+                        : "text-indigo-600 dark:text-slate-400"
                     }`}
                   />
                   <div className="flex items-center justify-center gap-1 w-full leading-tight">
@@ -645,8 +645,8 @@ export default function AppHome() {
                     <span
                       className={`text-[9px] px-1.5 py-0.2 rounded-full font-bold ${
                         activeTab === "practice" && activeQuestionFormat === "mc"
-                          ? "bg-blue-100 text-blue-700"
-                          : "bg-slate-200 text-slate-600"
+                          ? "bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
+                          : "bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
                       }`}
                     >
                       {mcQuestionsCount}
@@ -665,16 +665,16 @@ export default function AppHome() {
                   }}
                   className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
                     activeTab === "practice" && activeQuestionFormat === "tf"
-                      ? "bg-[#e6ecf5] text-blue-600 shadow-neu-inset font-bold"
-                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
+                      ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-inset dark:shadow-none font-bold border border-transparent dark:border-blue-600/50"
+                      : "bg-[#e6ecf5] dark:bg-[#181d24] text-slate-600 dark:text-slate-400 shadow-neu-flat-sm dark:shadow-none active:shadow-neu-inset hover:text-blue-600 dark:hover:text-blue-300"
                   }`}
                   title="Phần 2: Trắc nghiệm Đúng / Sai"
                 >
                   <CheckCheck
                     className={`w-4 h-4 ${
                       activeTab === "practice" && activeQuestionFormat === "tf"
-                        ? "text-blue-600"
-                        : "text-cyan-600"
+                        ? "text-blue-600 dark:text-blue-400"
+                        : "text-cyan-600 dark:text-slate-400"
                     }`}
                   />
                   <div className="flex items-center justify-center gap-1 w-full leading-tight">
@@ -682,8 +682,8 @@ export default function AppHome() {
                     <span
                       className={`text-[9px] px-1.5 py-0.2 rounded-full font-bold ${
                         activeTab === "practice" && activeQuestionFormat === "tf"
-                          ? "bg-blue-100 text-blue-700"
-                          : "bg-slate-200 text-slate-600"
+                          ? "bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
+                          : "bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
                       }`}
                     >
                       {tfQuestionsCount}
@@ -700,14 +700,14 @@ export default function AppHome() {
                   }}
                   className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
                     activeTab === "ide"
-                      ? "bg-[#e6ecf5] text-blue-600 shadow-neu-inset font-bold"
-                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
+                      ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-inset dark:shadow-none font-bold border border-transparent dark:border-blue-600/50"
+                      : "bg-[#e6ecf5] dark:bg-[#181d24] text-slate-600 dark:text-slate-400 shadow-neu-flat-sm dark:shadow-none active:shadow-neu-inset hover:text-blue-600 dark:hover:text-blue-300"
                   }`}
                   title="Mở trình soạn thảo & Chạy code Python"
                 >
                   <Terminal
                     className={`w-4 h-4 ${
-                      activeTab === "ide" ? "text-blue-600" : "text-emerald-600"
+                      activeTab === "ide" ? "text-blue-600 dark:text-blue-400" : "text-emerald-600 dark:text-slate-400"
                     }`}
                   />
                   <span className="truncate w-full text-center leading-tight">
@@ -724,14 +724,14 @@ export default function AppHome() {
                   }}
                   className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
                     activeTab === "web-ide"
-                      ? "bg-[#e6ecf5] text-blue-600 shadow-neu-inset font-bold"
-                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
+                      ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-inset dark:shadow-none font-bold border border-transparent dark:border-blue-600/50"
+                      : "bg-[#e6ecf5] dark:bg-[#181d24] text-slate-600 dark:text-slate-400 shadow-neu-flat-sm dark:shadow-none active:shadow-neu-inset hover:text-blue-600 dark:hover:text-blue-300"
                   }`}
                   title="Mở trình soạn thảo & Xem trước HTML & CSS (Web IDE)"
                 >
                   <Globe
                     className={`w-4 h-4 ${
-                      activeTab === "web-ide" ? "text-blue-600" : "text-blue-600"
+                      activeTab === "web-ide" ? "text-blue-600 dark:text-blue-400" : "text-blue-500 dark:text-slate-400"
                     }`}
                   />
                   <span className="truncate w-full text-center leading-tight">
@@ -748,14 +748,14 @@ export default function AppHome() {
                   }}
                   className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
                     activeTab === "sql-ide"
-                      ? "bg-[#e6ecf5] text-emerald-700 shadow-neu-inset font-bold"
-                      : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-emerald-700"
+                      ? "bg-[#e6ecf5] dark:bg-[#202734] text-emerald-700 dark:text-emerald-400 shadow-neu-inset dark:shadow-none font-bold border border-transparent dark:border-emerald-600/50"
+                      : "bg-[#e6ecf5] dark:bg-[#181d24] text-slate-600 dark:text-slate-400 shadow-neu-flat-sm dark:shadow-none active:shadow-neu-inset hover:text-emerald-700 dark:hover:text-emerald-300"
                   }`}
                   title="Mở SQL Studio & Truy vấn Cơ sở dữ liệu mẫu"
                 >
                   <Database
                     className={`w-4 h-4 ${
-                      activeTab === "sql-ide" ? "text-emerald-600" : "text-emerald-600"
+                      activeTab === "sql-ide" ? "text-emerald-600 dark:text-emerald-400" : "text-emerald-600 dark:text-slate-400"
                     }`}
                   />
                   <span className="truncate w-full text-center leading-tight">
