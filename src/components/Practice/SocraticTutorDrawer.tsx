@@ -2,7 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import { Question, SocraticMessage } from "@/types";
-import { generateSocraticGuidance, sanitizeTutorResponse } from "@/lib/socraticEngine";
+import {
+  generateSocraticGuidance,
+  getInitialSocraticMessage,
+  sanitizeTutorResponse,
+} from "@/lib/socraticEngine";
 import { LatexRenderer } from "../UI/LatexRenderer";
 import {
   X,
@@ -33,30 +37,7 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
   isCorrect,
 }) => {
   const getInitialMessage = (): string => {
-    if (hasAnswered && isCorrect === false && selectedOption) {
-      const chosenOpt = question.options?.find((o) => o.id === selectedOption);
-      const chosenContent = chosenOpt ? ` "${chosenOpt.content}"` : "";
-
-      return (
-        `Chào em! Thầy nhận thấy em vừa chọn **phương án ${selectedOption}**${chosenContent} nhưng câu trả lời này chưa chính xác.\n\n` +
-        `🔍 **Phân tích nguyên nhân & bẫy tư duy:**\n` +
-        `• **Khái niệm trọng tâm:** ${question.hints.level1_concept}\n` +
-        `• **Quy tắc phương pháp:** ${question.hints.level2_formula}\n\n` +
-        `⚠️ **Vì sao dễ nhầm sang ${selectedOption}?** Trong đề thi THPT, phương án ${selectedOption} thường là phương án gây nhiễu vì có một đặc điểm gần giống nhưng lại vi phạm một điều kiện then chốt của câu hỏi.\n\n` +
-        `❓ Em hãy đối chiếu lại: Trong câu hỏi có từ khóa nào (như *không phải*, *chỉ*, *tất cả*, *bắt buộc*) mà phương án ${selectedOption} chưa thỏa mãn không?`
-      );
-    }
-    if (hasAnswered && isCorrect === true) {
-      return (
-        `Chúc mừng em đã trả lời đúng câu hỏi này! 🎉\n\n` +
-        `Thầy ở đây để giúp em đào sâu thêm về bản chất kiến thức hoặc liên hệ sang các dạng bài nâng cao hơn trong đề thi Tốt nghiệp THPT. Em có muốn trao đổi thêm về khía cạnh nào không?`
-      );
-    }
-    return (
-      `Chào em! Thầy là Trợ lý Socratic đồng hành ôn thi Tin học THPT. Thầy sẽ giúp em phân tích phương pháp tư duy dựa trên tài liệu **"${question.sourceDocTitle || "Tài liệu môn Tin học"}"**.\n\n` +
-      `📌 **Khái niệm then chốt:** ${question.hints.level1_concept}\n\n` +
-      `Em đang gặp khó khăn hay băn khoăn ở bước nào trong câu hỏi này? Hãy chia sẻ cùng Thầy nhé!`
-    );
+    return getInitialSocraticMessage(question, selectedOption, hasAnswered, isCorrect);
   };
 
   const [messages, setMessages] = useState<SocraticMessage[]>([]);

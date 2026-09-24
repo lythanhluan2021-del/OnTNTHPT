@@ -49,8 +49,111 @@ export function sanitizeTutorResponse(
 }
 
 /**
+ * Rút gọn và làm sạch gợi ý sư phạm: loại bỏ các văn phong khuôn mẫu dài dòng
+ */
+export function cleanPedagogicalHint(rawHint?: string): string {
+  if (!rawHint) return "";
+  let text = rawHint.trim();
+
+  const removePrefixes = [
+    /^đọc kỹ yêu cầu câu hỏi và xác định\s*/i,
+    /^nhớ lại khái niệm và các đặc trưng nền tảng của\s*/i,
+    /^nhớ lại kiến thức về\s*/i,
+    /^nhớ lại khái niệm\s*/i,
+    /^nhớ lại định nghĩa\s*/i,
+    /^đối chiếu từng lựa chọn:?\s*/i,
+    /^phân tích bản chất từng lựa chọn\s*[A-D,\s]*để\s*/i,
+    /^xem xét định nghĩa và thao tác chuẩn xác trong\s*/i,
+    /^hãy chú ý rằng:?\s*/i,
+    /^lưu ý rằng:?\s*/i,
+    /^hãy nhớ lại rằng:?\s*/i,
+  ];
+
+  for (const regex of removePrefixes) {
+    text = text.replace(regex, "");
+  }
+
+  if (text.length > 0) {
+    text = text.charAt(0).toUpperCase() + text.slice(1);
+  }
+  return text;
+}
+
+/**
+ * Nhận diện bẫy tư duy thường gặp dựa trên từ khóa câu hỏi
+ */
+export function detectQuestionTraps(question: Question): string {
+  const contentLower = question.content.toLowerCase();
+
+  if (
+    contentLower.includes("không phải") ||
+    contentLower.includes("chưa đúng") ||
+    contentLower.includes("không đúng") ||
+    contentLower.includes("ngoại trừ") ||
+    contentLower.includes("sai")
+  ) {
+    return "Đề bài có từ phủ định (**KHÔNG PHẢI / KHÔNG ĐÚNG**). Phương án em chọn có thể là một đặc điểm ĐÚNG nên bị loại trừ!";
+  }
+
+  if (
+    contentLower.includes("chỉ") ||
+    contentLower.includes("duy nhất") ||
+    contentLower.includes("tất cả") ||
+    contentLower.includes("luôn luôn")
+  ) {
+    return "Đề bài hoặc các phương án có chứa từ mang tính tuyệt đối (**chỉ, duy nhất, tất cả**). Hãy cẩn thận vì đây thường là dấu hiệu của bẫy khái quát hóa!";
+  }
+
+  return "Phương án này có điểm tương đồng bề ngoài nhưng vi phạm điều kiện then chốt của câu hỏi.";
+}
+
+/**
+ * THÔNG ĐIỆP MỞ ĐẦU NGẮN GỌN & XÚC TÍCH CHO SOCRATIC DRAWER
+ */
+export function getInitialSocraticMessage(
+  question: Question,
+  selectedOption?: string | null,
+  hasAnswered?: boolean,
+  isCorrect?: boolean
+): string {
+  // 1. Học sinh vừa làm SAI một phương án cụ thể
+  if (hasAnswered && isCorrect === false && selectedOption) {
+    const chosenOpt = question.options?.find((o) => o.id === selectedOption);
+    const chosenText = chosenOpt ? ` ("${chosenOpt.content}")` : "";
+    const trapNote = detectQuestionTraps(question);
+    const concept = cleanPedagogicalHint(question.hints.level1_concept);
+
+    return (
+      `⚠️ **Phương án ${selectedOption}${chosenText} chưa chính xác.**\n\n` +
+      `🔍 **Bẫy cần tránh:** ${trapNote}\n` +
+      (concept ? `📌 **Kiến thức cốt lõi:** ${concept}\n\n` : `\n`) +
+      `👉 **Gợi mở:** Em hãy đối chiếu lại từ khóa trong đề bài để tìm phương án chính xác nhé!`
+    );
+  }
+
+  // 2. Học sinh đã làm ĐÚNG và muốn tìm hiểu sâu
+  if (hasAnswered && isCorrect === true) {
+    return (
+      `🎉 **Chính xác!** Em đã nắm vững kiến thức trọng tâm của câu hỏi này.\n\n` +
+      `💡 Em có muốn tìm hiểu thêm về cách đề thi THPT gài bẫy ở dạng bài này, hoặc biến thể nâng cao hơn không?`
+    );
+  }
+
+  // 3. Học sinh bấm hỏi gợi ý TRƯỚC KHI TRẢ LỜI
+  const concept = cleanPedagogicalHint(question.hints.level1_concept);
+  const formula = cleanPedagogicalHint(question.hints.level2_formula);
+
+  return (
+    `💡 **Định hướng tư duy câu hỏi:**\n\n` +
+    (concept ? `• **Khái niệm trọng tâm:** ${concept}\n` : "") +
+    (formula ? `• **Phương pháp:** ${formula}\n\n` : "\n") +
+    `👉 Em hãy xác định từ khóa then chốt trong đề bài trước khi chọn phương án!`
+  );
+}
+
+/**
  * BỘ MÁY GIA SƯ SOCRATIC 2.0 (SOCRATIC TUTOR ENGINE)
- * Phân tích chuyên sâu theo từng chủ đề Tin học THPT & nhận diện phản xạ tư duy sai
+ * Phản hồi cực kỳ ngắn gọn, xúc tích (dưới 60-80 từ), tập trung đúng trọng tâm kiến thức
  */
 export function generateSocraticGuidance(
   question: Question,
@@ -76,31 +179,39 @@ export function generateSocraticGuidance(
 
   if (askingForDirectAnswer) {
     return (
-      `Thầy/Cô không thể cung cấp đáp án trực tiếp cho em vì mục tiêu của chúng ta là rèn luyện năng lực giải quyết vấn đề để em tự tin bước vào kỳ thi Tốt nghiệp THPT!\n\n` +
-      `📌 **Gợi ý phương pháp từ tài liệu:**\n` +
-      `• **Lý thuyết trọng tâm:** ${question.hints.level1_concept}\n` +
-      `• **Câu hỏi định hướng:** Em hãy đối chiếu dữ kiện đề bài với nguyên tắc: "${question.hints.level2_formula}". Em đang băn khoăn giữa những yếu tố nào? Hãy chia sẻ cùng Thầy/Cô nhé!`
+      `🔒 **Quy tắc tư duy:** Thầy không cung cấp đáp án trực tiếp để giúp em rèn phản xạ phòng thi.\n\n` +
+      `📌 **Gợi ý cốt lõi:**\n` +
+      `• ${cleanPedagogicalHint(question.hints.level1_concept)}\n` +
+      `• ${cleanPedagogicalHint(question.hints.level2_formula)}\n\n` +
+      `👉 Hãy đối chiếu dữ kiện đề bài với 2 điểm trên để tự chọn phương án đúng!`
     );
   }
 
-  // 2. HỌC SINH VỪA CHỌN SAI VÀ CẦN PHÂN TÍCH BẪY TƯ DUY
+  // 2. HỌC SINH HỎI TẠI SAO SAI HOẶC BẪY TƯ DUY
   if (
-    (studentChoice && isCorrect === false) ||
     promptLower.includes("tại sao sai") ||
     promptLower.includes("vì sao sai") ||
-    promptLower.includes("em làm sai")
+    promptLower.includes("em làm sai") ||
+    (studentChoice && isCorrect === false && historyCount === 0)
   ) {
-    const chosenOption = question.options?.find((opt) => opt.id === studentChoice);
-    const chosenText = chosenOption ? `"${chosenOption.content}"` : `phương án ${studentChoice}`;
+    const chosenOpt = question.options?.find((o) => o.id === studentChoice);
+    const chosenText = chosenOpt ? ` "${chosenOpt.content}"` : (studentChoice ? ` phương án ${studentChoice}` : "phương án đã chọn");
+    const trap = detectQuestionTraps(question);
 
     return (
-      `Thầy nhận thấy em đang băn khoăn về ${chosenText}.\n\n` +
-      `⚠️ **Phân tích bẫy tư duy thường gặp:**\n` +
-      `Trong các đề thi tốt nghiệp, người ra đề thường đưa ra các phương án nhiễu có vẻ rất quen thuộc nhưng lại vi phạm một điều kiện then chốt của câu hỏi.\n\n` +
-      `🔍 **Hãy kiểm tra lại:**\n` +
-      `• **Quy tắc cốt lõi:** ${question.hints.level1_concept}\n` +
-      `• **Điểm khác biệt:** ${question.hints.level2_formula}\n\n` +
-      `👉 Em hãy đọc kỹ lại từ khóa trong câu hỏi (ví dụ: *không đúng*, *duy nhất*, *tối thiểu*, *bắt buộc*) xem có bỏ sót điều kiện nào không nhé!`
+      `⚠️ **Phân tích bẫy tư duy ở${chosenText}:**\n\n` +
+      `• **Bẫy thường gặp:** ${trap}\n` +
+      `• **Quy tắc cần nhớ:** ${cleanPedagogicalHint(question.hints.level1_concept)}\n\n` +
+      `👉 Rà soát lại: Đề bài yêu cầu khẳng định hay phủ định? Điều kiện nào loại trừ phương án này?`
+    );
+  }
+
+  if (promptLower.includes("bẫy") || promptLower.includes("gài bẫy") || promptLower.includes("nhiễu")) {
+    return (
+      `🔍 **Các bẫy thường gặp trong đề thi THPT:**\n\n` +
+      `• **Bẫy từ phủ định/giới hạn:** Chú ý các từ *không phải, chỉ, tất cả, bắt buộc*.\n` +
+      `• **Bẫy tương đồng bề ngoài:** Mượn đúng thuật ngữ nhưng sai ngữ cảnh hoặc sai mốc thời gian/chỉ số.\n` +
+      `• **Phương pháp:** ${cleanPedagogicalHint(question.hints.level2_formula)}`
     );
   }
 
@@ -114,13 +225,14 @@ export function generateSocraticGuidance(
       promptLower.includes("chạy") ||
       promptLower.includes("lỗi") ||
       promptLower.includes("vòng lặp") ||
-      promptLower.includes("hàm")
+      promptLower.includes("hàm") ||
+      promptLower.includes("thuật toán")
     ) {
       return (
-        `🐍 **Kỹ thuật lần vết thuật toán Python (Code Tracing):**\n\n` +
-        `• **Gợi ý bước làm:** Hãy kẻ một bảng nháp gồm các cột tương ứng với các biến trong bài.\n` +
-        `• **Theo dõi từng bước:** ${question.hints.level3_steps}\n` +
-        `• **Lưu ý đặc biệt:** Chú ý thứ tự thực hiện phép toán, chỉ số mảng bắt đầu từ 0 và bước nhảy trong hàm \`range()\`. Em có thể bấm nút **"Chạy Code"** ở trên để kiểm chứng trực tiếp!`
+        `🐍 **Lần vết code Python (Code Tracing):**\n\n` +
+        `• **Theo dõi biến:** ${cleanPedagogicalHint(question.hints.level3_steps)}\n` +
+        `• **Lưu ý:** Chỉ số mảng từ 0; \`range(a, b)\` chạy tới \`b - 1\`.\n\n` +
+        `💡 Bấm nút **"Chạy thử trong IDE"** để kiểm chứng trực tiếp từng vòng lặp!`
       );
     }
   }
@@ -135,14 +247,14 @@ export function generateSocraticGuidance(
       promptLower.includes("join") ||
       promptLower.includes("select") ||
       promptLower.includes("where") ||
-      promptLower.includes("bảng")
+      promptLower.includes("bảng") ||
+      promptLower.includes("khóa")
     ) {
       return (
-        `🗄️ **Tư duy truy vấn CSDL quan hệ:**\n\n` +
-        `• **Mục tiêu truy vấn:** Hãy xác định rõ dữ liệu cần lấy nằm ở những bảng nào và có khóa ngoại liên kết ra sao.\n` +
-        `• **Nguyên tắc:** ${question.hints.level1_concept}\n` +
-        `• **Cú pháp then chốt:** ${question.hints.level2_formula}\n` +
-        `• **Gợi ý hành động:** Em hãy thử mở module **SQL Studio** trên thanh điều hướng để xem sơ đồ bảng và thử câu lệnh mẫu nhé!`
+        `🗄️ **Tư duy truy vấn SQL:**\n\n` +
+        `• **Nguyên tắc:** ${cleanPedagogicalHint(question.hints.level1_concept)}\n` +
+        `• **Cú pháp:** ${cleanPedagogicalHint(question.hints.level2_formula)}\n\n` +
+        `💡 Bấm **"Thử nghiệm trong SQL Studio"** để xem cấu trúc bảng và chạy lệnh trực tiếp!`
       );
     }
   }
@@ -158,14 +270,14 @@ export function generateSocraticGuidance(
       promptLower.includes("thẻ") ||
       promptLower.includes("css") ||
       promptLower.includes("html") ||
-      promptLower.includes("giao diện")
+      promptLower.includes("giao diện") ||
+      promptLower.includes("khối")
     ) {
       return (
-        `🌐 **Tư duy cấu trúc trang Web HTML & CSS:**\n\n` +
-        `• **Ý nghĩa thẻ ngữ nghĩa (Semantic Tags):** Mỗi phần tử trên trang web đảm nhận một vai trò (ví dụ: \`<header>\`, \`<nav>\`, \`<section>\`, \`<footer>\`).\n` +
-        `• **Quy tắc cần nhớ:** ${question.hints.level1_concept}\n` +
-        `• **Gợi ý định dạng:** ${question.hints.level2_formula}\n` +
-        `• Em có thể chuyển sang tab **"Web IDE"** để gõ thẻ và quan sát trực tiếp kết quả hiển thị trên trình duyệt!`
+        `🌐 **Cấu trúc Web HTML & CSS:**\n\n` +
+        `• **Ý nghĩa thẻ:** ${cleanPedagogicalHint(question.hints.level1_concept)}\n` +
+        `• **Định dạng:** ${cleanPedagogicalHint(question.hints.level2_formula)}\n\n` +
+        `💡 Mở **"Web IDE"** để quan sát trực quan giao diện trang web hiển thị!`
       );
     }
   }
@@ -180,13 +292,14 @@ export function generateSocraticGuidance(
       promptLower.includes("router") ||
       promptLower.includes("switch") ||
       promptLower.includes("ip") ||
-      promptLower.includes("giao thức")
+      promptLower.includes("giao thức") ||
+      promptLower.includes("mạng")
     ) {
       return (
-        `📡 **Tư duy Kiến trúc Mạng & Giao thức:**\n\n` +
-        `• **Khái niệm then chốt:** ${question.hints.level1_concept}\n` +
-        `• **Phân biệt vai trò:** Hãy nhớ nguyên tắc: Thiết bị nào hoạt động ở tầng Mạng (chuyển tiếp gói tin theo IP) và thiết bị nào hoạt động ở tầng Liên kết dữ liệu (chuyển tiếp khung tin theo MAC).\n` +
-        `• **Phương pháp:** ${question.hints.level2_formula}`
+        `📡 **Kiến trúc Mạng & Giao thức:**\n\n` +
+        `• **Cốt lõi:** ${cleanPedagogicalHint(question.hints.level1_concept)}\n` +
+        `• **Phân biệt:** Tầng Mạng (gói tin theo IP - Router) vs Tầng Liên kết dữ liệu (khung tin theo MAC - Switch).\n` +
+        `• **Nguyên tắc:** ${cleanPedagogicalHint(question.hints.level2_formula)}`
       );
     }
   }
@@ -196,53 +309,66 @@ export function generateSocraticGuidance(
     if (
       promptLower.includes("học máy") ||
       promptLower.includes("mô hình") ||
-      promptLower.includes("huấn luyện")
+      promptLower.includes("huấn luyện") ||
+      promptLower.includes("ai")
     ) {
       return (
-        `🤖 **Tư duy về Hệ thống Trí tuệ Nhân tạo (AI):**\n\n` +
-        `• **Bản chất vấn đề:** ${question.hints.level1_concept}\n` +
-        `• **Dấu hiệu nhận biết:** Hãy phân biệt rõ: Dữ liệu huấn luyện đã có sẵn nhãn (Supervised) hay chưa có nhãn (Unsupervised), hay tương tác nhận phần thưởng (Reinforcement).\n` +
-        `• **Định hướng:** ${question.hints.level2_formula}`
+        `🤖 **Trí tuệ Nhân tạo (AI):**\n\n` +
+        `• **Bản chất:** ${cleanPedagogicalHint(question.hints.level1_concept)}\n` +
+        `• **Phân loại:** Học có giám sát (dữ liệu có nhãn), Không giám sát (tự tìm quy luật), Học tăng cường (thưởng/phạt).\n` +
+        `• **Định hướng:** ${cleanPedagogicalHint(question.hints.level2_formula)}`
       );
     }
   }
 
-  // 4. HỌC SINH HỎI VỀ CÔNG THỨC / LÝ THUYẾT NÓI CHUNG
+  // 4. HỌC SINH HỎI VỀ CÔNG THỨC / LÝ THUYẾT / KHÁI NIỆM TRỌNG TÂM
   if (
     promptLower.includes("công thức") ||
     promptLower.includes("định lý") ||
     promptLower.includes("lý thuyết") ||
-    promptLower.includes("khái niệm")
+    promptLower.includes("khái niệm") ||
+    promptLower.includes("nhắc lại")
   ) {
     return (
-      `📖 **Trích xuất từ tài liệu ôn tập [${question.sourceDocTitle || "Tài liệu môn Tin học"}]:**\n\n` +
-      `• **Khái niệm trọng tâm:** ${question.hints.level1_concept}\n\n` +
-      `💡 **Phương pháp tiếp cận:** ${question.hints.level2_formula}\n\n` +
-      `👉 Em hãy quan sát các yếu tố trong câu hỏi và đối chiếu với khái niệm trên nhé!`
+      `📖 **Trọng tâm kiến thức:**\n\n` +
+      `• **Khái niệm:** ${cleanPedagogicalHint(question.hints.level1_concept)}\n` +
+      `• **Phương pháp:** ${cleanPedagogicalHint(question.hints.level2_formula)}`
     );
   }
 
-  // 5. TIẾN TRÌNH THOẠI SOCRATIC THEO BẬC
+  // 5. HỌC SINH HỎI HƯỚNG DẪN TỪNG BƯỚC / SUY LUẬN
+  if (
+    promptLower.includes("từng bước") ||
+    promptLower.includes("suy luận") ||
+    promptLower.includes("bắt đầu")
+  ) {
+    return (
+      `🎯 **Các bước suy luận chuẩn:**\n\n` +
+      `1️⃣ **Xác định yêu cầu:** Đề bài hỏi về khái niệm, chức năng hay kết quả thực thi?\n` +
+      `2️⃣ **Loại trừ nhanh:** ${cleanPedagogicalHint(question.hints.level2_formula)}\n` +
+      `3️⃣ **Kiểm chứng:** ${cleanPedagogicalHint(question.hints.level3_steps)}`
+    );
+  }
+
+  // 6. TIẾN TRÌNH THOẠI SOCRATIC THEO BẬC (FALLBACK)
   if (historyCount === 0) {
     return (
-      `Chào em! Để làm câu này thật chuẩn xác, chúng ta cùng phân tích theo từng bước nhé:\n\n` +
-      `1️⃣ **Dạng bài:** *${question.topicName}* (Mức độ *${question.difficulty}*).\n` +
-      `2️⃣ **Nguyên lý trọng tâm:** ${question.hints.level1_concept}\n\n` +
-      `❓ Em hãy xác định: Đề bài đang yêu cầu tìm kiếm/khẳng định điều gì? Em đã nắm được từ khóa then chốt chưa?`
+      `🎯 **Bước 1 - Phân tích yêu cầu:**\n\n` +
+      `• **Trọng tâm:** ${cleanPedagogicalHint(question.hints.level1_concept)}\n\n` +
+      `👉 Từ khóa chính trong đề bài là gì? Em hãy đối chiếu với định nghĩa trên!`
     );
   } else if (historyCount === 1) {
     return (
-      `Rất tốt! Chúng ta cùng đi vào phân tích logic phương pháp:\n\n` +
-      `💡 **Hướng dẫn phương pháp:** ${question.hints.level2_formula}\n\n` +
-      `🎯 **Các bước suy luận gợi ý:**\n${question.hints.level3_steps}\n\n` +
-      `Em hãy thử đối chiếu từng phương án với các bước trên xem phương án nào thỏa mãn đầy đủ nhất nhé!`
+      `🎯 **Bước 2 - Phương pháp loại trừ:**\n\n` +
+      `• **Quy tắc:** ${cleanPedagogicalHint(question.hints.level2_formula)}\n` +
+      `• **Dẫn dắt:** ${cleanPedagogicalHint(question.hints.level3_steps)}\n\n` +
+      `👉 Phương án nào thỏa mãn đầy đủ các điều kiện trên?`
     );
   } else {
     return (
-      `Em đang tư duy rất tích cực! Hãy kiểm tra bước cuối cùng:\n\n` +
-      `🔍 Hãy rà soát lại các phương án gây nhiễu và kiểm tra điều kiện biên.\n` +
-      `Quy tắc nhắc nhở: *"${question.hints.level1_concept}"*\n\n` +
-      `Sau khi đối chiếu, em thấy phương án nào là câu trả lời thỏa đáng nhất?`
+      `🎯 **Bước 3 - Rà soát điều kiện biên:**\n\n` +
+      `• Chú ý các từ phủ định (*không, chưa*) hoặc từ tuyệt đối (*chỉ, luôn luôn*).\n` +
+      `• Nhớ lại: *"${cleanPedagogicalHint(question.hints.level1_concept)}"*`
     );
   }
 }

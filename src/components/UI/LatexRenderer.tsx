@@ -93,7 +93,7 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({
       }
     });
 
-    // 5. Bảo toàn các thẻ định dạng văn bản hợp lệ: <sup>, <sub>, <b>, <strong>
+    // 5. Bảo toàn các thẻ định dạng văn bản hợp lệ và hỗ trợ markdown: <sup>, <sub>, <b>, <strong>, **, *, `
     text = text.replace(/<sup>([\s\S]*?)<\/sup>/gi, (_, inner) => {
       return stash(`<sup class="font-semibold text-[0.8em] relative -top-1">${inner}</sup>`);
     });
@@ -101,10 +101,25 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({
       return stash(`<sub class="font-semibold text-[0.8em] relative -bottom-1">${inner}</sub>`);
     });
     text = text.replace(/<b>([\s\S]*?)<\/b>/gi, (_, inner) => {
-      return stash(`<strong class="font-semibold text-slate-900">${inner}</strong>`);
+      return stash(`<strong class="font-bold text-slate-900 dark:text-white">${inner}</strong>`);
     });
     text = text.replace(/<strong>([\s\S]*?)<\/strong>/gi, (_, inner) => {
-      return stash(`<strong class="font-semibold text-slate-900">${inner}</strong>`);
+      return stash(`<strong class="font-bold text-slate-900 dark:text-white">${inner}</strong>`);
+    });
+
+    // 5.1 Inline code markdown: `...`
+    text = text.replace(/`([^`\n]+)`/g, (_, code) => {
+      return stash(`<code class="font-mono text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 px-1 py-0.5 rounded text-[0.88em] border border-blue-200 dark:border-blue-800">${code}</code>`);
+    });
+
+    // 5.2 Bold markdown: **...**
+    text = text.replace(/\*\*([^*\n]+)\*\*/g, (_, inner) => {
+      return stash(`<strong class="font-bold text-slate-900 dark:text-white">${inner}</strong>`);
+    });
+
+    // 5.3 Italic markdown: *...*
+    text = text.replace(/(^|[^*])\*([^*\n]+)\*/g, (_, prefix, inner) => {
+      return `${prefix}${stash(`<em class="italic text-slate-800 dark:text-slate-200">${inner}</em>`)}`;
     });
 
     // 6. Tự động nhận diện ký hiệu số mũ dạng X^2, R^2, x^n khi không ở trong KaTeX
