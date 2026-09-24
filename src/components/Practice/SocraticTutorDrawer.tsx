@@ -48,14 +48,14 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
   const [isTyping, setIsTyping] = useState(false);
   const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState(false);
   const [hasCustomKey, setHasCustomKey] = useState(false);
-  const [currentModel, setCurrentModel] = useState("gemini-3.8-flash");
+  const [currentModel, setCurrentModel] = useState("gemini-2.5-flash");
 
   // Đồng bộ trạng thái API Key từ LocalStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
       const savedKey = localStorage.getItem("custom_gemini_api_key") || "";
       const savedModel =
-        localStorage.getItem("custom_gemini_model") || "gemini-3.8-flash";
+        localStorage.getItem("custom_gemini_model") || "gemini-2.5-flash";
       setHasCustomKey(!!savedKey);
       setCurrentModel(savedModel);
     }
@@ -63,7 +63,22 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
 
   // Khởi tạo lại hội thoại khi mở drawer hoặc đổi câu hỏi
   useEffect(() => {
-    if (isOpen) {
+    if (!isOpen) return;
+
+    const savedKey =
+      typeof window !== "undefined"
+        ? localStorage.getItem("custom_gemini_api_key") || ""
+        : "";
+    const savedModel =
+      typeof window !== "undefined"
+        ? localStorage.getItem("custom_gemini_model") || "gemini-2.5-flash"
+        : "gemini-2.5-flash";
+
+    setHasCustomKey(!!savedKey);
+    setCurrentModel(savedModel);
+
+    // Trường hợp 1: Chưa có API Key -> Dùng tin nhắn Offline nội bộ
+    if (!savedKey) {
       setMessages([
         {
           id: "welcome-" + question.id,
@@ -72,7 +87,75 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
           timestamp: Date.now(),
         },
       ]);
+      return;
     }
+
+    // Trường hợp 2: Đã có API Key -> Kích hoạt ngay Gemini AI để phân tích ngữ cảnh thật
+    const chosenOpt = question.options?.find((o) => o.id === selectedOption);
+    const chosenContent = chosenOpt ? ` "${chosenOpt.content}"` : "";
+
+    let initialPrompt = "";
+    if (hasAnswered && isCorrect === false && selectedOption) {
+      initialPrompt = `Tại sao em chọn phương án ${selectedOption}${chosenContent} cho câu hỏi này lại sai? Hãy giải thích ngắn gọn bản chất câu hỏi và bẫy tư duy của phương án này để em hiểu nguyên nhân.`;
+    } else if (hasAnswered && isCorrect === true) {
+      initialPrompt = `Em đã trả lời đúng phương án ${selectedOption}. Hãy tóm tắt nhanh 1-2 điểm then chốt cần ghi nhớ của câu này.`;
+    } else {
+      initialPrompt = `Em chưa rõ câu hỏi này. Hãy gợi mở tư duy và các từ khóa cần chú ý để em tự làm bài mà không lộ đáp án.`;
+    }
+
+    // Đặt thông báo tạm thời trong lúc Gemini đang đọc đề và suy luận
+    setMessages([
+      {
+        id: "welcome-" + question.id,
+        sender: "tutor",
+        text: `🤖 *Trợ lý Gemini AI đang đọc đề bài và phân tích tư duy cho câu hỏi này...*`,
+        timestamp: Date.now(),
+      },
+    ]);
+    setIsTyping(true);
+
+    fetch("/api/socratic", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        question,
+        prompt: initialPrompt,
+        historyCount: 0,
+        selectedOption,
+        isCorrect,
+        customApiKey: savedKey,
+        model: savedModel,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const aiResponse = data.response || getInitialMessage();
+        setMessages([
+          {
+            id: "welcome-" + question.id,
+            sender: "tutor",
+            text: aiResponse,
+            timestamp: Date.now(),
+          },
+        ]);
+        if (data.modelUsed) {
+          setCurrentModel(data.modelUsed);
+        }
+      })
+      .catch((err) => {
+        console.warn("Lỗi gọi Gemini ban đầu, dùng fallback offline:", err);
+        setMessages([
+          {
+            id: "welcome-" + question.id,
+            sender: "tutor",
+            text: getInitialMessage(),
+            timestamp: Date.now(),
+          },
+        ]);
+      })
+      .finally(() => {
+        setIsTyping(false);
+      });
   }, [isOpen, question.id, hasAnswered, isCorrect, selectedOption]);
 
   if (!isOpen) return null;
@@ -99,8 +182,8 @@ export const SocraticTutorDrawer: React.FC<SocraticTutorDrawerProps> = ({
         : "";
     const model =
       typeof window !== "undefined"
-        ? localStorage.getItem("custom_gemini_model") || "gemini-3.8-flash"
-        : "gemini-3.8-flash";
+        ? localStorage.getItem("custom_gemini_model") || "gemini-2.5-flash"
+        : "gemini-2.5-flash";
 
     // Gửi yêu cầu tới Backend API tích hợp Gemini 3 thực thụ
     fetch("/api/socratic", {

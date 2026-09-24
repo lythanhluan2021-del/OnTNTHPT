@@ -271,7 +271,7 @@ export const ApiKeyModal: React.FC<ApiKeyModalProps> = ({
             </p>
           </div>
 
-          {/* Lựa chọn mô hình Gemini 3 */}
+          {/* Lựa chọn mô hình Gemini */}
           <div className="space-y-1.5">
             <label className="block text-xs font-bold text-slate-700 dark:text-slate-200">
               Mô hình AI:
@@ -279,37 +279,37 @@ export const ApiKeyModal: React.FC<ApiKeyModalProps> = ({
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
-                onClick={() => setSelectedModel("gemini-3.8-flash")}
+                onClick={() => setSelectedModel("gemini-2.5-flash")}
                 className={`p-2.5 rounded-neu-sm text-left border transition text-xs ${
-                  selectedModel === "gemini-3.8-flash"
+                  selectedModel === "gemini-2.5-flash"
                     ? "bg-blue-50 dark:bg-blue-950/50 border-blue-500 text-blue-900 dark:text-blue-200 font-bold shadow-neu-flat-xs"
                     : "bg-[#e6ecf5] dark:bg-[#202734] border-slate-300/80 dark:border-slate-700 text-slate-700 dark:text-slate-300"
                 }`}
               >
                 <div className="flex items-center gap-1.5">
-                  <Cpu className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Gemini 3.8 Flash</span>
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Gemini Flash (Khuyên dùng)</span>
                 </div>
                 <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 font-normal">
-                  Chủ lực • Tư duy sâu &amp; chính xác
+                  Tự động tối ưu • Tư duy sâu &amp; chính xác
                 </p>
               </button>
 
               <button
                 type="button"
-                onClick={() => setSelectedModel("gemini-3.5-flash-lite")}
+                onClick={() => setSelectedModel("gemini-2.0-flash")}
                 className={`p-2.5 rounded-neu-sm text-left border transition text-xs ${
-                  selectedModel === "gemini-3.5-flash-lite"
+                  selectedModel === "gemini-2.0-flash"
                     ? "bg-blue-50 dark:bg-blue-950/50 border-blue-500 text-blue-900 dark:text-blue-200 font-bold shadow-neu-flat-xs"
                     : "bg-[#e6ecf5] dark:bg-[#202734] border-slate-300/80 dark:border-slate-700 text-slate-700 dark:text-slate-300"
                 }`}
               >
                 <div className="flex items-center gap-1.5">
                   <Zap className="w-3.5 h-3.5 text-amber-500" />
-                  <span>Gemini 3.5 Lite</span>
+                  <span>Gemini 2.0 / 1.5</span>
                 </div>
                 <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 font-normal">
-                  Phản hồi siêu tốc &lt; 1 giây
+                  Độ trễ thấp • Tương thích mọi tài khoản
                 </p>
               </button>
             </div>

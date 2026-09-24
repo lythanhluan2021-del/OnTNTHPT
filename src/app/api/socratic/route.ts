@@ -3,7 +3,7 @@ import { generateSocraticGuidance, sanitizeTutorResponse } from "@/lib/socraticE
 import { Question } from "@/types";
 
 /**
- * Gọi REST API tới Google Gemini (Hỗ trợ thế hệ Gemini 3)
+ * Gọi REST API tới Google Gemini với cấu hình tương thích mọi phiên bản
  */
 async function callGeminiApi(
   model: string,
@@ -13,19 +13,19 @@ async function callGeminiApi(
 ): Promise<string> {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
+  // Ghép nối system instruction vào nội dung để đảm bảo tương thích 100% với mọi model
+  const promptText = `HƯỚNG DẪN HỆ THỐNG:\n${systemInstruction}\n\n---\n\n${userMessage}`;
+
   const payload = {
     contents: [
       {
         role: "user",
-        parts: [{ text: userMessage }],
+        parts: [{ text: promptText }],
       },
     ],
-    systemInstruction: {
-      parts: [{ text: systemInstruction }],
-    },
     generationConfig: {
-      temperature: 0.4,
-      maxOutputTokens: 300, // Đảm bảo câu trả lời luôn ngắn gọn, không lan man
+      temperature: 0.3,
+      maxOutputTokens: 350,
     },
   };
 
@@ -41,7 +41,7 @@ async function callGeminiApi(
     const errorData = await response.json().catch(() => null);
     const errorMsg =
       errorData?.error?.message ||
-      `Lỗi từ Gemini API (Mã phản hồi: ${response.status})`;
+      `Lỗi từ Gemini API (Mã: ${response.status})`;
     throw new Error(errorMsg);
   }
 
@@ -56,6 +56,51 @@ async function callGeminiApi(
   return text;
 }
 
+/**
+ * Thử gọi theo chuỗi mô hình dự phòng (Cascade Fallback)
+ * Giúp tự động nhận diện mô hình nào đang mở trên tài khoản Google AI Studio của học sinh
+ */
+async function callGeminiWithFallback(
+  preferredModel: string,
+  apiKey: string,
+  systemInstruction: string,
+  userMessage: string
+): Promise<{ text: string; modelUsed: string }> {
+  const candidateModels = Array.from(
+    new Set([
+      preferredModel,
+      "gemini-2.5-flash",
+      "gemini-2.0-flash",
+      "gemini-1.5-flash",
+      "gemini-1.5-flash-8b",
+      "gemini-3.8-flash",
+      "gemini-3.5-flash-lite",
+      "gemini-1.5-pro",
+    ])
+  ).filter(Boolean);
+
+  let lastError: any = null;
+
+  for (const model of candidateModels) {
+    try {
+      const text = await callGeminiApi(model, apiKey, systemInstruction, userMessage);
+      return { text, modelUsed: model };
+    } catch (err: any) {
+      lastError = err;
+      // Nếu API key sai định dạng hoặc bị từ chối, dừng ngay không thử các model khác
+      if (
+        err.message?.includes("API_KEY_INVALID") ||
+        err.message?.includes("API key not valid") ||
+        err.message?.includes("PERMISSION_DENIED")
+      ) {
+        throw new Error("Khóa API không hợp lệ. Vui lòng kiểm tra lại mã API Key đã sao chép từ Google AI Studio.");
+      }
+    }
+  }
+
+  throw lastError || new Error("Không thể kết nối với mô hình Gemini khả dụng.");
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -63,7 +108,7 @@ export async function POST(req: NextRequest) {
     // 1. CHẾ ĐỘ KIỂM TRA KẾT NỐI (TEST CONNECTION)
     if (body.testConnection) {
       const apiKey = body.customApiKey?.trim() || process.env.GEMINI_API_KEY || "";
-      const model = body.model?.trim() || "gemini-3.8-flash";
+      const model = body.model?.trim() || "gemini-2.5-flash";
 
       if (!apiKey) {
         return NextResponse.json(
@@ -73,7 +118,7 @@ export async function POST(req: NextRequest) {
       }
 
       try {
-        await callGeminiApi(
+        const result = await callGeminiWithFallback(
           model,
           apiKey,
           "Bạn là trợ lý kiểm tra kết nối API.",
@@ -81,30 +126,10 @@ export async function POST(req: NextRequest) {
         );
         return NextResponse.json({
           success: true,
-          message: `Kết nối thành công tới ${model}!`,
+          message: `Kết nối thành công! Đã xác thực với mô hình ${result.modelUsed}.`,
+          modelUsed: result.modelUsed,
         });
       } catch (testErr: any) {
-        // Nếu model 3.8 bận hoặc chưa khả dụng, thử fallback sang 3.5-flash-lite
-        if (model === "gemini-3.8-flash") {
-          try {
-            await callGeminiApi(
-              "gemini-3.5-flash-lite",
-              apiKey,
-              "Bạn là trợ lý kiểm tra kết nối API.",
-              "Hãy phản hồi duy nhất 1 từ: 'OK'."
-            );
-            return NextResponse.json({
-              success: true,
-              message: "Kết nối thành công (qua mô hình Gemini 3.5 Lite)!",
-              fallbackModel: "gemini-3.5-flash-lite",
-            });
-          } catch (fallbackErr: any) {
-            return NextResponse.json(
-              { error: testErr.message || fallbackErr.message },
-              { status: 400 }
-            );
-          }
-        }
         return NextResponse.json(
           { error: testErr.message || "Lỗi kiểm tra API Key." },
           { status: 400 }
@@ -120,7 +145,7 @@ export async function POST(req: NextRequest) {
       selectedOption,
       isCorrect,
       customApiKey,
-      model = "gemini-3.8-flash",
+      model = "gemini-2.5-flash",
     }: {
       question: Question;
       prompt: string;
@@ -140,7 +165,7 @@ export async function POST(req: NextRequest) {
 
     const apiKey = customApiKey?.trim() || process.env.GEMINI_API_KEY || "";
 
-    // Nếu không có API Key, tự động chạy bộ máy Offline cực nhanh
+    // Nếu không có API Key, chạy bộ máy Offline nội bộ
     if (!apiKey) {
       const rawFallback = generateSocraticGuidance(
         question,
@@ -164,55 +189,49 @@ export async function POST(req: NextRequest) {
 
     const systemInstruction = `Bạn là Trợ lý Gia sư Socratic đồng hành ôn thi Tốt nghiệp THPT môn Tin học (Chương trình GDPT 2018).
 
-NGUYÊN TẮC SƯ PHẠM CỐT LÕI (BẮT BUỘC):
-1. TUYỆT ĐỐI KHÔNG TIẾT LỘ ĐÁP ÁN ĐÚNG hay nói kiểu "hãy chọn phương án X" hay "đáp án là X".
-2. TRẢ LỜI CỰC KỲ NGẮN GỌN VÀ SÚC TÍCH: Chỉ từ 3 đến tối đa 5 dòng (dưới 70 từ).
-3. ĐI THẲNG VÀO TRỌNG TÂM:
-   - Nếu học sinh chọn sai phương án, hãy chỉ ra ngay BẪY TƯ DUY của phương án đó (vì sao phương án đó vi phạm điều kiện đề bài).
-   - Nêu ngắn gọn 1 nguyên tắc kiến thức cốt lõi.
+NGUYÊN TẮC SƯ PHẠM CỐT LÕI (BẮT BUỘC TUÂN THỦ):
+1. TUYỆT ĐỐI KHÔNG NÓI ĐÁP ÁN ĐÚNG TRỰC TIẾP (không nói "hãy chọn C", "đáp án là C").
+2. TRẢ LỜI CỰC KỲ NGẮN GỌN & SÚC TÍCH: Chỉ từ 3 đến tối đa 5 dòng (dưới 70 từ).
+3. ĐI THẲNG VÀO TRỌNG TÂM CÂU HỎI CỤ THỂ:
+   - Nếu học sinh chọn sai phương án, hãy giải thích ngay BẪY TƯ DUY của phương án đó (vì sao phương án đó vi phạm hoặc không thỏa mãn yêu cầu đề bài).
+   - Nêu ngắn gọn 1 nguyên lý/khái niệm cốt lõi của câu hỏi.
    - Kết thúc bằng 1 câu hỏi gợi mở để học sinh tự đối chiếu từ khóa trong đề.
 4. Định dạng Markdown rõ ràng với in đậm (**từ khóa**) và gạch đầu dòng (•) để học sinh nắm bắt trong 3 giây.
 5. Không chào hỏi thủ tục, không rườm rà.`;
 
-    const userMessage = `NGỮ CẢNH CÂU HỎI:
+    const userMessage = `NGỮ CẢNH CÂU HỎI THI THPT:
 - Đề bài: ${question.content}
 - Chuyên đề: ${question.chapterName || question.topicName}
 - Các phương án:
 ${optionsText}
-- Phương án đúng trong đáp án: ${question.correctAnswer || "Chưa cung cấp"} (ĐÂY LÀ CHÂN LÝ THAM KHẢO, BẠN TUYỆT ĐỐI KHÔNG ĐƯỢC NÓI CHO HỌC SINH BIẾT)
+- Phương án đúng trong đáp án: ${question.correctAnswer || "Chưa cung cấp"} (ĐÂY LÀ CHÂN LÝ THAM KHẢO, BẠN TUYỆT ĐỐI KHÔNG ĐƯỢC TIẾT LỘ CHO HỌC SINH BIẾT)
 - Phương án học sinh đã chọn: ${selectedOption || "Chưa chọn"} (Kết quả: ${isCorrect ? "Đúng" : isCorrect === false ? "Sai" : "Chưa chấm"})
-- Lý thuyết tài liệu gợi ý: ${question.hints?.level1_concept || ""}
+- Lý thuyết sách giáo khoa tham khảo: ${question.hints?.level1_concept || ""}
 
-CÂU HỎI / THẮC MẮC CỦA HỌC SINH:
+YÊU CẦU CỦA HỌC SINH:
 "${prompt}"
 
-Hãy phản hồi theo phương pháp Socratic cực kỳ ngắn gọn (3-4 dòng), chỉ rõ bẫy và gợi mở suy luận!`;
+Hãy phản hồi theo phương pháp Socratic cực kỳ ngắn gọn (3-4 dòng), giải thích chính xác nguyên nhân câu hỏi này và gợi mở suy luận!`;
 
     try {
-      let rawAI = "";
-      try {
-        rawAI = await callGeminiApi(model, apiKey, systemInstruction, userMessage);
-      } catch (primaryErr: any) {
-        // Thử dự phòng sang Gemini 3.5 Lite nếu model 3.8 gặp sự cố
-        console.warn(`Model ${model} thất bại, thử fallback sang gemini-3.5-flash-lite:`, primaryErr.message);
-        rawAI = await callGeminiApi(
-          "gemini-3.5-flash-lite",
-          apiKey,
-          systemInstruction,
-          userMessage
-        );
-      }
+      const result = await callGeminiWithFallback(
+        model,
+        apiKey,
+        systemInstruction,
+        userMessage
+      );
 
       // Chạy qua Guardrail bảo vệ đáp án 2 lớp
-      const safeAI = sanitizeTutorResponse(rawAI, question);
+      const safeAI = sanitizeTutorResponse(result.text, question);
 
       return NextResponse.json({
         success: true,
         response: safeAI,
         engine: "gemini",
+        modelUsed: result.modelUsed,
       });
     } catch (aiErr: any) {
-      console.error("Lỗi gọi Gemini API, chuyển sang Offline Engine:", aiErr.message);
+      console.warn("Lỗi gọi Gemini API, chuyển sang Offline Engine:", aiErr.message);
       // Fallback êm ái sang bộ máy nội bộ nếu mất mạng hoặc key lỗi
       const fallbackText = generateSocraticGuidance(
         question,
@@ -226,7 +245,7 @@ Hãy phản hồi theo phương pháp Socratic cực kỳ ngắn gọn (3-4 dòn
         success: true,
         response: safeFallback,
         engine: "offline_fallback",
-        warning: "Đã chuyển sang bộ máy Offline do lỗi kết nối Gemini API.",
+        warning: aiErr.message || "Đã chuyển sang bộ máy Offline do lỗi kết nối Gemini API.",
       });
     }
   } catch (error: any) {

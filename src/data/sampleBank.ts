@@ -6600,11 +6600,11 @@ export const INITIAL_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại cú pháp, quy tắc đặt tên biến, kiểu dữ liệu hoặc cấu trúc điều khiển trong ngôn ngữ Python.",
-      "level2_formula": "Mô phỏng từng bước thực hiện của câu lệnh hoặc phân tích điều kiện logic để loại trừ các phương án sai.",
-      "level3_steps": "Đối chiếu với quy tắc chuẩn của Python (thụt lề, chỉ số từ 0, hàm chuẩn) để chọn phương án đúng nhất."
+      "level1_concept": "Phân biệt Ngôn ngữ máy (máy tính hiểu trực tiếp dạng nhị phân) và Ngôn ngữ bậc cao (gần gũi với ngôn ngữ tự nhiên, máy tính không hiểu trực tiếp mà phải thông qua chương trình dịch).",
+      "level2_formula": "Đọc kỹ từ khóa 'không phải': Đặc điểm nào thuộc về ngôn ngữ máy thì đó chính là đáp án cần chọn.",
+      "level3_steps": "Đối chiếu: A, C, D đều là ưu điểm của ngôn ngữ bậc cao. Phương án B là đặc trưng duy nhất của ngôn ngữ máy."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 10F - Lập trình cơ bản.",
+    "explanation": "Ngôn ngữ máy là ngôn ngữ duy nhất máy tính có thể trực tiếp hiểu và thực thi mà không cần dịch. Các ngôn ngữ bậc cao (như Python, C++, Java) bắt buộc phải qua chương trình dịch (biên dịch hoặc thông dịch) để chuyển sang mã máy.",
     "sourceDocTitle": "Chuyên đề 10F. Lập trình cơ bản (Google Drive)"
   },
   {
