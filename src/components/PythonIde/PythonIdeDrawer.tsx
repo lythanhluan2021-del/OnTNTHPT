@@ -10,6 +10,9 @@ interface PythonIdeDrawerProps {
   onClose: () => void;
   initialCode?: string;
   initialStdin?: string;
+  exerciseTitle?: string;
+  exerciseTargetAnswer?: string;
+  exerciseQuestionNumber?: number | string;
 }
 
 export const PythonIdeDrawer: React.FC<PythonIdeDrawerProps> = ({
@@ -17,6 +20,9 @@ export const PythonIdeDrawer: React.FC<PythonIdeDrawerProps> = ({
   onClose,
   initialCode,
   initialStdin,
+  exerciseTitle,
+  exerciseTargetAnswer,
+  exerciseQuestionNumber,
 }) => {
   if (!isOpen) return null;
 
@@ -26,6 +32,9 @@ export const PythonIdeDrawer: React.FC<PythonIdeDrawerProps> = ({
         <PythonIde
           initialCode={initialCode}
           initialStdin={initialStdin}
+          exerciseTitle={exerciseTitle}
+          exerciseTargetAnswer={exerciseTargetAnswer}
+          exerciseQuestionNumber={exerciseQuestionNumber}
           onClose={() => {
             soundManager.playClick();
             onClose();

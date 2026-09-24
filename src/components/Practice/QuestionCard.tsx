@@ -5,6 +5,7 @@ import { Question } from "@/types";
 import { LatexRenderer } from "../UI/LatexRenderer";
 import { Check, X, Bookmark, FileText, CheckCircle2, XCircle, Terminal } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
+import { PYTHON_QUESTION_EXERCISES } from "@/data/pythonQuestionCodes";
 
 interface QuestionCardProps {
   question: Question;
@@ -16,7 +17,13 @@ interface QuestionCardProps {
   selectedTF?: Record<string, boolean | null>;
   onSelectTF?: (itemId: string, value: boolean) => void;
   hasAnswered: boolean;
-  onOpenIde?: (codeSnippet?: string) => void;
+  onOpenIde?: (
+    codeSnippet?: string,
+    exerciseTitle?: string,
+    defaultInput?: string,
+    targetAnswer?: string,
+    questionNumber?: number | string
+  ) => void;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -133,23 +140,53 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             <LatexRenderer content={question.content} />
           </div>
 
-          {/* Nút mở nhanh Python IDE để học sinh thử nghiệm trực tiếp */}
-          {isPythonQuestion && onOpenIde && (
-            <div className="pt-1.5 flex items-center justify-end">
-              <button
-                type="button"
-                onClick={() => {
-                  soundManager.playClick();
-                  onOpenIde();
-                }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm bg-[#e6ecf5] text-blue-700 hover:text-blue-800 text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset hover:bg-blue-50/80 transition-all border border-blue-200/70"
-                title="Mở trình soạn thảo Python IDE để chạy thử và kiểm chứng câu hỏi này"
-              >
-                <Terminal className="w-3.5 h-3.5 text-blue-600" />
-                <span>Mở Python IDE thử nghiệm</span>
-              </button>
-            </div>
-          )}
+          {/* Nút chạy thử nghiệm bài tập này trong Python IDE */}
+          {isPythonQuestion && onOpenIde && (() => {
+            const questionExercise = PYTHON_QUESTION_EXERCISES[question.id];
+            return (
+              <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-slate-200/60 mt-1.5">
+                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium">
+                  {questionExercise ? (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px] border border-emerald-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      Có sẵn mã nguồn thực hành
+                    </span>
+                  ) : (
+                    <span className="text-[11px] text-slate-500">Môi trường chạy code CPython</span>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    if (questionExercise) {
+                      onOpenIde(
+                        questionExercise.runnableCode,
+                        questionExercise.title,
+                        questionExercise.defaultInput,
+                        questionExercise.targetAnswer,
+                        questionExercise.questionNumber
+                      );
+                    } else {
+                      onOpenIde(undefined, `Luyện tập câu ${currentIndex + 1}`);
+                    }
+                  }}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset transition-all ${
+                    questionExercise
+                      ? "bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 hover:text-blue-900 border border-blue-300/80 hover:border-blue-400"
+                      : "bg-[#e6ecf5] text-slate-700 hover:text-blue-700 border border-slate-300/60"
+                  }`}
+                  title="Mở trình soạn thảo Python IDE để chạy thử và kiểm chứng câu hỏi này"
+                >
+                  <Terminal className="w-3.5 h-3.5 text-blue-600" />
+                  <span>
+                    {questionExercise ? "🧪 Chạy thử bài này trong IDE (1-Click)" : "Mở Python IDE"}
+                  </span>
+                </button>
+              </div>
+            );
+          })()}
 
           {/* Điểm số dạng Đúng / Sai khi đã làm xong */}
           {hasAnswered && tfScore && (

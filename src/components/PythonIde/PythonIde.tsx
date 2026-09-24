@@ -23,11 +23,19 @@ import {
 } from "lucide-react";
 import { pythonRunner, PythonRunResult, PyodideStatus } from "@/lib/pyodideRunner";
 import { PYTHON_TEMPLATES, PythonTemplate } from "@/data/pythonTemplates";
+import {
+  PYTHON_QUESTION_EXERCISES_LIST,
+  PYTHON_QUESTION_EXERCISES,
+  PythonQuestionExercise,
+} from "@/data/pythonQuestionCodes";
 import { soundManager } from "@/lib/audioEffects";
 
 interface PythonIdeProps {
   initialCode?: string;
   initialStdin?: string;
+  exerciseTitle?: string;
+  exerciseTargetAnswer?: string;
+  exerciseQuestionNumber?: number | string;
   onClose?: () => void;
   isModal?: boolean;
 }
@@ -35,6 +43,9 @@ interface PythonIdeProps {
 export const PythonIde: React.FC<PythonIdeProps> = ({
   initialCode,
   initialStdin = "",
+  exerciseTitle,
+  exerciseTargetAnswer,
+  exerciseQuestionNumber,
   onClose,
   isModal = false,
 }) => {
@@ -52,6 +63,20 @@ export const PythonIde: React.FC<PythonIdeProps> = ({
   const [copied, setCopied] = useState<boolean>(false);
   const [showStdin, setShowStdin] = useState<boolean>(false);
   const [showTemplateModal, setShowTemplateModal] = useState<boolean>(false);
+  const [templateModalTab, setTemplateModalTab] = useState<"exam" | "basic">("exam");
+  const [activeExerciseInfo, setActiveExerciseInfo] = useState<{
+    title: string;
+    targetAnswer?: string;
+    questionNumber?: number | string;
+  } | null>(
+    exerciseTitle
+      ? {
+          title: exerciseTitle,
+          targetAnswer: exerciseTargetAnswer,
+          questionNumber: exerciseQuestionNumber,
+        }
+      : null
+  );
   const [mobileTab, setMobileTab] = useState<"editor" | "output">("editor");
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -73,12 +98,23 @@ export const PythonIde: React.FC<PythonIdeProps> = ({
     };
   }, []);
 
-  // Cập nhật khi prop initialCode thay đổi từ bên ngoài
+  // Cập nhật khi props thay đổi từ bên ngoài
   useEffect(() => {
     if (initialCode !== undefined) {
       setCode(initialCode);
     }
-  }, [initialCode]);
+    if (initialStdin !== undefined) {
+      setStdin(initialStdin);
+      if (initialStdin.trim()) setShowStdin(true);
+    }
+    if (exerciseTitle) {
+      setActiveExerciseInfo({
+        title: exerciseTitle,
+        targetAnswer: exerciseTargetAnswer,
+        questionNumber: exerciseQuestionNumber,
+      });
+    }
+  }, [initialCode, initialStdin, exerciseTitle, exerciseTargetAnswer, exerciseQuestionNumber]);
 
   // Cuộn đồng bộ số dòng với textarea
   const handleScroll = () => {
@@ -221,7 +257,7 @@ export const PythonIde: React.FC<PythonIdeProps> = ({
     }
   };
 
-  // Chọn bài mẫu từ thư viện
+  // Chọn bài mẫu từ thư viện cơ bản
   const handleSelectTemplate = (template: PythonTemplate) => {
     soundManager.playClick();
     setCode(template.code);
@@ -230,7 +266,35 @@ export const PythonIde: React.FC<PythonIdeProps> = ({
       if (template.defaultInput) {
         setShowStdin(true);
       }
+    } else {
+      setStdin("");
     }
+    setActiveExerciseInfo({
+      title: template.title,
+    });
+    setStdout("");
+    setStderr("");
+    setErrorAdvice(null);
+    setShowTemplateModal(false);
+  };
+
+  // Chọn bài tập trích xuất từ câu hỏi đề thi THPT
+  const handleSelectExamExercise = (exercise: PythonQuestionExercise) => {
+    soundManager.playClick();
+    setCode(exercise.runnableCode);
+    if (exercise.defaultInput !== undefined) {
+      setStdin(exercise.defaultInput);
+      if (exercise.defaultInput) {
+        setShowStdin(true);
+      }
+    } else {
+      setStdin("");
+    }
+    setActiveExerciseInfo({
+      title: exercise.title,
+      targetAnswer: exercise.targetAnswer,
+      questionNumber: exercise.questionNumber,
+    });
     setStdout("");
     setStderr("");
     setErrorAdvice(null);
@@ -357,6 +421,32 @@ export const PythonIde: React.FC<PythonIdeProps> = ({
           )}
         </div>
       </div>
+
+      {/* Banner thông tin bài tập đề thi đang thực hành */}
+      {activeExerciseInfo && (
+        <div className="px-3 sm:px-4 py-2 bg-blue-100/90 border-b border-blue-200/90 flex flex-wrap items-center justify-between gap-2 text-xs animate-fade-in">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="px-2 py-0.5 rounded-full bg-blue-700 text-white text-[10px] font-black shrink-0 shadow-xs">
+              {activeExerciseInfo.questionNumber
+                ? typeof activeExerciseInfo.questionNumber === "number"
+                  ? `Câu ${activeExerciseInfo.questionNumber}`
+                  : activeExerciseInfo.questionNumber
+                : "Thực hành"}
+            </span>
+            <span className="font-bold text-slate-800 truncate">
+              {activeExerciseInfo.title}
+            </span>
+          </div>
+          {activeExerciseInfo.targetAnswer && (
+            <div className="flex items-center gap-1.5 shrink-0">
+              <span className="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300 shadow-xs flex items-center gap-1">
+                <span>🎯 Mục tiêu đối chiếu:</span>
+                <span className="font-extrabold">{activeExerciseInfo.targetAnswer}</span>
+              </span>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* 2. Thanh chuyển Tab trên màn hình nhỏ (Mobile Tab Bar) */}
       <div className="flex md:hidden border-b border-slate-200 bg-[#e6ecf5] p-1 gap-1">
@@ -572,17 +662,17 @@ export const PythonIde: React.FC<PythonIdeProps> = ({
         </div>
       </div>
 
-      {/* 4. Modal chọn bài tập mẫu */}
+      {/* 4. Modal chọn bài tập mẫu & bài tập từ đề thi */}
       {showTemplateModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 antialiased animate-fade-in">
-          <div className="w-full max-w-lg rounded-neu bg-[#e6ecf5] shadow-neu-flat border border-white/80 p-5 space-y-4 max-h-[85vh] flex flex-col">
-            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 antialiased animate-fade-in">
+          <div className="w-full max-w-xl rounded-neu bg-[#e6ecf5] shadow-neu-flat border border-white/80 p-4 sm:p-5 space-y-3.5 max-h-[88vh] flex flex-col">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-2.5">
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-neu-sm bg-blue-100 flex items-center justify-center text-blue-600 shadow-neu-flat-xs">
                   <BookOpen className="w-4 h-4" />
                 </div>
-                <h3 className="text-sm font-bold text-slate-800">
-                  Thư Viện Bài Mẫu Tin Học 10 & 12
+                <h3 className="text-sm font-black text-slate-800">
+                  Thư Viện Bài Tập & Code Mẫu Python
                 </h3>
               </div>
               <button
@@ -593,34 +683,100 @@ export const PythonIde: React.FC<PythonIdeProps> = ({
               </button>
             </div>
 
-            <p className="text-xs text-slate-600">
-              Chọn một bài tập mẫu để nạp mã nguồn chuẩn và dữ liệu đầu vào tương ứng vào trình soạn thảo:
+            {/* Thanh chuyển đổi 2 Tab: Bài tập từ Đề thi vs Kiến thức SGK */}
+            <div className="flex items-center gap-1.5 p-1 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset-sm">
+              <button
+                type="button"
+                onClick={() => setTemplateModalTab("exam")}
+                className={`flex-1 py-1.5 px-2 rounded-neu-sm text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                  templateModalTab === "exam"
+                    ? "bg-[#e6ecf5] text-blue-700 shadow-neu-flat-sm font-extrabold"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                <span>🎯 Bài tập từ Đề thi ({PYTHON_QUESTION_EXERCISES_LIST.length} câu)</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setTemplateModalTab("basic")}
+                className={`flex-1 py-1.5 px-2 rounded-neu-sm text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                  templateModalTab === "basic"
+                    ? "bg-[#e6ecf5] text-blue-700 shadow-neu-flat-sm font-extrabold"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                <span>📚 Kiến thức SGK ({PYTHON_TEMPLATES.length} bài)</span>
+              </button>
+            </div>
+
+            <p className="text-[11px] text-slate-500">
+              {templateModalTab === "exam"
+                ? "Chọn một câu hỏi trong đề ôn thi THPT để nạp mã nguồn hoàn chỉnh và chạy kiểm chứng kết quả:"
+                : "Chọn cấu trúc lập trình cơ bản để xem ví dụ và thực hành:"}
             </p>
 
             <div className="flex-1 overflow-y-auto space-y-2 pr-1">
-              {PYTHON_TEMPLATES.map((tmpl) => (
-                <button
-                  key={tmpl.id}
-                  onClick={() => handleSelectTemplate(tmpl)}
-                  className="w-full text-left p-3 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-sm hover:shadow-neu-inset transition-all border border-white/60 space-y-1 group"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs text-slate-800 group-hover:text-blue-600">
-                      {tmpl.title}
-                    </span>
-                    <span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold">
-                      {tmpl.category}
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-slate-500 leading-tight">
-                    {tmpl.description}
-                  </p>
-                </button>
-              ))}
+              {templateModalTab === "exam" ? (
+                PYTHON_QUESTION_EXERCISES_LIST.map((item) => (
+                  <button
+                    key={item.questionId}
+                    type="button"
+                    onClick={() => handleSelectExamExercise(item)}
+                    className="w-full text-left p-3 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-sm hover:shadow-neu-inset transition-all border border-white/60 space-y-1.5 group"
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <span className="px-1.5 py-0.2 rounded bg-blue-600 text-white text-[10px] font-bold shrink-0">
+                          {typeof item.questionNumber === "number" ? `Câu ${item.questionNumber}` : item.questionNumber}
+                        </span>
+                        <span className="font-bold text-xs text-slate-800 group-hover:text-blue-600 truncate">
+                          {item.title}
+                        </span>
+                      </div>
+                      <span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-bold shrink-0">
+                        {item.category}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-tight">
+                      {item.summary}
+                    </p>
+                    <div className="flex items-center justify-between text-[10px] pt-0.5 border-t border-slate-200/60 text-slate-500">
+                      <span className="font-mono text-emerald-700 font-semibold truncate max-w-[320px]">
+                        🎯 {item.targetAnswer}
+                      </span>
+                      <span className="text-blue-600 font-bold group-hover:underline">
+                        Nạp vào IDE ➔
+                      </span>
+                    </div>
+                  </button>
+                ))
+              ) : (
+                PYTHON_TEMPLATES.map((tmpl) => (
+                  <button
+                    key={tmpl.id}
+                    type="button"
+                    onClick={() => handleSelectTemplate(tmpl)}
+                    className="w-full text-left p-3 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-sm hover:shadow-neu-inset transition-all border border-white/60 space-y-1 group"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-xs text-slate-800 group-hover:text-blue-600">
+                        {tmpl.title}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-full bg-slate-200 text-slate-700 text-[10px] font-bold">
+                        {tmpl.category}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 leading-tight">
+                      {tmpl.description}
+                    </p>
+                  </button>
+                ))
+              )}
             </div>
 
             <div className="pt-2 border-t border-slate-200 text-right">
               <button
+                type="button"
                 onClick={() => setShowTemplateModal(false)}
                 className="px-4 py-1.5 rounded-neu-sm bg-[#e6ecf5] text-slate-700 text-xs font-bold shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
               >

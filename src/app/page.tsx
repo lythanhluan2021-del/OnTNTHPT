@@ -38,6 +38,10 @@ export default function AppHome() {
   const [ideCodeToRun, setIdeCodeToRun] = useState<string | undefined>(undefined);
   const [isIdeDrawerOpen, setIsIdeDrawerOpen] = useState(false);
   const [ideDrawerCode, setIdeDrawerCode] = useState<string | undefined>(undefined);
+  const [ideDrawerStdin, setIdeDrawerStdin] = useState<string | undefined>(undefined);
+  const [ideDrawerTitle, setIdeDrawerTitle] = useState<string | undefined>(undefined);
+  const [ideDrawerTargetAnswer, setIdeDrawerTargetAnswer] = useState<string | undefined>(undefined);
+  const [ideDrawerQuestionNumber, setIdeDrawerQuestionNumber] = useState<number | string | undefined>(undefined);
 
   // Mặc định mở sidebar trên màn hình máy tính (>= 768px)
   useEffect(() => {
@@ -618,10 +622,14 @@ export default function AppHome() {
                     selectedTF={selectedTF}
                     onSelectTF={handleSelectTF}
                     hasAnswered={hasAnswered}
-                    onOpenIde={(codeSnippet) => {
+                    onOpenIde={(codeSnippet, title, defaultInput, targetAnswer, questionNumber) => {
                       if (codeSnippet) {
                         setIdeDrawerCode(codeSnippet);
                       }
+                      setIdeDrawerTitle(title);
+                      setIdeDrawerStdin(defaultInput);
+                      setIdeDrawerTargetAnswer(targetAnswer);
+                      setIdeDrawerQuestionNumber(questionNumber);
                       setIsIdeDrawerOpen(true);
                     }}
                   />
@@ -705,6 +713,10 @@ export default function AppHome() {
         isOpen={isIdeDrawerOpen}
         onClose={() => setIsIdeDrawerOpen(false)}
         initialCode={ideDrawerCode}
+        initialStdin={ideDrawerStdin}
+        exerciseTitle={ideDrawerTitle}
+        exerciseTargetAnswer={ideDrawerTargetAnswer}
+        exerciseQuestionNumber={ideDrawerQuestionNumber}
       />
 
       {/* Cổng đăng nhập cho Học sinh & Giáo viên */}
