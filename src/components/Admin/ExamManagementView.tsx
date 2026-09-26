@@ -519,6 +519,7 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
   const [isPaperPrintOpen, setIsPaperPrintOpen] = useState(false);
   const [isClassRosterOpen, setIsClassRosterOpen] = useState(false);
   const [isReportPrintOpen, setIsReportPrintOpen] = useState(false);
+  const [viewingViolationSub, setViewingViolationSub] = useState<ExamSubmission | null>(null);
 
   // Khi đổi kỳ thi đang chọn
   useEffect(() => {
@@ -2128,13 +2129,70 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                             {new Date(sub.submitTime).toLocaleTimeString("vi-VN")}
                           </td>
                           <td className="py-2 px-3 text-center">
-                            {sub.violations.length > 0 ? (
-                              <span className="px-2 py-0.5 rounded text-[10px] font-black bg-rose-100 text-rose-800">
-                                ⚠️ {sub.violations.length} lần
-                              </span>
-                            ) : (
-                              <span className="text-emerald-700 font-bold text-[11px]">0 lỗi</span>
-                            )}
+                            {(() => {
+                              const penaltyCount =
+                                typeof sub.tabSwitchCount === "number"
+                                  ? sub.tabSwitchCount
+                                  : (sub.violations || []).filter(
+                                      (v) => v.type !== "grace_recovered" && v.type !== "webcam_warning"
+                                    ).length;
+                              const graceCount = (sub.violations || []).filter(
+                                (v) => v.type === "grace_recovered"
+                              ).length;
+                              const hasWebcamWarn = (sub.violations || []).some(
+                                (v) => v.type === "webcam_warning"
+                              );
+
+                              if (penaltyCount > 0) {
+                                return (
+                                  <button
+                                    type="button"
+                                    onClick={() => setViewingViolationSub(sub)}
+                                    className="px-2 py-0.5 rounded text-[10px] font-black bg-rose-100 hover:bg-rose-200 text-rose-800 transition cursor-pointer inline-flex items-center gap-1"
+                                    title="Bấm để xem chi tiết nhật ký vi phạm"
+                                  >
+                                    <span>⚠️ {penaltyCount} lần</span>
+                                  </button>
+                                );
+                              }
+
+                              if (graceCount > 0) {
+                                return (
+                                  <button
+                                    type="button"
+                                    onClick={() => setViewingViolationSub(sub)}
+                                    className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 transition cursor-pointer inline-flex items-center gap-1"
+                                    title={`Đã quay lại an toàn trong thời gian ân hạn ${graceCount} lần (Không bị tính phạt)`}
+                                  >
+                                    <span>0 lỗi ({graceCount} ân hạn)</span>
+                                  </button>
+                                );
+                              }
+
+                              if (hasWebcamWarn) {
+                                return (
+                                  <button
+                                    type="button"
+                                    onClick={() => setViewingViolationSub(sub)}
+                                    className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition cursor-pointer"
+                                    title="Thí sinh chưa bật camera (Không bị tính phạt)"
+                                  >
+                                    <span>0 lỗi (Không Cam)</span>
+                                  </button>
+                                );
+                              }
+
+                              return (
+                                <button
+                                  type="button"
+                                  onClick={() => setViewingViolationSub(sub)}
+                                  className="text-emerald-700 hover:text-emerald-800 font-bold text-[11px] cursor-pointer"
+                                  title="Xem nhật ký giám thị"
+                                >
+                                  0 lỗi
+                                </button>
+                              );
+                            })()}
                           </td>
                           <td className="py-2 px-3 text-center font-black text-sm">
                             {sub.isDisqualified ? (
@@ -2448,6 +2506,110 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
           report={examAnalyticsReport}
           selectedClass={analyticsClassFilter}
         />
+      )}
+
+      {/* 5. Modal xem chi tiết nhật ký vi phạm & giám thị */}
+      {viewingViolationSub && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-lg w-full p-5 space-y-4 border border-slate-200 dark:border-slate-800">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+              <div className="flex items-center gap-2">
+                <ShieldAlert className="w-5 h-5 text-indigo-600" />
+                <h3 className="text-sm font-black text-slate-800 dark:text-slate-100">
+                  Nhật Ký Giám Thị &amp; Vi Phạm Quy Chế
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setViewingViolationSub(null)}
+                className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-full cursor-pointer text-base font-bold"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 space-y-1.5 text-xs">
+              <div className="flex items-center justify-between">
+                <span>Thí sinh: <strong>{viewingViolationSub.studentName}</strong> ({viewingViolationSub.candidateNumber || viewingViolationSub.studentId})</span>
+                <span className="font-bold text-blue-700">Lớp: {viewingViolationSub.className}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Mã đề: <strong>{viewingViolationSub.variantCode || '101'}</strong> • Điểm: <strong>{viewingViolationSub.totalScore.toFixed(2)} đ</strong></span>
+                <span className={`px-2 py-0.5 rounded text-[10px] font-black ${
+                  (viewingViolationSub.tabSwitchCount || 0) > 0
+                    ? 'bg-rose-100 text-rose-800'
+                    : 'bg-emerald-100 text-emerald-800'
+                }`}>
+                  {viewingViolationSub.tabSwitchCount || 0} lỗi bị phạt
+                </span>
+              </div>
+            </div>
+
+            <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
+              <div className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                Chi tiết sự kiện giám sát ({viewingViolationSub.violations?.length || 0}):
+              </div>
+              {viewingViolationSub.violations && viewingViolationSub.violations.length > 0 ? (
+                viewingViolationSub.violations.map((v, i) => (
+                  <div
+                    key={i}
+                    className={`p-2.5 rounded-lg text-xs space-y-1 border ${
+                      v.type === 'grace_recovered'
+                        ? 'bg-amber-50 dark:bg-amber-950/30 border-amber-200 text-amber-900 dark:text-amber-200'
+                        : v.type === 'webcam_warning'
+                        ? 'bg-slate-50 dark:bg-slate-800/40 border-slate-200 text-slate-700 dark:text-slate-300'
+                        : 'bg-rose-50 dark:bg-rose-950/30 border-rose-200 text-rose-900 dark:text-rose-200'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between font-mono text-[10px] font-bold">
+                      <span>{new Date(v.timestamp).toLocaleTimeString('vi-VN')}</span>
+                      <span className="uppercase px-1.5 py-0.5 rounded bg-white/80 dark:bg-black/40 text-[9px]">
+                        {v.type === 'tab_switch'
+                          ? 'Chuyển Tab'
+                          : v.type === 'window_blur'
+                          ? 'Mất Focus Cửa Sổ'
+                          : v.type === 'fullscreen_exit'
+                          ? 'Thoát Toàn Màn Hình'
+                          : v.type === 'grace_recovered'
+                          ? 'Ân Hạn (Đã quay lại kịp)'
+                          : v.type === 'webcam_warning'
+                          ? 'Cảnh Báo Cam'
+                          : v.type}
+                      </span>
+                    </div>
+                    <p className="font-medium text-[11px]">{v.description}</p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-xs text-slate-500 italic py-2 text-center">
+                  Không có sự kiện bất thường nào ghi nhận. Bài thi hoàn toàn trung thực.
+                </p>
+              )}
+            </div>
+
+            <div className="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
+              <button
+                type="button"
+                onClick={() => {
+                  const sid = viewingViolationSub.studentId;
+                  const sname = viewingViolationSub.studentName;
+                  setViewingViolationSub(null);
+                  handleResetStudentAttempt(sid, sname);
+                }}
+                className="px-3 py-1.5 rounded-neu-sm bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold border border-rose-200 transition cursor-pointer"
+              >
+                Hủy bài (Cho thi lại)
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewingViolationSub(null)}
+                className="px-4 py-1.5 rounded-neu-sm bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition cursor-pointer"
+              >
+                Đóng
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -89,6 +89,15 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
   const graceTimerRef = useRef<NodeJS.Timeout | null>(null);
   const gracePendingViolationRef = useRef<{ type: ViolationEvent["type"]; description: string } | null>(null);
 
+  // Thời gian đệm khởi tạo an toàn (6s) tránh bắt nhầm khi cấp quyền Camera/Toàn màn hình
+  const isStartupInitRef = useRef(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      isStartupInitRef.current = false;
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, []);
+
   // === TÍNH NĂNG MỚI: PROCTOR APPEAL & TẠM KHÓA BÀI THI ===
   const [isExamLocked, setIsExamLocked] = useState(false);
   const [appealReason, setAppealReason] = useState("");
@@ -258,12 +267,6 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
         .catch((err) => {
           console.warn("Camera access denied or unavailable", err);
           setWebcamError("Không thể bật camera giám sát. Vui lòng cấp quyền truy cập camera!");
-          const warnEvent: ViolationEvent = {
-            timestamp: Date.now(),
-            type: "webcam_warning",
-            description: "Thí sinh chưa bật hoặc từ chối cấp quyền Camera giám sát",
-          };
-          setViolations((prev) => [...prev, warnEvent]);
         });
     }
 
@@ -374,9 +377,23 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     }
   };
 
+  // Nhận diện thiết bị di động (Smartphones, Tablets) để tối ưu cơ chế giám sát chuẩn xác
+  const isMobileDevice = () => {
+    if (typeof window === "undefined") return false;
+    return (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+      (typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1)
+    );
+  };
+
   // Kích hoạt vi phạm tiềm năng với Grace Period
   const triggerPotentialViolation = (type: ViolationEvent["type"], description: string) => {
     if (isExamLocked || isSubmitting) return;
+
+    // Trong 6 giây đầu vào phòng thi, bỏ qua các sự kiện mất tiêu điểm do hộp thoại xin quyền Camera / Toàn màn hình
+    if (isStartupInitRef.current && (type === "window_blur" || type === "fullscreen_exit")) {
+      return;
+    }
 
     if (gracePeriodSeconds <= 0) {
       recordViolation(type, description);
@@ -440,6 +457,8 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
 
   // 1. Chống chuyển Tab & Rời màn hình thi với Grace Period
   useEffect(() => {
+    const isMobile = isMobileDevice();
+
     const handleVisibilityChange = () => {
       if (document.hidden) {
         triggerPotentialViolation(
@@ -452,6 +471,11 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     };
 
     const handleWindowBlur = () => {
+      // Trên thiết bị di động (Smartphones/Tablets), KHÔNG kích hoạt vi phạm bằng window.blur
+      // vì thanh địa chỉ co giãn khi cuộn hoặc mở bàn phím ảo sẽ kích hoạt blur giả.
+      // Trên di động chỉ dựa vào document.visibilitychange (khi thực sự chuyển app/tab).
+      if (isMobile) return;
+
       triggerPotentialViolation(
         "window_blur",
         "Hệ thống phát hiện bạn vừa rời khỏi cửa sổ bài thi (mở ứng dụng ngoài)!"
@@ -459,17 +483,22 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     };
 
     const handleWindowFocus = () => {
+      if (isMobile) return;
       cancelGracePeriod();
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    window.addEventListener("blur", handleWindowBlur);
-    window.addEventListener("focus", handleWindowFocus);
+    if (!isMobile) {
+      window.addEventListener("blur", handleWindowBlur);
+      window.addEventListener("focus", handleWindowFocus);
+    }
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("blur", handleWindowBlur);
-      window.removeEventListener("focus", handleWindowFocus);
+      if (!isMobile) {
+        window.removeEventListener("blur", handleWindowBlur);
+        window.removeEventListener("focus", handleWindowFocus);
+      }
     };
   }, [maxViolations, isExamLocked, isSubmitting, gracePeriodSeconds]);
 
@@ -477,10 +506,12 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
   useEffect(() => {
     if (!exam.antiCheatConfig.enableFullscreen) return;
 
-    // Yêu cầu toàn màn hình khi bắt đầu
+    const isMobile = isMobileDevice();
+
+    // Yêu cầu toàn màn hình khi bắt đầu (chỉ trên Desktop)
     const enterFullscreen = async () => {
       try {
-        if (!document.fullscreenElement) {
+        if (!document.fullscreenElement && !isMobile) {
           await document.documentElement.requestFullscreen();
           setIsFullscreen(true);
         }
@@ -492,6 +523,9 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     enterFullscreen();
 
     const handleFullscreenChange = () => {
+      // Trên điện thoại, không phạt lỗi thoát fullscreen vì nhiều dòng máy (như iOS Safari) không hỗ trợ Fullscreen API chuẩn cho trang web
+      if (isMobile) return;
+
       if (!document.fullscreenElement) {
         setIsFullscreen(false);
         triggerPotentialViolation(
