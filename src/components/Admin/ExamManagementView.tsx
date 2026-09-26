@@ -261,6 +261,34 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
   const [isParsingFile, setIsParsingFile] = useState(false);
   const [parseError, setParseError] = useState("");
 
+  // Danh sách toàn bộ chủ đề có sẵn trong hệ thống
+  const allTopics = useMemo(() => {
+    const list: {
+      id: string;
+      name: string;
+      chapter: string;
+      totalQuestions: number;
+      mcCount: number;
+      tfCount: number;
+    }[] = [];
+    subjects.forEach((subj) => {
+      subj.topics.forEach((top) => {
+        const topQuestions = questions.filter((q) => q.topicId === top.id);
+        const mc = topQuestions.filter((q) => q.type !== "true_false").length;
+        const tf = topQuestions.filter((q) => q.type === "true_false").length;
+        list.push({
+          id: top.id,
+          name: top.name,
+          chapter: top.chapter || subj.name,
+          totalQuestions: topQuestions.length || top.totalQuestions || 0,
+          mcCount: mc || top.mcCount || 0,
+          tfCount: tf || top.tfCount || 0,
+        });
+      });
+    });
+    return list;
+  }, [subjects, questions]);
+
   // Nguồn 2: Ma trận 4 mức độ
   const [matrixTopicIds, setMatrixTopicIds] = useState<string[]>(() => {
     const tin12 = subjects.find((s) => s.id === "tin-hoc-12");
@@ -268,6 +296,70 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
   });
   const [matrixMcLevels, setMatrixMcLevels] = useState({ NhanBiet: 8, ThongHieu: 8, VanDung: 6, VanDungCao: 2 });
   const [matrixTfLevels, setMatrixTfLevels] = useState({ NhanBiet: 1, ThongHieu: 1, VanDung: 1, VanDungCao: 1 });
+
+  const handleSelectAllTopics = () => {
+    setMatrixTopicIds(allTopics.map((t) => t.id));
+    soundManager.playClick();
+  };
+
+  const handleDeselectAllTopics = () => {
+    setMatrixTopicIds([]);
+    soundManager.playClick();
+  };
+
+  const handleToggleTopic = (topicId: string) => {
+    setMatrixTopicIds((prev) =>
+      prev.includes(topicId) ? prev.filter((id) => id !== topicId) : [...prev, topicId]
+    );
+    soundManager.playClick();
+  };
+
+  const selectedTopicsAvailableQuestions = useMemo(() => {
+    const selected = allTopics.filter((t) => matrixTopicIds.includes(t.id));
+    const total = selected.reduce((sum, t) => sum + t.totalQuestions, 0);
+    const totalMc = selected.reduce((sum, t) => sum + t.mcCount, 0);
+    const totalTf = selected.reduce((sum, t) => sum + t.tfCount, 0);
+    return { total, totalMc, totalTf };
+  }, [allTopics, matrixTopicIds]);
+
+  // Nguồn 3: Tự chọn từng câu hỏi từ ngân hàng
+  const [pickerSelectedTopicId, setPickerSelectedTopicId] = useState<string>(
+    subjects.find((s) => s.id === "tin-hoc-12")?.topics[0]?.id || "tin-lap-trinh-python"
+  );
+  const [pickerFilterType, setPickerFilterType] = useState<"all" | "mc" | "tf">("all");
+  const [pickerSearchQuery, setPickerSearchQuery] = useState("");
+
+  const pickerQuestions = useMemo(() => {
+    return questions.filter((q) => {
+      const matchTopic = q.topicId === pickerSelectedTopicId;
+      const matchType =
+        pickerFilterType === "all"
+          ? true
+          : pickerFilterType === "mc"
+          ? q.type !== "true_false"
+          : q.type === "true_false";
+      const matchSearch = pickerSearchQuery
+        ? q.content.toLowerCase().includes(pickerSearchQuery.toLowerCase())
+        : true;
+      return matchTopic && matchType && matchSearch;
+    });
+  }, [questions, pickerSelectedTopicId, pickerFilterType, pickerSearchQuery]);
+
+  const handleTogglePickQuestion = (questionToAdd: Question) => {
+    const isAlreadyIn = workingQuestions.some((q) => q.id === questionToAdd.id);
+    if (isAlreadyIn) {
+      setWorkingQuestions(workingQuestions.filter((q) => q.id !== questionToAdd.id));
+      soundManager.playClick();
+    } else {
+      const newMockQ: MockExamQuestion = {
+        ...questionToAdd,
+        examIndex: workingQuestions.length + 1,
+        part: (questionToAdd.type === "true_false" ? "tf" : "mc") as "mc" | "tf",
+      };
+      setWorkingQuestions([...workingQuestions, newMockQ]);
+      soundManager.playSuccess();
+    }
+  };
 
   // Bộ câu hỏi đang biên tập
   const [workingQuestions, setWorkingQuestions] = useState<MockExamQuestion[]>(currentExam?.questions || []);
@@ -865,7 +957,7 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                   </h3>
                 </div>
 
-                <div className="flex rounded-neu-sm bg-slate-200/60 p-0.5 text-xs font-bold">
+                <div className="flex rounded-neu-sm bg-slate-200/60 p-0.5 text-xs font-bold flex-wrap">
                   <button
                     type="button"
                     onClick={() => setSourceType("matrix")}
@@ -873,7 +965,16 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                       sourceType === "matrix" ? "bg-white text-blue-700 shadow-xs" : "text-slate-600"
                     }`}
                   >
-                    Ma Trận 4 Mức Độ
+                    1. Tích Chọn Chủ Đề &amp; Ma Trận
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSourceType("topics")}
+                    className={`px-3 py-1 rounded transition ${
+                      sourceType === "topics" ? "bg-white text-indigo-700 shadow-xs" : "text-slate-600"
+                    }`}
+                  >
+                    2. Chọn Từng Câu Từ Ngân Hàng
                   </button>
                   <button
                     type="button"
@@ -882,14 +983,84 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                       sourceType === "file" ? "bg-white text-blue-700 shadow-xs" : "text-slate-600"
                     }`}
                   >
-                    Nạp File Word (.docx) / PDF
+                    3. Nạp File Word (.docx) / PDF
                   </button>
                 </div>
               </div>
 
-              {/* NGUỒN 1: MA TRẬN 4 MỨC ĐỘ NHẬN THỨC */}
+              {/* NGUỒN 1: TÍCH CHỌN CHỦ ĐỀ & MA TRẬN 4 MỨC ĐỘ */}
               {sourceType === "matrix" && (
                 <div className="space-y-4 text-xs">
+                  {/* DANH SÁCH CHỦ ĐỀ HỆ THỐNG CÓ SẴN (CHECKBOXES) */}
+                  <div className="space-y-2.5 p-3 rounded-neu-sm bg-white/70 border border-slate-200">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200/80">
+                      <div>
+                        <span className="font-bold text-slate-800 text-xs flex items-center gap-1.5">
+                          <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+                          <span>Tích chọn các chuyên đề / chủ đề làm nguồn tạo đề:</span>
+                        </span>
+                        <p className="text-[11px] text-slate-500 mt-0.5">
+                          Đã chọn: <strong className="text-blue-700">{matrixTopicIds.length}</strong> / {allTopics.length} chủ đề • Khả dụng: <strong className="text-emerald-700">{selectedTopicsAvailableQuestions.total} câu</strong> ({selectedTopicsAvailableQuestions.totalMc} MC + {selectedTopicsAvailableQuestions.totalTf} TF)
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                        <button
+                          type="button"
+                          onClick={handleSelectAllTopics}
+                          className="px-2.5 py-1 rounded bg-[#e6ecf5] hover:bg-white text-[11px] font-bold text-blue-700 shadow-neu-flat-xs cursor-pointer transition"
+                        >
+                          Chọn Tất Cả ({allTopics.length})
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleDeselectAllTopics}
+                          className="px-2.5 py-1 rounded bg-[#e6ecf5] hover:bg-white text-[11px] font-bold text-slate-600 shadow-neu-flat-xs cursor-pointer transition"
+                        >
+                          Bỏ Chọn Hết
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Lưới các thẻ chủ đề có checkbox */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-56 overflow-y-auto pr-1">
+                      {allTopics.map((top) => {
+                        const isChecked = matrixTopicIds.includes(top.id);
+                        return (
+                          <div
+                            key={top.id}
+                            onClick={() => handleToggleTopic(top.id)}
+                            className={`p-2.5 rounded-neu-sm border transition flex items-start gap-2.5 cursor-pointer select-none ${
+                              isChecked
+                                ? "bg-blue-50/90 border-blue-400 shadow-neu-flat-xs"
+                                : "bg-white/50 border-slate-200 hover:bg-white"
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={() => {}} // Đã được xử lý bởi div onClick
+                              className="w-4 h-4 mt-0.5 accent-blue-600 cursor-pointer rounded flex-shrink-0"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <p className={`font-bold text-xs leading-snug truncate ${isChecked ? "text-blue-900" : "text-slate-800"}`}>
+                                {top.name}
+                              </p>
+                              <div className="flex items-center gap-2 mt-1 text-[10px] text-slate-500">
+                                <span className="truncate max-w-[130px]">{top.chapter}</span>
+                                <span>•</span>
+                                <span className="font-semibold text-slate-700 font-mono">
+                                  {top.totalQuestions} câu ({top.mcCount} MC, {top.tfCount} TF)
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* CẤU HÌNH MA TRẬN 4 MỨC ĐỘ */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Phần I: 4 Lựa chọn */}
                     <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 space-y-2">
@@ -999,12 +1170,125 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                   <div className="flex justify-end">
                     <button
                       type="button"
+                      disabled={matrixTopicIds.length === 0}
                       onClick={handleGenerateFromMatrix}
-                      className="px-4 py-2 rounded-neu-sm bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-neu-blue flex items-center gap-1.5"
+                      className="px-5 py-2.5 rounded-neu-sm bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-neu-blue flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                     >
                       <Sparkles className="w-3.5 h-3.5" />
-                      <span>Sinh Đề Tự Động Theo Ma Trận</span>
+                      <span>Sinh Đề Tự Động Từ {matrixTopicIds.length} Chủ Đề Đã Chọn</span>
                     </button>
+                  </div>
+                </div>
+              )}
+
+              {/* NGUỒN 2: CHỌN TỪNG CÂU HỎI TRỰC TIẾP TỪ NGÂN HÀNG */}
+              {sourceType === "topics" && (
+                <div className="space-y-3 text-xs">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-neu-sm bg-white/70 border border-slate-200">
+                    <div className="flex items-center gap-2 flex-1">
+                      <span className="font-bold text-slate-700 whitespace-nowrap">Chọn chủ đề:</span>
+                      <select
+                        value={pickerSelectedTopicId}
+                        onChange={(e) => setPickerSelectedTopicId(e.target.value)}
+                        className="px-2.5 py-1.5 rounded bg-[#e6ecf5] shadow-neu-inset font-bold text-xs text-indigo-900 outline-none flex-1 max-w-xs"
+                      >
+                        {allTopics.map((top) => (
+                          <option key={top.id} value={top.id}>
+                            {top.name} ({top.totalQuestions} câu)
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <div className="flex rounded bg-[#e6ecf5] p-0.5 text-[11px] font-bold">
+                        <button
+                          type="button"
+                          onClick={() => setPickerFilterType("all")}
+                          className={`px-2 py-1 rounded transition ${pickerFilterType === "all" ? "bg-white text-blue-700 shadow-xs" : "text-slate-600"}`}
+                        >
+                          Tất cả
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setPickerFilterType("mc")}
+                          className={`px-2 py-1 rounded transition ${pickerFilterType === "mc" ? "bg-white text-blue-700 shadow-xs" : "text-slate-600"}`}
+                        >
+                          4 Lựa chọn
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setPickerFilterType("tf")}
+                          className={`px-2 py-1 rounded transition ${pickerFilterType === "tf" ? "bg-white text-blue-700 shadow-xs" : "text-slate-600"}`}
+                        >
+                          Đúng / Sai
+                        </button>
+                      </div>
+
+                      <input
+                        type="text"
+                        placeholder="Tìm câu hỏi..."
+                        value={pickerSearchQuery}
+                        onChange={(e) => setPickerSearchQuery(e.target.value)}
+                        className="px-2 py-1 rounded bg-[#e6ecf5] shadow-neu-inset text-[11px] outline-none w-32"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Danh sách câu hỏi của chủ đề này */}
+                  <div className="max-h-72 overflow-y-auto space-y-2 pr-1">
+                    {pickerQuestions.length === 0 ? (
+                      <div className="text-center py-6 text-slate-500 italic">
+                        Không tìm thấy câu hỏi nào phù hợp với bộ lọc.
+                      </div>
+                    ) : (
+                      pickerQuestions.map((q, idx) => {
+                        const isAdded = workingQuestions.some((wq) => wq.id === q.id);
+                        return (
+                          <div
+                            key={q.id || idx}
+                            className={`p-3 rounded-neu-sm border transition flex items-start justify-between gap-3 ${
+                              isAdded ? "bg-blue-50/70 border-blue-400" : "bg-white/70 border-slate-200"
+                            }`}
+                          >
+                            <div className="space-y-1 flex-1">
+                              <div className="flex items-center gap-2">
+                                <span className="font-bold text-slate-800">#{idx + 1}</span>
+                                <span className="px-1.5 py-0.5 rounded text-[10px] font-black bg-blue-100 text-blue-800">
+                                  {q.type === "true_false" ? "Đúng / Sai" : "4 Lựa chọn"}
+                                </span>
+                                <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-600">
+                                  {q.difficulty}
+                                </span>
+                              </div>
+                              <p className="text-slate-800 leading-snug line-clamp-2">{q.content}</p>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => handleTogglePickQuestion(q)}
+                              className={`px-3 py-1.5 rounded-neu-sm text-xs font-bold transition flex items-center gap-1 flex-shrink-0 cursor-pointer ${
+                                isAdded
+                                  ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs"
+                                  : "bg-blue-600 hover:bg-blue-700 text-white shadow-neu-blue"
+                              }`}
+                            >
+                              {isAdded ? (
+                                <>
+                                  <Check className="w-3.5 h-3.5" />
+                                  <span>Đã Chọn</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Plus className="w-3.5 h-3.5" />
+                                  <span>Thêm Vào Đề</span>
+                                </>
+                              )}
+                            </button>
+                          </div>
+                        );
+                      })
+                    )}
                   </div>
                 </div>
               )}
