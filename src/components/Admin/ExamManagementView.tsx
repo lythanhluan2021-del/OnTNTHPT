@@ -58,6 +58,20 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+export const isTfQuestion = (q: any): boolean => {
+  if (!q) return false;
+  return (
+    q.part === "tf" ||
+    q.type === "true_false" ||
+    (Array.isArray(q.tfItems) && q.tfItems.length > 0) ||
+    (Array.isArray(q.statements) && q.statements.length > 0)
+  );
+};
+
+export const isMcQuestion = (q: any): boolean => {
+  return !isTfQuestion(q);
+};
+
 interface ExamManagementViewProps {
   subjects: Subject[];
   questions: Question[];
@@ -277,8 +291,8 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
     subjects.forEach((subj) => {
       subj.topics.forEach((top) => {
         const topQuestions = questions.filter((q) => q.topicId === top.id);
-        const mc = topQuestions.filter((q) => q.type !== "true_false").length;
-        const tf = topQuestions.filter((q) => q.type === "true_false").length;
+        const mc = topQuestions.filter((q) => isMcQuestion(q)).length;
+        const tf = topQuestions.filter((q) => isTfQuestion(q)).length;
         list.push({
           id: top.id,
           name: top.name,
@@ -292,13 +306,73 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
     return list;
   }, [subjects, questions]);
 
-  // Nguồn 2: Ma trận 4 mức độ
+  // Nguồn 2: Ma trận 4 mức độ & Cấu hình số câu hỏi linh hoạt
   const [matrixTopicIds, setMatrixTopicIds] = useState<string[]>(() => {
     const tin12 = subjects.find((s) => s.id === "tin-hoc-12");
     return tin12 ? tin12.topics.map((t) => t.id) : [];
   });
   const [matrixMcLevels, setMatrixMcLevels] = useState({ NhanBiet: 8, ThongHieu: 8, VanDung: 6, VanDungCao: 2 });
   const [matrixTfLevels, setMatrixTfLevels] = useState({ NhanBiet: 1, ThongHieu: 1, VanDung: 1, VanDungCao: 1 });
+
+  const totalMcCount =
+    matrixMcLevels.NhanBiet + matrixMcLevels.ThongHieu + matrixMcLevels.VanDung + matrixMcLevels.VanDungCao;
+  const totalTfCount =
+    matrixTfLevels.NhanBiet + matrixTfLevels.ThongHieu + matrixTfLevels.VanDung + matrixTfLevels.VanDungCao;
+
+  // Cấu hình thủ công tổng số câu Phần I (Tự động phân bổ theo tỷ lệ 4-3-2-1)
+  const handleSetTotalMc = (total: number) => {
+    const safe = Math.max(0, Math.floor(total || 0));
+    if (safe === 0) {
+      setMatrixMcLevels({ NhanBiet: 0, ThongHieu: 0, VanDung: 0, VanDungCao: 0 });
+      return;
+    }
+    const nb = Math.round(safe * 0.4);
+    const th = Math.round(safe * 0.3);
+    const vd = Math.round(safe * 0.2);
+    const vdc = Math.max(0, safe - nb - th - vd);
+    setMatrixMcLevels({ NhanBiet: nb, ThongHieu: th, VanDung: vd, VanDungCao: vdc });
+  };
+
+  // Cấu hình thủ công tổng số câu Phần II Đúng / Sai
+  const handleSetTotalTf = (total: number) => {
+    const safe = Math.max(0, Math.floor(total || 0));
+    if (safe === 0) {
+      setMatrixTfLevels({ NhanBiet: 0, ThongHieu: 0, VanDung: 0, VanDungCao: 0 });
+      return;
+    }
+    if (safe === 1) setMatrixTfLevels({ NhanBiet: 1, ThongHieu: 0, VanDung: 0, VanDungCao: 0 });
+    else if (safe === 2) setMatrixTfLevels({ NhanBiet: 1, ThongHieu: 1, VanDung: 0, VanDungCao: 0 });
+    else if (safe === 3) setMatrixTfLevels({ NhanBiet: 1, ThongHieu: 1, VanDung: 1, VanDungCao: 0 });
+    else if (safe === 4) setMatrixTfLevels({ NhanBiet: 1, ThongHieu: 1, VanDung: 1, VanDungCao: 1 });
+    else {
+      const base = Math.floor(safe / 4);
+      const rem = safe % 4;
+      setMatrixTfLevels({
+        NhanBiet: base + (rem > 0 ? 1 : 0),
+        ThongHieu: base + (rem > 1 ? 1 : 0),
+        VanDung: base + (rem > 2 ? 1 : 0),
+        VanDungCao: base,
+      });
+    }
+  };
+
+  // Áp dụng các mẫu đề thi chuẩn nhanh
+  const applyExamPreset = (preset: "15p" | "45p" | "50p") => {
+    if (preset === "15p") {
+      setExamDurationInput(15);
+      setMatrixMcLevels({ NhanBiet: 4, ThongHieu: 4, VanDung: 2, VanDungCao: 0 });
+      setMatrixTfLevels({ NhanBiet: 0, ThongHieu: 0, VanDung: 0, VanDungCao: 0 });
+    } else if (preset === "45p") {
+      setExamDurationInput(45);
+      setMatrixMcLevels({ NhanBiet: 8, ThongHieu: 7, VanDung: 4, VanDungCao: 1 });
+      setMatrixTfLevels({ NhanBiet: 1, ThongHieu: 1, VanDung: 0, VanDungCao: 0 });
+    } else if (preset === "50p") {
+      setExamDurationInput(50);
+      setMatrixMcLevels({ NhanBiet: 8, ThongHieu: 8, VanDung: 6, VanDungCao: 2 });
+      setMatrixTfLevels({ NhanBiet: 1, ThongHieu: 1, VanDung: 1, VanDungCao: 1 });
+    }
+    soundManager.playClick();
+  };
 
   const handleSelectAllTopics = () => {
     setMatrixTopicIds(allTopics.map((t) => t.id));
@@ -339,8 +413,8 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
         pickerFilterType === "all"
           ? true
           : pickerFilterType === "mc"
-          ? q.type !== "true_false"
-          : q.type === "true_false";
+          ? isMcQuestion(q)
+          : isTfQuestion(q);
       const matchSearch = pickerSearchQuery
         ? q.content.toLowerCase().includes(pickerSearchQuery.toLowerCase())
         : true;
@@ -354,10 +428,12 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
       setWorkingQuestions(workingQuestions.filter((q) => q.id !== questionToAdd.id));
       soundManager.playClick();
     } else {
+      const isTf = isTfQuestion(questionToAdd);
       const newMockQ: MockExamQuestion = {
         ...questionToAdd,
         examIndex: workingQuestions.length + 1,
-        part: (questionToAdd.type === "true_false" ? "tf" : "mc") as "mc" | "tf",
+        part: isTf ? "tf" : "mc",
+        type: isTf ? "true_false" : "multiple_choice",
       };
       setWorkingQuestions([...workingQuestions, newMockQ]);
       soundManager.playSuccess();
@@ -512,8 +588,8 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
         autoSubmitOnTimeout: true,
       },
       totalQuestions: workingQuestions.length,
-      mcCount: workingQuestions.filter((q) => q.type === "multiple_choice").length,
-      tfCount: workingQuestions.filter((q) => q.type === "true_false").length,
+      mcCount: workingQuestions.filter((q) => isMcQuestion(q)).length,
+      tfCount: workingQuestions.filter((q) => isTfQuestion(q)).length,
       questions: workingQuestions,
       variants,
       createdAt: currentExam?.createdAt || Date.now(),
@@ -1129,123 +1205,214 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                     </div>
                   </div>
 
-                  {/* CẤU HÌNH MA TRẬN 4 MỨC ĐỘ */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Phần I: 4 Lựa chọn */}
-                    <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-slate-800">Phần I: 4 Lựa chọn (Tối đa 6.0đ)</span>
-                        <span className="font-black text-blue-700">
-                          {matrixMcLevels.NhanBiet + matrixMcLevels.ThongHieu + matrixMcLevels.VanDung + matrixMcLevels.VanDungCao} câu
+                  {/* CẤU HÌNH MA TRẬN & SỐ LƯỢNG CÂU HỎI */}
+                  <div className="p-3.5 rounded-neu-sm bg-white/60 border border-slate-200/80 space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-200">
+                      <div>
+                        <span className="font-bold text-xs text-slate-800 flex items-center gap-1.5">
+                          <Sliders className="w-3.5 h-3.5 text-blue-600" />
+                          Cấu Hình Số Câu Hỏi &amp; Mẫu Chuẩn:
                         </span>
+                        <p className="text-[11px] text-slate-500">
+                          Chọn nhanh mẫu chuẩn hoặc trực tiếp tùy chỉnh số câu hỏi theo ý muốn
+                        </p>
                       </div>
-                      <div className="grid grid-cols-4 gap-2 text-center">
-                        <div>
-                          <span className="text-[10px] text-slate-500 block">NB</span>
-                          <input
-                            type="number"
-                            value={matrixMcLevels.NhanBiet}
-                            onChange={(e) => setMatrixMcLevels({ ...matrixMcLevels, NhanBiet: Number(e.target.value) })}
-                            min={0}
-                            className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold"
-                          />
+
+                      {/* Nút Preset nhanh */}
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() => applyExamPreset("15p")}
+                          className={`px-2.5 py-1 rounded-neu-sm text-[11px] font-bold transition flex items-center gap-1 ${
+                            totalMcCount === 10 && totalTfCount === 0
+                              ? "bg-blue-600 text-white shadow-neu-blue"
+                              : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-xs hover:bg-white"
+                          }`}
+                        >
+                          ⚡ 15 Phút (10 TN)
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => applyExamPreset("45p")}
+                          className={`px-2.5 py-1 rounded-neu-sm text-[11px] font-bold transition flex items-center gap-1 ${
+                            totalMcCount === 20 && totalTfCount === 2
+                              ? "bg-blue-600 text-white shadow-neu-blue"
+                              : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-xs hover:bg-white"
+                          }`}
+                        >
+                          🕒 45 Phút (20 TN + 2 Đ/S)
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => applyExamPreset("50p")}
+                          className={`px-2.5 py-1 rounded-neu-sm text-[11px] font-bold transition flex items-center gap-1 ${
+                            totalMcCount === 24 && totalTfCount === 4
+                              ? "bg-blue-600 text-white shadow-neu-blue"
+                              : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-xs hover:bg-white"
+                          }`}
+                        >
+                          🎓 50 Phút Chuẩn Bộ (24 TN + 4 Đ/S)
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Phần I: 4 Lựa chọn */}
+                      <div className="p-3 rounded-neu-sm bg-white border border-slate-200/90 shadow-neu-flat-xs space-y-2.5">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                            <span className="font-bold text-xs text-slate-800">Phần I: Trắc nghiệm 4 lựa chọn</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[11px] text-slate-500">Tổng câu:</span>
+                            <input
+                              type="number"
+                              min={0}
+                              value={totalMcCount}
+                              onChange={(e) => handleSetTotalMc(Number(e.target.value))}
+                              className="w-16 px-2 py-0.5 rounded bg-[#e6ecf5] shadow-neu-inset font-black text-blue-700 text-xs text-center border-0 outline-none"
+                            />
+                          </div>
                         </div>
-                        <div>
-                          <span className="text-[10px] text-slate-500 block">TH</span>
-                          <input
-                            type="number"
-                            value={matrixMcLevels.ThongHieu}
-                            onChange={(e) => setMatrixMcLevels({ ...matrixMcLevels, ThongHieu: Number(e.target.value) })}
-                            min={0}
-                            className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold"
-                          />
+
+                        <div className="text-[11px] text-slate-500">
+                          Phân bổ 4 mức độ nhận thức (có thể chỉnh số lượng từng ô):
                         </div>
-                        <div>
-                          <span className="text-[10px] text-slate-500 block">VD</span>
-                          <input
-                            type="number"
-                            value={matrixMcLevels.VanDung}
-                            onChange={(e) => setMatrixMcLevels({ ...matrixMcLevels, VanDung: Number(e.target.value) })}
-                            min={0}
-                            className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold"
-                          />
+
+                        <div className="grid grid-cols-4 gap-2 text-center">
+                          <div>
+                            <span className="text-[10px] text-slate-500 block mb-0.5 font-semibold">Nhận biết</span>
+                            <input
+                              type="number"
+                              value={matrixMcLevels.NhanBiet}
+                              onChange={(e) => setMatrixMcLevels({ ...matrixMcLevels, NhanBiet: Math.max(0, Number(e.target.value)) })}
+                              min={0}
+                              className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold text-xs"
+                            />
+                          </div>
+                          <div>
+                            <span className="text-[10px] text-slate-500 block mb-0.5 font-semibold">Thông hiểu</span>
+                            <input
+                              type="number"
+                              value={matrixMcLevels.ThongHieu}
+                              onChange={(e) => setMatrixMcLevels({ ...matrixMcLevels, ThongHieu: Math.max(0, Number(e.target.value)) })}
+                              min={0}
+                              className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold text-xs"
+                            />
+                          </div>
+                          <div>
+                            <span className="text-[10px] text-slate-500 block mb-0.5 font-semibold">Vận dụng</span>
+                            <input
+                              type="number"
+                              value={matrixMcLevels.VanDung}
+                              onChange={(e) => setMatrixMcLevels({ ...matrixMcLevels, VanDung: Math.max(0, Number(e.target.value)) })}
+                              min={0}
+                              className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold text-xs"
+                            />
+                          </div>
+                          <div>
+                            <span className="text-[10px] text-slate-500 block mb-0.5 font-semibold">Vận dụng cao</span>
+                            <input
+                              type="number"
+                              value={matrixMcLevels.VanDungCao}
+                              onChange={(e) => setMatrixMcLevels({ ...matrixMcLevels, VanDungCao: Math.max(0, Number(e.target.value)) })}
+                              min={0}
+                              className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold text-xs"
+                            />
+                          </div>
                         </div>
-                        <div>
-                          <span className="text-[10px] text-slate-500 block">VDC</span>
-                          <input
-                            type="number"
-                            value={matrixMcLevels.VanDungCao}
-                            onChange={(e) => setMatrixMcLevels({ ...matrixMcLevels, VanDungCao: Number(e.target.value) })}
-                            min={0}
-                            className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold"
-                          />
+                      </div>
+
+                      {/* Phần II: Đúng / Sai */}
+                      <div className="p-3 rounded-neu-sm bg-white border border-slate-200/90 shadow-neu-flat-xs space-y-2.5">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
+                            <span className="font-bold text-xs text-slate-800">Phần II: Đúng / Sai (Mỗi câu 4 ý a-d)</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[11px] text-slate-500">Tổng câu:</span>
+                            <input
+                              type="number"
+                              min={0}
+                              value={totalTfCount}
+                              onChange={(e) => handleSetTotalTf(Number(e.target.value))}
+                              className="w-16 px-2 py-0.5 rounded bg-[#e6ecf5] shadow-neu-inset font-black text-indigo-700 text-xs text-center border-0 outline-none"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="text-[11px] text-slate-500">
+                          Phân bổ 4 mức độ nhận thức (có thể chỉnh số lượng từng ô):
+                        </div>
+
+                        <div className="grid grid-cols-4 gap-2 text-center">
+                          <div>
+                            <span className="text-[10px] text-slate-500 block mb-0.5 font-semibold">Nhận biết</span>
+                            <input
+                              type="number"
+                              value={matrixTfLevels.NhanBiet}
+                              onChange={(e) => setMatrixTfLevels({ ...matrixTfLevels, NhanBiet: Math.max(0, Number(e.target.value)) })}
+                              min={0}
+                              className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold text-xs"
+                            />
+                          </div>
+                          <div>
+                            <span className="text-[10px] text-slate-500 block mb-0.5 font-semibold">Thông hiểu</span>
+                            <input
+                              type="number"
+                              value={matrixTfLevels.ThongHieu}
+                              onChange={(e) => setMatrixTfLevels({ ...matrixTfLevels, ThongHieu: Math.max(0, Number(e.target.value)) })}
+                              min={0}
+                              className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold text-xs"
+                            />
+                          </div>
+                          <div>
+                            <span className="text-[10px] text-slate-500 block mb-0.5 font-semibold">Vận dụng</span>
+                            <input
+                              type="number"
+                              value={matrixTfLevels.VanDung}
+                              onChange={(e) => setMatrixTfLevels({ ...matrixTfLevels, VanDung: Math.max(0, Number(e.target.value)) })}
+                              min={0}
+                              className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold text-xs"
+                            />
+                          </div>
+                          <div>
+                            <span className="text-[10px] text-slate-500 block mb-0.5 font-semibold">Vận dụng cao</span>
+                            <input
+                              type="number"
+                              value={matrixTfLevels.VanDungCao}
+                              onChange={(e) => setMatrixTfLevels({ ...matrixTfLevels, VanDungCao: Math.max(0, Number(e.target.value)) })}
+                              min={0}
+                              className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold text-xs"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Phần II: Đúng / Sai */}
-                    <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-slate-800">Phần II: Đúng / Sai (Tối đa 4.0đ)</span>
-                        <span className="font-black text-indigo-700">
-                          {matrixTfLevels.NhanBiet + matrixTfLevels.ThongHieu + matrixTfLevels.VanDung + matrixTfLevels.VanDungCao} câu (16 ý)
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+                      <div className="text-xs text-slate-600 font-semibold flex items-center gap-2">
+                        <span>Quy mô đề dự kiến:</span>
+                        <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-black">
+                          {totalMcCount + totalTfCount} câu
+                        </span>
+                        <span className="text-[11px] text-slate-500">
+                          ({totalMcCount} câu Phần I + {totalTfCount} câu Phần II [{totalTfCount * 4} ý])
                         </span>
                       </div>
-                      <div className="grid grid-cols-4 gap-2 text-center">
-                        <div>
-                          <span className="text-[10px] text-slate-500 block">NB</span>
-                          <input
-                            type="number"
-                            value={matrixTfLevels.NhanBiet}
-                            onChange={(e) => setMatrixTfLevels({ ...matrixTfLevels, NhanBiet: Number(e.target.value) })}
-                            min={0}
-                            className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold"
-                          />
-                        </div>
-                        <div>
-                          <span className="text-[10px] text-slate-500 block">TH</span>
-                          <input
-                            type="number"
-                            value={matrixTfLevels.ThongHieu}
-                            onChange={(e) => setMatrixTfLevels({ ...matrixTfLevels, ThongHieu: Number(e.target.value) })}
-                            min={0}
-                            className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold"
-                          />
-                        </div>
-                        <div>
-                          <span className="text-[10px] text-slate-500 block">VD</span>
-                          <input
-                            type="number"
-                            value={matrixTfLevels.VanDung}
-                            onChange={(e) => setMatrixTfLevels({ ...matrixTfLevels, VanDung: Number(e.target.value) })}
-                            min={0}
-                            className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold"
-                          />
-                        </div>
-                        <div>
-                          <span className="text-[10px] text-slate-500 block">VDC</span>
-                          <input
-                            type="number"
-                            value={matrixTfLevels.VanDungCao}
-                            onChange={(e) => setMatrixTfLevels({ ...matrixTfLevels, VanDungCao: Number(e.target.value) })}
-                            min={0}
-                            className="w-full p-1 rounded bg-[#e6ecf5] shadow-neu-inset text-center font-bold"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="flex justify-end">
-                    <button
-                      type="button"
-                      disabled={matrixTopicIds.length === 0}
-                      onClick={handleGenerateFromMatrix}
-                      className="px-5 py-2.5 rounded-neu-sm bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-neu-blue flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
-                    >
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span>Sinh Đề Tự Động Từ {matrixTopicIds.length} Chủ Đề Đã Chọn</span>
-                    </button>
+                      <button
+                        type="button"
+                        disabled={matrixTopicIds.length === 0 || (totalMcCount + totalTfCount === 0)}
+                        onClick={handleGenerateFromMatrix}
+                        className="px-5 py-2.5 rounded-neu-sm bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-neu-blue flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 transition"
+                      >
+                        <Sparkles className="w-3.5 h-3.5" />
+                        <span>Sinh Đề Tự Động ({totalMcCount + totalTfCount} Câu Từ {matrixTopicIds.length} Chủ Đề Đã Chọn)</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -1418,7 +1585,7 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4 text-blue-600" />
                   <h3 className="text-xs font-black uppercase tracking-wider text-slate-800">
-                    Rà Soát Câu Hỏi ({workingQuestions.length} câu)
+                    Rà Soát Câu Hỏi ({workingQuestions.length} câu: {workingQuestions.filter(isMcQuestion).length} TN + {workingQuestions.filter(isTfQuestion).length} Đ/S)
                   </h3>
                   {currentExam?.variants && currentExam.variants.length > 0 && (
                     <span className="text-[10px] font-black bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded-full">
@@ -1458,88 +1625,119 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                     </p>
                   </div>
                 ) : (
-                  workingQuestions.map((q, idx) => (
-                    <div
-                      key={q.id || idx}
-                      className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 text-xs space-y-2 hover:border-blue-300 transition"
-                    >
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="flex items-center gap-2">
-                          <span className="font-black text-slate-800">Câu {idx + 1}:</span>
-                          <span className="px-2 py-0.5 rounded text-[10px] font-black bg-blue-100 text-blue-800">
-                            {q.type === "multiple_choice" ? "Phần I (MC)" : "Phần II (TF)"}
-                          </span>
-                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
-                            {q.difficulty || "TH"}
-                          </span>
-                        </div>
+                  workingQuestions.map((q, idx) => {
+                    const isMc = isMcQuestion(q);
+                    const isTf = isTfQuestion(q);
+                    const tfStatements = (q.statements && q.statements.length > 0)
+                      ? q.statements
+                      : (q.tfItems?.map((it: any) => ({
+                          id: it.id,
+                          content: it.content,
+                          isCorrect: it.correctAnswer ?? it.isCorrect ?? false,
+                        })) || []);
 
-                        <div className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setEditingQuestion(q);
-                              setIsQuestionEditOpen(true);
-                            }}
-                            className="p-1 text-blue-600 hover:text-blue-800 rounded"
-                            title="Sửa câu hỏi này"
-                          >
-                            <Edit3 className="w-3.5 h-3.5" />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setWorkingQuestions(workingQuestions.filter((_, i) => i !== idx));
-                            }}
-                            className="p-1 text-rose-500 hover:text-rose-700 rounded"
-                            title="Xóa câu hỏi này"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      </div>
+                    return (
+                      <div
+                        key={q.id || idx}
+                        className="p-3.5 rounded-neu-sm bg-white/70 border border-slate-200 text-xs space-y-2.5 hover:border-blue-300 transition"
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <span className="font-black text-slate-800">Câu {idx + 1}:</span>
+                            {isMc ? (
+                              <span className="px-2 py-0.5 rounded text-[10px] font-black bg-blue-100 text-blue-800">
+                                Phần I (MC)
+                              </span>
+                            ) : (
+                              <span className="px-2 py-0.5 rounded text-[10px] font-black bg-indigo-100 text-indigo-800">
+                                Phần II (TF)
+                              </span>
+                            )}
+                            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600">
+                              {q.difficulty || "TH"}
+                            </span>
+                          </div>
 
-                      <p className="text-slate-800 font-medium leading-relaxed">{q.content}</p>
-
-                      {/* Hiển thị tóm tắt phương án */}
-                      {(q.type === "multiple_choice" || q.part === "mc") && q.options && (
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 pl-2 text-[11px]">
-                          {q.options.map((opt) => (
-                            <div
-                              key={opt.id}
-                              className={`p-1 rounded ${
-                                opt.id === (q.correctOptionId || q.correctAnswer)
-                                  ? "bg-emerald-100 font-bold text-emerald-900 border border-emerald-300"
-                                  : "text-slate-600"
-                              }`}
+                          <div className="flex items-center gap-1">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setEditingQuestion(q);
+                                setIsQuestionEditOpen(true);
+                              }}
+                              className="p-1 text-blue-600 hover:text-blue-800 rounded"
+                              title="Sửa câu hỏi này"
                             >
-                              <strong>{opt.id}.</strong> {opt.content}
-                            </div>
-                          ))}
+                              <Edit3 className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setWorkingQuestions(workingQuestions.filter((_, i) => i !== idx));
+                              }}
+                              className="p-1 text-rose-500 hover:text-rose-700 rounded"
+                              title="Xóa câu hỏi này"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
                         </div>
-                      )}
 
-                      {(q.type === "true_false" || q.part === "tf") && (q.statements || q.tfItems) && (
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 pl-2 text-[11px]">
-                          {(q.statements || q.tfItems || []).map((st: any) => {
-                            const isCorrectVal = st.isCorrect !== undefined ? st.isCorrect : st.correctAnswer;
-                            return (
+                        <p className="text-slate-800 font-medium leading-relaxed">{q.content}</p>
+
+                        {/* Hiển thị tóm tắt phương án Trắc nghiệm Phần I */}
+                        {isMc && q.options && q.options.length > 0 && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1.5 pl-1 text-[11px]">
+                            {q.options.map((opt) => (
                               <div
-                                key={st.id}
-                                className={`p-1 rounded ${
-                                  isCorrectVal
-                                    ? "bg-emerald-50 text-emerald-900 font-semibold"
-                                    : "bg-rose-50 text-rose-900 font-semibold"
+                                key={opt.id}
+                                className={`p-1.5 rounded border transition ${
+                                  opt.id === (q.correctOptionId || q.correctAnswer)
+                                    ? "bg-emerald-50 border-emerald-300 font-bold text-emerald-900"
+                                    : "bg-slate-50/70 border-slate-200 text-slate-700"
                                 }`}
                               >
-                                <strong>{st.id})</strong> {isCorrectVal ? "Đúng" : "Sai"}
+                                <strong className="text-slate-800 mr-1">{opt.id}.</strong> {opt.content}
                               </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  ))
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Hiển thị nội dung đầy đủ 4 ý Đúng/Sai Phần II */}
+                        {isTf && tfStatements.length > 0 && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-1 text-[11px]">
+                            {tfStatements.map((st: any) => {
+                              const isCorrectVal = st.isCorrect !== undefined ? st.isCorrect : st.correctAnswer;
+                              return (
+                                <div
+                                  key={st.id}
+                                  className={`p-2 rounded border flex flex-col gap-1 transition ${
+                                    isCorrectVal
+                                      ? "bg-emerald-50/80 border-emerald-200 text-emerald-950"
+                                      : "bg-rose-50/80 border-rose-200 text-rose-950"
+                                  }`}
+                                >
+                                  <div className="flex items-center justify-between">
+                                    <strong className="font-bold text-slate-800 uppercase">Ý {st.id})</strong>
+                                    <span
+                                      className={`px-1.5 py-0.5 rounded text-[10px] font-black ${
+                                        isCorrectVal
+                                          ? "bg-emerald-200 text-emerald-800"
+                                          : "bg-rose-200 text-rose-800"
+                                      }`}
+                                    >
+                                      {isCorrectVal ? "ĐÚNG" : "SAI"}
+                                    </span>
+                                  </div>
+                                  <p className="text-[11px] text-slate-700 leading-snug">{st.content}</p>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })
                 )}
               </div>
             </div>

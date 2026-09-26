@@ -31,9 +31,14 @@ export function generateExamFromMatrix(
     return selectedTopicIds.includes(q.topicId);
   });
 
-  // Tách riêng MC (Phần 1) và TF (Phần 2)
-  const mcPool = pool.filter((q) => q.type !== "true_false");
-  const tfPool = pool.filter((q) => q.type === "true_false" && q.tfItems && q.tfItems.length > 0);
+  // Tách riêng MC (Phần 1) và TF (Phần 2) một cách chuẩn xác
+  const isTfQuestion = (q: Question) =>
+    q.type === "true_false" ||
+    (q.tfItems && q.tfItems.length > 0) ||
+    (q.statements && q.statements.length > 0);
+
+  const mcPool = pool.filter((q) => !isTfQuestion(q));
+  const tfPool = pool.filter((q) => isTfQuestion(q));
 
   // Phân nhóm câu hỏi theo 4 mức độ nhận thức
   const groupQuestionsByLevel = (questions: Question[]) => {
@@ -64,7 +69,19 @@ export function generateExamFromMatrix(
 
   const levels: DifficultyLevel[] = ["NhanBiet", "ThongHieu", "VanDung", "VanDungCao"];
 
-  // Bốc câu hỏi Trắc nghiệm nhiều lựa chọn (Phần 1)
+  const totalMcRequested =
+    (mcCountByLevel.NhanBiet || 0) +
+    (mcCountByLevel.ThongHieu || 0) +
+    (mcCountByLevel.VanDung || 0) +
+    (mcCountByLevel.VanDungCao || 0);
+
+  const totalTfRequested =
+    (tfCountByLevel.NhanBiet || 0) +
+    (tfCountByLevel.ThongHieu || 0) +
+    (tfCountByLevel.VanDung || 0) +
+    (tfCountByLevel.VanDungCao || 0);
+
+  // Bốc câu hỏi Trắc nghiệm nhiều lựa chọn (Phần 1) theo từng mức độ
   levels.forEach((lvl) => {
     const needed = mcCountByLevel[lvl] || 0;
     if (needed <= 0) return;
@@ -72,15 +89,23 @@ export function generateExamFromMatrix(
     const available = shuffleArray(mcByLevel[lvl]);
     const taken = available.slice(0, needed);
     selectedMcQuestions.push(...taken);
-
-    if (taken.length < needed) {
-      warnings.push(
-        `Phần 1 mức độ [${lvl}]: Cần ${needed} câu nhưng ngân hàng chỉ có ${taken.length} câu phù hợp.`
-      );
-    }
   });
 
-  // Bốc câu hỏi Đúng / Sai (Phần 2)
+  // Cơ chế bù thông minh cho Phần 1 nếu một mức độ bị thiếu câu
+  if (selectedMcQuestions.length < totalMcRequested) {
+    const pickedIds = new Set(selectedMcQuestions.map((q) => q.id));
+    const remaining = shuffleArray(mcPool.filter((q) => !pickedIds.has(q.id)));
+    const needed = totalMcRequested - selectedMcQuestions.length;
+    const backup = remaining.slice(0, needed);
+    selectedMcQuestions.push(...backup);
+    if (backup.length > 0) {
+      warnings.push(
+        `Đã tự động lấy thêm ${backup.length} câu trắc nghiệm từ mức độ khả dụng khác để đảm bảo đủ ${totalMcRequested} câu theo yêu cầu.`
+      );
+    }
+  }
+
+  // Bốc câu hỏi Đúng / Sai (Phần 2) theo từng mức độ
   levels.forEach((lvl) => {
     const needed = tfCountByLevel[lvl] || 0;
     if (needed <= 0) return;
@@ -88,13 +113,21 @@ export function generateExamFromMatrix(
     const available = shuffleArray(tfByLevel[lvl]);
     const taken = available.slice(0, needed);
     selectedTfQuestions.push(...taken);
+  });
 
-    if (taken.length < needed) {
+  // Cơ chế bù thông minh cho Phần 2 nếu một mức độ bị thiếu câu
+  if (selectedTfQuestions.length < totalTfRequested) {
+    const pickedIds = new Set(selectedTfQuestions.map((q) => q.id));
+    const remaining = shuffleArray(tfPool.filter((q) => !pickedIds.has(q.id)));
+    const needed = totalTfRequested - selectedTfQuestions.length;
+    const backup = remaining.slice(0, needed);
+    selectedTfQuestions.push(...backup);
+    if (backup.length > 0) {
       warnings.push(
-        `Phần 2 Đúng/Sai mức độ [${lvl}]: Cần ${needed} câu nhưng ngân hàng chỉ có ${taken.length} câu phù hợp.`
+        `Đã tự động lấy thêm ${backup.length} câu Đúng/Sai từ mức độ khả dụng khác để đảm bảo đủ ${totalTfRequested} câu theo yêu cầu.`
       );
     }
-  });
+  }
 
   // Đảo thứ tự câu hỏi nếu bật shuffleQuestions
   const finalMc = shuffleQuestions ? shuffleArray(selectedMcQuestions) : selectedMcQuestions;
@@ -109,6 +142,7 @@ export function generateExamFromMatrix(
       ...preparedQ,
       examIndex: idx + 1,
       part: "mc",
+      type: "multiple_choice",
     });
   });
 
@@ -116,10 +150,15 @@ export function generateExamFromMatrix(
 
   finalTf.forEach((q, idx) => {
     const preparedQ = shuffleOptions ? shuffleQuestionOptions(q) : q;
+    const tfItems = preparedQ.tfItems || (preparedQ.statements ? preparedQ.statements.map((s) => ({ id: s.id as any, content: s.content, correctAnswer: s.isCorrect })) : []);
+    const statements = preparedQ.statements || tfItems.map((it) => ({ id: it.id, content: it.content, isCorrect: it.correctAnswer }));
     examQuestions.push({
       ...preparedQ,
       examIndex: mcCount + idx + 1,
       part: "tf",
+      type: "true_false",
+      tfItems,
+      statements,
     });
   });
 
@@ -161,7 +200,8 @@ export function getTopicStatsMatrix(
     if (!result[q.topicId]) return;
     const diff = (q.difficulty as DifficultyLevel) || "ThongHieu";
     result[q.topicId].total++;
-    if (q.type === "true_false") {
+    const isTf = q.type === "true_false" || (q.tfItems && q.tfItems.length > 0) || (q.statements && q.statements.length > 0);
+    if (isTf) {
       result[q.topicId].tf[diff] = (result[q.topicId].tf[diff] || 0) + 1;
     } else {
       result[q.topicId].mc[diff] = (result[q.topicId].mc[diff] || 0) + 1;

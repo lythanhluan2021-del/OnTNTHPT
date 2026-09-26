@@ -33,8 +33,8 @@ export function PaperExamPrintModal({
 
   const currentVariant = variants[selectedVariantIndex] || variants[0];
   const questions = currentVariant.questions;
-  const mcQuestions = questions.filter((q) => q.type === "multiple_choice");
-  const tfQuestions = questions.filter((q) => q.type === "true_false");
+  const mcQuestions = questions.filter((q) => q.part === "mc" || q.type === "multiple_choice" || (q.options && q.options.length > 0));
+  const tfQuestions = questions.filter((q) => q.part === "tf" || q.type === "true_false" || (q.statements && q.statements.length > 0) || (q.tfItems && q.tfItems.length > 0));
 
   const handlePrint = () => {
     soundManager.playClick();

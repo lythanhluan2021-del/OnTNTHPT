@@ -46,6 +46,13 @@ export function QuestionEditModal({
   ];
   const [statements, setStatements] = useState<MockExamStatement[]>(initialStatements);
 
+  const isTf =
+    question.type === "true_false" ||
+    question.part === "tf" ||
+    (Array.isArray(question.tfItems) && question.tfItems.length > 0) ||
+    (Array.isArray(question.statements) && question.statements.length > 0);
+  const isMc = !isTf;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const updated: MockExamQuestion = {
@@ -53,10 +60,19 @@ export function QuestionEditModal({
       content,
       difficulty,
       explanation,
-      options: question.type === "multiple_choice" ? options : undefined,
-      correctOptionId: question.type === "multiple_choice" ? correctOptionId : undefined,
-      correctAnswer: question.type === "multiple_choice" ? (correctOptionId as "A" | "B" | "C" | "D") : undefined,
-      statements: question.type === "true_false" ? statements : undefined,
+      part: isMc ? "mc" : "tf",
+      type: isMc ? "multiple_choice" : "true_false",
+      options: isMc ? options : undefined,
+      correctOptionId: isMc ? correctOptionId : undefined,
+      correctAnswer: isMc ? (correctOptionId as "A" | "B" | "C" | "D") : undefined,
+      statements: isTf ? statements : undefined,
+      tfItems: isTf
+        ? statements.map((st) => ({
+            id: st.id as "a" | "b" | "c" | "d",
+            content: st.content,
+            correctAnswer: st.isCorrect ?? true,
+          }))
+        : undefined,
     };
     onSave(updated);
     soundManager.playSuccess();
@@ -76,7 +92,7 @@ export function QuestionEditModal({
                 Rà Soát &amp; Biên Tập Câu Hỏi
               </h2>
               <p className="text-[11px] text-slate-500 font-medium">
-                {question.type === "multiple_choice" ? "Phần I: 4 Lựa chọn" : "Phần II: Đúng / Sai"}
+                {isMc ? "Phần I: 4 Lựa chọn" : "Phần II: Đúng / Sai"}
               </p>
             </div>
           </div>
@@ -129,7 +145,7 @@ export function QuestionEditModal({
           </div>
 
           {/* Phương án Phần 1 */}
-          {question.type === "multiple_choice" && (
+          {isMc && (
             <div className="space-y-2">
               <label className="font-bold text-slate-700">
                 Các phương án lựa chọn (Tích chọn phương án đúng):
@@ -167,7 +183,7 @@ export function QuestionEditModal({
           )}
 
           {/* Các ý Đúng/Sai Phần 2 */}
-          {question.type === "true_false" && (
+          {isTf && (
             <div className="space-y-2">
               <label className="font-bold text-slate-700">
                 4 ý trắc nghiệm Đúng / Sai:

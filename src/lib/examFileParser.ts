@@ -82,12 +82,32 @@ export function parseExamRawText(rawText: string, defaultTopicId: string = "tin-
     const questionNumber = parseInt(headerMatch[1], 10);
     const bodyAndOptions = headerMatch[2].trim();
 
-    // 1. Kiểm tra xem có phải dạng Đúng / Sai (Phần 2) với các ý a), b), c), d)
-    const tfMatchA = bodyAndOptions.match(/(?:^|\n)\s*a[\).:]\s*/i);
-    const tfMatchB = bodyAndOptions.match(/(?:^|\n)\s*b[\).:]\s*/i);
+    // 1. Kiểm tra ưu tiên nhận diện Trắc nghiệm 4 lựa chọn (Phần 1: A, B, C, D in hoa)
+    const mcMatchA = bodyAndOptions.match(/(?:^|\n)\s*A[\).:]\s*/);
+    const mcMatchB = bodyAndOptions.match(/(?:^|\n)\s*B[\).:]\s*/);
+    const mcMatchC = bodyAndOptions.match(/(?:^|\n)\s*C[\).:]\s*/);
+    const mcMatchD = bodyAndOptions.match(/(?:^|\n)\s*D[\).:]\s*/);
+
+    if (mcMatchA && mcMatchB && (mcMatchC || mcMatchD)) {
+      const parsedMC = parseMultipleChoiceQuestion(
+        questionNumber,
+        bodyAndOptions,
+        currentExamIndex,
+        defaultTopicId,
+        answerKeyMap[questionNumber]
+      );
+      if (parsedMC) {
+        questions.push(parsedMC);
+        currentExamIndex++;
+        continue;
+      }
+    }
+
+    // 2. Kiểm tra dạng Đúng / Sai (Phần 2: a, b, c, d chữ thường)
+    const tfMatchA = bodyAndOptions.match(/(?:^|\n)\s*a[\).:]\s*/);
+    const tfMatchB = bodyAndOptions.match(/(?:^|\n)\s*b[\).:]\s*/);
 
     if (tfMatchA && tfMatchB) {
-      // Dạng True/False (Phần 2)
       const parsedTF = parseTrueFalseQuestion(
         questionNumber,
         bodyAndOptions,
@@ -97,26 +117,26 @@ export function parseExamRawText(rawText: string, defaultTopicId: string = "tin-
       if (parsedTF) {
         questions.push(parsedTF);
         currentExamIndex++;
+        continue;
       } else {
-        warnings.push(`Không thể bóc tách đầy đủ 4 ý Đúng/Sai cho Câu ${questionNumber}`);
+        warnings.push(`Không thể bóc tách đầy đủ các ý Đúng/Sai cho Câu ${questionNumber}`);
       }
       continue;
     }
 
-    // 2. Dạng Trắc nghiệm 4 lựa chọn (Phần 1 - Multiple Choice)
-    const parsedMC = parseMultipleChoiceQuestion(
+    // 3. Fallback: Nếu không rơi vào 2 trường hợp trên, thử parse MC
+    const fallbackMC = parseMultipleChoiceQuestion(
       questionNumber,
       bodyAndOptions,
       currentExamIndex,
       defaultTopicId,
       answerKeyMap[questionNumber]
     );
-
-    if (parsedMC) {
-      questions.push(parsedMC);
+    if (fallbackMC) {
+      questions.push(fallbackMC);
       currentExamIndex++;
     } else {
-      warnings.push(`Không nhận diện đủ các phương án A, B, C, D cho Câu ${questionNumber}`);
+      warnings.push(`Không nhận diện được định dạng câu hỏi cho Câu ${questionNumber}`);
     }
   }
 
@@ -224,10 +244,10 @@ function parseTrueFalseQuestion(
   examIndex: number,
   topicId: string
 ): MockExamQuestion | null {
-  const optRegexA = /(?:^|\n)\s*a[\).:]\s*/i;
-  const optRegexB = /(?:^|\n)\s*b[\).:]\s*/i;
-  const optRegexC = /(?:^|\n)\s*c[\).:]\s*/i;
-  const optRegexD = /(?:^|\n)\s*d[\).:]\s*/i;
+  const optRegexA = /(?:^|\n)\s*a[\).:]\s*/;
+  const optRegexB = /(?:^|\n)\s*b[\).:]\s*/;
+  const optRegexC = /(?:^|\n)\s*c[\).:]\s*/;
+  const optRegexD = /(?:^|\n)\s*d[\).:]\s*/;
 
   const matchA = bodyText.search(optRegexA);
   const matchB = bodyText.search(optRegexB);
@@ -263,15 +283,15 @@ function parseTrueFalseQuestion(
     };
   };
 
-  const rawA = bodyText.slice(matchA, matchB).replace(/(?:^|\n)\s*a[\).:]\s*/i, "").trim();
+  const rawA = bodyText.slice(matchA, matchB).replace(/(?:^|\n)\s*a[\).:]\s*/, "").trim();
   const rawB = (matchC !== -1 ? bodyText.slice(matchB, matchC) : bodyText.slice(matchB))
-    .replace(/(?:^|\n)\s*b[\).:]\s*/i, "")
+    .replace(/(?:^|\n)\s*b[\).:]\s*/, "")
     .trim();
   const rawC = matchC !== -1 && matchD !== -1
-    ? bodyText.slice(matchC, matchD).replace(/(?:^|\n)\s*c[\).:]\s*/i, "").trim()
+    ? bodyText.slice(matchC, matchD).replace(/(?:^|\n)\s*c[\).:]\s*/, "").trim()
     : "Ý kiến c chưa nhập nội dung";
   const rawD = matchD !== -1
-    ? bodyText.slice(matchD).replace(/(?:^|\n)\s*d[\).:]\s*/i, "").trim()
+    ? bodyText.slice(matchD).replace(/(?:^|\n)\s*d[\).:]\s*/, "").trim()
     : "Ý kiến d chưa nhập nội dung";
 
   const tfItems: TrueFalseItem[] = [
@@ -280,6 +300,12 @@ function parseTrueFalseQuestion(
     getSubItem(rawC, "c"),
     getSubItem(rawD, "d"),
   ];
+
+  const statements = tfItems.map((it) => ({
+    id: it.id,
+    content: it.content,
+    isCorrect: it.correctAnswer,
+  }));
 
   return {
     id: `exam-parsed-tf-${questionNumber}-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
@@ -293,6 +319,7 @@ function parseTrueFalseQuestion(
     type: "true_false",
     content,
     tfItems,
+    statements,
     hints: {
       level1_concept: "Đọc kỹ từng ý để đối chiếu với kiến thức lý thuyết và thực tiễn.",
       level2_formula: "Mỗi ý là một khẳng định độc lập cần phán đoán Đúng hoặc Sai.",
