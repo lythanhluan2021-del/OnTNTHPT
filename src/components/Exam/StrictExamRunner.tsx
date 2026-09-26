@@ -21,6 +21,8 @@ import {
   CheckCircle2,
   XCircle,
   Maximize2,
+  Minimize2,
+  Move,
   Lock,
   ArrowLeft,
   ArrowRight,
@@ -97,6 +99,73 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [webcamStream, setWebcamStream] = useState<MediaStream | null>(null);
   const [webcamError, setWebcamError] = useState<string | null>(null);
+
+  // Điều khiển vị trí, thu nhỏ & kéo thả CAM tránh che nút thao tác
+  type CamCorner = "bottom-left" | "top-right" | "top-left" | "bottom-right";
+  const [camCorner, setCamCorner] = useState<CamCorner>("bottom-left");
+  const [isCamMinimized, setIsCamMinimized] = useState<boolean>(false);
+  const [customCamPos, setCustomCamPos] = useState<{ x: number; y: number } | null>(null);
+  const [isDraggingCam, setIsDraggingCam] = useState<boolean>(false);
+  const dragStartRef = useRef<{ startX: number; startY: number; initX: number; initY: number } | null>(null);
+
+  const cycleCamCorner = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCustomCamPos(null);
+    const corners: CamCorner[] = ["bottom-left", "top-right", "top-left", "bottom-right"];
+    const nextIdx = (corners.indexOf(camCorner) + 1) % corners.length;
+    setCamCorner(corners[nextIdx]);
+    soundManager.playClick();
+  };
+
+  const handleCamPointerDown = (e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest("button")) return;
+    const camEl = document.getElementById("proctor-cam-pip");
+    if (!camEl) return;
+    const rect = camEl.getBoundingClientRect();
+    dragStartRef.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      initX: rect.left,
+      initY: rect.top,
+    };
+    setIsDraggingCam(true);
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  };
+
+  const handleCamPointerMove = (e: React.PointerEvent) => {
+    if (!isDraggingCam || !dragStartRef.current) return;
+    const dx = e.clientX - dragStartRef.current.startX;
+    const dy = e.clientY - dragStartRef.current.startY;
+    const maxX = Math.max(8, window.innerWidth - (isCamMinimized ? 110 : 140));
+    const maxY = Math.max(50, window.innerHeight - (isCamMinimized ? 40 : 110));
+    const newX = Math.max(8, Math.min(maxX, dragStartRef.current.initX + dx));
+    const newY = Math.max(50, Math.min(maxY, dragStartRef.current.initY + dy));
+    setCustomCamPos({ x: newX, y: newY });
+  };
+
+  const handleCamPointerUp = (e: React.PointerEvent) => {
+    setIsDraggingCam(false);
+    dragStartRef.current = null;
+    try {
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      // Ignored
+    }
+  };
+
+  const getCamCornerClasses = (corner: CamCorner) => {
+    switch (corner) {
+      case "top-left":
+        return "top-16 left-3 sm:top-16 sm:left-4";
+      case "top-right":
+        return "top-16 right-3 sm:top-16 sm:right-4";
+      case "bottom-left":
+        return "bottom-4 left-3 sm:bottom-4 sm:left-4";
+      case "bottom-right":
+      default:
+        return "bottom-4 right-3 sm:bottom-4 sm:right-4";
+    }
+  };
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const maxViolations = exam.antiCheatConfig.maxViolations || 3;
@@ -204,6 +273,13 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
       }
     };
   }, [enableWebcamProctor]);
+
+  // Đảm bảo video stream luôn được gán vào element ngay cả khi thu nhỏ / phóng to
+  useEffect(() => {
+    if (videoRef.current && webcamStream) {
+      videoRef.current.srcObject = webcamStream;
+    }
+  }, [webcamStream, isCamMinimized]);
 
   // Lắng nghe giám thị phê duyệt mở khóa bài thi
   useEffect(() => {
@@ -749,7 +825,7 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
       </header>
 
       {/* 2. NỘI DUNG CHÍNH CỦA BÀI THI */}
-      <main className="max-w-4xl mx-auto w-full p-4 space-y-4 flex-1 pb-24">
+      <main className="max-w-4xl mx-auto w-full p-4 space-y-4 flex-1 pb-36 sm:pb-32">
         {/* Bảng điều hướng câu hỏi */}
         <QuestionPalette
           totalQuestions={activeQuestions.length}
@@ -884,7 +960,7 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
         )}
 
         {/* Thanh chuyển câu trước / sau */}
-        <div className="flex items-center justify-between gap-3 pt-2">
+        <div className="flex items-center justify-between gap-3 pt-4 border-t border-slate-200/60 dark:border-slate-800">
           <button
             type="button"
             disabled={currentIndex === 0}
@@ -892,13 +968,13 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
               soundManager.playClick();
               setCurrentIndex((prev) => Math.max(0, prev - 1));
             }}
-            className="px-4 py-2 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset disabled:opacity-40 flex items-center gap-1.5 cursor-pointer"
+            className="px-4 py-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs sm:text-sm font-bold shadow-neu-flat-xs active:shadow-neu-inset disabled:opacity-40 flex items-center gap-1.5 cursor-pointer transition"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Câu trước</span>
           </button>
 
-          <span className="text-xs font-bold text-slate-500">
+          <span className="text-xs sm:text-sm font-black text-slate-600 dark:text-slate-300 bg-[#e6ecf5] dark:bg-[#202734] px-3.5 py-1.5 rounded-full shadow-neu-inset-xs">
             {currentIndex + 1} / {exam.totalQuestions}
           </span>
 
@@ -909,7 +985,7 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
               soundManager.playClick();
               setCurrentIndex((prev) => Math.min(exam.totalQuestions - 1, prev + 1));
             }}
-            className="px-4 py-2 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset disabled:opacity-40 flex items-center gap-1.5 cursor-pointer"
+            className="px-5 py-2.5 rounded-neu-sm bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm font-black shadow-neu-blue active:shadow-neu-blue-pressed disabled:opacity-40 flex items-center gap-2 cursor-pointer transition transform active:scale-95"
           >
             <span>Câu tiếp theo</span>
             <ArrowRight className="w-4 h-4" />
@@ -935,19 +1011,81 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
         </div>
       )}
 
-      {/* WEBCAM GIÁM THỊ THỜI GIAN THỰC (PICTURE IN PICTURE) */}
+      {/* WEBCAM GIÁM THỊ THỜI GIAN THỰC (DRAGGABLE & COLLAPSIBLE PIP) */}
       {enableWebcamProctor && (
-        <div className="fixed bottom-4 right-4 z-40 w-44 rounded-xl overflow-hidden shadow-2xl border-2 border-indigo-500 bg-slate-900">
-          <div className="px-2 py-1 bg-indigo-700 text-white text-[10px] font-black flex items-center justify-between">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              GIÁM THỊ CAM
-            </span>
-            <Video className="w-3 h-3" />
+        <div
+          id="proctor-cam-pip"
+          onPointerDown={handleCamPointerDown}
+          onPointerMove={handleCamPointerMove}
+          onPointerUp={handleCamPointerUp}
+          style={
+            customCamPos
+              ? { left: `${customCamPos.x}px`, top: `${customCamPos.y}px` }
+              : undefined
+          }
+          className={`fixed z-40 select-none touch-none shadow-2xl border-2 border-indigo-500 bg-slate-900 transition-[width,height,border-radius] ${
+            isCamMinimized
+              ? "rounded-full"
+              : "w-32 sm:w-44 rounded-xl overflow-hidden"
+          } ${customCamPos ? "" : getCamCornerClasses(camCorner)}`}
+        >
+          {/* Header thanh điều khiển */}
+          <div
+            className={`px-2 py-1.5 bg-indigo-700 text-white flex items-center justify-between cursor-move ${
+              isCamMinimized ? "rounded-full px-3 py-1.5" : ""
+            }`}
+          >
+            <div className="flex items-center gap-1.5 min-w-0">
+              <span className="relative flex h-2 w-2 flex-shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              </span>
+              <span className="text-[10px] font-black tracking-tight truncate">
+                {isCamMinimized ? "Cam Bật" : "GIÁM THỊ CAM"}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1 flex-shrink-0 ml-1">
+              {/* Nút Đổi Góc */}
+              <button
+                type="button"
+                onClick={cycleCamCorner}
+                className="p-1 hover:bg-indigo-600 active:bg-indigo-800 rounded text-indigo-100 hover:text-white transition"
+                title={`Đổi vị trí góc (${camCorner} -> bấm để đổi)`}
+              >
+                <RefreshCw className="w-3 h-3" />
+              </button>
+
+              {/* Nút Thu nhỏ / Phóng to */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  soundManager.playClick();
+                  setIsCamMinimized(!isCamMinimized);
+                }}
+                className="p-1 hover:bg-indigo-600 active:bg-indigo-800 rounded text-indigo-100 hover:text-white transition"
+                title={isCamMinimized ? "Phóng to Camera" : "Thu nhỏ Camera"}
+              >
+                {isCamMinimized ? (
+                  <Maximize2 className="w-3 h-3" />
+                ) : (
+                  <Minimize2 className="w-3 h-3" />
+                )}
+              </button>
+            </div>
           </div>
-          <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+
+          {/* Video Preview (Giữ nguyên DOM để không gián đoạn luồng stream) */}
+          <div
+            className={`relative bg-black flex items-center justify-center overflow-hidden transition-all ${
+              isCamMinimized
+                ? "w-0 h-0 opacity-0 pointer-events-none absolute"
+                : "aspect-video w-full"
+            }`}
+          >
             {webcamError ? (
-              <div className="p-2 text-center text-[10px] text-rose-300">
+              <div className="p-2 text-center text-[9px] sm:text-[10px] text-rose-300">
                 <VideoOff className="w-4 h-4 mx-auto mb-1 text-rose-400" />
                 Camera bị chặn
               </div>
@@ -961,6 +1099,14 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
               />
             )}
           </div>
+
+          {/* Gợi ý kéo thả khi mở rộng */}
+          {!isCamMinimized && (
+            <div className="px-1.5 py-0.5 bg-slate-950/90 text-[8px] sm:text-[9px] text-indigo-200/90 text-center flex items-center justify-center gap-1 border-t border-slate-800">
+              <Move className="w-2.5 h-2.5 flex-shrink-0" />
+              <span className="truncate">Kéo dời hoặc bấm ⟳ đổi góc</span>
+            </div>
+          )}
         </div>
       )}
 
