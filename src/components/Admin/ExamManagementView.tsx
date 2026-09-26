@@ -164,7 +164,7 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
   const [submissions, setSubmissions] = useState<ExamSubmission[]>(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem("thpt_exam_submissions");
+        const saved = localStorage.getItem("thpt_exam_submissions") || localStorage.getItem("thpt_admin_exam_submissions");
         if (saved) return JSON.parse(saved);
       } catch {
         // Ignored
@@ -699,6 +699,7 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
       );
       setSubmissions(updated);
       localStorage.setItem("thpt_exam_submissions", JSON.stringify(updated));
+      localStorage.setItem("thpt_admin_exam_submissions", JSON.stringify(updated));
       soundManager.playSuccess();
     }
   };

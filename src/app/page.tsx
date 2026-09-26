@@ -684,9 +684,10 @@ export default function AppHome() {
           setStrictExamResult(submission);
           setIsStrictResultModalOpen(true);
           try {
-            const raw = localStorage.getItem("thpt_admin_exam_submissions");
+            const raw = localStorage.getItem("thpt_exam_submissions") || localStorage.getItem("thpt_admin_exam_submissions");
             const list = raw ? JSON.parse(raw) : [];
             list.unshift(submission);
+            localStorage.setItem("thpt_exam_submissions", JSON.stringify(list));
             localStorage.setItem("thpt_admin_exam_submissions", JSON.stringify(list));
           } catch {
             // Ignored
