@@ -277,5 +277,7 @@ export interface CompetencyScore {
   actionAdvice: string;
 }
 
+export * from "./examManagement";
+
 
 

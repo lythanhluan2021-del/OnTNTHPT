@@ -23,6 +23,9 @@ import {
   Shuffle,
   RotateCcw,
   Sparkles,
+  ShieldAlert,
+  ArrowRight,
+  Award,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { LoginModal } from "@/components/Auth/LoginModal";
@@ -39,6 +42,8 @@ import { QuestionPalette } from "@/components/Practice/QuestionPalette";
 import { WeeklyGoalCard } from "@/components/Practice/WeeklyGoalCard";
 import { generateMockExam } from "@/data/mockExamGenerator";
 import { shuffleTopicQuestions } from "@/lib/questionShuffler";
+import { ExamDefinition, ExamSubmission } from "@/types/examManagement";
+import { StrictExamRunner } from "@/components/Exam/StrictExamRunner";
 
 export default function AppHome() {
   const { user, isLoggedIn, isAuthLoading } = useAuth();
@@ -123,6 +128,30 @@ export default function AppHome() {
   const [examResult, setExamResult] = useState<ExamResult | null>(null);
   const [isExamResultModalOpen, setIsExamResultModalOpen] = useState(false);
   const [reviewModeResult, setReviewModeResult] = useState<ExamResult | null>(null);
+
+  // 5. Formal Teacher-Published Proctored Exams (Khảo thí & Kiểm tra trực tuyến)
+  const [activeStrictExam, setActiveStrictExam] = useState<ExamDefinition | null>(null);
+  const [strictExamResult, setStrictExamResult] = useState<ExamSubmission | null>(null);
+  const [isStrictResultModalOpen, setIsStrictResultModalOpen] = useState(false);
+  const [publishedExams, setPublishedExams] = useState<ExamDefinition[]>([]);
+
+  // Nạp danh sách đề thi chính thức do Giáo viên xuất bản
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("thpt_admin_exams");
+      if (raw) {
+        const list: ExamDefinition[] = JSON.parse(raw);
+        const filtered = list.filter(
+          (ex) =>
+            ex.status === "published" &&
+            (ex.targetClasses.includes("all") || (!!user?.className && ex.targetClasses.includes(user.className)))
+        );
+        setPublishedExams(filtered);
+      }
+    } catch {
+      // Ignored
+    }
+  }, [user]);
 
   const handleStartMockExam = () => {
     soundManager.playClick();
@@ -642,7 +671,33 @@ export default function AppHome() {
     return <StudentLoginGate />;
   }
 
-  // 3. Chế độ Thi thử Tốt nghiệp THPT 50 phút chuẩn Bộ GD&ĐT
+  // 3. Chế độ Phòng thi Kiểm tra Trực tuyến Chống Gian Lận Nghiêm Ngặt
+  if (activeStrictExam) {
+    return (
+      <StrictExamRunner
+        exam={activeStrictExam}
+        studentName={user?.fullName || "Học sinh THPT"}
+        studentId={user?.id || user?.username || "hs-01"}
+        className={user?.className || "12A1"}
+        onFinishExam={(submission) => {
+          setActiveStrictExam(null);
+          setStrictExamResult(submission);
+          setIsStrictResultModalOpen(true);
+          try {
+            const raw = localStorage.getItem("thpt_admin_exam_submissions");
+            const list = raw ? JSON.parse(raw) : [];
+            list.unshift(submission);
+            localStorage.setItem("thpt_admin_exam_submissions", JSON.stringify(list));
+          } catch {
+            // Ignored
+          }
+        }}
+        onCancelExam={() => setActiveStrictExam(null)}
+      />
+    );
+  }
+
+  // 4. Chế độ Thi thử Tốt nghiệp THPT 50 phút chuẩn Bộ GD&ĐT
   if (activeMockExam) {
     return (
       <>
@@ -933,6 +988,55 @@ export default function AppHome() {
             <>
               {currentQuestion ? (
                 <>
+                  {/* Banner / Thẻ kỳ thi kiểm tra trực tuyến đang mở do Giáo viên xuất bản */}
+                  {publishedExams.length > 0 && (
+                    <div className="space-y-3 animate-fade-in mb-3">
+                      {publishedExams.map((exam) => (
+                        <div
+                          key={exam.id}
+                          className="p-4 rounded-2xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-neu-blue space-y-3 border border-blue-400/40"
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-500 text-white text-[10px] font-black tracking-wide uppercase shadow">
+                              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                              <span>Bài Kiểm Tra Trực Tuyến Đang Mở</span>
+                            </div>
+                            <span className="text-xs text-blue-200 font-bold">
+                              {exam.durationMinutes} phút • {exam.totalQuestions} câu
+                            </span>
+                          </div>
+
+                          <div>
+                            <h3 className="text-sm sm:text-base font-black text-white">{exam.title}</h3>
+                            <p className="text-xs text-blue-200 pt-0.5">
+                              Giám sát chống gian lận: Khóa toàn màn hình • Chống chuyển tab (Max {exam.antiCheatConfig.maxViolations} lần) • Tự động chấm điểm Bộ GD&amp;ĐT
+                            </p>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => {
+                              soundManager.playClick();
+                              if (exam.examPassword) {
+                                const pass = prompt("Bài kiểm tra này có mật khẩu. Vui lòng nhập mật khẩu phòng thi do Thầy/Cô cung cấp:");
+                                if (pass !== exam.examPassword) {
+                                  alert("Mật khẩu phòng thi không chính xác!");
+                                  return;
+                                }
+                              }
+                              setActiveStrictExam(exam);
+                            }}
+                            className="w-full py-2.5 px-4 rounded-xl bg-white text-blue-900 font-black text-xs sm:text-sm hover:bg-blue-50 active:scale-98 transition flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+                          >
+                            <ShieldAlert className="w-4 h-4 text-blue-700" />
+                            <span>Vào Phòng Thi Ngay (Chế Độ Giám Sát Chống Gian Lận)</span>
+                            <ArrowRight className="w-4 h-4 text-blue-700" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                   {/* Nhiệm vụ học tập theo tuần chuẩn Kế hoạch GD1 */}
                   <WeeklyGoalCard
                     selectedTopicId={selectedTopicId}
@@ -1183,6 +1287,98 @@ export default function AppHome() {
 
       {/* Cổng đăng nhập cho Học sinh & Giáo viên */}
       <LoginModal />
+
+      {/* Modal hiển thị kết quả chấm điểm bài thi trực tuyến */}
+      {isStrictResultModalOpen && strictExamResult && (
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
+          <div className="max-w-md w-full p-6 rounded-2xl bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-2xl border border-white/60 space-y-4 text-center">
+            <div
+              className={`w-16 h-16 rounded-full mx-auto flex items-center justify-center shadow-lg ${
+                strictExamResult.isDisqualified
+                  ? "bg-rose-100 text-rose-600 animate-bounce"
+                  : strictExamResult.totalScore >= 5.0
+                  ? "bg-emerald-100 text-emerald-600"
+                  : "bg-amber-100 text-amber-600"
+              }`}
+            >
+              {strictExamResult.isDisqualified ? (
+                <ShieldAlert className="w-8 h-8" />
+              ) : (
+                <Award className="w-8 h-8" />
+              )}
+            </div>
+
+            <div className="space-y-1">
+              <span className="text-[10px] font-black uppercase tracking-wider text-slate-500">
+                Kết Quả Khảo Thí Trực Tuyến
+              </span>
+              <h2 className="text-base sm:text-lg font-black text-slate-800 dark:text-slate-100">
+                {strictExamResult.examTitle}
+              </h2>
+              <p className="text-xs text-slate-500">
+                Thí sinh: <strong>{strictExamResult.studentName}</strong> • Lớp: <strong>{strictExamResult.className}</strong>
+              </p>
+            </div>
+
+            {strictExamResult.isDisqualified ? (
+              <div className="p-3.5 rounded-neu-sm bg-rose-50 dark:bg-rose-950/60 border border-rose-300 text-rose-800 dark:text-rose-200 text-xs font-bold space-y-1">
+                <p>BÀI THI BỊ ĐÌNH CHỈ DO VI PHẠM QUY CHẾ</p>
+                <p className="text-[11px] font-normal text-rose-700 dark:text-rose-300">
+                  {strictExamResult.disqualifiedReason}
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <div className="p-4 rounded-neu-sm bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 space-y-1">
+                  <span className="text-xs text-blue-700 dark:text-blue-300 font-bold">Tổng điểm đạt được</span>
+                  <div className="text-4xl font-black text-blue-700 dark:text-blue-400">
+                    {strictExamResult.totalScore} <span className="text-sm font-normal text-slate-500">/ 10.0</span>
+                  </div>
+                  <p className="text-[11px] text-slate-500">
+                    {strictExamResult.totalScore >= 8.0
+                      ? "Xếp loại: Giỏi 🎉"
+                      : strictExamResult.totalScore >= 6.5
+                      ? "Xếp loại: Khá 💪"
+                      : strictExamResult.totalScore >= 5.0
+                      ? "Xếp loại: Đạt yêu cầu 📚"
+                      : "Xếp loại: Cần cố gắng ôn luyện thêm ⚠️"}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="p-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-inset-sm">
+                    <span className="text-[10px] text-slate-500 block">Phần 1 (Trắc nghiệm):</span>
+                    <strong className="text-sm text-slate-800 dark:text-slate-100">{strictExamResult.mcScore}đ</strong>
+                    <span className="text-[10px] text-slate-500 block">({strictExamResult.totalCorrectMc} câu đúng)</span>
+                  </div>
+                  <div className="p-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-inset-sm">
+                    <span className="text-[10px] text-slate-500 block">Phần 2 (Đúng / Sai):</span>
+                    <strong className="text-sm text-slate-800 dark:text-slate-100">{strictExamResult.tfScore}đ</strong>
+                    <span className="text-[10px] text-slate-500 block">({strictExamResult.totalCorrectTfStatements} ý đúng)</span>
+                  </div>
+                </div>
+
+                <div className="p-2 rounded-full text-[11px] font-bold text-slate-600 dark:text-slate-400 bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat-xs flex items-center justify-center gap-1.5">
+                  <ShieldAlert className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Số lần rời màn hình: <strong>{strictExamResult.tabSwitchCount}</strong> lần</span>
+                </div>
+              </div>
+            )}
+
+            <button
+              type="button"
+              onClick={() => {
+                soundManager.playClick();
+                setIsStrictResultModalOpen(false);
+                setStrictExamResult(null);
+              }}
+              className="w-full py-3 rounded-neu font-bold text-sm bg-blue-600 text-white shadow-neu-blue active:shadow-neu-blue-pressed cursor-pointer"
+            >
+              Đóng &amp; Trở Về Trang Chủ
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

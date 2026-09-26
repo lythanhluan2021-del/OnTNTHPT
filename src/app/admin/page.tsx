@@ -41,6 +41,7 @@ import {
   CloudDownload,
   Printer,
   Compass,
+  ShieldAlert,
 } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
 import { useAuth } from "@/contexts/AuthContext";
@@ -62,6 +63,7 @@ import { INITIAL_QUESTIONS, INITIAL_SUBJECTS } from "@/data/sampleBank";
 import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
 import { PrintableReportModal } from "@/components/Admin/PrintableReportModal";
 import { CompetencyRadarCard } from "@/components/Analytics/CompetencyRadarCard";
+import { ExamManagementView } from "@/components/Admin/ExamManagementView";
 
 export default function AdminDashboardPage() {
   const { user, isLoggedIn, isAdmin, login, logout } = useAuth();
@@ -106,7 +108,7 @@ export default function AdminDashboardPage() {
   const [isResetting, setIsResetting] = useState(false);
 
   // 6. Weekly Plan & Matrix States
-  const [activeTab, setActiveTab] = useState<"overview" | "weekly" | "matrix" | "competencies">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "weekly" | "matrix" | "competencies" | "exams">("overview");
   const [allWeeks, setAllWeeks] = useState<WeekPlanItem[]>(WEEKLY_PLAN);
   const [selectedWeekId, setSelectedWeekId] = useState<string>("tuan-02-06");
   const [selectedSemester, setSelectedSemester] = useState<1 | 2 | "all">("all");
@@ -1121,6 +1123,21 @@ export default function AdminDashboardPage() {
           >
             <Compass className="w-3.5 h-3.5" />
             <span>Radar 5 Mạch Năng Lực</span>
+          </button>
+
+          <button
+            onClick={() => {
+              soundManager.playClick();
+              setActiveTab("exams");
+            }}
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+              activeTab === "exams"
+                ? "bg-blue-600 text-white shadow-neu-blue"
+                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+            }`}
+          >
+            <ShieldAlert className="w-3.5 h-3.5" />
+            <span>Khảo Thí &amp; Kiểm Tra Chống Gian Lận</span>
           </button>
         </div>
 
@@ -2175,6 +2192,17 @@ export default function AdminDashboardPage() {
             />
           </div>
         </div>
+      )}
+
+      {/* ======================================================== */}
+      {/* TAB 5: KHẢO THÍ & KIỂM TRA CHỐNG GIAN LẬN */}
+      {/* ======================================================== */}
+      {activeTab === "exams" && (
+        <ExamManagementView
+          subjects={INITIAL_SUBJECTS}
+          questions={INITIAL_QUESTIONS}
+          allClasses={overview?.classes || ["12A1", "12A2", "12A3", "12A4"]}
+        />
       )}
       </div>
 
