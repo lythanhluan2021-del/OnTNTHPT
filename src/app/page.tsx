@@ -1091,34 +1091,6 @@ export default function AppHome() {
                     </div>
                   )}
 
-                  {/* Thanh điều khiển Đảo câu hỏi & Làm lại chủ đề */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-2xl bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-neu-flat dark:shadow-[5px_5px_12px_#12151a,-5px_-5px_12px_#222932] border border-white/60 dark:border-white/5">
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={handleToggleShuffle}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm text-xs font-bold transition-all shadow-neu-flat-xs active:shadow-neu-inset cursor-pointer ${
-                          isShuffleEnabled
-                            ? "bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-400/50"
-                            : "bg-[#e6ecf5] dark:bg-[#202734] text-slate-600 dark:text-slate-400 border border-slate-300/60 dark:border-slate-700"
-                        }`}
-                        title="Bật/Tắt chế độ đảo thứ tự câu hỏi và hoán vị đáp án A, B, C, D"
-                      >
-                        <Shuffle className="w-3.5 h-3.5" />
-                        <span>Đảo câu &amp; đáp án: <strong>{isShuffleEnabled ? "Bật" : "Tắt"}</strong></span>
-                      </button>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => handleRetakeAndShuffleTopic()}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset hover:opacity-95 transition cursor-pointer"
-                      title="Làm lại chủ đề này với đề và đáp án xáo trộn hoàn toàn mới"
-                    >
-                      <RotateCcw className="w-3.5 h-3.5" />
-                      <span>Làm lại chủ đề (Đảo mới)</span>
-                    </button>
-                  </div>
 
                   {/* Bảng ma trận điều hướng câu hỏi nhanh 1-chạm */}
                   {topicQuestions.length > 1 && (
