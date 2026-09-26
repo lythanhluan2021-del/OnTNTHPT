@@ -2,7 +2,16 @@
 
 import React, { useState } from "react";
 import { soundManager } from "@/lib/audioEffects";
-import { LayoutGrid, Bookmark, ChevronUp, ChevronDown, CheckCircle2, Clock } from "lucide-react";
+import {
+  LayoutGrid,
+  Bookmark,
+  ChevronUp,
+  ChevronDown,
+  CheckCircle2,
+  Clock,
+  Shuffle,
+  RotateCcw,
+} from "lucide-react";
 
 interface QuestionPaletteProps {
   totalQuestions: number;
@@ -13,6 +22,9 @@ interface QuestionPaletteProps {
   isCorrect?: (index: number) => boolean | null; // Dùng khi xem lại bài (Review Mode)
   onToggleFlag?: (index: number) => void;
   partDividerIndex?: number; // Vị trí chuyển giữa Phần 1 và Phần 2 (ví dụ 24)
+  isShuffled?: boolean;
+  onToggleShuffle?: () => void;
+  onRetakeTopic?: () => void;
 }
 
 export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
@@ -24,6 +36,9 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
   isCorrect,
   onToggleFlag,
   partDividerIndex,
+  isShuffled,
+  onToggleShuffle,
+  onRetakeTopic,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -50,18 +65,56 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
           </div>
         </div>
 
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            soundManager.playClick();
-            setIsExpanded(!isExpanded);
-          }}
-          className="p-1.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#212730] shadow-neu-flat-xs active:shadow-neu-inset text-slate-600 dark:text-slate-300"
-          title={isExpanded ? "Thu gọn bảng câu hỏi" : "Mở rộng bảng câu hỏi"}
-        >
-          {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-        </button>
+        <div className="flex items-center gap-1.5">
+          {onToggleShuffle && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                soundManager.playClick();
+                onToggleShuffle();
+              }}
+              className={`p-1.5 sm:px-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-1 shadow-neu-flat-xs active:shadow-neu-inset ${
+                isShuffled
+                  ? "bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-400/50"
+                  : "bg-[#e6ecf5] dark:bg-[#212730] text-slate-500 dark:text-slate-400"
+              }`}
+              title={isShuffled ? "Đảo câu hỏi & đáp án: Đang BẬT. Bấm để đổi." : "Đảo câu hỏi & đáp án: Đang TẮT. Bấm để bật."}
+            >
+              <Shuffle className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline text-[10px]">{isShuffled ? "Đảo: Bật" : "Đảo: Tắt"}</span>
+            </button>
+          )}
+
+          {onRetakeTopic && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                soundManager.playClick();
+                onRetakeTopic();
+              }}
+              className="p-1.5 sm:px-2.5 sm:py-1 rounded-neu-sm text-xs font-bold bg-[#e6ecf5] dark:bg-[#212730] hover:bg-blue-50 dark:hover:bg-blue-950/40 text-blue-700 dark:text-blue-300 shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1 border border-blue-300/40 dark:border-blue-700/50"
+              title="Làm lại chủ đề: Xáo trộn toàn bộ thứ tự câu hỏi và phương án A, B, C, D mới"
+            >
+              <RotateCcw className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+              <span className="hidden sm:inline text-[10px]">Đảo &amp; Làm lại</span>
+            </button>
+          )}
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              soundManager.playClick();
+              setIsExpanded(!isExpanded);
+            }}
+            className="p-1.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#212730] shadow-neu-flat-xs active:shadow-neu-inset text-slate-600 dark:text-slate-300"
+            title={isExpanded ? "Thu gọn bảng câu hỏi" : "Mở rộng bảng câu hỏi"}
+          >
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+        </div>
       </div>
 
       {/* Grid of question buttons */}
@@ -181,6 +234,27 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
               </div>
             )}
           </div>
+
+          {/* Nút hành động nhanh trong bảng câu hỏi */}
+          {onRetakeTopic && (
+            <div className="pt-2 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-2">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400">
+                Ôn luyện nhiều lần với đề và đáp án đảo ngẫu nhiên
+              </span>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  soundManager.playClick();
+                  onRetakeTopic();
+                }}
+                className="px-3 py-1.5 rounded-neu-sm bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset flex items-center gap-1.5 hover:opacity-95 transition cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Làm lại chủ đề (Đảo mới)</span>
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

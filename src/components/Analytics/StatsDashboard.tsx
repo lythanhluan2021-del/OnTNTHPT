@@ -14,6 +14,7 @@ import {
   ArrowRight,
   BookOpen,
   History,
+  RotateCcw,
 } from "lucide-react";
 
 interface StatsDashboardProps {
@@ -165,10 +166,11 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
                 {/* Nút hành động ôn lại */}
                 <button
                   onClick={() => onSelectTopicToPractice(topic.topicId)}
-                  className="w-full py-1.5 px-2 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat-xs dark:shadow-none active:shadow-neu-inset text-blue-700 dark:text-blue-300 text-xs font-bold flex items-center justify-center gap-1.5 hover:text-blue-800 dark:hover:text-blue-200 border border-slate-300/40 dark:border-slate-700/60 transition"
+                  className="w-full py-1.5 px-2 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat-xs dark:shadow-none active:shadow-neu-inset text-blue-700 dark:text-blue-300 text-xs font-bold flex items-center justify-center gap-1.5 hover:text-blue-800 dark:hover:text-blue-200 border border-slate-300/40 dark:border-slate-700/60 transition cursor-pointer"
+                  title="Làm lại dạng bài này với câu hỏi và các phương án A, B, C, D được đảo mới"
                 >
-                  <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                  <span>Ôn luyện lại dạng bài này</span>
+                  <RotateCcw className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                  <span>Ôn luyện lại (Đảo mới câu &amp; đáp án)</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </div>

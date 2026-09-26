@@ -1,4 +1,5 @@
 import { Question, MockExam, MockExamQuestion, ExamResult, ExamAnswerState } from "@/types";
+import { shuffleQuestionOptions } from "@/lib/questionShuffler";
 
 /**
  * Sinh một đề thi thử Tốt nghiệp THPT chuẩn ma trận Bộ GD&ĐT
@@ -25,16 +26,16 @@ export function generateMockExam(
   const shuffledMc = shuffle(mcPool);
   const shuffledTf = shuffle(tfPool);
 
-  // Chọn 24 câu MC
+  // Chọn 24 câu MC và đảo ngẫu nhiên phương án A, B, C, D
   const selectedMc: MockExamQuestion[] = shuffledMc.slice(0, 24).map((q, idx) => ({
-    ...q,
+    ...shuffleQuestionOptions(q),
     examIndex: idx + 1,
     part: "mc",
   }));
 
-  // Chọn 4 câu TF
+  // Chọn 4 câu TF và đảo ngẫu nhiên các ý a, b, c, d
   const selectedTf: MockExamQuestion[] = shuffledTf.slice(0, 4).map((q, idx) => ({
-    ...q,
+    ...shuffleQuestionOptions(q),
     examIndex: selectedMc.length + idx + 1,
     part: "tf",
   }));

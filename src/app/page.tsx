@@ -13,7 +13,17 @@ import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
 import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
 import { TheoryViewer } from "@/components/Theory/TheoryViewer";
 import { soundManager } from "@/lib/audioEffects";
-import { BookOpen, ListOrdered, CheckCheck, Terminal, Globe, Database } from "lucide-react";
+import {
+  BookOpen,
+  ListOrdered,
+  CheckCheck,
+  Terminal,
+  Globe,
+  Database,
+  Shuffle,
+  RotateCcw,
+  Sparkles,
+} from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { LoginModal } from "@/components/Auth/LoginModal";
 import { StudentLoginGate } from "@/components/Auth/StudentLoginGate";
@@ -28,6 +38,7 @@ import { ExamResultModal } from "@/components/Exam/ExamResultModal";
 import { QuestionPalette } from "@/components/Practice/QuestionPalette";
 import { WeeklyGoalCard } from "@/components/Practice/WeeklyGoalCard";
 import { generateMockExam } from "@/data/mockExamGenerator";
+import { shuffleTopicQuestions } from "@/lib/questionShuffler";
 
 export default function AppHome() {
   const { user, isLoggedIn, isAuthLoading } = useAuth();
@@ -91,6 +102,22 @@ export default function AppHome() {
   const [questionStartTime, setQuestionStartTime] = useState<number>(Date.now());
   const [activeQuestionFormat, setActiveQuestionFormat] = useState<"all" | "mc" | "tf">("mc");
 
+  // Đảo ngẫu nhiên câu hỏi & đáp án (Tránh học thuộc lòng theo vị trí)
+  const [isShuffleEnabled, setIsShuffleEnabled] = useState<boolean>(true);
+  const [shuffleSeed, setShuffleSeed] = useState<number>(0);
+  const [sessionAnswers, setSessionAnswers] = useState<
+    Record<
+      string,
+      {
+        answered: boolean;
+        isCorrect: boolean;
+        selectedOption?: "A" | "B" | "C" | "D" | null;
+        selectedTF?: Record<string, boolean>;
+      }
+    >
+  >({});
+  const [shuffleToastMessage, setShuffleToastMessage] = useState<string | null>(null);
+
   // 4. Mock Exam (Thi thử 50 phút chuẩn Bộ GD&ĐT) States
   const [activeMockExam, setActiveMockExam] = useState<MockExam | null>(null);
   const [examResult, setExamResult] = useState<ExamResult | null>(null);
@@ -142,15 +169,15 @@ export default function AppHome() {
   const isPracticeQuestionAnswered = (idx: number) => {
     const q = topicQuestions[idx];
     if (!q) return false;
-    return attempts.some((att) => att.questionId === q.id);
+    return Boolean(sessionAnswers[q.id]?.answered);
   };
 
   const isPracticeQuestionCorrect = (idx: number): boolean | null => {
     const q = topicQuestions[idx];
     if (!q) return null;
-    const atts = attempts.filter((att) => att.questionId === q.id);
-    if (atts.length === 0) return null;
-    return atts[atts.length - 1].isCorrect;
+    const sessionItem = sessionAnswers[q.id];
+    if (!sessionItem || !sessionItem.answered) return null;
+    return sessionItem.isCorrect;
   };
 
   // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage với cơ chế kiểm soát phiên bản chuẩn KH GD1
@@ -323,31 +350,56 @@ export default function AppHome() {
     }
   }, [selectedTopicId, mcQuestionsCount, tfQuestionsCount, activeQuestionFormat]);
 
-  // Danh sách câu hỏi hiển thị theo định dạng đang chọn (MC hoặc TF)
+  // Danh sách câu hỏi hiển thị theo định dạng đang chọn (MC hoặc TF), hỗ trợ đảo câu hỏi & đáp án
   const topicQuestions = useMemo(() => {
+    let baseList: Question[] = [];
     if (activeQuestionFormat === "mc") {
       const mcList = allTopicQuestions.filter((q) => q.type !== "true_false");
-      return mcList.length > 0 ? mcList : allTopicQuestions;
-    }
-    if (activeQuestionFormat === "tf") {
+      baseList = mcList.length > 0 ? mcList : allTopicQuestions;
+    } else if (activeQuestionFormat === "tf") {
       const tfList = allTopicQuestions.filter((q) => q.type === "true_false");
-      return tfList.length > 0 ? tfList : allTopicQuestions;
+      baseList = tfList.length > 0 ? tfList : allTopicQuestions;
+    } else {
+      baseList = allTopicQuestions;
     }
-    return allTopicQuestions;
-  }, [allTopicQuestions, activeQuestionFormat]);
+
+    if (!isShuffleEnabled) {
+      return baseList;
+    }
+
+    // Đảo ngẫu nhiên cả thứ tự câu hỏi và các phương án A, B, C, D (hoặc a, b, c, d)
+    return shuffleTopicQuestions(baseList, {
+      shuffleQuestions: isShuffleEnabled,
+      shuffleOptions: isShuffleEnabled,
+    });
+  }, [allTopicQuestions, activeQuestionFormat, isShuffleEnabled, shuffleSeed]);
+
+  // Reset session answers khi đổi chủ đề hoặc đổi dạng bài
+  useEffect(() => {
+    setSessionAnswers({});
+    setCurrentQuestionIndex(0);
+  }, [selectedTopicId, activeQuestionFormat]);
 
   // Câu hỏi hiện tại
   const currentQuestion = topicQuestions[currentQuestionIndex] || topicQuestions[0];
 
-  // Reset trạng thái câu hỏi khi chuyển câu hoặc chuyển chủ đề hoặc đổi dạng bài
+  // Đồng bộ trạng thái câu hỏi khi chuyển câu, chuyển chủ đề hoặc đổi dạng bài
   useEffect(() => {
-    setSelectedOption(null);
-    setSelectedTF({});
-    setHasAnswered(false);
+    const q = topicQuestions[currentQuestionIndex];
+    if (q && sessionAnswers[q.id]?.answered) {
+      const state = sessionAnswers[q.id];
+      setSelectedOption(state.selectedOption || null);
+      setSelectedTF(state.selectedTF || {});
+      setHasAnswered(true);
+    } else {
+      setSelectedOption(null);
+      setSelectedTF({});
+      setHasAnswered(false);
+    }
     setHintLevel(0);
     setIsHintOpen(false);
     setQuestionStartTime(Date.now());
-  }, [currentQuestionIndex, selectedTopicId, activeQuestionFormat]);
+  }, [currentQuestionIndex, selectedTopicId, activeQuestionFormat, topicQuestions, sessionAnswers]);
 
   // Chọn Đúng / Sai cho từng ý câu hỏi Phần 2
   const handleSelectTF = (itemId: string, value: boolean) => {
@@ -403,6 +455,17 @@ export default function AppHome() {
       setAttempts(updatedAttempts);
       setHasAnswered(true);
 
+      // Lưu kết quả vào phiên làm bài hiện tại
+      setSessionAnswers((prev) => ({
+        ...prev,
+        [currentQuestion.id]: {
+          answered: true,
+          isCorrect: isAllCorrect,
+          selectedOption: null,
+          selectedTF: { ...(selectedTF as Record<string, boolean>) },
+        },
+      }));
+
       try {
         localStorage.setItem("thpt_attempts", JSON.stringify(updatedAttempts));
       } catch {
@@ -450,6 +513,17 @@ export default function AppHome() {
     setAttempts(updatedAttempts);
     setHasAnswered(true);
 
+    // Lưu kết quả vào phiên làm bài hiện tại
+    setSessionAnswers((prev) => ({
+      ...prev,
+      [currentQuestion.id]: {
+        answered: true,
+        isCorrect,
+        selectedOption,
+        selectedTF: {},
+      },
+    }));
+
     try {
       localStorage.setItem("thpt_attempts", JSON.stringify(updatedAttempts));
     } catch {
@@ -475,6 +549,41 @@ export default function AppHome() {
       // Đã hết câu trong chủ đề -> chuyển sang tab Phân tích kết quả
       setActiveTab("analytics");
     }
+  };
+
+  // Bật / Tắt chế độ đảo câu hỏi & đáp án
+  const handleToggleShuffle = () => {
+    soundManager.playClick();
+    const nextState = !isShuffleEnabled;
+    setIsShuffleEnabled(nextState);
+    setShuffleSeed(Date.now());
+    setSessionAnswers({});
+    setCurrentQuestionIndex(0);
+    setShuffleToastMessage(
+      nextState
+        ? "🔀 Đã BẬT xáo trộn câu hỏi & đáp án! Thứ tự câu và các phương án A,B,C,D đã được làm mới."
+        : "📋 Đã TẮT xáo trộn. Câu hỏi hiển thị theo thứ tự mặc định của tài liệu."
+    );
+    setTimeout(() => setShuffleToastMessage(null), 3500);
+  };
+
+  // Làm lại chủ đề với bộ câu hỏi & đáp án đảo hoàn toàn mới
+  const handleRetakeAndShuffleTopic = (targetTopicId?: string) => {
+    soundManager.playClick();
+    if (targetTopicId && targetTopicId !== selectedTopicId) {
+      setSelectedTopicId(targetTopicId);
+    }
+    setShuffleSeed(Date.now());
+    setSessionAnswers({});
+    setCurrentQuestionIndex(0);
+    setSelectedOption(null);
+    setSelectedTF({});
+    setHasAnswered(false);
+    setHintLevel(0);
+    setIsHintOpen(false);
+    setActiveTab("practice");
+    setShuffleToastMessage("✨ Đã xáo trộn mới toàn bộ câu hỏi và đáp án! Bắt đầu lượt làm bài mới.");
+    setTimeout(() => setShuffleToastMessage(null), 3500);
   };
 
   // Tăng bậc gợi ý
@@ -831,6 +940,43 @@ export default function AppHome() {
                     onSelectTopic={handleSelectTopic}
                   />
 
+                  {/* Toast thông báo xáo trộn thành công */}
+                  {shuffleToastMessage && (
+                    <div className="p-2.5 rounded-neu-sm bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold text-center shadow-lg animate-fade-in flex items-center justify-center gap-2">
+                      <Sparkles className="w-4 h-4 text-amber-300 animate-pulse flex-shrink-0" />
+                      <span>{shuffleToastMessage}</span>
+                    </div>
+                  )}
+
+                  {/* Thanh điều khiển Đảo câu hỏi & Làm lại chủ đề */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 p-2.5 rounded-2xl bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-neu-flat dark:shadow-[5px_5px_12px_#12151a,-5px_-5px_12px_#222932] border border-white/60 dark:border-white/5">
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={handleToggleShuffle}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm text-xs font-bold transition-all shadow-neu-flat-xs active:shadow-neu-inset cursor-pointer ${
+                          isShuffleEnabled
+                            ? "bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-400/50"
+                            : "bg-[#e6ecf5] dark:bg-[#202734] text-slate-600 dark:text-slate-400 border border-slate-300/60 dark:border-slate-700"
+                        }`}
+                        title="Bật/Tắt chế độ đảo thứ tự câu hỏi và hoán vị đáp án A, B, C, D"
+                      >
+                        <Shuffle className="w-3.5 h-3.5" />
+                        <span>Đảo câu &amp; đáp án: <strong>{isShuffleEnabled ? "Bật" : "Tắt"}</strong></span>
+                      </button>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleRetakeAndShuffleTopic()}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-neu-sm bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset hover:opacity-95 transition cursor-pointer"
+                      title="Làm lại chủ đề này với đề và đáp án xáo trộn hoàn toàn mới"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Làm lại chủ đề (Đảo mới)</span>
+                    </button>
+                  </div>
+
                   {/* Bảng ma trận điều hướng câu hỏi nhanh 1-chạm */}
                   {topicQuestions.length > 1 && (
                     <QuestionPalette
@@ -841,6 +987,9 @@ export default function AppHome() {
                       }}
                       isAnswered={isPracticeQuestionAnswered}
                       isCorrect={isPracticeQuestionCorrect}
+                      isShuffled={isShuffleEnabled}
+                      onToggleShuffle={handleToggleShuffle}
+                      onRetakeTopic={() => handleRetakeAndShuffleTopic()}
                     />
                   )}
 
@@ -895,6 +1044,36 @@ export default function AppHome() {
                     onClose={() => setIsHintOpen(false)}
                   />
 
+                  {/* Thông báo khi hoàn thành câu hỏi cuối cùng của chủ đề */}
+                  {currentQuestionIndex === topicQuestions.length - 1 && hasAnswered && (
+                    <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40 border border-blue-200 dark:border-blue-800 shadow-neu-flat text-center space-y-3 animate-fade-in">
+                      <div className="flex items-center justify-center gap-2 text-blue-700 dark:text-blue-300 font-bold text-sm">
+                        <Sparkles className="w-5 h-5 text-amber-500 animate-bounce" />
+                        <span>Chúc mừng! Bạn đã hoàn thành tất cả câu hỏi của chủ đề này!</span>
+                      </div>
+                      <p className="text-xs text-slate-600 dark:text-slate-400">
+                        Hãy làm lại với đề và đáp án đảo ngẫu nhiên mới để kiểm tra sự vững vàng của kiến thức.
+                      </p>
+                      <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+                        <button
+                          type="button"
+                          onClick={() => handleRetakeAndShuffleTopic()}
+                          className="px-4 py-2 rounded-neu-sm bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset flex items-center gap-2 hover:opacity-95 transition cursor-pointer"
+                        >
+                          <RotateCcw className="w-4 h-4" />
+                          <span>Làm lại chủ đề (Đảo mới)</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setActiveTab("analytics")}
+                          className="px-4 py-2 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset border border-slate-300/60 dark:border-slate-700 transition cursor-pointer"
+                        >
+                          <span>Xem phân tích điểm yếu</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Khoảng đệm để không bị che bởi Fixed Bottom Bar */}
                   <div className="h-20" />
                 </>
@@ -916,8 +1095,7 @@ export default function AppHome() {
               questions={questions}
               attempts={attempts}
               onSelectTopicToPractice={(topicId) => {
-                handleSelectTopic(topicId);
-                setActiveTab("practice");
+                handleRetakeAndShuffleTopic(topicId);
               }}
             />
           )}
@@ -934,8 +1112,10 @@ export default function AppHome() {
               ? Object.keys(selectedTF).length > 0
               : !!selectedOption
           }
+          isLastQuestion={currentQuestionIndex === topicQuestions.length - 1}
           onCheckAnswer={handleCheckAnswer}
           onNextQuestion={handleNextQuestion}
+          onRetakeTopic={() => handleRetakeAndShuffleTopic()}
           onToggleHint={handleToggleHint}
           onOpenSocraticTutor={() => setIsSocraticOpen(true)}
           hintLevel={hintLevel}
