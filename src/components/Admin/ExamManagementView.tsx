@@ -253,7 +253,7 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
     ];
   });
 
-  // Tự động lưu kỳ thi vào localStorage
+  // Tự động lưu kỳ thi vào localStorage và đồng bộ lên Server
   const saveExams = (newExams: ExamDefinition[]) => {
     setExams(newExams);
     try {
@@ -261,7 +261,77 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
     } catch {
       // Ignored
     }
+    // Gửi ngay lên máy chủ để các thiết bị khác (điện thoại của học sinh) nhận được ngay lập tức
+    fetch("/api/exams", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ exams: newExams }),
+    }).catch((err) => console.warn("Lỗi đồng bộ exams lên server:", err));
   };
+
+  // Đồng bộ kỳ thi từ máy chủ khi mở trang
+  useEffect(() => {
+    const fetchExamsFromServer = async () => {
+      try {
+        const res = await fetch("/api/exams");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.exams) && data.exams.length > 0) {
+            setExams(data.exams);
+            if (!selectedExamId || !data.exams.some((e: any) => e.id === selectedExamId)) {
+              setSelectedExamId(data.exams[0].id);
+            }
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn("Lỗi tải exams từ máy chủ:", err);
+      }
+
+      // Nếu máy chủ chưa có mà local có, đồng bộ local lên máy chủ
+      if (exams.length > 0) {
+        fetch("/api/exams", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ exams }),
+        }).catch(() => {});
+      }
+    };
+
+    fetchExamsFromServer();
+  }, []);
+
+  // Polling danh sách bài nộp của học sinh từ máy chủ theo thời gian thực (Live Proctoring)
+  useEffect(() => {
+    let isMounted = true;
+    const fetchSubmissions = async () => {
+      try {
+        const url = currentExam?.id
+          ? `/api/exams/submissions?examId=${currentExam.id}`
+          : "/api/exams/submissions";
+        const res = await fetch(url);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.submissions) && isMounted) {
+            setSubmissions(data.submissions);
+            try {
+              localStorage.setItem("thpt_exam_submissions", JSON.stringify(data.submissions));
+              localStorage.setItem("thpt_admin_exam_submissions", JSON.stringify(data.submissions));
+            } catch {}
+          }
+        }
+      } catch (err) {
+        // Ignored
+      }
+    };
+
+    fetchSubmissions();
+    const interval = setInterval(fetchSubmissions, 3000); // Polling mỗi 3 giây để cập nhật tức thời
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, [currentExam?.id]);
 
   // =========================================================================
   // TRỤ CỘT 1: STATE SOẠN ĐỀ & TRỘN ĐỀ
@@ -642,6 +712,7 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
     if (confirm(`Thầy có chắc chắn muốn xóa kỳ thi "${title}"?`)) {
       const updated = exams.filter((e) => e.id !== id);
       saveExams(updated);
+      fetch(`/api/exams?id=${id}`, { method: "DELETE" }).catch(() => {});
       if (selectedExamId === id && updated.length > 0) {
         setSelectedExamId(updated[0].id);
       }
@@ -700,6 +771,11 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
       setSubmissions(updated);
       localStorage.setItem("thpt_exam_submissions", JSON.stringify(updated));
       localStorage.setItem("thpt_admin_exam_submissions", JSON.stringify(updated));
+      if (currentExam?.id) {
+        fetch(`/api/exams/submissions?examId=${currentExam.id}&studentId=${studentId}`, {
+          method: "DELETE",
+        }).catch(() => {});
+      }
       soundManager.playSuccess();
     }
   };

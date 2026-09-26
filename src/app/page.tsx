@@ -135,22 +135,52 @@ export default function AppHome() {
   const [isStrictResultModalOpen, setIsStrictResultModalOpen] = useState(false);
   const [publishedExams, setPublishedExams] = useState<ExamDefinition[]>([]);
 
-  // Nạp danh sách đề thi chính thức do Giáo viên xuất bản
+  // Nạp danh sách đề thi chính thức do Giáo viên xuất bản từ Server và Local
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem("thpt_admin_exams");
-      if (raw) {
-        const list: ExamDefinition[] = JSON.parse(raw);
-        const filtered = list.filter(
-          (ex) =>
-            ex.status === "published" &&
-            (ex.targetClasses.includes("all") || (!!user?.className && ex.targetClasses.includes(user.className)))
-        );
-        setPublishedExams(filtered);
+    let isMounted = true;
+
+    const loadPublishedExams = async () => {
+      try {
+        const res = await fetch("/api/exams?published=true");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.exams)) {
+            const filtered = data.exams.filter(
+              (ex: ExamDefinition) =>
+                ex.status === "published" &&
+                (ex.targetClasses.includes("all") || (!!user?.className && ex.targetClasses.includes(user.className)) || !user?.className)
+            );
+            if (isMounted) setPublishedExams(filtered);
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn("Lỗi tải đề thi từ máy chủ, chuyển sang kiểm tra bộ nhớ đệm:", err);
       }
-    } catch {
-      // Ignored
-    }
+
+      // Dự phòng từ localStorage nếu offline
+      try {
+        const raw = localStorage.getItem("thpt_admin_exams");
+        if (raw) {
+          const list: ExamDefinition[] = JSON.parse(raw);
+          const filtered = list.filter(
+            (ex) =>
+              ex.status === "published" &&
+              (ex.targetClasses.includes("all") || (!!user?.className && ex.targetClasses.includes(user.className)) || !user?.className)
+          );
+          if (isMounted) setPublishedExams(filtered);
+        }
+      } catch {
+        // Ignored
+      }
+    };
+
+    loadPublishedExams();
+    const interval = setInterval(loadPublishedExams, 6000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
   }, [user]);
 
   const handleStartMockExam = () => {
@@ -692,6 +722,13 @@ export default function AppHome() {
           } catch {
             // Ignored
           }
+
+          // Đồng bộ bài nộp lên Server để máy giáo viên nhận được tức thì
+          fetch("/api/exams/submissions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(submission),
+          }).catch((err) => console.error("Lỗi gửi bài thi lên máy chủ:", err));
         }}
         onCancelExam={() => setActiveStrictExam(null)}
       />
@@ -987,56 +1024,57 @@ export default function AppHome() {
             />
           ) : activeTab === "practice" ? (
             <>
+              {/* Banner / Thẻ kỳ thi kiểm tra trực tuyến đang mở do Giáo viên xuất bản (Luôn nổi bật trên điện thoại) */}
+              {publishedExams.length > 0 && (
+                <div className="space-y-3 animate-fade-in mb-4">
+                  {publishedExams.map((exam) => (
+                    <div
+                      key={exam.id}
+                      className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-neu-blue space-y-3 border-2 border-amber-400/80"
+                    >
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500 text-white text-[11px] font-black tracking-wide uppercase shadow">
+                          <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse" />
+                          <span>KỲ THI TRỰC TUYẾN ĐANG MỞ</span>
+                        </div>
+                        <span className="text-xs text-amber-300 font-bold">
+                          ⏳ {exam.durationMinutes} phút • 📝 {exam.totalQuestions} câu
+                        </span>
+                      </div>
+
+                      <div>
+                        <h3 className="text-sm sm:text-base font-black text-white">{exam.title}</h3>
+                        <p className="text-xs text-blue-200 pt-0.5">
+                          Lớp được giao: <strong>{exam.targetClasses.includes("all") ? "Toàn khối 12" : exam.targetClasses.join(", ")}</strong> • Chế độ giám sát chống gian lận đa tầng
+                        </p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          soundManager.playClick();
+                          if (exam.examPassword) {
+                            const pass = prompt("Bài kiểm tra này có mật khẩu. Vui lòng nhập mật khẩu phòng thi do Thầy/Cô cung cấp:");
+                            if (pass !== exam.examPassword) {
+                              alert("Mật khẩu phòng thi không chính xác!");
+                              return;
+                            }
+                          }
+                          setActiveStrictExam(exam);
+                        }}
+                        className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black text-xs sm:text-sm active:scale-98 transition flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+                      >
+                        <ShieldAlert className="w-4 h-4 text-slate-950" />
+                        <span>VÀO PHÒNG THI NGAY ({exam.title})</span>
+                        <ArrowRight className="w-4 h-4 text-slate-950" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               {currentQuestion ? (
                 <>
-                  {/* Banner / Thẻ kỳ thi kiểm tra trực tuyến đang mở do Giáo viên xuất bản */}
-                  {publishedExams.length > 0 && (
-                    <div className="space-y-3 animate-fade-in mb-3">
-                      {publishedExams.map((exam) => (
-                        <div
-                          key={exam.id}
-                          className="p-4 rounded-2xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-neu-blue space-y-3 border border-blue-400/40"
-                        >
-                          <div className="flex items-center justify-between gap-2">
-                            <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-500 text-white text-[10px] font-black tracking-wide uppercase shadow">
-                              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                              <span>Bài Kiểm Tra Trực Tuyến Đang Mở</span>
-                            </div>
-                            <span className="text-xs text-blue-200 font-bold">
-                              {exam.durationMinutes} phút • {exam.totalQuestions} câu
-                            </span>
-                          </div>
-
-                          <div>
-                            <h3 className="text-sm sm:text-base font-black text-white">{exam.title}</h3>
-                            <p className="text-xs text-blue-200 pt-0.5">
-                              Giám sát chống gian lận: Khóa toàn màn hình • Chống chuyển tab (Max {exam.antiCheatConfig.maxViolations} lần) • Tự động chấm điểm Bộ GD&amp;ĐT
-                            </p>
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={() => {
-                              soundManager.playClick();
-                              if (exam.examPassword) {
-                                const pass = prompt("Bài kiểm tra này có mật khẩu. Vui lòng nhập mật khẩu phòng thi do Thầy/Cô cung cấp:");
-                                if (pass !== exam.examPassword) {
-                                  alert("Mật khẩu phòng thi không chính xác!");
-                                  return;
-                                }
-                              }
-                              setActiveStrictExam(exam);
-                            }}
-                            className="w-full py-2.5 px-4 rounded-xl bg-white text-blue-900 font-black text-xs sm:text-sm hover:bg-blue-50 active:scale-98 transition flex items-center justify-center gap-2 cursor-pointer shadow-lg"
-                          >
-                            <ShieldAlert className="w-4 h-4 text-blue-700" />
-                            <span>Vào Phòng Thi Ngay (Chế Độ Giám Sát Chống Gian Lận)</span>
-                            <ArrowRight className="w-4 h-4 text-blue-700" />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
 
                   {/* Nhiệm vụ học tập theo tuần chuẩn Kế hoạch GD1 */}
                   <WeeklyGoalCard

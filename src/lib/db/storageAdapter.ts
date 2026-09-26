@@ -12,6 +12,7 @@ import {
   WeeklyProgressOverview,
   WeeklyMatrixRow,
 } from "@/types";
+import { ExamDefinition, ExamSubmission, ProctorUnlockRequest } from "@/types/examManagement";
 import { WEEKLY_PLAN, getAllWeeklyPlans, getWeeklyPlanById } from "@/data/weeklyPlan";
 
 const IS_SERVERLESS = Boolean(
@@ -27,6 +28,9 @@ const LOCAL_DB_DIR = path.join(process.cwd(), "src", "data", "db");
 const globalForStorage = globalThis as unknown as {
   ontnUsersCache?: User[];
   ontnAttemptsCache?: StudentAttempt[];
+  ontnExamsCache?: ExamDefinition[];
+  ontnSubmissionsCache?: ExamSubmission[];
+  ontnUnlockRequestsCache?: ProctorUnlockRequest[];
   ontnRedisClient?: Redis | null;
 };
 
@@ -809,5 +813,161 @@ export class StorageAdapter {
     });
 
     return { weeks, rows };
+  }
+
+  // =========================================================================
+  // EXAM & SUBMISSION MANAGEMENT (KHẢO THÍ & KIỂM TRA CHỐNG GIAN LẬN)
+  // =========================================================================
+
+  static async getExams(): Promise<ExamDefinition[]> {
+    const redis = getRedisClient();
+    if (redis) {
+      try {
+        const remote = await redis.get<ExamDefinition[]>("thpt:exams");
+        if (remote && Array.isArray(remote)) {
+          globalForStorage.ontnExamsCache = remote;
+          return remote;
+        }
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi đọc exams từ Upstash Redis:", err);
+      }
+    }
+
+    if (globalForStorage.ontnExamsCache && globalForStorage.ontnExamsCache.length > 0) {
+      return globalForStorage.ontnExamsCache;
+    }
+
+    const tmpExams = safeReadJson<ExamDefinition[]>(path.join(TMP_DB_DIR, "exams.json"));
+    if (tmpExams && Array.isArray(tmpExams)) {
+      globalForStorage.ontnExamsCache = tmpExams;
+      return tmpExams;
+    }
+
+    const localExams = safeReadJson<ExamDefinition[]>(path.join(LOCAL_DB_DIR, "exams.json"));
+    if (localExams && Array.isArray(localExams)) {
+      globalForStorage.ontnExamsCache = localExams;
+      safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "exams.json"), localExams);
+      return localExams;
+    }
+
+    return globalForStorage.ontnExamsCache || [];
+  }
+
+  static async saveExams(exams: ExamDefinition[]): Promise<void> {
+    globalForStorage.ontnExamsCache = [...exams];
+    const redis = getRedisClient();
+    if (redis) {
+      try {
+        await redis.set("thpt:exams", exams);
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi lưu exams lên Redis:", err);
+      }
+    }
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "exams.json"), exams);
+    if (!IS_SERVERLESS) {
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "exams.json"), exams);
+    }
+  }
+
+  static async saveExam(exam: ExamDefinition): Promise<void> {
+    const current = await this.getExams();
+    const idx = current.findIndex((e) => e.id === exam.id);
+    let updated: ExamDefinition[];
+    if (idx >= 0) {
+      updated = current.map((e) => (e.id === exam.id ? exam : e));
+    } else {
+      updated = [exam, ...current];
+    }
+    await this.saveExams(updated);
+  }
+
+  static async deleteExam(examId: string): Promise<void> {
+    const current = await this.getExams();
+    const updated = current.filter((e) => e.id !== examId);
+    await this.saveExams(updated);
+  }
+
+  static async getSubmissions(examId?: string): Promise<ExamSubmission[]> {
+    const redis = getRedisClient();
+    if (redis) {
+      try {
+        const remote = await redis.get<ExamSubmission[]>("thpt:submissions");
+        if (remote && Array.isArray(remote)) {
+          globalForStorage.ontnSubmissionsCache = remote;
+          return examId ? remote.filter((s) => s.examId === examId) : remote;
+        }
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi đọc submissions từ Redis:", err);
+      }
+    }
+
+    if (globalForStorage.ontnSubmissionsCache && globalForStorage.ontnSubmissionsCache.length > 0) {
+      const list = globalForStorage.ontnSubmissionsCache;
+      return examId ? list.filter((s) => s.examId === examId) : list;
+    }
+
+    const tmpSubs = safeReadJson<ExamSubmission[]>(path.join(TMP_DB_DIR, "submissions.json"));
+    if (tmpSubs && Array.isArray(tmpSubs)) {
+      globalForStorage.ontnSubmissionsCache = tmpSubs;
+      return examId ? tmpSubs.filter((s) => s.examId === examId) : tmpSubs;
+    }
+
+    const localSubs = safeReadJson<ExamSubmission[]>(path.join(LOCAL_DB_DIR, "submissions.json"));
+    if (localSubs && Array.isArray(localSubs)) {
+      globalForStorage.ontnSubmissionsCache = localSubs;
+      safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "submissions.json"), localSubs);
+      return examId ? localSubs.filter((s) => s.examId === examId) : localSubs;
+    }
+
+    return [];
+  }
+
+  static async saveSubmission(submission: ExamSubmission): Promise<void> {
+    const all = await this.getSubmissions();
+    const existingIdx = all.findIndex(
+      (s) => s.id === submission.id || (s.examId === submission.examId && s.studentId === submission.studentId)
+    );
+    let updated: ExamSubmission[];
+    if (existingIdx >= 0) {
+      updated = all.map((s, i) => (i === existingIdx ? submission : s));
+    } else {
+      updated = [submission, ...all];
+    }
+
+    globalForStorage.ontnSubmissionsCache = updated;
+
+    const redis = getRedisClient();
+    if (redis) {
+      try {
+        await redis.set("thpt:submissions", updated);
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi lưu submissions lên Redis:", err);
+      }
+    }
+
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "submissions.json"), updated);
+    if (!IS_SERVERLESS) {
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "submissions.json"), updated);
+    }
+  }
+
+  static async resetStudentSubmission(examId: string, studentId: string): Promise<void> {
+    const all = await this.getSubmissions();
+    const updated = all.filter((s) => !(s.examId === examId && s.studentId === studentId));
+    globalForStorage.ontnSubmissionsCache = updated;
+
+    const redis = getRedisClient();
+    if (redis) {
+      try {
+        await redis.set("thpt:submissions", updated);
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi xóa submission trên Redis:", err);
+      }
+    }
+
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "submissions.json"), updated);
+    if (!IS_SERVERLESS) {
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "submissions.json"), updated);
+    }
   }
 }
