@@ -9,6 +9,23 @@ export interface AntiCheatConfig {
   maxViolations: number; // Số lần vi phạm (chuyển tab/thoát màn hình) tối đa trước khi tự đình chỉ/nộp bài (mặc định: 3)
   blockCopyPaste: boolean; // Khóa chuột phải, bôi đen văn bản, Ctrl+C, Ctrl+V, F12 DevTools
   autoSubmitOnTimeout: boolean; // Tự động nộp bài khi hết giờ đếm ngược
+  gracePeriodSeconds?: number; // Thời gian ân hạn (giây) trước khi tính vi phạm thật (mặc định: 4s)
+  allowProctorUnlock?: boolean; // Cho phép thí sinh gửi yêu cầu giám thị mở khóa khi bị tạm khóa
+  enableWebcamProctor?: boolean; // Bật Camera giám sát thí sinh (Webcam PiP)
+  dynamicPerStudentExam?: boolean; // Sinh đề ma trận ngẫu nhiên riêng cho từng học sinh
+}
+
+export interface ProctorUnlockRequest {
+  id: string;
+  examId: string;
+  studentId: string;
+  studentName: string;
+  className: string;
+  candidateNumber?: string;
+  violationCount: number;
+  reason: string;
+  timestamp: number;
+  status: "pending" | "approved" | "rejected";
 }
 
 export interface ExamMatrixLevelConfig {
@@ -60,7 +77,7 @@ export interface ExamDefinition {
 
 export interface ViolationEvent {
   timestamp: number;
-  type: "tab_switch" | "fullscreen_exit" | "window_blur" | "copy_attempt" | "devtools_attempt";
+  type: "tab_switch" | "fullscreen_exit" | "window_blur" | "copy_attempt" | "devtools_attempt" | "grace_recovered" | "webcam_warning";
   description: string;
 }
 

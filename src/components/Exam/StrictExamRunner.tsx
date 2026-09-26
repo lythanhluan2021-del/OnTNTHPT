@@ -6,8 +6,9 @@ import {
   ExamSubmission,
   ViolationEvent,
   ExamSubmissionDetail,
+  ProctorUnlockRequest,
 } from "@/types/examManagement";
-import { ExamAnswerState } from "@/types";
+import { ExamAnswerState, MockExamQuestion } from "@/types";
 import { soundManager } from "@/lib/audioEffects";
 import { LatexRenderer } from "@/components/UI/LatexRenderer";
 import { QuestionPalette } from "@/components/Practice/QuestionPalette";
@@ -24,6 +25,9 @@ import {
   ArrowLeft,
   ArrowRight,
   ShieldCheck,
+  Video,
+  VideoOff,
+  RefreshCw,
 } from "lucide-react";
 import { calculateTrueFalseItemScore } from "@/data/mockExamGenerator";
 
@@ -72,6 +76,28 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
   const [showConfirmSubmit, setShowConfirmSubmit] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // === TÍNH NĂNG MỚI: GRACE PERIOD (THỜI GIAN ÂN HẠN 3-5 GIÂY) ===
+  const gracePeriodSeconds = exam.antiCheatConfig.gracePeriodSeconds !== undefined ? exam.antiCheatConfig.gracePeriodSeconds : 4;
+  const allowProctorUnlock = exam.antiCheatConfig.allowProctorUnlock !== false;
+  const enableWebcamProctor = !!exam.antiCheatConfig.enableWebcamProctor;
+
+  const [graceRemaining, setGraceRemaining] = useState<number | null>(null);
+  const [graceReason, setGraceReason] = useState<string>("");
+  const [graceNotification, setGraceNotification] = useState<string | null>(null);
+  const graceTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const gracePendingViolationRef = useRef<{ type: ViolationEvent["type"]; description: string } | null>(null);
+
+  // === TÍNH NĂNG MỚI: PROCTOR APPEAL & TẠM KHÓA BÀI THI ===
+  const [isExamLocked, setIsExamLocked] = useState(false);
+  const [appealReason, setAppealReason] = useState("");
+  const [appealStatus, setAppealStatus] = useState<"none" | "pending" | "approved" | "rejected">("none");
+  const [currentRequestId, setCurrentRequestId] = useState<string | null>(null);
+
+  // === TÍNH NĂNG MỚI: WEBCAM PROCTORING PIP ===
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [webcamStream, setWebcamStream] = useState<MediaStream | null>(null);
+  const [webcamError, setWebcamError] = useState<string | null>(null);
+
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const maxViolations = exam.antiCheatConfig.maxViolations || 3;
 
@@ -90,6 +116,31 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
   const activeQuestions = assignedVariant ? assignedVariant.questions : exam.questions;
   const activeVariantCode = assignedVariant ? assignedVariant.code : "101";
 
+  // === TÍNH NĂNG MỚI: BẢO MẬT ĐÁP ÁN - BÓC TÁCH ĐÁP ÁN ĐÚNG KHỎI CLIENT ===
+  const displayQuestions = React.useMemo(() => {
+    return activeQuestions.map((q) => ({
+      ...q,
+      correctOptionId: undefined as any,
+      correctAnswer: undefined as any,
+      explanation: undefined,
+      options: q.options?.map((opt) => ({
+        id: opt.id,
+        content: opt.content,
+      })),
+      statements: q.statements?.map((st) => ({
+        id: st.id,
+        content: st.content,
+        isCorrect: undefined as any,
+        explanation: undefined,
+      })),
+      tfItems: q.tfItems?.map((it) => ({
+        id: it.id,
+        content: it.content,
+        correctAnswer: undefined as any,
+      })),
+    }));
+  }, [activeQuestions]);
+
   // Tự động lưu bài làm mỗi khi thay đổi câu trả lời
   useEffect(() => {
     try {
@@ -102,9 +153,10 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     }
   }, [answers, exam.id, studentId]);
 
-  // Bộ đếm thời gian làm bài
+  // Bộ đếm thời gian làm bài (tạm dừng nếu đang bị tạm khóa chờ giám thị mở)
   useEffect(() => {
     timerRef.current = setInterval(() => {
+      if (isExamLocked) return;
       setRemainingSeconds((prev) => {
         if (prev <= 1) {
           if (timerRef.current) clearInterval(timerRef.current);
@@ -118,7 +170,167 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, []);
+  }, [isExamLocked]);
+
+  // Khởi động Camera giám sát nếu giáo viên bật cấu hình
+  useEffect(() => {
+    if (!enableWebcamProctor) return;
+    let stream: MediaStream | null = null;
+    if (typeof navigator !== "undefined" && navigator.mediaDevices?.getUserMedia) {
+      navigator.mediaDevices
+        .getUserMedia({ video: { width: 320, height: 240 } })
+        .then((s) => {
+          stream = s;
+          setWebcamStream(s);
+          if (videoRef.current) {
+            videoRef.current.srcObject = s;
+          }
+        })
+        .catch((err) => {
+          console.warn("Camera access denied or unavailable", err);
+          setWebcamError("Không thể bật camera giám sát. Vui lòng cấp quyền truy cập camera!");
+          const warnEvent: ViolationEvent = {
+            timestamp: Date.now(),
+            type: "webcam_warning",
+            description: "Thí sinh chưa bật hoặc từ chối cấp quyền Camera giám sát",
+          };
+          setViolations((prev) => [...prev, warnEvent]);
+        });
+    }
+
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach((t) => t.stop());
+      }
+    };
+  }, [enableWebcamProctor]);
+
+  // Lắng nghe giám thị phê duyệt mở khóa bài thi
+  useEffect(() => {
+    if (appealStatus !== "pending" || !currentRequestId) return;
+
+    const checkApproval = () => {
+      try {
+        const list: ProctorUnlockRequest[] = JSON.parse(
+          localStorage.getItem("thpt_exam_unlock_requests") || "[]"
+        );
+        const match = list.find((r) => r.id === currentRequestId);
+        if (match) {
+          if (match.status === "approved") {
+            soundManager.playSuccess();
+            setTabSwitchCount(0);
+            setIsExamLocked(false);
+            setAppealStatus("none");
+            setGraceNotification("🎉 Giám thị đã phê duyệt mở khóa bài thi. Chúc bạn làm bài tốt!");
+            setTimeout(() => setGraceNotification(null), 4000);
+            if (exam.antiCheatConfig.enableFullscreen && !document.fullscreenElement) {
+              document.documentElement.requestFullscreen().catch(() => {});
+            }
+          } else if (match.status === "rejected") {
+            soundManager.playError();
+            setAppealStatus("rejected");
+          }
+        }
+      } catch {
+        // Ignored
+      }
+    };
+
+    const interval = setInterval(checkApproval, 1500);
+    window.addEventListener("storage", checkApproval);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("storage", checkApproval);
+    };
+  }, [appealStatus, currentRequestId, exam.antiCheatConfig.enableFullscreen]);
+
+  // Gửi yêu cầu mở khóa bài thi lên giám thị
+  const handleSendUnlockRequest = () => {
+    const reqId = `req-${Date.now()}-${studentId}`;
+    const newReq: ProctorUnlockRequest = {
+      id: reqId,
+      examId: exam.id,
+      studentId,
+      studentName,
+      className,
+      candidateNumber: studentId,
+      violationCount: tabSwitchCount,
+      reason: appealReason.trim() || "Thí sinh báo gặp sự cố kỹ thuật ngoài ý muốn",
+      timestamp: Date.now(),
+      status: "pending",
+    };
+
+    try {
+      const existing: ProctorUnlockRequest[] = JSON.parse(
+        localStorage.getItem("thpt_exam_unlock_requests") || "[]"
+      );
+      localStorage.setItem(
+        "thpt_exam_unlock_requests",
+        JSON.stringify([...existing, newReq])
+      );
+    } catch {
+      // Ignored
+    }
+
+    setCurrentRequestId(reqId);
+    setAppealStatus("pending");
+  };
+
+  // Hủy bộ đếm thời gian ân hạn khi quay lại màn hình kịp lúc
+  const cancelGracePeriod = () => {
+    if (gracePendingViolationRef.current || graceRemaining !== null) {
+      if (graceTimerRef.current) clearInterval(graceTimerRef.current);
+      graceTimerRef.current = null;
+      gracePendingViolationRef.current = null;
+      setGraceRemaining(null);
+
+      // Ghi log nhẹ nhưng KHÔNG tăng số lần vi phạm tabSwitchCount
+      const softEvent: ViolationEvent = {
+        timestamp: Date.now(),
+        type: "grace_recovered",
+        description: `Rời khỏi màn hình bài thi nhưng đã quay lại an toàn trong thời gian ân hạn (${gracePeriodSeconds}s)`,
+      };
+      setViolations((prev) => [...prev, softEvent]);
+      setGraceNotification("✅ Đã quay lại phòng thi an toàn. Hãy tiếp tục làm bài!");
+      soundManager.playClick();
+      setTimeout(() => setGraceNotification(null), 3500);
+    }
+  };
+
+  // Kích hoạt vi phạm tiềm năng với Grace Period
+  const triggerPotentialViolation = (type: ViolationEvent["type"], description: string) => {
+    if (isExamLocked || isSubmitting) return;
+
+    if (gracePeriodSeconds <= 0) {
+      recordViolation(type, description);
+      return;
+    }
+
+    if (gracePendingViolationRef.current) return;
+
+    gracePendingViolationRef.current = { type, description };
+    setGraceRemaining(gracePeriodSeconds);
+    setGraceReason(description);
+    soundManager.playError();
+
+    if (graceTimerRef.current) clearInterval(graceTimerRef.current);
+    graceTimerRef.current = setInterval(() => {
+      setGraceRemaining((prev) => {
+        if (prev === null || prev <= 1) {
+          if (graceTimerRef.current) clearInterval(graceTimerRef.current);
+          graceTimerRef.current = null;
+          const pending = gracePendingViolationRef.current;
+          gracePendingViolationRef.current = null;
+          if (pending) {
+            recordViolation(pending.type, pending.description);
+          }
+          return null;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
 
   // Hàm ghi nhận vi phạm quy chế
   const recordViolation = (type: ViolationEvent["type"], description: string) => {
@@ -133,45 +345,59 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
       const nextCount = prev + 1;
       soundManager.playError();
       setViolationMessage(description);
-      setShowViolationModal(true);
 
-      // Nếu vượt quá số lần vi phạm cho phép -> Đình chỉ thi ngay
+      // Nếu vượt quá số lần vi phạm cho phép
       if (nextCount >= maxViolations) {
-        handleDisqualifySubmit(nextCount);
+        if (allowProctorUnlock) {
+          setIsExamLocked(true);
+          setShowViolationModal(false);
+        } else {
+          setShowViolationModal(true);
+          handleDisqualifySubmit(nextCount);
+        }
+      } else {
+        setShowViolationModal(true);
       }
       return nextCount;
     });
   };
 
-  // 1. Chống chuyển Tab & Rời màn hình thi
+  // 1. Chống chuyển Tab & Rời màn hình thi với Grace Period
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        recordViolation(
+        triggerPotentialViolation(
           "tab_switch",
           "Hệ thống phát hiện bạn vừa chuyển sang Tab khác hoặc thu nhỏ trình duyệt!"
         );
+      } else {
+        cancelGracePeriod();
       }
     };
 
     const handleWindowBlur = () => {
-      // Bắt sự kiện người dùng alt-tab sang ứng dụng ngoài
-      recordViolation(
+      triggerPotentialViolation(
         "window_blur",
         "Hệ thống phát hiện bạn vừa rời khỏi cửa sổ bài thi (mở ứng dụng ngoài)!"
       );
     };
 
+    const handleWindowFocus = () => {
+      cancelGracePeriod();
+    };
+
     document.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("blur", handleWindowBlur);
+    window.addEventListener("focus", handleWindowFocus);
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("blur", handleWindowBlur);
+      window.removeEventListener("focus", handleWindowFocus);
     };
-  }, [maxViolations]);
+  }, [maxViolations, isExamLocked, isSubmitting, gracePeriodSeconds]);
 
-  // 2. Bắt buộc Toàn Màn Hình (Fullscreen Lock)
+  // 2. Bắt buộc Toàn Màn Hình (Fullscreen Lock) với Grace Period
   useEffect(() => {
     if (!exam.antiCheatConfig.enableFullscreen) return;
 
@@ -192,12 +418,13 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     const handleFullscreenChange = () => {
       if (!document.fullscreenElement) {
         setIsFullscreen(false);
-        recordViolation(
+        triggerPotentialViolation(
           "fullscreen_exit",
           "Bạn vừa thoát khỏi chế độ Toàn Màn Hình bắt buộc!"
         );
       } else {
         setIsFullscreen(true);
+        cancelGracePeriod();
       }
     };
 
@@ -205,7 +432,7 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
-  }, [exam.antiCheatConfig.enableFullscreen]);
+  }, [exam.antiCheatConfig.enableFullscreen, isExamLocked, isSubmitting, gracePeriodSeconds]);
 
   // 3. Khóa Chuột Phải, Bôi Đen, Copy, Paste, DevTools F12
   useEffect(() => {
@@ -250,7 +477,7 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     };
   }, [exam.antiCheatConfig.blockCopyPaste]);
 
-  const currentQ = activeQuestions[currentIndex] || activeQuestions[0];
+  const currentQ = displayQuestions[currentIndex] || displayQuestions[0];
 
   // Chọn đáp án trắc nghiệm MC
   const handleSelectMc = (qId: string, optId: "A" | "B" | "C" | "D") => {
@@ -689,6 +916,138 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
           </button>
         </div>
       </main>
+
+      {/* BANNER ĐẾM NGƯỢC THỜI GIAN ÂN HẠN (GRACE PERIOD) */}
+      {graceRemaining !== null && (
+        <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 text-white py-3 px-4 shadow-2xl flex items-center justify-center gap-3 animate-pulse border-b-2 border-yellow-300">
+          <AlertTriangle className="w-5 h-5 text-yellow-300 animate-bounce" />
+          <span className="text-xs sm:text-sm font-black tracking-wide text-center">
+            CẢNH BÁO: Bạn vừa rời khỏi cửa sổ bài thi! Vui lòng quay lại ngay trong <strong className="text-yellow-200 text-base underline">{graceRemaining}s</strong> để KHÔNG bị phạt vi phạm quy chế!
+          </span>
+        </div>
+      )}
+
+      {/* TOAST THÔNG BÁO ĐÃ QUAY LẠI PHÒNG THI AN TOÀN */}
+      {graceNotification && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-emerald-600 text-white px-5 py-2.5 rounded-full shadow-2xl text-xs font-black flex items-center gap-2 animate-bounce border border-emerald-300">
+          <ShieldCheck className="w-4 h-4 text-emerald-200" />
+          <span>{graceNotification}</span>
+        </div>
+      )}
+
+      {/* WEBCAM GIÁM THỊ THỜI GIAN THỰC (PICTURE IN PICTURE) */}
+      {enableWebcamProctor && (
+        <div className="fixed bottom-4 right-4 z-40 w-44 rounded-xl overflow-hidden shadow-2xl border-2 border-indigo-500 bg-slate-900">
+          <div className="px-2 py-1 bg-indigo-700 text-white text-[10px] font-black flex items-center justify-between">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              GIÁM THỊ CAM
+            </span>
+            <Video className="w-3 h-3" />
+          </div>
+          <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+            {webcamError ? (
+              <div className="p-2 text-center text-[10px] text-rose-300">
+                <VideoOff className="w-4 h-4 mx-auto mb-1 text-rose-400" />
+                Camera bị chặn
+              </div>
+            ) : (
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted
+                className="w-full h-full object-cover -scale-x-100"
+              />
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* MODAL TẠM KHÓA BÀI THI & XIN GIÁM THỊ MỞ KHÓA (PROCTOR APPEAL) */}
+      {isExamLocked && (
+        <div className="fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
+          <div className="max-w-lg w-full p-6 rounded-2xl bg-[#e6ecf5] dark:bg-[#1a1f26] shadow-2xl border-4 border-rose-500 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center flex-shrink-0 shadow">
+                <ShieldAlert className="w-6 h-6 animate-pulse" />
+              </div>
+              <div>
+                <h2 className="text-base font-black text-rose-700 dark:text-rose-400 uppercase">
+                  Bài Thi Bị Tạm Khóa Do Vi Phạm Quy Chế
+                </h2>
+                <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">
+                  Hệ thống ghi nhận <strong>{tabSwitchCount}/{maxViolations}</strong> lần vi phạm rời màn hình hoặc chuyển tab.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-neu-sm bg-rose-50 dark:bg-rose-950/40 border border-rose-200 text-xs text-slate-700 dark:text-slate-300 space-y-1.5 max-h-32 overflow-y-auto">
+              <span className="font-bold text-rose-900 dark:text-rose-300 block">Lịch sử sự cố ghi nhận:</span>
+              {violations.map((v, i) => (
+                <div key={i} className="text-[11px] flex items-center justify-between text-slate-600 dark:text-slate-400">
+                  <span>• {v.description}</span>
+                  <span className="text-[10px] text-slate-400">{new Date(v.timestamp).toLocaleTimeString("vi-VN")}</span>
+                </div>
+              ))}
+            </div>
+
+            {appealStatus === "pending" ? (
+              <div className="p-4 rounded-neu-sm bg-amber-50 dark:bg-amber-950/40 border border-amber-300 text-center space-y-2">
+                <div className="flex items-center justify-center gap-2 text-amber-800 dark:text-amber-300 font-bold text-xs">
+                  <RefreshCw className="w-4 h-4 animate-spin text-amber-600" />
+                  <span>YÊU CẦU MỞ KHÓA ĐÃ GỬI TỚI GIÁM THỊ!</span>
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400">
+                  Hệ thống đang chờ Thầy/Cô giám thị kiểm tra và phê duyệt. Bạn vui lòng báo trực tiếp với Giám thị hoặc giữ nguyên màn hình này (hệ thống sẽ tự động mở khóa ngay khi được duyệt).
+                </p>
+              </div>
+            ) : appealStatus === "rejected" ? (
+              <div className="p-4 rounded-neu-sm bg-rose-50 dark:bg-rose-950/40 border border-rose-300 text-center space-y-2">
+                <p className="text-xs font-bold text-rose-800 dark:text-rose-300">
+                  Giám thị đã từ chối yêu cầu mở khóa của bạn. Bài thi chính thức bị đình chỉ.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => handleDisqualifySubmit(tabSwitchCount)}
+                  className="w-full py-2.5 rounded-neu font-bold text-xs bg-rose-600 text-white shadow-neu-flat cursor-pointer"
+                >
+                  Chấp nhận nộp bài &amp; Rời phòng thi
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                  Nhập lý do giải trình gửi Thầy/Cô giám thị:
+                </label>
+                <textarea
+                  value={appealReason}
+                  onChange={(e) => setAppealReason(e.target.value)}
+                  placeholder="Ví dụ: Em bị thông báo Windows/Zalo nhảy che màn hình, lỡ chạm nhầm phím Windows, mạng bị chập chờn..."
+                  rows={2}
+                  className="w-full p-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-inset text-xs outline-none text-slate-800 dark:text-slate-200"
+                />
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleSendUnlockRequest}
+                    className="flex-1 py-2.5 rounded-neu font-bold text-xs bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-neu-flat cursor-pointer"
+                  >
+                    🆘 Gửi Yêu Cầu Giám Thị Mở Khóa
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDisqualifySubmit(tabSwitchCount)}
+                    className="px-3.5 py-2.5 rounded-neu font-bold text-xs bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 shadow-neu-flat-xs cursor-pointer"
+                  >
+                    Chấp nhận nộp 0đ
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* 3. MODAL CẢNH BÁO VI PHẠM AN NINH PHÒNG THI */}
       {showViolationModal && (

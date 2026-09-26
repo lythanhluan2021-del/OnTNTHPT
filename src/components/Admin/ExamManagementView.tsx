@@ -10,6 +10,7 @@ import {
   ExamVariant,
   ItemDifficultyStat,
   AtRiskStudent,
+  ProctorUnlockRequest,
 } from "@/types/examManagement";
 import { Subject, Question, DifficultyLevel, MockExamQuestion } from "@/types";
 import { parseExamRawText, extractTextFromFile } from "@/lib/examFileParser";
@@ -53,6 +54,8 @@ import {
   Check,
   AlertOctagon,
   Award,
+  Video,
+  ShieldCheck,
 } from "lucide-react";
 
 interface ExamManagementViewProps {
@@ -623,6 +626,72 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
       soundManager.playSuccess();
     }
   };
+
+  // Quản lý các yêu cầu mở khóa bài thi (Proctor Unlock Requests)
+  const [unlockRequests, setUnlockRequests] = useState<ProctorUnlockRequest[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("thpt_exam_unlock_requests");
+        if (saved) return JSON.parse(saved);
+      } catch {
+        // Ignored
+      }
+    }
+    return [];
+  });
+
+  // Đồng bộ thời gian thực các yêu cầu xin mở khóa bài thi
+  useEffect(() => {
+    const syncRequests = () => {
+      try {
+        const saved = localStorage.getItem("thpt_exam_unlock_requests");
+        if (saved) setUnlockRequests(JSON.parse(saved));
+      } catch {
+        // Ignored
+      }
+    };
+    const timer = setInterval(syncRequests, 1500);
+    window.addEventListener("storage", syncRequests);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("storage", syncRequests);
+    };
+  }, []);
+
+  // Giám thị phê duyệt mở khóa cho học sinh tiếp tục làm bài
+  const handleApproveUnlock = (reqId: string) => {
+    const updated = unlockRequests.map((r) =>
+      r.id === reqId ? { ...r, status: "approved" as const } : r
+    );
+    setUnlockRequests(updated);
+    try {
+      localStorage.setItem("thpt_exam_unlock_requests", JSON.stringify(updated));
+    } catch {
+      // Ignored
+    }
+    soundManager.playSuccess();
+  };
+
+  // Giám thị bác bỏ yêu cầu mở khóa
+  const handleRejectUnlock = (reqId: string) => {
+    const updated = unlockRequests.map((r) =>
+      r.id === reqId ? { ...r, status: "rejected" as const } : r
+    );
+    setUnlockRequests(updated);
+    try {
+      localStorage.setItem("thpt_exam_unlock_requests", JSON.stringify(updated));
+    } catch {
+      // Ignored
+    }
+    soundManager.playError();
+  };
+
+  // Danh sách yêu cầu mở khóa đang chờ duyệt cho kỳ thi này
+  const pendingUnlockRequests = useMemo(() => {
+    return unlockRequests.filter(
+      (r) => r.status === "pending" && (!currentExam || r.examId === currentExam.id)
+    );
+  }, [unlockRequests, currentExam]);
 
   // =========================================================================
   // TRỤ CỘT 3: BÁO CÁO & PHÂN TÍCH SƯ PHẠM
@@ -1526,7 +1595,7 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
             </div>
 
             {/* Các tùy chọn giám sát đa tầng */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
               <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 flex items-center justify-between">
                 <div>
                   <span className="font-bold text-slate-800 block">Khóa Toàn Màn Hình</span>
@@ -1553,6 +1622,24 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                 />
               </div>
 
+              {/* TÍNH NĂNG MỚI: THỜI GIAN ÂN HẠN (GRACE PERIOD) */}
+              <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 flex items-center justify-between">
+                <div>
+                  <span className="font-bold text-slate-800 block">Thời Gian Ân Hạn</span>
+                  <span className="text-[10px] text-slate-500">Tránh bắt nhầm Win/Zalo</span>
+                </div>
+                <select
+                  value={currentExam?.antiCheatConfig.gracePeriodSeconds !== undefined ? currentExam.antiCheatConfig.gracePeriodSeconds : 4}
+                  onChange={(e) => handleUpdateAntiCheat({ gracePeriodSeconds: Number(e.target.value) })}
+                  className="p-1 rounded bg-[#e6ecf5] font-black text-indigo-700 outline-none cursor-pointer text-xs"
+                >
+                  <option value={0}>Tắt (0s)</option>
+                  <option value={3}>3 giây</option>
+                  <option value={4}>4s (Chuẩn)</option>
+                  <option value={5}>5 giây</option>
+                </select>
+              </div>
+
               <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 flex items-center justify-between">
                 <div>
                   <span className="font-bold text-slate-800 block">Giới Hạn Vi Phạm</span>
@@ -1568,6 +1655,48 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
                   <option value={3}>3 lần</option>
                   <option value={5}>5 lần</option>
                 </select>
+              </div>
+
+              {/* TÍNH NĂNG MỚI: CHO PHÉP XIN MỞ KHÓA */}
+              <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 flex items-center justify-between">
+                <div>
+                  <span className="font-bold text-slate-800 block">Cho Phép Xin Mở Khóa</span>
+                  <span className="text-[10px] text-slate-500">Gửi giải trình cứu bài thi</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={currentExam?.antiCheatConfig.allowProctorUnlock !== false}
+                  onChange={(e) => handleUpdateAntiCheat({ allowProctorUnlock: e.target.checked })}
+                  className="w-4 h-4 accent-blue-600 cursor-pointer"
+                />
+              </div>
+
+              {/* TÍNH NĂNG MỚI: WEBCAM GIÁM THỊ PIP */}
+              <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 flex items-center justify-between">
+                <div>
+                  <span className="font-bold text-slate-800 block">Camera Giám Thị</span>
+                  <span className="text-[10px] text-slate-500">Bật webcam theo dõi</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={!!currentExam?.antiCheatConfig.enableWebcamProctor}
+                  onChange={(e) => handleUpdateAntiCheat({ enableWebcamProctor: e.target.checked })}
+                  className="w-4 h-4 accent-indigo-600 cursor-pointer"
+                />
+              </div>
+
+              {/* TÍNH NĂNG MỚI: ĐỀ THI SINH ĐỘNG THEO MA TRẬN */}
+              <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 flex items-center justify-between">
+                <div>
+                  <span className="font-bold text-slate-800 block">Đề Thi Sinh Động</span>
+                  <span className="text-[10px] text-slate-500">Mỗi HS 1 đề ngẫu nhiên</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={!!currentExam?.antiCheatConfig.dynamicPerStudentExam}
+                  onChange={(e) => handleUpdateAntiCheat({ dynamicPerStudentExam: e.target.checked })}
+                  className="w-4 h-4 accent-emerald-600 cursor-pointer"
+                />
               </div>
 
               <div className="p-3 rounded-neu-sm bg-white/70 border border-slate-200 flex items-center justify-between">
@@ -1591,6 +1720,68 @@ export const ExamManagementView: React.FC<ExamManagementViewProps> = ({
               </div>
             </div>
           </div>
+
+          {/* BẢNG THÔNG BÁO YÊU CẦU XIN MỞ KHÓA BÀI THI */}
+          {pendingUnlockRequests.length > 0 && (
+            <div className="p-4 rounded-neu bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-400 shadow-neu-flat space-y-3 animate-fade-in">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="w-5 h-5 text-amber-600 animate-bounce" />
+                  <h4 className="text-xs font-black uppercase text-amber-900 tracking-wider">
+                    Có {pendingUnlockRequests.length} Thí Sinh Xin Giám Thị Mở Khóa Bài Thi
+                  </h4>
+                </div>
+                <span className="text-[10px] font-bold text-amber-800 bg-amber-200/70 px-2.5 py-0.5 rounded-full border border-amber-300">
+                  Cần phê duyệt ngay
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {pendingUnlockRequests.map((req) => (
+                  <div
+                    key={req.id}
+                    className="p-3.5 rounded-neu-sm bg-white/95 border border-amber-200 shadow-neu-flat-xs flex flex-col justify-between gap-2.5"
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="font-black text-slate-800 text-xs">
+                          {req.studentName} ({req.className})
+                        </span>
+                        <span className="text-[10px] font-black text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
+                          Vi phạm: {req.violationCount} lần
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 font-medium italic bg-slate-50 p-1.5 rounded border border-slate-100">
+                        "{req.reason}"
+                      </p>
+                      <span className="text-[10px] text-slate-400 block">
+                        Gửi lúc: {new Date(req.timestamp).toLocaleTimeString("vi-VN")}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2 pt-1 border-t border-slate-100">
+                      <button
+                        type="button"
+                        onClick={() => handleApproveUnlock(req.id)}
+                        className="flex-1 py-1.5 px-3 rounded-neu-sm bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-neu-flat flex items-center justify-center gap-1 cursor-pointer transition"
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>Duyệt Mở Khóa Cho Thi Tiếp</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleRejectUnlock(req.id)}
+                        className="py-1.5 px-3 rounded-neu-sm bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold shadow-neu-flat-xs flex items-center justify-center gap-1 cursor-pointer transition"
+                      >
+                        <XCircle className="w-3.5 h-3.5" />
+                        <span>Bác Bỏ</span>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* BẢNG GIÁM THỊ SỐ THEO THỜI GIAN THỰC */}
           <div className="bg-[#e6ecf5] rounded-neu shadow-neu-flat border border-white/60 overflow-hidden space-y-3 p-4">
