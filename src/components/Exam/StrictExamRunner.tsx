@@ -75,6 +75,21 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const maxViolations = exam.antiCheatConfig.maxViolations || 3;
 
+  // Phân bổ mã đề hoán vị ngẫu nhiên cho thí sinh (101, 102, 103, 104)
+  const assignedVariant = React.useMemo(() => {
+    if (!exam.variants || exam.variants.length === 0) return null;
+    let hash = 0;
+    for (let i = 0; i < studentId.length; i++) {
+      hash = (hash << 5) - hash + studentId.charCodeAt(i);
+      hash |= 0;
+    }
+    const idx = Math.abs(hash) % exam.variants.length;
+    return exam.variants[idx];
+  }, [exam.variants, studentId]);
+
+  const activeQuestions = assignedVariant ? assignedVariant.questions : exam.questions;
+  const activeVariantCode = assignedVariant ? assignedVariant.code : "101";
+
   // Tự động lưu bài làm mỗi khi thay đổi câu trả lời
   useEffect(() => {
     try {
@@ -235,7 +250,7 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     };
   }, [exam.antiCheatConfig.blockCopyPaste]);
 
-  const currentQ = exam.questions[currentIndex] || exam.questions[0];
+  const currentQ = activeQuestions[currentIndex] || activeQuestions[0];
 
   // Chọn đáp án trắc nghiệm MC
   const handleSelectMc = (qId: string, optId: "A" | "B" | "C" | "D") => {
@@ -263,7 +278,7 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
 
   // Gắn cờ câu hỏi khó
   const handleToggleFlag = (idx: number) => {
-    const q = exam.questions[idx];
+    const q = activeQuestions[idx];
     if (!q) return;
     soundManager.playClick();
     setAnswers((prev) => ({
@@ -277,8 +292,8 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
 
   // Chấm điểm tự động chuẩn Bộ GD&ĐT
   const calculateFinalScores = () => {
-    const mcQuestions = exam.questions.filter((q) => q.part === "mc");
-    const tfQuestions = exam.questions.filter((q) => q.part === "tf");
+    const mcQuestions = activeQuestions.filter((q) => q.part === "mc" || q.type === "multiple_choice");
+    const tfQuestions = activeQuestions.filter((q) => q.part === "tf" || q.type === "true_false");
 
     let totalCorrectMc = 0;
     let totalCorrectTfStatements = 0;
@@ -289,14 +304,15 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     // Chấm Phần 1 (MC)
     mcQuestions.forEach((q) => {
       const studentAns = answers.mcAnswers[q.id] || null;
-      const isCorrect = studentAns === q.correctAnswer;
+      const correctOpt = q.correctOptionId || q.correctAnswer;
+      const isCorrect = studentAns === correctOpt;
       if (isCorrect) totalCorrectMc++;
 
       details.push({
         questionId: q.id,
         type: "multiple_choice",
         studentAnswer: studentAns,
-        correctAnswer: q.correctAnswer,
+        correctAnswer: correctOpt,
         isCorrect,
         earnedScore: isCorrect ? 0.25 : 0,
         maxScore: 0.25,
@@ -308,15 +324,23 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
     // Chấm Phần 2 (TF) theo chuẩn Bộ GD&ĐT
     tfQuestions.forEach((q) => {
       const studentTfObj = answers.tfAnswers[q.id] || {};
-      const items = q.tfItems || [];
       let statementCorrectCount = 0;
 
-      items.forEach((item) => {
-        if (studentTfObj[item.id] === item.correctAnswer) {
-          statementCorrectCount++;
-          totalCorrectTfStatements++;
-        }
-      });
+      if (q.statements && q.statements.length > 0) {
+        q.statements.forEach((stmt) => {
+          if (studentTfObj[stmt.id] === stmt.isCorrect) {
+            statementCorrectCount++;
+            totalCorrectTfStatements++;
+          }
+        });
+      } else if (q.tfItems && q.tfItems.length > 0) {
+        q.tfItems.forEach((item) => {
+          if (studentTfObj[item.id] === item.correctAnswer) {
+            statementCorrectCount++;
+            totalCorrectTfStatements++;
+          }
+        });
+      }
 
       const earned = calculateTrueFalseItemScore(statementCorrectCount);
       totalTfScore += earned;
@@ -325,7 +349,9 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
         questionId: q.id,
         type: "true_false",
         studentAnswer: studentTfObj,
-        correctAnswer: items.reduce((acc, it) => ({ ...acc, [it.id]: it.correctAnswer }), {}),
+        correctAnswer: q.statements
+          ? q.statements.reduce((acc, st) => ({ ...acc, [st.id]: st.isCorrect }), {})
+          : (q.tfItems || []).reduce((acc, it) => ({ ...acc, [it.id]: it.correctAnswer }), {}),
         isCorrect: statementCorrectCount === 4,
         earnedScore: earned,
         maxScore: 1.0,
@@ -359,6 +385,8 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
       id: `sub-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
       examId: exam.id,
       examTitle: exam.title,
+      variantCode: activeVariantCode,
+      candidateNumber: studentId,
       studentId,
       studentName,
       className,
@@ -414,17 +442,17 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
 
   // Tính số lượng câu đã làm
   const isQuestionAnswered = (idx: number) => {
-    const q = exam.questions[idx];
+    const q = activeQuestions[idx];
     if (!q) return false;
-    if (q.part === "mc") {
+    if (q.part === "mc" || q.type === "multiple_choice") {
       return !!answers.mcAnswers[q.id];
     }
     const tf = answers.tfAnswers[q.id];
     return !!tf && Object.keys(tf).length > 0;
   };
 
-  const answeredTotal = exam.questions.filter((_, idx) => isQuestionAnswered(idx)).length;
-  const isTrueFalse = currentQ?.part === "tf";
+  const answeredTotal = activeQuestions.filter((_, idx) => isQuestionAnswered(idx)).length;
+  const isTrueFalse = currentQ?.part === "tf" || currentQ?.type === "true_false";
 
   return (
     <div
@@ -445,7 +473,9 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
               <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400">
                 <span>Thí sinh: <strong>{studentName}</strong> ({className})</span>
                 <span className="hidden sm:inline">•</span>
-                <span className="hidden sm:inline">Tiến độ: {answeredTotal}/{exam.totalQuestions}</span>
+                <span className="hidden sm:inline">Mã đề: <strong className="font-mono text-blue-700 dark:text-blue-400 font-bold">{activeVariantCode}</strong></span>
+                <span className="hidden sm:inline">•</span>
+                <span className="hidden sm:inline">Tiến độ: {answeredTotal}/{activeQuestions.length}</span>
               </div>
             </div>
           </div>
@@ -495,16 +525,16 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
       <main className="max-w-4xl mx-auto w-full p-4 space-y-4 flex-1 pb-24">
         {/* Bảng điều hướng câu hỏi */}
         <QuestionPalette
-          totalQuestions={exam.totalQuestions}
+          totalQuestions={activeQuestions.length}
           currentIndex={currentIndex}
           onSelectIndex={(idx) => setCurrentIndex(idx)}
           isAnswered={isQuestionAnswered}
           isFlagged={(idx) => {
-            const q = exam.questions[idx];
+            const q = activeQuestions[idx];
             return !!(q && answers.flaggedQuestions[q.id]);
           }}
           onToggleFlag={handleToggleFlag}
-          partDividerIndex={exam.mcCount}
+          partDividerIndex={activeQuestions.filter((q) => q.part === "mc" || q.type === "multiple_choice").length}
         />
 
         {/* Thẻ câu hỏi hiện tại */}
@@ -549,7 +579,7 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
                     <button
                       key={opt.id}
                       type="button"
-                      onClick={() => handleSelectMc(currentQ.id, opt.id)}
+                      onClick={() => handleSelectMc(currentQ.id, opt.id as "A" | "B" | "C" | "D")}
                       className={`w-full text-left p-3.5 rounded-neu-sm transition flex items-start gap-3 cursor-pointer ${
                         isSelected
                           ? "bg-blue-600 text-white shadow-neu-blue font-bold"
@@ -573,9 +603,9 @@ export const StrictExamRunner: React.FC<StrictExamRunnerProps> = ({
             )}
 
             {/* DẠNG 2: ĐÚNG / SAI (PHẦN 2) */}
-            {isTrueFalse && currentQ.tfItems && (
+            {isTrueFalse && (currentQ.statements || currentQ.tfItems) && (
               <div className="space-y-3 pt-2">
-                {currentQ.tfItems.map((item) => {
+                {(currentQ.statements || currentQ.tfItems || []).map((item) => {
                   const userChoice = answers.tfAnswers[currentQ.id]?.[item.id];
                   return (
                     <div

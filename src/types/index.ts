@@ -1,4 +1,5 @@
 export type DifficultyLevel = "NhanBiet" | "ThongHieu" | "VanDung" | "VanDungCao";
+export type CognitiveLevel = DifficultyLevel | "NB" | "TH" | "VD" | "VDC";
 
 export type QuestionType = "multiple_choice" | "true_false";
 
@@ -6,6 +7,17 @@ export interface TrueFalseItem {
   id: "a" | "b" | "c" | "d";
   content: string;
   correctAnswer: boolean; // true: Đúng, false: Sai
+}
+
+export interface MockExamOption {
+  id: "A" | "B" | "C" | "D";
+  content: string;
+}
+
+export interface MockExamStatement {
+  id: string;
+  content: string;
+  isCorrect: boolean;
 }
 
 export interface Question {
@@ -23,8 +35,10 @@ export interface Question {
     content: string;
   }[];
   correctAnswer?: "A" | "B" | "C" | "D";
+  correctOptionId?: string; // alias for correctAnswer
   // Dành cho dạng trắc nghiệm Đúng / Sai (Phần 2)
   tfItems?: TrueFalseItem[];
+  statements?: MockExamStatement[]; // alias for tfItems
   hints: {
     level1_concept: string; // Lý thuyết, định lý cốt lõi
     level2_formula: string; // Công thức và phương pháp tiếp cận

@@ -2,6 +2,7 @@ import { Question, DifficultyLevel, MockExamQuestion } from "./index";
 
 export type ExamStatus = "draft" | "published" | "closed";
 export type ExamSourceType = "uploaded_file" | "matrix_bank" | "manual";
+export type ExamType = "giua_ky" | "cuoi_ky" | "khao_sat" | "danh_gia" | "thu_nghiem";
 
 export interface AntiCheatConfig {
   enableFullscreen: boolean; // Bắt buộc chế độ toàn màn hình
@@ -25,10 +26,18 @@ export interface ExamMatrixConfig {
   shuffleOptions: boolean;
 }
 
+export interface ExamVariant {
+  code: string; // "101", "102", "103", "104"
+  questions: MockExamQuestion[];
+  answerKeyMap: Record<string, any>; // Lưu đáp án đúng tương ứng của mã đề này
+}
+
 export interface ExamDefinition {
   id: string;
   title: string;
   subjectId: string;
+  examType?: ExamType;
+  academicYear?: string;
   description?: string;
   durationMinutes: number; // 15, 45, 50, 90...
   targetClasses: string[]; // ["12A1", "12A2"] hoặc ["all"]
@@ -40,7 +49,9 @@ export interface ExamDefinition {
   totalQuestions: number;
   mcCount: number;
   tfCount: number;
-  questions: MockExamQuestion[];
+  questions: MockExamQuestion[]; // Đề gốc (hoặc mã đề chính)
+  variants?: ExamVariant[]; // Các mã đề hoán vị (101, 102, 103, 104)
+  classRosters?: Record<string, string[]>; // Danh sách thí sinh từng lớp
   createdAt: number;
   updatedAt: number;
   publishedAt?: number;
@@ -67,6 +78,8 @@ export interface ExamSubmission {
   id: string;
   examId: string;
   examTitle: string;
+  variantCode?: string; // Mã đề thí sinh làm (101, 102...)
+  candidateNumber?: string; // Số báo danh (SBD)
   studentId: string;
   studentName: string;
   className: string;
@@ -86,6 +99,29 @@ export interface ExamSubmission {
   details: ExamSubmissionDetail[];
 }
 
+export interface ItemDifficultyStat {
+  questionIndex: number;
+  questionId: string;
+  content: string;
+  type: "multiple_choice" | "true_false";
+  correctCount: number;
+  totalAttempts: number;
+  accuracyRate: number; // % HS làm đúng
+  topicName?: string;
+  difficulty: DifficultyLevel;
+  wrongRate: number; // % HS làm sai
+}
+
+export interface AtRiskStudent {
+  studentId: string;
+  studentName: string;
+  className: string;
+  candidateNumber?: string;
+  score: number;
+  reason: "diem_liet" | "duoi_tb" | "nop_qua_nhanh" | "vi_pham_nhieu";
+  reasonLabel: string;
+}
+
 export interface ExamStatsReport {
   examId: string;
   examTitle: string;
@@ -103,14 +139,6 @@ export interface ExamStatsReport {
     from65to8: number;
     from8to10: number;
   };
-  itemAnalysis: {
-    questionIndex: number;
-    questionId: string;
-    content: string;
-    type: "multiple_choice" | "true_false";
-    correctCount: number;
-    accuracyRate: number; // % HS làm đúng
-    topicName?: string;
-    difficulty: DifficultyLevel;
-  }[];
+  itemAnalysis: ItemDifficultyStat[];
+  atRiskStudents?: AtRiskStudent[];
 }
