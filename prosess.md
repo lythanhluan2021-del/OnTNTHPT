@@ -1,10 +1,10 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-03
+Cập nhật: 2026-10-03 (sau khi hoàn thiện gộp 12B vào Bài 3)
 
 ## Mục tiêu hiện tại
 
-Gộp ngân hàng câu hỏi **Chuyên đề 12B (Kết nối mạng)** vào **Bài 3 – Một số thiết bị Mạng thông dụng** (`tin-cd3-thiet-bi-mang`), đồng thời rà soát bóc tách câu hỏi các chuyên đề khác từ Google Drive.
+Gộp ngân hàng câu hỏi **Chuyên đề 12B (Kết nối mạng)** vào **Bài 3 – Một số thiết bị Mạng thông dụng** (`tin-cd3-thiet-bi-mang`).
 
 Nguồn duy nhất: tài liệu Google Drive. Không dùng nguồn ngoài.
 
@@ -17,34 +17,48 @@ Nguồn duy nhất: tài liệu Google Drive. Không dùng nguồn ngoài.
 - Service account: `drive-scanner@onthithpt-509307.iam.gserviceaccount.com`
 - Thư mục gốc OnTNTHPT: `19toY6VB5iERD2D9-tirycSjEz_YQbowL`
 - Thư mục Tin: `1wcSRCsZ9wzjO9ypblF_9L4si9kPm_uop`
-- Đã tải 9 file `.docx` Tin, trích text vào `/tmp/opencode/extracted/`
 - Key SA **không** commit vào repo (`.gitignore`: `*onthithpt*.json*`, `credentials*.json`)
 
-### 2. Gộp 12B vào Bài 3
+### 2. Gộp 12B vào Bài 3 — HOÀN TẤT 2026-10-03
+
+Trước đó UI vẫn hiện 2 topic song song (ảnh sidebar: 12B 83 câu + Bài 3 191 câu). Đã gộp hẳn:
 
 - Tạo `src/data/questions12b.ts`: 83 câu (72 MC + 11 TF), `topicId` = `tin-cd3-thiet-bi-mang`
 - `sampleBank.ts`:
-  - Xóa topic riêng `tin-thiet-bi-giao-thuc-mang`
+  - Xóa topic riêng `tin-thiet-bi-giao-thuc-mang` (không còn "Chuyên đề 12B" trên sidebar)
   - Bài 3: `totalQuestions: 274` (`mcCount: 224`, `tfCount: 50`)
   - Import + spread `CHUYEN_DE_12B_QUESTIONS`
-- Giữ `questionsCd3.ts` (191 câu gốc) vì parser cũ nuốt TF CD3 thành MC
+  - Xóa 83 câu 12B nhúng sẵn và 3 câu trùng ID (`Q-TIN-NET-11/42/44`)
+- Giữ `questionsCd3.ts` (191 câu gốc) độc lập, chỉ **thêm** 83 câu 12B
+- Không trùng ID giữa 12B và CD3
 
-### 3. Remap topicId trên toàn app
+Kết quả sidebar kỳ vọng: **Chủ đề 2** chỉ còn 1 bài học — **Bài 3: Một số thiết bị Mạng thông dụng** (274 câu: 224 TN + 50 Đ/S).
+
+### 3. Remap topicId trên toàn app — HOÀN TẤT
 
 | File | Việc đã làm |
 |------|-------------|
 | `src/lib/driveFolderScanner.ts` | File `12b` / `kết nối mạng` / `thiet bi mang` / `tcp` map vào `tin-cd3-thiet-bi-mang` |
 | `src/app/page.tsx` | Alias `tin-mang-dung-sai` và `tin-thiet-bi-giao-thuc-mang` → `tin-cd3-thiet-bi-mang`; `STRUCTURE_VERSION` = `2026_GD1_V10_BAI3_GOP_12B` |
-| `src/lib/competencyEngine.ts` | NLa chỉ còn `tin-cd3-thiet-bi-mang` |
+| `src/lib/competencyEngine.ts` | NLa chỉ còn `tin-cd3-thiet-bi-mang`, tên gợi ý = Bài 3 |
 | `src/data/weeklyPlan.ts` | `tuan-08-10` chỉ còn `tin-cd3-thiet-bi-mang`, target 274 câu |
 
-### 4. Parser Drive (`parseTextDocumentQuestions`)
+### 4. Theory bank — HOÀN TẤT (key gốc đã đổi)
+
+`src/data/theoryBank.ts`: key gốc đổi sang `tin-cd3-thiet-bi-mang`. Alias ID cũ vẫn đọc được:
+
+```
+TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"] = TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"]
+TOPIC_THEORY_MAP["tin-mang-dung-sai"] = TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"]
+```
+
+### 5. Parser Drive (`parseTextDocumentQuestions`)
 
 - Tách dòng khi option A/B/C/D dính stem
 - Marker TF: `TRẮC NGHIỆM Đ/S`, `2. Câu trắc nghiệm đúng sai`, `PHẦN II`
 - Dừng phần MC khi gặp marker TF (tránh nuốt TF thành MC)
 
-### 5. Vá câu bóc tách lỗi (theo đúng đề Drive)
+### 6. Vá câu bóc tách lỗi (theo đúng đề Drive)
 
 | Câu | Lỗi cũ | Đã sửa |
 |-----|--------|--------|
@@ -56,28 +70,18 @@ Nguồn duy nhất: tài liệu Google Drive. Không dùng nguồn ngoài.
 | `Q-TIN-12E-MC-70` | stem `B): Thẻ HTML...` | `Thẻ HTML được viết trong cặp dấu nào?` |
 | `Q-TIN-12B-MC-002` option C | `Local Area` (cắt nguồn) | `Local Area.` (giữ đúng đề) |
 
-### 6. TF CD3
+### 7. TF CD3 / TF 12B
 
-- Marker `TRẮC NGHIỆM Đ/S` (~offset 32837) đã được parser nhận
-- `questionsCd3.ts` đã có TF: `Q-TIN-CD3-TF-153` … `Q-TIN-CD3-TF-191`
-
-### 7. TF 12B chỉnh tay theo gạch chân đề
-
-- `Q-TIN-12B-TF-079` … `Q-TIN-12B-TF-083` (câu 7–11)
+- `questionsCd3.ts` TF: `Q-TIN-CD3-TF-153` … `Q-TIN-CD3-TF-191` (39 câu)
+- 12B TF: `Q-TIN-TF-NET-01` … `Q-TIN-TF-NET-11` (11 câu)
 
 ---
 
 ## Đang dang dở / còn lại
 
-### A. Theory bank vẫn keyed theo ID cũ
+### A. Theory bank — đã xong
 
-`src/data/theoryBank.ts` vẫn lưu lý thuyết dưới key `tin-thiet-bi-giao-thuc-mang`, rồi alias:
-
-```
-TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"]
-```
-
-Hoạt động được nhờ alias, nhưng chưa đổi key gốc sang `tin-cd3-thiet-bi-mang`. `page.tsx` vẫn giữ alias đọc lý thuyết cho ID cũ.
+Key gốc đã là `tin-cd3-thiet-bi-mang`. Alias ID cũ giữ để đọc cache/localStorage cũ.
 
 ### B. Parser Drive chưa bóc đủ số câu so với đề
 
@@ -102,19 +106,16 @@ Mới vá 11F và 12E. 10F (parser 59→45) chưa đối chiếu stem/option t�
 
 Tỷ lệ mất câu cao (khoảng 50%). Có thể do format đề khác (dòng dính, đánh số không chuẩn, TF/MC lẫn). Chưa xử lý riêng.
 
-### E. File tiến trình
-
-Đã tạo `prosess.md` ở thư mục gốc repo (2026-10-03) để lần sau tiếp nối.
-
 ---
 
 ## Quyết định kỹ thuật đã chốt
 
-1. **Gộp 12B vào Bài 3**, không giữ hai topic song song.
+1. **Gộp 12B vào Bài 3**, không giữ hai topic song song — **đã triển khai xong**.
 2. ID topic Bài 3 giữ nguyên: `tin-cd3-thiet-bi-mang`.
-3. Lý thuyết 12B dùng alias, chưa đổi key gốc `theoryBank`.
+3. Lý thuyết: key gốc = `tin-cd3-thiet-bi-mang`, alias ID cũ.
 4. Giữ `questionsCd3.ts` độc lập, chỉ **thêm** 83 câu 12B.
 5. Không commit `/tmp/opencode/sa.json` hay private key.
+6. `STRUCTURE_VERSION` = `2026_GD1_V10_BAI3_GOP_12B` để client xóa cache topic cũ.
 
 ---
 
@@ -123,14 +124,14 @@ Tỷ lệ mất câu cao (khoảng 50%). Có thể do format đề khác (dòng 
 | Đường dẫn | Vai trò |
 |-----------|---------|
 | `prosess.md` | Nhật ký tiến trình; cập nhật sau mỗi lần build |
-| `src/data/questions12b.ts` | Ngân hàng 12B đã gộp Bài 3 |
+| `src/data/questions12b.ts` | Ngân hàng 12B đã gộp Bài 3 (83 câu) |
 | `src/data/questionsCd3.ts` | 191 câu Bài 3 gốc + TF |
 | `src/data/sampleBank.ts` | `INITIAL_SUBJECTS` + spread câu hỏi |
 | `src/lib/driveFolderScanner.ts` | Map file Drive + parser |
 | `src/app/page.tsx` | Filter topic / cache version |
 | `src/lib/competencyEngine.ts` | Năng lực NLa |
 | `src/data/weeklyPlan.ts` | `tuan-08-10` |
-| `src/data/theoryBank.ts` | Lý thuyết mạng (key cũ + alias) |
+| `src/data/theoryBank.ts` | Lý thuyết mạng (key gốc Bài 3 + alias) |
 | `src/lib/googleAuth.ts` | JWT Drive readonly |
 
 File Drive:
@@ -144,7 +145,7 @@ Tạm (không commit): `/tmp/opencode/token.txt`, `/tmp/opencode/parsed/`, `/tmp
 
 ## Việc tiếp theo (ưu tiên)
 
-1. Đổi key gốc `theoryBank` sang `tin-cd3-thiet-bi-mang`, giữ alias ID cũ.
+1. ~~Đổi key gốc `theoryBank` sang `tin-cd3-thiet-bi-mang`~~ — xong.
 2. Chạy lại parser trên 9 file Drive; bổ sung câu thiếu (ưu tiên 10F, 11F, 12E, 11D/12D, 12G).
 3. Rà soát stem/option 10F và các câu `content` ngắn bất thường còn lại.
 4. Commit khi được yêu cầu (không gồm SA key / token).

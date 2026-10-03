@@ -242,7 +242,7 @@ export default function AppHome() {
   // Nạp lịch sử và dữ liệu đã đồng bộ từ localStorage với cơ chế kiểm soát phiên bản chuẩn KH GD1
   useEffect(() => {
     try {
-      const STRUCTURE_VERSION = "2026_GD1_V9_CHUYEN_DE_12E";
+      const STRUCTURE_VERSION = "2026_GD1_V10_BAI3_GOP_12B";
       const currentVer = localStorage.getItem("thpt_structure_version");
 
       if (currentVer !== STRUCTURE_VERSION) {
@@ -285,7 +285,9 @@ export default function AppHome() {
           const normalizedAttempts = parsedAttempts.map((att: any) => {
             if (att.topicId === "tin-ai-dung-sai") return { ...att, topicId: "tin-ai-tri-tue-nhan-tao" };
             if (att.topicId === "tin-python-dung-sai") return { ...att, topicId: "tin-lap-trinh-python" };
-            if (att.topicId === "tin-mang-dung-sai") return { ...att, topicId: "tin-thiet-bi-giao-thuc-mang" };
+            if (att.topicId === "tin-mang-dung-sai" || att.topicId === "tin-thiet-bi-giao-thuc-mang") {
+              return { ...att, topicId: "tin-cd3-thiet-bi-mang" };
+            }
             return att;
           });
           setAttempts(normalizedAttempts);
@@ -301,7 +303,9 @@ export default function AppHome() {
           const normalizedQ = parsedQ.map((q: any) => {
             if (q.topicId === "tin-ai-dung-sai") return { ...q, topicId: "tin-ai-tri-tue-nhan-tao" };
             if (q.topicId === "tin-python-dung-sai") return { ...q, topicId: "tin-lap-trinh-python" };
-            if (q.topicId === "tin-mang-dung-sai") return { ...q, topicId: "tin-thiet-bi-giao-thuc-mang" };
+            if (q.topicId === "tin-mang-dung-sai" || q.topicId === "tin-thiet-bi-giao-thuc-mang") {
+              return { ...q, topicId: "tin-cd3-thiet-bi-mang" };
+            }
             return q;
           }).filter((q: any) => !initIds.has(q.id));
 
@@ -349,6 +353,7 @@ export default function AppHome() {
     currentTopic?.hasTheory ||
     selectedTopicId === "tin-ai-tri-tue-nhan-tao" ||
     selectedTopicId === "tin-lap-trinh-python" ||
+    selectedTopicId === "tin-cd3-thiet-bi-mang" ||
     selectedTopicId === "tin-thiet-bi-giao-thuc-mang"
   );
   const isPythonTopic = Boolean(
@@ -384,8 +389,12 @@ export default function AppHome() {
       if (selectedTopicId === "tin-lap-trinh-python") {
         return q.topicId === "tin-lap-trinh-python" || q.topicId === "tin-python-dung-sai";
       }
-      if (selectedTopicId === "tin-thiet-bi-giao-thuc-mang") {
-        return q.topicId === "tin-thiet-bi-giao-thuc-mang" || q.topicId === "tin-mang-dung-sai";
+      if (selectedTopicId === "tin-cd3-thiet-bi-mang" || selectedTopicId === "tin-thiet-bi-giao-thuc-mang") {
+        return (
+          q.topicId === "tin-cd3-thiet-bi-mang" ||
+          q.topicId === "tin-thiet-bi-giao-thuc-mang" ||
+          q.topicId === "tin-mang-dung-sai"
+        );
       }
       return q.topicId === selectedTopicId;
     });

@@ -267,7 +267,7 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
     }
   ]
 },
-  "tin-thiet-bi-giao-thuc-mang": {
+  "tin-cd3-thiet-bi-mang": {
   "subjectId": "tin-hoc-12",
   "subjectName": "Tin học 12",
   "topicName": "Chủ đề B: Mạng máy tính và Internet",
@@ -282,7 +282,7 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
   "sections": [
     {
       "id": "net-concepts-all",
-      "topicId": "tin-thiet-bi-giao-thuc-mang",
+      "topicId": "tin-cd3-thiet-bi-mang",
       "title": "1. Khái niệm, Lợi ích Mạng máy tính & Phân loại mạng",
       "icon": "Layers",
       "tag": "Khái niệm mạng",
@@ -352,7 +352,7 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
     },
     {
       "id": "net-devices-all",
-      "topicId": "tin-thiet-bi-giao-thuc-mang",
+      "topicId": "tin-cd3-thiet-bi-mang",
       "title": "2. Bài 1: Các Thiết Bị Mạng Thông Dụng & Cáp Mạng",
       "icon": "Cpu",
       "tag": "Bài 1: Thiết bị mạng",
@@ -405,7 +405,7 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
     },
     {
       "id": "net-protocols-ip-all",
-      "topicId": "tin-thiet-bi-giao-thuc-mang",
+      "topicId": "tin-cd3-thiet-bi-mang",
       "title": "3. Bài 2: Giao Thức Mạng, TCP/IP, Địa Chỉ IP & DNS",
       "icon": "Compass",
       "tag": "Bài 2: Giao thức & IP",
@@ -472,7 +472,7 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
     },
     {
       "id": "net-connect-practice",
-      "topicId": "tin-thiet-bi-giao-thuc-mang",
+      "topicId": "tin-cd3-thiet-bi-mang",
       "title": "4. Bài 3: Thực Hành Kết Nối PC & Thiết Bị Di Động Vào Mạng",
       "icon": "Sparkles",
       "tag": "Bài 3: Thực hành kết nối",
@@ -518,7 +518,7 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
     },
     {
       "id": "net-sharing-practice",
-      "topicId": "tin-thiet-bi-giao-thuc-mang",
+      "topicId": "tin-cd3-thiet-bi-mang",
       "title": "5. Bài 4: Thực Hành Chia Sẻ Tài Nguyên (Thư Mục & Máy In)",
       "icon": "BookmarkCheck",
       "tag": "Bài 4: Chia sẻ tài nguyên",
@@ -2158,10 +2158,10 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
 
 // Aliases cho các chủ đề trắc nghiệm và câu hỏi Đúng / Sai
 TOPIC_THEORY_MAP["tin-ai-dung-sai"] = TOPIC_THEORY_MAP["tin-ai-tri-tue-nhan-tao"];
-TOPIC_THEORY_MAP["tin-mang-dung-sai"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
-TOPIC_THEORY_MAP["tin-giao-thuc-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
-TOPIC_THEORY_MAP["tin-chia-se-tai-nguyen-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
-TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
+TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"] = TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"];
+TOPIC_THEORY_MAP["tin-mang-dung-sai"] = TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"];
+TOPIC_THEORY_MAP["tin-giao-thuc-mang"] = TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"];
+TOPIC_THEORY_MAP["tin-chia-se-tai-nguyen-mang"] = TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"];
 TOPIC_THEORY_MAP["tin-python-dung-sai"] = TOPIC_THEORY_MAP["tin-lap-trinh-python"];
 TOPIC_THEORY_MAP["tin-html-dung-sai"] = TOPIC_THEORY_MAP["tin-chuyen-de-12f-web"];
 TOPIC_THEORY_MAP["tin-12f"] = TOPIC_THEORY_MAP["tin-chuyen-de-12f-web"];

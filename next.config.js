@@ -3,6 +3,7 @@ const path = require("path");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  allowedDevOrigins: [".monkeycode-ai.live"],
   webpack: (config, { isServer }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
