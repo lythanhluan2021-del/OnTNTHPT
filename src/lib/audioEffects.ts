@@ -5,7 +5,7 @@
 
 class SoundManager {
   private ctx: AudioContext | null = null;
-  private soundEnabled: boolean = true;
+  private soundEnabled: boolean = false;
 
   constructor() {
     if (typeof window !== "undefined") {

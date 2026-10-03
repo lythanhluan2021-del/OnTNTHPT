@@ -71,7 +71,7 @@ export const LoginModal: React.FC = () => {
 
         {/* Lời nhắc */}
         <div className="p-2.5 rounded-neu-sm bg-blue-50/70 border border-blue-200/60 text-[11px] text-blue-900 leading-relaxed shadow-neu-flat-xs">
-          Học sinh đăng nhập bằng tài khoản và mật khẩu do Thầy/Cô cấp để bắt đầu ôn luyện và lưu tiến trình học tập.
+          Học sinh đăng nhập bằng tài khoản và mật khẩu do Thầy/Cô cấp để bắt đầu ôn luyện và lưu tiến trình học tập. Ứng dụng giáo dục nội bộ, không thu phí, không yêu cầu thông tin ngân hàng hay thanh toán.
         </div>
 
         {/* Thông báo lỗi */}

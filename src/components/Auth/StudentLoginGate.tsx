@@ -68,6 +68,9 @@ export const StudentLoginGate: React.FC = () => {
           <p className="text-slate-600 text-[11px]">
             Học sinh đăng nhập bằng tài khoản và mật khẩu do Thầy/Cô cấp để bắt đầu ôn luyện theo kế hoạch 35 tuần và lưu tiến trình bài làm theo thời gian thực.
           </p>
+          <p className="text-slate-600 text-[11px]">
+            Đây là ứng dụng giáo dục nội bộ. Không thu phí, không yêu cầu thông tin ngân hàng, thanh toán hay CCCD.
+          </p>
         </div>
 
         {/* Thông báo lỗi nếu có */}

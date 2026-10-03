@@ -1,6 +1,6 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-03 (sau khi hoàn thiện gộp 12B vào Bài 3)
+Cập nhật: 2026-10-03 (vá cảnh báo Microsoft SmartScreen trên Vercel)
 
 ## Mục tiêu hiện tại
 
@@ -143,9 +143,25 @@ Tạm (không commit): `/tmp/opencode/token.txt`, `/tmp/opencode/parsed/`, `/tmp
 
 ---
 
+### 8. Cảnh báo SmartScreen trên Vercel — 2026-10-03
+
+`https://on-tnthpt.vercel.app` bị Microsoft Defender SmartScreen gắn “This site has been reported as unsafe”. Đây **không** phải lỗi build Next.js. Nguyên nhân phổ biến: subdomain `*.vercel.app` mới + form đăng nhập.
+
+Đã làm trong code:
+- Header bảo mật (`X-Content-Type-Options`, `X-Frame-Options`, `Permissions-Policy` chặn camera/mic/payment)
+- Metadata + JSON-LD rõ đây là app giáo dục nội bộ, không thu phí
+- Tắt âm thanh mặc định (tránh tín hiệu autoplay)
+- Ghi chú trên cổng đăng nhập: không thu phí, không hỏi ngân hàng/CCCD
+
+Việc thầy/cô cần làm ngoài code:
+1. Trên trang đỏ: **Report that this is not a scam site**
+2. Gắn tên miền trường (vd. `ontn.thptnguyensinhsac.edu.vn`) trên Vercel — cách triệt để nhất
+
+---
+
 ## Việc tiếp theo (ưu tiên)
 
 1. ~~Đổi key gốc `theoryBank` sang `tin-cd3-thiet-bi-mang`~~ — xong.
 2. Chạy lại parser trên 9 file Drive; bổ sung câu thiếu (ưu tiên 10F, 11F, 12E, 11D/12D, 12G).
 3. Rà soát stem/option 10F và các câu `content` ngắn bất thường còn lại.
-4. Commit khi được yêu cầu (không gồm SA key / token).
+4. Gắn custom domain + báo cáo SmartScreen (ngoài code).
