@@ -23,16 +23,29 @@ import {
 
 export interface WeekColorTheme {
   name: string;
+  // Card-level Chroma-Neumorphism styling
+  cardNeumorphicBg: string;
+  cardBorderNormal: string;
+  cardBorderActive: string;
+  cardGlowActive: string;
+
+  // Header and icon styling
+  folderText: string;
+  folderActiveBg: string;
+  chevronActive: string;
+
+  // Badge
   badgeBg: string;
   badgeText: string;
   badgeBorder: string;
   badgeIcon: string;
-  folderText: string;
-  folderActiveBg: string;
-  cardBorderActive: string;
-  cardHeaderBgActive: string;
-  chevronActive: string;
+
+  // Inner Indented Tray
+  trayBg: string;
+  trayBorder: string;
   treeLineActive: string;
+
+  // Sub-card
   subCardActiveBg: string;
   subCardActiveText: string;
   subCardActiveBorder: string;
@@ -44,17 +57,21 @@ const WEEK_COLOR_PALETTES: WeekColorTheme[] = [
   // 1. Cyan / Sky Blue (Tuần 2 - 6: Python)
   {
     name: "Sky Blue",
+    cardNeumorphicBg: "bg-gradient-to-br from-sky-100/70 via-sky-50/40 to-[#e6ecf5] dark:from-sky-950/40 dark:via-[#161d27] dark:to-[#141923]",
+    cardBorderNormal: "border-sky-200/70 dark:border-sky-900/50",
+    cardBorderActive: "border-sky-400 dark:border-sky-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(56,189,248,0.22)]",
     badgeBg: "bg-sky-100 dark:bg-sky-950/70",
     badgeText: "text-sky-800 dark:text-sky-300",
     badgeBorder: "border-sky-300/80 dark:border-sky-800",
     badgeIcon: "text-sky-600 dark:text-sky-400",
     folderText: "text-sky-600 dark:text-sky-400",
-    folderActiveBg: "bg-sky-50 dark:bg-sky-900/60 text-sky-600 dark:text-sky-300",
-    cardBorderActive: "border-sky-400/90 dark:border-sky-600 shadow-[0_0_12px_rgba(56,189,248,0.18)]",
-    cardHeaderBgActive: "bg-sky-100/60 dark:bg-sky-950/50 text-sky-950 dark:text-sky-100",
+    folderActiveBg: "bg-sky-100/80 dark:bg-sky-900/60 text-sky-700 dark:text-sky-300",
     chevronActive: "text-sky-600 dark:text-sky-400",
+    trayBg: "bg-sky-100/25 dark:bg-sky-950/20",
+    trayBorder: "border-sky-200/80 dark:border-sky-900/60",
     treeLineActive: "bg-sky-500 dark:bg-sky-400",
-    subCardActiveBg: "bg-sky-50 dark:bg-sky-950/80",
+    subCardActiveBg: "bg-sky-50/90 dark:bg-sky-950/80",
     subCardActiveText: "text-sky-950 dark:text-sky-100",
     subCardActiveBorder: "border-l-4 border-sky-500 dark:border-sky-400",
     subCardActiveChevron: "text-sky-600 dark:text-sky-400",
@@ -63,17 +80,21 @@ const WEEK_COLOR_PALETTES: WeekColorTheme[] = [
   // 2. Purple / Violet (Tuần 7: Trí tuệ nhân tạo)
   {
     name: "Violet",
+    cardNeumorphicBg: "bg-gradient-to-br from-purple-100/70 via-purple-50/40 to-[#e6ecf5] dark:from-purple-950/40 dark:via-[#181627] dark:to-[#141923]",
+    cardBorderNormal: "border-purple-200/70 dark:border-purple-900/50",
+    cardBorderActive: "border-purple-400 dark:border-purple-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(192,132,252,0.22)]",
     badgeBg: "bg-purple-100 dark:bg-purple-950/70",
     badgeText: "text-purple-800 dark:text-purple-300",
     badgeBorder: "border-purple-300/80 dark:border-purple-800",
     badgeIcon: "text-purple-600 dark:text-purple-400",
     folderText: "text-purple-600 dark:text-purple-400",
-    folderActiveBg: "bg-purple-50 dark:bg-purple-900/60 text-purple-600 dark:text-purple-300",
-    cardBorderActive: "border-purple-400/90 dark:border-purple-600 shadow-[0_0_12px_rgba(192,132,252,0.18)]",
-    cardHeaderBgActive: "bg-purple-100/60 dark:bg-purple-950/50 text-purple-950 dark:text-purple-100",
+    folderActiveBg: "bg-purple-100/80 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300",
     chevronActive: "text-purple-600 dark:text-purple-400",
+    trayBg: "bg-purple-100/25 dark:bg-purple-950/20",
+    trayBorder: "border-purple-200/80 dark:border-purple-900/60",
     treeLineActive: "bg-purple-500 dark:bg-purple-400",
-    subCardActiveBg: "bg-purple-50 dark:bg-purple-950/80",
+    subCardActiveBg: "bg-purple-50/90 dark:bg-purple-950/80",
     subCardActiveText: "text-purple-950 dark:text-purple-100",
     subCardActiveBorder: "border-l-4 border-purple-500 dark:border-purple-400",
     subCardActiveChevron: "text-purple-600 dark:text-purple-400",
@@ -82,150 +103,182 @@ const WEEK_COLOR_PALETTES: WeekColorTheme[] = [
   // 3. Emerald / Mint Green (Tuần 8 - 10: Mạng máy tính & Internet)
   {
     name: "Emerald",
+    cardNeumorphicBg: "bg-gradient-to-br from-emerald-100/70 via-emerald-50/40 to-[#e6ecf5] dark:from-emerald-950/40 dark:via-[#141e1c] dark:to-[#141923]",
+    cardBorderNormal: "border-emerald-200/70 dark:border-emerald-900/50",
+    cardBorderActive: "border-emerald-400 dark:border-emerald-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(52,211,153,0.22)]",
     badgeBg: "bg-emerald-100 dark:bg-emerald-950/70",
     badgeText: "text-emerald-800 dark:text-emerald-300",
     badgeBorder: "border-emerald-300/80 dark:border-emerald-800",
     badgeIcon: "text-emerald-600 dark:text-emerald-400",
     folderText: "text-emerald-600 dark:text-emerald-400",
-    folderActiveBg: "bg-emerald-50 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-300",
-    cardBorderActive: "border-emerald-400/90 dark:border-emerald-600 shadow-[0_0_12px_rgba(52,211,153,0.18)]",
-    cardHeaderBgActive: "bg-emerald-100/60 dark:bg-emerald-950/50 text-emerald-950 dark:text-emerald-100",
+    folderActiveBg: "bg-emerald-100/80 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300",
     chevronActive: "text-emerald-600 dark:text-emerald-400",
+    trayBg: "bg-emerald-100/25 dark:bg-emerald-950/20",
+    trayBorder: "border-emerald-200/80 dark:border-emerald-900/60",
     treeLineActive: "bg-emerald-500 dark:bg-emerald-400",
-    subCardActiveBg: "bg-emerald-50 dark:bg-emerald-950/80",
+    subCardActiveBg: "bg-emerald-50/90 dark:bg-emerald-950/80",
     subCardActiveText: "text-emerald-950 dark:text-emerald-100",
     subCardActiveBorder: "border-l-4 border-emerald-500 dark:border-emerald-400",
     subCardActiveChevron: "text-emerald-600 dark:text-emerald-400",
     dotColor: "bg-emerald-500",
   },
-  // 4. Amber / Gold
+  // 4. Amber / Gold (Tuần 11 - 13: Giao thức mạng & An toàn)
   {
     name: "Amber",
+    cardNeumorphicBg: "bg-gradient-to-br from-amber-100/70 via-amber-50/40 to-[#e6ecf5] dark:from-amber-950/40 dark:via-[#1e1b14] dark:to-[#141923]",
+    cardBorderNormal: "border-amber-200/70 dark:border-amber-900/50",
+    cardBorderActive: "border-amber-400 dark:border-amber-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(251,191,36,0.22)]",
     badgeBg: "bg-amber-100 dark:bg-amber-950/70",
     badgeText: "text-amber-800 dark:text-amber-300",
     badgeBorder: "border-amber-300/80 dark:border-amber-800",
     badgeIcon: "text-amber-600 dark:text-amber-400",
     folderText: "text-amber-600 dark:text-amber-400",
-    folderActiveBg: "bg-amber-50 dark:bg-amber-900/60 text-amber-600 dark:text-amber-300",
-    cardBorderActive: "border-amber-400/90 dark:border-amber-600 shadow-[0_0_12px_rgba(251,191,36,0.18)]",
-    cardHeaderBgActive: "bg-amber-100/60 dark:bg-amber-950/50 text-amber-950 dark:text-amber-100",
+    folderActiveBg: "bg-amber-100/80 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300",
     chevronActive: "text-amber-600 dark:text-amber-400",
+    trayBg: "bg-amber-100/25 dark:bg-amber-950/20",
+    trayBorder: "border-amber-200/80 dark:border-amber-900/60",
     treeLineActive: "bg-amber-500 dark:bg-amber-400",
-    subCardActiveBg: "bg-amber-50 dark:bg-amber-950/80",
+    subCardActiveBg: "bg-amber-50/90 dark:bg-amber-950/80",
     subCardActiveText: "text-amber-950 dark:text-amber-100",
     subCardActiveBorder: "border-l-4 border-amber-500 dark:border-amber-400",
     subCardActiveChevron: "text-amber-600 dark:text-amber-400",
     dotColor: "bg-amber-500",
   },
-  // 5. Indigo / Deep Cobalt
+  // 5. Indigo / Deep Cobalt (Tuần 14 - 17: Thiết kế Web HTML/CSS)
   {
     name: "Indigo",
+    cardNeumorphicBg: "bg-gradient-to-br from-indigo-100/70 via-indigo-50/40 to-[#e6ecf5] dark:from-indigo-950/40 dark:via-[#161729] dark:to-[#141923]",
+    cardBorderNormal: "border-indigo-200/70 dark:border-indigo-900/50",
+    cardBorderActive: "border-indigo-400 dark:border-indigo-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(129,140,248,0.22)]",
     badgeBg: "bg-indigo-100 dark:bg-indigo-950/70",
     badgeText: "text-indigo-800 dark:text-indigo-300",
     badgeBorder: "border-indigo-300/80 dark:border-indigo-800",
     badgeIcon: "text-indigo-600 dark:text-indigo-400",
     folderText: "text-indigo-600 dark:text-indigo-400",
-    folderActiveBg: "bg-indigo-50 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-300",
-    cardBorderActive: "border-indigo-400/90 dark:border-indigo-600 shadow-[0_0_12px_rgba(129,140,248,0.18)]",
-    cardHeaderBgActive: "bg-indigo-100/60 dark:bg-indigo-950/50 text-indigo-950 dark:text-indigo-100",
+    folderActiveBg: "bg-indigo-100/80 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300",
     chevronActive: "text-indigo-600 dark:text-indigo-400",
+    trayBg: "bg-indigo-100/25 dark:bg-indigo-950/20",
+    trayBorder: "border-indigo-200/80 dark:border-indigo-900/60",
     treeLineActive: "bg-indigo-500 dark:bg-indigo-400",
-    subCardActiveBg: "bg-indigo-50 dark:bg-indigo-950/80",
+    subCardActiveBg: "bg-indigo-50/90 dark:bg-indigo-950/80",
     subCardActiveText: "text-indigo-950 dark:text-indigo-100",
     subCardActiveBorder: "border-l-4 border-indigo-500 dark:border-indigo-400",
     subCardActiveChevron: "text-indigo-600 dark:text-indigo-400",
     dotColor: "bg-indigo-500",
   },
-  // 6. Rose / Pink Red
+  // 6. Rose / Pink Red (Tuần 18 - 20: Ôn tập HK1 & Dự án)
   {
     name: "Rose",
+    cardNeumorphicBg: "bg-gradient-to-br from-rose-100/70 via-rose-50/40 to-[#e6ecf5] dark:from-rose-950/40 dark:via-[#22151c] dark:to-[#141923]",
+    cardBorderNormal: "border-rose-200/70 dark:border-rose-900/50",
+    cardBorderActive: "border-rose-400 dark:border-rose-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(251,113,133,0.22)]",
     badgeBg: "bg-rose-100 dark:bg-rose-950/70",
     badgeText: "text-rose-800 dark:text-rose-300",
     badgeBorder: "border-rose-300/80 dark:border-rose-800",
     badgeIcon: "text-rose-600 dark:text-rose-400",
     folderText: "text-rose-600 dark:text-rose-400",
-    folderActiveBg: "bg-rose-50 dark:bg-rose-900/60 text-rose-600 dark:text-rose-300",
-    cardBorderActive: "border-rose-400/90 dark:border-rose-600 shadow-[0_0_12px_rgba(251,113,133,0.18)]",
-    cardHeaderBgActive: "bg-rose-100/60 dark:bg-rose-950/50 text-rose-950 dark:text-rose-100",
+    folderActiveBg: "bg-rose-100/80 dark:bg-rose-900/60 text-rose-700 dark:text-rose-300",
     chevronActive: "text-rose-600 dark:text-rose-400",
+    trayBg: "bg-rose-100/25 dark:bg-rose-950/20",
+    trayBorder: "border-rose-200/80 dark:border-rose-900/60",
     treeLineActive: "bg-rose-500 dark:bg-rose-400",
-    subCardActiveBg: "bg-rose-50 dark:bg-rose-950/80",
+    subCardActiveBg: "bg-rose-50/90 dark:bg-rose-950/80",
     subCardActiveText: "text-rose-950 dark:text-rose-100",
     subCardActiveBorder: "border-l-4 border-rose-500 dark:border-rose-400",
     subCardActiveChevron: "text-rose-600 dark:text-rose-400",
     dotColor: "bg-rose-500",
   },
-  // 7. Teal / Deep Sea Green
+  // 7. Teal / Deep Sea Green (Tuần 21 - 25: CSDL & Hệ CSDL Quan hệ)
   {
     name: "Teal",
+    cardNeumorphicBg: "bg-gradient-to-br from-teal-100/70 via-teal-50/40 to-[#e6ecf5] dark:from-teal-950/40 dark:via-[#141d1e] dark:to-[#141923]",
+    cardBorderNormal: "border-teal-200/70 dark:border-teal-900/50",
+    cardBorderActive: "border-teal-400 dark:border-teal-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(45,212,191,0.22)]",
     badgeBg: "bg-teal-100 dark:bg-teal-950/70",
     badgeText: "text-teal-800 dark:text-teal-300",
     badgeBorder: "border-teal-300/80 dark:border-teal-800",
     badgeIcon: "text-teal-600 dark:text-teal-400",
     folderText: "text-teal-600 dark:text-teal-400",
-    folderActiveBg: "bg-teal-50 dark:bg-teal-900/60 text-teal-600 dark:text-teal-300",
-    cardBorderActive: "border-teal-400/90 dark:border-teal-600 shadow-[0_0_12px_rgba(45,212,191,0.18)]",
-    cardHeaderBgActive: "bg-teal-100/60 dark:bg-teal-950/50 text-teal-950 dark:text-teal-100",
+    folderActiveBg: "bg-teal-100/80 dark:bg-teal-900/60 text-teal-700 dark:text-teal-300",
     chevronActive: "text-teal-600 dark:text-teal-400",
+    trayBg: "bg-teal-100/25 dark:bg-teal-950/20",
+    trayBorder: "border-teal-200/80 dark:border-teal-900/60",
     treeLineActive: "bg-teal-500 dark:bg-teal-400",
-    subCardActiveBg: "bg-teal-50 dark:bg-teal-950/80",
+    subCardActiveBg: "bg-teal-50/90 dark:bg-teal-950/80",
     subCardActiveText: "text-teal-950 dark:text-teal-100",
     subCardActiveBorder: "border-l-4 border-teal-500 dark:border-teal-400",
     subCardActiveChevron: "text-teal-600 dark:text-teal-400",
     dotColor: "bg-teal-500",
   },
-  // 8. Orange / Coral
+  // 8. Orange / Coral (Tuần 26 - 29: Thiết kế CSDL & Bảng dữ liệu)
   {
     name: "Orange",
+    cardNeumorphicBg: "bg-gradient-to-br from-orange-100/70 via-orange-50/40 to-[#e6ecf5] dark:from-orange-950/40 dark:via-[#211814] dark:to-[#141923]",
+    cardBorderNormal: "border-orange-200/70 dark:border-orange-900/50",
+    cardBorderActive: "border-orange-400 dark:border-orange-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(251,146,60,0.22)]",
     badgeBg: "bg-orange-100 dark:bg-orange-950/70",
     badgeText: "text-orange-800 dark:text-orange-300",
     badgeBorder: "border-orange-300/80 dark:border-orange-800",
     badgeIcon: "text-orange-600 dark:text-orange-400",
     folderText: "text-orange-600 dark:text-orange-400",
-    folderActiveBg: "bg-orange-50 dark:bg-orange-900/60 text-orange-600 dark:text-orange-300",
-    cardBorderActive: "border-orange-400/90 dark:border-orange-600 shadow-[0_0_12px_rgba(251,146,60,0.18)]",
-    cardHeaderBgActive: "bg-orange-100/60 dark:bg-orange-950/50 text-orange-950 dark:text-orange-100",
+    folderActiveBg: "bg-orange-100/80 dark:bg-orange-900/60 text-orange-700 dark:text-orange-300",
     chevronActive: "text-orange-600 dark:text-orange-400",
+    trayBg: "bg-orange-100/25 dark:bg-orange-950/20",
+    trayBorder: "border-orange-200/80 dark:border-orange-900/60",
     treeLineActive: "bg-orange-500 dark:bg-orange-400",
-    subCardActiveBg: "bg-orange-50 dark:bg-orange-950/80",
+    subCardActiveBg: "bg-orange-50/90 dark:bg-orange-950/80",
     subCardActiveText: "text-orange-950 dark:text-orange-100",
     subCardActiveBorder: "border-l-4 border-orange-500 dark:border-orange-400",
     subCardActiveChevron: "text-orange-600 dark:text-orange-400",
     dotColor: "bg-orange-500",
   },
-  // 9. Fuchsia / Magenta
+  // 9. Fuchsia / Magenta (Tuần 30 - 32: Truy vấn SQL)
   {
     name: "Fuchsia",
+    cardNeumorphicBg: "bg-gradient-to-br from-fuchsia-100/70 via-fuchsia-50/40 to-[#e6ecf5] dark:from-fuchsia-950/40 dark:via-[#211425] dark:to-[#141923]",
+    cardBorderNormal: "border-fuchsia-200/70 dark:border-fuchsia-900/50",
+    cardBorderActive: "border-fuchsia-400 dark:border-fuchsia-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(232,121,249,0.22)]",
     badgeBg: "bg-fuchsia-100 dark:bg-fuchsia-950/70",
     badgeText: "text-fuchsia-800 dark:text-fuchsia-300",
     badgeBorder: "border-fuchsia-300/80 dark:border-fuchsia-800",
     badgeIcon: "text-fuchsia-600 dark:text-fuchsia-400",
     folderText: "text-fuchsia-600 dark:text-fuchsia-400",
-    folderActiveBg: "bg-fuchsia-50 dark:bg-fuchsia-900/60 text-fuchsia-600 dark:text-fuchsia-300",
-    cardBorderActive: "border-fuchsia-400/90 dark:border-fuchsia-600 shadow-[0_0_12px_rgba(232,121,249,0.18)]",
-    cardHeaderBgActive: "bg-fuchsia-100/60 dark:bg-fuchsia-950/50 text-fuchsia-950 dark:text-fuchsia-100",
+    folderActiveBg: "bg-fuchsia-100/80 dark:bg-fuchsia-900/60 text-fuchsia-700 dark:text-fuchsia-300",
     chevronActive: "text-fuchsia-600 dark:text-fuchsia-400",
+    trayBg: "bg-fuchsia-100/25 dark:bg-fuchsia-950/20",
+    trayBorder: "border-fuchsia-200/80 dark:border-fuchsia-900/60",
     treeLineActive: "bg-fuchsia-500 dark:bg-fuchsia-400",
-    subCardActiveBg: "bg-fuchsia-50 dark:bg-fuchsia-950/80",
+    subCardActiveBg: "bg-fuchsia-50/90 dark:bg-fuchsia-950/80",
     subCardActiveText: "text-fuchsia-950 dark:text-fuchsia-100",
     subCardActiveBorder: "border-l-4 border-fuchsia-500 dark:border-fuchsia-400",
     subCardActiveChevron: "text-fuchsia-600 dark:text-fuchsia-400",
     dotColor: "bg-fuchsia-500",
   },
-  // 10. Lime / Cyber Green
+  // 10. Lime / Cyber Green (Tuần 33 - 35: Tổng lực thi)
   {
     name: "Lime",
+    cardNeumorphicBg: "bg-gradient-to-br from-lime-100/70 via-lime-50/40 to-[#e6ecf5] dark:from-lime-950/40 dark:via-[#191e14] dark:to-[#141923]",
+    cardBorderNormal: "border-lime-200/70 dark:border-lime-900/50",
+    cardBorderActive: "border-lime-400 dark:border-lime-500",
+    cardGlowActive: "shadow-[0_0_15px_rgba(163,230,53,0.22)]",
     badgeBg: "bg-lime-100 dark:bg-lime-950/70",
     badgeText: "text-lime-800 dark:text-lime-300",
     badgeBorder: "border-lime-300/80 dark:border-lime-800",
     badgeIcon: "text-lime-600 dark:text-lime-400",
     folderText: "text-lime-600 dark:text-lime-400",
-    folderActiveBg: "bg-lime-50 dark:bg-lime-900/60 text-lime-600 dark:text-lime-300",
-    cardBorderActive: "border-lime-400/90 dark:border-lime-600 shadow-[0_0_12px_rgba(163,230,53,0.18)]",
-    cardHeaderBgActive: "bg-lime-100/60 dark:bg-lime-950/50 text-lime-950 dark:text-lime-100",
+    folderActiveBg: "bg-lime-100/80 dark:bg-lime-900/60 text-lime-700 dark:text-lime-300",
     chevronActive: "text-lime-600 dark:text-lime-400",
+    trayBg: "bg-lime-100/25 dark:bg-lime-950/20",
+    trayBorder: "border-lime-200/80 dark:border-lime-900/60",
     treeLineActive: "bg-lime-500 dark:bg-lime-400",
-    subCardActiveBg: "bg-lime-50 dark:bg-lime-950/80",
+    subCardActiveBg: "bg-lime-50/90 dark:bg-lime-950/80",
     subCardActiveText: "text-lime-950 dark:text-lime-100",
     subCardActiveBorder: "border-l-4 border-lime-500 dark:border-lime-400",
     subCardActiveChevron: "text-lime-600 dark:text-lime-400",
@@ -529,20 +582,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
               return (
                 <div
                   key={chapterTitle}
-                  className={`rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1a1f26] transition-all overflow-hidden ${
+                  className={`rounded-neu-sm ${theme.cardNeumorphicBg} transition-all duration-300 overflow-hidden ${
                     hasActiveTopic
-                      ? `shadow-neu-flat border ${theme.cardBorderActive}`
-                      : "shadow-neu-flat-xs border border-transparent dark:border-white/5"
+                      ? `shadow-neu-flat border-2 ${theme.cardBorderActive} ${theme.cardGlowActive}`
+                      : `shadow-neu-flat-xs border hover:shadow-neu-flat ${theme.cardBorderNormal}`
                   }`}
                 >
                   {/* Accordion Chapter Header - CẤP BẬC CHA (TIÊU ĐỀ LỚN MANG MÀU ĐẶC TRƯNG TỪNG TUẦN) */}
                   <button
                     onClick={() => toggleChapter(chapterTitle)}
-                    className={`w-full text-left p-3 flex items-center justify-between gap-2.5 transition-colors ${
-                      hasActiveTopic
-                        ? theme.cardHeaderBgActive
-                        : "hover:bg-slate-200/50 dark:hover:bg-slate-800/50 text-slate-800 dark:text-slate-200"
-                    }`}
+                    className="w-full text-left p-3 flex items-center justify-between gap-2.5 transition-colors hover:bg-white/40 dark:hover:bg-white/5 text-slate-800 dark:text-slate-200"
                     aria-expanded={isExpanded}
                   >
                     <div className="flex items-start gap-2.5 min-w-0 flex-1">
@@ -550,7 +599,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         className={`p-1.5 rounded-neu-xs shadow-neu-flat-xs flex-shrink-0 mt-0.5 transition-all ${
                           hasActiveTopic
                             ? `${theme.folderActiveBg} shadow-sm`
-                            : "text-slate-600 dark:text-slate-400 bg-[#e6ecf5] dark:bg-[#202734]"
+                            : "text-slate-600 dark:text-slate-400 bg-white/70 dark:bg-[#202734]"
                         }`}
                       >
                         {isExpanded ? (
@@ -591,9 +640,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                   {/* Danh sách các bài học con - CẤP BẬC CON (TIÊU ĐỀ NHỎ BÊN TRONG CÓ NHÁNH CÂY TREE-LINE ĐỒNG BỘ MÀU) */}
                   {isExpanded && (
-                    <div className="p-2.5 pt-2 bg-slate-200/30 dark:bg-slate-900/50 border-t border-slate-200/90 dark:border-slate-800">
+                    <div className={`p-2.5 pt-2 ${theme.trayBg} shadow-neu-inset-sm border-t ${theme.trayBorder}`}>
                       {/* Vùng nhánh cây phân cấp (Tree Branch Guide) */}
-                      <div className="relative pl-3.5 ml-2 border-l-2 border-slate-300/80 dark:border-slate-700 space-y-2 py-0.5">
+                      <div className="relative pl-3.5 ml-2 border-l-2 border-slate-300/80 dark:border-slate-700/80 space-y-2 py-0.5">
                         {topicList.map((topic) => {
                           const isCurrent = topic.id === selectedTopicId;
                           const { week: topicWeek, cleanName } = parseTopicInfo(topic.name);
@@ -620,7 +669,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                                 className={`w-full text-left p-2.5 rounded-neu-sm transition-all flex items-start justify-between gap-2 ${
                                   isCurrent
                                     ? `${theme.subCardActiveBg} ${theme.subCardActiveText} shadow-neu-inset font-bold ${theme.subCardActiveBorder}`
-                                    : "bg-[#e6ecf5] dark:bg-[#1a1f26] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs hover:text-slate-900 dark:hover:text-white active:shadow-neu-inset"
+                                    : "bg-[#e6ecf5]/85 dark:bg-[#1b212c]/85 text-slate-700 dark:text-slate-300 shadow-neu-flat-xs hover:text-slate-900 dark:hover:text-white hover:bg-white/80 dark:hover:bg-[#202735] active:shadow-neu-inset"
                                 }`}
                               >
                                 <div className="flex-1 min-w-0 space-y-1.5">
