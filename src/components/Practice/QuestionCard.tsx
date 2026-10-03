@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Question } from "@/types";
 import { LatexRenderer } from "../UI/LatexRenderer";
 import { Check, X, Bookmark, FileText, CheckCircle2, XCircle, Terminal, Globe, Database, Bot, Sparkles } from "lucide-react";
 import { soundManager } from "@/lib/audioEffects";
+import { ttsManager } from "@/lib/ttsManager";
+import { VoiceToggleSwitch } from "./VoiceToggleSwitch";
 import { PYTHON_QUESTION_EXERCISES } from "@/data/pythonQuestionCodes";
 import { HTML_CSS_QUESTION_EXERCISES } from "@/data/htmlCssTemplates";
 import { SQL_QUESTION_EXERCISES } from "@/data/sqlDatasets";
@@ -137,6 +139,28 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
   const tfScore = getTFScore();
 
+  // Tự động phát âm đề bài nếu chế độ đọc đang BẬT và câu hỏi chưa được trả lời
+  useEffect(() => {
+    if (ttsManager.getState().isEnabled && !hasAnswered && question?.content) {
+      const timer = setTimeout(() => {
+        ttsManager.speakQuestion(question.content, `Câu ${currentIndex + 1}`);
+      }, 350);
+      return () => {
+        clearTimeout(timer);
+        ttsManager.stop();
+      };
+    } else {
+      ttsManager.stop();
+    }
+  }, [question?.id, currentIndex, hasAnswered]);
+
+  // Ngắt phát âm khi unmount khỏi giao diện
+  useEffect(() => {
+    return () => {
+      ttsManager.stop();
+    };
+  }, []);
+
   return (
     <div className="space-y-4">
       {/* Khung thẻ câu hỏi với Viền chuyển sắc mỏng xoay quanh (Chỉ viền có hiệu ứng chuyển sắc, không áp dụng lên nền) */}
@@ -152,30 +176,38 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
         {/* Nội dung Thẻ đề bài: Nền chuẩn Neumorphic #e6ecf5 đồng nhất */}
         <div className="relative z-10 p-4 sm:p-5 rounded-[16.5px] bg-[#e6ecf5] dark:bg-[#1a1f26] space-y-3">
-          <div className="flex items-center justify-between text-xs">
-            <span className="font-extrabold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 rounded-neu-sm shadow-neu-flat-xs flex items-center gap-1.5 border border-transparent dark:border-blue-800/60">
-              <span>Câu {currentIndex + 1} / {totalInTopic}</span>
-              {isTrueFalse && (
-                <span className="text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded-full font-bold">
-                  Đúng / Sai
-                </span>
-              )}
-              {comboStreak >= 2 && (
-                <span
-                  className="inline-flex items-center gap-0.5 text-[10px] font-black px-1.5 py-0.2 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-sm animate-pulse"
-                  title={`Chuỗi làm đúng liên tiếp: ${comboStreak} câu`}
-                >
-                  <span>🔥</span>
-                  <span>x{comboStreak}</span>
-                </span>
-              )}
-            </span>
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-2.5 text-xs">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="font-extrabold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 rounded-neu-sm shadow-neu-flat-xs flex items-center gap-1.5 border border-transparent dark:border-blue-800/60">
+                <span>Câu {currentIndex + 1} / {totalInTopic}</span>
+                {isTrueFalse && (
+                  <span className="text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded-full font-bold">
+                    Đúng / Sai
+                  </span>
+                )}
+                {comboStreak >= 2 && (
+                  <span
+                    className="inline-flex items-center gap-0.5 text-[10px] font-black px-1.5 py-0.2 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-sm animate-pulse"
+                    title={`Chuỗi làm đúng liên tiếp: ${comboStreak} câu`}
+                  >
+                    <span>🔥</span>
+                    <span>x{comboStreak}</span>
+                  </span>
+                )}
+              </span>
               <span
                 className={`font-semibold px-2 py-0.5 rounded-full border text-[11px] ${badge.color}`}
               >
                 {badge.label}
               </span>
+            </div>
+
+            <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+              {/* Nút gạt Đọc đề bài thông minh (Giọng Nam / Nữ) */}
+              <VoiceToggleSwitch
+                currentQuestionText={question.content}
+                questionNumber={currentIndex + 1}
+              />
 
               {/* Nút Trợ lý AI tinh gọn dạng icon 🤖 duy nhất */}
               {onAskAiTutor && (
@@ -185,7 +217,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                     soundManager.playClick();
                     onAskAiTutor();
                   }}
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat-xs dark:shadow-none hover:shadow-neu-flat active:shadow-neu-inset text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-800/80 transition cursor-pointer relative group"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat-xs dark:shadow-none hover:shadow-neu-flat active:shadow-neu-inset text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-800/80 transition cursor-pointer relative group flex-shrink-0"
                   title="Hỏi Trợ lý Socratic AI tư duy"
                 >
                   <span className="text-sm sm:text-base">🤖</span>
@@ -401,6 +433,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                 key={opt.id}
                 onClick={() => {
                   if (!hasAnswered) {
+                    ttsManager.stop();
                     soundManager.playClick();
                     onSelectOption(opt.id);
                   }
@@ -482,6 +515,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   <button
                     onClick={() => {
                       if (!hasAnswered && onSelectTF) {
+                        ttsManager.stop();
                         soundManager.playClick();
                         onSelectTF(item.id, true);
                       }
@@ -505,6 +539,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   <button
                     onClick={() => {
                       if (!hasAnswered && onSelectTF) {
+                        ttsManager.stop();
                         soundManager.playClick();
                         onSelectTF(item.id, false);
                       }
