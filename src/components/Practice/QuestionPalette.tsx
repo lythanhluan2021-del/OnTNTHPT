@@ -4,16 +4,12 @@ import React, { useState, useEffect } from "react";
 import { soundManager } from "@/lib/audioEffects";
 import {
   LayoutGrid,
-  Bookmark,
   ChevronUp,
   ChevronDown,
-  CheckCircle2,
-  Clock,
   Shuffle,
   RotateCcw,
   Zap,
   Target,
-  Star,
 } from "lucide-react";
 
 interface QuestionPaletteProps {
@@ -49,7 +45,7 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
   wrongQuestionsCount,
   onReviewMistakes,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const STAGE_SIZE = 10;
   const isMultiStage = totalQuestions > 12;
@@ -102,123 +98,133 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
   })();
 
   return (
-    <div className="w-full bg-[#e6ecf5] dark:bg-[#1a1f26] rounded-2xl p-3 shadow-neu-flat dark:shadow-[5px_5px_12px_#12151a,-5px_-5px_12px_#222932] border border-white/60 dark:border-white/5 transition-all">
-      {/* Header bar */}
-      <div className="flex items-center justify-between gap-2 cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
-        <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+    <div className="w-full bg-[#e6ecf5] dark:bg-[#1a1f26] rounded-2xl p-3 sm:p-4 shadow-neu-flat border border-white/80 dark:border-white/5 transition-all space-y-3">
+      {/* 1. Header Bar: Tối giản, thanh lịch, chuẩn Neumorphism (Không nhồi nhét nút) */}
+      <div
+        className="flex items-center justify-between gap-3 cursor-pointer select-none"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="p-2 rounded-neu-xs bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-flat-xs flex-shrink-0">
             <LayoutGrid className="w-4 h-4" />
           </div>
-          <div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
-                Bảng câu hỏi ({answeredCount}/{totalQuestions})
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h4 className="text-xs sm:text-sm font-black text-slate-800 dark:text-slate-100 tracking-tight">
+                Bảng Câu Hỏi
+              </h4>
+              <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                {answeredCount}/{totalQuestions} câu
               </span>
               {isMultiStage && (
-                <span className="text-[10px] font-black px-1.5 py-0.2 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
+                <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900">
                   {totalStages} chặng
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400 font-medium">
-              <span className="text-emerald-600 dark:text-emerald-400">Đã làm: {answeredCount}</span>
-              {flaggedCount > 0 && <span className="text-amber-600 dark:text-amber-400">Đã ghim: {flaggedCount}</span>}
+            <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Đã làm: {answeredCount}</span>
+              <span>•</span>
               <span>Còn lại: {totalQuestions - answeredCount}</span>
+              {flaggedCount > 0 && (
+                <>
+                  <span>•</span>
+                  <span className="text-amber-600 dark:text-amber-400 font-semibold">Ghim: {flaggedCount}</span>
+                </>
+              )}
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5">
-          {/* Nút Luyện nhanh 10 câu */}
-          {onQuickSprint && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                soundManager.playClick();
-                onQuickSprint();
-              }}
-              className="p-1.5 sm:px-2 rounded-neu-sm text-xs font-bold bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 text-amber-700 dark:text-amber-300 border border-amber-300/60 shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1 cursor-pointer"
-              title="Luyện nhanh 10 câu ngẫu nhiên (5 phút)"
-            >
-              <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
-              <span className="hidden sm:inline text-[10px]">10 câu nhanh</span>
-            </button>
-          )}
-
-          {/* Nút Ôn lại câu sai nếu có */}
-          {wrongQuestionsCount && wrongQuestionsCount > 0 && onReviewMistakes ? (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                soundManager.playClick();
-                onReviewMistakes();
-              }}
-              className="p-1.5 sm:px-2 rounded-neu-sm text-xs font-bold bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 text-rose-700 dark:text-rose-300 border border-rose-300/60 shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1 animate-pulse cursor-pointer"
-              title={`Sổ tay phục thù: Luyện lại ${wrongQuestionsCount} câu em từng làm sai`}
-            >
-              <Target className="w-3.5 h-3.5 text-rose-500" />
-              <span className="hidden sm:inline text-[10px]">{wrongQuestionsCount} câu sai</span>
-            </button>
-          ) : null}
-
-          {/* Nút Đảo câu hỏi & đáp án */}
-          {onToggleShuffle && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                soundManager.playClick();
-                onToggleShuffle();
-              }}
-              className={`p-1.5 sm:px-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-1 shadow-neu-flat-xs active:shadow-neu-inset ${
-                isShuffled
-                  ? "bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-400/50"
-                  : "bg-[#e6ecf5] dark:bg-[#212730] text-slate-500 dark:text-slate-400"
-              }`}
-              title={isShuffled ? "Đảo câu hỏi & đáp án: Đang BẬT. Bấm để đổi." : "Đảo câu hỏi & đáp án: Đang TẮT. Bấm để bật."}
-            >
-              <Shuffle className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline text-[10px]">{isShuffled ? "Đảo: Bật" : "Đảo: Tắt"}</span>
-            </button>
-          )}
-
-          {/* Nút Làm lại chủ đề */}
-          {onRetakeTopic && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                soundManager.playClick();
-                onRetakeTopic();
-              }}
-              className="p-1.5 sm:px-2.5 sm:py-1 rounded-neu-sm text-xs font-bold bg-[#e6ecf5] dark:bg-[#212730] hover:bg-blue-50 dark:hover:bg-blue-950/40 text-blue-700 dark:text-blue-300 shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1 border border-blue-300/40 dark:border-blue-700/50"
-              title="Làm lại chủ đề: Xáo trộn toàn bộ thứ tự câu hỏi và phương án A, B, C, D mới"
-            >
-              <RotateCcw className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span className="hidden sm:inline text-[10px]">Đảo &amp; Làm lại</span>
-            </button>
-          )}
-
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              soundManager.playClick();
-              setIsExpanded(!isExpanded);
-            }}
-            className="p-1.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#212730] shadow-neu-flat-xs active:shadow-neu-inset text-slate-600 dark:text-slate-300"
-            title={isExpanded ? "Thu gọn bảng câu hỏi" : "Mở rộng bảng câu hỏi"}
-          >
-            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          </button>
-        </div>
+        {/* Nút Thu gọn / Mở rộng duy nhất ở góc phải */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            soundManager.playClick();
+            setIsExpanded(!isExpanded);
+          }}
+          className="p-2 rounded-neu-xs bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat-xs active:shadow-neu-inset text-slate-600 dark:text-slate-300 transition-all hover:text-blue-600 flex-shrink-0"
+          title={isExpanded ? "Thu gọn bảng câu hỏi" : "Mở rộng bảng câu hỏi"}
+        >
+          {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+        </button>
       </div>
 
-      {/* Grid of question buttons */}
+      {/* 2. Vùng mở rộng: Chứa Thanh công cụ đồng bộ + Lưới nút số */}
       {isExpanded && (
-        <div className="mt-3 pt-3 border-t border-slate-200/80 dark:border-slate-800 space-y-3 animate-fade-in">
+        <div className="pt-2 border-t border-slate-300/60 dark:border-slate-800 space-y-3 animate-fade-in">
+          {/* Thanh công cụ chế độ (Một hàng ngang thống nhất chuẩn Neumorphic, không bẻ chữ) */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+            {/* Nút Đảo câu hỏi & đáp án */}
+            {onToggleShuffle && (
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  onToggleShuffle();
+                }}
+                className={`h-8 px-3 rounded-neu-xs text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0 cursor-pointer ${
+                  isShuffled
+                    ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-inset font-extrabold border border-blue-400/40"
+                    : "bg-[#e6ecf5] dark:bg-[#202734] text-slate-600 dark:text-slate-300 shadow-neu-flat-xs active:shadow-neu-inset hover:text-blue-600"
+                }`}
+                title={isShuffled ? "Đang bật chế độ đảo câu hỏi và đáp án" : "Đang tắt đảo"}
+              >
+                <Shuffle className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <span className="whitespace-nowrap">{isShuffled ? "Đảo: Bật" : "Đảo: Tắt"}</span>
+              </button>
+            )}
+
+            {/* Nút Luyện nhanh 10 câu */}
+            {onQuickSprint && (
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  onQuickSprint();
+                }}
+                className="h-8 px-3 rounded-neu-xs text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-200 shadow-neu-flat-xs active:shadow-neu-inset hover:text-amber-600 dark:hover:text-amber-400 transition-all flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
+                title="Luyện nhanh 10 câu ngẫu nhiên (5 phút)"
+              >
+                <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
+                <span className="whitespace-nowrap">10 câu nhanh</span>
+              </button>
+            )}
+
+            {/* Nút Sổ tay câu sai (chỉ hiện khi có câu sai) */}
+            {wrongQuestionsCount && wrongQuestionsCount > 0 && onReviewMistakes ? (
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  onReviewMistakes();
+                }}
+                className="h-8 px-3 rounded-neu-xs text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-rose-600 dark:text-rose-400 shadow-neu-flat-xs active:shadow-neu-inset border border-rose-300/40 dark:border-rose-900/60 transition-all flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
+                title={`Sổ tay phục thù: Luyện lại ${wrongQuestionsCount} câu em từng làm sai`}
+              >
+                <Target className="w-3.5 h-3.5 text-rose-500" />
+                <span className="whitespace-nowrap">Ôn {wrongQuestionsCount} câu sai</span>
+              </button>
+            ) : null}
+
+            {/* Nút Làm mới toàn bộ chủ đề */}
+            {onRetakeTopic && (
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  onRetakeTopic();
+                }}
+                className="h-8 px-3 rounded-neu-xs text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs active:shadow-neu-inset hover:text-blue-600 dark:hover:text-blue-400 transition-all flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
+                title="Xáo trộn lại toàn bộ đề bài và đáp án"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <span className="whitespace-nowrap">Làm mới đề</span>
+              </button>
+            )}
+          </div>
+
           {/* Thanh chuyển chặng luyện tập nhỏ gọn (Bite-sized Stages) */}
           {isMultiStage && (
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
@@ -239,7 +245,7 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
                         onSelectIndex(stats.start);
                       }
                     }}
-                    className={`px-2.5 py-1 rounded-neu-xs font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1 flex-shrink-0 ${
+                    className={`h-7 px-2.5 rounded-neu-xs font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1 flex-shrink-0 cursor-pointer ${
                       isStageActive
                         ? "bg-blue-600 text-white shadow-neu-flat-xs font-extrabold scale-102"
                         : "bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs hover:text-blue-600"
@@ -261,7 +267,7 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
                   soundManager.playClick();
                   setSelectedStage("all");
                 }}
-                className={`px-2 py-1 rounded-neu-xs font-semibold text-[10px] whitespace-nowrap transition-all flex-shrink-0 ${
+                className={`h-7 px-2.5 rounded-neu-xs font-semibold text-[10px] whitespace-nowrap transition-all flex-shrink-0 cursor-pointer ${
                   selectedStage === "all"
                     ? "bg-slate-700 text-white font-bold"
                     : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
@@ -273,7 +279,7 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
           )}
 
           {/* Chú thích màu sắc */}
-          <div className="flex flex-wrap items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400 px-1">
+          <div className="flex flex-wrap items-center gap-3 text-[10px] text-slate-500 dark:text-slate-400 px-1">
             <span className="flex items-center gap-1">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" /> Đã làm
             </span>
@@ -290,9 +296,9 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
             </span>
           </div>
 
-          {/* Lưới câu hỏi */}
+          {/* Lưới câu hỏi: Các nút tròn 3D Neumorphism sạch đẹp */}
           <div>
-            <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-1.5">
+            <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2">
               {Array.from(
                 { length: displayRange.end - displayRange.start },
                 (_, offset) => {
@@ -303,7 +309,7 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
                   const correct = isCorrect ? isCorrect(i) : null;
 
                   let btnClass =
-                    "bg-[#e6ecf5] dark:bg-[#212730] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs hover:border-blue-400";
+                    "bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs hover:text-blue-600";
 
                   if (correct === true) {
                     btnClass = "bg-emerald-500 text-white font-bold shadow-md";
@@ -328,7 +334,7 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
                         soundManager.playClick();
                         onSelectIndex(i);
                       }}
-                      className={`relative py-1.5 rounded-lg text-xs font-bold transition-all active:scale-95 flex items-center justify-center ${btnClass}`}
+                      className={`relative h-9 rounded-neu-sm text-xs font-bold transition-all active:scale-95 flex items-center justify-center cursor-pointer ${btnClass}`}
                     >
                       <span>{i + 1}</span>
                       {flagged && (
@@ -340,27 +346,6 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
               )}
             </div>
           </div>
-
-          {/* Nút hành động nhanh trong bảng câu hỏi */}
-          {onRetakeTopic && (
-            <div className="pt-2 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-2">
-              <span className="text-[10px] text-slate-500 dark:text-slate-400">
-                Ôn luyện nhiều lần với đề và đáp án đảo ngẫu nhiên
-              </span>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  soundManager.playClick();
-                  onRetakeTopic();
-                }}
-                className="px-3 py-1.5 rounded-neu-sm bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold shadow-neu-flat-xs active:shadow-neu-inset flex items-center gap-1.5 hover:opacity-95 transition cursor-pointer"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Làm lại chủ đề (Đảo mới)</span>
-              </button>
-            </div>
-          )}
         </div>
       )}
     </div>
