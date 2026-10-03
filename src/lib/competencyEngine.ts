@@ -17,7 +17,7 @@ export const COMPETENCY_DEFINITIONS: CompetencyDefinition[] = [
     shortName: "Mạng & Thiết bị ICT",
     fullName: "NLa: Sử dụng và quản lý các phương tiện CNTT & Truyền thông",
     description: "Kiến thức về thiết bị mạng (Router, Switch, Access Point), giao thức TCP/IP, địa chỉ IP và kiến trúc mạng.",
-    topicIds: ["tin-thiet-bi-giao-thuc-mang"],
+    topicIds: ["tin-thiet-bi-giao-thuc-mang", "tin-cd3-thiet-bi-mang"],
     recommendedTopicId: "tin-thiet-bi-giao-thuc-mang",
     recommendedTopicName: "Chuyên đề 12B: Mạng máy tính và Internet",
     actionAdvice: "Củng cố lại bảng đối chiếu chức năng của Router và Switch, các tầng giao thức TCP/IP và phân chia dải IP.",

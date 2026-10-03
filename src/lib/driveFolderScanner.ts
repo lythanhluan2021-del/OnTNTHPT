@@ -137,7 +137,15 @@ function matchFileToExistingTopic(
     }
   }
 
-  // 2. Chuyên đề 12B / Mạng máy tính và Internet (Tin học 12)
+  // 2. Bài 3 / CD3 - Một số thiết bị Mạng thông dụng
+  if (norm.includes("cd3") || (norm.includes("thiet bi mang") && norm.includes("thong dung"))) {
+    const found = existingTopics.find((t) => t.id === "tin-cd3-thiet-bi-mang");
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // 2b. Chuyên đề 12B / Mạng máy tính và Internet (Tin học 12)
   if (norm.includes("12b") || norm.includes("thiet bi mang") || norm.includes("giao thuc") || norm.includes("mang may tinh") || norm.includes("tcp")) {
     const found = existingTopics.find((t) => t.id === "tin-thiet-bi-giao-thuc-mang");
     if (found) {

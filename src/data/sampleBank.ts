@@ -1,5 +1,6 @@
 import { Question, Subject } from "../types";
 import { CHUYEN_DE_12E_QUESTIONS } from "./questions12e";
+import { CHUYEN_DE_CD3_QUESTIONS } from "./questionsCd3";
 
 export const INITIAL_SUBJECTS: Subject[] = [
   {
@@ -40,6 +41,16 @@ export const INITIAL_SUBJECTS: Subject[] = [
         totalQuestions: 83,
         mcCount: 72,
         tfCount: 11,
+        hasTheory: true,
+      },
+      {
+        id: "tin-cd3-thiet-bi-mang",
+        name: "Bài 3: Một số thiết bị Mạng thông dụng",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
+        totalQuestions: 191,
+        mcCount: 152,
+        tfCount: 39,
         hasTheory: true,
       },
 
@@ -24498,5 +24509,6 @@ export const INITIAL_QUESTIONS: Question[] = [
     }
   ]
 },
-...CHUYEN_DE_12E_QUESTIONS
+...CHUYEN_DE_12E_QUESTIONS,
+  ...CHUYEN_DE_CD3_QUESTIONS,
 ];

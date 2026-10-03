@@ -41,10 +41,10 @@ export const WEEKLY_PLAN: WeekPlanItem[] = [
     title: "Chuyên đề 12B: Mạng máy tính và Internet",
     chapter: "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     periods: 6,
-    topicIds: ["tin-thiet-bi-giao-thuc-mang"],
+    topicIds: ["tin-thiet-bi-giao-thuc-mang", "tin-cd3-thiet-bi-mang"],
     subjectId: "tin-hoc-12",
     semester: 1,
-    totalTargetQuestions: 83,
+    totalTargetQuestions: 274,
   },
   {
     id: "tuan-11",

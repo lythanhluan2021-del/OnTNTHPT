@@ -2161,6 +2161,7 @@ TOPIC_THEORY_MAP["tin-ai-dung-sai"] = TOPIC_THEORY_MAP["tin-ai-tri-tue-nhan-tao"
 TOPIC_THEORY_MAP["tin-mang-dung-sai"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
 TOPIC_THEORY_MAP["tin-giao-thuc-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
 TOPIC_THEORY_MAP["tin-chia-se-tai-nguyen-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
+TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"] = TOPIC_THEORY_MAP["tin-thiet-bi-giao-thuc-mang"];
 TOPIC_THEORY_MAP["tin-python-dung-sai"] = TOPIC_THEORY_MAP["tin-lap-trinh-python"];
 TOPIC_THEORY_MAP["tin-html-dung-sai"] = TOPIC_THEORY_MAP["tin-chuyen-de-12f-web"];
 TOPIC_THEORY_MAP["tin-12f"] = TOPIC_THEORY_MAP["tin-chuyen-de-12f-web"];
