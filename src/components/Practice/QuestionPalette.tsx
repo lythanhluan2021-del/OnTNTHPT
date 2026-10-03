@@ -154,8 +154,8 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
       {/* 2. Vùng mở rộng: Chứa Thanh công cụ đồng bộ + Lưới nút số */}
       {isExpanded && (
         <div className="pt-2 border-t border-slate-300/60 dark:border-slate-800 space-y-3 animate-fade-in">
-          {/* Thanh công cụ chế độ (Một hàng ngang thống nhất chuẩn Neumorphic, không bẻ chữ) */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+          {/* Thanh công cụ chế độ (Tự động thích ứng, không tràn viền, không bị che khuất) */}
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 py-0.5">
             {/* Nút Đảo câu hỏi & đáp án */}
             {onToggleShuffle && (
               <button
@@ -164,14 +164,14 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
                   soundManager.playClick();
                   onToggleShuffle();
                 }}
-                className={`h-8 px-3 rounded-neu-xs text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0 cursor-pointer ${
+                className={`h-8 px-3 rounded-neu-xs text-xs font-bold transition-all flex items-center justify-center sm:justify-start gap-1.5 cursor-pointer ${
                   isShuffled
                     ? "bg-[#e6ecf5] dark:bg-[#202734] text-blue-600 dark:text-blue-400 shadow-neu-inset font-extrabold border border-blue-400/40"
                     : "bg-[#e6ecf5] dark:bg-[#202734] text-slate-600 dark:text-slate-300 shadow-neu-flat-xs active:shadow-neu-inset hover:text-blue-600"
                 }`}
                 title={isShuffled ? "Đang bật chế độ đảo câu hỏi và đáp án" : "Đang tắt đảo"}
               >
-                <Shuffle className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <Shuffle className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
                 <span className="whitespace-nowrap">{isShuffled ? "Đảo: Bật" : "Đảo: Tắt"}</span>
               </button>
             )}
@@ -184,10 +184,10 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
                   soundManager.playClick();
                   onQuickSprint();
                 }}
-                className="h-8 px-3 rounded-neu-xs text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-200 shadow-neu-flat-xs active:shadow-neu-inset hover:text-amber-600 dark:hover:text-amber-400 transition-all flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
+                className="h-8 px-3 rounded-neu-xs text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-200 shadow-neu-flat-xs active:shadow-neu-inset hover:text-amber-600 dark:hover:text-amber-400 transition-all flex items-center justify-center sm:justify-start gap-1.5 cursor-pointer"
                 title="Luyện nhanh 10 câu ngẫu nhiên (5 phút)"
               >
-                <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
+                <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-400 flex-shrink-0" />
                 <span className="whitespace-nowrap">10 câu nhanh</span>
               </button>
             )}
@@ -200,10 +200,10 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
                   soundManager.playClick();
                   onReviewMistakes();
                 }}
-                className="h-8 px-3 rounded-neu-xs text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-rose-600 dark:text-rose-400 shadow-neu-flat-xs active:shadow-neu-inset border border-rose-300/40 dark:border-rose-900/60 transition-all flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
+                className="h-8 px-3 rounded-neu-xs text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-rose-600 dark:text-rose-400 shadow-neu-flat-xs active:shadow-neu-inset border border-rose-300/40 dark:border-rose-900/60 transition-all flex items-center justify-center sm:justify-start gap-1.5 cursor-pointer"
                 title={`Sổ tay phục thù: Luyện lại ${wrongQuestionsCount} câu em từng làm sai`}
               >
-                <Target className="w-3.5 h-3.5 text-rose-500" />
+                <Target className="w-3.5 h-3.5 text-rose-500 flex-shrink-0" />
                 <span className="whitespace-nowrap">Ôn {wrongQuestionsCount} câu sai</span>
               </button>
             ) : null}
@@ -216,65 +216,76 @@ export const QuestionPalette: React.FC<QuestionPaletteProps> = ({
                   soundManager.playClick();
                   onRetakeTopic();
                 }}
-                className="h-8 px-3 rounded-neu-xs text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs active:shadow-neu-inset hover:text-blue-600 dark:hover:text-blue-400 transition-all flex items-center gap-1.5 flex-shrink-0 cursor-pointer"
+                className="h-8 px-3 rounded-neu-xs text-xs font-bold bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs active:shadow-neu-inset hover:text-blue-600 dark:hover:text-blue-400 transition-all flex items-center justify-center sm:justify-start gap-1.5 cursor-pointer"
                 title="Xáo trộn lại toàn bộ đề bài và đáp án"
               >
-                <RotateCcw className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <RotateCcw className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
                 <span className="whitespace-nowrap">Làm mới đề</span>
               </button>
             )}
           </div>
 
-          {/* Thanh chuyển chặng luyện tập nhỏ gọn (Bite-sized Stages) */}
+          {/* Danh sách các Chặng luyện tập (Tự động xuống hàng flex-wrap, 100% hiển thị rõ ràng, không bị che khuất) */}
           {isMultiStage && (
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
-              <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider flex-shrink-0">
-                Chặng:
-              </span>
-              {Array.from({ length: totalStages }).map((_, sIdx) => {
-                const stats = getStageStats(sIdx);
-                const isStageActive = selectedStage === sIdx;
-                return (
-                  <button
-                    key={sIdx}
-                    type="button"
-                    onClick={() => {
-                      soundManager.playClick();
-                      setSelectedStage(sIdx);
-                      if (currentIndex < stats.start || currentIndex >= stats.end) {
-                        onSelectIndex(stats.start);
-                      }
-                    }}
-                    className={`h-7 px-2.5 rounded-neu-xs font-bold text-[11px] whitespace-nowrap transition-all flex items-center gap-1 flex-shrink-0 cursor-pointer ${
-                      isStageActive
-                        ? "bg-blue-600 text-white shadow-neu-flat-xs font-extrabold scale-102"
-                        : "bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs hover:text-blue-600"
-                    }`}
-                  >
-                    <span>Chặng {sIdx + 1}</span>
-                    <span className="text-[10px] opacity-80">({stats.start + 1}-{stats.end})</span>
-                    {stats.stars > 0 && (
-                      <span className="text-amber-400">
-                        {"⭐".repeat(stats.stars)}
+            <div className="p-2.5 rounded-neu-sm bg-slate-200/50 dark:bg-slate-800/40 space-y-2">
+              <div className="flex items-center justify-between text-xs font-black text-slate-700 dark:text-slate-300">
+                <span className="flex items-center gap-1.5">
+                  <span>🏆 Danh Sách Các Chặng (10 câu/chặng)</span>
+                </span>
+                <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400">
+                  {totalStages} chặng • Đang ở Chặng {(typeof selectedStage === 'number' ? selectedStage : 0) + 1}
+                </span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                {Array.from({ length: totalStages }).map((_, sIdx) => {
+                  const stats = getStageStats(sIdx);
+                  const isStageActive = selectedStage === sIdx;
+                  return (
+                    <button
+                      key={sIdx}
+                      type="button"
+                      onClick={() => {
+                        soundManager.playClick();
+                        setSelectedStage(sIdx);
+                        if (currentIndex < stats.start || currentIndex >= stats.end) {
+                          onSelectIndex(stats.start);
+                        }
+                      }}
+                      className={`h-8 px-3 rounded-neu-xs font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+                        isStageActive
+                          ? "bg-blue-600 text-white shadow-neu-flat-xs font-black scale-102 border-2 border-blue-400 ring-2 ring-blue-400/20"
+                          : "bg-[#e6ecf5] dark:bg-[#202734] text-slate-700 dark:text-slate-300 shadow-neu-flat-xs active:shadow-neu-inset hover:text-blue-600 hover:bg-white/60"
+                      }`}
+                    >
+                      <span>Chặng {sIdx + 1}</span>
+                      <span className="text-[10px] opacity-75 font-normal">
+                        ({stats.start + 1}-{stats.end})
                       </span>
-                    )}
-                  </button>
-                );
-              })}
-              <button
-                type="button"
-                onClick={() => {
-                  soundManager.playClick();
-                  setSelectedStage("all");
-                }}
-                className={`h-7 px-2.5 rounded-neu-xs font-semibold text-[10px] whitespace-nowrap transition-all flex-shrink-0 cursor-pointer ${
-                  selectedStage === "all"
-                    ? "bg-slate-700 text-white font-bold"
-                    : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
-                }`}
-              >
-                Tất cả ({totalQuestions})
-              </button>
+                      {stats.stars > 0 && (
+                        <span className="text-amber-400 text-[10px]">
+                          {"⭐".repeat(stats.stars)}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    setSelectedStage("all");
+                  }}
+                  className={`h-8 px-3 rounded-neu-xs font-bold text-xs transition-all cursor-pointer ${
+                    selectedStage === "all"
+                      ? "bg-slate-800 text-white font-black shadow-neu-flat-xs border-2 border-slate-600"
+                      : "bg-[#e6ecf5] dark:bg-[#202734] text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 shadow-neu-flat-xs active:shadow-neu-inset"
+                  }`}
+                >
+                  Tất cả ({totalQuestions})
+                </button>
+              </div>
             </div>
           )}
 
