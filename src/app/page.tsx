@@ -40,6 +40,7 @@ import { MockExamView } from "@/components/Exam/MockExamView";
 import { ExamResultModal } from "@/components/Exam/ExamResultModal";
 import { QuestionPalette } from "@/components/Practice/QuestionPalette";
 import { WeeklyGoalCard } from "@/components/Practice/WeeklyGoalCard";
+import { StageCompletionModal } from "@/components/Practice/StageCompletionModal";
 import { generateMockExam } from "@/data/mockExamGenerator";
 import { shuffleTopicQuestions } from "@/lib/questionShuffler";
 import { ExamDefinition, ExamSubmission } from "@/types/examManagement";
@@ -135,6 +136,22 @@ export default function AppHome() {
   const [isStrictResultModalOpen, setIsStrictResultModalOpen] = useState(false);
   const [publishedExams, setPublishedExams] = useState<ExamDefinition[]>([]);
 
+  // 6. Gamification & Bite-Sized Stage States
+  const [comboStreak, setComboStreak] = useState<number>(0);
+  const [maxComboInSession, setMaxComboInSession] = useState<number>(0);
+  const [practiceFilterMode, setPracticeFilterMode] = useState<"all" | "quick10" | "mistakes">("all");
+  const [stageModalInfo, setStageModalInfo] = useState<{
+    isOpen: boolean;
+    stageIndex: number;
+    stageName: string;
+    totalQuestions: number;
+    correctCount: number;
+    maxCombo: number;
+    hasNextStage: boolean;
+    nextStageStartIndex: number;
+    stageStartIndex: number;
+  } | null>(null);
+
   // Nạp danh sách đề thi chính thức do Giáo viên xuất bản từ Server và Local
   useEffect(() => {
     let isMounted = true;
@@ -226,13 +243,13 @@ export default function AppHome() {
   };
 
   const isPracticeQuestionAnswered = (idx: number) => {
-    const q = topicQuestions[idx];
+    const q = activePracticeQuestions[idx];
     if (!q) return false;
     return Boolean(sessionAnswers[q.id]?.answered);
   };
 
   const isPracticeQuestionCorrect = (idx: number): boolean | null => {
-    const q = topicQuestions[idx];
+    const q = activePracticeQuestions[idx];
     if (!q) return null;
     const sessionItem = sessionAnswers[q.id];
     if (!sessionItem || !sessionItem.answered) return null;
@@ -442,18 +459,47 @@ export default function AppHome() {
     });
   }, [allTopicQuestions, activeQuestionFormat, isShuffleEnabled, shuffleSeed]);
 
+  // Danh sách ID các câu hỏi học sinh từng trả lời sai trong chủ đề này
+  const wrongQuestionIds = useMemo(() => {
+    const wrongIds = new Set<string>();
+    attempts.forEach((att) => {
+      if (allTopicQuestions.some((q) => q.id === att.questionId)) {
+        if (!att.isCorrect) wrongIds.add(att.questionId);
+      }
+    });
+    Object.entries(sessionAnswers).forEach(([qId, s]) => {
+      if (s.answered && !s.isCorrect) wrongIds.add(qId);
+    });
+    return wrongIds;
+  }, [attempts, sessionAnswers, allTopicQuestions]);
+
+  // Bộ câu hỏi đang luyện tập (áp dụng bộ lọc Quick 10 hoặc Sổ tay câu sai nếu có)
+  const activePracticeQuestions = useMemo(() => {
+    if (practiceFilterMode === "quick10") {
+      return topicQuestions.slice(0, 10);
+    }
+    if (practiceFilterMode === "mistakes") {
+      const mistakeList = topicQuestions.filter((q) => wrongQuestionIds.has(q.id));
+      return mistakeList.length > 0 ? mistakeList : topicQuestions;
+    }
+    return topicQuestions;
+  }, [topicQuestions, practiceFilterMode, wrongQuestionIds]);
+
   // Reset session answers khi đổi chủ đề hoặc đổi dạng bài
   useEffect(() => {
     setSessionAnswers({});
     setCurrentQuestionIndex(0);
+    setPracticeFilterMode("all");
+    setComboStreak(0);
+    setMaxComboInSession(0);
   }, [selectedTopicId, activeQuestionFormat]);
 
   // Câu hỏi hiện tại
-  const currentQuestion = topicQuestions[currentQuestionIndex] || topicQuestions[0];
+  const currentQuestion = activePracticeQuestions[currentQuestionIndex] || activePracticeQuestions[0];
 
   // Đồng bộ trạng thái câu hỏi khi chuyển câu, chuyển chủ đề hoặc đổi dạng bài
   useEffect(() => {
-    const q = topicQuestions[currentQuestionIndex];
+    const q = activePracticeQuestions[currentQuestionIndex];
     if (q && sessionAnswers[q.id]?.answered) {
       const state = sessionAnswers[q.id];
       setSelectedOption(state.selectedOption || null);
@@ -467,7 +513,7 @@ export default function AppHome() {
     setHintLevel(0);
     setIsHintOpen(false);
     setQuestionStartTime(Date.now());
-  }, [currentQuestionIndex, selectedTopicId, activeQuestionFormat, topicQuestions, sessionAnswers]);
+  }, [currentQuestionIndex, selectedTopicId, activeQuestionFormat, activePracticeQuestions, sessionAnswers]);
 
   // Chọn Đúng / Sai cho từng ý câu hỏi Phần 2
   const handleSelectTF = (itemId: string, value: boolean) => {
@@ -497,8 +543,18 @@ export default function AppHome() {
 
       const isAllCorrect = correctCount === items.length;
       if (correctCount >= 3) {
-        soundManager.playCorrect();
+        setComboStreak((prev) => {
+          const next = prev + 1;
+          if (next >= 3) {
+            soundManager.playCombo(next);
+          } else {
+            soundManager.playCorrect();
+          }
+          setMaxComboInSession((m) => Math.max(m, next));
+          return next;
+        });
       } else {
+        setComboStreak(0);
         soundManager.playIncorrect();
       }
 
@@ -556,8 +612,18 @@ export default function AppHome() {
 
     const isCorrect = selectedOption === currentQuestion.correctAnswer;
     if (isCorrect) {
-      soundManager.playCorrect();
+      setComboStreak((prev) => {
+        const next = prev + 1;
+        if (next >= 3) {
+          soundManager.playCombo(next);
+        } else {
+          soundManager.playCorrect();
+        }
+        setMaxComboInSession((m) => Math.max(m, next));
+        return next;
+      });
     } else {
+      setComboStreak(0);
       soundManager.playIncorrect();
     }
 
@@ -608,10 +674,38 @@ export default function AppHome() {
     }
   };
 
-  // Chuyển sang câu tiếp theo
+  // Chuyển sang câu tiếp theo (với cơ chế kiểm tra hoàn thành chặng 10 câu)
   const handleNextQuestion = () => {
     soundManager.playClick();
-    if (currentQuestionIndex < topicQuestions.length - 1) {
+
+    const STAGE_SIZE = 10;
+    const isMultiStage = activePracticeQuestions.length > 12;
+    const currentStageIdx = Math.floor(currentQuestionIndex / STAGE_SIZE);
+    const stageStart = currentStageIdx * STAGE_SIZE;
+    const stageEnd = Math.min((currentStageIdx + 1) * STAGE_SIZE, activePracticeQuestions.length);
+
+    // Nếu vừa hoàn thành câu cuối của chặng (ví dụ câu 10, 20...)
+    if (isMultiStage && currentQuestionIndex === stageEnd - 1) {
+      let correctInStage = 0;
+      for (let i = stageStart; i < stageEnd; i++) {
+        const qId = activePracticeQuestions[i]?.id;
+        if (sessionAnswers[qId]?.isCorrect) correctInStage++;
+      }
+      setStageModalInfo({
+        isOpen: true,
+        stageIndex: currentStageIdx,
+        stageName: `Chặng ${currentStageIdx + 1}`,
+        totalQuestions: stageEnd - stageStart,
+        correctCount: correctInStage,
+        maxCombo: maxComboInSession,
+        hasNextStage: stageEnd < activePracticeQuestions.length,
+        nextStageStartIndex: stageEnd,
+        stageStartIndex: stageStart,
+      });
+      return;
+    }
+
+    if (currentQuestionIndex < activePracticeQuestions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
       // Đã hết câu trong chủ đề -> chuyển sang tab Phân tích kết quả
@@ -627,6 +721,8 @@ export default function AppHome() {
     setShuffleSeed(Date.now());
     setSessionAnswers({});
     setCurrentQuestionIndex(0);
+    setComboStreak(0);
+    setMaxComboInSession(0);
     setShuffleToastMessage(
       nextState
         ? "🔀 Đã BẬT xáo trộn câu hỏi & đáp án! Thứ tự câu và các phương án A,B,C,D đã được làm mới."
@@ -649,8 +745,49 @@ export default function AppHome() {
     setHasAnswered(false);
     setHintLevel(0);
     setIsHintOpen(false);
+    setPracticeFilterMode("all");
+    setComboStreak(0);
+    setMaxComboInSession(0);
     setActiveTab("practice");
     setShuffleToastMessage("✨ Đã xáo trộn mới toàn bộ câu hỏi và đáp án! Bắt đầu lượt làm bài mới.");
+    setTimeout(() => setShuffleToastMessage(null), 3500);
+  };
+
+  // Bật chế độ luyện nhanh 10 câu ngẫu nhiên (5 phút)
+  const handleQuickSprint = () => {
+    soundManager.playClick();
+    setPracticeFilterMode("quick10");
+    setShuffleSeed(Date.now());
+    setSessionAnswers({});
+    setCurrentQuestionIndex(0);
+    setSelectedOption(null);
+    setSelectedTF({});
+    setHasAnswered(false);
+    setComboStreak(0);
+    setMaxComboInSession(0);
+    setActiveTab("practice");
+    setShuffleToastMessage("⚡ Đã kích hoạt gói Luyện Nhanh 10 câu ngẫu nhiên! Chúc em đạt 3 Sao ⭐⭐⭐");
+    setTimeout(() => setShuffleToastMessage(null), 3500);
+  };
+
+  // Bật chế độ sổ tay phục thù (chữa các câu sai)
+  const handleReviewMistakes = () => {
+    soundManager.playClick();
+    if (wrongQuestionIds.size === 0) {
+      setShuffleToastMessage("🎉 Tuyệt vời! Em chưa làm sai câu nào trong phần này.");
+      setTimeout(() => setShuffleToastMessage(null), 3000);
+      return;
+    }
+    setPracticeFilterMode("mistakes");
+    setSessionAnswers({});
+    setCurrentQuestionIndex(0);
+    setSelectedOption(null);
+    setSelectedTF({});
+    setHasAnswered(false);
+    setComboStreak(0);
+    setMaxComboInSession(0);
+    setActiveTab("practice");
+    setShuffleToastMessage(`🎯 Sổ tay phục thù: Tập trung luyện lại ${wrongQuestionIds.size} câu em từng làm sai!`);
     setTimeout(() => setShuffleToastMessage(null), 3500);
   };
 
@@ -1101,10 +1238,10 @@ export default function AppHome() {
                   )}
 
 
-                  {/* Bảng ma trận điều hướng câu hỏi nhanh 1-chạm */}
-                  {topicQuestions.length > 1 && (
+                  {/* Bảng ma trận điều hướng câu hỏi nhanh 1-chạm chia chặng */}
+                  {activePracticeQuestions.length > 1 && (
                     <QuestionPalette
-                      totalQuestions={topicQuestions.length}
+                      totalQuestions={activePracticeQuestions.length}
                       currentIndex={currentQuestionIndex}
                       onSelectIndex={(idx) => {
                         setCurrentQuestionIndex(idx);
@@ -1114,6 +1251,9 @@ export default function AppHome() {
                       isShuffled={isShuffleEnabled}
                       onToggleShuffle={handleToggleShuffle}
                       onRetakeTopic={() => handleRetakeAndShuffleTopic()}
+                      onQuickSprint={handleQuickSprint}
+                      wrongQuestionsCount={wrongQuestionIds.size}
+                      onReviewMistakes={handleReviewMistakes}
                     />
                   )}
 
@@ -1121,12 +1261,13 @@ export default function AppHome() {
                   <QuestionCard
                     question={currentQuestion}
                     currentIndex={currentQuestionIndex}
-                    totalInTopic={topicQuestions.length}
+                    totalInTopic={activePracticeQuestions.length}
                     selectedOption={selectedOption}
                     onSelectOption={setSelectedOption}
                     selectedTF={selectedTF}
                     onSelectTF={handleSelectTF}
                     hasAnswered={hasAnswered}
+                    comboStreak={comboStreak}
                     onOpenIde={(codeSnippet, title, defaultInput, targetAnswer, questionNumber) => {
                       if (codeSnippet) {
                         setIdeDrawerCode(codeSnippet);
@@ -1169,7 +1310,7 @@ export default function AppHome() {
                   />
 
                   {/* Thông báo khi hoàn thành câu hỏi cuối cùng của chủ đề */}
-                  {currentQuestionIndex === topicQuestions.length - 1 && hasAnswered && (
+                  {currentQuestionIndex === activePracticeQuestions.length - 1 && hasAnswered && (
                     <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40 border border-blue-200 dark:border-blue-800 shadow-neu-flat text-center space-y-3 animate-fade-in">
                       <div className="flex items-center justify-center gap-2 text-blue-700 dark:text-blue-300 font-bold text-sm">
                         <Sparkles className="w-5 h-5 text-amber-500 animate-bounce" />
@@ -1398,6 +1539,30 @@ export default function AppHome() {
             </button>
           </div>
         </div>
+      )}
+
+      {/* Modal Chúc Mừng Vượt Ải Chặng Luyện Tập */}
+      {stageModalInfo && (
+        <StageCompletionModal
+          isOpen={stageModalInfo.isOpen}
+          onClose={() => setStageModalInfo(null)}
+          stageIndex={stageModalInfo.stageIndex}
+          stageName={stageModalInfo.stageName}
+          totalQuestions={stageModalInfo.totalQuestions}
+          correctCount={stageModalInfo.correctCount}
+          maxCombo={stageModalInfo.maxCombo}
+          hasNextStage={stageModalInfo.hasNextStage}
+          onNextStage={() => {
+            setCurrentQuestionIndex(stageModalInfo.nextStageStartIndex);
+            setComboStreak(0);
+            setStageModalInfo(null);
+          }}
+          onRetryStage={() => {
+            setCurrentQuestionIndex(stageModalInfo.stageStartIndex);
+            setComboStreak(0);
+            setStageModalInfo(null);
+          }}
+        />
       )}
     </div>
   );

@@ -171,6 +171,75 @@ class SoundManager {
     osc.start();
     osc.stop(this.ctx.currentTime + 0.05);
   }
+
+  /**
+   * Âm thanh Combo chuỗi đúng liên tiếp (cao dần theo cấp độ)
+   */
+  public playCombo(combo: number) {
+    if (!this.soundEnabled) return;
+    this.initCtx();
+    if (!this.ctx) return;
+
+    const baseFreq = 523.25; // C5
+    const multiplier = 1 + Math.min(combo * 0.08, 0.8);
+    const notes = [baseFreq * multiplier, (baseFreq * 1.25) * multiplier, (baseFreq * 1.5) * multiplier];
+    const startTime = this.ctx.currentTime;
+
+    notes.forEach((freq, idx) => {
+      const osc = this.ctx!.createOscillator();
+      const gain = this.ctx!.createGain();
+
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(freq, startTime + idx * 0.06);
+
+      gain.gain.setValueAtTime(0, startTime + idx * 0.06);
+      gain.gain.linearRampToValueAtTime(0.18, startTime + idx * 0.06 + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + idx * 0.06 + 0.28);
+
+      osc.connect(gain);
+      gain.connect(this.ctx!.destination);
+
+      osc.start(startTime + idx * 0.06);
+      osc.stop(startTime + idx * 0.06 + 0.3);
+    });
+  }
+
+  /**
+   * Âm thanh Khúc nhạc Chiến Thắng (Victory Fanfare khi qua màn/hoàn thành chặng)
+   */
+  public playFanfare() {
+    if (!this.soundEnabled) return;
+    this.initCtx();
+    if (!this.ctx) return;
+
+    // G4, C5, E5, G5, C6 (hợp âm khải hoàn)
+    const melody = [
+      { freq: 392.00, time: 0, dur: 0.12 },
+      { freq: 523.25, time: 0.12, dur: 0.12 },
+      { freq: 659.25, time: 0.24, dur: 0.12 },
+      { freq: 783.99, time: 0.36, dur: 0.18 },
+      { freq: 1046.50, time: 0.54, dur: 0.45 },
+    ];
+    const startTime = this.ctx.currentTime;
+
+    melody.forEach((item) => {
+      const osc = this.ctx!.createOscillator();
+      const gain = this.ctx!.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(item.freq, startTime + item.time);
+
+      gain.gain.setValueAtTime(0, startTime + item.time);
+      gain.gain.linearRampToValueAtTime(0.25, startTime + item.time + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + item.time + item.dur);
+
+      osc.connect(gain);
+      gain.connect(this.ctx!.destination);
+
+      osc.start(startTime + item.time);
+      osc.stop(startTime + item.time + item.dur + 0.05);
+    });
+  }
 }
 
 export const soundManager = new SoundManager();

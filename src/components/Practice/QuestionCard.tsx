@@ -40,6 +40,7 @@ interface QuestionCardProps {
     targetQuestionId?: string
   ) => void;
   onAskAiTutor?: () => void;
+  comboStreak?: number;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -55,6 +56,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   onOpenWebIde,
   onOpenSqlIde,
   onAskAiTutor,
+  comboStreak = 0,
 }) => {
   const isTrueFalse = question.type === "true_false" && question.tfItems && question.tfItems.length > 0;
   const isPythonQuestion =
@@ -156,6 +158,15 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               {isTrueFalse && (
                 <span className="text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded-full font-bold">
                   Đúng / Sai
+                </span>
+              )}
+              {comboStreak >= 2 && (
+                <span
+                  className="inline-flex items-center gap-0.5 text-[10px] font-black px-1.5 py-0.2 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-sm animate-pulse"
+                  title={`Chuỗi làm đúng liên tiếp: ${comboStreak} câu`}
+                >
+                  <span>🔥</span>
+                  <span>x{comboStreak}</span>
                 </span>
               )}
             </span>

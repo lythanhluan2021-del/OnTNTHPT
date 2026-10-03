@@ -188,3 +188,34 @@ html.dark .border-slate-200\/80,
 html.dark .border-slate-200\/90 {
   border-color: rgba(51, 65, 85, 0.6) !important;
 }
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.animate-confetti {
+  animation: confettiFall linear forwards;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.25s ease-out forwards;
+}
+
