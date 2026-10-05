@@ -1,6 +1,6 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-03 (vá cảnh báo Microsoft SmartScreen trên Vercel)
+Cập nhật: 2026-10-05 (reparse 12A/12B từ Drive, rebase lên origin/main)
 
 ## Mục tiêu hiện tại
 
@@ -73,7 +73,7 @@ TOPIC_THEORY_MAP["tin-mang-dung-sai"] = TOPIC_THEORY_MAP["tin-cd3-thiet-bi-mang"
 ### 7. TF CD3 / TF 12B
 
 - `questionsCd3.ts` TF: `Q-TIN-CD3-TF-153` … `Q-TIN-CD3-TF-191` (39 câu)
-- 12B TF: `Q-TIN-TF-NET-01` … `Q-TIN-TF-NET-11` (11 câu)
+- 12B TF: `Q-TIN-12B-TF-001` … (11 câu, ID mới sau reparse 2026-10-05)
 
 ---
 
@@ -91,7 +91,7 @@ Key gốc đã là `tin-cd3-thiet-bi-mang`. Alias ID cũ giữ để đọc cach
 | 10F | 59 | 45 | 14 |
 | 11F | 137 | 120 | 17 |
 | 12E | 113 | 99 | 14 |
-| 12A | 101 | 96 | 5 |
+| 12A | ~101 | **97** (79 MC + 18 TF, bóc lại 2026-10-05) | còn vài câu thiếu gạch chân điền tay |
 | 12F | 146 | 127 | 19 |
 | 11D/12D | 74 | 37 | 37 |
 | 12G | 69 | 38 | 31 |
@@ -159,9 +159,21 @@ Việc thầy/cô cần làm ngoài code:
 
 ---
 
+### 9. Reparse 12A + 12B từ Drive rồi rebase `main` — 2026-10-05
+
+- Extract `/tmp/docs/12A.txt`, `/tmp/docs/12B.txt`; parser MC + Đ/S (`__U__`/`__EU__`).
+- `src/data/questions12a.ts` **mới**: 97 câu (79 MC + 18 TF), thay hẳn bank AI cũ.
+- `src/data/questions12b.ts` bóc lại: 83 câu (72 MC + 11 TF), `topicId` = `tin-cd3-thiet-bi-mang`.
+- Bài 3 = 274 (CD3 191 + 12B 83). Sidebar Chủ đề 2 chỉ còn Bài 3.
+- Rebase `9ee5b9f` lên `origin/main` (`253c673` TTS/UI): conflict `page.tsx`, `questions12b.ts`, `sampleBank.ts`, `driveFolderScanner.ts` — giữ bank bóc lại + alias Bài 3.
+- `tsc --noEmit` OK. Commit: `d0ae971`.
+
+Câu thiếu gạch chân điền tay: 12A MC4 (thiếu nhãn B, đáp án A); 12A Đ/S 9/12 (ý b Sai); 12B 3 MC LAN/phương tiện/Router.
+
 ## Việc tiếp theo (ưu tiên)
 
 1. ~~Đổi key gốc `theoryBank` sang `tin-cd3-thiet-bi-mang`~~ — xong.
-2. Chạy lại parser trên 9 file Drive; bổ sung câu thiếu (ưu tiên 10F, 11F, 12E, 11D/12D, 12G).
-3. Rà soát stem/option 10F và các câu `content` ngắn bất thường còn lại.
-4. Gắn custom domain + báo cáo SmartScreen (ngoài code).
+2. ~~Reparse 12A/12B + gộp Bài 3 + rebase `main`~~ — xong 2026-10-05.
+3. Chạy lại parser trên các file Drive còn thiếu (ưu tiên 10F, 11F, 12E, 11D/12D, 12G).
+4. Rà soát stem/option 10F và các câu `content` ngắn bất thường còn lại.
+5. Gắn custom domain + báo cáo SmartScreen (ngoài code).
