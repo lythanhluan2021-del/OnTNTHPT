@@ -1,12 +1,34 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-05 (reparse 12A/12B từ Drive, rebase lên origin/main)
+Cập nhật: 2026-10-05 (checkpoint quota — handover cho phiên sau)
+
+## Checkpoint quota (đọc trước khi tiếp tục)
+
+Phiên này sắp hết quota. Working tree **sạch**, `main` **đã khớp** `origin/main`. Không còn conflict rebase.
+
+| Mục | Giá trị |
+|-----|---------|
+| Remote | `https://github.com/lythanhluan2021-del/OnTNTHPT` |
+| Branch | `main` = `origin/main` |
+| HEAD | `30718e6` `docs: update prosess.md after 12A/12B reparse rebase` |
+| Commit bank | `d0ae971` `feat(tin-12): reparse 12A/12B banks and merge 12B into Bai 3` |
+| `tsc --noEmit` | OK sau rebase |
+| Stash | `stash@{0}: temp lockfile` — chỉ `package-lock.json` từ `npm install`; **không** commit |
+| Submodule | không có `.gitmodules` |
+
+**Không commit:** JSON Service Account, `/tmp/gat`, `credentials*.json`, `package-lock.json` từ stash.
+
+Khi hết quota: chỉ cần `git pull origin main` rồi đọc mục **Handover phiên sau** ở cuối file này.
+
+---
 
 ## Mục tiêu hiện tại
 
-Gộp ngân hàng câu hỏi **Chuyên đề 12B (Kết nối mạng)** vào **Bài 3 – Một số thiết bị Mạng thông dụng** (`tin-cd3-thiet-bi-mang`).
+Gộp ngân hàng câu hỏi **Chuyên đề 12B (Kết nối mạng)** vào **Bài 3 – Một số thiết bị Mạng thông dụng** (`tin-cd3-thiet-bi-mang`). **Đã xong trên `main`.**
 
 Nguồn duy nhất: tài liệu Google Drive. Không dùng nguồn ngoài.
+
+Mục tiêu phiên sau: bóc tiếp các chuyên đề còn thiếu (ưu tiên **10F**, rồi 11F / 12E / 11D-12D / 12G).
 
 ---
 
@@ -174,6 +196,105 @@ Câu thiếu gạch chân điền tay: 12A MC4 (thiếu nhãn B, đáp án A); 1
 
 1. ~~Đổi key gốc `theoryBank` sang `tin-cd3-thiet-bi-mang`~~ — xong.
 2. ~~Reparse 12A/12B + gộp Bài 3 + rebase `main`~~ — xong 2026-10-05.
-3. Chạy lại parser trên các file Drive còn thiếu (ưu tiên 10F, 11F, 12E, 11D/12D, 12G).
+3. Chạy lại parser trên các file Drive còn thiếu (ưu tiên **10F**, rồi 11F, 12E, 11D/12D, 12G).
 4. Rà soát stem/option 10F và các câu `content` ngắn bất thường còn lại.
 5. Gắn custom domain + báo cáo SmartScreen (ngoài code).
+
+---
+
+## Snapshot bank đã verify 2026-10-05
+
+File tách riêng:
+
+| File | Câu | MC | TF | topicId |
+|------|-----|----|----|---------|
+| `src/data/questions12a.ts` | 97 | 79 | 18 | `tin-ai-tri-tue-nhan-tao` |
+| `src/data/questions12b.ts` | 83 | 72 | 11 | `tin-cd3-thiet-bi-mang` |
+| `src/data/questionsCd3.ts` | 191 | 152 | 39 | `tin-cd3-thiet-bi-mang` |
+| `src/data/questions12e.ts` | 113 | 89 | 24 | `tin-chuyen-de-12e-web` |
+
+`INITIAL_QUESTIONS` = legacy (lọc bỏ AI cũ + 12B cũ) + 12A + 12B + 12E + CD3.
+
+Legacy còn nhúng trong `sampleBank.ts` (585 id, **gồm cả 96 câu AI cũ** bị filter lúc spread):
+
+| topicId | Câu trong file | Sidebar `totalQuestions` | Ghi chú |
+|---------|----------------|--------------------------|---------|
+| `tin-lap-trinh-python` (10F) | 59 | 59 | Parser cũ từng báo 45; bank hiện 59. Chưa rà stem từng câu. |
+| `tin-ai-tri-tue-nhan-tao` (cũ) | 96 | — | **Filter khỏi** `INITIAL_QUESTIONS`; UI dùng 97 câu file `questions12a.ts`. |
+| `tin-cd3-thiet-bi-mang` | 191+83 | **274** | CD3 file + 12B file. |
+| `tin-dao-duc-phap-luat-so` (11D/12D) | 73 | 73 | Bảng parser cũ: đề 74 / parser 37 — **cần đối chiếu Drive**, không tin số 37. |
+| `tin-chuyen-de-12f-web` (12F) | 146 | 146 | Bảng parser cũ: 127 — bank sidebar đã 146. |
+| `tin-chuyen-de-12e-web` (12E) | 113 (file) | 113 | Bảng parser cũ: 99 — file hiện đủ 113. |
+| `tin-huong-nghiep-dich-vu` (12G) | 73 | 73 | Bảng parser cũ: 38 — **cần đối chiếu Drive**. |
+| `tin-co-so-du-lieu-sql` (11F) | 138 | 138 | Bảng parser cũ: 120 — bank 138. |
+
+Sidebar Chủ đề 2: **chỉ còn Bài 3** (`tin-cd3-thiet-bi-mang`). Không còn topic `tin-thiet-bi-giao-thuc-mang`.
+
+Chủ đề 2 **chưa có Bài 4** (cố ý giữ khung chương mạng cho sau).
+
+`STRUCTURE_VERSION` = `2026_GD1_V10_BAI3_GOP_12B` (`src/app/page.tsx`).
+
+---
+
+## Handover phiên sau (làm đúng thứ tự)
+
+### 0. Khởi động
+
+```
+git pull origin main
+```
+
+Đọc file này từ trên xuống. Không rebase lại `d0ae971`.
+
+### 1. Drive (khi cần bóc file mới)
+
+- SA: `drive-scanner@onthithpt-509307.iam.gserviceaccount.com`
+- Folder gốc: `19toY6VB5iERD2D9-tirycSjEz_YQbowL`
+- Folder Tin: `1wcSRCsZ9wzjO9ypblF_9L4si9kPm_uop`
+- 12A: `1Gvs7Qdapo7gM6fx-8OSRjJ8fPbFUltZ7`
+- 12B: `1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr`
+- CD3: `194sTkPkdn29NAle3x3ScPFIcT4JZf2mk`
+- Token tạm phiên trước: `/tmp/gat` (hết hạn / mất theo máy). SA **không** persist, **không** commit.
+- Extract 12A/12B (máy hiện tại, **không** trong git): `/tmp/docs/12A.txt`, `/tmp/docs/12B.txt`, parser `/tmp/docs/parse_12ab.js` (marker `__U__`/`__EU__`).
+
+### 2. Việc nên làm tiếp (ưu tiên)
+
+1. **10F Python** — đối chiếu stem/option từng câu với Drive; bảng “thiếu 14 câu” có thể đã lạc so với bank 59.
+2. **11D/12D** và **12G** — tỷ lệ mất câu từng rất cao; đếm lại trên Drive rồi quyết định reparse hay giữ 73.
+3. Câu điền tay 12A/12B (nếu chưa tin đáp án):
+   - 12A MC4: thiếu nhãn B, đáp án A
+   - 12A Đ/S 9/12: ý b Sai
+   - 12B: 3 MC LAN / phương tiện / Router
+4. Parser Drive còn thiếu trên các file khác; tái sử dụng `/tmp/docs/parse_12ab.js` nếu còn, hoặc viết lại từ `driveFolderScanner.parseTextDocumentQuestions`.
+5. SmartScreen Vercel — ngoài code (custom domain trường).
+
+### 3. Quy tắc đã chốt (đừng phá)
+
+- 12B **không** có mục sidebar riêng; mọi câu 12B `topicId` = `tin-cd3-thiet-bi-mang`.
+- `questionsCd3.ts` **không** sửa khi thêm 12B; chỉ spread thêm `CHUYEN_DE_12B_QUESTIONS`.
+- 12A **thay** bank AI cũ, không merge song song.
+- Trắc nghiệm đủ A–D; Đ/S đủ a–d; đáp án theo gạch chân Word / mục Đáp án.
+- Push `origin/main` (Vercel). Không force-push.
+- Alias cũ `tin-thiet-bi-giao-thuc-mang` / `tin-mang-dung-sai` vẫn map về Bài 3 trên `page.tsx` / theory / scanner.
+
+### 4. File chính
+
+| Đường dẫn | Vai trò |
+|-----------|---------|
+| `prosess.md` | Nhật ký + handover |
+| `src/data/questions12a.ts` | Bank 12A mới 97 câu |
+| `src/data/questions12b.ts` | Bank 12B 83 câu, topic Bài 3 |
+| `src/data/questionsCd3.ts` | 191 câu CD3 gốc |
+| `src/data/questions12e.ts` | 113 câu 12E |
+| `src/data/sampleBank.ts` | `INITIAL_SUBJECTS` + filter + spread |
+| `src/data/weeklyPlan.ts` | Tuần 7 = 97; tuần 8–10 = 274 |
+| `src/app/page.tsx` | Alias + `STRUCTURE_VERSION` |
+| `src/lib/driveFolderScanner.ts` | Map 12B/CD3 → Bài 3 |
+| `src/lib/competencyEngine.ts` | NLa Bài 3 |
+| `src/data/theoryBank.ts` | Lý thuyết mạng |
+
+### 5. Quota / phiên
+
+Không đọc được số quota nền tảng từ repo. Checkpoint này ghi **trước khi hết** để phiên sau không mất ngữ cảnh rebase/conflict.
+
+Nếu phiên sau thấy `main` lệch remote: `git fetch` + `git log HEAD..origin/main` trước khi sửa bank.
