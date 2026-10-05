@@ -1,6 +1,6 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-05 **HẾT QUOTA** — đã rebase + push GitHub. Phiên sau đọc mục này rồi làm 12B.
+Cập nhật: 2026-10-05 — đã có SA, tải 12B, vá cắt bank, **push GitHub**. TF 12B đủ 4 ý, đáp án MC khớp gạch chân. Bước tiếp: stem-match nốt option C `Local Area.`; rồi TF 11D/12D.
 
 ## ĐỌC TRƯỚC KHI LÀM (phiên mới / hết quota)
 
@@ -12,12 +12,12 @@ Remote: `https://github.com/lythanhluan2021-del/OnTNTHPT` — branch `main`.
 
 ### Việc ƯU TIÊN ngay (làm theo thứ tự, đừng nhảy)
 
-1. **12B** stem-match `questions12b.ts` vs `/tmp/opencode/extracted/12B.txt`; option C `Local Area .`; TF 9/11 đủ 4 ý.
-2. **Parser TF + match 11D/12D** — marker `II. CÂU HỎI TRẮC NGHIỆM ĐÚNG – SAI` (khoảng L372 extract); **không** cắt MC ở `PHẦN II` / `II. CÂU HỎI ÔN TẬP`.
-3. **12G** marker TF `2. DẠNG CÂU HỎI D2` (L404); zip 37 mismatch **bỏ**; match stem; empty 7 câu.
-4. **11F** marker `2. CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI` (L725); empty 6 câu; match stem.
-5. **Không** dán private key vào `prosess.md`. Key: `credentials-onthithpt.json` (gitignore).
-6. **Không** tin `compare_banks.py` zip tuần tự khi đề reset số câu theo NB/TH/VD.
+1. **12B đã vá + đáp án khớp đề** — option C `Local Area.` **giữ**; TF 8/9 cắt đã sửa; TF 11 đủ 4 ý. SA local gitignore, extract `/tmp/opencode/extracted/12B.txt`.
+2. **Parser TF + match 11D/12D** — marker `II. CÂU HỎI TRẮC NGHIỆM ĐÚNG – SAI`; **không** cắt MC ở `PHẦN II`. Bank 11D đã 58 MC + 15 TF.
+3. **Parser TF 11D/12D** — marker `II. CÂU HỎI TRẮC NGHIỆM ĐÚNG – SAI`; **không** cắt MC ở `PHẦN II` / `II. CÂU HỎI ÔN TẬP`. Bank 11D đã có 58 MC + 15 TF (73).
+4. **12G** marker `2. DẠNG CÂU HỎI D2`; bank 62 MC + 11 TF nhưng **4 TF thiếu ý d** (TF-01/04/06/07). Zip 37 mismatch **bỏ**.
+5. **11F** marker `2. CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI`; bank 125 MC + 13 TF; **2 TF thiếu ý d** (TF-10/13).
+6. **Không** dán private key vào `prosess.md`. **Không** tin `compare_banks.py` zip tuần tự.
 
 ### Protocol mỗi phiên
 
@@ -45,16 +45,34 @@ File IDs: CD3 `194sTkPkdn29NAle3x3ScPFIcT4JZf2mk`; 12B `1z1po2n3jrSVv-yrsBSr1fJI
 | 10F Python | 59/56 | 59 | 54+5 OK | **XONG** 52/54 MC gạch chân; 2 câu không gạch chân giữ D/C | Không |
 | 12A AI | 101/82 | **97** (`questions12a.ts` 79 MC+18 TF) | remote đã reparse | 6 câu thiếu đã có trong bank 12A mới | TF 18 chưa so từng ý với extract |
 | CD3 mạng | 191/240 | 191 CD3 (+12B 83) | 151 MC tới `TRẮC NGHIỆM Đ/S` | **XONG stem MC** 149/153 đáp án khớp; 4 unmatched = đề dính không `Câu N` — bank đúng | Vá stem `.edu`; TF 38 chưa so từng ý |
-| 12B kết nối | 80/81 | 83 (`questions12b.ts`) | 72 MC + 11 TF | **Chưa** stem-match phiên này | ƯU TIÊN 1; option C `Local Area .`; TF 9/11 đủ 4 ý |
-| 11D/12D | 74/65 | 73 | 74 MC, **TF=0** | Chưa | Parser TF (`II. CÂU HỎI TRẮC NGHIỆM ĐÚNG – SAI`) |
+| 12B kết nối | 80/81 | 83 (`questions12b.ts`) | 72 MC + 11 TF | **Đáp án MC khớp** gạch chân; đã vá cắt TF 8/9, USB, MC-069 D | Option C `Local Area.` **giữ** đúng đề; TF 11 đủ 4 ý |
+| 11D/12D | 74/65 | 73 | bank **58 MC + 15 TF** (đủ 4 ý) | Chưa vs Drive | Cần extract; parser TF đã nhận `II. CÂU HỎI TRẮC NGHIỆM ĐÚNG – SAI` |
 | 12F HTML | 146/162 | 146 | 132+14 | **XONG stem MC** 131/132 đáp án khớp | TF 14 chưa so từng ý |
 | 12E Web | 113/117 | 113 | 89+24 | **XONG stem MC**; đã gỡ prefix `TH):`/`H):`/`B):`/`VD):` | TF 24 chưa so từng ý |
-| 12G HN | 69/72 | 73 | 69 MC, **TF=0** | Zip 37 mismatch — **không tin** | Parser TF; match stem |
-| 11F CSDL | 138/126 | 138 | 138 MC, **TF=0** | Chưa | Parser TF; match stem |
+| 12G HN | 69/72 | 73 | bank **62 MC + 11 TF** | Zip 37 — **không tin** | 4 TF thiếu ý d (01/04/06/07); cần extract |
+| 11F CSDL | 138/126 | 138 | bank **125 MC + 13 TF** | Chưa vs Drive | 2 TF thiếu ý d (10/13); cần extract |
 
-**Đang làm dở (2026-10-05 HẾT QUOTA):** MC xong 10F, CD3, 12F, 12E. 12A dùng bank remote 97 câu. Bước tiếp phiên sau: **12B** stem-match (`questions12b.ts` vs `/tmp/opencode/extracted/12B.txt`). Sau 12B → TF 11D/12D.
+**Đang làm dở:** 12B đáp án đã khớp đề Drive, đã vá cắt và **push**. Việc tiếp: TF 11D/12D vs extract; 12G TF thiếu ý d; 11F TF-10/13 thiếu ý d. SA key local, **không** commit.
 
-### Nhật ký 2026-10-05 (phiên này, sau rebase)
+### Nhật ký 2026-10-05 (phiên mới, sau hết quota)
+
+- Check protocol: git `main` = `origin/main` `8201a15`. Không có `.gitmodules`.
+- Mất: SA key, `/tmp/opencode/drive/*.docx`, `/tmp/opencode/extracted/*.txt`, `compare_banks.py`.
+- Drive file 12B `1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr` public = 401 (cần SA).
+- Repo còn `Chuyên đề 10F. Lập trình cơ bản.docx` — extract local OK (56 `__U__`); không dùng cho 12B.
+- **Vá `questions12b.ts` (không stem-match, chỉ cắt parser):**
+  - TF-006 c: `folĐểr` → `folder`
+  - TF-008 a: `Hu` + b `b) Nên...` → `Hub.` / bỏ prefix `b)`
+  - TF-009 stem cắt `chính sử` + ý a prefix `a)` → `chính sửa.` + bỏ prefix
+  - MC-016 D: `US B.` → `USB.`
+  - MC-069 D: `Kết nối với mạng. 2.` → `Kết nối với mạng.`
+  - MC-002 C **giữ** `Local Area.` (đúng đề)
+  - TF 001–011 đều đủ 4 ý a–d
+- Bank sidebar: 11D 73 = 58+15 TF; 12G 73 = 62+11 TF (4 TF thiếu d); 11F 138 = 125+13 TF (2 TF thiếu d). Bảng parser cũ TF=0 **lạc**.
+- Parser: `TF_SECTION_HEADING` nhận thêm `2. CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI` (11F). Vẫn **không** dùng `PHẦN II`.
+- Không commit SA key (không có file).
+
+### Nhật ký 2026-10-05 (phiên trước, sau rebase)
 
 - Remote đã có `questions12a.ts` (97) + reparse 12B; sampleBank filter bỏ Q-TIN-AI-* legacy. Conflict rebase: **giữ count 97**, không 102.
 - Parser TS: `TF_SECTION_HEADING` **không** dùng `PHẦN II`; heuristic thiếu chữ `B.`; map 11D/12E trước 12F.
@@ -304,11 +322,12 @@ git pull origin main
 
 ### 2. Việc nên làm tiếp (ưu tiên)
 
-1. **10F Python** — đối chiếu stem/option từng câu với Drive; bảng “thiếu 14 câu” có thể đã lạc so với bank 59.
-2. **11D/12D** và **12G** — tỷ lệ mất câu từng rất cao; đếm lại trên Drive rồi quyết định reparse hay giữ 73.
-3. Câu điền tay 12A/12B (nếu chưa tin đáp án):
-   - 12A MC4: thiếu nhãn B, đáp án A
-   - 12A Đ/S 9/12: ý b Sai
+0. **BẮT BUỘC:** đặt `credentials-onthithpt.json` vào workspace (gitignore) rồi tải Drive → extract. Không có file này thì **không** stem-match 12B.
+1. **12B** stem-match vs extract. Cắt parser đã vá TF-006/008/009, MC-016 USB, MC-069 D. C=`Local Area.` giữ.
+2. **11D/12D** bank đã 58+15 TF; so từng ý với extract. **12G** bổ sung ý d cho TF-01/04/06/07. **11F** bổ sung ý d cho TF-10/13.
+3. Câu điền tay 12A (nếu chưa tin đáp án):
+    - 12A MC4: thiếu nhãn B, đáp án A
+    - 12A Đ/S 9/12: ý b Sai
    - 12B: 3 MC LAN / phương tiện / Router
 4. Parser Drive còn thiếu trên các file khác; tái sử dụng `/tmp/docs/parse_12ab.js` nếu còn, hoặc viết lại từ `driveFolderScanner.parseTextDocumentQuestions`.
 5. SmartScreen Vercel — ngoài code (custom domain trường).

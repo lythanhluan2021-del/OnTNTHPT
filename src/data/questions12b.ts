@@ -580,7 +580,7 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Thẻ nhớ, US B."
+         "content": "Thẻ nhớ, USB."
       }
     ],
     "correctAnswer": "C",
@@ -2541,7 +2541,7 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Kết nối với mạng. 2."
+         "content": "Kết nối với mạng."
       }
     ],
     "correctAnswer": "D",
@@ -2776,7 +2776,7 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       },
       {
         "id": "c",
-        "content": "Tích vào ô Share this folĐểr và chọn Permissions.",
+        "content": "Tích vào ô Share this folder và chọn Permissions.",
         "correctAnswer": true
       },
       {
@@ -2846,12 +2846,12 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     "tfItems": [
       {
         "id": "a",
-        "content": "Có thể dùng cáp mạng để kết nối giữa máy tính và Hu",
+        "content": "Có thể dùng cáp mạng để kết nối giữa máy tính và Hub.",
         "correctAnswer": true
       },
       {
         "id": "b",
-        "content": "b) Nên sử dụng Switch thay thế cho Hub để tiết kiệm chi phí hơn.",
+        "content": "Nên sử dụng Switch thay thế cho Hub để tiết kiệm chi phí hơn.",
         "correctAnswer": false
       },
       {
@@ -2882,11 +2882,11 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
     "type": "true_false",
-    "content": "Hùng muốn chia sẻ một tài liệu cho các bạn trong nhóm học tập qua mạng LAN. Sau khi thực hiện các bước chia sẻ, Hùng thấy rằng các bạn chỉ có thể xem tài liệu mà không thể chính sử",
+    "content": "Hùng muốn chia sẻ một tài liệu cho các bạn trong nhóm học tập qua mạng LAN. Sau khi thực hiện các bước chia sẻ, Hùng thấy rằng các bạn chỉ có thể xem tài liệu mà không thể chính sửa.",
     "tfItems": [
       {
         "id": "a",
-        "content": "a) Hùng đã thiết lập quyền truy cập “Read” cho tài liệu.",
+        "content": "Hùng đã thiết lập quyền truy cập “Read” cho tài liệu.",
         "correctAnswer": true
       },
       {

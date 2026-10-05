@@ -226,7 +226,7 @@ function matchFileToExistingTopic(
 }
 
 const TF_SECTION_HEADING =
-  /(?:2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG\s*[\/\s–-]\s*SAI|2\.\s*Câu hỏi trắc nghiệm Đúng\s*[\/\s–-]\s*Sai|2\.\s*CÂU TRẮC NGHIỆM ĐÚNG\s*[\/\s–-]\s*SAI|2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI|II\.\s*CÂU HỎI TRẮC NGHIỆM\s+ĐÚNG|TRẮC NGHIỆM Đ\/S|2\.\s*DẠNG CÂU HỎI D2|2\.\s*Câu hỏi trắc nghiệm Đúng\/Sai)/i;
+  /(?:2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG\s*[\/\s–-]*\s*SAI|2\.\s*Câu hỏi trắc nghiệm Đúng\s*[\/\s–-]*\s*Sai|2\.\s*CÂU TRẮC NGHIỆM ĐÚNG\s*[\/\s–-]*\s*SAI|2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG\s*SAI|II\.\s*CÂU HỎI TRẮC NGHIỆM\s+ĐÚNG(?:\s*[\/\s–-]+\s*SAI)?|TRẮC NGHIỆM Đ\/S|2\.\s*DẠNG CÂU HỎI D2|2\.\s*Câu hỏi trắc nghiệm Đúng\/Sai|2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI)/i;
 
 function isTfSectionHeading(line: string): boolean {
   const clean = line.replace(/__U__|__EU__/g, "").trim();
