@@ -489,7 +489,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "TH): Hãy chọn phương án đúng cho biết muốn chọn một ảnh có sẵn trong máy tính thay thế cho một hình ảnh trên website ở hộp thoại sau ta nhấn vào nút lệnh nào?",
+    "content": "Hãy chọn phương án đúng cho biết muốn chọn một ảnh có sẵn trong máy tính thay thế cho một hình ảnh trên website ở hộp thoại sau ta nhấn vào nút lệnh nào?",
     "options": [
       {
         "id": "A",
@@ -1578,7 +1578,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": ""
+        "content": "Thiết kế các sản phẩm 3D."
       }
     ],
     "correctAnswer": "B",
@@ -2561,7 +2561,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "B): Thẻ HTML được viết trong cặp dấu nào?",
+    "content": "Thẻ HTML được viết trong cặp dấu nào?",
     "options": [
       {
         "id": "A",
@@ -2598,7 +2598,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Phần tử nào chứa toàn bộ nội dung HTML của trang web?",
+    "content": "Phần tử nào chứa toàn bộ nội dung HTML của trang web?",
     "options": [
       {
         "id": "A",
@@ -2635,7 +2635,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Phần tử HTML nào chứa nội dung hiển thị của trang web?",
+    "content": "Phần tử HTML nào chứa nội dung hiển thị của trang web?",
     "options": [
       {
         "id": "A",
@@ -2672,7 +2672,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Thẻ nào sau đây dùng để mô tả các thông tin bổ sung như mã hoá và từ khoá?",
+    "content": "Thẻ nào sau đây dùng để mô tả các thông tin bổ sung như mã hoá và từ khoá?",
     "options": [
       {
         "id": "A",
@@ -2709,7 +2709,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "B): Thẻ HTML nào được sử dụng để định dạng tiêu đề chính của một văn bản?",
+    "content": "Thẻ HTML nào được sử dụng để định dạng tiêu đề chính của một văn bản?",
     "options": [
       {
         "id": "A",
@@ -2746,7 +2746,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Thẻ nào trong HTML được sử dụng để tạo một khối nội dung và bắt đầu trên dòng mới?",
+    "content": "Thẻ nào trong HTML được sử dụng để tạo một khối nội dung và bắt đầu trên dòng mới?",
     "options": [
       {
         "id": "A",
@@ -2783,7 +2783,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Để tạo danh sách có thứ tự, chúng ta sử dụng thẻ nào trong HTML?",
+    "content": "Để tạo danh sách có thứ tự, chúng ta sử dụng thẻ nào trong HTML?",
     "options": [
       {
         "id": "A",
@@ -2820,7 +2820,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "VD): Thuộc tính nào được sử dụng để xác định kiểu đánh số trong danh sách có thứ tự?",
+    "content": "Thuộc tính nào được sử dụng để xác định kiểu đánh số trong danh sách có thứ tự?",
     "options": [
       {
         "id": "A",
@@ -2857,7 +2857,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Thẻ nào được sử dụng để tạo danh sách mô tả?",
+    "content": "Thẻ nào được sử dụng để tạo danh sách mô tả?",
     "options": [
       {
         "id": "A",
@@ -2894,7 +2894,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "B): Thuộc tính nào được sử dụng để thêm tiêu đề cho bảng trong HTML?",
+    "content": "Thuộc tính nào được sử dụng để thêm tiêu đề cho bảng trong HTML?",
     "options": [
       {
         "id": "A",
@@ -2931,7 +2931,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Thuộc tính nào trong HTML được sử dụng để điều chỉnh kích thước của bảng?",
+    "content": "Thuộc tính nào trong HTML được sử dụng để điều chỉnh kích thước của bảng?",
     "options": [
       {
         "id": "A",
@@ -2968,7 +2968,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "B): Siêu văn bản là gì?",
+    "content": "Siêu văn bản là gì?",
     "options": [
       {
         "id": "A",
@@ -3005,7 +3005,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "VD): Thẻ HTML nào được sử dụng để tạo mã định danh cho phần tử, giúp liên kết đến vị trí cụ thể trong trang web?",
+    "content": "Thẻ HTML nào được sử dụng để tạo mã định danh cho phần tử, giúp liên kết đến vị trí cụ thể trong trang web?",
     "options": [
       {
         "id": "A",
@@ -3042,7 +3042,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Thuộc tính nào của thẻ <a> dùng để xác định đường dẫn liên kết?",
+    "content": "Thuộc tính nào của thẻ <a> dùng để xác định đường dẫn liên kết?",
     "options": [
       {
         "id": "A",
@@ -3079,7 +3079,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "VD): Để tạo liên kết đến hình ảnh, ta cần chỉ định URL của hình ảnh vào thuộc tính nào của thẻ <a>?",
+    "content": "Để tạo liên kết đến hình ảnh, ta cần chỉ định URL của hình ảnh vào thuộc tính nào của thẻ <a>?",
     "options": [
       {
         "id": "A",
@@ -3116,7 +3116,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "B): Thuộc tính nào của thẻ <img> là bắt buộc?",
+    "content": "Thuộc tính nào của thẻ <img> là bắt buộc?",
     "options": [
       {
         "id": "A",
@@ -3153,7 +3153,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Để thiết lập kích thước cho ảnh trong HTML, bạn nên sử dụng thuộc tính nào?",
+    "content": "Để thiết lập kích thước cho ảnh trong HTML, bạn nên sử dụng thuộc tính nào?",
     "options": [
       {
         "id": "A",
@@ -3190,7 +3190,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "B): Thuộc tính nào không có trong thẻ <audio>?",
+    "content": "Thuộc tính nào không có trong thẻ <audio>?",
     "options": [
       {
         "id": "A",
@@ -3227,7 +3227,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "B): Thẻ nào được sử dụng để tạo biểu mẫu trên web?",
+    "content": "Thẻ nào được sử dụng để tạo biểu mẫu trên web?",
     "options": [
       {
         "id": "A",
@@ -3264,7 +3264,7 @@ export const CHUYEN_DE_12E_QUESTIONS: Question[] = [
     "topicName": "Chuyên đề 12E: Thực hành phần mềm tạo trang web",
     "chapterName": "Chủ đề 4: Tạo trang web với phần mềm và HTML/CSS (Tuần 12 – 20)",
     "type": "multiple_choice",
-    "content": "H): Để tạo một danh sách thả xuống cho phép người dùng chọn một trong các lựa chọn, thẻ nào được sử dụng?",
+    "content": "Để tạo một danh sách thả xuống cho phép người dùng chọn một trong các lựa chọn, thẻ nào được sử dụng?",
     "options": [
       {
         "id": "A",

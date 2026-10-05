@@ -446,18 +446,18 @@ const LEGACY_QUESTIONS: Question[] = [
       },
       {
         "id": "B",
-        "content": "Dây chuyền lắp ráp tự động."
+        "content": "ChatGPT."
       },
       {
         "id": "C",
-        "content": "Chat GPT."
+        "content": "Dây chuyền lắp ráp tự động."
       },
       {
         "id": "D",
         "content": "Dự báo thời tiết."
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -831,18 +831,18 @@ const LEGACY_QUESTIONS: Question[] = [
       },
       {
         "id": "B",
-        "content": "Dây chuyền lắp ráp tự động."
+        "content": "ChatGPT."
       },
       {
         "id": "C",
-        "content": "Chat GPT."
+        "content": "Dây chuyền lắp ráp tự động."
       },
       {
         "id": "D",
         "content": "Dự báo thời tiết."
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "C",
     "hints": {
       "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
       "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
@@ -2834,7 +2834,7 @@ const LEGACY_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Khả năng giải quyết vấn đề.\n2. CÂU HỎI TRẮC NGHIỆM ĐÚNG/SAI"
+        "content": "Khả năng giải quyết vấn đề."
       }
     ],
     "correctAnswer": "C",
@@ -2844,6 +2844,216 @@ const LEGACY_QUESTIONS: Question[] = [
       "level3_steps": "Phân tích bản chất từng lựa chọn A, B, C, D để xác định phương án phù hợp nhất với chuẩn kiến thức Bộ GD&ĐT."
     },
     "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12A - Trí tuệ nhân tạo.",
+    "sourceDocTitle": "Chuyên đề 12A. Giới thiệu trí tuệ nhân tạo (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-AI-77",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
+    "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
+    "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
+    "difficulty": "NhanBiet",
+    "content": "Phát biểu nào sau đây nêu đúng khái niệm trí tuệ nhân tạo?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Khả năng của máy tính có thể làm những công việc mang tính trí tuệ con người."
+      },
+      {
+        "id": "B",
+        "content": "Trí tuệ của máy tính có thể làm những công việc tương đương trí tuệ con người."
+      },
+      {
+        "id": "C",
+        "content": "Tích hợp công nghệ hiện đại vào máy tính, giúp máy tinh hiểu được con người."
+      },
+      {
+        "id": "D",
+        "content": "Hoạt động máy tính giao tiếp được với con người bằng ngôn ngữ tự nhiên."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
+      "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
+      "level3_steps": "Phân tích bản chất từng lựa chọn A, B, C, D để xác định phương án phù hợp nhất với chuẩn kiến thức Bộ GD&ĐT."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12A - Trí tuệ nhân tạo. Đáp án gạch chân trên đề: A.",
+    "sourceDocTitle": "Chuyên đề 12A. Giới thiệu trí tuệ nhân tạo (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-AI-78",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
+    "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
+    "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
+    "difficulty": "NhanBiet",
+    "content": "Robot hình người đầu tiên trên thế giới được tích hợp một loạt ứng dụng AI do hãng nào sản xuất?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Tesla."
+      },
+      {
+        "id": "B",
+        "content": "Honda."
+      },
+      {
+        "id": "C",
+        "content": "NASA."
+      },
+      {
+        "id": "D",
+        "content": "Toshiba."
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
+      "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
+      "level3_steps": "Phân tích bản chất từng lựa chọn A, B, C, D để xác định phương án phù hợp nhất với chuẩn kiến thức Bộ GD&ĐT."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12A - Trí tuệ nhân tạo. Đáp án gạch chân trên đề: B.",
+    "sourceDocTitle": "Chuyên đề 12A. Giới thiệu trí tuệ nhân tạo (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-AI-79",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
+    "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
+    "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
+    "difficulty": "NhanBiet",
+    "content": "Phương án nào dưới đây đúng khi nói về trợ lý ảo?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Trợ lý ảo là một loại robot vật lý có thể di chuyển trong nhà."
+      },
+      {
+        "id": "B",
+        "content": "Trợ lý ảo là phần mềm AI tương tác với người dùng qua giọng nói hoặc văn bản."
+      },
+      {
+        "id": "C",
+        "content": "Trợ lý ảo là một thiết bị phần cứng."
+      },
+      {
+        "id": "D",
+        "content": "Trợ lý ảo là một ứng dụng chỉ hoạt động trên máy tính để bàn."
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
+      "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
+      "level3_steps": "Phân tích bản chất từng lựa chọn A, B, C, D để xác định phương án phù hợp nhất với chuẩn kiến thức Bộ GD&ĐT."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12A - Trí tuệ nhân tạo. Đáp án gạch chân trên đề: B.",
+    "sourceDocTitle": "Chuyên đề 12A. Giới thiệu trí tuệ nhân tạo (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-AI-80",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
+    "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
+    "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
+    "difficulty": "NhanBiet",
+    "content": "Thiết bị nào dưới đây được tích hợp ứng dụng AI?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Máy điều hoà nhiệt độ."
+      },
+      {
+        "id": "B",
+        "content": "Xe tự lái."
+      },
+      {
+        "id": "C",
+        "content": "Quạt công nghiệp."
+      },
+      {
+        "id": "D",
+        "content": "Bếp từ thông thường."
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
+      "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
+      "level3_steps": "Phân tích bản chất từng lựa chọn A, B, C, D để xác định phương án phù hợp nhất với chuẩn kiến thức Bộ GD&ĐT."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12A - Trí tuệ nhân tạo. Đáp án gạch chân trên đề: B.",
+    "sourceDocTitle": "Chuyên đề 12A. Giới thiệu trí tuệ nhân tạo (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-AI-81",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
+    "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
+    "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
+    "difficulty": "VanDung",
+    "content": "Câu nào nói đúng nhất về ứng dụng của AI trong lĩnh vực Y tế?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Chuẩn đoán bệnh nhanh chóng và chính xác."
+      },
+      {
+        "id": "B",
+        "content": "Chữa bệnh cảm nắng hiệu quả."
+      },
+      {
+        "id": "C",
+        "content": "Phẫu thuật thay Bác Sĩ."
+      },
+      {
+        "id": "D",
+        "content": "Chụp CT phổi."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
+      "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
+      "level3_steps": "Phân tích bản chất từng lựa chọn A, B, C, D để xác định phương án phù hợp nhất với chuẩn kiến thức Bộ GD&ĐT."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12A - Trí tuệ nhân tạo. Đáp án gạch chân trên đề: A.",
+    "sourceDocTitle": "Chuyên đề 12A. Giới thiệu trí tuệ nhân tạo (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-AI-82",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-ai-tri-tue-nhan-tao",
+    "topicName": "Ôn tập chủ đề 1: Trắc nghiệm 4 lựa chọn (AI) (Tuần 7)",
+    "chapterName": "Chủ đề A: Máy tính và xã hội tri thức",
+    "difficulty": "VanDung",
+    "content": "Phương án nào dưới đây chỉ ra nhược điểm lớn nhất của AI hiện nay?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Thông tin sai do thu thập dữ liệu sai."
+      },
+      {
+        "id": "B",
+        "content": "Có thể thay thế con người."
+      },
+      {
+        "id": "C",
+        "content": "Không thể sửa thông tin sai lệch."
+      },
+      {
+        "id": "D",
+        "content": "Không có cảm xúc."
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại khái niệm và các đặc trưng nền tảng của Trí tuệ nhân tạo (AI) trong chương trình Tin học 12.",
+      "level2_formula": "Đọc kỹ từ khóa trong câu hỏi (ví dụ: 'không phải', 'khái niệm', 'ứng dụng'), đối chiếu với các phương án để loại trừ câu sai.",
+      "level3_steps": "Phân tích bản chất từng lựa chọn A, B, C, D để xác định phương án phù hợp nhất với chuẩn kiến thức Bộ GD&ĐT."
+    },
+    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12A - Trí tuệ nhân tạo. Đáp án gạch chân trên đề: A.",
     "sourceDocTitle": "Chuyên đề 12A. Giới thiệu trí tuệ nhân tạo (Google Drive)"
   },
   {
@@ -3676,7 +3886,7 @@ const LEGACY_QUESTIONS: Question[] = [
       },
       {
         "id": "B",
-        "content": "Tên biến phải bắt đầu bằng chữ cái hoặc dấu “”."
+        "content": "Tên biến phải bắt đầu bằng chữ cái hoặc dấu “_”."
       },
       {
         "id": "C",
@@ -3684,7 +3894,7 @@ const LEGACY_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Tên biến chỉ chứa các chữ cái, chữ số và dấu “”."
+        "content": "Tên biến chỉ chứa các chữ cái, chữ số và dấu “_”."
       }
     ],
     "correctAnswer": "C",
@@ -4162,19 +4372,19 @@ const LEGACY_QUESTIONS: Question[] = [
     "options": [
       {
         "id": "A",
-        "content": "python."
+        "content": ".python"
       },
       {
         "id": "B",
-        "content": "pl."
+        "content": ".pl"
       },
       {
         "id": "C",
-        "content": "py."
+        "content": ".py"
       },
       {
         "id": "D",
-        "content": "p."
+        "content": ".p"
       }
     ],
     "correctAnswer": "C",
@@ -17269,14 +17479,14 @@ const LEGACY_QUESTIONS: Question[] = [
   "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
 },
 {
-  "id": "Q-TIN-11F-MC-24",
+    "id": "Q-TIN-11F-MC-24",
   "subjectId": "tin-hoc-12",
   "topicId": "tin-co-so-du-lieu-sql",
   "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
   "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
   "difficulty": "ThongHieu",
   "type": "multiple_choice",
-  "content": "?",
+  "content": "Phát biểu nào sau đây là đúng về cơ sở dữ liệu (CSDL)?",
   "options": [
     {
       "id": "A",
@@ -18601,14 +18811,14 @@ const LEGACY_QUESTIONS: Question[] = [
   "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
 },
 {
-  "id": "Q-TIN-11F-MC-61",
+    "id": "Q-TIN-11F-MC-61",
   "subjectId": "tin-hoc-12",
   "topicId": "tin-co-so-du-lieu-sql",
   "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
   "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
   "difficulty": "ThongHieu",
   "type": "multiple_choice",
-  "content": "?",
+  "content": "Phát biểu nào sau đây là đúng về cơ sở dữ liệu (CSDL)?",
   "options": [
     {
       "id": "A",
@@ -19357,14 +19567,14 @@ const LEGACY_QUESTIONS: Question[] = [
   "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
 },
 {
-  "id": "Q-TIN-11F-MC-82",
+    "id": "Q-TIN-11F-MC-82",
   "subjectId": "tin-hoc-12",
   "topicId": "tin-co-so-du-lieu-sql",
   "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
   "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
   "difficulty": "ThongHieu",
   "type": "multiple_choice",
-  "content": "là gì?",
+  "content": "Mục đích chính của hệ quản trị cơ sở dữ liệu (DBMS) là gì?",
   "options": [
     {
       "id": "A",
@@ -19681,14 +19891,14 @@ const LEGACY_QUESTIONS: Question[] = [
   "sourceDocTitle": "Chuyên đề 11F - GIỚI THIỆU CÁC HỆ CSDL.docx (Google Drive)"
 },
 {
-  "id": "Q-TIN-11F-MC-91",
+    "id": "Q-TIN-11F-MC-91",
   "subjectId": "tin-hoc-12",
   "topicId": "tin-co-so-du-lieu-sql",
   "topicName": "Chuyên đề 11F: Giới thiệu các hệ CSDL",
   "chapterName": "Chủ đề 6: Cơ sở dữ liệu quan hệ (Tuần 26 – 29)",
   "difficulty": "ThongHieu",
   "type": "multiple_choice",
-  "content": "là gì?",
+  "content": "Mục đích chính của một hệ quản trị cơ sở dữ liệu (DBMS) là gì?",
   "options": [
     {
       "id": "A",

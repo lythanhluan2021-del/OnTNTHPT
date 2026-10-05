@@ -153,15 +153,30 @@ function matchFileToExistingTopic(
     }
   }
 
-  // 3. Chuyên đề 12D / Đạo đức & văn hóa số
-  if (norm.includes("12d") || norm.includes("dao duc") || norm.includes("nhan van") || norm.includes("phap luat")) {
+  // 3. Chuyên đề 11D / 12D / Đạo đức & văn hóa số
+  if (
+    norm.includes("11d") ||
+    norm.includes("12d") ||
+    norm.includes("dao duc") ||
+    norm.includes("nhan van") ||
+    norm.includes("phap luat") ||
+    norm.includes("van hoa so")
+  ) {
     const found = existingTopics.find((t) => t.id === "tin-dao-duc-phap-luat-so");
     if (found) {
       return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
     }
   }
 
-  // 4. Chuyên đề 12F / HTML & CSS
+  // 4. Chuyên đề 12E / phần mềm tạo trang web (trước 12F vì cả hai có chữ web)
+  if (norm.includes("12e") || norm.includes("phan mem tao trang")) {
+    const found = existingTopics.find((t) => t.id === "tin-chuyen-de-12e-web");
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // 5. Chuyên đề 12F / HTML & CSS
   if (norm.includes("12f") || norm.includes("html") || norm.includes("web") || norm.includes("css")) {
     const found = existingTopics.find(
       (t) =>
@@ -170,6 +185,22 @@ function matchFileToExistingTopic(
         t.id.includes("css") ||
         t.id.includes("12f")
     );
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // 6. Chuyên đề 11F / CSDL
+  if (norm.includes("11f") || norm.includes("csdl") || norm.includes("co so du lieu")) {
+    const found = existingTopics.find((t) => t.id === "tin-co-so-du-lieu-sql");
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // 7. Chuyên đề 12G / hướng nghiệp
+  if (norm.includes("12g") || norm.includes("huong nghiep") || norm.includes("nhom nghe") || norm.includes("dich vu va quan tri")) {
+    const found = existingTopics.find((t) => t.id === "tin-huong-nghiep-dich-vu");
     if (found) {
       return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
     }
@@ -194,6 +225,18 @@ function matchFileToExistingTopic(
   };
 }
 
+const TF_SECTION_HEADING =
+  /(?:2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG\s*[\/\s–-]\s*SAI|2\.\s*Câu hỏi trắc nghiệm Đúng\s*[\/\s–-]\s*Sai|2\.\s*CÂU TRẮC NGHIỆM ĐÚNG\s*[\/\s–-]\s*SAI|2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI|II\.\s*CÂU HỎI TRẮC NGHIỆM\s+ĐÚNG|TRẮC NGHIỆM Đ\/S|2\.\s*DẠNG CÂU HỎI D2|2\.\s*Câu hỏi trắc nghiệm Đúng\/Sai)/i;
+
+function isTfSectionHeading(line: string): boolean {
+  const clean = line.replace(/__U__|__EU__/g, "").trim();
+  return TF_SECTION_HEADING.test(clean);
+}
+
+function findTfSectionMatch(docText: string): RegExpMatchArray | null {
+  return docText.match(TF_SECTION_HEADING);
+}
+
 /**
  * Bộ bóc tách thông minh chuyên sâu cho đề trắc nghiệm Word (.docx) & Google Docs
  * Hỗ trợ nhận diện gạch chân (__U__...__EU__) làm đáp án đúng, tự sinh gợi ý Socratic
@@ -209,11 +252,20 @@ export function parseTextDocumentQuestions(
   const questions: Question[] = [];
   if (!docText || docText.length < 30) return questions;
 
+  docText = docText.replace(/\u00a0/g, " ").replace(/\u200b/g, "");
   const answerKeys = extractAnswerKeyTable(docText);
 
-  // 1. Tách dòng thông minh: nếu "Câu X" bị dính vào cuối dòng trước thì tách ra thành dòng mới
-  const preprocessedText = docText.replace(
+  // 1. Tách dòng: "Câu X" dính cuối dòng trước; phương án A/B/C/D dính nhau trên một dòng
+  let preprocessedText = docText.replace(
     /(?<=[^\n])(?=(?:__U__)?Câu\s+\d+(?:\s*\([^)]*\))?[\s.:])/gi,
+    "\n"
+  );
+  preprocessedText = preprocessedText.replace(
+    /(?<=[.;:)\]])\s*(?=(?:__U__)?[A-D](?:__U__|__EU__)*\s*[.):])/g,
+    "\n"
+  );
+  preprocessedText = preprocessedText.replace(
+    /\s{2,}(?=(?:__U__)?[A-D](?:__U__|__EU__)*\s*[.):])/g,
     "\n"
   );
   const rawLines = preprocessedText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
@@ -231,23 +283,23 @@ export function parseTextDocumentQuestions(
 
   for (const rawLine of rawLines) {
     // Cập nhật mức độ câu hỏi
-    if (/1\.1\.\s*Nhận biết/i.test(rawLine)) {
+    const headingLine = rawLine.replace(/__U__|__EU__/g, "").trim();
+    if (/1\.1\.\s*Nhận biết/i.test(rawLine) || /^(?:NHẬN BIẾT)\s*$/i.test(headingLine)) {
       currentLevel = "NhanBiet";
       continue;
     }
-    if (/1\.2\.\s*Thông hiểu/i.test(rawLine)) {
+    if (/1\.2\.\s*Thông hiểu/i.test(rawLine) || /^(?:THÔNG HIỂU)\s*$/i.test(headingLine)) {
       currentLevel = "ThongHieu";
       continue;
     }
-    if (/1\.3\.\s*Vận dụng/i.test(rawLine)) {
-      currentLevel = "VanDung";
+    if (
+      /1\.3\.\s*Vận dụng/i.test(rawLine) ||
+      /^(?:VẬN DỤNG(?:\s+CAO)?)\s*$/i.test(headingLine)
+    ) {
+      currentLevel = /cao/i.test(rawLine) ? "VanDungCao" : "VanDung";
       continue;
     }
-    if (
-      /2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG\s*[\/\s]\s*SAI/i.test(rawLine) ||
-      /PHẦN II/i.test(rawLine) ||
-      /2\.\s*CÂU TRẮC NGHIỆM ĐÚNG\s*[\/\s]\s*SAI/i.test(rawLine)
-    ) {
+    if (isTfSectionHeading(rawLine)) {
       if (currentGroup) groups.push(currentGroup);
       currentGroup = null;
       break; // Kết thúc phần trắc nghiệm nhiều lựa chọn
@@ -286,7 +338,7 @@ export function parseTextDocumentQuestions(
 
     for (const target of expectedLetters) {
       const p = new RegExp(
-        `(?:__U__|__EU__|\\s)*${target}(?:__U__|__EU__|\\s)*[.):](?:__U__|__EU__|\\s)*`,
+        `(?:__U__|__EU__|\\s)*${target}(?:__U__|__EU__|\\s)*(?:[.):]|__U__\\.__EU__)(?:__U__|__EU__|\\s)*`,
         "i"
       );
       const sub = allQText.slice(searchPos);
@@ -301,6 +353,25 @@ export function parseTextDocumentQuestions(
           fullToken: match[0],
         });
         searchPos = end;
+      } else if (target === "B") {
+        const pC = new RegExp(
+          `(?:__U__|__EU__|\\s)*C(?:__U__|__EU__|\\s)*(?:[.):]|__U__\\.__EU__)(?:__U__|__EU__|\\s)*`,
+          "i"
+        );
+        const matchC = sub.match(pC);
+        if (matchC && matchC.index !== undefined && matchC.index > 0) {
+          const between = sub.slice(0, matchC.index);
+          const nl = between.search(/\n/);
+          const bPos = searchPos + (nl >= 0 ? nl + 1 : 0);
+          tokens.push({
+            letter: "B",
+            start: bPos,
+            end: bPos,
+            fullToken: "",
+          });
+        } else {
+          break;
+        }
       } else {
         break;
       }
@@ -383,10 +454,7 @@ export function parseTextDocumentQuestions(
   }
 
   // 3. Phân tích phần 2: Câu hỏi trắc nghiệm Đúng / Sai (nếu có)
-  const part2Match =
-    docText.match(/2\.\s*Câu hỏi trắc nghiệm Đúng\s*[\/\s]\s*Sai[^\n]*/i) ||
-    docText.match(/2\.\s*CÂU HỎI TRẮC NGHIỆM ĐÚNG\s*[\/\s]\s*SAI[^\n]*/i) ||
-    docText.match(/PHẦN II[^\n]*/i);
+  const part2Match = findTfSectionMatch(docText);
 
   if (part2Match && part2Match.index !== undefined) {
     const part2Text = docText.slice(part2Match.index);
@@ -400,7 +468,7 @@ export function parseTextDocumentQuestions(
     let curTF: { qNum: number; lines: string[] } | null = null;
 
     for (const line of linesP2) {
-      if (/2\.\s*Câu hỏi trắc nghiệm Đúng[\/\s]Sai/i.test(line) || /PHẦN II/i.test(line)) continue;
+      if (isTfSectionHeading(line)) continue;
       const clean = line.replace(/__U__|__EU__/g, "").trim();
       const qMatch = clean.match(/^Câu\s*(\d+)[\s.:]+([\s\S]*)/i);
       if (qMatch) {
@@ -436,10 +504,15 @@ export function parseTextDocumentQuestions(
           const isUnderlineToken = /__U__[a-dA-D][.)]__EU__/.test(l);
           const isUnderlineDung = /__U__\s*Đúng\s*__EU__/i.test(l);
           const endsWithD = /[\s\t]+Đ$/i.test(l.trim());
-          const hasDung = isUnderlineToken || isUnderlineDung || endsWithD;
+          const parenDung = /\(\s*Đúng\b/i.test(rawItemContent);
+          const parenSai = /\(\s*Sai\b/i.test(rawItemContent);
+          const hasDung = parenSai
+            ? false
+            : Boolean(isUnderlineToken || isUnderlineDung || endsWithD || parenDung);
 
           const cleanItemContent = rawItemContent
             .replace(/__U__|__EU__/g, "")
+            .replace(/\(\s*(Đúng|Sai)\b[^)]*\)/gi, "")
             .replace(/[\s\t]+(Đúng|Sai|[ĐS])$/i, "")
             .trim();
 
@@ -453,7 +526,9 @@ export function parseTextDocumentQuestions(
             headerLines.push(l.replace(/__U__|__EU__/g, "").trim());
           } else {
             const last = items[items.length - 1];
-            last.content += "\n" + l.replace(/__U__|__EU__/g, "").trim();
+            last.content += "\n" + l.replace(/__U__|__EU__/g, "").replace(/\(\s*(Đúng|Sai)\b[^)]*\)/gi, "").trim();
+            if (/\(\s*Đúng\b/i.test(l)) last.correctAnswer = true;
+            if (/\(\s*Sai\b/i.test(l)) last.correctAnswer = false;
           }
         }
       }

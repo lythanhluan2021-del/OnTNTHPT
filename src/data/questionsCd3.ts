@@ -3043,7 +3043,7 @@ export const CHUYEN_DE_CD3_QUESTIONS: Question[] = [
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "NhanBiet",
     "type": "multiple_choice",
-    "content": "Tên miền trong địa chỉ website có.edu cho biết Website đó thuộc về?",
+    "content": "Tên miền trong địa chỉ website có .edu cho biết Website đó thuộc về?",
     "options": [
       {
         "id": "A",

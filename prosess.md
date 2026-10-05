@@ -1,37 +1,80 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-05 (checkpoint quota — handover cho phiên sau)
+Cập nhật: 2026-10-05 **HẾT QUOTA** — đã rebase + push GitHub. Phiên sau đọc mục này rồi làm 12B.
 
-## Checkpoint quota (đọc trước khi tiếp tục)
+## ĐỌC TRƯỚC KHI LÀM (phiên mới / hết quota)
 
-Phiên này sắp hết quota. Working tree **sạch**, `main` **đã khớp** `origin/main`. Không còn conflict rebase.
+**Luôn cập nhật `prosess.md` trước khi dừng** — phiên sau chỉ đọc file này để biết đang ở đâu.
 
-| Mục | Giá trị |
-|-----|---------|
-| Remote | `https://github.com/lythanhluan2021-del/OnTNTHPT` |
-| Branch | `main` = `origin/main` |
-| HEAD | `30718e6` `docs: update prosess.md after 12A/12B reparse rebase` |
-| Commit bank | `d0ae971` `feat(tin-12): reparse 12A/12B banks and merge 12B into Bai 3` |
-| `tsc --noEmit` | OK sau rebase |
-| Stash | `stash@{0}: temp lockfile` — chỉ `package-lock.json` từ `npm install`; **không** commit |
-| Submodule | không có `.gitmodules` |
+Remote: `https://github.com/lythanhluan2021-del/OnTNTHPT` — branch `main`.
+12A bank đang dùng: `src/data/questions12a.ts` (**97** câu: 79 MC + 18 TF) — **không** dùng bản Q-TIN-AI-* nhúng sampleBank (đã filter).
+12B bank: `src/data/questions12b.ts` (83 câu, topicId = `tin-cd3-thiet-bi-mang`).
 
-**Không commit:** JSON Service Account, `/tmp/gat`, `credentials*.json`, `package-lock.json` từ stash.
+### Việc ƯU TIÊN ngay (làm theo thứ tự, đừng nhảy)
 
-Khi hết quota: chỉ cần `git pull origin main` rồi đọc mục **Handover phiên sau** ở cuối file này.
+1. **12B** stem-match `questions12b.ts` vs `/tmp/opencode/extracted/12B.txt`; option C `Local Area .`; TF 9/11 đủ 4 ý.
+2. **Parser TF + match 11D/12D** — marker `II. CÂU HỎI TRẮC NGHIỆM ĐÚNG – SAI` (khoảng L372 extract); **không** cắt MC ở `PHẦN II` / `II. CÂU HỎI ÔN TẬP`.
+3. **12G** marker TF `2. DẠNG CÂU HỎI D2` (L404); zip 37 mismatch **bỏ**; match stem; empty 7 câu.
+4. **11F** marker `2. CÂU HỎI TRẮC NGHIỆM ĐÚNG SAI` (L725); empty 6 câu; match stem.
+5. **Không** dán private key vào `prosess.md`. Key: `credentials-onthithpt.json` (gitignore).
+6. **Không** tin `compare_banks.py` zip tuần tự khi đề reset số câu theo NB/TH/VD.
+
+### Protocol mỗi phiên
+
+1. Đọc **mục này** + **Nhật ký phiên mới nhất** + **Bảng trạng thái chuyên đề**.
+2. Check: `credentials-onthithpt.json` còn; `/tmp/opencode/drive/*.docx` và `/tmp/opencode/extracted/*.txt` còn? Nếu mất thì tải lại Drive (SA + file IDs bên dưới).
+3. Làm **một** chuyên đề (hoặc một hạng parser) đến xong, ghi kết quả vào bảng + nhật ký **trước khi** chuyển chuyên đề khác.
+4. Trước khi hết phiên: ghi **đang dở chỗ nào** (file, câu số, script, lệnh tiếp theo). Commit + `git pull --rebase` + `git push origin main`.
+
+### Lệnh / file sẵn (không tạo lại nếu còn)
+
+- SA: `credentials-onthithpt.json` — email `drive-scanner@onthithpt-509307.iam.gserviceaccount.com`
+- Drive Tin: `1wcSRCsZ9wzjO9ypblF_9L4si9kPm_uop` — root `19toY6VB5iERD2D9-tirycSjEz_YQbowL`
+- Docx: `/tmp/opencode/drive/{10F,11D12D,11F,12A,12B,12E,12F,12G,CD3}.docx`
+- Extract (gạch chân `__U__`): `/tmp/opencode/extracted/*.txt`
+- So sánh: `/tmp/opencode/compare_banks.py` → `/tmp/opencode/compare_report.json` (**zip tuần tự — chỉ tin khi số MC 4opt == bank và đề không reset số câu**)
+- Parser app: `src/lib/driveFolderScanner.ts` + `src/lib/docxExtractor.ts`
+- Auth: `src/lib/googleAuth.ts` — token tạm `/tmp/opencode/token.txt`
+
+File IDs: CD3 `194sTkPkdn29NAle3x3ScPFIcT4JZf2mk`; 12B `1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr`; 12A `1Gvs7Qdapo7gM6fx-8OSRjJ8fPbFUltZ7`; 12F `1rG1KHFl3DhTmVRg7FK_pD7Yj6TBjg8cp`; 12E `1xB2B3HCvk32TGfYitSygKHHjhLF_S2OA`.
+
+### Bảng trạng thái chuyên đề (cập nhật khi xong từng cái)
+
+| Chuyên đề | Đề (Câu/U) | Bank | Parser MC/TF | Đối chiếu stem | Việc còn |
+|-----------|------------|------|--------------|----------------|----------|
+| 10F Python | 59/56 | 59 | 54+5 OK | **XONG** 52/54 MC gạch chân; 2 câu không gạch chân giữ D/C | Không |
+| 12A AI | 101/82 | **97** (`questions12a.ts` 79 MC+18 TF) | remote đã reparse | 6 câu thiếu đã có trong bank 12A mới | TF 18 chưa so từng ý với extract |
+| CD3 mạng | 191/240 | 191 CD3 (+12B 83) | 151 MC tới `TRẮC NGHIỆM Đ/S` | **XONG stem MC** 149/153 đáp án khớp; 4 unmatched = đề dính không `Câu N` — bank đúng | Vá stem `.edu`; TF 38 chưa so từng ý |
+| 12B kết nối | 80/81 | 83 (`questions12b.ts`) | 72 MC + 11 TF | **Chưa** stem-match phiên này | ƯU TIÊN 1; option C `Local Area .`; TF 9/11 đủ 4 ý |
+| 11D/12D | 74/65 | 73 | 74 MC, **TF=0** | Chưa | Parser TF (`II. CÂU HỎI TRẮC NGHIỆM ĐÚNG – SAI`) |
+| 12F HTML | 146/162 | 146 | 132+14 | **XONG stem MC** 131/132 đáp án khớp | TF 14 chưa so từng ý |
+| 12E Web | 113/117 | 113 | 89+24 | **XONG stem MC**; đã gỡ prefix `TH):`/`H):`/`B):`/`VD):` | TF 24 chưa so từng ý |
+| 12G HN | 69/72 | 73 | 69 MC, **TF=0** | Zip 37 mismatch — **không tin** | Parser TF; match stem |
+| 11F CSDL | 138/126 | 138 | 138 MC, **TF=0** | Chưa | Parser TF; match stem |
+
+**Đang làm dở (2026-10-05 HẾT QUOTA):** MC xong 10F, CD3, 12F, 12E. 12A dùng bank remote 97 câu. Bước tiếp phiên sau: **12B** stem-match (`questions12b.ts` vs `/tmp/opencode/extracted/12B.txt`). Sau 12B → TF 11D/12D.
+
+### Nhật ký 2026-10-05 (phiên này, sau rebase)
+
+- Remote đã có `questions12a.ts` (97) + reparse 12B; sampleBank filter bỏ Q-TIN-AI-* legacy. Conflict rebase: **giữ count 97**, không 102.
+- Parser TS: `TF_SECTION_HEADING` **không** dùng `PHẦN II`; heuristic thiếu chữ `B.`; map 11D/12E trước 12F.
+- **CD3 MC:** 0 lệch đáp án; vá `Q-TIN-CD3-MC-083` `có.edu` → `có .edu`.
+- **12F MC:** 0 lệch đáp án.
+- **12E MC:** gỡ 20 prefix `TH):`/`H):`/`B):`/`VD):` trong `questions12e.ts`; Câu 29 A=A.
+- **Không zip thứ tự Câu** (`compare_banks.py` false positive).
+- Không commit SA key.
 
 ---
 
 ## Mục tiêu hiện tại
 
-Gộp ngân hàng câu hỏi **Chuyên đề 12B (Kết nối mạng)** vào **Bài 3 – Một số thiết bị Mạng thông dụng** (`tin-cd3-thiet-bi-mang`). **Đã xong trên `main`.**
+Rà soát và sửa bóc tách câu hỏi từng chuyên đề: stem/option đúng đề Drive, đáp án lấy theo **gạch chân** trong Word. Không dùng nguồn ngoài.
+
+Gộp 12B vào Bài 3 (`tin-cd3-thiet-bi-mang`) **đã xong trên `main`**.
 
 Nguồn duy nhất: tài liệu Google Drive. Không dùng nguồn ngoài.
 
-Mục tiêu phiên sau: bóc tiếp các chuyên đề còn thiếu (ưu tiên **10F**, rồi 11F / 12E / 11D-12D / 12G).
-
 ---
-
 ## Đã hoàn thành
 
 ### 1. Kết nối Google Drive
@@ -40,6 +83,8 @@ Mục tiêu phiên sau: bóc tiếp các chuyên đề còn thiếu (ưu tiên *
 - Thư mục gốc OnTNTHPT: `19toY6VB5iERD2D9-tirycSjEz_YQbowL`
 - Thư mục Tin: `1wcSRCsZ9wzjO9ypblF_9L4si9kPm_uop`
 - Key SA **không** commit vào repo (`.gitignore`: `*onthithpt*.json*`, `credentials*.json`)
+- File key local (phiên sau đọc file này, **không** dán private key vào `prosess.md`): `credentials-onthithpt.json`
+- Email SA: `drive-scanner@onthithpt-509307.iam.gserviceaccount.com`
 
 ### 2. Gộp 12B vào Bài 3 — HOÀN TẤT 2026-10-03
 
