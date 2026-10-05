@@ -31,7 +31,7 @@ export const WEEKLY_PLAN: WeekPlanItem[] = [
     topicIds: ["tin-ai-tri-tue-nhan-tao"],
     subjectId: "tin-hoc-12",
     semester: 1,
-    totalTargetQuestions: 96,
+    totalTargetQuestions: 97,
   },
   {
     id: "tuan-08-10",

@@ -1,7 +1,8 @@
 import { Question, Subject } from "../types";
+import { CHUYEN_DE_12A_QUESTIONS } from "./questions12a";
+import { CHUYEN_DE_12B_QUESTIONS } from "./questions12b";
 import { CHUYEN_DE_12E_QUESTIONS } from "./questions12e";
 import { CHUYEN_DE_CD3_QUESTIONS } from "./questionsCd3";
-import { CHUYEN_DE_12B_QUESTIONS } from "./questions12b";
 
 export const INITIAL_SUBJECTS: Subject[] = [
   {
@@ -27,9 +28,9 @@ export const INITIAL_SUBJECTS: Subject[] = [
         name: "Chuyên đề 12A: Giới thiệu Trí tuệ Nhân tạo",
         subjectId: "tin-hoc-12",
         chapter: "Chủ đề 1: Giới thiệu Trí tuệ nhân tạo (Tuần 7)",
-        totalQuestions: 96,
-        mcCount: 76,
-        tfCount: 20,
+        totalQuestions: 97,
+        mcCount: 79,
+        tfCount: 18,
         hasTheory: true,
       },
 
@@ -184,7 +185,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
   },
 ];
 
-export const INITIAL_QUESTIONS: Question[] = [
+const LEGACY_QUESTIONS: Question[] = [
   {
     "id": "Q-TIN-AI-01",
     "subjectId": "tin-hoc-12",
@@ -21446,7 +21447,14 @@ export const INITIAL_QUESTIONS: Question[] = [
     }
   ]
 },
-...CHUYEN_DE_12E_QUESTIONS,
-  ...CHUYEN_DE_CD3_QUESTIONS,
+];
+
+export const INITIAL_QUESTIONS: Question[] = [
+  ...LEGACY_QUESTIONS.filter(
+    (q) => q.topicId !== "tin-ai-tri-tue-nhan-tao" && q.topicId !== "tin-thiet-bi-giao-thuc-mang"
+  ),
+  ...CHUYEN_DE_12A_QUESTIONS,
   ...CHUYEN_DE_12B_QUESTIONS,
+  ...CHUYEN_DE_12E_QUESTIONS,
+  ...CHUYEN_DE_CD3_QUESTIONS,
 ];

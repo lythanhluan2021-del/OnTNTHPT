@@ -2,12 +2,13 @@ import { Question } from "@/types";
 
 export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
   {
-    "id": "Q-TIN-NET-01",
+    "id": "Q-TIN-12B-MC-001",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Lợi ích nào sau đây là quan trọng nhất của mạng xã hội là gì?",
     "options": [
       {
@@ -29,20 +30,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-02",
+    "id": "Q-TIN-12B-MC-002",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Mạng LAN là viết tắt của cụm từ nào?",
     "options": [
       {
@@ -55,7 +58,7 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Local Area ."
+        "content": "Local Area."
       },
       {
         "id": "D",
@@ -64,25 +67,27 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-03",
+    "id": "Q-TIN-12B-MC-003",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Máy tính kết nối với nhau để:",
     "options": [
       {
         "id": "A",
-        "content": "Chia sẻ các thiết bị"
+        "content": "Chia sẻ các thiết bị"
       },
       {
         "id": "B",
@@ -94,25 +99,27 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Chia sẻ các thiết bị và trao đổi dữ liệu"
+        "content": "Chia sẻ các thiết bị và trao đổi dữ liệu"
       }
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-04",
+    "id": "Q-TIN-12B-MC-004",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Trường hợp nào không thích hợp để sử dụng mạng LAN?",
     "options": [
       {
@@ -134,20 +141,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-05",
+    "id": "Q-TIN-12B-MC-005",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Phát biểu nào sau đây không chính xác?",
     "options": [
       {
@@ -169,20 +178,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-06",
+    "id": "Q-TIN-12B-MC-006",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Đâu không phải là ưu điểm của mạng không dây?",
     "options": [
       {
@@ -204,20 +215,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-07",
+    "id": "Q-TIN-12B-MC-007",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Đâu không phải ưu điểm của điện toán đám mây?",
     "options": [
       {
@@ -239,20 +252,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-08",
+    "id": "Q-TIN-12B-MC-008",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Đâu không phải là dịch vụ lưu trữ qua điện toán đám mây?",
     "options": [
       {
@@ -274,20 +289,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-09",
+    "id": "Q-TIN-12B-MC-009",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Những hạn chế của mạng xã hội?",
     "options": [
       {
@@ -300,7 +317,7 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       },
       {
         "id": "C",
-        "content": "Nguy cơ bị lừa đảo, đánh cắp thông tin cá nhân."
+        "content": "Nguy cơ bị lừa đảo, đánh cắp thông tin cá nhân."
       },
       {
         "id": "D",
@@ -309,20 +326,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-10",
+    "id": "Q-TIN-12B-MC-010",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Chúng ta nên làm gì để tự bảo vệ bản thân khi sử dụng mạng xã hội?",
     "options": [
       {
@@ -344,20 +363,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-11",
+    "id": "Q-TIN-12B-MC-011",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Để bảo vệ dữ liệu trên máy tính khi dùng internet, em cần làm gì?",
     "options": [
       {
@@ -379,20 +400,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-12",
+    "id": "Q-TIN-12B-MC-012",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Điều nào sau đây được khuyến khích khi sử dụng các dịch vụ trên internet?",
     "options": [
       {
@@ -414,20 +437,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-13",
+    "id": "Q-TIN-12B-MC-013",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Chọn phương án sai. Khi sử dụng internet, có thể:",
     "options": [
       {
@@ -449,20 +474,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-14",
+    "id": "Q-TIN-12B-MC-014",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Lời khuyên nào sai khi em muốn bảo vệ máy tính và thông tin trên máy tính của mình?",
     "options": [
       {
@@ -484,20 +511,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-15",
+    "id": "Q-TIN-12B-MC-015",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Cách làm nào sau đây giúp phòng ngừa tác hại của Internet?",
     "options": [
       {
@@ -519,20 +548,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-16",
+    "id": "Q-TIN-12B-MC-016",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Con đường nào không lây, truyền virus:",
     "options": [
       {
@@ -549,25 +580,27 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Thẻ nhớ, USB."
+        "content": "Thẻ nhớ, US B."
       }
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-17",
+    "id": "Q-TIN-12B-MC-017",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Đâu là tác hại khi tham gia internet?",
     "options": [
       {
@@ -589,20 +622,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-18",
+    "id": "Q-TIN-12B-MC-018",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Em sẽ làm gì trong các trường hợp sau: “Được một nhóm bạn truyền cho một địa chỉ website nhưng dặn là phải bí mật, không để người lớn biết”.",
     "options": [
       {
@@ -624,20 +659,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-19",
+    "id": "Q-TIN-12B-MC-019",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Đâu không phải là lợi ích của việc sử dụng mạng máy tính?",
     "options": [
       {
@@ -659,20 +696,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-20",
+    "id": "Q-TIN-12B-MC-020",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "E-Payment có nghĩa là gì?",
     "options": [
       {
@@ -694,21 +733,23 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-21",
+    "id": "Q-TIN-12B-MC-021",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
-    "content": "Phát biểu nào sao đây là sai ?",
+    "type": "multiple_choice",
+    "content": "Phát biểu nào sao đây là sai?",
     "options": [
       {
         "id": "A",
@@ -729,20 +770,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-22",
+    "id": "Q-TIN-12B-MC-022",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Điền vào chỗ chấm: “Nhờ vào mạng máy tính, người sử dụng có thể (1)….. để trao đổi (2)….. chia sẻ (3)….. và dùng chung các (4)….. trên mạng”.",
     "options": [
       {
@@ -764,55 +807,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-23",
+    "id": "Q-TIN-12B-MC-023",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
-    "content": "Mạng LAN là mạng kết nối dùng trong phạm vi:",
-    "options": [
-      {
-        "id": "A",
-        "content": "Lớn"
-      },
-      {
-        "id": "B",
-        "content": "Vừa"
-      },
-      {
-        "id": "C",
-        "content": "Nhỏ"
-      },
-      {
-        "id": "D",
-        "content": "Trên toàn thế giới"
-      }
-    ],
-    "correctAnswer": "C",
-    "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
-    },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
-    "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
-  },
-  {
-    "id": "Q-TIN-NET-24",
-    "subjectId": "tin-hoc-12",
-    "topicId": "tin-cd3-thiet-bi-mang",
-    "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
-    "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Phát biểu đúng về điện toán đám mây?",
     "options": [
       {
@@ -834,20 +844,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-25",
+    "id": "Q-TIN-12B-MC-024",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Điện toán đám mây không thể cung cấp những dịch vụ nào trong các dịch vụ sau:",
     "options": [
       {
@@ -869,20 +881,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-26",
+    "id": "Q-TIN-12B-MC-025",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Đâu không phải là đặc điểm của Internet?",
     "options": [
       {
@@ -904,20 +918,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-27",
+    "id": "Q-TIN-12B-MC-026",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Mô tả nào sau đây nói về Internet là sai?",
     "options": [
       {
@@ -939,55 +955,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-28",
+    "id": "Q-TIN-12B-MC-027",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
-    "content": "Mạng máy tính được kết nối bằng những phương tiện nào?",
-    "options": [
-      {
-        "id": "A",
-        "content": "Cáp mạng và sóng vô tuyến"
-      },
-      {
-        "id": "B",
-        "content": "Chỉ bằng cáp mạng"
-      },
-      {
-        "id": "C",
-        "content": "Chỉ bằng sóng vô tuyến"
-      },
-      {
-        "id": "D",
-        "content": "Điện thoại và cáp mạng"
-      }
-    ],
-    "correctAnswer": "A",
-    "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
-    },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
-    "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
-  },
-  {
-    "id": "Q-TIN-NET-29",
-    "subjectId": "tin-hoc-12",
-    "topicId": "tin-cd3-thiet-bi-mang",
-    "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
-    "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Thiết bị nào sau đây được coi là thiết bị đầu cuối?",
     "options": [
       {
@@ -1009,20 +992,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-30",
+    "id": "Q-TIN-12B-MC-028",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Thiết bị nào trong mạng LAN có nhiệm vụ chuyển tiếp dữ liệu giữa các thiết bị?",
     "options": [
       {
@@ -1044,20 +1029,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-31",
+    "id": "Q-TIN-12B-MC-029",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Mạng WLAN sử dụng công nghệ nào để kết nối các thiết bị?",
     "options": [
       {
@@ -1079,20 +1066,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-32",
+    "id": "Q-TIN-12B-MC-030",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Thiết bị nào cung cấp kết nối Wi-Fi trong mạng cục bộ?",
     "options": [
       {
@@ -1114,20 +1103,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-33",
+    "id": "Q-TIN-12B-MC-031",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Mạng diện rộng (WAN) có phạm vi địa lý như thế nào?",
     "options": [
       {
@@ -1149,20 +1140,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-34",
+    "id": "Q-TIN-12B-MC-032",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Thiết bị nào có nhiệm vụ chuyển đổi tín hiệu giữa số và tương tự?",
     "options": [
       {
@@ -1184,20 +1177,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-35",
+    "id": "Q-TIN-12B-MC-033",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Nhà cung cấp dịch vụ truy cập Internet được gọi là gì?",
     "options": [
       {
@@ -1219,55 +1214,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-36",
+    "id": "Q-TIN-12B-MC-034",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
-    "content": "Thiết bị nào xác định đường đi tối ưu cho gói tin trong mạng WAN?",
-    "options": [
-      {
-        "id": "A",
-        "content": "Switch"
-      },
-      {
-        "id": "B",
-        "content": "Modem"
-      },
-      {
-        "id": "C",
-        "content": "Access Point"
-      },
-      {
-        "id": "D",
-        "content": "Router"
-      }
-    ],
-    "correctAnswer": "D",
-    "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
-    },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
-    "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
-  },
-  {
-    "id": "Q-TIN-NET-37",
-    "subjectId": "tin-hoc-12",
-    "topicId": "tin-cd3-thiet-bi-mang",
-    "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
-    "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Giao thức mạng là gì?",
     "options": [
       {
@@ -1289,20 +1251,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-38",
+    "id": "Q-TIN-12B-MC-035",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Giao thức Internet (IP) có vai trò gì trong mạng máy tính?",
     "options": [
       {
@@ -1324,20 +1288,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-39",
+    "id": "Q-TIN-12B-MC-036",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Giao thức TCP đảm bảo điều gì trong truyền dữ liệu?",
     "options": [
       {
@@ -1359,20 +1325,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-40",
+    "id": "Q-TIN-12B-MC-037",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Địa chỉ IP là gì?",
     "options": [
       {
@@ -1394,20 +1362,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-41",
+    "id": "Q-TIN-12B-MC-038",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Hệ thống tên miền DNS có chức năng gì?",
     "options": [
       {
@@ -1429,20 +1399,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-42",
+    "id": "Q-TIN-12B-MC-039",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Tên miền cấp cao nhất (TLD) thường là gì?",
     "options": [
       {
@@ -1464,20 +1436,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-43",
+    "id": "Q-TIN-12B-MC-040",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Giao thức HTTP được sử dụng để làm gì?",
     "options": [
       {
@@ -1499,20 +1473,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-44",
+    "id": "Q-TIN-12B-MC-041",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Khi kết nối máy tính với Access Point trên Windows 10, bước đầu tiên bạn cần làm gì?",
     "options": [
       {
@@ -1534,20 +1510,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-45",
+    "id": "Q-TIN-12B-MC-042",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Khi kết nối máy tính với Switch, dấu hiệu nào cho thấy kết nối vật lý đã thành công?",
     "options": [
       {
@@ -1569,20 +1547,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-46",
+    "id": "Q-TIN-12B-MC-043",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Để kết nối điện thoại thông minh vào Access Point, bạn cần thực hiện bước nào sau đây đầu tiên?",
     "options": [
       {
@@ -1604,20 +1584,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-47",
+    "id": "Q-TIN-12B-MC-044",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Khi chia sẻ dữ liệu từ PC-A, để cấp quyền truy cập cho mọi người, bạn cần chọn quyền nào trong hộp thoại Permissions for D?",
     "options": [
       {
@@ -1639,20 +1621,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-48",
+    "id": "Q-TIN-12B-MC-045",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Bước đầu tiên để kết nối PC-B với máy in được chia sẻ từ PC-A là gì?",
     "options": [
       {
@@ -1674,20 +1658,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-49",
+    "id": "Q-TIN-12B-MC-046",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Để kiểm tra kết nối mạng sau khi kết nối với Access Point, bạn nên làm gì?",
     "options": [
       {
@@ -1709,20 +1695,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-50",
+    "id": "Q-TIN-12B-MC-047",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Khi kết nối máy tính với Switch, loại cáp nào được sử dụng?",
     "options": [
       {
@@ -1744,20 +1732,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-51",
+    "id": "Q-TIN-12B-MC-048",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Trong quá trình chia sẻ máy in, bạn cần làm gì trên PC-A để máy in có thể được chia sẻ?",
     "options": [
       {
@@ -1779,20 +1769,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-52",
+    "id": "Q-TIN-12B-MC-049",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Để xem chi tiết kết nối mạng trên Windows 10, bạn cần làm gì?",
     "options": [
       {
@@ -1814,20 +1806,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-53",
+    "id": "Q-TIN-12B-MC-050",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Phạm vi sử dụng của internet là:",
     "options": [
       {
@@ -1849,20 +1843,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-54",
+    "id": "Q-TIN-12B-MC-051",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Dịch vụ nào sau đây không là dịch vụ của điện toán đám mây?",
     "options": [
       {
@@ -1884,20 +1880,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-55",
+    "id": "Q-TIN-12B-MC-052",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Em truy cập trang mạng để xem tin tức thì ngẫu nhiên xem được một video có hình ảnh bạo lực mà em rất sợ. Em nên làm gì?",
     "options": [
       {
@@ -1919,20 +1917,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-56",
+    "id": "Q-TIN-12B-MC-053",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Đâu không phải là dịch vụ lưu trữ đám mây?",
     "options": [
       {
@@ -1954,20 +1954,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-57",
+    "id": "Q-TIN-12B-MC-054",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Trang web hiển thị đầu tiên khi ta truy cập vào website gọi là gì?",
     "options": [
       {
@@ -1989,20 +1991,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-58",
+    "id": "Q-TIN-12B-MC-055",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Địa chỉ trang Web https://igiaoduc.vn/ chữ “vn” trên địa chỉ trang web có ý nghĩa gì?",
     "options": [
       {
@@ -2024,20 +2028,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-59",
+    "id": "Q-TIN-12B-MC-056",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Phần mềm nào sau đây không phải trình duyệt WEB?",
     "options": [
       {
@@ -2059,20 +2065,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-60",
+    "id": "Q-TIN-12B-MC-057",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "DNS có nghĩa là gì?",
     "options": [
       {
@@ -2094,20 +2102,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-61",
+    "id": "Q-TIN-12B-MC-058",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Website là gì?",
     "options": [
       {
@@ -2129,21 +2139,23 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-62",
+    "id": "Q-TIN-12B-MC-059",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
-    "content": "Tên miền trong địa chỉ website có .edu cho biết Website đó thuộc về?",
+    "type": "multiple_choice",
+    "content": "Tên miền trong địa chỉ website có.edu cho biết Website đó thuộc về?",
     "options": [
       {
         "id": "A",
@@ -2164,20 +2176,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-63",
+    "id": "Q-TIN-12B-MC-060",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Muốn kết nối các máy tính trong phạm vi gia đình thành một mạng, nên dùng loại thiết bị nào sau đây?",
     "options": [
       {
@@ -2199,20 +2213,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-64",
+    "id": "Q-TIN-12B-MC-061",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Internet là mạng toàn cầu hoạt động theo giao thức",
     "options": [
       {
@@ -2234,20 +2250,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-65",
+    "id": "Q-TIN-12B-MC-062",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Wi-Fi là một bộ tiêu chuẩn kĩ thuật truyền dữ liệu bằng … được sử dụng rộng rãi trong các mạng cục bộ. Điền cụm từ còn thiếu vào dấu ba chấm.",
     "options": [
       {
@@ -2269,20 +2287,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "B",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: B. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-66",
+    "id": "Q-TIN-12B-MC-063",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Mỗi thiết bị tham gia Internet đều phải có địa chỉ. Hiện nay (2024) có bao nhiêu loại địa chỉ IP?",
     "options": [
       {
@@ -2304,20 +2324,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-67",
+    "id": "Q-TIN-12B-MC-064",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Xác định địa chỉ IP tương ứng ở dạng thập phân của địa chỉ sau: 11000000 10101000 00000010 00000011",
     "options": [
       {
@@ -2339,20 +2361,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-68",
+    "id": "Q-TIN-12B-MC-065",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Lệnh nào của giao thức ICMP (Internet Control Message Protocol) giúp kiểm tra máy tính có kết nối được với một máy tính hay một thiết bị mạng hay không?",
     "options": [
       {
@@ -2374,20 +2398,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-69",
+    "id": "Q-TIN-12B-MC-066",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Điểm khác nhau của Hub và Switch là ở:",
     "options": [
       {
@@ -2409,20 +2435,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "C",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-70",
+    "id": "Q-TIN-12B-MC-067",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "IP động là gì?",
     "options": [
       {
@@ -2444,20 +2472,22 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "A",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-71",
+    "id": "Q-TIN-12B-MC-068",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
+    "type": "multiple_choice",
     "content": "Mệnh đề nào sau đây là SAI khi nói về việc kết nối máy tính và Access Point?",
     "options": [
       {
@@ -2479,21 +2509,23 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-NET-72",
+    "id": "Q-TIN-12B-MC-069",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
     "difficulty": "ThongHieu",
-    "content": "Một bạn học sinh cần thiết lập máy tính của mình thành máy cung cấp dịch vụ in cho các máy tính của các bạn khác trong phòng máy. Các bước bạn học sinh đã thực hiện bao gồm: Bước 1: Kết nối máy in với máy tính. Bước 2: Đặt cấu hình chia sẻ máy in. Bước 3: Bước 4: In thử từ máy tính khác trong mạng. Phương án nào sau đây là phù hợp nhất để điền vào Bước 3?",
+    "type": "multiple_choice",
+    "content": "Một bạn học sinh cần thiết lập máy tính của mình thành máy cung cấp dịch vụ in cho các máy tính của các bạn khác trong phòng máy. Các bước bạn học sinh đã thực hiện bao gồm: Bước 1: Kết nối máy in với máy tính.Bước 2: Đặt cấu hình chia sẻ máy in.Bước 3:Bước 4: In thử từ máy tính khác trong mạng.Phương án nào sau đây là phù hợp nhất để điền vào Bước 3?",
     "options": [
       {
         "id": "A",
@@ -2509,25 +2541,26 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       },
       {
         "id": "D",
-        "content": "Kết nối với mạng."
+        "content": "Kết nối với mạng. 2."
       }
     ],
     "correctAnswer": "D",
     "hints": {
-      "level1_concept": "Nhớ lại định nghĩa và các đặc trưng cốt lõi về thiết bị mạng (Switch, Modem, Access Point, Router) hoặc giao thức (TCP/IP, IP, DNS) trong Tin học 12.",
-      "level2_formula": "Phân tích chức năng cụ thể của thiết bị/giao thức được đề cập trong câu hỏi để loại trừ phương án sai.",
-      "level3_steps": "Xem xét mối liên hệ giữa dữ kiện đề bài và từng lựa chọn A, B, C, D để tìm phương án chính xác nhất."
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
     },
-    "explanation": "Câu hỏi trích xuất từ tài liệu ôn thi THPT Chuyên đề 12B - Kết nối mạng.",
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-01",
+    "id": "Q-TIN-12B-TF-001",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "type": "true_false",
     "content": "Các phát biểu sau đúng hay sai?",
     "tfItems": [
@@ -2553,22 +2586,23 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Mạng máy tính có thể kết nối bằng dây cáp mạng hoặc sóng vô tuyến.)\n- Ý b) : Sai (Cáp quang sử dụng dây dẫn kim loại để truyền tín hiệu điện.)\n- Ý c) : Đúng (Thiết bị đầu cuối bao gồm máy tính cá nhân, điện thoại thông minh, máy in, và cảm biến nhiệt độ.)\n- Ý d) : Đúng (Địa chỉ MAC gồm 12 ký tự hệ thập lục phân, biểu diễn cho mỗi thiết bị trong mạng máy tính.)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Sai\n- Ý c) : Đúng\n- Ý d) : Đúng",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-02",
+    "id": "Q-TIN-12B-TF-002",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "type": "true_false",
-    "content": "Các phát biểu sau đúng  hay sai  khi nói về các loại mạng và thiết bị liên quan:",
+    "content": "Các phát biểu sau đúng hay sai khi nói về các loại mạng và thiết bị liên quan:",
     "tfItems": [
       {
         "id": "a",
@@ -2592,20 +2626,21 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Mạng LAN thường được sử dụng để kết nối các thiết bị trong phạm vi nhỏ như tòa nhà hoặc văn phòng.)\n- Ý b) : Sai (Switch trong mạng LAN sử dụng bảng địa chỉ IP để xác định cổng để chuyển tiếp gói tin.)\n- Ý c) : Đúng (Mạng WLAN là mạng cục bộ không dây sử dụng công nghệ Wi-Fi.)\n- Ý d) : Đúng (Router là thiết bị chuyển tiếp dữ liệu trong mạng WAN, xác định đường đi tối ưu cho gói tin.)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Sai\n- Ý c) : Đúng\n- Ý d) : Đúng",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-03",
+    "id": "Q-TIN-12B-TF-003",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "type": "true_false",
     "content": "Đánh dấu đúng hay sai về khái niệm cơ bản của giao thức mạng?",
     "tfItems": [
@@ -2631,20 +2666,21 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Giao thức mạng là tập hợp các quy tắc để điều khiển truyền thông và trao đổi dữ liệu giữa các thiết bị.)\n- Ý b) : Sai (Giao thức mạng chỉ tập trung vào định dạng và chuẩn hóa dữ liệu.)\n- Ý c) : Sai (Giao thức mạng không liên quan đến bảo mật và độ tin cậy của dữ liệu.)\n- Ý d) : Đúng (Giao thức mạng bao gồm cả việc tích hợp các dịch vụ và ứng dụng.)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Sai\n- Ý c) : Sai\n- Ý d) : Đúng",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-04",
+    "id": "Q-TIN-12B-TF-004",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "NhanBiet",
+    "difficulty": "ThongHieu",
     "type": "true_false",
     "content": "Đánh dấu đúng hoặc sai về giao thức IP và hệ thống tên miền?",
     "tfItems": [
@@ -2670,15 +2706,16 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Giao thức IP quản lý và định tuyến gói tin trên mạng máy tính.)\n- Ý b) : Đúng (Địa chỉ IP là số duy nhất được gán cho mỗi thiết bị trong mạng.)\n- Ý c) : Sai (DNS chỉ chuyển đổi tên miền thành địa chỉ IP và không có chức năng nào khác.)\n- Ý d) : Sai (Tất cả các tên miền cấp ba phải luôn bắt đầu bằng \"www\")",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Đúng\n- Ý c) : Sai\n- Ý d) : Sai",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-05",
+    "id": "Q-TIN-12B-TF-005",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
@@ -2709,15 +2746,16 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Sử dụng cáp mạng RJ45 để kết nối.)\n- Ý b) : Sai (Cắm dây vào cổng USB trên máy tính và Switch.)\n- Ý c) : Đúng (Kiểm tra đèn báo hiệu trên cổng để xác nhận kết nối vật lý.)\n- Ý d) : Đúng (Kiểm tra kết nối mạng bằng cách mở trình duyệt web.)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Sai\n- Ý c) : Đúng\n- Ý d) : Đúng",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-06",
+    "id": "Q-TIN-12B-TF-006",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
@@ -2748,15 +2786,16 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Chọn ổ cứng chứa dữ liệu, sau đó chọn Properties.)\n- Ý b) : Đúng (Vào tab Sharing và chọn Advanced Sharing.)\n- Ý c) : Đúng (Tích vào ô Share this folĐểr và chọn Permissions.)\n- Ý d) : Sai (Đặt tên chia sẻ cho ổ cứng.)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Đúng\n- Ý c) : Đúng\n- Ý d) : Sai",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-07",
+    "id": "Q-TIN-12B-TF-007",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
@@ -2777,8 +2816,8 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       },
       {
         "id": "c",
-        "content": "Để máy tính trong LAN có thể kết nối với Internet ta cần kết nối cáp từ máy tính với mạng Internet .",
-        "correctAnswer": false
+        "content": "Để máy tính trong LAN có thể kết nối với Internet ta cần kết nối cáp từ máy tính với mạng Internet.",
+        "correctAnswer": true
       },
       {
         "id": "d",
@@ -2787,15 +2826,16 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Wi-Fi là chữ viết tắt của cụm từ Wireless Fidelity.)\n- Ý b) : Sai (Hầu hết các máy tính để bàn đều có sẵn khả năng kết nối Wi-Fi như máy tính xách tay hay điện thoại thông minh.)\n- Ý c) : Sai (Để máy tính trong LAN có thể kết nối với Internet ta cần kết nối cáp từ máy tính với mạng Internet .)\n- Ý d) : Đúng (Muốn kết nối thiết bị di động vào LAN bằng một trạm thu phát Wi-Fi được bảo mật, ta cần gõ đúng mật khẩu của trạm thu phát Wi-Fi đó.)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Sai\n- Ý c) : Đúng\n- Ý d) : Đúng",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-08",
+    "id": "Q-TIN-12B-TF-008",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
@@ -2806,12 +2846,12 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
     "tfItems": [
       {
         "id": "a",
-        "content": "Có thể dùng cáp mạng để kết nối giữa máy tính và Hub.",
+        "content": "Có thể dùng cáp mạng để kết nối giữa máy tính và Hu",
         "correctAnswer": true
       },
       {
         "id": "b",
-        "content": "Nên sử dụng Switch thay thế cho Hub để tiết kiệm chi phí hơn.",
+        "content": "b) Nên sử dụng Switch thay thế cho Hub để tiết kiệm chi phí hơn.",
         "correctAnswer": false
       },
       {
@@ -2826,26 +2866,27 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Có thể dùng cáp mạng để kết nối giữa máy tính và Hub.)\n- Ý b) : Sai (Nên sử dụng Switch thay thế cho Hub để tiết kiệm chi phí hơn.)\n- Ý c) : Đúng (Cấu trúc mạng trong mỗi phòng là cấu trúc hình sao.)\n- Ý d) : Sai (Máy tính ở trong phòng này không thể chia sẻ thư mục với máy tính ở phòng khác.)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Sai\n- Ý c) : Đúng\n- Ý d) : Sai",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-09",
+    "id": "Q-TIN-12B-TF-009",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "type": "true_false",
-    "content": "Hùng muốn chia sẻ một tài liệu cho các bạn trong nhóm học tập qua mạng LAN. Sau khi thực hiện các bước chia sẻ, Hùng thấy rằng các bạn chỉ có thể xem tài liệu mà không thể chính sửa.",
+    "content": "Hùng muốn chia sẻ một tài liệu cho các bạn trong nhóm học tập qua mạng LAN. Sau khi thực hiện các bước chia sẻ, Hùng thấy rằng các bạn chỉ có thể xem tài liệu mà không thể chính sử",
     "tfItems": [
       {
         "id": "a",
-        "content": "Hùng đã thiết lập quyền truy cập “Read” cho tài liệu.",
+        "content": "a) Hùng đã thiết lập quyền truy cập “Read” cho tài liệu.",
         "correctAnswer": true
       },
       {
@@ -2865,20 +2906,21 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Hùng đã thiết lập quyền truy cập “Read” cho tài liệu.)\n- Ý b) : Đúng (Hùng cần thiết lập quyền truy cập “Read/Write” để các bạn trong nhóm có thể chính sửa tài liệu)\n- Ý c) : Sai (Việc các bạn không thể chỉnh sửa tài liệu do mạng LAN bị lỗi.)\n- Ý d) : Sai (Hùng cần gửi tài liệu qua email cho các bạn chỉnh sửa.)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Đúng\n- Ý c) : Sai\n- Ý d) : Sai",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-10",
+    "id": "Q-TIN-12B-TF-010",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "type": "true_false",
     "content": "Trong giờ học môn Tin học cô giáo chia lớp thành 4 nhóm để thảo luận về cách thức kết nối và chia sẻ dữ liệu trong mạng LAN. Các nhóm đã đưa ra các nhận định.",
     "tfItems": [
@@ -2904,20 +2946,21 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (Mạng LAN giúp các máy tính trong mạng chia sẻ dữ liệu với nhau.)\n- Ý b) : Đúng (Để kết nối mạng LAN cần có các thiết bị như dây mạng, Switch, vỉ mạng.)\n- Ý c) : Sai (Mạng LAN chỉ kết nối tối đa được 14 máy tính.)\n- Ý d) : Sai (Kết nối mạng LAN giúp truy cấp Internet nhanh hơn.)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Đúng\n- Ý c) : Sai\n- Ý d) : Sai",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   },
   {
-    "id": "Q-TIN-TF-NET-11",
+    "id": "Q-TIN-12B-TF-011",
     "subjectId": "tin-hoc-12",
     "topicId": "tin-cd3-thiet-bi-mang",
     "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
     "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
-    "difficulty": "VanDung",
+    "difficulty": "ThongHieu",
     "type": "true_false",
     "content": "Khi được thầy giáo giao nhiệm vụ tìm hiểu về địa chỉ IP tĩnh Kiên đã đưa ra các nhận định như sau:",
     "tfItems": [
@@ -2943,11 +2986,123 @@ export const CHUYEN_DE_12B_QUESTIONS: Question[] = [
       }
     ],
     "hints": {
-      "level1_concept": "Xác định rõ các khái niệm về mạng LAN, WLAN, Switch, Modem, Access Point, Router và giao thức TCP/IP.",
-      "level2_formula": "Phân tích kỹ tính chính xác của từng mệnh đề a), b), c), d), lưu ý vai trò của bảng địa chỉ MAC của Switch so với địa chỉ IP của Router.",
-      "level3_steps": "Đối chiếu nội dung phát biểu với chuẩn kiến thức Chuyên đề 12B để chọn Đúng hoặc Sai cho từng ý."
+      "level1_concept": "Xác định đúng chức năng Hub, Switch, Router, Modem, Access Point và đặc điểm đường truyền hữu tuyến/vô tuyến.",
+      "level2_formula": "Xét từng mệnh đề a, b, c, d: phát biểu tuyệt đối hoặc nhầm chức năng thiết bị thường là Sai.",
+      "level3_steps": "Đối chiếu từng ý với kiến thức Bài 3 / Chuyên đề 12B để đánh dấu Đúng hoặc Sai."
     },
-    "explanation": "Đáp án chi tiết theo tài liệu Chuyên đề 12B - Kết nối mạng:\n- Ý a) : Đúng (IP tĩnh được gán cố định cho một thiết bị.)\n- Ý b) : Sai (IP tĩnh được thay đổi theo thời gian.)\n- Ý c) : Sai (Muốn thay đổi địa chỉ IP phải liên hệ với nhà cung cấp dịch vụ mạng.)\n- Ý d) : Sai (Địa chỉ IP tĩnh luôn có dạng: 192.168.2)",
+    "explanation": "Đáp án chi tiết từng mệnh đề:\n- Ý a) : Đúng\n- Ý b) : Sai\n- Ý c) : Sai\n- Ý d) : Sai",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
+    "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-12B-MC-070",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-cd3-thiet-bi-mang",
+    "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
+    "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Mạng LAN là mạng kết nối dùng trong phạm vi:",
+    "options": [
+      {
+        "id": "A",
+        "content": "Lớn"
+      },
+      {
+        "id": "B",
+        "content": "Vừa"
+      },
+      {
+        "id": "C",
+        "content": "Nhỏ"
+      },
+      {
+        "id": "D",
+        "content": "Trên toàn thế giới"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
+    },
+    "explanation": "Đáp án đúng: C. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
+    "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-12B-MC-071",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-cd3-thiet-bi-mang",
+    "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
+    "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Mạng máy tính được kết nối bằng những phương tiện nào?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Cáp mạng và sóng vô tuyến"
+      },
+      {
+        "id": "B",
+        "content": "Chỉ bằng cáp mạng"
+      },
+      {
+        "id": "C",
+        "content": "Chỉ bằng sóng vô tuyến"
+      },
+      {
+        "id": "D",
+        "content": "Điện thoại và cáp mạng"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
+    },
+    "explanation": "Đáp án đúng: A. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
+    "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
+  },
+  {
+    "id": "Q-TIN-12B-MC-072",
+    "subjectId": "tin-hoc-12",
+    "topicId": "tin-cd3-thiet-bi-mang",
+    "topicName": "Bài 3: Một số thiết bị Mạng thông dụng",
+    "chapterName": "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Thiết bị nào xác định đường đi tối ưu cho gói tin trong mạng WAN?",
+    "options": [
+      {
+        "id": "A",
+        "content": "Switch"
+      },
+      {
+        "id": "B",
+        "content": "Modem"
+      },
+      {
+        "id": "C",
+        "content": "Access Point"
+      },
+      {
+        "id": "D",
+        "content": "Router"
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Nhớ lại chức năng của các thiết bị mạng thông dụng: Hub, Switch, Router, Modem, Access Point và phạm vi mạng LAN/WAN/WLAN.",
+      "level2_formula": "Đối chiếu từng lựa chọn với vai trò thật của thiết bị: Switch chuyển theo MAC, Router định tuyến theo IP, Modem điều chế/giải điều chế tín hiệu.",
+      "level3_steps": "Loại trừ phương án sai về phạm vi mạng, tầng OSI hoặc chức năng thiết bị, rồi chọn phương án khớp nhất với giả thiết đề bài."
+    },
+    "explanation": "Đáp án đúng: D. Câu hỏi bóc tách từ tài liệu \"Chuyên đề 12B. Kết nối mạng (Google Drive)\", đáp án lấy theo phần gạch chân / đáp án trong đề.",
+    "sourceDocId": "1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr",
     "sourceDocTitle": "Chuyên đề 12B. Kết nối mạng (Google Drive)"
   }
 ];
