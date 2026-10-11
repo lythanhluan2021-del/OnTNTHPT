@@ -1,6 +1,7 @@
 import { Question, Subject } from "../types";
 import { CHUYEN_DE_12A_QUESTIONS } from "./questions12a";
 import { CHUYEN_DE_12B_QUESTIONS } from "./questions12b";
+import { QUESTIONS_12B_BAI_4 } from "./questions12bBai4";
 import { CHUYEN_DE_12E_QUESTIONS } from "./questions12e";
 import { CHUYEN_DE_CD3_QUESTIONS } from "./questionsCd3";
 
@@ -34,7 +35,7 @@ export const INITIAL_SUBJECTS: Subject[] = [
         hasTheory: true,
       },
 
-      // Tuần 8 - 10: Mạng máy tính & Internet — gộp 12B vào Bài 3 [6 tiết]
+      // Tuần 8 - 10: Mạng máy tính & Internet [6 tiết]
       {
         id: "tin-cd3-thiet-bi-mang",
         name: "Bài 3: Một số thiết bị Mạng thông dụng",
@@ -43,6 +44,16 @@ export const INITIAL_SUBJECTS: Subject[] = [
         totalQuestions: 274,
         mcCount: 224,
         tfCount: 50,
+        hasTheory: true,
+      },
+      {
+        id: "tin-12b-bai-4-giao-thuc-mang",
+        name: "Bài 4: Giao thức mạng",
+        subjectId: "tin-hoc-12",
+        chapter: "Chủ đề 2: Mạng máy tính và Internet (Tuần 8 – 10)",
+        totalQuestions: 142,
+        mcCount: 102,
+        tfCount: 40,
         hasTheory: true,
       },
 
@@ -21665,6 +21676,7 @@ export const INITIAL_QUESTIONS: Question[] = [
   ),
   ...CHUYEN_DE_12A_QUESTIONS,
   ...CHUYEN_DE_12B_QUESTIONS,
+  ...QUESTIONS_12B_BAI_4,
   ...CHUYEN_DE_12E_QUESTIONS,
   ...CHUYEN_DE_CD3_QUESTIONS,
 ];

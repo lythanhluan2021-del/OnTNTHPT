@@ -137,14 +137,25 @@ function matchFileToExistingTopic(
     }
   }
 
-  // 2. Bài 3 / CD3 / 12B - Một số thiết bị Mạng thông dụng (đã gộp 12B)
+  // 2a. Bài 4 / 12B - Giao thức mạng
+  if (
+    (norm.includes("bai 4") && (norm.includes("giao thuc") || norm.includes("12b"))) ||
+    norm.includes("giao thuc mang") ||
+    (norm.includes("12b") && norm.includes("giao thuc"))
+  ) {
+    const found = existingTopics.find((t) => t.id === "tin-12b-bai-4-giao-thuc-mang");
+    if (found) {
+      return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+    }
+  }
+
+  // 2b. Bài 3 / CD3 - Một số thiết bị Mạng thông dụng
   if (
     norm.includes("cd3") ||
-    norm.includes("12b") ||
+    norm.includes("bai 3") ||
     norm.includes("thiet bi mang") ||
-    norm.includes("giao thuc") ||
-    norm.includes("mang may tinh") ||
     norm.includes("ket noi mang") ||
+    norm.includes("mang may tinh") ||
     norm.includes("tcp")
   ) {
     const found = existingTopics.find((t) => t.id === "tin-cd3-thiet-bi-mang");
