@@ -1009,42 +1009,40 @@ export default function AdminDashboardPage() {
             <p className="text-xs text-slate-500 font-medium">
               Trường THPT Nguyễn Sinh Sắc • Năm học 2026 - 2027 • Phụ trách: Thầy Lý Thành Luân
             </p>
-            {/* Huy hiệu trạng thái Lưu trữ Đám mây Thời gian thực (Google Drive / Upstash Redis) */}
+            {/* Huy hiệu trạng thái Lưu trữ Đám mây: Tách riêng Upstash Redis và Google Drive */}
             <div className="flex items-center gap-2 pt-1 flex-wrap">
-              {overview?.cloudProvider === "google_drive" || overview?.isCloudConnected ? (
+              {/* 1. Huy hiệu Upstash Redis (Tốc độ Realtime tức thì) */}
+              {overview?.cloudProvider === "redis" || overview?.isCloudConnected ? (
                 <button
                   type="button"
                   onClick={() => {
                     soundManager.playClick();
-                    setIsDriveStorageModalOpen(true);
+                    setIsCloudHelpModalOpen(true);
                   }}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-[10px] font-black shadow-neu-flat-xs border border-emerald-300 transition cursor-pointer"
-                  title="Bấm để quản lý đồng bộ và sao lưu Google Drive"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 hover:bg-blue-200 text-blue-800 text-[10px] font-black shadow-neu-flat-xs border border-blue-300 transition cursor-pointer"
+                  title="Bấm xem thông tin kết nối Đám mây Upstash Redis"
                 >
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <Cloud className="w-3 h-3 text-emerald-700" />
-                  <span>
-                    {overview?.cloudProvider === "redis"
-                      ? "Đám Mây Upstash Redis: Đã Kết Nối (Lưu Thời Gian Thực Toàn Trường)"
-                      : "Đám Mây Google Drive: Đã Kết Nối (Lưu Thời Gian Thực Toàn Trường)"}
-                  </span>
-                  <ExternalLink className="w-2.5 h-2.5 text-emerald-700" />
+                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                  <Database className="w-3 h-3 text-blue-700" />
+                  <span>Upstash Redis: Realtime Live</span>
                 </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => {
-                    soundManager.playClick();
-                    setIsDriveStorageModalOpen(true);
-                  }}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-900 text-[10px] font-bold shadow-neu-flat-xs border border-amber-300 transition cursor-pointer"
-                  title="Bấm để kích hoạt và đồng bộ Google Drive 1-Click"
-                >
-                  <Cloud className="w-3 h-3 text-amber-700" />
-                  <span>Chế độ Cục Bộ • Bấm để Đồng Bộ / Kích Hoạt Google Drive Realtime (1-Click)</span>
-                  <ExternalLink className="w-2.5 h-2.5 text-amber-700" />
-                </button>
-              )}
+              ) : null}
+
+              {/* 2. Huy hiệu Google Drive Cloud (Lưu trữ Bền vững & Đồng bộ toàn trường) */}
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  setIsDriveStorageModalOpen(true);
+                }}
+                className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-[10px] font-black shadow-neu-flat-xs border border-emerald-300 transition cursor-pointer"
+                title="Bấm để mở Bảng Quản Lý Lưu Trữ & Đồng Bộ Google Drive"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <Cloud className="w-3 h-3 text-emerald-700" />
+                <span>Google Drive: Đã Kết Nối (Lưu Bền Vững)</span>
+                <ExternalLink className="w-2.5 h-2.5 text-emerald-700 ml-0.5" />
+              </button>
             </div>
           </div>
         </div>
