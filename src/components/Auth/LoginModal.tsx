@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { soundManager } from "@/lib/audioEffects";
 import { Lock, User, School, KeyRound, AlertCircle, X, GraduationCap } from "lucide-react";
+import { GoogleSignInModal } from "./GoogleSignInModal";
 
 export const LoginModal: React.FC = () => {
   const { isLoginModalOpen, closeLoginModal, login, loginWithGoogle } = useAuth();
@@ -11,6 +12,7 @@ export const LoginModal: React.FC = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isGoogleModalOpen, setIsGoogleModalOpen] = useState(false);
 
   if (!isLoginModalOpen) return null;
 
@@ -140,29 +142,9 @@ export const LoginModal: React.FC = () => {
         {/* Nút Đăng nhập bằng Google */}
         <button
           type="button"
-          onClick={async () => {
+          onClick={() => {
             soundManager.playClick();
-            const inputEmail = prompt("Nhập địa chỉ Email Google (Gmail) của bạn để đăng nhập:");
-            if (!inputEmail || !inputEmail.trim()) return;
-            const email = inputEmail.trim();
-            if (!email.includes("@")) {
-              alert("Email không hợp lệ. Vui lòng nhập đúng định dạng @gmail.com");
-              return;
-            }
-            const inputName = prompt("Nhập Họ và Tên của bạn (để Thầy ghi nhận điểm số):") || email.split("@")[0];
-            setIsLoading(true);
-            const res = await loginWithGoogle({
-              email,
-              fullName: inputName.trim(),
-            });
-            setIsLoading(false);
-            if (res.success) {
-              soundManager.playSuccess();
-              alert(res.message);
-            } else {
-              soundManager.playError();
-              setErrorMessage(res.message);
-            }
+            setIsGoogleModalOpen(true);
           }}
           disabled={isLoading}
           className="w-full py-2.5 px-4 rounded-neu font-bold text-xs text-slate-700 bg-white/80 hover:bg-white shadow-neu-flat-xs active:shadow-neu-inset border border-slate-300/60 transition flex items-center justify-center gap-2.5 cursor-pointer"
@@ -185,8 +167,21 @@ export const LoginModal: React.FC = () => {
               d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
             />
           </svg>
-          <span>Đăng Nhập Bằng Tài Khoản Google</span>
+          <span>Đăng Nhập Nhanh Bằng Tài Khoản Google</span>
         </button>
+
+        {/* Modal Đăng nhập Google hiện đại */}
+        <GoogleSignInModal
+          isOpen={isGoogleModalOpen}
+          onClose={() => setIsGoogleModalOpen(false)}
+          onSuccess={async (data) => {
+            const res = await loginWithGoogle(data);
+            if (res.success) {
+              closeLoginModal();
+            }
+            return res;
+          }}
+        />
 
         {/* Ghi chú chân trang */}
         <div className="text-center pt-2 border-t border-slate-300/50">
