@@ -13,6 +13,7 @@ import { StatsDashboard } from "@/components/Analytics/StatsDashboard";
 import { SubjectSwitchModal } from "@/components/Layout/SubjectSwitchModal";
 import { TheoryViewer } from "@/components/Theory/TheoryViewer";
 import { soundManager } from "@/lib/audioEffects";
+import { ttsManager } from "@/lib/ttsManager";
 import {
   BookOpen,
   ListOrdered,
@@ -677,6 +678,7 @@ export default function AppHome() {
   // Chuyển sang câu tiếp theo (với cơ chế kiểm tra hoàn thành chặng 10 câu)
   const handleNextQuestion = () => {
     soundManager.playClick();
+    ttsManager.stop();
 
     const STAGE_SIZE = 10;
     const isMultiStage = activePracticeQuestions.length > 12;
@@ -1269,6 +1271,7 @@ export default function AppHome() {
                     hasAnswered={hasAnswered}
                     comboStreak={comboStreak}
                     nextQuestionContent={activePracticeQuestions[currentQuestionIndex + 1]?.content}
+                    nextNextQuestionContent={activePracticeQuestions[currentQuestionIndex + 2]?.content}
                     onOpenIde={(codeSnippet, title, defaultInput, targetAnswer, questionNumber) => {
                       if (codeSnippet) {
                         setIdeDrawerCode(codeSnippet);

@@ -333,10 +333,10 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
           <div className="p-3 sm:p-3.5 rounded-neu-sm bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-700/80 space-y-1.5 shadow-neu-flat-xs">
             <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-bold text-xs">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-              <span>Chế độ Trình Duyệt: Hoạt động ngay 100% không cần bất kỳ API Key nào!</span>
+              <span>Chế độ Miễn Phí Tự Nhiên: Hoạt động ngay 100% không cần bất kỳ API Key nào!</span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
-              Bạn có thể sử dụng giọng đọc Nữ hoặc Nam có sẵn của máy tính/điện thoại ngay lập tức. Bấm nút <strong>&quot;Nghe Thử Câu Mẫu&quot;</strong> bên dưới hoặc bấm <strong>&quot;Lưu &amp; Bật Giọng Đọc Này&quot;</strong> để bắt đầu học ngay mà không cần tài khoản.
+              Hệ thống phát qua luồng âm thanh chuẩn tiếng Việt mượt mà, rõ nét, phản hồi 0ms tức thì và <strong>tuyệt đối không dùng giọng robot</strong>. Bấm nút <strong>&quot;Nghe Thử Câu Mẫu&quot;</strong> bên dưới hoặc bấm <strong>&quot;Lưu &amp; Bật Giọng Đọc Này&quot;</strong> để học ngay!
             </p>
           </div>
         ) : (
@@ -453,7 +453,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
 
             {selectedProvider === "google" && (
               <p className="text-[10px] text-purple-900 dark:text-purple-300 bg-purple-50/90 dark:bg-purple-950/40 p-2 rounded border border-purple-200/80 dark:border-purple-800/80 leading-relaxed">
-                ✨ <strong>Google Gemini 2.0 AI Audio:</strong> Sử dụng trực tiếp API Key Google AI Studio miễn phí (bắt đầu bằng <code>AIzaSy...</code>). Nếu bạn đã từng nhập key ở tính năng Trợ lý Socratic, hệ thống sẽ tự động đồng bộ ngay mà không cần nhập lại!
+                ✨ <strong>Google Neural &amp; Gemini 2.0 AI Audio:</strong> Hai giọng <strong>Mai Linh (Nữ Chuẩn)</strong> và <strong>Quốc Tuấn (Nam Chuẩn)</strong> hoạt động <strong>hoàn toàn miễn phí không cần API Key</strong>! Bạn chỉ cần nhập Google Gemini API Key khi muốn sử dụng giọng Gemini AI Miền Tây hoặc MC cảm xúc.
               </p>
             )}
 

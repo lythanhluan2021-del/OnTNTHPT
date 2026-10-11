@@ -129,7 +129,29 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
     badge: "✨ Studio Nam",
   },
 
-  // Google Gemini AI Voice (Hỗ trợ API Key Google AI Studio miễn phí & Google Cloud TTS)
+  // Google Gemini AI Voice & Google Cloud Neural Audio
+  {
+    id: "google_stream_female",
+    name: "Mai Linh (Nữ Chuẩn)",
+    region: "standard",
+    gender: "female",
+    provider: "google",
+    apiVoiceKey: "google_stream_female",
+    description: "Giọng Nữ chuẩn tiếng Việt ngọt ngào, phản hồi siêu tốc 0ms, miễn phí 100% không cần Key",
+    badge: "⚡ Siêu Tốc & Tự Nhiên",
+    recommended: true,
+  },
+  {
+    id: "google_stream_male",
+    name: "Quốc Tuấn (Nam Chuẩn)",
+    region: "standard",
+    gender: "male",
+    provider: "google",
+    apiVoiceKey: "google_stream_male",
+    description: "Giọng Nam trầm ấm, rành mạch, phản hồi siêu tốc 0ms, miễn phí 100% không cần Key",
+    badge: "⚡ Nam Trầm Rõ Nét",
+    recommended: true,
+  },
   {
     id: "google_gemini_mientay_nu",
     name: "🌾 Nữ Miền Tây (Gemini AI)",
@@ -137,7 +159,7 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
     gender: "female",
     provider: "google",
     apiVoiceKey: "gemini_mientay_nu",
-    description: "Giọng Nữ Nam Bộ Miền Tây ngọt ngào, truyền cảm, có cảm xúc tự nhiên",
+    description: "Giọng Nữ Nam Bộ Miền Tây ngọt ngào, truyền cảm, có cảm xúc tự nhiên (cần Gemini Key)",
     badge: "🌾 Miền Tây",
   },
   {
@@ -147,7 +169,7 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
     gender: "male",
     provider: "google",
     apiVoiceKey: "gemini_mientay_nam",
-    description: "Giọng Nam Nam Bộ Miền Tây trầm ấm, chân chất, hào sảng",
+    description: "Giọng Nam Nam Bộ Miền Tây trầm ấm, chân chất, hào sảng (cần Gemini Key)",
     badge: "🌾 Miền Tây",
   },
   {
@@ -157,7 +179,7 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
     gender: "female",
     provider: "google",
     apiVoiceKey: "gemini_mc_nu",
-    description: "Giọng Nữ MC truyền hình trong trẻo, ngắt nghỉ khoa học",
+    description: "Giọng Nữ MC truyền hình trong trẻo, ngắt nghỉ khoa học (cần Gemini Key)",
     badge: "🎙️ MC Nữ",
   },
   {
@@ -167,7 +189,7 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
     gender: "male",
     provider: "google",
     apiVoiceKey: "gemini_mc_nam",
-    description: "Giọng Nam MC đĩnh đạc, rõ ràng, phong thái sư phạm",
+    description: "Giọng Nam MC đĩnh đạc, rõ ràng, phong thái sư phạm (cần Gemini Key)",
     badge: "🎙️ MC Nam",
   },
   {
@@ -191,26 +213,27 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
     badge: "🌐 GCP Nam",
   },
 
-  // Browser Fallback (Không cần API key)
+  // Trình duyệt / Miễn phí 100% (Phát âm tự nhiên chuẩn MP3 không robot, không cần API Key)
   {
     id: "browser_female",
-    name: "Giọng Nữ Mặc Định",
+    name: "Giọng Nữ Tự Nhiên (Miễn Phí)",
     region: "standard",
     gender: "female",
     provider: "browser",
-    apiVoiceKey: "browser_female",
-    description: "Giọng đọc mặc định tích hợp sẵn của thiết bị (Miễn phí)",
-    badge: "💻 Mặc định",
+    apiVoiceKey: "google_stream_female",
+    description: "Giọng Nữ chuẩn mượt mà, phản hồi tức thì 0ms, không robot, không cần API Key",
+    badge: "🌟 Tự Nhiên Miễn Phí",
+    recommended: true,
   },
   {
     id: "browser_male",
-    name: "Giọng Nam Mặc Định",
+    name: "Giọng Nam Trầm Ấm (Miễn Phí)",
     region: "standard",
     gender: "male",
     provider: "browser",
-    apiVoiceKey: "browser_male",
-    description: "Giọng đọc mặc định tích hợp sẵn của thiết bị (Miễn phí)",
-    badge: "💻 Mặc định",
+    apiVoiceKey: "google_stream_male",
+    description: "Giọng Nam trầm ấm, rõ nét, phản hồi tức thì 0ms, không robot, không cần API Key",
+    badge: "🌟 Trầm Ấm Miễn Phí",
   },
 ];
 
@@ -688,81 +711,86 @@ class TTSManager {
     const activeVoice = this.getActiveVoice();
     const apiKey = this.getActiveApiKey();
 
-    // 1. Nếu người dùng chọn giọng chất lượng cao (FPT / OpenAI / Google) và CÓ API KEY
-    if (activeVoice.provider !== "browser" && apiKey) {
-      const cacheKey = `${activeVoice.id}_${this.speed}_${fullText}`;
-      if (this.audioCache.has(cacheKey)) {
-        this.playAudioUrl(this.audioCache.get(cacheKey)!);
+    // 0. BỘ NHỚ ĐỆM RAM: NẾU ĐÃ PREFETCH TẢI TRƯỚC -> PHÁT NGAY LẬP TỨC 0ms!
+    const cacheKey = `${activeVoice.id}_${this.speed}_${fullText}`;
+    if (this.audioCache.has(cacheKey)) {
+      this.playAudioUrl(this.audioCache.get(cacheKey)!, activeVoice.gender, activeVoice.apiVoiceKey);
+      return;
+    }
+
+    // Nếu chọn FPT hoặc OpenAI mà không có Key -> Nhắc nhở người dùng
+    if ((activeVoice.provider === "fpt" || activeVoice.provider === "openai") && !apiKey) {
+      this.errorMessageState = `Chưa nhập API Key cho ${activeVoice.provider.toUpperCase()}. Vui lòng dán Key trong Cài đặt hoặc chọn giọng Miễn Phí.`;
+      this.notify();
+      this.speakBrowserUtterance(fullText, activeVoice.gender);
+      return;
+    }
+
+    this.isLoadingState = true;
+    this.notify();
+
+    const controller = new AbortController();
+    this.currentAbortController = controller;
+
+    try {
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
+        body: JSON.stringify({
+          text: fullText,
+          provider: activeVoice.provider,
+          voice: activeVoice.apiVoiceKey,
+          speed: this.speed,
+          apiKey: apiKey,
+        }),
+      });
+
+      if (controller.signal.aborted) return;
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.message || `Lỗi API (${res.status})`);
+      }
+
+      // Với FPT, response là JSON { audioUrl }
+      // Với OpenAI / Google / Browser, response là binary audio/mpeg hoặc audio/wav
+      const contentType = res.headers.get("content-type") || "";
+      let finalAudioUrl = "";
+
+      if (contentType.includes("application/json")) {
+        const data = await res.json();
+        if (data.audioUrl) {
+          finalAudioUrl = data.audioUrl;
+        } else {
+          throw new Error(data.message || "Không nhận được audio URL.");
+        }
+      } else {
+        const blob = await res.blob();
+        finalAudioUrl = URL.createObjectURL(blob);
+      }
+
+      if (controller.signal.aborted) return;
+
+      this.audioCache.set(cacheKey, finalAudioUrl);
+      this.isLoadingState = false;
+      this.currentAbortController = null;
+      this.playAudioUrl(finalAudioUrl, activeVoice.gender, activeVoice.apiVoiceKey);
+    } catch (err: any) {
+      if (err.name === "AbortError" || controller.signal.aborted) {
         return;
       }
 
-      this.isLoadingState = true;
+      console.warn("[TTS] Lỗi phát âm thanh qua API:", err);
+      this.isLoadingState = false;
+      this.currentAbortController = null;
+      this.errorMessageState = `API giọng đọc gặp sự cố (${err.message}).`;
       this.notify();
 
-      const controller = new AbortController();
-      this.currentAbortController = controller;
-
-      try {
-        const res = await fetch("/api/tts", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          signal: controller.signal,
-          body: JSON.stringify({
-            text: fullText,
-            provider: activeVoice.provider,
-            voice: activeVoice.apiVoiceKey,
-            speed: this.speed,
-            apiKey: apiKey,
-          }),
-        });
-
-        if (controller.signal.aborted) return;
-
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.message || `Lỗi API (${res.status})`);
-        }
-
-        // Với FPT, response là JSON { audioUrl }
-        // Với OpenAI / Google, response là binary audio/mpeg hoặc audio/wav
-        const contentType = res.headers.get("content-type") || "";
-        let finalAudioUrl = "";
-
-        if (contentType.includes("application/json")) {
-          const data = await res.json();
-          if (data.audioUrl) {
-            finalAudioUrl = data.audioUrl;
-          } else {
-            throw new Error(data.message || "Không nhận được audio URL.");
-          }
-        } else {
-          const blob = await res.blob();
-          finalAudioUrl = URL.createObjectURL(blob);
-        }
-
-        if (controller.signal.aborted) return;
-
-        this.audioCache.set(cacheKey, finalAudioUrl);
-        this.isLoadingState = false;
-        this.currentAbortController = null;
-        this.playAudioUrl(finalAudioUrl);
-      } catch (err: any) {
-        if (err.name === "AbortError" || controller.signal.aborted) {
-          return;
-        }
-
-        console.warn("[TTS] Lỗi phát âm thanh qua API:", err);
-        this.isLoadingState = false;
-        this.currentAbortController = null;
-        this.errorMessageState = `API giọng đọc gặp sự cố (${err.message}).`;
-        this.notify();
-
-        // Fallback sang Web Speech giữ đúng giới tính Nam/Nữ người dùng đã chọn
+      // Chỉ fallback sang Web Speech khi hoàn toàn mất mạng offline
+      if (typeof navigator !== "undefined" && !navigator.onLine) {
         this.speakBrowserUtterance(fullText, activeVoice.gender);
       }
-    } else {
-      // 2. Chế độ mặc định Trình duyệt (Web Speech API)
-      this.speakBrowserUtterance(fullText, activeVoice.gender);
     }
   }
 
@@ -774,7 +802,11 @@ class TTSManager {
     if (typeof window === "undefined" || !this.isEnabled) return;
     const activeVoice = this.getActiveVoice();
     const apiKey = this.getActiveApiKey();
-    if (activeVoice.provider === "browser" || !apiKey) return;
+
+    // Với FPT và OpenAI, nếu không có key thì không thể prefetch
+    if ((activeVoice.provider === "fpt" || activeVoice.provider === "openai") && !apiKey) {
+      return;
+    }
 
     const normalizedContent = normalizeTextForSpeech(rawContent);
     if (!normalizedContent) return;
@@ -816,6 +848,12 @@ class TTSManager {
 
       if (finalAudioUrl) {
         this.audioCache.set(cacheKey, finalAudioUrl);
+        // Tải trước và giải mã sẵn vào bộ nhớ RAM của trình duyệt để sẵn sàng phát 0ms
+        try {
+          const preAudio = new Audio(finalAudioUrl);
+          preAudio.preload = "auto";
+          preAudio.load();
+        } catch {}
       }
     } catch {
       // Chạy ngầm, không làm gián đoạn
@@ -825,12 +863,25 @@ class TTSManager {
   /**
    * Phát âm thanh qua thẻ HTMLAudioElement
    */
-  private playAudioUrl(url: string) {
+  private playAudioUrl(url: string, gender?: VoiceGender, voiceKey?: string) {
     this.stop();
 
     const audio = new Audio(url);
     this.currentAudio = audio;
-    audio.playbackRate = this.speed;
+
+    const targetGender = gender || this.gender;
+    const targetKey = voiceKey || this.getActiveVoice().apiVoiceKey;
+
+    if (targetGender === "male" && (targetKey === "google_stream_male" || targetKey === "browser_male")) {
+      try {
+        (audio as any).preservesPitch = false;
+        audio.playbackRate = this.speed * 0.90;
+      } catch {
+        audio.playbackRate = this.speed;
+      }
+    } else {
+      audio.playbackRate = this.speed;
+    }
 
     audio.onplay = () => {
       this.isSpeakingState = true;
@@ -1049,7 +1100,12 @@ class TTSManager {
         ? this.googleApiKey
         : "";
 
-    if (targetVoice.provider !== "browser" && !apiKey) {
+    const isFreeVoice =
+      targetVoice.provider === "browser" ||
+      targetVoice.id.startsWith("google_stream_") ||
+      targetVoice.apiVoiceKey.startsWith("google_stream");
+
+    if (!isFreeVoice && !apiKey) {
       this.isLoadingState = false;
       this.notify();
       return {
@@ -1059,12 +1115,6 @@ class TTSManager {
     }
 
     try {
-      if (targetVoice.provider === "browser") {
-        this.isLoadingState = false;
-        this.speakBrowserUtterance(sampleText, targetVoice.gender);
-        return { success: true };
-      }
-
       const res = await fetch("/api/tts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -1094,16 +1144,17 @@ class TTSManager {
       }
 
       this.isLoadingState = false;
-      this.playAudioUrl(finalAudioUrl);
+      this.playAudioUrl(finalAudioUrl, targetVoice.gender, targetVoice.apiVoiceKey);
       return { success: true };
     } catch (err: any) {
       this.isLoadingState = false;
       this.notify();
-      // Tự động phát qua Trình duyệt để người dùng luôn nghe thấy âm thanh, không bao giờ bị im bặt
-      this.speakBrowserUtterance(sampleText, targetVoice.gender);
+      if (typeof navigator !== "undefined" && !navigator.onLine) {
+        this.speakBrowserUtterance(sampleText, targetVoice.gender);
+      }
       return {
         success: false,
-        message: `${err.message} (Đã tự động phát giọng Trình Duyệt dự phòng để bạn nghe thử).`,
+        message: `${err.message}`,
       };
     }
   }

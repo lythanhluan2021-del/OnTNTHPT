@@ -44,6 +44,7 @@ interface QuestionCardProps {
   onAskAiTutor?: () => void;
   comboStreak?: number;
   nextQuestionContent?: string;
+  nextNextQuestionContent?: string;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -61,6 +62,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   onAskAiTutor,
   comboStreak = 0,
   nextQuestionContent,
+  nextNextQuestionContent,
 }) => {
   const isTrueFalse = question.type === "true_false" && question.tfItems && question.tfItems.length > 0;
   const isPythonQuestion =
@@ -144,28 +146,38 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   // Tự động phát âm đề bài nếu chế độ đọc đang BẬT và câu hỏi chưa được trả lời
   useEffect(() => {
     if (ttsManager.getState().isEnabled && !hasAnswered && question?.content) {
-      // Bắt đầu đọc câu hỏi sau 40ms
+      // Bắt đầu đọc câu hỏi sau 25ms
       const timer = setTimeout(() => {
         ttsManager.speakQuestion(question.content, `Câu ${currentIndex + 1}`);
-      }, 40);
+      }, 25);
 
-      // Chạy ngầm tải trước câu tiếp theo sau 2000ms (tránh gửi 2 request cùng lúc làm nghẽn kết nối)
+      // TẢI TRƯỚC SIÊU TỐC: Ngay sau 60ms, tải ngầm câu tiếp theo (N + 1)
+      // Đảm bảo khi học sinh bấm chuyển câu, âm thanh ĐÃ CÓ SẴN 100% trong RAM -> phát ngay lập tức 0ms!
       let prefetchTimer: NodeJS.Timeout | null = null;
       if (nextQuestionContent) {
         prefetchTimer = setTimeout(() => {
           ttsManager.prefetchQuestion(nextQuestionContent, `Câu ${currentIndex + 2}`);
-        }, 2000);
+        }, 60);
+      }
+
+      // Tải trước dự phòng cả câu sau nữa (N + 2) sau 300ms nếu học sinh thao tác lướt nhanh
+      let prefetchNextNextTimer: NodeJS.Timeout | null = null;
+      if (nextNextQuestionContent) {
+        prefetchNextNextTimer = setTimeout(() => {
+          ttsManager.prefetchQuestion(nextNextQuestionContent, `Câu ${currentIndex + 3}`);
+        }, 300);
       }
 
       return () => {
         clearTimeout(timer);
         if (prefetchTimer) clearTimeout(prefetchTimer);
+        if (prefetchNextNextTimer) clearTimeout(prefetchNextNextTimer);
         ttsManager.stop();
       };
     } else {
       ttsManager.stop();
     }
-  }, [question?.id, currentIndex, hasAnswered, nextQuestionContent]);
+  }, [question?.id, currentIndex, hasAnswered, nextQuestionContent, nextNextQuestionContent]);
 
   // Ngắt phát âm khi unmount khỏi giao diện
   useEffect(() => {

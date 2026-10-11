@@ -2,8 +2,92 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-// Bộ đệm âm thanh RAM trên Server (lưu trữ 300 tệp âm thanh gần nhất để phát ngay lập tức)
+// Bộ đệm âm thanh RAM trên Server (lưu trữ 1000 tệp âm thanh gần nhất để phát ngay lập tức)
 const serverAudioCache = new Map<string, { buffer: Buffer; mimeType: string; jsonUrl?: string }>();
+
+// Hàm chia đoạn văn bản thông minh và tải âm thanh tiếng Việt từ Google Audio Stream
+async function fetchGoogleTranslateAudio(text: string): Promise<Buffer> {
+  const clean = text.replace(/[\r\n\t]+/g, " ").trim();
+  const sentences = clean.split(/(?<=[.?!;,:])\s+/);
+  const chunks: string[] = [];
+  let currentChunk = "";
+
+  for (const s of sentences) {
+    if ((currentChunk + " " + s).trim().length <= 170) {
+      currentChunk = (currentChunk + " " + s).trim();
+    } else {
+      if (currentChunk) chunks.push(currentChunk);
+      if (s.length <= 170) {
+        currentChunk = s;
+      } else {
+        const words = s.split(" ");
+        let sub = "";
+        for (const w of words) {
+          if ((sub + " " + w).trim().length <= 170) {
+            sub = (sub + " " + w).trim();
+          } else {
+            if (sub) chunks.push(sub);
+            sub = w;
+          }
+        }
+        currentChunk = sub;
+      }
+    }
+  }
+  if (currentChunk) chunks.push(currentChunk);
+  if (chunks.length === 0) chunks.push(clean.slice(0, 170));
+
+  const audioBuffers: Buffer[] = [];
+  for (const chunk of chunks) {
+    if (!chunk.trim()) continue;
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(chunk.trim())}&tl=vi&client=tw-ob`;
+    const res = await fetch(url, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "Referer": "https://translate.google.com/",
+      },
+    });
+    if (res.ok) {
+      const buf = await res.arrayBuffer();
+      audioBuffers.push(Buffer.from(buf));
+    }
+  }
+
+  if (audioBuffers.length === 0) {
+    throw new Error("Không thể tải âm thanh từ Google Audio Stream");
+  }
+
+  return Buffer.concat(audioBuffers);
+}
+
+// Hàm gắn RIFF WAV Header cho dữ liệu thô PCM từ Gemini AI Audio để thẻ <audio> phát được ngay
+function convertPcmToWav(pcmData: Buffer, sampleRate: number = 24000): Buffer {
+  if (pcmData.length >= 4 && pcmData.toString("ascii", 0, 4) === "RIFF") {
+    return pcmData;
+  }
+  const numChannels = 1;
+  const bitsPerSample = 16;
+  const byteRate = (sampleRate * numChannels * bitsPerSample) / 8;
+  const blockAlign = (numChannels * bitsPerSample) / 8;
+  const dataSize = pcmData.length;
+  const header = Buffer.alloc(44);
+
+  header.write("RIFF", 0);
+  header.writeUInt32LE(36 + dataSize, 4);
+  header.write("WAVE", 8);
+  header.write("fmt ", 12);
+  header.writeUInt32LE(16, 16); // Subchunk1Size
+  header.writeUInt16LE(1, 20); // AudioFormat: 1 (PCM)
+  header.writeUInt16LE(numChannels, 22); // Mono
+  header.writeUInt32LE(sampleRate, 24); // 24000Hz
+  header.writeUInt32LE(byteRate, 28);
+  header.writeUInt16LE(blockAlign, 32);
+  header.writeUInt16LE(bitsPerSample, 34);
+  header.write("data", 36);
+  header.writeUInt32LE(dataSize, 40);
+
+  return Buffer.concat([header, pcmData]);
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -203,62 +287,61 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 3. NHÀ CUNG CẤP: Google Gemini AI Voice (gemini-2.0-flash) & Google Cloud TTS
+    // 3. NHÀ CUNG CẤP: Google Gemini AI Voice (gemini-2.0-flash) & Google Cloud Voice
     if (provider === "google") {
       const activeKey =
         apiKey?.trim() ||
         process.env.GEMINI_API_KEY ||
         process.env.GOOGLE_TTS_API_KEY ||
         "";
-      if (!activeKey) {
-        return NextResponse.json(
-          {
-            success: false,
-            fallback: true,
-            message:
-              "Chưa có API Key Google Gemini. Vui lòng nhập API Key Google AI Studio trong cài đặt giọng đọc.",
-          },
-          { status: 400 }
-        );
+
+      // 3A. Nếu chọn giọng Google Chuẩn miễn phí hoặc không có API Key:
+      // Phát ngay qua Google Audio Stream mượt mà, không robot, không độ trễ
+      if (voice === "google_stream_female" || voice === "google_stream_male" || !activeKey) {
+        try {
+          const audioBuffer = await fetchGoogleTranslateAudio(text);
+          if (serverAudioCache.size > 1000) {
+            const firstKey = serverAudioCache.keys().next().value;
+            if (firstKey) serverAudioCache.delete(firstKey);
+          }
+          serverAudioCache.set(cacheKey, { buffer: audioBuffer, mimeType: "audio/mpeg" });
+
+          return new NextResponse(new Uint8Array(audioBuffer), {
+            headers: {
+              "Content-Type": "audio/mpeg",
+              "Cache-Control": "public, max-age=86400",
+              "X-TTS-Engine": "google-stream",
+            },
+          });
+        } catch (streamErr: any) {
+          console.warn("[Google Stream TTS Error]:", streamErr);
+        }
       }
 
-      // Xác định phong cách giọng cho Google Gemini 2.0 Audio
-      let geminiVoiceName = "Aoede";
+      // 3B. Khi có API Key Google AI Studio và chọn giọng Gemini:
+      let geminiVoiceName = "Aoede"; // Nữ Miền Tây
       let styleInstruction =
         "Bạn là phát thanh viên AI người miền Tây Nam Bộ. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với chất giọng Nữ Miền Tây ngọt ngào, truyền cảm, có cảm xúc tự nhiên, phát âm chân phương, nhẹ nhàng. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
 
       if (voice === "gemini_mientay_nam" || voice === "google_gemini_mientay_nam") {
-        geminiVoiceName = "Puck";
+        geminiVoiceName = "Puck"; // Nam Miền Tây
         styleInstruction =
           "Bạn là phát thanh viên AI người miền Tây Nam Bộ. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với chất giọng Nam Miền Tây trầm ấm, đĩnh đạc, mộc mạc, truyền cảm hứng. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
       } else if (voice === "gemini_mc_nu" || voice === "google_gemini_mc_nu") {
-        geminiVoiceName = "Kore";
+        geminiVoiceName = "Kore"; // Nữ MC
         styleInstruction =
           "Bạn là phát thanh viên MC truyền hình chuyên nghiệp. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với giọng Nữ MC trong trẻo, lưu loát, ngắt nghỉ khoa học, lôi cuốn. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
       } else if (voice === "gemini_mc_nam" || voice === "google_gemini_mc_nam") {
-        geminiVoiceName = "Charon";
+        geminiVoiceName = "Charon"; // Nam MC
         styleInstruction =
           "Bạn là phát thanh viên MC truyền hình chuyên nghiệp. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với giọng Nam MC đĩnh đạc, ấm áp, nhịp điệu rành mạch, phong thái sư phạm. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
-      } else if (voice?.includes("male") || voice === "vi-VN-Neural2-D") {
-        geminiVoiceName = "Puck";
-        styleInstruction =
-          "Hãy đọc to rõ ràng với giọng Nam trầm ấm, chuẩn mực, rành mạch, phong thái sư phạm, chỉ đọc đúng từng chữ trong nội dung.";
       }
 
-      // 3A. Ưu tiên cao nhất: Gọi Google Gemini TTS chính thức (gemini-3.8-flash-tts)
-      const isTraditionalGcpVoice =
-        voice === "vi-VN-Neural2-A" || voice === "vi-VN-Neural2-D";
-
-      if (!isTraditionalGcpVoice) {
+      // Thử gọi Gemini 2.0 Flash Audio chính thức
+      if (activeKey) {
         try {
-          const ttsModels = [
-            "gemini-3.8-flash-tts",
-            "gemini-2.5-flash-preview-tts",
-            "gemini-3.8-flash-lite-tts",
-          ];
-
+          const ttsModels = ["gemini-2.0-flash", "gemini-2.0-flash-exp"];
           let geminiRes: Response | null = null;
-          let lastErrMsg = "";
 
           for (const model of ttsModels) {
             const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${activeKey}`;
@@ -266,7 +349,11 @@ export async function POST(req: NextRequest) {
               contents: [
                 {
                   role: "user",
-                  parts: [{ text }],
+                  parts: [
+                    {
+                      text: `${styleInstruction}\n\nNội dung văn bản cần đọc chính xác:\n${text}`,
+                    },
+                  ],
                 },
               ],
               generationConfig: {
@@ -290,14 +377,6 @@ export async function POST(req: NextRequest) {
             if (res.ok) {
               geminiRes = res;
               break;
-            } else {
-              const errData = await res.json().catch(() => ({}));
-              lastErrMsg = errData.error?.message || "";
-              // Nếu gặp lỗi khác 404 thì không cần đổi model
-              if (res.status !== 404) {
-                geminiRes = res;
-                break;
-              }
             }
           }
 
@@ -310,113 +389,72 @@ export async function POST(req: NextRequest) {
 
             if (audioPart && audioPart.inlineData?.data) {
               const rawBase64 = audioPart.inlineData.data;
-              const mimeType = audioPart.inlineData.mimeType || "audio/wav";
-              const audioBuffer = Buffer.from(rawBase64, "base64");
+              let sampleRate = 24000;
+              const rateMatch = (audioPart.inlineData.mimeType || "").match(/rate=(\d+)/);
+              if (rateMatch) {
+                sampleRate = parseInt(rateMatch[1], 10);
+              }
+              const rawPcm = Buffer.from(rawBase64, "base64");
+              const audioBuffer = convertPcmToWav(rawPcm, sampleRate);
+              const mimeType = "audio/wav";
 
-              // Lưu vào bộ đệm máy chủ để lần đọc sau trả về trong 1ms
-              if (serverAudioCache.size > 300) {
+              if (serverAudioCache.size > 1000) {
                 const firstKey = serverAudioCache.keys().next().value;
                 if (firstKey) serverAudioCache.delete(firstKey);
               }
               serverAudioCache.set(cacheKey, { buffer: audioBuffer, mimeType });
 
-              return new NextResponse(audioBuffer, {
+              return new NextResponse(new Uint8Array(audioBuffer), {
                 headers: {
                   "Content-Type": mimeType,
                   "Cache-Control": "public, max-age=86400",
+                  "X-TTS-Engine": "gemini-audio",
                 },
               });
             }
-          } else if (geminiRes) {
-            let friendlyMsg = `Google Gemini từ chối yêu cầu (${geminiRes.status}): ${lastErrMsg || "Vui lòng kiểm tra lại cấu hình."}`;
-
-            if (
-              lastErrMsg.includes("API_KEY_INVALID") ||
-              lastErrMsg.includes("API key not valid")
-            ) {
-              friendlyMsg = "API Key Google Gemini không hợp lệ. Vui lòng kiểm tra lại mã key trên aistudio.google.com.";
-            }
-
-            return NextResponse.json(
-              {
-                success: false,
-                message: friendlyMsg,
-              },
-              { status: 400 }
-            );
           }
         } catch (geminiError: any) {
-          console.warn("[Gemini Audio Fetch Error]:", geminiError);
-          return NextResponse.json(
-            {
-              success: false,
-              message: `Lỗi kết nối tới Google Gemini: ${geminiError.message}. Vui lòng chuyển sang tab '💻 Trình Duyệt' để nghe ngay.`,
-            },
-            { status: 500 }
-          );
+          console.warn("[Gemini Audio Fetch Warning]:", geminiError.message);
         }
       }
 
-      // 3B. Dự phòng: Google Cloud Text-to-Speech Platform truyền thống
-      const googleVoice = voice || "vi-VN-Neural2-A";
-      const googleRes = await fetch(
-        `https://texttospeech.googleapis.com/v1/text:synthesize?key=${activeKey}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            input: { text },
-            voice: {
-              languageCode: "vi-VN",
-              name: googleVoice,
-            },
-            audioConfig: {
-              audioEncoding: "MP3",
-              speakingRate: speed,
-            },
-          }),
+      // 3C. NẾU GEMINI BỊ LỖI HOẶC QUOTA: TỰ ĐỘNG DỰ PHÒNG SANG GOOGLE AUDIO STREAM CHUẨN
+      // Đảm bảo TUYỆT ĐỐI không bao giờ bị rơi vào giọng robot của trình duyệt!
+      try {
+        const audioBuffer = await fetchGoogleTranslateAudio(text);
+        if (serverAudioCache.size > 1000) {
+          const firstKey = serverAudioCache.keys().next().value;
+          if (firstKey) serverAudioCache.delete(firstKey);
         }
-      );
+        serverAudioCache.set(cacheKey, { buffer: audioBuffer, mimeType: "audio/mpeg" });
 
-      if (!googleRes.ok) {
-        const errJson = await googleRes.json().catch(() => ({}));
-        const rawMsg = errJson.error?.message || "";
-        let friendlyMessage = `Lỗi Google TTS (${googleRes.status}): Vui lòng kiểm tra lại cấu hình.`;
-
-        if (
-          rawMsg.includes("API keys are not supported") ||
-          rawMsg.includes("Expected OAuth2")
-        ) {
-          friendlyMessage =
-            "Key Google của bạn đã được kết nối. Để nghe giọng Miền Tây có cảm xúc, vui lòng chọn một trong các giọng: '🌾 Nữ Miền Tây (Gemini AI)' hoặc '🌾 Nam Miền Tây (Gemini AI)'.";
-        } else if (rawMsg) {
-          friendlyMessage = `Lỗi Google TTS: ${rawMsg}`;
-        }
-
-        return NextResponse.json(
-          {
-            success: false,
-            message: friendlyMessage,
+        return new NextResponse(new Uint8Array(audioBuffer), {
+          headers: {
+            "Content-Type": "audio/mpeg",
+            "Cache-Control": "public, max-age=86400",
+            "X-TTS-Engine": "google-stream-fallback",
           },
-          { status: googleRes.status }
-        );
-      }
-
-      const gData = await googleRes.json();
-      if (!gData.audioContent) {
+        });
+      } catch (err: any) {
         return NextResponse.json(
-          { success: false, message: "Google TTS không trả về nội dung âm thanh." },
-          { status: 400 }
+          { success: false, message: "Không thể tạo giọng đọc: " + err.message },
+          { status: 500 }
         );
       }
+    }
 
-      const audioBuffer = Buffer.from(gData.audioContent, "base64");
-      return new NextResponse(audioBuffer, {
-        headers: {
-          "Content-Type": "audio/mpeg",
-          "Cache-Control": "public, max-age=86400",
-        },
-      });
+    // 4. NHÀ CUNG CẤP: Browser / Miễn phí: Phát ngay qua Google Audio Stream thay vì giọng robot
+    if (provider === "browser") {
+      try {
+        const audioBuffer = await fetchGoogleTranslateAudio(text);
+        return new NextResponse(new Uint8Array(audioBuffer), {
+          headers: {
+            "Content-Type": "audio/mpeg",
+            "Cache-Control": "public, max-age=86400",
+            "X-TTS-Engine": "google-stream",
+          },
+        });
+      } catch {}
     }
 
     return NextResponse.json(
