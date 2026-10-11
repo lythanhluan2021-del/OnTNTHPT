@@ -280,7 +280,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
               </span>
             </button>
 
-            {/* Google Cloud */}
+            {/* Google Gemini AI */}
             <button
               type="button"
               onClick={() => handleSelectProvider("google")}
@@ -292,12 +292,12 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
             >
               <div className="flex items-center justify-between">
                 <span className="font-extrabold text-xs flex items-center gap-1">
-                  🌐 Google TTS
+                  ✨ Google Gemini
                 </span>
                 {selectedProvider === "google" && <Check className="w-3.5 h-3.5 text-purple-600" />}
               </div>
               <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
-                Neural2 tiếng Việt chuẩn xác
+                Giọng Miền Tây &amp; MC AI có cảm xúc
               </span>
             </button>
 
@@ -400,6 +400,17 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
                   <ExternalLink className="w-3 h-3" />
                 </a>
               )}
+              {selectedProvider === "google" && (
+                <a
+                  href="https://aistudio.google.com/app/apikey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] text-purple-600 hover:underline font-bold inline-flex items-center gap-1"
+                >
+                  <span>Lấy Google Gemini API Key (Miễn phí)</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
             </div>
 
             <div className="relative flex items-center">
@@ -423,7 +434,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
                     ? "Dán API Key FPT.AI (32 ký tự, ví dụ: 4f9a72b...)"
                     : selectedProvider === "openai"
                     ? "Dán API Key OpenAI (sk-proj-...)"
-                    : "Dán Google Cloud API Key (AIzaSy...)"
+                    : "Dán Google Gemini API Key (AIzaSy...)"
                 }
                 className="w-full px-3.5 py-2 pr-10 rounded-neu-sm bg-[#e6ecf5] dark:bg-slate-900 shadow-neu-inset font-mono text-xs text-slate-800 dark:text-slate-100 focus:outline-none"
               />
@@ -437,8 +448,8 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
             </div>
 
             {selectedProvider === "google" && (
-              <p className="text-[10px] text-amber-700 dark:text-amber-400 bg-amber-50/90 dark:bg-amber-950/40 p-2 rounded border border-amber-200/80 dark:border-amber-800/80 leading-relaxed">
-                ⚠️ <strong>Lưu ý:</strong> Google Cloud Text-to-Speech yêu cầu tài khoản GCP kích hoạt dịch vụ (không dùng được với Key Gemini AI Studio). Để có <strong>giọng Miền Tây</strong> hoặc <strong>MC tiếng Việt</strong> trong trẻo nhất, Thầy/Cô hãy chuyển sang tab <strong>🌾 FPT.AI Voice</strong> (miễn phí 100.000 ký tự/tháng).
+              <p className="text-[10px] text-purple-900 dark:text-purple-300 bg-purple-50/90 dark:bg-purple-950/40 p-2 rounded border border-purple-200/80 dark:border-purple-800/80 leading-relaxed">
+                ✨ <strong>Google Gemini 2.0 AI Audio:</strong> Sử dụng trực tiếp API Key Google AI Studio miễn phí (bắt đầu bằng <code>AIzaSy...</code>). Nếu bạn đã từng nhập key ở tính năng Trợ lý Socratic, hệ thống sẽ tự động đồng bộ ngay mà không cần nhập lại!
               </p>
             )}
 

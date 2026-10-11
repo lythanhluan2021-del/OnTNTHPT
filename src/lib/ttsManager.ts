@@ -129,26 +129,66 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
     badge: "✨ Studio Nam",
   },
 
-  // Google Cloud
+  // Google Gemini AI Voice (Hỗ trợ API Key Google AI Studio miễn phí & Google Cloud TTS)
+  {
+    id: "google_gemini_mientay_nu",
+    name: "🌾 Nữ Miền Tây (Gemini AI)",
+    region: "mientay",
+    gender: "female",
+    provider: "google",
+    apiVoiceKey: "gemini_mientay_nu",
+    description: "Giọng Nữ Nam Bộ Miền Tây ngọt ngào, truyền cảm, có cảm xúc tự nhiên",
+    badge: "🌾 Miền Tây",
+  },
+  {
+    id: "google_gemini_mientay_nam",
+    name: "🌾 Nam Miền Tây (Gemini AI)",
+    region: "mientay",
+    gender: "male",
+    provider: "google",
+    apiVoiceKey: "gemini_mientay_nam",
+    description: "Giọng Nam Nam Bộ Miền Tây trầm ấm, chân chất, hào sảng",
+    badge: "🌾 Miền Tây",
+  },
+  {
+    id: "google_gemini_mc_nu",
+    name: "🎙️ Nữ MC Truyền Cảm (Gemini AI)",
+    region: "mienbac",
+    gender: "female",
+    provider: "google",
+    apiVoiceKey: "gemini_mc_nu",
+    description: "Giọng Nữ MC truyền hình trong trẻo, ngắt nghỉ khoa học",
+    badge: "🎙️ MC Nữ",
+  },
+  {
+    id: "google_gemini_mc_nam",
+    name: "🎙️ Nam MC Đĩnh Đạc (Gemini AI)",
+    region: "mienbac",
+    gender: "male",
+    provider: "google",
+    apiVoiceKey: "gemini_mc_nam",
+    description: "Giọng Nam MC đĩnh đạc, rõ ràng, phong thái sư phạm",
+    badge: "🎙️ MC Nam",
+  },
   {
     id: "google_neural2_a",
-    name: "Google Neural2 Nữ",
+    name: "Google Neural2 Nữ (Cloud)",
     region: "standard",
     gender: "female",
     provider: "google",
     apiVoiceKey: "vi-VN-Neural2-A",
-    description: "Mạng nơ-ron Google tiếng Việt tự nhiên",
-    badge: "🌐 Google Nữ",
+    description: "Mạng nơ-ron Google tiếng Việt chuẩn Bắc (GCP Cloud)",
+    badge: "🌐 GCP Nữ",
   },
   {
     id: "google_neural2_d",
-    name: "Google Neural2 Nam",
+    name: "Google Neural2 Nam (Cloud)",
     region: "standard",
     gender: "male",
     provider: "google",
     apiVoiceKey: "vi-VN-Neural2-D",
-    description: "Mạng nơ-ron Google Nam trầm rõ ràng",
-    badge: "🌐 Google Nam",
+    description: "Mạng nơ-ron Google Nam trầm rõ ràng (GCP Cloud)",
+    badge: "🌐 GCP Nam",
   },
 
   // Browser Fallback (Không cần API key)
@@ -344,7 +384,10 @@ class TTSManager {
 
       this.fptApiKey = localStorage.getItem("thpt_tts_fpt_key") || "";
       this.openaiApiKey = localStorage.getItem("thpt_tts_openai_key") || "";
-      this.googleApiKey = localStorage.getItem("thpt_tts_google_key") || "";
+      this.googleApiKey =
+        localStorage.getItem("thpt_tts_google_key") ||
+        localStorage.getItem("custom_gemini_api_key") ||
+        "";
 
       // Nếu chọn FPT hoặc OpenAI mà chưa có key, kiểm tra và ưu tiên nhà cung cấp có key
       if (this.provider === "fpt" && !this.fptApiKey && this.openaiApiKey) {
@@ -521,7 +564,12 @@ class TTSManager {
       if (typeof window !== "undefined") localStorage.setItem("thpt_tts_openai_key", trimmed);
     } else if (provider === "google") {
       this.googleApiKey = trimmed;
-      if (typeof window !== "undefined") localStorage.setItem("thpt_tts_google_key", trimmed);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("thpt_tts_google_key", trimmed);
+        if (trimmed) {
+          localStorage.setItem("custom_gemini_api_key", trimmed);
+        }
+      }
     }
     this.notify();
   }
@@ -529,7 +577,14 @@ class TTSManager {
   public getStoredApiKey(provider: "fpt" | "openai" | "google"): string {
     if (provider === "fpt") return this.fptApiKey;
     if (provider === "openai") return this.openaiApiKey;
-    if (provider === "google") return this.googleApiKey;
+    if (provider === "google") {
+      return (
+        this.googleApiKey ||
+        (typeof window !== "undefined"
+          ? localStorage.getItem("custom_gemini_api_key") || ""
+          : "")
+      );
+    }
     return "";
   }
 
@@ -815,9 +870,9 @@ class TTSManager {
       : this.getActiveVoice();
 
     const sampleText =
-      targetVoice.region === "mientay"
+      targetVoice.id.includes("mientay") || targetVoice.region === "mientay"
         ? "Dạ chào bạn! Đây là giọng đọc Miền Tây Nam Bộ ấm áp, chúc bạn ôn thi tốt nghiệp Trung học Phổ thông đạt điểm cao nghen!"
-        : targetVoice.region === "mienbac"
+        : targetVoice.id.includes("mc") || targetVoice.region === "mienbac"
         ? "Chào bạn! Đây là giọng đọc phát thanh viên truyền cảm, chúc bạn ôn thi môn Tin học đạt kết quả xuất sắc nhất!"
         : targetVoice.gender === "male"
         ? "Chào bạn! Đây là giọng Nam trầm ấm, dứt khoát, sẵn sàng đồng hành cùng bạn ôn thi tốt nghiệp THPT."

@@ -178,20 +178,127 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 3. NHÀ CUNG CẤP: Google Cloud Text-to-Speech (Neural2 / WaveNet)
+    // 3. NHÀ CUNG CẤP: Google Gemini AI Voice (gemini-2.0-flash) & Google Cloud TTS
     if (provider === "google") {
-      const activeKey = apiKey?.trim() || process.env.GOOGLE_TTS_API_KEY || "";
+      const activeKey =
+        apiKey?.trim() ||
+        process.env.GEMINI_API_KEY ||
+        process.env.GOOGLE_TTS_API_KEY ||
+        "";
       if (!activeKey) {
         return NextResponse.json(
           {
             success: false,
             fallback: true,
-            message: "Chưa có API Key Google Cloud TTS. Vui lòng nhập API Key trong cài đặt.",
+            message:
+              "Chưa có API Key Google Gemini. Vui lòng nhập API Key Google AI Studio trong cài đặt giọng đọc.",
           },
           { status: 400 }
         );
       }
 
+      // Xác định phong cách giọng cho Google Gemini 2.0 Audio
+      let geminiVoiceName = "Aoede";
+      let styleInstruction =
+        "Bạn là phát thanh viên AI người miền Tây Nam Bộ. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với chất giọng Nữ Miền Tây ngọt ngào, truyền cảm, có cảm xúc tự nhiên, phát âm chân phương, nhẹ nhàng. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
+
+      if (voice === "gemini_mientay_nam" || voice === "google_gemini_mientay_nam") {
+        geminiVoiceName = "Puck";
+        styleInstruction =
+          "Bạn là phát thanh viên AI người miền Tây Nam Bộ. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với chất giọng Nam Miền Tây trầm ấm, đĩnh đạc, mộc mạc, truyền cảm hứng. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
+      } else if (voice === "gemini_mc_nu" || voice === "google_gemini_mc_nu") {
+        geminiVoiceName = "Kore";
+        styleInstruction =
+          "Bạn là phát thanh viên MC truyền hình chuyên nghiệp. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với giọng Nữ MC trong trẻo, lưu loát, ngắt nghỉ khoa học, lôi cuốn. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
+      } else if (voice === "gemini_mc_nam" || voice === "google_gemini_mc_nam") {
+        geminiVoiceName = "Charon";
+        styleInstruction =
+          "Bạn là phát thanh viên MC truyền hình chuyên nghiệp. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với giọng Nam MC đĩnh đạc, ấm áp, nhịp điệu rành mạch, phong thái sư phạm. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
+      } else if (voice?.includes("male") || voice === "vi-VN-Neural2-D") {
+        geminiVoiceName = "Puck";
+        styleInstruction =
+          "Hãy đọc to rõ ràng với giọng Nam trầm ấm, chuẩn mực, rành mạch, phong thái sư phạm, chỉ đọc đúng từng chữ trong nội dung.";
+      }
+
+      // 3A. Ưu tiên cao nhất: Gọi Google Gemini 2.0 Flash Audio (hỗ trợ API Key Google AI Studio miễn phí)
+      const isTraditionalGcpVoice =
+        voice === "vi-VN-Neural2-A" || voice === "vi-VN-Neural2-D";
+
+      if (!isTraditionalGcpVoice) {
+        try {
+          const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${activeKey}`;
+          const geminiPayload = {
+            systemInstruction: {
+              parts: [{ text: styleInstruction }],
+            },
+            contents: [
+              {
+                role: "user",
+                parts: [{ text }],
+              },
+            ],
+            generationConfig: {
+              responseModalities: ["AUDIO"],
+              speechConfig: {
+                voiceConfig: {
+                  prebuiltVoiceConfig: {
+                    voiceName: geminiVoiceName,
+                  },
+                },
+              },
+            },
+          };
+
+          const geminiRes = await fetch(geminiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(geminiPayload),
+          });
+
+          if (geminiRes.ok) {
+            const geminiData = await geminiRes.json();
+            const candidate = geminiData.candidates?.[0];
+            const audioPart = candidate?.content?.parts?.find(
+              (p: any) => p.inlineData && p.inlineData.data
+            );
+
+            if (audioPart && audioPart.inlineData?.data) {
+              const rawBase64 = audioPart.inlineData.data;
+              const mimeType = audioPart.inlineData.mimeType || "audio/wav";
+              const audioBuffer = Buffer.from(rawBase64, "base64");
+
+              return new NextResponse(audioBuffer, {
+                headers: {
+                  "Content-Type": mimeType,
+                  "Cache-Control": "public, max-age=86400",
+                },
+              });
+            }
+          } else {
+            const errData = await geminiRes.json().catch(() => ({}));
+            const errMsg = errData.error?.message || "";
+            // Nếu lỗi liên quan đến API Key Google không hợp lệ
+            if (
+              errMsg.includes("API_KEY_INVALID") ||
+              errMsg.includes("API key not valid")
+            ) {
+              return NextResponse.json(
+                {
+                  success: false,
+                  message:
+                    "API Key Google Gemini không hợp lệ. Vui lòng kiểm tra lại mã key trên aistudio.google.com.",
+                },
+                { status: 400 }
+              );
+            }
+            console.warn("[Gemini Audio API Warning]:", errMsg);
+          }
+        } catch (geminiError: any) {
+          console.warn("[Gemini Audio Fetch Error]:", geminiError);
+        }
+      }
+
+      // 3B. Dự phòng: Google Cloud Text-to-Speech Platform truyền thống
       const googleVoice = voice || "vi-VN-Neural2-A";
       const googleRes = await fetch(
         `https://texttospeech.googleapis.com/v1/text:synthesize?key=${activeKey}`,
@@ -222,7 +329,7 @@ export async function POST(req: NextRequest) {
           rawMsg.includes("Expected OAuth2")
         ) {
           friendlyMessage =
-            "Google Cloud Text-to-Speech yêu cầu cấu hình OAuth2 / Service Account trong GCP Console và không hỗ trợ API Key thông thường (hoặc đây là Key của Gemini AI Studio). Để có giọng Miền Tây hoặc giọng MC tự nhiên nhất, Thầy/Cô vui lòng chuyển sang mục FPT.AI Voice (miễn phí 100.000 ký tự tại fpt.ai) hoặc OpenAI Studio.";
+            "Key Google của bạn đã được kết nối. Để nghe giọng Miền Tây có cảm xúc, vui lòng chọn một trong các giọng: '🌾 Nữ Miền Tây (Gemini AI)' hoặc '🌾 Nam Miền Tây (Gemini AI)'.";
         } else if (rawMsg) {
           friendlyMessage = `Lỗi Google TTS: ${rawMsg}`;
         }

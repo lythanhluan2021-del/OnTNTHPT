@@ -2,12 +2,12 @@
 
 Cập nhật: 2026-10-11 — Nâng cấp toàn diện **Hệ thống Giọng đọc Đề bài Thông minh (AI Voice 2.0)**:
 - Khắc phục hoàn toàn tình trạng giọng robot cứng nhắc bằng việc tích hợp hệ thống đa nguồn TTS AI tự nhiên:
+  - **Google Gemini 2.0 AI Voice**: Tích hợp trực tiếp mô hình AI tạo sinh âm thanh đa phương thức (`gemini-2.0-flash`) thông qua `generativelanguage.googleapis.com` với prompt giọng đọc **🌾 Nữ Miền Tây ngọt ngào**, **🌾 Nam Miền Tây trầm ấm chân phương**, **🎙️ Nữ MC trong trẻo**, **🎙️ Nam MC đĩnh đạc** có cảm xúc biểu cảm tự nhiên như người thật. Hỗ trợ trực tiếp **API Key Google AI Studio miễn phí** (`AIzaSy...`) và tự động đồng bộ với Key của Trợ lý Socratic đã lưu trong máy.
   - **FPT.AI Voice**: Chuyên sâu tiếng Việt với **🌾 Giọng Nữ Miền Tây (`thuminh`)**, **🌾 Nam Miền Tây (`minhquang`)**, **🎙️ Nữ MC Trong Trẻo (`banmai`, `thuha`)**, **🎙️ Nam MC Bắc (`leminh`)**.
   - **OpenAI Studio TTS**: **✨ Nữ MC AI (`nova`, `shimmer`)**, **✨ Nam MC (`echo`, `onyx`)** âm thanh phòng thu siêu trong trẻo.
-  - **Google Cloud TTS**: Giọng nơ-ron Neural2 tự nhiên.
   - **Browser Web Speech API**: Chế độ dự phòng tự động (fallback) hoàn toàn miễn phí không lo gián đoạn.
 - Cơ chế **Bring Your Own Key (API Key Cá Nhân)**:
-  - Cho phép người dùng nhập API Key FPT.AI (miễn phí 100.000 ký tự/tháng), OpenAI hoặc Google TTS.
+  - Cho phép người dùng nhập API Key Google Gemini (AI Studio miễn phí), FPT.AI (miễn phí 100.000 ký tự/tháng), hoặc OpenAI.
   - Khóa API lưu trữ bảo mật trong `localStorage` trên trình duyệt người dùng, bảo vệ quyền riêng tư tuyệt đối.
 - Giao diện **VoiceSettingsModal & VoiceToggleSwitch**:
   - Modal Neumorphic hiện đại, chọn nhanh Engine và nhân vật giọng đọc kèm huy hiệu trực quan.
