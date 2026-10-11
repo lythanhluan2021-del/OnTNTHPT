@@ -277,24 +277,38 @@ export async function POST(req: NextRequest) {
           } else {
             const errData = await geminiRes.json().catch(() => ({}));
             const errMsg = errData.error?.message || "";
-            // Nếu lỗi liên quan đến API Key Google không hợp lệ
+            let friendlyMsg = `Google Gemini từ chối yêu cầu (${geminiRes.status}): ${errMsg || "Vui lòng kiểm tra lại cấu hình."}`;
+
             if (
               errMsg.includes("API_KEY_INVALID") ||
               errMsg.includes("API key not valid")
             ) {
-              return NextResponse.json(
-                {
-                  success: false,
-                  message:
-                    "API Key Google Gemini không hợp lệ. Vui lòng kiểm tra lại mã key trên aistudio.google.com.",
-                },
-                { status: 400 }
-              );
+              friendlyMsg = "API Key Google Gemini không hợp lệ. Vui lòng kiểm tra lại mã key trên aistudio.google.com.";
+            } else if (
+              errMsg.includes("ACCESS_TOKEN_TYPE_UNSUPPORTED") ||
+              errMsg.includes("invalid authentication credentials") ||
+              geminiRes.status === 401
+            ) {
+              friendlyMsg = "Mã Key Google của bạn (dạng AQ...) bị máy chủ Google báo lỗi 401 (ACCESS_TOKEN_TYPE_UNSUPPORTED). Vui lòng chuyển sang tab '💻 Trình Duyệt' (hoàn toàn miễn phí, không cần bất kỳ API Key nào) để nghe ngay lập tức!";
             }
-            console.warn("[Gemini Audio API Warning]:", errMsg);
+
+            return NextResponse.json(
+              {
+                success: false,
+                message: friendlyMsg,
+              },
+              { status: 400 }
+            );
           }
         } catch (geminiError: any) {
           console.warn("[Gemini Audio Fetch Error]:", geminiError);
+          return NextResponse.json(
+            {
+              success: false,
+              message: `Lỗi kết nối tới Google Gemini: ${geminiError.message}. Vui lòng chuyển sang tab '💻 Trình Duyệt' để nghe ngay.`,
+            },
+            { status: 500 }
+          );
         }
       }
 

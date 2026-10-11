@@ -941,9 +941,11 @@ class TTSManager {
     } catch (err: any) {
       this.isLoadingState = false;
       this.notify();
+      // Tự động phát qua Trình duyệt để người dùng luôn nghe thấy âm thanh, không bao giờ bị im bặt
+      this.speakBrowserUtterance(sampleText, targetVoice.gender);
       return {
         success: false,
-        message: err.message || "Lỗi kết nối giọng đọc.",
+        message: `${err.message} (Đã tự động phát giọng Trình Duyệt dự phòng để bạn nghe thử).`,
       };
     }
   }
