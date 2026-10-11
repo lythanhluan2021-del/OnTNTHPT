@@ -126,6 +126,9 @@ export interface User {
   createdAt: number;
   lastLoginAt?: number;
   password?: string; // Lưu ý chỉ dùng nội bộ server
+  authProvider?: "credentials" | "google";
+  email?: string;
+  avatarUrl?: string;
 }
 
 export interface StudentProgressSummary {
@@ -162,6 +165,8 @@ export interface AdminDashboardOverview {
     timestamp: number;
   }[];
   isCloudConnected?: boolean;
+  cloudProvider?: "redis" | "google_drive" | "local";
+  driveFolderId?: string;
 }
 
 // =================== KẾ HOẠCH ÔN TẬP THEO TUẦN (GD1) ===================

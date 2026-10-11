@@ -14,6 +14,7 @@ import {
 } from "@/types";
 import { ExamDefinition, ExamSubmission, ProctorUnlockRequest } from "@/types/examManagement";
 import { WEEKLY_PLAN, getAllWeeklyPlans, getWeeklyPlanById } from "@/data/weeklyPlan";
+import { GoogleDriveStorage } from "./googleDriveStorage";
 
 const IS_SERVERLESS = Boolean(
   process.env.VERCEL ||
@@ -158,7 +159,13 @@ export function matchStudentAttempt(attempt: StudentAttempt, student: User): boo
 
 export class StorageAdapter {
   static isCloudConnected(): boolean {
-    return Boolean(getRedisClient());
+    return Boolean(getRedisClient()) || GoogleDriveStorage.isConfigured();
+  }
+
+  static getCloudProvider(): "redis" | "google_drive" | "local" {
+    if (Boolean(getRedisClient())) return "redis";
+    if (GoogleDriveStorage.isConfigured()) return "google_drive";
+    return "local";
   }
 
   static async getUsers(): Promise<User[]> {
@@ -202,19 +209,33 @@ export class StorageAdapter {
       }
     }
 
-    // 2. Nếu đã có trong RAM cache
+    // 2. Nếu có cấu hình Google Drive, đọc trực tiếp từ tệp ontn_users.json trên Google Drive
+    if (GoogleDriveStorage.isConfigured()) {
+      try {
+        const driveUsers = await GoogleDriveStorage.loadUsers();
+        if (driveUsers && Array.isArray(driveUsers) && driveUsers.length > 0) {
+          globalForStorage.ontnUsersCache = driveUsers;
+          safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), driveUsers);
+          return driveUsers;
+        }
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi đọc users từ Google Drive:", err);
+      }
+    }
+
+    // 3. Nếu đã có trong RAM cache
     if (globalForStorage.ontnUsersCache && globalForStorage.ontnUsersCache.length > 0) {
       return globalForStorage.ontnUsersCache;
     }
 
-    // 3. Đọc từ thư mục /tmp (Serverless)
+    // 4. Đọc từ thư mục /tmp (Serverless)
     const tmpUsers = safeReadJson<User[]>(path.join(TMP_DB_DIR, "users.json"));
     if (tmpUsers && Array.isArray(tmpUsers) && tmpUsers.length > 0) {
       globalForStorage.ontnUsersCache = tmpUsers;
       return tmpUsers;
     }
 
-    // 4. Đọc từ tệp dự án (cho phép đọc Read-Only trên Vercel /var/task)
+    // 5. Đọc từ tệp dự án (cho phép đọc Read-Only trên Vercel /var/task)
     const localUsers = safeReadJson<User[]>(path.join(LOCAL_DB_DIR, "users.json"));
     if (localUsers && Array.isArray(localUsers) && localUsers.length > 0) {
       globalForStorage.ontnUsersCache = localUsers;
@@ -222,7 +243,7 @@ export class StorageAdapter {
       return localUsers;
     }
 
-    // 5. Dự phòng danh sách mẫu ban đầu
+    // 6. Dự phòng danh sách mẫu ban đầu
     globalForStorage.ontnUsersCache = [...INITIAL_USERS];
     safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), INITIAL_USERS);
     if (!IS_SERVERLESS) {
@@ -244,10 +265,17 @@ export class StorageAdapter {
       }
     }
 
-    // 2. Ghi dự phòng vào /tmp
+    // 2. Lưu vào Google Drive Cloud nếu có kết nối
+    if (GoogleDriveStorage.isConfigured()) {
+      GoogleDriveStorage.syncUsers(users).catch((err) => {
+        console.warn("[StorageAdapter] ⚠️ Lỗi đồng bộ users lên Google Drive:", err);
+      });
+    }
+
+    // 3. Ghi dự phòng vào /tmp
     safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), users);
 
-    // 3. Ghi vào LOCAL_DB_DIR nếu không phải serverless
+    // 4. Ghi vào LOCAL_DB_DIR nếu không phải serverless
     if (!IS_SERVERLESS) {
       safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), users);
     }
@@ -423,6 +451,20 @@ export class StorageAdapter {
       }
     }
 
+    // 2. Đọc từ Google Drive nếu có kết nối và chưa có dữ liệu từ Redis
+    if (!allAttempts && GoogleDriveStorage.isConfigured()) {
+      try {
+        const driveAttempts = await GoogleDriveStorage.loadAttempts();
+        if (driveAttempts && Array.isArray(driveAttempts)) {
+          allAttempts = driveAttempts;
+          globalForStorage.ontnAttemptsCache = allAttempts;
+          safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), allAttempts);
+        }
+      } catch (err) {
+        console.warn("[StorageAdapter] ⚠️ Lỗi đọc attempts từ Google Drive:", err);
+      }
+    }
+
     if (!allAttempts) {
       if (globalForStorage.ontnAttemptsCache) {
         allAttempts = globalForStorage.ontnAttemptsCache;
@@ -456,7 +498,7 @@ export class StorageAdapter {
     const updated = [...attempts, attempt];
     globalForStorage.ontnAttemptsCache = updated;
 
-    // Lưu vào Upstash Redis
+    // 1. Lưu vào Upstash Redis
     const redis = getRedisClient();
     if (redis) {
       try {
@@ -466,7 +508,14 @@ export class StorageAdapter {
       }
     }
 
-    // Dự phòng /tmp và cục bộ
+    // 2. Lưu vào Google Drive Cloud
+    if (GoogleDriveStorage.isConfigured()) {
+      GoogleDriveStorage.syncAttempts(updated).catch((err) => {
+        console.warn("[StorageAdapter] ⚠️ Lỗi đồng bộ attempt lên Google Drive:", err);
+      });
+    }
+
+    // 3. Dự phòng /tmp và cục bộ
     safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), updated);
     if (!IS_SERVERLESS) {
       safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), updated);
@@ -488,6 +537,12 @@ export class StorageAdapter {
         } catch (err) {
           console.warn("[StorageAdapter] ⚠️ Lỗi lưu attempts batch lên Upstash Redis:", err);
         }
+      }
+
+      if (GoogleDriveStorage.isConfigured()) {
+        GoogleDriveStorage.syncAttempts(updated).catch((err) => {
+          console.warn("[StorageAdapter] ⚠️ Lỗi đồng bộ batch attempts lên Google Drive:", err);
+        });
       }
 
       safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), updated);
@@ -713,7 +768,9 @@ export class StorageAdapter {
       atRiskCount,
       classes,
       recentActivities,
-      isCloudConnected: Boolean(getRedisClient()),
+      isCloudConnected: this.isCloudConnected(),
+      cloudProvider: this.getCloudProvider(),
+      driveFolderId: GoogleDriveStorage.getFolderId(),
     };
   }
 

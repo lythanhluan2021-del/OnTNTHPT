@@ -61,6 +61,7 @@ import {
 import { WEEKLY_PLAN } from "@/data/weeklyPlan";
 import { INITIAL_QUESTIONS, INITIAL_SUBJECTS } from "@/data/sampleBank";
 import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
+import { DriveStorageSyncModal } from "@/components/Admin/DriveStorageSyncModal";
 import { PrintableReportModal } from "@/components/Admin/PrintableReportModal";
 import { CompetencyRadarCard } from "@/components/Analytics/CompetencyRadarCard";
 import { ExamManagementView } from "@/components/Admin/ExamManagementView";
@@ -87,6 +88,7 @@ export default function AdminDashboardPage() {
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
   const [isCloudHelpModalOpen, setIsCloudHelpModalOpen] = useState(false);
+  const [isDriveStorageModalOpen, setIsDriveStorageModalOpen] = useState(false);
   const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
   const [activeStudent, setActiveStudent] = useState<StudentProgressSummary | null>(null);
 
@@ -1007,26 +1009,39 @@ export default function AdminDashboardPage() {
             <p className="text-xs text-slate-500 font-medium">
               Trường THPT Nguyễn Sinh Sắc • Năm học 2026 - 2027 • Phụ trách: Thầy Lý Thành Luân
             </p>
-            {/* Huy hiệu trạng thái Lưu trữ Đám mây Thời gian thực */}
-            <div className="flex items-center gap-2 pt-1">
-              {overview?.isCloudConnected ? (
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black shadow-neu-flat-xs border border-emerald-300">
+            {/* Huy hiệu trạng thái Lưu trữ Đám mây Thời gian thực (Google Drive / Upstash Redis) */}
+            <div className="flex items-center gap-2 pt-1 flex-wrap">
+              {overview?.cloudProvider === "google_drive" || overview?.isCloudConnected ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    setIsDriveStorageModalOpen(true);
+                  }}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-[10px] font-black shadow-neu-flat-xs border border-emerald-300 transition cursor-pointer"
+                  title="Bấm để quản lý đồng bộ và sao lưu Google Drive"
+                >
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <Database className="w-3 h-3 text-emerald-700" />
-                  <span>Đám Mây Upstash Redis: Đã Kết Nối (Lưu Thời Gian Thực Toàn Trường)</span>
-                </div>
+                  <Cloud className="w-3 h-3 text-emerald-700" />
+                  <span>
+                    {overview?.cloudProvider === "redis"
+                      ? "Đám Mây Upstash Redis: Đã Kết Nối (Lưu Thời Gian Thực Toàn Trường)"
+                      : "Đám Mây Google Drive: Đã Kết Nối (Lưu Thời Gian Thực Toàn Trường)"}
+                  </span>
+                  <ExternalLink className="w-2.5 h-2.5 text-emerald-700" />
+                </button>
               ) : (
                 <button
                   type="button"
                   onClick={() => {
                     soundManager.playClick();
-                    setIsCloudHelpModalOpen(true);
+                    setIsDriveStorageModalOpen(true);
                   }}
                   className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-900 text-[10px] font-bold shadow-neu-flat-xs border border-amber-300 transition cursor-pointer"
-                  title="Bấm xem hướng dẫn kết nối Upstash Redis miễn phí"
+                  title="Bấm để kích hoạt và đồng bộ Google Drive 1-Click"
                 >
                   <Cloud className="w-3 h-3 text-amber-700" />
-                  <span>Chế độ Cục Bộ • Bấm để Kích Hoạt Lưu Trữ Đám Mây Realtime (1-Click)</span>
+                  <span>Chế độ Cục Bộ • Bấm để Đồng Bộ / Kích Hoạt Google Drive Realtime (1-Click)</span>
                   <ExternalLink className="w-2.5 h-2.5 text-amber-700" />
                 </button>
               )}
@@ -1400,6 +1415,18 @@ export default function AdminDashboardPage() {
             </button>
 
             <button
+              onClick={() => {
+                soundManager.playClick();
+                setIsDriveStorageModalOpen(true);
+              }}
+              className="px-3 py-2 rounded-neu-sm bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1.5 border border-emerald-300"
+              title="Đồng bộ & Lưu trữ dữ liệu học sinh với Google Drive"
+            >
+              <Cloud className="w-3.5 h-3.5 text-emerald-600" />
+              <span className="hidden sm:inline">Đồng Bộ Drive</span>
+            </button>
+
+            <button
               onClick={exportToCSV}
               className="px-3 py-2 rounded-neu-sm bg-[#e6ecf5] hover:bg-emerald-50 text-emerald-700 font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1.5 border border-emerald-300/60"
               title="Xuất dữ liệu ra Excel / CSV"
@@ -1468,8 +1495,37 @@ export default function AdminDashboardPage() {
               <tbody className="divide-y divide-slate-300/40">
                 {filteredStudents.length === 0 ? (
                   <tr>
-                    <td colSpan={10} className="py-10 text-center text-slate-500 font-medium">
-                      Không tìm thấy học sinh nào phù hợp với bộ lọc hiện tại.
+                    <td colSpan={10} className="py-12 text-center text-slate-500 font-medium">
+                      <div className="max-w-md mx-auto space-y-3">
+                        <p className="text-slate-600 text-xs font-semibold">
+                          Không tìm thấy học sinh nào phù hợp với bộ lọc hiện tại.
+                        </p>
+                        <div className="flex items-center justify-center gap-2 flex-wrap">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              soundManager.playClick();
+                              setIsDriveStorageModalOpen(true);
+                            }}
+                            className="px-3.5 py-2 rounded-neu-sm bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1.5 cursor-pointer"
+                          >
+                            <Cloud className="w-3.5 h-3.5" />
+                            <span>Khôi Phục Từ Google Drive</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              soundManager.playClick();
+                              setCreateMode("single");
+                              setIsAddModalOpen(true);
+                            }}
+                            className="px-3.5 py-2 rounded-neu-sm bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-neu-blue active:shadow-neu-blue-pressed transition flex items-center gap-1.5 cursor-pointer"
+                          >
+                            <Plus className="w-3.5 h-3.5" />
+                            <span>Cấp Tài Khoản Mới</span>
+                          </button>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 ) : (
@@ -2754,6 +2810,13 @@ export default function AdminDashboardPage() {
         selectedSubjectId={selectedSubjectId}
         onSync={handleDriveSync}
         onScanFolder={handleScanFolder}
+      />
+
+      {/* Modal Quản lý Lưu trữ Đám Mây Google Drive (CSDL Học sinh & Bài làm) */}
+      <DriveStorageSyncModal
+        isOpen={isDriveStorageModalOpen}
+        onClose={() => setIsDriveStorageModalOpen(false)}
+        onRefreshData={() => fetchData(selectedClass)}
       />
 
       {/* Modal Báo cáo Sư phạm & In ấn PDF chuẩn A4 */}

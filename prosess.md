@@ -1,6 +1,29 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-11 — Nâng cấp toàn diện **Hệ thống Giọng đọc Đề bài Thông minh (AI Voice 2.0)** & **Khắc phục triệt để lỗi tự động chuyển giọng đọc**:
+Cập nhật: 2026-10-11 — Hoàn thành nâng cấp toàn diện **Hệ thống Lưu trữ Đám mây Google Drive (Realtime + Bền Vững 100%)** & **Đồng bộ Tài khoản Người dùng (Cấp bởi Thầy + Đăng nhập Google)**:
+- **Khắc phục triệt để lỗi "Không tìm thấy học sinh nào phù hợp với bộ lọc hiện tại"**:
+  - **Nguyên nhân**: Trên môi trường Serverless (Vercel), hệ thống tệp là Read-Only và bộ nhớ RAM bị xóa khi container khởi động lại (cold restart/redeploy). Dữ liệu học sinh chỉ lưu cục bộ trong bộ nhớ tạm thời nên bị mất sau khi đóng mở ứng dụng hoặc khi redeploy.
+  - **Giải pháp Google Drive Cloud Storage**: Xây dựng kiến trúc lưu trữ đám mây tự động 2 chiều trực tiếp vào thư mục Google Drive của Thầy (`19toY6VB5iERD2D9-tirycSjEz_YQbowL`) thông qua Google Service Account (`drive-scanner@onthithpt-509307.iam.gserviceaccount.com`).
+  - **Hai tệp CSDL bền vững trên Google Drive**:
+    1. `ontn_users.json`: Lưu trữ toàn bộ tài khoản người dùng gồm tài khoản do Thầy cấp (đơn lẻ / bulk) và tài khoản học sinh đăng nhập bằng Google.
+    2. `ontn_attempts.json`: Lưu trữ toàn bộ kết quả làm bài ôn luyện và tiến trình học tập theo thời gian thực.
+- **Hỗ trợ Đăng nhập Học sinh bằng Tài khoản Google (Google Sign-In)**:
+  - Bổ sung API `/api/auth/google`: Tự động nhận diện học sinh khi đăng nhập bằng Google, tự động tạo tài khoản hoặc cập nhật thông tin phiên học, gán nhãn `authProvider: "google"`.
+  - Tự động đồng bộ ngay tài khoản Google vào `ontn_users.json` trên Google Drive.
+  - Cập nhật cả `LoginModal` và `StudentLoginGate`: Bổ sung nút "Đăng Nhập Nhanh Bằng Tài Khoản Google" chuẩn thiết kế Neumorphic.
+- **Cải tiến Dashboard Quản Trị Viên (Admin)**:
+  - **Huy hiệu kết nối Google Drive**: Hiển thị rõ trạng thái `🟢 Đám Mây Google Drive: Đã Kết Nối (Lưu Thời Gian Thực Toàn Trường)`.
+  - **Modal Quản lý Lưu Trữ Google Drive (`DriveStorageSyncModal`)**: Cho phép Thầy thực hiện 3 thao tác 1-Click:
+    1. 🔄 **Đồng bộ 2 chiều (Sync All)**: Tự động hợp nhất dữ liệu giữa hệ thống và Drive.
+    2. ⬆️ **Sao lưu lên Drive (Backup)**: Lưu đè bản dữ liệu học sinh mới nhất lên Drive.
+    3. ⬇️ **Khôi phục từ Drive (Restore)**: Nạp lại danh sách học sinh từ `ontn_users.json` về hệ thống ngay lập tức chỉ với 1 click.
+  - **Cải tiến bảng học sinh khi rỗng**: Bổ sung nút bấm trực tiếp "Khôi Phục Từ Google Drive" và "Cấp Tài Khoản Mới" để Thầy thao tác thuận tiện ngay trên giao diện.
+  - **Phân loại người dùng trong Quản lý Người Dùng & Phân Quyền**: Hiển thị huy hiệu đỏ đặc trưng `Google Sign-In` kèm email cho học sinh đăng nhập bằng Google.
+- **Kiểm thử & Biên dịch**:
+  - Kết nối thực tế tới Google Drive qua Service Account thành công 100%.
+  - `npm run build` hoàn thành 100% không có bất kỳ lỗi TypeScript/Next.js nào.
+
+Cập nhật trước: 2026-10-11 — Nâng cấp toàn diện **Hệ thống Giọng đọc Đề bài Thông minh (AI Voice 2.0)** & **Khắc phục triệt để lỗi tự động chuyển giọng đọc**:
 - **Khắc phục dứt điểm lỗi "Hệ thống tự chuyển qua các giọng đọc khác khi làm câu hỏi"**:
   - **Cơ chế cấu hình nguyên tử (`saveAndApplyConfig`)**: Thay thế các hàm setter rời rạc (`setProvider`, `setVoiceId`, `setGender`) bằng một phương thức nguyên tử duy nhất trong `TTSManager`. Đảm bảo `provider`, `voiceId`, `gender` (Nam/Nữ) và `apiKey` được cập nhật đồng bộ 100%, ghi vào `localStorage` cùng lúc và chỉ phát sự kiện `notify()` đúng một lần duy nhất, ngăn chặn tình trạng gán nhầm sang giọng nữ trung gian khi chọn giọng nam.
   - **Tự động làm sạch bộ đệm âm thanh (`audioCache.clear()`)**: Mỗi khi người dùng bấm "Lưu & Bật Giọng Đọc Này" hoặc thay đổi giọng, bộ đệm âm thanh trên client được xóa sạch ngay lập tức, triệt tiêu nguy cơ phát lại âm thanh của giọng đọc cũ đã lưu từ trước.

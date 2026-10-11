@@ -849,21 +849,29 @@ export function UserManagementView({
                         </div>
                       </td>
 
-                      {/* Tên Đăng Nhập + Nút Copy */}
+                      {/* Tên Đăng Nhập + Nút Copy + Huy hiệu Google */}
                       <td className="py-3 px-3">
-                        <div className="inline-flex items-center gap-1.5 font-mono font-bold text-slate-700 bg-white/40 px-2 py-0.5 rounded shadow-neu-inset-sm">
-                          <span>{u.username}</span>
-                          <button
-                            onClick={() => handleCopyUsername(u.username)}
-                            className="text-slate-400 hover:text-blue-600 transition"
-                            title="Sao chép tên đăng nhập"
-                          >
-                            {copiedUsername === u.username ? (
-                              <Check className="w-3 h-3 text-emerald-600" />
-                            ) : (
-                              <Copy className="w-3 h-3" />
-                            )}
-                          </button>
+                        <div className="flex flex-col gap-1 items-start">
+                          <div className="inline-flex items-center gap-1.5 font-mono font-bold text-slate-700 bg-white/40 px-2 py-0.5 rounded shadow-neu-inset-sm">
+                            <span>{u.username}</span>
+                            <button
+                              onClick={() => handleCopyUsername(u.username)}
+                              className="text-slate-400 hover:text-blue-600 transition"
+                              title="Sao chép tên đăng nhập"
+                            >
+                              {copiedUsername === u.username ? (
+                                <Check className="w-3 h-3 text-emerald-600" />
+                              ) : (
+                                <Copy className="w-3 h-3" />
+                              )}
+                            </button>
+                          </div>
+                          {u.authProvider === "google" && (
+                            <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-red-50 text-red-700 text-[9px] font-extrabold border border-red-200">
+                              <span>Google Sign-In</span>
+                              {u.email && <span className="opacity-75 font-normal">({u.email})</span>}
+                            </span>
+                          )}
                         </div>
                       </td>
 

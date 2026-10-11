@@ -12,6 +12,12 @@ interface AuthContextType {
   openLoginModal: () => void;
   closeLoginModal: () => void;
   login: (username: string, password: string) => Promise<{ success: boolean; message: string }>;
+  loginWithGoogle: (data: {
+    email: string;
+    fullName?: string;
+    avatarUrl?: string;
+    className?: string;
+  }) => Promise<{ success: boolean; message: string }>;
   logout: () => void;
 }
 
@@ -59,6 +65,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const loginWithGoogle = async (data: {
+    email: string;
+    fullName?: string;
+    avatarUrl?: string;
+    className?: string;
+  }): Promise<{ success: boolean; message: string }> => {
+    try {
+      const res = await fetch("/api/auth/google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const resData = await res.json();
+      if (!res.ok || !resData.success) {
+        return { success: false, message: resData.message || "Đăng nhập Google thất bại." };
+      }
+
+      setUser(resData.user);
+      localStorage.setItem("thpt_current_user", JSON.stringify(resData.user));
+      setIsLoginModalOpen(false);
+      return { success: true, message: resData.message || "Đăng nhập thành công!" };
+    } catch (error: any) {
+      return { success: false, message: "Lỗi kết nối máy chủ: " + error.message };
+    }
+  };
+
   const logout = () => {
     setUser(null);
     localStorage.removeItem("thpt_current_user");
@@ -81,6 +114,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         openLoginModal,
         closeLoginModal,
         login,
+        loginWithGoogle,
         logout,
       }}
     >

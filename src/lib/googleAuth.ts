@@ -1,4 +1,6 @@
 import crypto from "crypto";
+import fs from "fs";
+import path from "path";
 
 export interface ServiceAccountCredentials {
   client_email: string;
@@ -7,11 +9,85 @@ export interface ServiceAccountCredentials {
 }
 
 /**
+ * Tự động tìm kiếm Service Account Credentials từ biến môi trường hoặc tệp tin cục bộ
+ */
+export function getDefaultServiceAccount(): ServiceAccountCredentials | null {
+  // 1. Biến môi trường GOOGLE_SERVICE_ACCOUNT_KEY (dạng JSON string)
+  if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
+    try {
+      const raw = process.env.GOOGLE_SERVICE_ACCOUNT_KEY.trim();
+      const parsed = JSON.parse(raw);
+      if (parsed.client_email && parsed.private_key) {
+        return parsed as ServiceAccountCredentials;
+      }
+    } catch {
+      // Thử decode base64 nếu key được mã hóa base64 trên Vercel
+      try {
+        const decoded = Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT_KEY, "base64").toString("utf-8");
+        const parsed = JSON.parse(decoded);
+        if (parsed.client_email && parsed.private_key) {
+          return parsed as ServiceAccountCredentials;
+        }
+      } catch {}
+    }
+  }
+
+  // 2. Biến môi trường riêng lẻ GOOGLE_CLIENT_EMAIL và GOOGLE_PRIVATE_KEY
+  if (process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
+    return {
+      client_email: process.env.GOOGLE_CLIENT_EMAIL.trim(),
+      private_key: process.env.GOOGLE_PRIVATE_KEY.trim(),
+      project_id: process.env.GOOGLE_PROJECT_ID,
+    };
+  }
+
+  // 3. Tệp tin cục bộ (quét tự động file onthithpt-509307-4cde4b6fcaea.json và các file tương tự)
+  const localCandidates = [
+    path.join(process.cwd(), "onthithpt-509307-4cde4b6fcaea.json"),
+    path.join(process.cwd(), "credentials-onthithpt.json"),
+    path.join(process.cwd(), "credentials.json"),
+    path.join(process.cwd(), "service_account.json"),
+  ];
+
+  for (const p of localCandidates) {
+    try {
+      if (fs.existsSync(p)) {
+        const content = fs.readFileSync(p, "utf-8");
+        const parsed = JSON.parse(content);
+        if (parsed.client_email && parsed.private_key) {
+          return parsed as ServiceAccountCredentials;
+        }
+      }
+    } catch {}
+  }
+
+  // Quét tìm bất kỳ tệp JSON nào chứa onthithpt hoặc serviceaccount trong thư mục gốc
+  try {
+    const files = fs.readdirSync(process.cwd());
+    for (const file of files) {
+      if (file.endsWith(".json") && (file.includes("onthithpt") || file.includes("serviceaccount") || file.includes("gserviceaccount"))) {
+        const fullPath = path.join(process.cwd(), file);
+        try {
+          const content = fs.readFileSync(fullPath, "utf-8");
+          const parsed = JSON.parse(content);
+          if (parsed.client_email && parsed.private_key) {
+            return parsed as ServiceAccountCredentials;
+          }
+        } catch {}
+      }
+    }
+  } catch {}
+
+  return null;
+}
+
+/**
  * Tạo Google OAuth2 Access Token từ Service Account credentials
- * Sử dụng thư viện crypto tiêu chuẩn của Node.js, không cần thư viện bên ngoài
+ * Hỗ trợ quyền đọc/ghi toàn diện trên Google Drive
  */
 export async function getGoogleAccessToken(
-  creds: ServiceAccountCredentials
+  creds: ServiceAccountCredentials,
+  scope: string = "https://www.googleapis.com/auth/drive"
 ): Promise<string> {
   const now = Math.floor(Date.now() / 1000);
 
@@ -24,7 +100,7 @@ export async function getGoogleAccessToken(
   // 2. JWT Claim Set (Payload)
   const claimSet = {
     iss: creds.client_email,
-    scope: "https://www.googleapis.com/auth/drive.readonly",
+    scope: scope,
     aud: "https://oauth2.googleapis.com/token",
     exp: now + 3600,
     iat: now,
