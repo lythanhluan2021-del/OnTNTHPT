@@ -1,6 +1,22 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-11 — Hoàn thành nâng cấp toàn diện **Quản lý Người dùng & Phân quyền** trên Admin Dashboard: tách Tab chuyên dụng, sửa parser Bulk Import Excel hỗ trợ Tab `\t`, bổ sung Modal Chỉnh sửa User, cấp quyền Student/Teacher/Admin, đồng bộ bài làm và dọn dẹp orphan attempts, in phiếu tài khoản A4. Đã push commit `5cf5f5e` lên GitHub và deploy Vercel thành công.
+Cập nhật: 2026-10-11 — Nâng cấp toàn diện **Hệ thống Giọng đọc Đề bài Thông minh (AI Voice 2.0)**:
+- Khắc phục hoàn toàn tình trạng giọng robot cứng nhắc bằng việc tích hợp hệ thống đa nguồn TTS AI tự nhiên:
+  - **FPT.AI Voice**: Chuyên sâu tiếng Việt với **🌾 Giọng Nữ Miền Tây (`thuminh`)**, **🌾 Nam Miền Tây (`minhquang`)**, **🎙️ Nữ MC Trong Trẻo (`banmai`, `thuha`)**, **🎙️ Nam MC Bắc (`leminh`)**.
+  - **OpenAI Studio TTS**: **✨ Nữ MC AI (`nova`, `shimmer`)**, **✨ Nam MC (`echo`, `onyx`)** âm thanh phòng thu siêu trong trẻo.
+  - **Google Cloud TTS**: Giọng nơ-ron Neural2 tự nhiên.
+  - **Browser Web Speech API**: Chế độ dự phòng tự động (fallback) hoàn toàn miễn phí không lo gián đoạn.
+- Cơ chế **Bring Your Own Key (API Key Cá Nhân)**:
+  - Cho phép người dùng nhập API Key FPT.AI (miễn phí 100.000 ký tự/tháng), OpenAI hoặc Google TTS.
+  - Khóa API lưu trữ bảo mật trong `localStorage` trên trình duyệt người dùng, bảo vệ quyền riêng tư tuyệt đối.
+- Giao diện **VoiceSettingsModal & VoiceToggleSwitch**:
+  - Modal Neumorphic hiện đại, chọn nhanh Engine và nhân vật giọng đọc kèm huy hiệu trực quan.
+  - Nút thử giọng tại chỗ (`testVoice`) kiểm tra API key tức thì trước khi lưu.
+  - Điều chỉnh tốc độ linh hoạt (0.85x, 1.0x, 1.15x).
+  - Huy hiệu hiển thị phong cách trên thanh câu hỏi: `🌾 Miền Tây`, `🎙️ MC Trong Trẻo`, `✨ Studio AI`.
+  - Giữ nguyên phong cách vùng miền khi chuyển đổi nhanh giữa 👩 Nữ và 👨 Nam.
+- Bộ chuẩn hóa ngữ âm Tin học (`normalizeTextForSpeech`): Tự động phiên âm các thuật ngữ CNTT thông dụng (Router, Switch, Modem, Hub, LAN, WAN, TCP/IP, IP, SQL, HTML, CSS, DBMS, CSDL...) thành phát âm tự nhiên, sư phạm.
+- Biên dịch dự án `npm run build` thành công xuất sắc, sẵn sàng triển khai Vercel.
 
 ## ĐỌC TRƯỚC KHI LÀM (phiên mới / hết quota)
 
