@@ -220,42 +220,63 @@ export async function POST(req: NextRequest) {
           "Hãy đọc to rõ ràng với giọng Nam trầm ấm, chuẩn mực, rành mạch, phong thái sư phạm, chỉ đọc đúng từng chữ trong nội dung.";
       }
 
-      // 3A. Ưu tiên cao nhất: Gọi Google Gemini 2.0 Flash Audio (hỗ trợ API Key Google AI Studio miễn phí)
+      // 3A. Ưu tiên cao nhất: Gọi Google Gemini TTS chính thức (gemini-3.8-flash-tts)
       const isTraditionalGcpVoice =
         voice === "vi-VN-Neural2-A" || voice === "vi-VN-Neural2-D";
 
       if (!isTraditionalGcpVoice) {
         try {
-          const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${activeKey}`;
-          const geminiPayload = {
-            systemInstruction: {
-              parts: [{ text: styleInstruction }],
-            },
-            contents: [
-              {
-                role: "user",
-                parts: [{ text }],
-              },
-            ],
-            generationConfig: {
-              responseModalities: ["AUDIO"],
-              speechConfig: {
-                voiceConfig: {
-                  prebuiltVoiceConfig: {
-                    voiceName: geminiVoiceName,
+          const ttsModels = [
+            "gemini-3.8-flash-tts",
+            "gemini-2.5-flash-preview-tts",
+            "gemini-3.8-flash-lite-tts",
+          ];
+
+          let geminiRes: Response | null = null;
+          let lastErrMsg = "";
+
+          for (const model of ttsModels) {
+            const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${activeKey}`;
+            const geminiPayload = {
+              contents: [
+                {
+                  role: "user",
+                  parts: [{ text }],
+                },
+              ],
+              generationConfig: {
+                responseModalities: ["AUDIO"],
+                speechConfig: {
+                  voiceConfig: {
+                    prebuiltVoiceConfig: {
+                      voiceName: geminiVoiceName,
+                    },
                   },
                 },
               },
-            },
-          };
+            };
 
-          const geminiRes = await fetch(geminiUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(geminiPayload),
-          });
+            const res = await fetch(geminiUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(geminiPayload),
+            });
 
-          if (geminiRes.ok) {
+            if (res.ok) {
+              geminiRes = res;
+              break;
+            } else {
+              const errData = await res.json().catch(() => ({}));
+              lastErrMsg = errData.error?.message || "";
+              // Nếu gặp lỗi khác 404 thì không cần đổi model
+              if (res.status !== 404) {
+                geminiRes = res;
+                break;
+              }
+            }
+          }
+
+          if (geminiRes && geminiRes.ok) {
             const geminiData = await geminiRes.json();
             const candidate = geminiData.candidates?.[0];
             const audioPart = candidate?.content?.parts?.find(
@@ -274,22 +295,14 @@ export async function POST(req: NextRequest) {
                 },
               });
             }
-          } else {
-            const errData = await geminiRes.json().catch(() => ({}));
-            const errMsg = errData.error?.message || "";
-            let friendlyMsg = `Google Gemini từ chối yêu cầu (${geminiRes.status}): ${errMsg || "Vui lòng kiểm tra lại cấu hình."}`;
+          } else if (geminiRes) {
+            let friendlyMsg = `Google Gemini từ chối yêu cầu (${geminiRes.status}): ${lastErrMsg || "Vui lòng kiểm tra lại cấu hình."}`;
 
             if (
-              errMsg.includes("API_KEY_INVALID") ||
-              errMsg.includes("API key not valid")
+              lastErrMsg.includes("API_KEY_INVALID") ||
+              lastErrMsg.includes("API key not valid")
             ) {
               friendlyMsg = "API Key Google Gemini không hợp lệ. Vui lòng kiểm tra lại mã key trên aistudio.google.com.";
-            } else if (
-              errMsg.includes("ACCESS_TOKEN_TYPE_UNSUPPORTED") ||
-              errMsg.includes("invalid authentication credentials") ||
-              geminiRes.status === 401
-            ) {
-              friendlyMsg = "Mã Key Google của bạn (dạng AQ...) bị máy chủ Google báo lỗi 401 (ACCESS_TOKEN_TYPE_UNSUPPORTED). Vui lòng chuyển sang tab '💻 Trình Duyệt' (hoàn toàn miễn phí, không cần bất kỳ API Key nào) để nghe ngay lập tức!";
             }
 
             return NextResponse.json(
