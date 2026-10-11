@@ -29,27 +29,55 @@ export async function POST(req: NextRequest) {
         );
       }
 
+      // Kiểm tra nếu người dùng nhầm lẫn dán key của Google (AQ...) hoặc OpenAI (sk...) vào FPT
+      if (activeKey.startsWith("AQ.") || activeKey.startsWith("AIza")) {
+        return NextResponse.json(
+          {
+            success: false,
+            message:
+              "Khóa bạn vừa dán là Google Gemini API Key (dành cho Trợ lý AI), không phải khóa FPT.AI. Để nghe giọng Miền Tây hoặc MC, vui lòng lấy API Key FPT miễn phí tại console.fpt.ai (hoặc chuyển sang tab 'Trình Duyệt' để nghe miễn phí không cần key).",
+          },
+          { status: 400 }
+        );
+      }
+      if (activeKey.startsWith("sk-")) {
+        return NextResponse.json(
+          {
+            success: false,
+            message:
+              "Khóa bạn vừa dán là OpenAI API Key. Vui lòng chuyển sang tab 'OpenAI Studio' bên cạnh để sử dụng giọng Nova / Echo trong trẻo.",
+          },
+          { status: 400 }
+        );
+      }
+
       // Giọng FPT: thuminh (Nữ Miền Tây/Nam), minhquang (Nam Miền Tây/Nam), maingoc (Nữ Nam), banmai (Nữ Bắc MC), thuha (Nữ Bắc), leminh (Nam Bắc MC)
       let fptSpeed = "";
       if (speed < 0.95) fptSpeed = "-1";
       else if (speed > 1.1) fptSpeed = "1";
 
-      const fptRes = await fetch("https://api.fpt.ai/h2/tts", {
+      const fptRes = await fetch("https://api.fpt.ai/hmi/tts/v5", {
         method: "POST",
         headers: {
+          "api_key": activeKey,
           "api-key": activeKey,
           "voice": voice || "thuminh",
           "speed": fptSpeed,
+          "Cache-Control": "no-cache",
         },
         body: text,
       });
 
       if (!fptRes.ok) {
         const errorText = await fptRes.text();
+        let errMsg = `Lỗi kết nối FPT.AI (${fptRes.status}): Vui lòng kiểm tra lại API Key hoặc hạn mức gói cước.`;
+        if (errorText.includes("Invalid authentication")) {
+          errMsg = "API Key FPT.AI không hợp lệ. Vui lòng sao chép lại mã API Key tại console.fpt.ai.";
+        }
         return NextResponse.json(
           {
             success: false,
-            message: `Lỗi kết nối FPT.AI (${fptRes.status}): Vui lòng kiểm tra lại API Key hoặc hạn mức gói cước.`,
+            message: errMsg,
             detail: errorText,
           },
           { status: fptRes.status }
@@ -57,11 +85,17 @@ export async function POST(req: NextRequest) {
       }
 
       const fptData = await fptRes.json();
-      if (fptData.error !== 0 && fptData.error !== undefined) {
+      if (
+        (fptData.error !== 0 && fptData.error !== undefined) ||
+        fptData.message?.toLowerCase().includes("invalid authentication")
+      ) {
         return NextResponse.json(
           {
             success: false,
-            message: fptData.message || "FPT.AI từ chối tạo giọng đọc. Vui lòng kiểm tra API key.",
+            message:
+              fptData.message === "Invalid authentication credentials"
+                ? "API Key FPT.AI không hợp lệ. Vui lòng kiểm tra lại mã key trên trang console.fpt.ai."
+                : fptData.message || "FPT.AI từ chối tạo giọng đọc. Vui lòng kiểm tra API key.",
           },
           { status: 400 }
         );

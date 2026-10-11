@@ -324,9 +324,45 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
           </div>
         </div>
 
-        {/* BƯỚC 2: NHẬP API KEY CÁ NHÂN (NẾU CHỌN NHÀ CUNG CẤP AI) */}
-        {selectedProvider !== "browser" && (
-          <div className="p-3.5 rounded-neu-sm bg-white/60 dark:bg-slate-800/70 border border-slate-300 dark:border-slate-700 space-y-2">
+        {/* BƯỚC 2: HƯỚNG DẪN / NHẬP API KEY */}
+        {selectedProvider === "browser" ? (
+          <div className="p-3 sm:p-3.5 rounded-neu-sm bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-700/80 space-y-1.5 shadow-neu-flat-xs">
+            <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-bold text-xs">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+              <span>Chế độ Trình Duyệt: Hoạt động ngay 100% không cần bất kỳ API Key nào!</span>
+            </div>
+            <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+              Bạn có thể sử dụng giọng đọc Nữ hoặc Nam có sẵn của máy tính/điện thoại ngay lập tức. Bấm nút <strong>&quot;Nghe Thử Câu Mẫu&quot;</strong> bên dưới hoặc bấm <strong>&quot;Lưu &amp; Bật Giọng Đọc Này&quot;</strong> để bắt đầu học ngay mà không cần tài khoản.
+            </p>
+          </div>
+        ) : (
+          <div className="p-3.5 rounded-neu-sm bg-white/60 dark:bg-slate-800/70 border border-slate-300 dark:border-slate-700 space-y-2.5">
+            {selectedProvider === "fpt" && (
+              <div className="text-[11px] text-blue-900 dark:text-blue-200 bg-blue-50/90 dark:bg-blue-950/40 p-2.5 rounded-neu-sm border border-blue-200 dark:border-blue-800 space-y-1">
+                <div className="font-bold flex items-center gap-1.5">
+                  <span>🌾 Cách nhận API Key FPT để nghe Giọng Miền Tây &amp; MC (Miễn phí 100%):</span>
+                </div>
+                <ol className="list-decimal list-inside space-y-0.5 text-[10px] text-slate-600 dark:text-slate-300 pl-1">
+                  <li>
+                    Truy cập trang{" "}
+                    <a
+                      href="https://console.fpt.ai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 font-bold underline"
+                    >
+                      console.fpt.ai
+                    </a>{" "}
+                    và đăng nhập bằng Google.
+                  </li>
+                  <li>
+                    Vào mục <strong>Text to Speech</strong> ➔ Sao chép mã <strong>API Key</strong> (dạng 32 ký tự).
+                  </li>
+                  <li>Dán mã vào ô bên dưới rồi bấm <strong>Nghe Thử Câu Mẫu</strong>.</li>
+                </ol>
+              </div>
+            )}
+
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
                 <Key className="w-3.5 h-3.5 text-indigo-600" />
@@ -344,12 +380,12 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
               {/* Link lấy key miễn phí */}
               {selectedProvider === "fpt" && (
                 <a
-                  href="https://fpt.ai"
+                  href="https://console.fpt.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[11px] text-blue-600 hover:underline font-bold inline-flex items-center gap-1"
                 >
-                  <span>Nhận 100.000 ký tự miễn phí tại fpt.ai</span>
+                  <span>Nhận 100.000 ký tự miễn phí tại console.fpt.ai</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               )}
@@ -384,7 +420,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
                 }}
                 placeholder={
                   selectedProvider === "fpt"
-                    ? "Dán API Key FPT.AI (ví dụ: aB1cD2eF3gH4iJ5k...)"
+                    ? "Dán API Key FPT.AI (32 ký tự, ví dụ: 4f9a72b...)"
                     : selectedProvider === "openai"
                     ? "Dán API Key OpenAI (sk-proj-...)"
                     : "Dán Google Cloud API Key (AIzaSy...)"
