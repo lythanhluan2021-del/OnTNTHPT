@@ -114,6 +114,7 @@ export interface DriveSyncStatus {
 
 // =================== AUTH & QUẢN LÝ HỌC SINH ===================
 export type UserRole = "admin" | "teacher" | "student";
+export type AccountType = "official" | "free"; // "official": Chính khóa (Excel/Trường cấp) | "free": Tự do (Google/Vãng lai)
 
 export interface User {
   id: string;
@@ -129,6 +130,7 @@ export interface User {
   authProvider?: "credentials" | "google";
   email?: string;
   avatarUrl?: string;
+  accountType?: AccountType;
 }
 
 export interface StudentProgressSummary {
@@ -136,6 +138,9 @@ export interface StudentProgressSummary {
   username: string;
   fullName: string;
   className: string;
+  accountType?: AccountType;
+  authProvider?: "credentials" | "google";
+  email?: string;
   totalQuestionsAttempted: number;
   correctAnswers: number;
   accuracyRate: number; // 0 - 100%
@@ -150,6 +155,8 @@ export interface StudentProgressSummary {
 
 export interface AdminDashboardOverview {
   totalStudents: number;
+  officialStudentsCount?: number; // Số học sinh chính khóa (Excel)
+  freeStudentsCount?: number;     // Số người dùng tự do (Google/Vãng lai)
   activeStudents: number;
   averageScore: number;
   passRate: number; // Tỷ lệ >= 5.0đ

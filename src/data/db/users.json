@@ -7,7 +7,8 @@
     "isActive": true,
     "password": "admin",
     "createdAt": 1726000000000,
-    "lastLoginAt": 1791713158363
+    "lastLoginAt": 1791713158363,
+    "accountType": "official"
   },
   {
     "id": "usr-ntdat12a1",
@@ -18,7 +19,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-ddtien12a1",
@@ -29,7 +31,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-lcdinh12a1",
@@ -40,7 +43,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-nhhuy12a4",
@@ -51,7 +55,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-hmkha12a4",
@@ -62,7 +67,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-lttin12a4",
@@ -73,7 +79,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-pvtgiang12a4",
@@ -84,7 +91,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-ntathu12a7",
@@ -95,7 +103,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-ttnxuyen12a7",
@@ -106,7 +115,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-vtmxuyen12a7",
@@ -117,7 +127,8 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
   },
   {
     "id": "usr-dpkhang12a7",
@@ -128,6 +139,21 @@
     "schoolYear": "2026-2027",
     "password": "123",
     "isActive": true,
-    "createdAt": 1791712024790
+    "createdAt": 1791712024790,
+    "accountType": "official"
+  },
+  {
+    "id": "usr-gg-mv3o9rk1-bdtw",
+    "username": "lythanhluan21121",
+    "fullName": "chí long",
+    "email": "lythanhluan21121@gmail.com",
+    "role": "student",
+    "className": "Lớp Tự Do",
+    "schoolYear": "2026 - 2027",
+    "isActive": true,
+    "createdAt": 1791714027457,
+    "lastLoginAt": 1791714027457,
+    "authProvider": "google",
+    "accountType": "free"
   }
 ]

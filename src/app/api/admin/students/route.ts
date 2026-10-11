@@ -9,6 +9,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const className = searchParams.get("class");
     const role = searchParams.get("role"); // "all" | "student" | "teacher" | "admin"
+    const accountType = searchParams.get("accountType"); // "all" | "official" | "free"
 
     let allUsers = await StorageAdapter.getUsers();
 
@@ -18,6 +19,10 @@ export async function GET(req: NextRequest) {
 
     if (className && className !== "all") {
       allUsers = allUsers.filter((s) => s.className === className);
+    }
+
+    if (accountType && accountType !== "all") {
+      allUsers = allUsers.filter((u) => u.accountType === accountType);
     }
 
     const safeUsers = allUsers.map(({ password: _, ...s }) => s);
@@ -37,7 +42,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    // Hỗ trợ cả 2 chế độ: Thêm đơn lẻ ({ fullName, username, password, className, role })
+    // Hỗ trợ cả 2 chế độ: Thêm đơn lẻ ({ fullName, username, password, className, role, accountType })
     // hoặc Thêm hàng loạt ({ students: [...] })
     if (Array.isArray(body.students)) {
       const candidates: Omit<User, "id" | "createdAt">[] = [];
@@ -50,6 +55,10 @@ export async function POST(req: NextRequest) {
         }
 
         const userRole = item.role === "admin" || item.role === "teacher" ? item.role : "student";
+        const candidateAccountType =
+          item.accountType ||
+          (item.className && item.className.toLowerCase().includes("tự do") ? "free" : "official");
+
         candidates.push({
           username: item.username.trim().toLowerCase(),
           fullName: item.fullName.trim(),
@@ -58,6 +67,7 @@ export async function POST(req: NextRequest) {
           schoolYear: item.schoolYear || "2026-2027",
           password: item.password ? item.password.trim() : "123",
           isActive: item.isActive !== undefined ? item.isActive : true,
+          accountType: candidateAccountType,
         });
       }
 
@@ -79,7 +89,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Thêm đơn lẻ
-    const { username, fullName, className, password, role } = body;
+    const { username, fullName, className, password, role, accountType } = body;
     if (!username || !fullName) {
       return NextResponse.json(
         { success: false, message: "Vui lòng cung cấp Tên đăng nhập và Họ tên người dùng." },
@@ -88,6 +98,8 @@ export async function POST(req: NextRequest) {
     }
 
     const userRole = role === "admin" || role === "teacher" ? role : "student";
+    const singleAccountType =
+      accountType || (className && className.toLowerCase().includes("tự do") ? "free" : "official");
 
     const newUser = await StorageAdapter.createUser({
       username: username.trim().toLowerCase(),
@@ -97,6 +109,7 @@ export async function POST(req: NextRequest) {
       schoolYear: "2026-2027",
       password: password ? password.trim() : "123",
       isActive: true,
+      accountType: singleAccountType,
     });
 
     const { password: _, ...safeUser } = newUser;

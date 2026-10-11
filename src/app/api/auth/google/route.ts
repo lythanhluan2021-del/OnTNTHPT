@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
         authProvider: "google",
         lastLoginAt: Date.now(),
         className: user.className || className || "Lớp Tự Do",
+        accountType: user.accountType || "free",
       };
 
       const updatedUsers = users.map((u) => (u.id === user!.id ? updatedUser : u));
@@ -66,6 +67,7 @@ export async function POST(req: NextRequest) {
         createdAt: Date.now(),
         lastLoginAt: Date.now(),
         authProvider: "google",
+        accountType: "free",
         avatarUrl: avatarUrl || undefined,
       };
 

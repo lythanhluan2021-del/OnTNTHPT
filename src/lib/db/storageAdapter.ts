@@ -157,7 +157,59 @@ export function matchStudentAttempt(attempt: StudentAttempt, student: User): boo
   return false;
 }
 
+// Helper phân loại học sinh chính khóa và người dùng tự do
+export function getUserAccountType(student: Partial<User>): "official" | "free" {
+  if (student.accountType === "official" || student.accountType === "free") {
+    return student.accountType;
+  }
+  if (student.authProvider === "google") {
+    return "free";
+  }
+  const cls = (student.className || "").toLowerCase();
+  if (
+    cls.includes("tự do") ||
+    cls.includes("tu do") ||
+    cls.includes("vang lai") ||
+    cls.includes("vãng lai")
+  ) {
+    return "free";
+  }
+  return "official";
+}
+
 export class StorageAdapter {
+  static getDeletedUserIdentifiers(): Set<string> {
+    const localTombstones = safeReadJson<string[]>(path.join(LOCAL_DB_DIR, "deleted_users.json")) || [];
+    const tmpTombstones = safeReadJson<string[]>(path.join(TMP_DB_DIR, "deleted_users.json")) || [];
+    return new Set<string>([...localTombstones, ...tmpTombstones].map((s) => s.trim().toLowerCase()));
+  }
+
+  static recordDeletedUser(identifier: string): void {
+    if (!identifier) return;
+    const clean = identifier.trim().toLowerCase();
+    const set = this.getDeletedUserIdentifiers();
+    set.add(clean);
+    const list = Array.from(set);
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "deleted_users.json"), list);
+    if (!IS_SERVERLESS) {
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "deleted_users.json"), list);
+    }
+  }
+
+  static clearDeletedTombstone(identifier: string): void {
+    if (!identifier) return;
+    const clean = identifier.trim().toLowerCase();
+    const set = this.getDeletedUserIdentifiers();
+    if (set.has(clean)) {
+      set.delete(clean);
+      const list = Array.from(set);
+      safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "deleted_users.json"), list);
+      if (!IS_SERVERLESS) {
+        safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "deleted_users.json"), list);
+      }
+    }
+  }
+
   static isCloudConnected(): boolean {
     return Boolean(getRedisClient()) || GoogleDriveStorage.isConfigured();
   }
@@ -169,6 +221,15 @@ export class StorageAdapter {
   }
 
   static async getUsers(): Promise<User[]> {
+    const deletedSet = this.getDeletedUserIdentifiers();
+    const isDeleted = (u: User | undefined | null) => {
+      if (!u) return true;
+      if (u.id && deletedSet.has(u.id.toLowerCase())) return true;
+      if (u.username && deletedSet.has(u.username.trim().toLowerCase())) return true;
+      if (u.email && deletedSet.has(u.email.trim().toLowerCase())) return true;
+      return false;
+    };
+
     const redis = getRedisClient();
 
     // 1. Nếu có Upstash Redis, ưu tiên đọc trực tiếp từ Đám Mây thời gian thực
@@ -176,30 +237,25 @@ export class StorageAdapter {
       try {
         const remoteUsers = await redis.get<User[]>("thpt:users");
         if (remoteUsers && Array.isArray(remoteUsers) && remoteUsers.length > 0) {
-          // Tự động dọn dẹp các tài khoản học sinh mẫu (mock data cũ) nếu còn sót lại trong Redis
           const mockUserIds = new Set([
             "hs-12a1-01", "hs-12a1-02", "hs-12a1-03", "hs-12a1-04", "hs-12a1-05",
             "hs-12a2-01", "hs-12a2-02", "hs-12a3-01", "hs-12a3-02",
           ]);
-          const hasMock = remoteUsers.some(
-            (u) => mockUserIds.has(u.id) || (u.username.startsWith("hs12a") && u.createdAt === 1726000000000)
+          const cleanedUsers = remoteUsers.filter(
+            (u) =>
+              !mockUserIds.has(u.id) &&
+              !(u.username.startsWith("hs12a") && u.createdAt === 1726000000000) &&
+              !isDeleted(u)
           );
-          if (hasMock) {
-            const cleanedUsers = remoteUsers.filter(
-              (u) => !mockUserIds.has(u.id) && !(u.username.startsWith("hs12a") && u.createdAt === 1726000000000)
-            );
-            if (!cleanedUsers.some((u) => u.role === "admin")) {
-              cleanedUsers.unshift(INITIAL_USERS[0]);
-            }
-            await redis.set("thpt:users", cleanedUsers);
-            globalForStorage.ontnUsersCache = cleanedUsers;
-            return cleanedUsers;
+          if (!cleanedUsers.some((u) => u.role === "admin")) {
+            cleanedUsers.unshift(INITIAL_USERS[0]);
           }
-
-          globalForStorage.ontnUsersCache = remoteUsers;
-          return remoteUsers;
+          if (cleanedUsers.length !== remoteUsers.length) {
+            await redis.set("thpt:users", cleanedUsers);
+          }
+          globalForStorage.ontnUsersCache = cleanedUsers;
+          return cleanedUsers;
         } else {
-          // Lần đầu cắm Redis: Khởi tạo danh sách mặc định lên Redis (chỉ có Admin)
           await redis.set("thpt:users", INITIAL_USERS);
           globalForStorage.ontnUsersCache = INITIAL_USERS;
           return INITIAL_USERS;
@@ -212,9 +268,9 @@ export class StorageAdapter {
     // Đọc danh sách người dùng từ Local và Temp trước để làm nền tảng
     const localUsers = safeReadJson<User[]>(path.join(LOCAL_DB_DIR, "users.json")) || [];
     const tmpUsers = safeReadJson<User[]>(path.join(TMP_DB_DIR, "users.json")) || [];
-    let baseUsers = localUsers.length >= tmpUsers.length ? localUsers : tmpUsers;
-    if (globalForStorage.ontnUsersCache && globalForStorage.ontnUsersCache.length > baseUsers.length) {
-      baseUsers = globalForStorage.ontnUsersCache;
+    let baseUsers = (localUsers.length >= tmpUsers.length ? localUsers : tmpUsers).filter((u) => !isDeleted(u));
+    if (globalForStorage.ontnUsersCache && globalForStorage.ontnUsersCache.length > 0) {
+      baseUsers = globalForStorage.ontnUsersCache.filter((u) => !isDeleted(u));
     }
     if (baseUsers.length === 0) {
       baseUsers = [...INITIAL_USERS];
@@ -224,14 +280,22 @@ export class StorageAdapter {
     const mergeUserLists = (listA: User[], listB: User[]): User[] => {
       const map = new Map<string, User>();
       for (const u of listB) {
-        if (u && u.username) map.set(u.username.trim().toLowerCase(), u);
+        if (u && u.username && !isDeleted(u)) {
+          map.set(u.username.trim().toLowerCase(), {
+            ...u,
+            accountType: getUserAccountType(u),
+          });
+        }
       }
       for (const u of listA) {
-        if (u && u.username) {
+        if (u && u.username && !isDeleted(u)) {
           const key = u.username.trim().toLowerCase();
           const existing = map.get(key);
           if (!existing) {
-            map.set(key, u);
+            map.set(key, {
+              ...u,
+              accountType: getUserAccountType(u),
+            });
           } else {
             map.set(key, {
               ...existing,
@@ -239,6 +303,7 @@ export class StorageAdapter {
               fullName: u.fullName || existing.fullName,
               className: u.className || existing.className,
               role: u.role || existing.role,
+              accountType: u.accountType || existing.accountType || getUserAccountType(u),
             });
           }
         }
@@ -251,16 +316,17 @@ export class StorageAdapter {
       try {
         const driveUsers = await GoogleDriveStorage.loadUsers();
         if (driveUsers && Array.isArray(driveUsers)) {
-          const merged = mergeUserLists(driveUsers, baseUsers);
+          const activeDriveUsers = driveUsers.filter((u) => !isDeleted(u));
+          const merged = mergeUserLists(activeDriveUsers, baseUsers);
           globalForStorage.ontnUsersCache = merged;
           safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), merged);
           if (!IS_SERVERLESS) {
             safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), merged);
           }
-          // Nếu có học sinh mới ở local mà Drive chưa có, tự động đồng bộ ngay lên Drive
-          if (merged.length > driveUsers.length) {
+          // Nếu Drive chứa tài khoản đã bị xóa, dọn sạch ngay trên Drive
+          if (activeDriveUsers.length < driveUsers.length || merged.length > driveUsers.length) {
             GoogleDriveStorage.syncUsers(merged).catch((e) =>
-              console.warn("[StorageAdapter] Lỗi tự động đồng bộ users lên Drive:", e)
+              console.warn("[StorageAdapter] Lỗi đồng bộ users lên Drive:", e)
             );
           }
           return merged;
@@ -271,12 +337,16 @@ export class StorageAdapter {
     }
 
     // 3. Nếu chưa đồng bộ được từ Drive, trả về baseUsers đã nạp
-    globalForStorage.ontnUsersCache = baseUsers;
-    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), baseUsers);
+    const finalUsers = baseUsers.filter((u) => !isDeleted(u)).map((u) => ({
+      ...u,
+      accountType: getUserAccountType(u),
+    }));
+    globalForStorage.ontnUsersCache = finalUsers;
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), finalUsers);
     if (!IS_SERVERLESS) {
-      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), baseUsers);
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), finalUsers);
     }
-    return baseUsers;
+    return finalUsers;
   }
 
   static async saveUsers(users: User[]): Promise<void> {
@@ -449,37 +519,83 @@ export class StorageAdapter {
   }
 
   static async deleteUser(id: string): Promise<boolean> {
+    const cleanId = id.trim().toLowerCase();
+    // 1. Ghi nhận xóa vĩnh viễn (Tombstone) ngay lập tức để không bao giờ bị merge lại
+    this.recordDeletedUser(cleanId);
+
     const users = await this.getUsers();
-    const targetUser = users.find((u) => u.id === id);
-    const filtered = users.filter((u) => u.id !== id);
+    const targetUser = users.find(
+      (u) =>
+        u.id.toLowerCase() === cleanId ||
+        u.username.toLowerCase() === cleanId ||
+        (u.email && u.email.toLowerCase() === cleanId)
+    );
 
-    if (filtered.length !== users.length) {
-      await this.saveUsers(filtered);
-
-      // Dọn sạch các bài làm liên quan để tránh bài thi mồ côi
-      if (targetUser) {
-        try {
-          const attempts = await this.getAttempts();
-          const cleanedAttempts = attempts.filter((a) => !matchStudentAttempt(a, targetUser));
-          if (cleanedAttempts.length !== attempts.length) {
-            globalForStorage.ontnAttemptsCache = cleanedAttempts;
-            const redis = getRedisClient();
-            if (redis) {
-              await redis.set("thpt:attempts", cleanedAttempts);
-            }
-            safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), cleanedAttempts);
-            if (!IS_SERVERLESS) {
-              safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), cleanedAttempts);
-            }
-          }
-        } catch (err) {
-          console.warn("[StorageAdapter] Lỗi dọn attempts khi xóa user:", err);
-        }
-      }
-
-      return true;
+    if (targetUser) {
+      this.recordDeletedUser(targetUser.id);
+      this.recordDeletedUser(targetUser.username);
+      if (targetUser.email) this.recordDeletedUser(targetUser.email);
     }
-    return false;
+
+    const filtered = users.filter(
+      (u) =>
+        u.id.toLowerCase() !== cleanId &&
+        u.username.toLowerCase() !== cleanId &&
+        (!u.email || u.email.toLowerCase() !== cleanId)
+    );
+
+    // Cập nhật RAM cache ngay lập tức
+    globalForStorage.ontnUsersCache = filtered;
+
+    // Ghi tức thời xuống file local và temp
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), filtered);
+    if (!IS_SERVERLESS) {
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), filtered);
+    }
+
+    // Ghi đồng bộ lên Google Drive và chờ kết quả
+    if (GoogleDriveStorage.isConfigured()) {
+      try {
+        await GoogleDriveStorage.syncUsers(filtered);
+      } catch (err) {
+        console.warn("[StorageAdapter] Lỗi đồng bộ xóa users lên Google Drive:", err);
+      }
+    }
+
+    // Ghi lên Redis nếu có kết nối
+    const redis = getRedisClient();
+    if (redis) {
+      try {
+        await redis.set("thpt:users", filtered);
+      } catch (err) {
+        console.warn("[StorageAdapter] Lỗi xóa users trên Redis:", err);
+      }
+    }
+
+    // Dọn sạch các bài làm liên quan để tránh bài thi mồ côi
+    if (targetUser) {
+      try {
+        const attempts = await this.getAttempts();
+        const cleanedAttempts = attempts.filter((a) => !matchStudentAttempt(a, targetUser));
+        if (cleanedAttempts.length !== attempts.length) {
+          globalForStorage.ontnAttemptsCache = cleanedAttempts;
+          if (redis) {
+            await redis.set("thpt:attempts", cleanedAttempts);
+          }
+          if (GoogleDriveStorage.isConfigured()) {
+            await GoogleDriveStorage.syncAttempts(cleanedAttempts);
+          }
+          safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), cleanedAttempts);
+          if (!IS_SERVERLESS) {
+            safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), cleanedAttempts);
+          }
+        }
+      } catch (err) {
+        console.warn("[StorageAdapter] Lỗi dọn attempts khi xóa user:", err);
+      }
+    }
+
+    return true;
   }
 
   // =================== ATTEMPTS / TIẾN ĐỘ HỌC TẬP ===================
@@ -702,16 +818,26 @@ export class StorageAdapter {
 
   // =================== AGGREGATIONS & PROGRESS ===================
 
-  static async getStudentProgressSummaries(className?: string): Promise<StudentProgressSummary[]> {
+  static async getStudentProgressSummaries(
+    className?: string,
+    accountTypeFilter?: "all" | "official" | "free"
+  ): Promise<StudentProgressSummary[]> {
     const allUsers = await this.getUsers();
-    const users = allUsers.filter((u) => u.role === "student");
-    const filteredUsers = className && className !== "all"
-      ? users.filter((u) => u.className === className)
-      : users;
+    let users = allUsers.filter((u) => u.role === "student");
+
+    // Lọc theo lớp
+    if (className && className !== "all") {
+      users = users.filter((u) => u.className === className);
+    }
+
+    // Lọc theo loại tài khoản: official (chính khóa) hoặc free (tự do)
+    if (accountTypeFilter && accountTypeFilter !== "all") {
+      users = users.filter((u) => getUserAccountType(u) === accountTypeFilter);
+    }
 
     const allAttempts = await this.getAttempts();
 
-    return filteredUsers.map((student) => {
+    return users.map((student) => {
       const studentAttempts = allAttempts.filter((a) => matchStudentAttempt(a, student));
       const totalQuestionsAttempted = studentAttempts.length;
       const correctAnswers = studentAttempts.filter((a) => a.isCorrect).length;
@@ -787,6 +913,9 @@ export class StorageAdapter {
         username: student.username,
         fullName: student.fullName,
         className: student.className || "12A1",
+        accountType: getUserAccountType(student),
+        authProvider: student.authProvider || "credentials",
+        email: student.email,
         totalQuestionsAttempted,
         correctAnswers,
         accuracyRate,
@@ -801,16 +930,28 @@ export class StorageAdapter {
     });
   }
 
-  static async getAdminDashboardOverview(className?: string): Promise<AdminDashboardOverview> {
-    const students = await this.getStudentProgressSummaries(className);
+  static async getAdminDashboardOverview(
+    className?: string,
+    accountTypeFilter?: "all" | "official" | "free"
+  ): Promise<AdminDashboardOverview> {
+    const students = await this.getStudentProgressSummaries(className, accountTypeFilter);
     const allUsers = await this.getUsers();
     const studentUsers = allUsers.filter((u) => u.role === "student");
-    const filteredUsers =
+
+    // Đếm sĩ số chính khóa và tự do toàn diện
+    const officialStudentsCount = studentUsers.filter((u) => getUserAccountType(u) === "official").length;
+    const freeStudentsCount = studentUsers.filter((u) => getUserAccountType(u) === "free").length;
+
+    let filteredUsers =
       className && className !== "all"
         ? studentUsers.filter((u) => u.className === className)
         : studentUsers;
 
-    // Tổng sĩ số theo lớp đang chọn hoặc toàn trường
+    if (accountTypeFilter && accountTypeFilter !== "all") {
+      filteredUsers = filteredUsers.filter((u) => getUserAccountType(u) === accountTypeFilter);
+    }
+
+    // Tổng sĩ số theo bộ lọc đang chọn
     const totalStudents =
       filteredUsers.length > 0
         ? filteredUsers.length
@@ -853,6 +994,8 @@ export class StorageAdapter {
 
     return {
       totalStudents,
+      officialStudentsCount,
+      freeStudentsCount,
       activeStudents,
       averageScore,
       passRate,

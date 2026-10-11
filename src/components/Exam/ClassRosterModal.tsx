@@ -45,7 +45,7 @@ export function ClassRosterModal({
     }
   };
 
-  const allAccounts = getUserAccounts();
+  const [allAccounts, setAllAccounts] = useState<any[]>(() => getUserAccounts());
   const currentClassStudents = allAccounts.filter((a) => a.className === selectedClass);
 
   const handleAddNewClass = (e: React.FormEvent) => {
@@ -86,6 +86,7 @@ export function ClassRosterModal({
     };
 
     const updated = [newAccount, ...allAccounts];
+    setAllAccounts(updated);
     localStorage.setItem("thpt_user_accounts", JSON.stringify(updated));
     soundManager.playSuccess();
     setNotification({ type: "success", text: `Đã thêm thí sinh ${newAccount.fullName} vào lớp ${selectedClass}!` });
@@ -129,6 +130,7 @@ export function ClassRosterModal({
       }
     });
 
+    setAllAccounts(currentAccounts);
     localStorage.setItem("thpt_user_accounts", JSON.stringify(currentAccounts));
     soundManager.playSuccess();
     setNotification({
@@ -139,12 +141,23 @@ export function ClassRosterModal({
     setActiveTab("list");
   };
 
-  const handleDeleteStudent = (id: string, name: string) => {
+  const handleDeleteStudent = async (id: string, name: string) => {
     if (confirm(`Thầy có chắc chắn muốn xóa thí sinh ${name} khỏi danh sách?`)) {
       const updated = allAccounts.filter((a) => a.id !== id);
-      localStorage.setItem("thpt_user_accounts", JSON.stringify(updated));
+      setAllAccounts(updated);
+      try {
+        localStorage.setItem("thpt_user_accounts", JSON.stringify(updated));
+        localStorage.removeItem("thpt_students_cache");
+        localStorage.removeItem("thpt_users_cache");
+      } catch {}
       soundManager.playClick();
       setNotification({ type: "success", text: `Đã xóa thí sinh ${name}.` });
+
+      try {
+        await fetch(`/api/admin/students/${id}`, { method: "DELETE" });
+      } catch (e) {
+        console.warn("Lỗi đồng bộ xóa học sinh lên máy chủ:", e);
+      }
     }
   };
 

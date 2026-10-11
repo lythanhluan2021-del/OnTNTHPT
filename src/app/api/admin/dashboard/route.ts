@@ -7,9 +7,10 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const selectedClass = searchParams.get("class") || "all";
+    const accountType = (searchParams.get("accountType") || "all") as "all" | "official" | "free";
 
-    const overview = await StorageAdapter.getAdminDashboardOverview(selectedClass);
-    const students = await StorageAdapter.getStudentProgressSummaries(selectedClass);
+    const overview = await StorageAdapter.getAdminDashboardOverview(selectedClass, accountType);
+    const students = await StorageAdapter.getStudentProgressSummaries(selectedClass, accountType);
 
     return NextResponse.json({
       success: true,

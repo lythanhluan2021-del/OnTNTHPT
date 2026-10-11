@@ -86,6 +86,7 @@ export default function AdminDashboardPage() {
   // 2. Filter & Search States
   const [selectedClass, setSelectedClass] = useState<string>("all");
   const [selectedStatusFilter, setSelectedStatusFilter] = useState<string>("all");
+  const [accountTypeFilter, setAccountTypeFilter] = useState<"all" | "official" | "free">("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   // 3. Modal States
@@ -98,6 +99,7 @@ export default function AdminDashboardPage() {
     username: "",
     fullName: "",
     className: "12A1",
+    accountType: "official" as "official" | "free",
     newPassword: "",
   });
   const [isEditingSubmitting, setIsEditingSubmitting] = useState(false);
@@ -194,10 +196,10 @@ export default function AdminDashboardPage() {
   }, []);
 
   // Fetch Dashboard Data
-  const fetchData = async (cls = selectedClass) => {
+  const fetchData = async (cls = selectedClass, accType = accountTypeFilter) => {
     try {
       setIsRefreshing(true);
-      const res = await fetch(`/api/admin/dashboard?class=${cls}`);
+      const res = await fetch(`/api/admin/dashboard?class=${cls}&accountType=${accType}`);
       const data = await res.json();
       if (data.success && data.data) {
         if (data.data.overview) {
@@ -346,9 +348,29 @@ export default function AdminDashboardPage() {
   // Tự động tính toán các chỉ số KPI theo thời gian thực (Reactive Realtime Metrics)
   // Luôn phản ánh tức thời theo sĩ số thực tế và bộ lọc lớp đang chọn
   const kpiMetrics = useMemo(() => {
-    const targetStudents = selectedClass && selectedClass !== "all"
+    let targetStudents = selectedClass && selectedClass !== "all"
       ? students.filter((s) => s.className === selectedClass)
       : students;
+
+    if (accountTypeFilter !== "all") {
+      targetStudents = targetStudents.filter(
+        (s) => (s.accountType || (s.authProvider === "google" || s.className?.toLowerCase().includes("tự do") ? "free" : "official")) === accountTypeFilter
+      );
+    }
+
+    const officialCount = (selectedClass && selectedClass !== "all"
+      ? students.filter((s) => s.className === selectedClass)
+      : students
+    ).filter(
+      (s) => (s.accountType || (s.authProvider === "google" || s.className?.toLowerCase().includes("tự do") ? "free" : "official")) === "official"
+    ).length;
+
+    const freeCount = (selectedClass && selectedClass !== "all"
+      ? students.filter((s) => s.className === selectedClass)
+      : students
+    ).filter(
+      (s) => (s.accountType || (s.authProvider === "google" || s.className?.toLowerCase().includes("tự do") ? "free" : "official")) === "free"
+    ).length;
 
     const totalStudents = targetStudents.length > 0
       ? targetStudents.length
@@ -376,13 +398,15 @@ export default function AdminDashboardPage() {
 
     return {
       totalStudents,
+      officialCount,
+      freeCount,
       activeStudents,
       activePercent,
       averageScore,
       passRate,
       atRiskCount,
     };
-  }, [students, overview, selectedClass]);
+  }, [students, overview, selectedClass, accountTypeFilter]);
 
   // Filtered Weeks for Selector (by Semester)
   const filteredWeeksBySemester = useMemo(() => {
@@ -443,6 +467,12 @@ export default function AdminDashboardPage() {
   // Filtered Students List
   const filteredStudents = useMemo(() => {
     return students.filter((st) => {
+      // 0. Account Type Filter (Chính khóa vs Tự do)
+      if (accountTypeFilter !== "all") {
+        const type = st.accountType || (st.authProvider === "google" || st.className?.toLowerCase().includes("tự do") ? "free" : "official");
+        if (type !== accountTypeFilter) return false;
+      }
+
       // 1. Search Query
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase().trim();
@@ -462,7 +492,7 @@ export default function AdminDashboardPage() {
 
       return true;
     });
-  }, [students, searchQuery, selectedStatusFilter]);
+  }, [students, searchQuery, selectedStatusFilter, accountTypeFilter]);
 
   // Handle Add Single Student
   const handleCreateSingle = async (e: React.FormEvent) => {
@@ -737,11 +767,17 @@ export default function AdminDashboardPage() {
     const userAcc = allUserAccounts.find(
       (u) => u.id === st.studentId || u.username.toLowerCase() === st.username.toLowerCase()
     );
+    const resolvedAccountType =
+      st.accountType ||
+      userAcc?.accountType ||
+      (st.authProvider === "google" || st.className?.toLowerCase().includes("tự do") ? "free" : "official");
+
     setEditingStudentForm({
       id: userAcc?.id || st.studentId,
       username: st.username,
       fullName: st.fullName,
       className: st.className || "12A1",
+      accountType: resolvedAccountType,
       newPassword: "",
     });
     setEditStudentError("");
@@ -764,6 +800,7 @@ export default function AdminDashboardPage() {
         fullName: editingStudentForm.fullName.trim(),
         username: editingStudentForm.username.trim().toLowerCase(),
         className: editingStudentForm.className.trim(),
+        accountType: editingStudentForm.accountType,
       };
       if (editingStudentForm.newPassword.trim()) {
         payload.password = editingStudentForm.newPassword.trim();
@@ -845,9 +882,36 @@ export default function AdminDashboardPage() {
 
   // Handle Delete Student
   const handleDeleteStudent = async (st: StudentProgressSummary) => {
-    if (!confirm(`Xác nhận XÓA tài khoản của học sinh ${st.fullName} (${st.username})? Toàn bộ kết quả sẽ bị xóa vĩnh viễn.`)) {
+    if (
+      !confirm(
+        `⚠️ XÁC NHẬN XÓA TÀI KHOẢN:\n\nBạn có chắc chắn muốn XÓA VĨNH VIỄN tài khoản của học sinh:\n"${st.fullName}" (${st.username})?\n\n• Tài khoản sẽ được xóa sạch khỏi cơ sở dữ liệu và Google Drive.\n• Toàn bộ kết quả bài làm sẽ được dọn dẹp sạch sẽ.\n\nBấm OK để thực hiện.`
+      )
+    ) {
       return;
     }
+
+    const cleanId = st.studentId;
+    const cleanUser = st.username.toLowerCase();
+
+    // 1. Cập nhật lạc quan (Optimistic Update) ngay lập tức trên màn hình
+    setStudents((prev) => prev.filter((s) => s.studentId !== cleanId && s.username.toLowerCase() !== cleanUser));
+    setAllUserAccounts((prev) => prev.filter((u) => u.id !== cleanId && u.username.toLowerCase() !== cleanUser));
+
+    // Xóa ngay trong localStorage cache để không bị hồi sinh
+    try {
+      const cached = localStorage.getItem("thpt_students_cache");
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        const clean = parsed.filter((s: any) => s.studentId !== cleanId && s.username.toLowerCase() !== cleanUser);
+        localStorage.setItem("thpt_students_cache", JSON.stringify(clean));
+      }
+      const cachedU = localStorage.getItem("thpt_users_cache");
+      if (cachedU) {
+        const parsedU = JSON.parse(cachedU);
+        const cleanU = parsedU.filter((u: any) => u.id !== cleanId && u.username.toLowerCase() !== cleanUser);
+        localStorage.setItem("thpt_users_cache", JSON.stringify(cleanU));
+      }
+    } catch {}
 
     try {
       const res = await fetch(`/api/admin/students/${st.studentId}`, {
@@ -857,12 +921,15 @@ export default function AdminDashboardPage() {
       const data = await res.json();
       if (data.success) {
         soundManager.playSuccess();
-        fetchData(selectedClass);
+        await fetchData(selectedClass);
       } else {
         alert(data.message);
+        await fetchData(selectedClass);
       }
-    } catch (err) {
+    } catch (err: any) {
       soundManager.playError();
+      alert("Lỗi kết nối máy chủ khi xóa: " + (err.message || err));
+      await fetchData(selectedClass);
     }
   };
 
@@ -875,6 +942,7 @@ export default function AdminDashboardPage() {
       "STT",
       "Mã Học Sinh",
       "Họ và Tên",
+      "Phân Loại",
       "Lớp",
       "Số Câu Đã Làm",
       "Số Câu Đúng",
@@ -885,29 +953,33 @@ export default function AdminDashboardPage() {
       "Xếp Loại",
     ];
 
-    const rows = filteredStudents.map((s, idx) => [
-      idx + 1,
-      `"${s.username}"`,
-      `"${s.fullName}"`,
-      `"${s.className}"`,
-      s.totalQuestionsAttempted,
-      s.correctAnswers,
-      s.accuracyRate + "%",
-      s.estimatedScore.toFixed(1),
-      s.totalTimeMinutes,
-      `"${s.weakTopics.join("; ") || "Không có"}"`,
-      `"${
-        s.status === "XuatSac"
-          ? "Xuất sắc"
-          : s.status === "Dat"
-          ? "Đạt chuẩn"
-          : s.status === "CanCoGang"
-          ? "Cần cố gắng"
-          : s.status === "NguyCoYeu"
-          ? "Nguy cơ yếu"
-          : "Chưa tham gia"
-      }"`,
-    ]);
+    const rows = filteredStudents.map((s, idx) => {
+      const isFree = (s.accountType || (s.authProvider === "google" || s.className?.toLowerCase().includes("tự do") ? "free" : "official")) === "free";
+      return [
+        idx + 1,
+        `"${s.username}"`,
+        `"${s.fullName}"`,
+        `"${isFree ? "Tự do (Google/Vãng lai)" : "Chính khóa (Excel)"}"`,
+        `"${s.className}"`,
+        s.totalQuestionsAttempted,
+        s.correctAnswers,
+        s.accuracyRate + "%",
+        s.estimatedScore.toFixed(1),
+        s.totalTimeMinutes,
+        `"${s.weakTopics.join("; ") || "Không có"}"`,
+        `"${
+          s.status === "XuatSac"
+            ? "Xuất sắc"
+            : s.status === "Dat"
+            ? "Đạt chuẩn"
+            : s.status === "CanCoGang"
+            ? "Cần cố gắng"
+            : s.status === "NguyCoYeu"
+            ? "Nguy cơ yếu"
+            : "Chưa tham gia"
+        }"`,
+      ];
+    });
 
     const csvContent = "\uFEFF" + [headers.join(","), ...rows.map((e) => e.join(","))].join("\n");
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
@@ -1549,8 +1621,16 @@ export default function AdminDashboardPage() {
               </span>
               <span className="text-xs text-slate-500 font-semibold ml-1">học sinh</span>
             </div>
-            <p className="text-[11px] text-slate-500 font-medium mt-1 truncate">
-              {selectedClass && selectedClass !== "all" ? `Lớp ${selectedClass}` : "Đã cấp tài khoản ôn tập"}
+            <div className="mt-1 flex items-center gap-1.5 flex-wrap text-[10px] font-bold">
+              <span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-800" title="Học sinh chính khóa theo danh sách trường/Excel">
+                🏫 {kpiMetrics.officialCount} Chính khóa
+              </span>
+              <span className="px-1.5 py-0.5 rounded bg-purple-100 text-purple-800" title="Người dùng tự do đăng nhập Google hoặc vãng lai">
+                🌐 {kpiMetrics.freeCount} Tự do
+              </span>
+            </div>
+            <p className="text-[10px] text-slate-400 font-medium mt-1 truncate">
+              {selectedClass && selectedClass !== "all" ? `Lớp ${selectedClass}` : "Toàn bộ tài khoản ôn tập"}
             </p>
           </div>
 
@@ -1758,8 +1838,8 @@ export default function AdminDashboardPage() {
 
         {/* Student Progress Table */}
         <div className="bg-[#e6ecf5] rounded-neu shadow-neu-flat border border-white/60 overflow-hidden">
-          <div className="p-4 border-b border-slate-300/60 flex items-center justify-between">
-            <div className="flex items-center gap-2">
+          <div className="p-4 border-b border-slate-300/60 flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div className="flex items-center gap-2 flex-wrap">
               <h2 className="text-sm font-black text-slate-800">
                 Bảng Tiến Độ & Đánh Giá Năng Lực Học Sinh
               </h2>
@@ -1767,8 +1847,64 @@ export default function AdminDashboardPage() {
                 ({filteredStudents.length} học sinh hiển thị)
               </span>
             </div>
-            <div className="text-[11px] text-slate-500 font-medium hidden sm:block">
-              Chuẩn đầu ra THPT môn Tin học: <strong>Mục tiêu ≥ 6.00đ</strong>
+
+            {/* Segmented Control Lọc Nguồn Tài Khoản (Chính Khóa vs Tự Do) */}
+            <div className="flex items-center gap-1 p-1 bg-slate-200/90 rounded-neu-sm shadow-neu-inset-sm self-start md:self-auto">
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  setAccountTypeFilter("all");
+                }}
+                className={`px-2.5 py-1 rounded-neu-xs text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                  accountTypeFilter === "all"
+                    ? "bg-[#e6ecf5] text-blue-700 shadow-neu-flat-xs font-black"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                <span>🎓 Tất Cả</span>
+                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-300/80 font-bold">
+                  {students.length}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  setAccountTypeFilter("official");
+                }}
+                className={`px-2.5 py-1 rounded-neu-xs text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                  accountTypeFilter === "official"
+                    ? "bg-[#e6ecf5] text-blue-700 shadow-neu-flat-xs font-black"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+                title="Học sinh chính khóa theo danh sách trường/Excel"
+              >
+                <span>🏫 Chính Khóa (Excel)</span>
+                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-blue-100 text-blue-800 font-bold">
+                  {students.filter((s) => (s.accountType || (s.authProvider === "google" || s.className?.toLowerCase().includes("tự do") ? "free" : "official")) === "official").length}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  soundManager.playClick();
+                  setAccountTypeFilter("free");
+                }}
+                className={`px-2.5 py-1 rounded-neu-xs text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                  accountTypeFilter === "free"
+                    ? "bg-[#e6ecf5] text-purple-700 shadow-neu-flat-xs font-black"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+                title="Người dùng tự do đăng nhập qua Google hoặc vãng lai"
+              >
+                <span>🌐 Tự Do (Google / Vãng Lai)</span>
+                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-purple-100 text-purple-800 font-bold">
+                  {students.filter((s) => (s.accountType || (s.authProvider === "google" || s.className?.toLowerCase().includes("tự do") ? "free" : "official")) === "free").length}
+                </span>
+              </button>
             </div>
           </div>
 
@@ -1841,7 +1977,19 @@ export default function AdminDashboardPage() {
 
                         {/* Username */}
                         <td className="py-3 px-3 font-mono font-bold text-slate-700">
-                          {st.username}
+                          <div className="flex items-center gap-1.5">
+                            {st.authProvider === "google" && (
+                              <span title="Đăng nhập qua Google" className="flex-shrink-0 inline-flex items-center">
+                                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
+                                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                </svg>
+                              </span>
+                            )}
+                            <span className="truncate max-w-[120px]">{st.username}</span>
+                          </div>
                         </td>
 
                         {/* Full Name */}
@@ -1862,9 +2010,30 @@ export default function AdminDashboardPage() {
                           </button>
                         </td>
 
-                        {/* Class */}
-                        <td className="py-3 px-3 text-center font-bold text-blue-700">
-                          {st.className}
+                        {/* Class & Account Type */}
+                        <td className="py-3 px-3 text-center">
+                          {(() => {
+                            const isFree = (st.accountType || (st.authProvider === "google" || st.className?.toLowerCase().includes("tự do") ? "free" : "official")) === "free";
+                            return isFree ? (
+                              <div className="flex flex-col items-center gap-0.5">
+                                <span className="px-2 py-0.5 rounded-full text-[11px] font-black bg-purple-100 text-purple-800 shadow-neu-flat-xs">
+                                  {st.className || "Lớp Tự Do"}
+                                </span>
+                                <span className="text-[9px] font-bold text-purple-600 flex items-center gap-0.5">
+                                  🌐 Tự Do
+                                </span>
+                              </div>
+                            ) : (
+                              <div className="flex flex-col items-center gap-0.5">
+                                <span className="px-2 py-0.5 rounded-full text-[11px] font-black bg-blue-100 text-blue-800 shadow-neu-flat-xs">
+                                  {st.className}
+                                </span>
+                                <span className="text-[9px] font-bold text-blue-600">
+                                  🏫 Chính Khóa
+                                </span>
+                              </div>
+                            );
+                          })()}
                         </td>
 
                         {/* Total Attempted */}
@@ -3339,9 +3508,15 @@ export default function AdminDashboardPage() {
                   </label>
                   <select
                     value={editingStudentForm.className}
-                    onChange={(e) =>
-                      setEditingStudentForm({ ...editingStudentForm, className: e.target.value })
-                    }
+                    onChange={(e) => {
+                      const newCls = e.target.value;
+                      const autoType = newCls === "Lớp Tự Do" ? "free" : editingStudentForm.accountType;
+                      setEditingStudentForm({
+                        ...editingStudentForm,
+                        className: newCls,
+                        accountType: autoType,
+                      });
+                    }}
                     className="w-full px-3.5 py-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 cursor-pointer"
                   >
                     {[
@@ -3352,8 +3527,61 @@ export default function AdminDashboardPage() {
                         Lớp {c}
                       </option>
                     ))}
+                    <option value="Lớp Tự Do">🌐 Lớp Tự Do (Thí sinh tự do)</option>
                   </select>
                 </div>
+              </div>
+
+              {/* Phân Loại Nguồn Tài Khoản */}
+              <div>
+                <label className="block text-xs font-bold text-slate-600 mb-1.5">
+                  Phân Loại Tài Khoản <span className="text-rose-500">*</span>
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <label
+                    className={`flex items-center gap-2 p-2.5 rounded-neu-sm cursor-pointer border text-xs font-bold transition ${
+                      editingStudentForm.accountType === "official"
+                        ? "bg-blue-50 border-blue-400 text-blue-800 shadow-neu-inset-sm"
+                        : "bg-[#e6ecf5] border-transparent text-slate-600 shadow-neu-flat-xs hover:text-slate-800"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="editAccountType"
+                      value="official"
+                      checked={editingStudentForm.accountType === "official"}
+                      onChange={() =>
+                        setEditingStudentForm({ ...editingStudentForm, accountType: "official" })
+                      }
+                      className="text-blue-600 focus:ring-blue-500"
+                    />
+                    <span>🏫 Chính Khóa (Excel)</span>
+                  </label>
+
+                  <label
+                    className={`flex items-center gap-2 p-2.5 rounded-neu-sm cursor-pointer border text-xs font-bold transition ${
+                      editingStudentForm.accountType === "free"
+                        ? "bg-emerald-50 border-emerald-400 text-emerald-800 shadow-neu-inset-sm"
+                        : "bg-[#e6ecf5] border-transparent text-slate-600 shadow-neu-flat-xs hover:text-slate-800"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="editAccountType"
+                      value="free"
+                      checked={editingStudentForm.accountType === "free"}
+                      onChange={() =>
+                        setEditingStudentForm({ ...editingStudentForm, accountType: "free" })
+                      }
+                      className="text-emerald-600 focus:ring-emerald-500"
+                    />
+                    <span>🌐 Tự Do (Google/Vãng lai)</span>
+                  </label>
+                </div>
+                <p className="text-[10px] text-slate-500 mt-1">
+                  • <em>Chính khóa</em>: Được tính vào chỉ tiêu thi đua THPT của lớp 12.<br />
+                  • <em>Tự do</em>: Quản lý và thống kê độc lập, không làm sai lệch chỉ tiêu lớp chính khóa.
+                </p>
               </div>
 
               <div>

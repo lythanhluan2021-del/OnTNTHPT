@@ -88,6 +88,7 @@ export function UserManagementView({
     fullName: "",
     role: "student" as UserRole,
     className: "12A1",
+    accountType: "official" as "official" | "free",
     isActive: true,
     newPassword: "",
   });
@@ -167,12 +168,19 @@ export function UserManagementView({
   const handleOpenEdit = (user: User) => {
     soundManager.playClick();
     setSelectedUser(user);
+    const resolvedAccountType: "official" | "free" =
+      user.accountType ||
+      (user.authProvider === "google" || (user.className && user.className.toLowerCase().includes("tự do"))
+        ? "free"
+        : "official");
+
     setEditUserData({
       id: user.id,
       username: user.username,
       fullName: user.fullName,
       role: user.role,
       className: user.className || "12A1",
+      accountType: resolvedAccountType,
       isActive: user.isActive,
       newPassword: "",
     });
@@ -194,6 +202,7 @@ export function UserManagementView({
         username: editUserData.username.trim(),
         role: editUserData.role,
         className: editUserData.className.trim(),
+        accountType: editUserData.accountType,
         isActive: editUserData.isActive,
       };
 
@@ -211,6 +220,11 @@ export function UserManagementView({
       if (!res.ok || !data.success) {
         throw new Error(data.message || "Không thể cập nhật thông tin người dùng.");
       }
+
+      try {
+        localStorage.removeItem("thpt_students_cache");
+        localStorage.removeItem("thpt_users_cache");
+      } catch {}
 
       soundManager.playSuccess();
       setActionNotification({
@@ -307,11 +321,17 @@ export function UserManagementView({
     }
 
     const confirmed = confirm(
-      `⚠️ CẢNH BÁO XÓA TÀI KHOẢN:\n\nBạn có chắc chắn muốn XÓA VĨNH VIỄN tài khoản của "${user.fullName}" (${user.username})?\n\n• Tài khoản sẽ bị xóa khỏi cơ sở dữ liệu.\n• Toàn bộ kết quả bài làm của tài khoản này sẽ được dọn dẹp sạch sẽ.\n\nBấm OK để xác nhận xóa.`
+      `⚠️ CẢNH BÁO XÓA TÀI KHOẢN:\n\nBạn có chắc chắn muốn XÓA VĨNH VIỄN tài khoản của "${user.fullName}" (${user.username})?\n\n• Tài khoản sẽ bị xóa khỏi cơ sở dữ liệu và Google Drive.\n• Toàn bộ kết quả bài làm của tài khoản này sẽ được dọn dẹp sạch sẽ.\n\nBấm OK để xác nhận xóa.`
     );
     if (!confirmed) return;
 
     try {
+      // Dọn dẹp cache local ngay lập tức
+      try {
+        localStorage.removeItem("thpt_students_cache");
+        localStorage.removeItem("thpt_users_cache");
+      } catch {}
+
       const res = await fetch(`/api/admin/students/${user.id}`, {
         method: "DELETE",
       });
@@ -892,9 +912,22 @@ export function UserManagementView({
                         )}
                       </td>
 
-                      {/* Lớp / Bộ Môn */}
-                      <td className="py-3 px-3 text-center font-bold text-blue-700">
-                        {u.className || "—"}
+                      {/* Lớp / Bộ Môn & Phân Loại */}
+                      <td className="py-3 px-3 text-center">
+                        <div className="flex flex-col items-center gap-1">
+                          <span className="font-bold text-blue-700">{u.className || "—"}</span>
+                          {u.role === "student" && (
+                            u.accountType === "free" || (u.className && u.className.toLowerCase().includes("tự do")) ? (
+                              <span className="px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[9px] font-black border border-emerald-200">
+                                🌐 Tự Do
+                              </span>
+                            ) : (
+                              <span className="px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[9px] font-bold border border-blue-200">
+                                🏫 Chính Khóa
+                              </span>
+                            )
+                          )}
+                        </div>
                       </td>
 
                       {/* Trạng Thái */}
@@ -1310,6 +1343,52 @@ export function UserManagementView({
                   </select>
                 </div>
               </div>
+
+              {/* Phân Loại Tài Khoản (nếu là Học Sinh) */}
+              {editUserData.role === "student" && (
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-slate-700 px-1">
+                    Phân Loại Nguồn Học Sinh:
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <label
+                      className={`flex items-center gap-2 p-2 rounded-neu-sm cursor-pointer border text-xs font-bold transition ${
+                        editUserData.accountType === "official"
+                          ? "bg-blue-50 border-blue-400 text-blue-800 shadow-neu-inset-sm"
+                          : "bg-[#e6ecf5] border-transparent text-slate-600 shadow-neu-flat-xs hover:text-slate-800"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="editUserAccountType"
+                        value="official"
+                        checked={editUserData.accountType === "official"}
+                        onChange={() => setEditUserData({ ...editUserData, accountType: "official" })}
+                        className="text-blue-600"
+                      />
+                      <span>🏫 Chính Khóa (Excel)</span>
+                    </label>
+
+                    <label
+                      className={`flex items-center gap-2 p-2 rounded-neu-sm cursor-pointer border text-xs font-bold transition ${
+                        editUserData.accountType === "free"
+                          ? "bg-emerald-50 border-emerald-400 text-emerald-800 shadow-neu-inset-sm"
+                          : "bg-[#e6ecf5] border-transparent text-slate-600 shadow-neu-flat-xs hover:text-slate-800"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="editUserAccountType"
+                        value="free"
+                        checked={editUserData.accountType === "free"}
+                        onChange={() => setEditUserData({ ...editUserData, accountType: "free" })}
+                        className="text-emerald-600"
+                      />
+                      <span>🌐 Tự Do (Google/Vãng lai)</span>
+                    </label>
+                  </div>
+                </div>
+              )}
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-700 px-1">
