@@ -343,6 +343,47 @@ export default function AdminDashboardPage() {
     return () => clearInterval(interval);
   }, [isAdmin, activeTab, selectedClass, selectedWeekId]);
 
+  // Tự động tính toán các chỉ số KPI theo thời gian thực (Reactive Realtime Metrics)
+  // Luôn phản ánh tức thời theo sĩ số thực tế và bộ lọc lớp đang chọn
+  const kpiMetrics = useMemo(() => {
+    const targetStudents = selectedClass && selectedClass !== "all"
+      ? students.filter((s) => s.className === selectedClass)
+      : students;
+
+    const totalStudents = targetStudents.length > 0
+      ? targetStudents.length
+      : (overview && (selectedClass === "all" || !selectedClass) ? (overview.totalStudents || 0) : 0);
+
+    const participated = targetStudents.filter((s) => s.totalQuestionsAttempted > 0);
+    const activeStudents = participated.length > 0
+      ? participated.length
+      : (overview && (selectedClass === "all" || !selectedClass) ? (overview.activeStudents || 0) : 0);
+
+    const activePercent = totalStudents > 0 ? Math.round((activeStudents / totalStudents) * 100) : 0;
+
+    const averageScore = participated.length > 0
+      ? Number((participated.reduce((sum, s) => sum + s.estimatedScore, 0) / participated.length).toFixed(2))
+      : (overview && (selectedClass === "all" || !selectedClass) ? (overview.averageScore || 0) : 0);
+
+    const passedCount = participated.filter((s) => s.estimatedScore >= 5.0).length;
+    const passRate = participated.length > 0
+      ? Math.round((passedCount / participated.length) * 100)
+      : (overview && (selectedClass === "all" || !selectedClass) ? (overview.passRate || 0) : 0);
+
+    const atRiskCount = participated.filter((s) => s.estimatedScore < 5.0).length > 0
+      ? participated.filter((s) => s.estimatedScore < 5.0).length
+      : (overview && (selectedClass === "all" || !selectedClass) ? (overview.atRiskCount || 0) : 0);
+
+    return {
+      totalStudents,
+      activeStudents,
+      activePercent,
+      averageScore,
+      passRate,
+      atRiskCount,
+    };
+  }, [students, overview, selectedClass]);
+
   // Filtered Weeks for Selector (by Semester)
   const filteredWeeksBySemester = useMemo(() => {
     if (selectedSemester === "all") return allWeeks;
@@ -1497,96 +1538,96 @@ export default function AdminDashboardPage() {
             {/* KPI Metric Cards */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
           {/* Sĩ số học sinh */}
-          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between">
+          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between transition-all duration-300 hover:shadow-neu-pressed">
             <div className="flex items-center justify-between text-slate-500">
               <span className="text-xs font-bold">Tổng Sĩ Số</span>
               <Users className="w-4 h-4 text-blue-600" />
             </div>
             <div className="mt-2">
-              <span className="text-2xl sm:text-3xl font-black text-slate-800">
-                {overview?.totalStudents || 0}
+              <span className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight">
+                {kpiMetrics.totalStudents}
               </span>
               <span className="text-xs text-slate-500 font-semibold ml-1">học sinh</span>
             </div>
-            <p className="text-[11px] text-slate-500 font-medium mt-1">
-              Đã cấp tài khoản ôn tập
+            <p className="text-[11px] text-slate-500 font-medium mt-1 truncate">
+              {selectedClass && selectedClass !== "all" ? `Lớp ${selectedClass}` : "Đã cấp tài khoản ôn tập"}
             </p>
           </div>
 
           {/* Học sinh tích cực */}
-          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between">
+          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between transition-all duration-300 hover:shadow-neu-pressed">
             <div className="flex items-center justify-between text-slate-500">
               <span className="text-xs font-bold">Đã Tham Gia</span>
               <UserCheck className="w-4 h-4 text-emerald-600" />
             </div>
             <div className="mt-2">
-              <span className="text-2xl sm:text-3xl font-black text-emerald-700">
-                {overview?.activeStudents || 0}
+              <span className="text-2xl sm:text-3xl font-black text-emerald-700 tracking-tight">
+                {kpiMetrics.activeStudents}
               </span>
               <span className="text-xs text-slate-500 font-semibold ml-1">
-                ({overview && overview.totalStudents > 0 ? Math.round((overview.activeStudents / overview.totalStudents) * 100) : 0}%)
+                ({kpiMetrics.activePercent}%)
               </span>
             </div>
-            <p className="text-[11px] text-emerald-600 font-medium mt-1">
-              Đã hoàn thành bài tập
+            <p className="text-[11px] text-emerald-600 font-medium mt-1 truncate">
+              Đã làm bài luyện tập
             </p>
           </div>
 
           {/* Điểm trung bình vs Mục tiêu 6.00 */}
-          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between">
+          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between transition-all duration-300 hover:shadow-neu-pressed">
             <div className="flex items-center justify-between text-slate-500">
               <span className="text-xs font-bold">Điểm Trung Bình</span>
               <TrendingUp className="w-4 h-4 text-indigo-600" />
             </div>
             <div className="mt-2 flex items-baseline gap-1">
-              <span className={`text-2xl sm:text-3xl font-black ${(overview?.averageScore || 0) >= 6.0 ? "text-indigo-700" : "text-amber-600"}`}>
-                {overview?.averageScore || 0}
+              <span className={`text-2xl sm:text-3xl font-black tracking-tight ${kpiMetrics.averageScore >= 6.0 ? "text-indigo-700" : "text-amber-600"}`}>
+                {kpiMetrics.averageScore}
               </span>
               <span className="text-xs text-slate-500 font-semibold">/ 10</span>
             </div>
             <div className="text-[11px] font-semibold mt-1 flex items-center gap-1 text-slate-600">
               <span>Mục tiêu GD1:</span>
               <span className="font-bold text-indigo-600">6.00 đ</span>
-              {(overview?.averageScore || 0) >= 6.0 ? (
+              {kpiMetrics.averageScore >= 6.0 ? (
                 <Check className="w-3 h-3 text-emerald-600" />
               ) : null}
             </div>
           </div>
 
           {/* Tỷ lệ Đạt chuẩn >= 5.0đ vs Mục tiêu 73% */}
-          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between">
+          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between transition-all duration-300 hover:shadow-neu-pressed">
             <div className="flex items-center justify-between text-slate-500">
               <span className="text-xs font-bold">Tỷ Lệ Đạt (≥5.0đ)</span>
               <Award className="w-4 h-4 text-blue-600" />
             </div>
             <div className="mt-2">
-              <span className={`text-2xl sm:text-3xl font-black ${(overview?.passRate || 0) >= 73 ? "text-blue-700" : "text-amber-600"}`}>
-                {overview?.passRate || 0}%
+              <span className={`text-2xl sm:text-3xl font-black tracking-tight ${kpiMetrics.passRate >= 73 ? "text-blue-700" : "text-amber-600"}`}>
+                {kpiMetrics.passRate}%
               </span>
             </div>
             <div className="text-[11px] font-semibold mt-1 flex items-center gap-1 text-slate-600">
               <span>Chỉ tiêu trường:</span>
               <span className="font-bold text-blue-600">≥ 73%</span>
-              {(overview?.passRate || 0) >= 73 ? (
+              {kpiMetrics.passRate >= 73 ? (
                 <Check className="w-3 h-3 text-emerald-600" />
               ) : null}
             </div>
           </div>
 
           {/* Học sinh cần phụ đạo */}
-          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between col-span-2 md:col-span-1">
+          <div className="bg-[#e6ecf5] p-4 rounded-neu shadow-neu-flat border border-white/60 flex flex-col justify-between col-span-2 md:col-span-1 transition-all duration-300 hover:shadow-neu-pressed">
             <div className="flex items-center justify-between text-slate-500">
               <span className="text-xs font-bold">Cần Phụ Đạo</span>
               <AlertTriangle className="w-4 h-4 text-rose-600" />
             </div>
             <div className="mt-2">
-              <span className="text-2xl sm:text-3xl font-black text-rose-600">
-                {overview?.atRiskCount || 0}
+              <span className={`text-2xl sm:text-3xl font-black tracking-tight ${kpiMetrics.atRiskCount > 0 ? "text-rose-600" : "text-slate-700"}`}>
+                {kpiMetrics.atRiskCount}
               </span>
               <span className="text-xs text-slate-500 font-semibold ml-1">em (&lt;5đ)</span>
             </div>
-            <p className="text-[11px] text-rose-600 font-medium mt-1">
-              Cần GV đôn đốc, phụ đạo
+            <p className="text-[11px] text-rose-600 font-medium mt-1 truncate">
+              {kpiMetrics.atRiskCount > 0 ? "Cần GV đôn đốc, phụ đạo" : "Chưa có nguy cơ"}
             </p>
           </div>
         </div>

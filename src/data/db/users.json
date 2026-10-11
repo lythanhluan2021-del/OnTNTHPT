@@ -8,5 +8,126 @@
     "password": "admin",
     "createdAt": 1726000000000,
     "lastLoginAt": 1790071172434
+  },
+  {
+    "id": "usr-ntdat12a1",
+    "username": "ntdat12a1",
+    "fullName": "Nguyễn Tấn Đạt",
+    "className": "12A1",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-ddtien12a1",
+    "username": "ddtien12a1",
+    "fullName": "Đinh Đức Tiến",
+    "className": "12A1",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-lcdinh12a1",
+    "username": "lcdinh12a1",
+    "fullName": "Lê Công Định",
+    "className": "12A1",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-nhhuy12a4",
+    "username": "nhhuy12a4",
+    "fullName": "Nguyễn Hoàng Huy",
+    "className": "12A4",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-hmkha12a4",
+    "username": "hmkha12a4",
+    "fullName": "Hồ Minh Kha",
+    "className": "12A4",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-lttin12a4",
+    "username": "lttin12a4",
+    "fullName": "Lê Trọng Tin",
+    "className": "12A4",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-pvtgiang12a4",
+    "username": "pvtgiang12a4",
+    "fullName": "Phạm Văn Trường Giang",
+    "className": "12A4",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-ntathu12a7",
+    "username": "ntathu12a7",
+    "fullName": "Nguyễn Thị Anh Thư",
+    "className": "12A7",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-ttnxuyen12a7",
+    "username": "ttnxuyen12a7",
+    "fullName": "Trần Thị Ngọc Xuyên",
+    "className": "12A7",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-vtmxuyen12a7",
+    "username": "vtmxuyen12a7",
+    "fullName": "Võ Thị Mỹ Xuyên",
+    "className": "12A7",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
+  },
+  {
+    "id": "usr-dpkhang12a7",
+    "username": "dpkhang12a7",
+    "fullName": "Đinh Phi Khang",
+    "className": "12A7",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "password": "123",
+    "isActive": true,
+    "createdAt": 1791712024790
   }
 ]

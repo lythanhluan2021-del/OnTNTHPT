@@ -209,47 +209,74 @@ export class StorageAdapter {
       }
     }
 
-    // 2. Nếu có cấu hình Google Drive, đọc trực tiếp từ tệp ontn_users.json trên Google Drive
+    // Đọc danh sách người dùng từ Local và Temp trước để làm nền tảng
+    const localUsers = safeReadJson<User[]>(path.join(LOCAL_DB_DIR, "users.json")) || [];
+    const tmpUsers = safeReadJson<User[]>(path.join(TMP_DB_DIR, "users.json")) || [];
+    let baseUsers = localUsers.length >= tmpUsers.length ? localUsers : tmpUsers;
+    if (globalForStorage.ontnUsersCache && globalForStorage.ontnUsersCache.length > baseUsers.length) {
+      baseUsers = globalForStorage.ontnUsersCache;
+    }
+    if (baseUsers.length === 0) {
+      baseUsers = [...INITIAL_USERS];
+    }
+
+    // Helper hợp nhất hai danh sách người dùng thông minh theo username
+    const mergeUserLists = (listA: User[], listB: User[]): User[] => {
+      const map = new Map<string, User>();
+      for (const u of listB) {
+        if (u && u.username) map.set(u.username.trim().toLowerCase(), u);
+      }
+      for (const u of listA) {
+        if (u && u.username) {
+          const key = u.username.trim().toLowerCase();
+          const existing = map.get(key);
+          if (!existing) {
+            map.set(key, u);
+          } else {
+            map.set(key, {
+              ...existing,
+              ...u,
+              fullName: u.fullName || existing.fullName,
+              className: u.className || existing.className,
+              role: u.role || existing.role,
+            });
+          }
+        }
+      }
+      return Array.from(map.values());
+    };
+
+    // 2. Nếu có cấu hình Google Drive, đọc tệp ontn_users.json trên Google Drive và HỢP NHẤT
     if (GoogleDriveStorage.isConfigured()) {
       try {
         const driveUsers = await GoogleDriveStorage.loadUsers();
-        if (driveUsers && Array.isArray(driveUsers) && driveUsers.length > 0) {
-          globalForStorage.ontnUsersCache = driveUsers;
-          safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), driveUsers);
-          return driveUsers;
+        if (driveUsers && Array.isArray(driveUsers)) {
+          const merged = mergeUserLists(driveUsers, baseUsers);
+          globalForStorage.ontnUsersCache = merged;
+          safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), merged);
+          if (!IS_SERVERLESS) {
+            safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), merged);
+          }
+          // Nếu có học sinh mới ở local mà Drive chưa có, tự động đồng bộ ngay lên Drive
+          if (merged.length > driveUsers.length) {
+            GoogleDriveStorage.syncUsers(merged).catch((e) =>
+              console.warn("[StorageAdapter] Lỗi tự động đồng bộ users lên Drive:", e)
+            );
+          }
+          return merged;
         }
       } catch (err) {
         console.warn("[StorageAdapter] ⚠️ Lỗi đọc users từ Google Drive:", err);
       }
     }
 
-    // 3. Nếu đã có trong RAM cache
-    if (globalForStorage.ontnUsersCache && globalForStorage.ontnUsersCache.length > 0) {
-      return globalForStorage.ontnUsersCache;
-    }
-
-    // 4. Đọc từ thư mục /tmp (Serverless)
-    const tmpUsers = safeReadJson<User[]>(path.join(TMP_DB_DIR, "users.json"));
-    if (tmpUsers && Array.isArray(tmpUsers) && tmpUsers.length > 0) {
-      globalForStorage.ontnUsersCache = tmpUsers;
-      return tmpUsers;
-    }
-
-    // 5. Đọc từ tệp dự án (cho phép đọc Read-Only trên Vercel /var/task)
-    const localUsers = safeReadJson<User[]>(path.join(LOCAL_DB_DIR, "users.json"));
-    if (localUsers && Array.isArray(localUsers) && localUsers.length > 0) {
-      globalForStorage.ontnUsersCache = localUsers;
-      safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), localUsers);
-      return localUsers;
-    }
-
-    // 6. Dự phòng danh sách mẫu ban đầu
-    globalForStorage.ontnUsersCache = [...INITIAL_USERS];
-    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), INITIAL_USERS);
+    // 3. Nếu chưa đồng bộ được từ Drive, trả về baseUsers đã nạp
+    globalForStorage.ontnUsersCache = baseUsers;
+    safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), baseUsers);
     if (!IS_SERVERLESS) {
-      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), INITIAL_USERS);
+      safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), baseUsers);
     }
-    return globalForStorage.ontnUsersCache;
+    return baseUsers;
   }
 
   static async saveUsers(users: User[]): Promise<void> {
@@ -777,7 +804,18 @@ export class StorageAdapter {
   static async getAdminDashboardOverview(className?: string): Promise<AdminDashboardOverview> {
     const students = await this.getStudentProgressSummaries(className);
     const allUsers = await this.getUsers();
-    const users = allUsers.filter((u) => u.role === "student");
+    const studentUsers = allUsers.filter((u) => u.role === "student");
+    const filteredUsers =
+      className && className !== "all"
+        ? studentUsers.filter((u) => u.className === className)
+        : studentUsers;
+
+    // Tổng sĩ số theo lớp đang chọn hoặc toàn trường
+    const totalStudents =
+      filteredUsers.length > 0
+        ? filteredUsers.length
+        : (className && className !== "all" ? students.length : (studentUsers.length || students.length));
+
     const activeStudents = students.filter((s) => s.totalQuestionsAttempted > 0).length;
 
     const participated = students.filter((s) => s.totalQuestionsAttempted > 0);
@@ -792,10 +830,13 @@ export class StorageAdapter {
 
     const atRiskCount = participated.filter((s) => s.estimatedScore < 5.0).length;
 
-    // Lấy danh sách lớp duy nhất
+    // Lấy danh sách lớp duy nhất từ tất cả người dùng và dữ liệu học sinh
     const classSet = new Set<string>();
-    users.forEach((u) => {
+    studentUsers.forEach((u) => {
       if (u.className) classSet.add(u.className);
+    });
+    students.forEach((s) => {
+      if (s.className) classSet.add(s.className);
     });
     const classes = Array.from(classSet).sort();
 
@@ -811,7 +852,7 @@ export class StorageAdapter {
     }));
 
     return {
-      totalStudents: users.length,
+      totalStudents,
       activeStudents,
       averageScore,
       passRate,
