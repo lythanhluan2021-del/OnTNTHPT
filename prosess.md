@@ -1,6 +1,6 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-05 — đã có SA, tải 12B, vá cắt bank, **push GitHub**. TF 12B đủ 4 ý, đáp án MC khớp gạch chân. Bước tiếp: stem-match nốt option C `Local Area.`; rồi TF 11D/12D.
+Cập nhật: 2026-10-11 — Hoàn thành nâng cấp toàn diện **Quản lý Người dùng & Phân quyền** trên Admin Dashboard: tách Tab chuyên dụng, sửa parser Bulk Import Excel hỗ trợ Tab `\t`, bổ sung Modal Chỉnh sửa User, cấp quyền Student/Teacher/Admin, đồng bộ bài làm và dọn dẹp orphan attempts, in phiếu tài khoản A4. Đã push commit `5cf5f5e` lên GitHub và deploy Vercel thành công.
 
 ## ĐỌC TRƯỚC KHI LÀM (phiên mới / hết quota)
 
@@ -210,8 +210,16 @@ Tỷ lệ mất câu cao (khoảng 50%). Có thể do format đề khác (dòng 
 |-----------|---------|
 | `prosess.md` | Nhật ký tiến trình; cập nhật sau mỗi lần build |
 | `src/data/questions12b.ts` | Ngân hàng 12B đã gộp Bài 3 (83 câu) |
-| `src/data/questionsCd3.ts` | 191 câu Bài 3 gốc + TF |
-| `src/data/s### 9. Reparse 12A + 12B từ Drive rồi rebase `main` — 2026-10-05
+| `src/data/sampleBank.ts` | `INITIAL_SUBJECTS` + filter + spread |
+| `src/data/weeklyPlan.ts` | `tuan-08-10` |
+| `src/data/theoryBank.ts` | Lý thuyết mạng (key gốc Bài 3 + alias) |
+| `src/lib/googleAuth.ts` | JWT Drive readonly |
+| `src/components/Admin/UserManagementView.tsx` | Giao diện Quản lý Người dùng & Phân quyền Admin |
+| `src/lib/db/storageAdapter.ts` | Bộ điều hợp lưu trữ dữ liệu & Đám mây Redis |
+
+---
+
+### 9. Reparse 12A + 12B từ Drive rồi rebase `main` — 2026-10-05
 
 - Extract `/tmp/docs/12A.txt`, `/tmp/docs/12B.txt`; parser MC + Đ/S (`__U__`/`__EU__`).
 - `src/data/questions12a.ts` **mới**: 97 câu (79 MC + 18 TF), thay hẳn bank AI cũ.
@@ -337,34 +345,14 @@ git pull origin main
 | `src/app/page.tsx` | Alias + `STRUCTURE_VERSION` |
 | `src/lib/driveFolderScanner.ts` | Map 12B/CD3 → Bài 3 |
 | `src/lib/competencyEngine.ts` | NLa Bài 3 |
-| `src/data/theoryBank.ts` | Lý thuyết mạng |10 = 274 |
-| `src/app/page.tsx` | Alias + `STRUCTURE_VERSION` |
-| `src/lib/driveFolderScanner.ts` | Map 12B/CD3 → Bài 3 |
-| `src/lib/competencyEngine.ts` | NLa Bài 3 |
 | `src/data/theoryBank.ts` | Lý thuyết mạng |
+| `src/components/Admin/UserManagementView.tsx` | Giao diện Quản lý Người dùng & Phân quyền Admin |
+| `src/lib/db/storageAdapter.ts` | Bộ điều hợp lưu trữ dữ liệu & Đám mây Redis |
+| `src/app/api/admin/students/route.ts` | API lấy và cấp tài khoản người dùng |
+| `src/app/api/admin/students/[id]/route.ts` | API cập nhật và xóa tài khoản người dùng |
 
 ### 5. Quota / phiên
 
 Không đọc được số quota nền tảng từ repo. Checkpoint này ghi **trước khi hết** để phiên sau không mất ngữ cảnh rebase/conflict.
 
 Nếu phiên sau thấy `main` lệch remote: `git fetch` + `git log HEAD..origin/main` trước khi sửa bank.
-=======
-### 9. Nâng cấp toàn diện Quản Lý Người Dùng & Phân Quyền Admin Dashboard — 2026-10-11
-
-- **Tab chuyên dụng**: Thêm Tab "Quản Lý Người Dùng & Phân Quyền" tách biệt rõ ràng với bảng điểm học tập (Overview).
-- **Khắc phục lỗi Bulk Import từ Excel**: Sửa parser nhận diện ký tự phân cách cột Tab (`\t`), Phẩy (`,`), Chấm phẩy (`;`), tự động bỏ qua dòng tiêu đề Excel và hỗ trợ cột STT tự động.
-- **Tính năng Chỉnh Sửa Người Dùng (Edit User Modal)**: Cho phép sửa Họ tên, Tên đăng nhập, Lớp/Bộ môn, Vai trò, Trạng thái hoạt động, Mật khẩu mới.
-- **Hỗ trợ đầy đủ vai trò (Roles)**: Cấp tài khoản Học sinh (`student`), Giáo viên (`teacher`), Quản trị viên (`admin`).
-- **Dọn dẹp bài làm mồ côi (Orphaned Attempts)**: Khi xóa tài khoản, tự động dọn sạch bài làm liên quan để tránh rác dữ liệu và tránh dính dữ liệu vào tài khoản mới.
-- **Đồng bộ hóa dữ liệu bài làm**: Khi cập nhật thông tin học sinh (tên, username, lớp), tự động cập nhật cả trong các lượt làm bài tương ứng.
-- **In phiếu tài khoản**: Hỗ trợ in danh sách thẻ tài khoản cấp cho từng học sinh theo lớp chuẩn A4 / PDF.
-
----
-
-## Việc tiếp theo (ưu tiên)
-
-1. ~~Nâng cấp Quản lý người dùng Dashboard Admin~~ — xong.
-2. Chạy lại parser trên 9 file Drive; bổ sung câu thiếu (ưu tiên 10F, 11F, 12E, 11D/12D, 12G).
-3. Rà soát stem/option 10F và các câu `content` ngắn bất thường còn lại.
-4. Gắn custom domain + báo cáo SmartScreen (ngoài code).
->>>>>>> e2f11a4 (feat: Nang cap toan dien quan ly nguoi dung va phan quyen trong Admin Dashboard)
