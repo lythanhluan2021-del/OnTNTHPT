@@ -1672,21 +1672,6 @@ export default function AdminDashboardPage() {
             <button
               onClick={() => {
                 soundManager.playClick();
-                setCreateMode("bulk");
-                setBulkImportMethod("excel");
-                setFormNotification(null);
-                setIsAddModalOpen(true);
-              }}
-              className="px-3 py-2 rounded-neu-sm bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1.5"
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Nhập Danh Sách (Bulk)</span>
-              <span className="sm:hidden">Bulk</span>
-            </button>
-
-            <button
-              onClick={() => {
-                soundManager.playClick();
                 setIsDriveStorageModalOpen(true);
               }}
               className="px-3 py-2 rounded-neu-sm bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset transition flex items-center gap-1.5 border border-emerald-300"
