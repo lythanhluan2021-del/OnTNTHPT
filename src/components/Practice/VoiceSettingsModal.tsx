@@ -400,6 +400,12 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
               </button>
             </div>
 
+            {selectedProvider === "google" && (
+              <p className="text-[10px] text-amber-700 dark:text-amber-400 bg-amber-50/90 dark:bg-amber-950/40 p-2 rounded border border-amber-200/80 dark:border-amber-800/80 leading-relaxed">
+                ⚠️ <strong>Lưu ý:</strong> Google Cloud Text-to-Speech yêu cầu tài khoản GCP kích hoạt dịch vụ (không dùng được với Key Gemini AI Studio). Để có <strong>giọng Miền Tây</strong> hoặc <strong>MC tiếng Việt</strong> trong trẻo nhất, Thầy/Cô hãy chuyển sang tab <strong>🌾 FPT.AI Voice</strong> (miễn phí 100.000 ký tự/tháng).
+              </p>
+            )}
+
             <div className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
               <Info className="w-3 h-3 text-slate-400 flex-shrink-0" />
               <span>

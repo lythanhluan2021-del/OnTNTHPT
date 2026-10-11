@@ -180,10 +180,23 @@ export async function POST(req: NextRequest) {
 
       if (!googleRes.ok) {
         const errJson = await googleRes.json().catch(() => ({}));
+        const rawMsg = errJson.error?.message || "";
+        let friendlyMessage = `Lỗi Google TTS (${googleRes.status}): Vui lòng kiểm tra lại cấu hình.`;
+
+        if (
+          rawMsg.includes("API keys are not supported") ||
+          rawMsg.includes("Expected OAuth2")
+        ) {
+          friendlyMessage =
+            "Google Cloud Text-to-Speech yêu cầu cấu hình OAuth2 / Service Account trong GCP Console và không hỗ trợ API Key thông thường (hoặc đây là Key của Gemini AI Studio). Để có giọng Miền Tây hoặc giọng MC tự nhiên nhất, Thầy/Cô vui lòng chuyển sang mục FPT.AI Voice (miễn phí 100.000 ký tự tại fpt.ai) hoặc OpenAI Studio.";
+        } else if (rawMsg) {
+          friendlyMessage = `Lỗi Google TTS: ${rawMsg}`;
+        }
+
         return NextResponse.json(
           {
             success: false,
-            message: errJson.error?.message || `Lỗi Google TTS (${googleRes.status})`,
+            message: friendlyMessage,
           },
           { status: googleRes.status }
         );
