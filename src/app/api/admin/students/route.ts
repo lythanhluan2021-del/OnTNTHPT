@@ -64,10 +64,16 @@ export async function POST(req: NextRequest) {
       const result = await StorageAdapter.createUsersBatch(candidates);
       const allErrors = [...errors, ...result.errors];
 
+      const parts: string[] = [];
+      if (result.created.length > 0) parts.push(`Cấp mới ${result.created.length} tài khoản`);
+      if (result.updated.length > 0) parts.push(`Cập nhật ${result.updated.length} tài khoản`);
+      const detailMsg = parts.length > 0 ? parts.join(", ") : "Không có thay đổi";
+
       return NextResponse.json({
         success: true,
-        message: `Đã nhập thành công ${result.created.length} tài khoản người dùng.`,
+        message: `Đã xử lý thành công (${detailMsg}).`,
         createdCount: result.created.length,
+        updatedCount: result.updated.length,
         errors: allErrors,
       });
     }

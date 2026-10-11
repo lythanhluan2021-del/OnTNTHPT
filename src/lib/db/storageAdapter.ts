@@ -314,37 +314,48 @@ export class StorageAdapter {
 
   static async createUsersBatch(
     newUsersData: Omit<User, "id" | "createdAt">[]
-  ): Promise<{ created: User[]; errors: string[] }> {
+  ): Promise<{ created: User[]; updated: User[]; errors: string[] }> {
     const users = await this.getUsers();
     const created: User[] = [];
+    const updated: User[] = [];
     const errors: string[] = [];
-    const existingUsernames = new Set(users.map((u) => u.username.toLowerCase()));
 
     for (const item of newUsersData) {
       const cleanUsername = item.username.trim().toLowerCase();
-      if (existingUsernames.has(cleanUsername)) {
-        errors.push(`Tên đăng nhập "${cleanUsername}" đã tồn tại.`);
-        continue;
+      const existingIdx = users.findIndex((u) => u.username.toLowerCase() === cleanUsername);
+
+      if (existingIdx !== -1) {
+        // Cập nhật tài khoản đã tồn tại
+        const oldUser = users[existingIdx];
+        const updatedUser: User = {
+          ...oldUser,
+          fullName: item.fullName.trim(),
+          className: item.className ? item.className.trim() : oldUser.className,
+          role: item.role || oldUser.role,
+          password: item.password ? item.password.trim() : oldUser.password,
+          isActive: item.isActive !== undefined ? item.isActive : oldUser.isActive,
+        };
+        users[existingIdx] = updatedUser;
+        updated.push(updatedUser);
+      } else {
+        // Tạo tài khoản mới
+        const newUser: User = {
+          ...item,
+          username: cleanUsername,
+          id: `usr-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`,
+          createdAt: Date.now(),
+          isActive: item.isActive !== undefined ? item.isActive : true,
+        };
+        users.push(newUser);
+        created.push(newUser);
       }
-
-      const newUser: User = {
-        ...item,
-        username: cleanUsername,
-        id: `usr-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`,
-        createdAt: Date.now(),
-        isActive: item.isActive !== undefined ? item.isActive : true,
-      };
-
-      users.push(newUser);
-      existingUsernames.add(cleanUsername);
-      created.push(newUser);
     }
 
-    if (created.length > 0) {
+    if (created.length > 0 || updated.length > 0) {
       await this.saveUsers(users);
     }
 
-    return { created, errors };
+    return { created, updated, errors };
   }
 
   static async updateUser(id: string, updates: Partial<User>): Promise<User> {
