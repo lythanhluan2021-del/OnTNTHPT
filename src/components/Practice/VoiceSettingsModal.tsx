@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import {
   X,
   Volume2,
@@ -39,6 +40,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
   onClose,
   currentQuestionText,
 }) => {
+  const [mounted, setMounted] = useState<boolean>(false);
   const [ttsState, setTtsState] = useState<TTSState>(ttsManager.getState());
   const [selectedProvider, setSelectedProvider] = useState<TTSProvider>(ttsState.provider);
   const [selectedVoiceId, setSelectedVoiceId] = useState<string>(ttsState.voiceId);
@@ -56,6 +58,10 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
     type: "success" | "error" | "info";
     text: string;
   } | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = ttsManager.subscribe((st) => {
@@ -78,7 +84,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
     }
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
   // Lọc danh sách giọng đọc theo nhà cung cấp đang chọn
   const availableVoices = VOICE_OPTIONS.filter((v) => v.provider === selectedProvider);
@@ -154,9 +160,19 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
     onClose();
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
-      <div className="w-full max-w-2xl bg-[#e6ecf5] dark:bg-[#1a202c] rounded-neu shadow-neu-flat p-5 sm:p-6 relative border border-white/70 dark:border-slate-800 space-y-5 max-h-[92vh] overflow-y-auto">
+  const modalContent = (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-5 bg-slate-950/75 backdrop-blur-md animate-in fade-in duration-200"
+      onClick={() => {
+        soundManager.playClick();
+        ttsManager.stop();
+        onClose();
+      }}
+    >
+      <div
+        className="w-full max-w-2xl bg-[#e6ecf5] dark:bg-[#1a202c] rounded-2xl shadow-2xl p-4 sm:p-6 relative border border-white/80 dark:border-slate-800 flex flex-col max-h-[90vh] my-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Nút đóng */}
         <button
           type="button"
@@ -165,13 +181,13 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
             ttsManager.stop();
             onClose();
           }}
-          className="absolute top-4 right-4 p-2 rounded-full bg-[#e6ecf5] dark:bg-slate-800 shadow-neu-flat-xs active:shadow-neu-inset text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"
+          className="absolute top-4 right-4 p-2 rounded-full bg-[#e6ecf5] dark:bg-slate-800 shadow-neu-flat-xs active:shadow-neu-inset text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer z-10"
         >
           <X className="w-4 h-4" />
         </button>
 
-        {/* Tiêu đề modal */}
-        <div className="flex items-center gap-3">
+        {/* Tiêu đề modal - Header cố định */}
+        <div className="flex items-center gap-3 flex-shrink-0 pr-8 pb-3 border-b border-slate-300/60 dark:border-slate-800">
           <div className="w-10 h-10 rounded-neu-sm bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-neu-flat-xs flex-shrink-0">
             <Volume2 className="w-5 h-5" />
           </div>
@@ -188,27 +204,29 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
           </div>
         </div>
 
-        {/* Thông báo kiểm tra kết nối */}
-        {testMessage && (
-          <div
-            className={`p-3 rounded-neu-sm text-xs font-semibold flex items-start gap-2 shadow-neu-flat-xs ${
-              testMessage.type === "success"
-                ? "bg-emerald-50 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-300"
-                : testMessage.type === "error"
-                ? "bg-rose-50 text-rose-800 border border-rose-300 dark:bg-rose-950/40 dark:text-rose-300"
-                : "bg-blue-50 text-blue-800 border border-blue-300 dark:bg-blue-950/40 dark:text-blue-300"
-            }`}
-          >
-            {testMessage.type === "success" ? (
-              <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-600" />
-            ) : testMessage.type === "error" ? (
-              <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-rose-600" />
-            ) : (
-              <Sparkles className="w-4 h-4 flex-shrink-0 mt-0.5 text-blue-600 animate-spin" />
-            )}
-            <span>{testMessage.text}</span>
-          </div>
-        )}
+        {/* Phần nội dung cuộn giữa */}
+        <div className="flex-1 overflow-y-auto space-y-4 pr-1 sm:pr-2 py-3">
+          {/* Thông báo kiểm tra kết nối */}
+          {testMessage && (
+            <div
+              className={`p-3 rounded-neu-sm text-xs font-semibold flex items-start gap-2 shadow-neu-flat-xs ${
+                testMessage.type === "success"
+                  ? "bg-emerald-50 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-300"
+                  : testMessage.type === "error"
+                  ? "bg-rose-50 text-rose-800 border border-rose-300 dark:bg-rose-950/40 dark:text-rose-300"
+                  : "bg-blue-50 text-blue-800 border border-blue-300 dark:bg-blue-950/40 dark:text-blue-300"
+              }`}
+            >
+              {testMessage.type === "success" ? (
+                <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-600" />
+              ) : testMessage.type === "error" ? (
+                <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-rose-600" />
+              ) : (
+                <Sparkles className="w-4 h-4 flex-shrink-0 mt-0.5 text-blue-600 animate-spin" />
+              )}
+              <span>{testMessage.text}</span>
+            </div>
+          )}
 
         {/* BƯỚC 1: CHỌN NHÀ CUNG CẤP GIỌNG ĐỌC */}
         <div className="space-y-2">
@@ -479,10 +497,11 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
               </button>
             ))}
           </div>
+          </div>
         </div>
 
-        {/* HÀNG NÚT THAO TÁC: THỬ GIỌNG & LƯU ÁP DỤNG */}
-        <div className="flex items-center justify-between gap-3 pt-2 border-t border-slate-300/80 dark:border-slate-700">
+        {/* HÀNG NÚT THAO TÁC CỐ ĐỊNH Ở ĐÁY: THỬ GIỌNG & LƯU ÁP DỤNG */}
+        <div className="flex-shrink-0 flex items-center justify-between gap-3 pt-3 border-t border-slate-300/80 dark:border-slate-700 flex-wrap sm:flex-nowrap">
           <div className="flex items-center gap-2">
             {/* Nút nghe thử */}
             {isTesting ? (
@@ -531,4 +550,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 };
+

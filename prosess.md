@@ -11,6 +11,7 @@ Cập nhật: 2026-10-11 — Nâng cấp toàn diện **Hệ thống Giọng đ�
   - Khóa API lưu trữ bảo mật trong `localStorage` trên trình duyệt người dùng, bảo vệ quyền riêng tư tuyệt đối.
 - Giao diện **VoiceSettingsModal & VoiceToggleSwitch**:
   - Modal Neumorphic hiện đại, chọn nhanh Engine và nhân vật giọng đọc kèm huy hiệu trực quan.
+  - Khắc phục triệt để lỗi Modal bị che bởi Sidebar và Fixed Bottom Bar bằng React Portal (`createPortal` trực tiếp vào `document.body`, lớp phủ `z-[9999]`), phân tách Header cố định, Body cuộn và Footer ghim nút thao tác.
   - Nút thử giọng tại chỗ (`testVoice`) kiểm tra API key tức thì trước khi lưu.
   - Điều chỉnh tốc độ linh hoạt (0.85x, 1.0x, 1.15x).
   - Huy hiệu hiển thị phong cách trên thanh câu hỏi: `🌾 Miền Tây`, `🎙️ MC Trong Trẻo`, `✨ Studio AI`.
