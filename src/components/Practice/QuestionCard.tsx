@@ -144,18 +144,22 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   // Tự động phát âm đề bài nếu chế độ đọc đang BẬT và câu hỏi chưa được trả lời
   useEffect(() => {
     if (ttsManager.getState().isEnabled && !hasAnswered && question?.content) {
-      // Giảm delay xuống 40ms để chuyển câu là phát âm thanh ngay lập tức
+      // Bắt đầu đọc câu hỏi sau 40ms
       const timer = setTimeout(() => {
         ttsManager.speakQuestion(question.content, `Câu ${currentIndex + 1}`);
       }, 40);
 
-      // Đồng thời chạy ngầm tải trước (prefetch) âm thanh câu tiếp theo để chuyển tiếp là có ngay 0ms
+      // Chạy ngầm tải trước câu tiếp theo sau 2000ms (tránh gửi 2 request cùng lúc làm nghẽn kết nối)
+      let prefetchTimer: NodeJS.Timeout | null = null;
       if (nextQuestionContent) {
-        ttsManager.prefetchQuestion(nextQuestionContent, `Câu ${currentIndex + 2}`);
+        prefetchTimer = setTimeout(() => {
+          ttsManager.prefetchQuestion(nextQuestionContent, `Câu ${currentIndex + 2}`);
+        }, 2000);
       }
 
       return () => {
         clearTimeout(timer);
+        if (prefetchTimer) clearTimeout(prefetchTimer);
         ttsManager.stop();
       };
     } else {

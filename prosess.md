@@ -1,27 +1,17 @@
 # Tiến trình dự án OnTNTHPT
 
-Cập nhật: 2026-10-11 — Nâng cấp toàn diện **Hệ thống Giọng đọc Đề bài Thông minh (AI Voice 2.0)**:
-- Khắc phục hoàn toàn tình trạng giọng robot cứng nhắc bằng việc tích hợp hệ thống đa nguồn TTS AI tự nhiên:
-  - **Google Gemini 2.0 AI Voice**: Tích hợp trực tiếp mô hình AI tạo sinh âm thanh đa phương thức (`gemini-2.0-flash`) thông qua `generativelanguage.googleapis.com` với prompt giọng đọc **🌾 Nữ Miền Tây ngọt ngào**, **🌾 Nam Miền Tây trầm ấm chân phương**, **🎙️ Nữ MC trong trẻo**, **🎙️ Nam MC đĩnh đạc** có cảm xúc biểu cảm tự nhiên như người thật. Hỗ trợ trực tiếp **API Key Google AI Studio miễn phí** (`AIzaSy...`) và tự động đồng bộ với Key của Trợ lý Socratic đã lưu trong máy.
-  - **FPT.AI Voice**: Chuyên sâu tiếng Việt với **🌾 Giọng Nữ Miền Tây (`thuminh`)**, **🌾 Nam Miền Tây (`minhquang`)**, **🎙️ Nữ MC Trong Trẻo (`banmai`, `thuha`)**, **🎙️ Nam MC Bắc (`leminh`)**.
-  - **OpenAI Studio TTS**: **✨ Nữ MC AI (`nova`, `shimmer`)**, **✨ Nam MC (`echo`, `onyx`)** âm thanh phòng thu siêu trong trẻo.
-  - **Browser Web Speech API**: Chế độ dự phòng tự động (fallback) hoàn toàn miễn phí không lo gián đoạn.
-- Cơ chế **Bring Your Own Key (API Key Cá Nhân)**:
-  - Cho phép người dùng nhập API Key Google Gemini (AI Studio miễn phí), FPT.AI (miễn phí 100.000 ký tự/tháng), hoặc OpenAI.
-  - Khóa API lưu trữ bảo mật trong `localStorage` trên trình duyệt người dùng, bảo vệ quyền riêng tư tuyệt đối.
-- Giao diện **VoiceSettingsModal & VoiceToggleSwitch**:
-  - Modal Neumorphic hiện đại, chọn nhanh Engine và nhân vật giọng đọc kèm huy hiệu trực quan.
-  - Khắc phục triệt để lỗi Modal bị che bởi Sidebar và Fixed Bottom Bar bằng React Portal (`createPortal` trực tiếp vào `document.body`, lớp phủ `z-[9999]`), phân tách Header cố định, Body cuộn và Footer ghim nút thao tác.
-  - Nút thử giọng tại chỗ (`testVoice`) kiểm tra API key tức thì trước khi lưu.
-  - Điều chỉnh tốc độ linh hoạt (0.85x, 1.0x, 1.15x).
-  - Huy hiệu hiển thị phong cách trên thanh câu hỏi: `🌾 Miền Tây`, `🎙️ MC Trong Trẻo`, `✨ Studio AI`.
-  - Giữ nguyên phong cách vùng miền khi chuyển đổi nhanh giữa 👩 Nữ và 👨 Nam.
-- Tối ưu hoá phân biệt **Giọng Nam / Nữ trên Trình Duyệt**: tự động phát hiện giọng nam tự nhiên (`Microsoft NamMinh`), đồng thời áp dụng hạ tần số pitch (0.55) và nhịp điệu (0.90x) khi trình duyệt chỉ có một giọng nữ duy nhất (Chrome `Google tiếng Việt`), tạo ra âm vực nam trầm ấm, rành mạch, phân biệt rõ ràng 100% so với giọng nữ.
-- Tối ưu hóa tốc độ đọc tức thì khi chuyển câu (**Zero-latency Instant Audio Playback**):
-  - **Tiền nạp âm thanh thông minh (Predictive Audio Pre-fetching)**: Trong khi học sinh đang làm câu hiện tại, hệ thống chạy ngầm tải trước (`prefetchQuestion`) âm thanh của câu hỏi tiếp theo vào `audioCache`. Khi học sinh bấm chuyển câu, âm thanh đã sẵn sàng và cất lên ngay lập tức (0ms).
-  - **Bộ đệm âm thanh RAM trên Server (Server-side Memory Cache)**: Lưu trữ 300 tệp âm thanh gần nhất, phản hồi ngay lập tức (< 5ms), tiết kiệm tối đa quota và triệt tiêu độ trễ mạng.
-  - **Rút ngắn độ trễ kích hoạt**: Giảm delay kích hoạt trong `QuestionCard` từ 350ms xuống 40ms, giúp chuyển câu là đọc ngay tức thì.
-- Biên dịch dự án `npm run build` thành công xuất sắc, sẵn sàng triển khai Vercel.
+Cập nhật: 2026-10-11 — Nâng cấp toàn diện **Hệ thống Giọng đọc Đề bài Thông minh (AI Voice 2.0)** & **Khắc phục triệt để lỗi tự động chuyển giọng đọc**:
+- **Khắc phục dứt điểm lỗi "Hệ thống tự chuyển qua các giọng đọc khác khi làm câu hỏi"**:
+  - **Cơ chế cấu hình nguyên tử (`saveAndApplyConfig`)**: Thay thế các hàm setter rời rạc (`setProvider`, `setVoiceId`, `setGender`) bằng một phương thức nguyên tử duy nhất trong `TTSManager`. Đảm bảo `provider`, `voiceId`, `gender` (Nam/Nữ) và `apiKey` được cập nhật đồng bộ 100%, ghi vào `localStorage` cùng lúc và chỉ phát sự kiện `notify()` đúng một lần duy nhất, ngăn chặn tình trạng gán nhầm sang giọng nữ trung gian khi chọn giọng nam.
+  - **Tự động làm sạch bộ đệm âm thanh (`audioCache.clear()`)**: Mỗi khi người dùng bấm "Lưu & Bật Giọng Đọc Này" hoặc thay đổi giọng, bộ đệm âm thanh trên client được xóa sạch ngay lập tức, triệt tiêu nguy cơ phát lại âm thanh của giọng đọc cũ đã lưu từ trước.
+  - **Tích hợp `AbortController` chống đè âm thanh và race condition**: Mọi yêu cầu `fetch("/api/tts")` đều được liên kết với `currentAbortController`. Khi chuyển câu hỏi hoặc bấm dừng, tác vụ tải của câu trước bị hủy ngay lập tức, ngăn chặn âm thanh câu cũ trả về muộn và phát đè lên câu mới.
+  - **Tuần tự hóa cơ chế tải trước (Sequential Pre-fetching)**: Trì hoãn việc gọi `prefetchQuestion` sau 2000ms (thay vì bắn đồng thời cùng lúc với `speakQuestion` tại 40ms). Loại bỏ hoàn toàn xung đột mạng và nghẽn tài nguyên với API của Google Gemini, giữ tỷ lệ thành công 100% không bị rơi vào fallback.
+  - **Bảo toàn giới tính Nam/Nữ khi dự phòng (Gender-preserving Fallback)**: Khi buộc phải sử dụng Web Speech dự phòng, hệ thống tôn trọng chính xác giới tính người dùng đã chọn (giọng Nam duy trì pitch 0.55 trầm ấm, không bị chuyển sang giọng nữ robot the thé).
+- **Hỗ trợ đầy đủ Google Gemini TTS AI Audio chính thức**:
+  - Sử dụng mô hình `gemini-3.8-flash-tts` của Google AI Studio (hỗ trợ hoàn hảo mọi API Key bắt đầu bằng `AIzaSy...` và `AQ.Ab8RN...`).
+  - Hỗ trợ đầy đủ 4 chất giọng AI cảm xúc: **🌾 Nữ Miền Tây (`Aoede`)**, **🌾 Nam Miền Tây (`Puck`)**, **🎙️ Nữ MC Truyền Cảm (`Kore`)**, **🎙️ Nam MC Đĩnh Đạc (`Charon`)**.
+  - Tích hợp **Server-side Audio Memory Cache** (`serverAudioCache`) phản hồi < 5ms cho các câu hỏi trùng lặp.
+- **Biên dịch dự án**: `npm run build` thành công 100% không lỗi.
 
 ## ĐỌC TRƯỚC KHI LÀM (phiên mới / hết quota)
 

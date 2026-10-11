@@ -110,13 +110,15 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
   // Thử giọng đọc
   const handleTestVoice = async () => {
     soundManager.playClick();
-    // Lưu tạm key vào manager trước khi test
-    ttsManager.setApiKey("fpt", fptKey);
-    ttsManager.setApiKey("openai", openaiKey);
-    ttsManager.setApiKey("google", googleKey);
-    ttsManager.setProvider(selectedProvider);
-    ttsManager.setVoiceId(selectedVoiceId);
-    ttsManager.setSpeed(speed);
+    ttsManager.saveAndApplyConfig({
+      provider: selectedProvider,
+      voiceId: selectedVoiceId,
+      speed,
+      fptKey,
+      openaiKey,
+      googleKey,
+      enabled: ttsState.isEnabled,
+    });
 
     setTestMessage({ type: "info", text: "Đang tạo giọng đọc thử nghiệm..." });
 
@@ -144,13 +146,15 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
   // Lưu và áp dụng cấu hình
   const handleSaveAndApply = () => {
     soundManager.playSuccess();
-    ttsManager.setApiKey("fpt", fptKey);
-    ttsManager.setApiKey("openai", openaiKey);
-    ttsManager.setApiKey("google", googleKey);
-    ttsManager.setProvider(selectedProvider);
-    ttsManager.setVoiceId(selectedVoiceId);
-    ttsManager.setSpeed(speed);
-    ttsManager.setEnabled(true);
+    ttsManager.saveAndApplyConfig({
+      provider: selectedProvider,
+      voiceId: selectedVoiceId,
+      speed,
+      fptKey,
+      openaiKey,
+      googleKey,
+      enabled: true,
+    });
 
     // Nếu đang có câu hỏi trên màn hình, phát ngay với giọng mới
     if (currentQuestionText) {

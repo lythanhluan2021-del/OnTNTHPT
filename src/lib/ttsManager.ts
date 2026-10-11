@@ -478,19 +478,91 @@ class TTSManager {
     return this.setEnabled(!this.isEnabled);
   }
 
+  private currentAbortController: AbortController | null = null;
+
+  public clearCache() {
+    this.audioCache.clear();
+  }
+
+  /**
+   * Lưu và áp dụng cấu hình giọng đọc nguyên tử (Atomic Configuration)
+   * Đảm bảo provider, voiceId, gender, apiKey được lưu đồng bộ 100%,
+   * huỷ các tác vụ cũ và xóa cache để không bị nhảy hay lẫn lộn giọng đọc.
+   */
+  public saveAndApplyConfig(config: {
+    provider: TTSProvider;
+    voiceId: string;
+    speed?: number;
+    fptKey?: string;
+    openaiKey?: string;
+    googleKey?: string;
+    enabled?: boolean;
+  }) {
+    this.stop();
+    this.audioCache.clear();
+
+    if (config.fptKey !== undefined) {
+      this.fptApiKey = config.fptKey.trim();
+      if (typeof window !== "undefined") localStorage.setItem("thpt_tts_fpt_key", this.fptApiKey);
+    }
+    if (config.openaiKey !== undefined) {
+      this.openaiApiKey = config.openaiKey.trim();
+      if (typeof window !== "undefined") localStorage.setItem("thpt_tts_openai_key", this.openaiApiKey);
+    }
+    if (config.googleKey !== undefined) {
+      this.googleApiKey = config.googleKey.trim();
+      if (typeof window !== "undefined") {
+        localStorage.setItem("thpt_tts_google_key", this.googleApiKey);
+        if (this.googleApiKey) localStorage.setItem("custom_gemini_api_key", this.googleApiKey);
+      }
+    }
+
+    const targetVoice =
+      VOICE_OPTIONS.find((v) => v.id === config.voiceId) ||
+      VOICE_OPTIONS.find((v) => v.provider === config.provider) ||
+      VOICE_OPTIONS[0];
+
+    this.voiceId = targetVoice.id;
+    this.provider = targetVoice.provider;
+    this.gender = targetVoice.gender;
+
+    if (config.speed !== undefined) {
+      this.speed = Math.max(0.75, Math.min(1.3, config.speed));
+    }
+    if (config.enabled !== undefined) {
+      this.isEnabled = config.enabled;
+    }
+
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem("thpt_tts_voice_id", this.voiceId);
+        localStorage.setItem("thpt_tts_provider", this.provider);
+        localStorage.setItem("thpt_tts_gender", this.gender);
+        localStorage.setItem("thpt_tts_speed", String(this.speed));
+        localStorage.setItem("thpt_tts_enabled", String(this.isEnabled));
+      } catch {}
+    }
+
+    this.notify();
+  }
+
   public setProvider(provider: TTSProvider) {
     this.provider = provider;
-    // Tự động chuyển sang voice mặc định của provider tương ứng
-    const matchingVoice = VOICE_OPTIONS.find(
-      (v) => v.provider === provider && v.gender === this.gender
-    ) || VOICE_OPTIONS.find((v) => v.provider === provider) || VOICE_OPTIONS[0];
+    // Tự động chuyển sang voice phù hợp của provider
+    const matchingVoice =
+      VOICE_OPTIONS.find((v) => v.provider === provider && v.gender === this.gender) ||
+      VOICE_OPTIONS.find((v) => v.provider === provider) ||
+      VOICE_OPTIONS[0];
 
     this.voiceId = matchingVoice.id;
+    this.gender = matchingVoice.gender;
+    this.audioCache.clear();
 
     if (typeof window !== "undefined") {
       try {
         localStorage.setItem("thpt_tts_provider", provider);
         localStorage.setItem("thpt_tts_voice_id", this.voiceId);
+        localStorage.setItem("thpt_tts_gender", this.gender);
       } catch {}
     }
     this.notify();
@@ -502,6 +574,7 @@ class TTSManager {
       this.voiceId = found.id;
       this.provider = found.provider;
       this.gender = found.gender;
+      this.audioCache.clear();
 
       if (typeof window !== "undefined") {
         try {
@@ -534,6 +607,8 @@ class TTSManager {
         this.voiceId = matchingProvider.id;
       }
     }
+
+    this.audioCache.clear();
 
     if (typeof window !== "undefined") {
       try {
@@ -594,6 +669,12 @@ class TTSManager {
   public async speakQuestion(rawContent: string, questionPrefix?: string) {
     if (typeof window === "undefined") return;
 
+    // Huỷ bỏ request fetch trước đó nếu vẫn còn đang bay trên mạng
+    if (this.currentAbortController) {
+      this.currentAbortController.abort();
+      this.currentAbortController = null;
+    }
+
     this.stop();
     this.errorMessageState = null;
 
@@ -618,10 +699,14 @@ class TTSManager {
       this.isLoadingState = true;
       this.notify();
 
+      const controller = new AbortController();
+      this.currentAbortController = controller;
+
       try {
         const res = await fetch("/api/tts", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
           body: JSON.stringify({
             text: fullText,
             provider: activeVoice.provider,
@@ -631,13 +716,15 @@ class TTSManager {
           }),
         });
 
+        if (controller.signal.aborted) return;
+
         if (!res.ok) {
           const errData = await res.json().catch(() => ({}));
           throw new Error(errData.message || `Lỗi API (${res.status})`);
         }
 
         // Với FPT, response là JSON { audioUrl }
-        // Với OpenAI / Google, response là binary audio/mpeg
+        // Với OpenAI / Google, response là binary audio/mpeg hoặc audio/wav
         const contentType = res.headers.get("content-type") || "";
         let finalAudioUrl = "";
 
@@ -653,19 +740,29 @@ class TTSManager {
           finalAudioUrl = URL.createObjectURL(blob);
         }
 
+        if (controller.signal.aborted) return;
+
         this.audioCache.set(cacheKey, finalAudioUrl);
         this.isLoadingState = false;
+        this.currentAbortController = null;
         this.playAudioUrl(finalAudioUrl);
       } catch (err: any) {
-        console.warn("[TTS] Lỗi phát âm thanh qua API, chuyển sang giọng máy dự phòng:", err);
+        if (err.name === "AbortError" || controller.signal.aborted) {
+          return;
+        }
+
+        console.warn("[TTS] Lỗi phát âm thanh qua API:", err);
         this.isLoadingState = false;
-        this.errorMessageState = `API giọng đọc gặp sự cố (${err.message}). Đã chuyển về giọng mặc định.`;
-        // Tự động fallback sang Web Speech để học sinh không bị gián đoạn ôn tập
-        this.speakBrowserUtterance(fullText, this.gender);
+        this.currentAbortController = null;
+        this.errorMessageState = `API giọng đọc gặp sự cố (${err.message}).`;
+        this.notify();
+
+        // Fallback sang Web Speech giữ đúng giới tính Nam/Nữ người dùng đã chọn
+        this.speakBrowserUtterance(fullText, activeVoice.gender);
       }
     } else {
       // 2. Chế độ mặc định Trình duyệt (Web Speech API)
-      this.speakBrowserUtterance(fullText, this.gender);
+      this.speakBrowserUtterance(fullText, activeVoice.gender);
     }
   }
 
@@ -872,6 +969,11 @@ class TTSManager {
    * Dừng phát âm thanh ngay lập tức
    */
   public stop() {
+    if (this.currentAbortController) {
+      this.currentAbortController.abort();
+      this.currentAbortController = null;
+    }
+
     if (this.currentAudio) {
       this.currentAudio.pause();
       this.currentAudio.currentTime = 0;
