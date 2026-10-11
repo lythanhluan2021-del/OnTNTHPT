@@ -220,6 +220,92 @@ export class StorageAdapter {
     return "local";
   }
 
+  /**
+   * Tự động quét và nạp tài khoản từ file Excel TKHS.xlsx trên máy nếu có dòng mới
+   */
+  static syncUsersWithLocalExcel(
+    currentUsers: User[],
+    deletedSet: Set<string>
+  ): { users: User[]; addedCount: number } {
+    try {
+      const excelCandidates = [
+        path.join(process.cwd(), "TKHS.xlsx"),
+        path.join(process.cwd(), "src", "data", "TKHS.xlsx"),
+      ];
+      let excelPath: string | null = null;
+      for (const p of excelCandidates) {
+        if (fs.existsSync(p)) {
+          excelPath = p;
+          break;
+        }
+      }
+
+      if (!excelPath) {
+        return { users: currentUsers, addedCount: 0 };
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const xlsx = require("xlsx");
+      // Dùng fs.readFileSync để tránh lỗi Windows file-lock (EBUSY) khi file đang được mở trong Excel
+      const fileBuffer = fs.readFileSync(excelPath);
+      const wb = xlsx.read(fileBuffer, { type: "buffer" });
+      if (!wb.SheetNames || wb.SheetNames.length === 0) {
+        return { users: currentUsers, addedCount: 0 };
+      }
+
+      const sheet = wb.Sheets[wb.SheetNames[0]];
+      const rawRows: any[] = xlsx.utils.sheet_to_json(sheet);
+      let added = 0;
+      const list = [...currentUsers];
+
+      for (const row of rawRows) {
+        const username = String(
+          row["TK đăng nhập"] || row["Tên đăng nhập"] || row["Mã HS"] || row["username"] || ""
+        )
+          .trim()
+          .toLowerCase();
+        const fullName = String(
+          row["Tên"] || row["Họ và tên"] || row["Họ tên"] || row["fullName"] || ""
+        ).trim();
+        const className = String(row["Lớp"] || row["className"] || "12A1").trim();
+        const password = String(row["Mật khẩu"] || row["password"] || "123").trim();
+
+        if (!username || !fullName) continue;
+
+        // Nếu tài khoản đã bị gạch tên vĩnh viễn (Tombstone) thì không hồi sinh lại
+        if (deletedSet.has(username)) continue;
+
+        const existingIdx = list.findIndex((u) => u.username.toLowerCase() === username);
+        if (existingIdx === -1) {
+          const isFreeCls =
+            className.toLowerCase().includes("tự do") ||
+            className.toLowerCase().includes("tu do") ||
+            className.toLowerCase().includes("vang lai");
+
+          const newUser: User = {
+            id: `usr-${username}`,
+            username,
+            fullName,
+            className: className || "12A1",
+            password: password || "123",
+            role: "student",
+            schoolYear: "2026-2027",
+            accountType: isFreeCls ? "free" : "official",
+            isActive: true,
+            createdAt: Date.now(),
+          };
+          list.push(newUser);
+          added++;
+        }
+      }
+
+      return { users: list, addedCount: added };
+    } catch (e: any) {
+      console.warn("[StorageAdapter] Lỗi quét file TKHS.xlsx:", e.message);
+      return { users: currentUsers, addedCount: 0 };
+    }
+  }
+
   static async getUsers(): Promise<User[]> {
     const deletedSet = this.getDeletedUserIdentifiers();
     const isDeleted = (u: User | undefined | null) => {
@@ -250,15 +336,19 @@ export class StorageAdapter {
           if (!cleanedUsers.some((u) => u.role === "admin")) {
             cleanedUsers.unshift(INITIAL_USERS[0]);
           }
-          if (cleanedUsers.length !== remoteUsers.length) {
-            await redis.set("thpt:users", cleanedUsers);
+
+          // Tự động kiểm tra thêm dòng mới từ file Excel TKHS.xlsx
+          const { users: syncedUsers, addedCount } = this.syncUsersWithLocalExcel(cleanedUsers, deletedSet);
+          if (syncedUsers.length !== remoteUsers.length || addedCount > 0) {
+            await redis.set("thpt:users", syncedUsers);
           }
-          globalForStorage.ontnUsersCache = cleanedUsers;
-          return cleanedUsers;
+          globalForStorage.ontnUsersCache = syncedUsers;
+          return syncedUsers;
         } else {
-          await redis.set("thpt:users", INITIAL_USERS);
-          globalForStorage.ontnUsersCache = INITIAL_USERS;
-          return INITIAL_USERS;
+          const { users: initSynced } = this.syncUsersWithLocalExcel(INITIAL_USERS, deletedSet);
+          await redis.set("thpt:users", initSynced);
+          globalForStorage.ontnUsersCache = initSynced;
+          return initSynced;
         }
       } catch (err) {
         console.warn("[StorageAdapter] ⚠️ Lỗi đọc từ Upstash Redis, dùng bộ nhớ đệm:", err);
@@ -317,14 +407,23 @@ export class StorageAdapter {
         const driveUsers = await GoogleDriveStorage.loadUsers();
         if (driveUsers && Array.isArray(driveUsers)) {
           const activeDriveUsers = driveUsers.filter((u) => !isDeleted(u));
-          const merged = mergeUserLists(activeDriveUsers, baseUsers);
+          let merged = mergeUserLists(activeDriveUsers, baseUsers);
+
+          // Tự động kiểm tra thêm dòng mới từ file Excel TKHS.xlsx
+          const { users: syncedMerged, addedCount } = this.syncUsersWithLocalExcel(merged, deletedSet);
+          merged = syncedMerged;
+
           globalForStorage.ontnUsersCache = merged;
           safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), merged);
           if (!IS_SERVERLESS) {
             safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), merged);
           }
-          // Nếu Drive chứa tài khoản đã bị xóa, dọn sạch ngay trên Drive
-          if (activeDriveUsers.length < driveUsers.length || merged.length > driveUsers.length) {
+          // Nếu Drive chứa tài khoản đã bị xóa hoặc có tài khoản mới từ Excel, dọn sạch / đồng bộ ngay trên Drive
+          if (
+            activeDriveUsers.length < driveUsers.length ||
+            merged.length > driveUsers.length ||
+            addedCount > 0
+          ) {
             GoogleDriveStorage.syncUsers(merged).catch((e) =>
               console.warn("[StorageAdapter] Lỗi đồng bộ users lên Drive:", e)
             );
@@ -336,15 +435,22 @@ export class StorageAdapter {
       }
     }
 
-    // 3. Nếu chưa đồng bộ được từ Drive, trả về baseUsers đã nạp
-    const finalUsers = baseUsers.filter((u) => !isDeleted(u)).map((u) => ({
+    // 3. Nếu chưa đồng bộ được từ Drive, trả về baseUsers đã nạp và quét thêm Excel
+    let finalUsers: User[] = baseUsers.filter((u) => !isDeleted(u)).map((u) => ({
       ...u,
       accountType: getUserAccountType(u),
     }));
+
+    const { users: syncedFinal, addedCount } = this.syncUsersWithLocalExcel(finalUsers, deletedSet);
+    finalUsers = syncedFinal;
+
     globalForStorage.ontnUsersCache = finalUsers;
     safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "users.json"), finalUsers);
     if (!IS_SERVERLESS) {
       safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "users.json"), finalUsers);
+    }
+    if (addedCount > 0 && GoogleDriveStorage.isConfigured()) {
+      GoogleDriveStorage.syncUsers(finalUsers).catch(() => {});
     }
     return finalUsers;
   }

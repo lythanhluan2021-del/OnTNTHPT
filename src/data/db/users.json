@@ -155,5 +155,17 @@
     "lastLoginAt": 1791714027457,
     "authProvider": "google",
     "accountType": "free"
+  },
+  {
+    "id": "usr-test",
+    "username": "test",
+    "fullName": "Test",
+    "className": "test",
+    "password": "123",
+    "role": "student",
+    "schoolYear": "2026-2027",
+    "accountType": "official",
+    "isActive": true,
+    "createdAt": 1791716328084
   }
 ]
