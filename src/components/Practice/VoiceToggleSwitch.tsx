@@ -61,8 +61,8 @@ export const VoiceToggleSwitch: React.FC<VoiceToggleSwitchProps> = ({
     if (activeVoice.region === "mientay") return "🌾 Miền Tây";
     if (activeVoice.region === "mienbac") return "🎙️ MC Trong Trẻo";
     if (activeVoice.region === "studio") return "✨ Studio AI";
-    if (ttsState.provider === "google") return "🌐 Google AI";
-    return "💻 Mặc định";
+    if (activeVoice.gender === "female") return "🌸 Mai Linh";
+    return "👔 Quốc Tuấn";
   };
 
   return (

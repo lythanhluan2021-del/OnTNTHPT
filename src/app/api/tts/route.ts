@@ -43,8 +43,9 @@ async function fetchGoogleTranslateAudio(text: string): Promise<Buffer> {
     const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(chunk.trim())}&tl=vi&client=tw-ob`;
     const res = await fetch(url, {
       headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
-        "Referer": "https://translate.google.com/",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        Referer: "https://translate.google.com/",
       },
     });
     if (res.ok) {
@@ -60,39 +61,16 @@ async function fetchGoogleTranslateAudio(text: string): Promise<Buffer> {
   return Buffer.concat(audioBuffers);
 }
 
-// Hàm gắn RIFF WAV Header cho dữ liệu thô PCM từ Gemini AI Audio để thẻ <audio> phát được ngay
-function convertPcmToWav(pcmData: Buffer, sampleRate: number = 24000): Buffer {
-  if (pcmData.length >= 4 && pcmData.toString("ascii", 0, 4) === "RIFF") {
-    return pcmData;
-  }
-  const numChannels = 1;
-  const bitsPerSample = 16;
-  const byteRate = (sampleRate * numChannels * bitsPerSample) / 8;
-  const blockAlign = (numChannels * bitsPerSample) / 8;
-  const dataSize = pcmData.length;
-  const header = Buffer.alloc(44);
-
-  header.write("RIFF", 0);
-  header.writeUInt32LE(36 + dataSize, 4);
-  header.write("WAVE", 8);
-  header.write("fmt ", 12);
-  header.writeUInt32LE(16, 16); // Subchunk1Size
-  header.writeUInt16LE(1, 20); // AudioFormat: 1 (PCM)
-  header.writeUInt16LE(numChannels, 22); // Mono
-  header.writeUInt32LE(sampleRate, 24); // 24000Hz
-  header.writeUInt32LE(byteRate, 28);
-  header.writeUInt16LE(blockAlign, 32);
-  header.writeUInt16LE(bitsPerSample, 34);
-  header.write("data", 36);
-  header.writeUInt32LE(dataSize, 40);
-
-  return Buffer.concat([header, pcmData]);
-}
-
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { text, provider = "fpt", voice = "thuminh", speed = 1.0, apiKey = "" } = body;
+    const {
+      text,
+      provider = "free",
+      voice = "google_stream_female",
+      speed = 1.0,
+      apiKey = "",
+    } = body;
 
     if (!text || typeof text !== "string") {
       return NextResponse.json(
@@ -123,28 +101,64 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 1. NHÀ CUNG CẤP: FPT.AI Text to Speech (Chuyên gia giọng Tiếng Việt, Miền Tây, MC)
+    // 1. NHÀ CUNG CẤP: MIỄN PHÍ 100% (Google Stream MP3 cho giọng Nữ Mai Linh)
+    if (provider === "free" || provider === "google") {
+      // Giọng nam không đi qua route này (được trình duyệt phát Native)
+      if (voice === "native_male" || voice === "free_male") {
+        return NextResponse.json(
+          {
+            success: false,
+            message:
+              "Giọng Nam Quốc Tuấn được phát trực tiếp bằng Native Speech Engine trên thiết bị để đảm bảo chất âm trầm ấm trung thực.",
+          },
+          { status: 400 }
+        );
+      }
+
+      try {
+        const audioBuffer = await fetchGoogleTranslateAudio(text);
+        if (serverAudioCache.size > 1000) {
+          const firstKey = serverAudioCache.keys().next().value;
+          if (firstKey) serverAudioCache.delete(firstKey);
+        }
+        serverAudioCache.set(cacheKey, { buffer: audioBuffer, mimeType: "audio/mpeg" });
+
+        return new NextResponse(new Uint8Array(audioBuffer), {
+          headers: {
+            "Content-Type": "audio/mpeg",
+            "Cache-Control": "public, max-age=86400",
+            "X-TTS-Engine": "google-stream",
+          },
+        });
+      } catch (err: any) {
+        return NextResponse.json(
+          { success: false, message: "Lỗi tải âm thanh Google Stream: " + err.message },
+          { status: 500 }
+        );
+      }
+    }
+
+    // 2. NHÀ CUNG CẤP: FPT.AI (Chuyên gia giọng Miền Tây & MC Bắc chuẩn - Yêu cầu Key)
     if (provider === "fpt") {
       const activeKey = apiKey?.trim() || process.env.FPT_AI_API_KEY || "";
       if (!activeKey) {
         return NextResponse.json(
           {
             success: false,
-            fallback: true,
             message:
-              "Chưa có API Key FPT.AI. Vui lòng nhập API Key cá nhân trong phần cài đặt giọng đọc (miễn phí 100.000 ký tự/tháng tại fpt.ai).",
+              "Chưa có API Key FPT.AI. Vui lòng nhập API Key cá nhân trong cài đặt giọng đọc (miễn phí 100.000 ký tự/tháng tại console.fpt.ai) hoặc chọn nhóm giọng Miễn Phí.",
           },
           { status: 400 }
         );
       }
 
-      // Kiểm tra nếu người dùng nhầm lẫn dán key của Google (AQ...) hoặc OpenAI (sk...) vào FPT
+      // Cảnh báo nếu dán nhầm key của Google hoặc OpenAI
       if (activeKey.startsWith("AQ.") || activeKey.startsWith("AIza")) {
         return NextResponse.json(
           {
             success: false,
             message:
-              "Khóa bạn vừa dán là Google Gemini API Key (dành cho Trợ lý AI), không phải khóa FPT.AI. Để nghe giọng Miền Tây hoặc MC, vui lòng lấy API Key FPT miễn phí tại console.fpt.ai (hoặc chuyển sang tab 'Trình Duyệt' để nghe miễn phí không cần key).",
+              "Khóa bạn vừa dán là Google API Key, không phải khóa FPT.AI. Để nghe giọng Miền Tây / MC, vui lòng lấy API Key FPT miễn phí tại console.fpt.ai.",
           },
           { status: 400 }
         );
@@ -154,13 +168,12 @@ export async function POST(req: NextRequest) {
           {
             success: false,
             message:
-              "Khóa bạn vừa dán là OpenAI API Key. Vui lòng chuyển sang tab 'OpenAI Studio' bên cạnh để sử dụng giọng Nova / Echo trong trẻo.",
+              "Khóa bạn vừa dán là OpenAI API Key. Vui lòng chuyển sang tab 'OpenAI Studio' để sử dụng giọng Nova / Echo.",
           },
           { status: 400 }
         );
       }
 
-      // Giọng FPT: thuminh (Nữ Miền Tây/Nam), minhquang (Nam Miền Tây/Nam), maingoc (Nữ Nam), banmai (Nữ Bắc MC), thuha (Nữ Bắc), leminh (Nam Bắc MC)
       let fptSpeed = "";
       if (speed < 0.95) fptSpeed = "-1";
       else if (speed > 1.1) fptSpeed = "1";
@@ -168,10 +181,10 @@ export async function POST(req: NextRequest) {
       const fptRes = await fetch("https://api.fpt.ai/hmi/tts/v5", {
         method: "POST",
         headers: {
-          "api_key": activeKey,
+          api_key: activeKey,
           "api-key": activeKey,
-          "voice": voice || "thuminh",
-          "speed": fptSpeed,
+          voice: voice || "thuminh",
+          speed: fptSpeed,
           "Cache-Control": "no-cache",
         },
         body: text,
@@ -212,15 +225,13 @@ export async function POST(req: NextRequest) {
 
       const audioUrl = fptData.async;
 
-      // Chờ nhẹ tối đa 3 lần để đảm bảo tệp mp3 trên CDN FPT đã sẵn sàng
+      // Chờ nhẹ tối đa 4 lần để CDN FPT sẵn sàng tệp mp3
       if (audioUrl) {
         for (let i = 0; i < 4; i++) {
           try {
             const headCheck = await fetch(audioUrl, { method: "HEAD" });
             if (headCheck.ok) break;
-          } catch {
-            // Ignored
-          }
+          } catch {}
           await new Promise((r) => setTimeout(r, 450));
         }
       }
@@ -233,28 +244,27 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 2. NHÀ CUNG CẤP: OpenAI Audio Speech API (tts-1)
+    // 3. NHÀ CUNG CẤP: OpenAI Audio Speech API (tts-1)
     if (provider === "openai") {
       const activeKey = apiKey?.trim() || process.env.OPENAI_API_KEY || "";
       if (!activeKey) {
         return NextResponse.json(
           {
             success: false,
-            fallback: true,
-            message: "Chưa có API Key OpenAI. Vui lòng nhập API Key cá nhân trong cài đặt giọng đọc.",
+            message:
+              "Chưa có API Key OpenAI. Vui lòng nhập API Key trong cài đặt giọng đọc hoặc chọn nhóm giọng Miễn Phí.",
           },
           { status: 400 }
         );
       }
 
-      // Giọng OpenAI: nova, shimmer, alloy, echo, onyx, fable
       const openaiVoice = voice || "nova";
       const clampedSpeed = Math.max(0.7, Math.min(1.3, speed));
 
       const openaiRes = await fetch("https://api.openai.com/v1/audio/speech", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${activeKey}`,
+          Authorization: `Bearer ${activeKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -287,180 +297,10 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 3. NHÀ CUNG CẤP: Google Gemini AI Voice (gemini-2.0-flash) & Google Cloud Voice
-    if (provider === "google") {
-      const activeKey =
-        apiKey?.trim() ||
-        process.env.GEMINI_API_KEY ||
-        process.env.GOOGLE_TTS_API_KEY ||
-        "";
-
-      // 3A. Nếu chọn giọng Google Chuẩn miễn phí hoặc không có API Key:
-      // Phát ngay qua Google Audio Stream mượt mà, không robot, không độ trễ
-      if (voice === "google_stream_female" || voice === "google_stream_male" || !activeKey) {
-        try {
-          const audioBuffer = await fetchGoogleTranslateAudio(text);
-          if (serverAudioCache.size > 1000) {
-            const firstKey = serverAudioCache.keys().next().value;
-            if (firstKey) serverAudioCache.delete(firstKey);
-          }
-          serverAudioCache.set(cacheKey, { buffer: audioBuffer, mimeType: "audio/mpeg" });
-
-          return new NextResponse(new Uint8Array(audioBuffer), {
-            headers: {
-              "Content-Type": "audio/mpeg",
-              "Cache-Control": "public, max-age=86400",
-              "X-TTS-Engine": "google-stream",
-            },
-          });
-        } catch (streamErr: any) {
-          console.warn("[Google Stream TTS Error]:", streamErr);
-        }
-      }
-
-      // 3B. Khi có API Key Google AI Studio và chọn giọng Gemini:
-      let geminiVoiceName = "Aoede"; // Nữ Miền Tây
-      let styleInstruction =
-        "Bạn là phát thanh viên AI người miền Tây Nam Bộ. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với chất giọng Nữ Miền Tây ngọt ngào, truyền cảm, có cảm xúc tự nhiên, phát âm chân phương, nhẹ nhàng. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
-
-      if (voice === "gemini_mientay_nam" || voice === "google_gemini_mientay_nam") {
-        geminiVoiceName = "Puck"; // Nam Miền Tây
-        styleInstruction =
-          "Bạn là phát thanh viên AI người miền Tây Nam Bộ. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với chất giọng Nam Miền Tây trầm ấm, đĩnh đạc, mộc mạc, truyền cảm hứng. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
-      } else if (voice === "gemini_mc_nu" || voice === "google_gemini_mc_nu") {
-        geminiVoiceName = "Kore"; // Nữ MC
-        styleInstruction =
-          "Bạn là phát thanh viên MC truyền hình chuyên nghiệp. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với giọng Nữ MC trong trẻo, lưu loát, ngắt nghỉ khoa học, lôi cuốn. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
-      } else if (voice === "gemini_mc_nam" || voice === "google_gemini_mc_nam") {
-        geminiVoiceName = "Charon"; // Nam MC
-        styleInstruction =
-          "Bạn là phát thanh viên MC truyền hình chuyên nghiệp. Hãy đọc to rõ ràng đoạn văn bản sau bằng tiếng Việt với giọng Nam MC đĩnh đạc, ấm áp, nhịp điệu rành mạch, phong thái sư phạm. Không thêm bất kỳ lời dẫn hay bình luận nào, chỉ đọc đúng từng chữ trong nội dung.";
-      }
-
-      // Thử gọi Gemini 2.0 Flash Audio chính thức
-      if (activeKey) {
-        try {
-          const ttsModels = ["gemini-2.0-flash", "gemini-2.0-flash-exp"];
-          let geminiRes: Response | null = null;
-
-          for (const model of ttsModels) {
-            const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${activeKey}`;
-            const geminiPayload = {
-              contents: [
-                {
-                  role: "user",
-                  parts: [
-                    {
-                      text: `${styleInstruction}\n\nNội dung văn bản cần đọc chính xác:\n${text}`,
-                    },
-                  ],
-                },
-              ],
-              generationConfig: {
-                responseModalities: ["AUDIO"],
-                speechConfig: {
-                  voiceConfig: {
-                    prebuiltVoiceConfig: {
-                      voiceName: geminiVoiceName,
-                    },
-                  },
-                },
-              },
-            };
-
-            const res = await fetch(geminiUrl, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(geminiPayload),
-            });
-
-            if (res.ok) {
-              geminiRes = res;
-              break;
-            }
-          }
-
-          if (geminiRes && geminiRes.ok) {
-            const geminiData = await geminiRes.json();
-            const candidate = geminiData.candidates?.[0];
-            const audioPart = candidate?.content?.parts?.find(
-              (p: any) => p.inlineData && p.inlineData.data
-            );
-
-            if (audioPart && audioPart.inlineData?.data) {
-              const rawBase64 = audioPart.inlineData.data;
-              let sampleRate = 24000;
-              const rateMatch = (audioPart.inlineData.mimeType || "").match(/rate=(\d+)/);
-              if (rateMatch) {
-                sampleRate = parseInt(rateMatch[1], 10);
-              }
-              const rawPcm = Buffer.from(rawBase64, "base64");
-              const audioBuffer = convertPcmToWav(rawPcm, sampleRate);
-              const mimeType = "audio/wav";
-
-              if (serverAudioCache.size > 1000) {
-                const firstKey = serverAudioCache.keys().next().value;
-                if (firstKey) serverAudioCache.delete(firstKey);
-              }
-              serverAudioCache.set(cacheKey, { buffer: audioBuffer, mimeType });
-
-              return new NextResponse(new Uint8Array(audioBuffer), {
-                headers: {
-                  "Content-Type": mimeType,
-                  "Cache-Control": "public, max-age=86400",
-                  "X-TTS-Engine": "gemini-audio",
-                },
-              });
-            }
-          }
-        } catch (geminiError: any) {
-          console.warn("[Gemini Audio Fetch Warning]:", geminiError.message);
-        }
-      }
-
-      // 3C. NẾU GEMINI BỊ LỖI HOẶC QUOTA: TỰ ĐỘNG DỰ PHÒNG SANG GOOGLE AUDIO STREAM CHUẨN
-      // Đảm bảo TUYỆT ĐỐI không bao giờ bị rơi vào giọng robot của trình duyệt!
-      try {
-        const audioBuffer = await fetchGoogleTranslateAudio(text);
-        if (serverAudioCache.size > 1000) {
-          const firstKey = serverAudioCache.keys().next().value;
-          if (firstKey) serverAudioCache.delete(firstKey);
-        }
-        serverAudioCache.set(cacheKey, { buffer: audioBuffer, mimeType: "audio/mpeg" });
-
-        return new NextResponse(new Uint8Array(audioBuffer), {
-          headers: {
-            "Content-Type": "audio/mpeg",
-            "Cache-Control": "public, max-age=86400",
-            "X-TTS-Engine": "google-stream-fallback",
-          },
-        });
-      } catch (err: any) {
-        return NextResponse.json(
-          { success: false, message: "Không thể tạo giọng đọc: " + err.message },
-          { status: 500 }
-        );
-      }
-    }
-
-    // 4. NHÀ CUNG CẤP: Browser / Miễn phí: Phát ngay qua Google Audio Stream thay vì giọng robot
-    if (provider === "browser") {
-      try {
-        const audioBuffer = await fetchGoogleTranslateAudio(text);
-        return new NextResponse(new Uint8Array(audioBuffer), {
-          headers: {
-            "Content-Type": "audio/mpeg",
-            "Cache-Control": "public, max-age=86400",
-            "X-TTS-Engine": "google-stream",
-          },
-        });
-      } catch {}
-    }
-
     return NextResponse.json(
       {
         success: false,
-        message: `Nhà cung cấp giọng đọc "${provider}" không hợp lệ.`,
+        message: `Nhà cung cấp giọng đọc "${provider}" không được hỗ trợ.`,
       },
       { status: 400 }
     );
