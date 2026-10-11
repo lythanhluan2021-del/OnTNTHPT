@@ -660,48 +660,58 @@ class TTSManager {
 
     window.speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voice = this.getBestBrowserVoice();
-    if (voice) {
-      utterance.voice = voice;
-      utterance.lang = voice.lang || "vi-VN";
-    } else {
-      utterance.lang = "vi-VN";
-    }
+    setTimeout(() => {
+      try {
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
 
-    if (this.gender === "female") {
-      utterance.pitch = 1.05;
-      utterance.rate = this.speed;
-    } else {
-      utterance.pitch = 0.88;
-      utterance.rate = this.speed;
-    }
+        const utterance = new SpeechSynthesisUtterance(text);
+        const voice = this.getBestBrowserVoice();
+        if (voice) {
+          utterance.voice = voice;
+          utterance.lang = voice.lang || "vi-VN";
+        } else {
+          utterance.lang = "vi-VN";
+        }
 
-    utterance.onstart = () => {
-      this.isSpeakingState = true;
-      this.isPausedState = false;
-      this.notify();
-    };
+        if (this.gender === "female") {
+          utterance.pitch = 1.05;
+          utterance.rate = this.speed;
+        } else {
+          utterance.pitch = 0.88;
+          utterance.rate = this.speed;
+        }
 
-    utterance.onend = () => {
-      this.isSpeakingState = false;
-      this.isPausedState = false;
-      this.currentUtterance = null;
-      this.notify();
-    };
+        utterance.onstart = () => {
+          this.isSpeakingState = true;
+          this.isPausedState = false;
+          this.notify();
+        };
 
-    utterance.onerror = (e) => {
-      if (e.error !== "interrupted" && e.error !== "canceled") {
-        console.warn("TTS SpeechSynthesis warning:", e.error);
+        utterance.onend = () => {
+          this.isSpeakingState = false;
+          this.isPausedState = false;
+          this.currentUtterance = null;
+          this.notify();
+        };
+
+        utterance.onerror = (e) => {
+          if (e.error !== "interrupted" && e.error !== "canceled") {
+            console.warn("TTS SpeechSynthesis warning:", e.error);
+          }
+          this.isSpeakingState = false;
+          this.isPausedState = false;
+          this.currentUtterance = null;
+          this.notify();
+        };
+
+        this.currentUtterance = utterance;
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {
+        console.warn("SpeechSynthesis error:", err);
       }
-      this.isSpeakingState = false;
-      this.isPausedState = false;
-      this.currentUtterance = null;
-      this.notify();
-    };
-
-    this.currentUtterance = utterance;
-    window.speechSynthesis.speak(utterance);
+    }, 120);
   }
 
   private getBestBrowserVoice(): SpeechSynthesisVoice | null {
