@@ -16,6 +16,7 @@ Cập nhật: 2026-10-11 — Nâng cấp toàn diện **Hệ thống Giọng đ�
   - Điều chỉnh tốc độ linh hoạt (0.85x, 1.0x, 1.15x).
   - Huy hiệu hiển thị phong cách trên thanh câu hỏi: `🌾 Miền Tây`, `🎙️ MC Trong Trẻo`, `✨ Studio AI`.
   - Giữ nguyên phong cách vùng miền khi chuyển đổi nhanh giữa 👩 Nữ và 👨 Nam.
+- Tối ưu hoá phân biệt **Giọng Nam / Nữ trên Trình Duyệt**: tự động phát hiện giọng nam tự nhiên (`Microsoft NamMinh`), đồng thời áp dụng hạ tần số pitch (0.55) và nhịp điệu (0.90x) khi trình duyệt chỉ có một giọng nữ duy nhất (Chrome `Google tiếng Việt`), tạo ra âm vực nam trầm ấm, rành mạch, phân biệt rõ ràng 100% so với giọng nữ.
 - Bộ chuẩn hóa ngữ âm Tin học (`normalizeTextForSpeech`): Tự động phiên âm các thuật ngữ CNTT thông dụng (Router, Switch, Modem, Hub, LAN, WAN, TCP/IP, IP, SQL, HTML, CSS, DBMS, CSDL...) thành phát âm tự nhiên, sư phạm.
 - Biên dịch dự án `npm run build` thành công xuất sắc, sẵn sàng triển khai Vercel.
 

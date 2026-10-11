@@ -606,11 +606,11 @@ class TTSManager {
         this.isLoadingState = false;
         this.errorMessageState = `API giọng đọc gặp sự cố (${err.message}). Đã chuyển về giọng mặc định.`;
         // Tự động fallback sang Web Speech để học sinh không bị gián đoạn ôn tập
-        this.speakBrowserUtterance(fullText);
+        this.speakBrowserUtterance(fullText, this.gender);
       }
     } else {
       // 2. Chế độ mặc định Trình duyệt (Web Speech API)
-      this.speakBrowserUtterance(fullText);
+      this.speakBrowserUtterance(fullText, this.gender);
     }
   }
 
@@ -653,10 +653,12 @@ class TTSManager {
   }
 
   /**
-   * Phát âm dự phòng qua Web Speech API
+   * Phát âm qua Web Speech API (Trình duyệt) với phân biệt Nam/Nữ rõ nét
    */
-  private speakBrowserUtterance(text: string) {
+  private speakBrowserUtterance(text: string, forceGender?: VoiceGender) {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+
+    const currentGender = forceGender || this.gender;
 
     window.speechSynthesis.cancel();
 
@@ -667,7 +669,7 @@ class TTSManager {
         }
 
         const utterance = new SpeechSynthesisUtterance(text);
-        const voice = this.getBestBrowserVoice();
+        const { voice, isNativeMale } = this.getBestBrowserVoice(currentGender);
         if (voice) {
           utterance.voice = voice;
           utterance.lang = voice.lang || "vi-VN";
@@ -675,12 +677,15 @@ class TTSManager {
           utterance.lang = "vi-VN";
         }
 
-        if (this.gender === "female") {
-          utterance.pitch = 1.05;
+        if (currentGender === "female") {
+          utterance.pitch = 1.08;
           utterance.rate = this.speed;
         } else {
-          utterance.pitch = 0.88;
-          utterance.rate = this.speed;
+          // Với giọng Nam:
+          // Nếu đã có giọng nam thật (Microsoft NamMinh): pitch 0.95
+          // Nếu chỉ có giọng nữ mặc định (Google tiếng Việt trên Chrome): hạ pitch xuống 0.55 để tạo âm vực nam trầm ấm, đĩnh đạc!
+          utterance.pitch = isNativeMale ? 0.95 : 0.55;
+          utterance.rate = this.speed * 0.90;
         }
 
         utterance.onstart = () => {
@@ -714,9 +719,15 @@ class TTSManager {
     }, 120);
   }
 
-  private getBestBrowserVoice(): SpeechSynthesisVoice | null {
-    if (this.browserVoices.length === 0 && typeof window !== "undefined") {
-      this.browserVoices = window.speechSynthesis.getVoices();
+  private getBestBrowserVoice(gender: VoiceGender): {
+    voice: SpeechSynthesisVoice | null;
+    isNativeMale: boolean;
+  } {
+    if (typeof window !== "undefined") {
+      const liveVoices = window.speechSynthesis.getVoices();
+      if (liveVoices.length > 0) {
+        this.browserVoices = liveVoices;
+      }
     }
 
     const viVoices = this.browserVoices.filter((v) =>
@@ -724,19 +735,25 @@ class TTSManager {
     );
 
     if (viVoices.length === 0) {
-      return this.browserVoices.find((v) => v.default) || this.browserVoices[0] || null;
+      const fallback = this.browserVoices.find((v) => v.default) || this.browserVoices[0] || null;
+      return { voice: fallback, isNativeMale: false };
     }
 
-    if (this.gender === "female") {
+    if (gender === "female") {
       const female = viVoices.find((v) =>
-        /hoaimy|female|nữ|linh|lan|mai|my|google/i.test(v.name)
+        /hoaimy|female|nữ|linh|lan|mai|my/i.test(v.name)
       );
-      return female || viVoices[0];
+      return { voice: female || viVoices[0], isNativeMale: false };
     } else {
-      const male = viVoices.find((v) =>
+      // Ưu tiên 1: Tìm giọng nam thật nếu máy có cài (Microsoft NamMinh, An, Minh, Male...)
+      const nativeMale = viVoices.find((v) =>
         /namminh|nam|minh|male|an|huy|khoa/i.test(v.name)
       );
-      return male || viVoices[0];
+      if (nativeMale) {
+        return { voice: nativeMale, isNativeMale: true };
+      }
+      // Ưu tiên 2: Dùng giọng tiếng Việt có sẵn và hạ tần số pitch xuống 0.55
+      return { voice: viVoices[0], isNativeMale: false };
     }
   }
 
@@ -802,7 +819,9 @@ class TTSManager {
         ? "Dạ chào bạn! Đây là giọng đọc Miền Tây Nam Bộ ấm áp, chúc bạn ôn thi tốt nghiệp Trung học Phổ thông đạt điểm cao nghen!"
         : targetVoice.region === "mienbac"
         ? "Chào bạn! Đây là giọng đọc phát thanh viên truyền cảm, chúc bạn ôn thi môn Tin học đạt kết quả xuất sắc nhất!"
-        : "Chào bạn! Đây là giọng đọc phòng thu AI siêu trong trẻo, sẵn sàng đồng hành cùng bạn ôn thi tốt nghiệp THPT.";
+        : targetVoice.gender === "male"
+        ? "Chào bạn! Đây là giọng Nam trầm ấm, dứt khoát, sẵn sàng đồng hành cùng bạn ôn thi tốt nghiệp THPT."
+        : "Chào bạn! Đây là giọng Nữ dịu dàng, trong trẻo, sẵn sàng đồng hành cùng bạn ôn thi tốt nghiệp THPT.";
 
     this.stop();
     this.isLoadingState = true;
@@ -829,7 +848,7 @@ class TTSManager {
     try {
       if (targetVoice.provider === "browser") {
         this.isLoadingState = false;
-        this.speakBrowserUtterance(sampleText);
+        this.speakBrowserUtterance(sampleText, targetVoice.gender);
         return { success: true };
       }
 
