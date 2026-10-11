@@ -323,32 +323,46 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
             </div>
           ) : (
             <div className="p-3.5 rounded-neu-sm bg-white/60 dark:bg-slate-800/70 border border-slate-300 dark:border-slate-700 space-y-2.5">
-              {selectedProvider === "fpt" && (
-                <div className="text-[11px] text-blue-900 dark:text-blue-200 bg-blue-50/90 dark:bg-blue-950/40 p-2.5 rounded-neu-sm border border-blue-200 dark:border-blue-800 space-y-1">
-                  <div className="font-bold flex items-center gap-1.5">
-                    <span>🌾 Cách nhận API Key FPT để nghe Giọng Miền Tây &amp; MC (Miễn phí 100%):</span>
+              {selectedProvider === "fpt" &&
+                (ttsState.hasServerKey ? (
+                  <div className="text-[11px] text-emerald-900 dark:text-emerald-200 bg-emerald-50/90 dark:bg-emerald-950/40 p-2.5 rounded-neu-sm border border-emerald-300 dark:border-emerald-800 space-y-1">
+                    <div className="font-bold flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                      <span>Máy chủ đã kết nối khóa FPT.AI hệ thống:</span>
+                    </div>
+                    <p className="text-[10px] text-slate-600 dark:text-slate-300">
+                      Học sinh và giáo viên có thể sử dụng các giọng Miền Tây &amp; MC Bắc hoàn toàn miễn phí mà không cần tự nhập mã API Key.
+                    </p>
                   </div>
-                  <ol className="list-decimal list-inside space-y-0.5 text-[10px] text-slate-600 dark:text-slate-300 pl-1">
-                    <li>
-                      Truy cập trang{" "}
-                      <a
-                        href="https://console.fpt.ai"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 font-bold underline inline-flex items-center gap-0.5"
-                      >
-                        console.fpt.ai
-                        <ExternalLink className="w-2.5 h-2.5" />
-                      </a>{" "}
-                      và đăng nhập bằng tài khoản Google (nhận 100.000 ký tự miễn phí mỗi tháng).
-                    </li>
-                    <li>
-                      Vào mục <strong>Text to Speech</strong> ➔ Sao chép mã <strong>API Key</strong> (dạng chuỗi 32 ký tự).
-                    </li>
-                    <li>Dán mã vào ô bên dưới rồi bấm <strong>Nghe Thử Câu Mẫu</strong>.</li>
-                  </ol>
-                </div>
-              )}
+                ) : (
+                  <div className="text-[11px] text-blue-900 dark:text-blue-200 bg-blue-50/90 dark:bg-blue-950/40 p-2.5 rounded-neu-sm border border-blue-200 dark:border-blue-800 space-y-1">
+                    <div className="font-bold flex items-center gap-1.5">
+                      <span>🌾 Cách nhận API Key FPT để nghe Giọng Miền Tây &amp; MC (Miễn phí 100%):</span>
+                    </div>
+                    <ol className="list-decimal list-inside space-y-0.5 text-[10px] text-slate-600 dark:text-slate-300 pl-1">
+                      <li>
+                        Truy cập trang{" "}
+                        <a
+                          href="https://console.fpt.ai"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 font-bold underline inline-flex items-center gap-0.5"
+                        >
+                          console.fpt.ai
+                          <ExternalLink className="w-2.5 h-2.5" />
+                        </a>{" "}
+                        và đăng nhập bằng tài khoản Google (nhận 100.000 ký tự miễn phí mỗi tháng).
+                      </li>
+                      <li>
+                        Vào mục <strong>Text to Speech</strong> ➔ Sao chép mã <strong>API Key</strong> (dạng chuỗi 32 ký tự).
+                      </li>
+                      <li>Dán mã vào ô bên dưới rồi bấm <strong>Nghe Thử Câu Mẫu</strong>.</li>
+                    </ol>
+                    <p className="text-[9.5px] text-blue-700 dark:text-blue-400 italic pt-1 border-t border-blue-200/60 dark:border-blue-800/60">
+                      💡 Mẹo cho Giáo viên: Thêm <code>FPT_AI_API_KEY</code> vào file <code>.env.local</code> của dự án để tất cả học sinh truy cập web đều được nghe giọng Miền Tây &amp; MC miễn phí mà không cần tự tạo tài khoản!
+                    </p>
+                  </div>
+                ))}
 
               {selectedProvider === "openai" && (
                 <div className="text-[11px] text-indigo-900 dark:text-indigo-200 bg-indigo-50/90 dark:bg-indigo-950/40 p-2.5 rounded-neu-sm border border-indigo-200 dark:border-indigo-800 space-y-1">

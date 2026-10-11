@@ -1,9 +1,13 @@
 /**
  * Hệ thống Đọc đề bài thông minh (Smart Question Audio Reader 2.0)
- * Hỗ trợ 3 nhóm giọng đọc chính xác, không giả lập, không tự động fallback sai lệch:
- * 1. MIỄN PHÍ 100%: 🌸 Mai Linh (Nữ Tự Nhiên - Google Stream) & 👔 Quốc Tuấn (Nam Trầm Ấm - Native Engine)
- * 2. FPT.AI: 🌾 Giọng Miền Tây (Thu Minh / Minh Quang) & 🎙️ Giọng MC Bắc (Ban Mai / Lê Minh)
- * 3. OpenAI Studio: ✨ Nova (Nữ) & Echo (Nam) chuẩn phòng thu quốc tế.
+ * Tích hợp đa nguồn giọng nói miễn phí và chất lượng cao:
+ * 1. MIỄN PHÍ 100% (Không cần bất kỳ Key nào):
+ *    - 🌸 Mai Linh (Nữ Tự Nhiên - Google Stream MP3)
+ *    - 👔 Quốc Tuấn (Nam Trầm Ấm - Native Engine)
+ *    - ✨ Nam Minh / Hoài My (Microsoft Neural AI - Tự động nhận diện trên Windows/Edge)
+ * 2. FPT.AI (Gói Miễn Phí 100.000 ký tự/tháng):
+ *    - 🌾 Giọng Miền Tây (Thu Minh / Minh Quang) & 🎙️ Giọng MC Bắc (Ban Mai / Lê Minh)
+ * 3. OpenAI Studio: ✨ Nova & Echo chuẩn phòng thu quốc tế.
  */
 
 export type TTSProvider = "free" | "fpt" | "openai" | "google" | "browser";
@@ -22,8 +26,8 @@ export interface TTSVoiceOption {
   recommended?: boolean;
 }
 
-export const VOICE_OPTIONS: TTSVoiceOption[] = [
-  // 1. MIỄN PHÍ 100% - KHÔNG CẦN API KEY (Dùng được ngay, Nam/Nữ tách bạch 100%)
+export const BASE_VOICE_OPTIONS: TTSVoiceOption[] = [
+  // 1. MIỄN PHÍ 100% - KHÔNG CẦN API KEY
   {
     id: "free_female",
     name: "Mai Linh (Nữ Tự Nhiên)",
@@ -49,7 +53,7 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
     recommended: true,
   },
 
-  // 2. FPT.AI - Chuyên gia Tiếng Việt (Giọng Miền Tây & MC Bắc chuẩn - Cần Key FPT miễn phí)
+  // 2. FPT.AI - Chuyên gia Tiếng Việt (Miễn phí 100.000 ký tự/tháng)
   {
     id: "fpt_thuminh",
     name: "Thu Minh (Nữ Miền Tây)",
@@ -97,7 +101,7 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
     badge: "🎙️ Nam MC Bắc",
   },
 
-  // 3. OpenAI TTS Studio - Đỉnh cao phòng thu quốc tế (Cần OpenAI Key)
+  // 3. OpenAI TTS Studio - Đỉnh cao phòng thu quốc tế
   {
     id: "openai_nova",
     name: "Nova (Nữ Studio)",
@@ -122,6 +126,8 @@ export const VOICE_OPTIONS: TTSVoiceOption[] = [
   },
 ];
 
+export let VOICE_OPTIONS: TTSVoiceOption[] = [...BASE_VOICE_OPTIONS];
+
 export interface TTSState {
   isEnabled: boolean;
   provider: TTSProvider;
@@ -132,13 +138,14 @@ export interface TTSState {
   isPaused: boolean;
   isLoading: boolean;
   hasCustomKey: boolean;
+  hasServerKey: boolean;
   errorMessage?: string | null;
 }
 
 type TTSListener = (state: TTSState) => void;
 
 /**
- * Hàm chuẩn hoá văn bản đề bài trước khi đọc (Text Normalization)
+ * Chuẩn hoá văn bản đề bài trước khi đọc (Text Normalization)
  */
 export function normalizeTextForSpeech(text: string): string {
   if (!text) return "";
@@ -243,6 +250,8 @@ class TTSManager {
 
   private fptApiKey: string = "";
   private openaiApiKey: string = "";
+  private hasServerFptKey: boolean = false;
+  private hasServerOpenaiKey: boolean = false;
 
   private isSpeakingState: boolean = false;
   private isPausedState: boolean = false;
@@ -260,6 +269,21 @@ class TTSManager {
     if (typeof window !== "undefined") {
       this.loadConfigFromStorage();
       this.initBrowserVoices();
+      this.checkServerKeys();
+    }
+  }
+
+  private async checkServerKeys() {
+    try {
+      const res = await fetch("/api/tts/status");
+      if (res.ok) {
+        const data = await res.json();
+        this.hasServerFptKey = Boolean(data.hasServerFptKey);
+        this.hasServerOpenaiKey = Boolean(data.hasServerOpenaiKey);
+        this.notify();
+      }
+    } catch {
+      // Ignored
     }
   }
 
@@ -272,12 +296,11 @@ class TTSManager {
       if (savedProvider && ["free", "fpt", "openai"].includes(savedProvider)) {
         this.provider = savedProvider;
       } else {
-        // Tự động chuyển đổi nếu trước đó lưu google hoặc browser
         this.provider = "free";
       }
 
       const savedVoiceId = localStorage.getItem("thpt_tts_voice_id");
-      if (savedVoiceId && VOICE_OPTIONS.some((v) => v.id === savedVoiceId)) {
+      if (savedVoiceId) {
         this.voiceId = savedVoiceId;
       } else {
         this.voiceId = this.provider === "free" ? "free_female" : "fpt_thuminh";
@@ -307,10 +330,85 @@ class TTSManager {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
     const load = () => {
       this.browserVoices = window.speechSynthesis.getVoices();
+      this.updateDynamicBrowserVoices();
     };
     load();
     if (window.speechSynthesis.onvoiceschanged !== undefined) {
       window.speechSynthesis.onvoiceschanged = load;
+    }
+  }
+
+  /**
+   * Tự động quét và bổ sung các giọng AI tiếng Việt có sẵn trên thiết bị (Microsoft Edge Neural, Chrome)
+   */
+  private updateDynamicBrowserVoices() {
+    const viVoices = this.browserVoices.filter((v) =>
+      v.lang.toLowerCase().startsWith("vi")
+    );
+
+    const dynamicVoices: TTSVoiceOption[] = [];
+
+    // Nhận diện Microsoft NamMinh Online (Natural)
+    const namMinh = viVoices.find((v) => /namminh/i.test(v.name));
+    if (namMinh) {
+      dynamicVoices.push({
+        id: "browser_namminh",
+        name: "Nam Minh (Nam Microsoft AI)",
+        region: "standard",
+        gender: "male",
+        category: "free",
+        provider: "free",
+        apiVoiceKey: namMinh.name,
+        description: "Giọng Nam AI cao cấp của Microsoft, trầm ấm, chuẩn phát thanh viên (Có sẵn trên Edge)",
+        badge: "✨ Nam Microsoft AI",
+        recommended: true,
+      });
+    }
+
+    // Nhận diện Microsoft HoaiMy Online (Natural)
+    const hoaiMy = viVoices.find((v) => /hoaimy/i.test(v.name));
+    if (hoaiMy) {
+      dynamicVoices.push({
+        id: "browser_hoaimy",
+        name: "Hoài My (Nữ Microsoft AI)",
+        region: "standard",
+        gender: "female",
+        category: "free",
+        provider: "free",
+        apiVoiceKey: hoaiMy.name,
+        description: "Giọng Nữ AI cao cấp của Microsoft, trong trẻo, lưu loát, tự nhiên (Có sẵn trên Edge)",
+        badge: "✨ Nữ Microsoft AI",
+        recommended: true,
+      });
+    }
+
+    // Nhận diện Google tiếng Việt
+    const googleVi = viVoices.find((v) => /google/i.test(v.name));
+    if (googleVi) {
+      dynamicVoices.push({
+        id: "browser_google_vi",
+        name: "Google Tiếng Việt (Chrome)",
+        region: "standard",
+        gender: "female",
+        category: "free",
+        provider: "free",
+        apiVoiceKey: googleVi.name,
+        description: "Giọng đọc tiếng Việt tích hợp sẵn trong trình duyệt Google Chrome",
+        badge: "🌐 Google Trình Duyệt",
+      });
+    }
+
+    if (dynamicVoices.length > 0) {
+      // Ghép vào VOICE_OPTIONS
+      const existingIds = new Set(BASE_VOICE_OPTIONS.map((v) => v.id));
+      const filtered = dynamicVoices.filter((v) => !existingIds.has(v.id));
+      VOICE_OPTIONS = [
+        BASE_VOICE_OPTIONS[0],
+        BASE_VOICE_OPTIONS[1],
+        ...filtered,
+        ...BASE_VOICE_OPTIONS.slice(2),
+      ];
+      this.notify();
     }
   }
 
@@ -343,6 +441,7 @@ class TTSManager {
       isPaused: this.isPausedState,
       isLoading: this.isLoadingState,
       hasCustomKey,
+      hasServerKey: this.provider === "fpt" ? this.hasServerFptKey : this.hasServerOpenaiKey,
       errorMessage: this.errorMessageState,
     };
   }
@@ -479,10 +578,6 @@ class TTSManager {
 
   /**
    * Đổi Nam / Nữ nhanh: Ghép cặp chính xác theo từng danh mục
-   * - free_female (Mai Linh) <-> free_male (Quốc Tuấn)
-   * - fpt_thuminh (Nữ Miền Tây) <-> fpt_minhquang (Nam Miền Tây)
-   * - fpt_banmai (Nữ MC) <-> fpt_leminh (Nam MC)
-   * - openai_nova (Nữ Studio) <-> openai_echo (Nam Studio)
    */
   public setGender(gender: VoiceGender) {
     this.gender = gender;
@@ -555,6 +650,10 @@ class TTSManager {
     return "";
   }
 
+  public hasServerKeyConfigured(provider: "fpt" | "openai"): boolean {
+    return provider === "fpt" ? this.hasServerFptKey : this.hasServerOpenaiKey;
+  }
+
   /**
    * Đọc câu hỏi thông minh
    */
@@ -578,10 +677,12 @@ class TTSManager {
 
     const activeVoice = this.getActiveVoice();
 
-    // 1. GIỌNG NAM MIỄN PHÍ: Phát trực tiếp qua Native Engine của thiết bị
-    // Đảm bảo tạo giọng nam trầm ấm đĩnh đạc, KHÔNG BAO GIỜ bị lẫn với giọng nữ Google Translate!
-    if (activeVoice.id === "free_male") {
-      this.speakBrowserUtterance(fullText, "male");
+    // 1. CÁC GIỌNG PHÁT NATIVE TRÊN THIẾT BỊ (Quốc Tuấn, Nam Minh, Hoài My...)
+    if (
+      activeVoice.id === "free_male" ||
+      activeVoice.id.startsWith("browser_")
+    ) {
+      this.speakBrowserUtterance(fullText, activeVoice.gender, activeVoice.apiVoiceKey);
       return;
     }
 
@@ -637,9 +738,11 @@ class TTSManager {
       return;
     }
 
-    // 3. GIỌNG FPT.AI HOẶC OPENAI STUDIO: Yêu cầu có API Key
+    // 3. GIỌNG FPT.AI HOẶC OPENAI STUDIO: Có thể dùng Key người dùng hoặc Key máy chủ
     const apiKey = this.getActiveApiKey();
-    if (!apiKey) {
+    const canUseKey = Boolean(apiKey || (activeVoice.provider === "fpt" && this.hasServerFptKey));
+
+    if (!canUseKey) {
       this.errorMessageState = `Giọng "${activeVoice.name}" cần API Key ${activeVoice.provider.toUpperCase()}. Vui lòng dán mã Key trong Cài đặt hoặc chọn nhóm giọng Miễn Phí.`;
       this.notify();
       return;
@@ -715,11 +818,12 @@ class TTSManager {
     if (typeof window === "undefined" || !this.isEnabled) return;
     const activeVoice = this.getActiveVoice();
 
-    // Giọng Nam Miễn Phí dùng Native Engine của máy -> không cần tải mạng
-    if (activeVoice.id === "free_male") return;
+    // Giọng máy không cần tải mạng
+    if (activeVoice.id === "free_male" || activeVoice.id.startsWith("browser_")) return;
 
     const apiKey = this.getActiveApiKey();
-    if ((activeVoice.provider === "fpt" || activeVoice.provider === "openai") && !apiKey) {
+    const canUseKey = Boolean(apiKey || (activeVoice.provider === "fpt" && this.hasServerFptKey));
+    if ((activeVoice.provider === "fpt" || activeVoice.provider === "openai") && !canUseKey) {
       return;
     }
 
@@ -811,7 +915,7 @@ class TTSManager {
   /**
    * Phát âm qua Web Speech API (Trình duyệt) với phân biệt Nam/Nữ rõ rệt
    */
-  private speakBrowserUtterance(text: string, forceGender?: VoiceGender) {
+  private speakBrowserUtterance(text: string, forceGender?: VoiceGender, specificVoiceName?: string) {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
 
     const currentGender = forceGender || this.gender;
@@ -825,7 +929,8 @@ class TTSManager {
         }
 
         const utterance = new SpeechSynthesisUtterance(text);
-        const { voice, isNativeMale } = this.getBestBrowserVoice(currentGender);
+        const { voice, isNativeMale } = this.getBestBrowserVoice(currentGender, specificVoiceName);
+
         if (voice) {
           utterance.voice = voice;
           utterance.lang = voice.lang || "vi-VN";
@@ -838,7 +943,7 @@ class TTSManager {
           utterance.rate = this.speed;
         } else {
           // Với giọng Nam:
-          // Nếu có giọng nam thật (Microsoft NamMinh / An): pitch 0.98
+          // Nếu có giọng nam thật (Microsoft NamMinh): pitch 0.98
           // Nếu chỉ có giọng nữ: hạ pitch xuống 0.55 để tạo âm vực nam trầm ấm, rành mạch!
           utterance.pitch = isNativeMale ? 0.98 : 0.55;
           utterance.rate = this.speed * 0.90;
@@ -875,7 +980,10 @@ class TTSManager {
     }, 100);
   }
 
-  private getBestBrowserVoice(gender: VoiceGender): {
+  private getBestBrowserVoice(
+    gender: VoiceGender,
+    specificVoiceName?: string
+  ): {
     voice: SpeechSynthesisVoice | null;
     isNativeMale: boolean;
   } {
@@ -883,6 +991,17 @@ class TTSManager {
       const liveVoices = window.speechSynthesis.getVoices();
       if (liveVoices.length > 0) {
         this.browserVoices = liveVoices;
+      }
+    }
+
+    // Nếu chỉ định tên cụ thể (ví dụ: browser_namminh -> "Microsoft NamMinh Online")
+    if (specificVoiceName && specificVoiceName !== "native_male") {
+      const exact = this.browserVoices.find((v) =>
+        v.name.toLowerCase().includes(specificVoiceName.toLowerCase())
+      );
+      if (exact) {
+        const isMale = /nam|minh|male|an|huy/i.test(exact.name);
+        return { voice: exact, isNativeMale: isMale };
       }
     }
 
@@ -985,9 +1104,9 @@ class TTSManager {
 
     this.stop();
 
-    // 1. Giọng Nam Miễn Phí -> Phát Native Male
-    if (targetVoice.id === "free_male") {
-      this.speakBrowserUtterance(sampleText, "male");
+    // 1. Giọng Native Trên Thiết Bị (Quốc Tuấn, Nam Minh, Hoài My...)
+    if (targetVoice.id === "free_male" || targetVoice.id.startsWith("browser_")) {
+      this.speakBrowserUtterance(sampleText, targetVoice.gender, targetVoice.apiVoiceKey);
       return { success: true };
     }
 
@@ -1024,9 +1143,11 @@ class TTSManager {
       }
     }
 
-    // 3. Giọng FPT.AI hoặc OpenAI Studio -> Bắt buộc có Key chính chủ
+    // 3. Giọng FPT.AI hoặc OpenAI Studio
     const apiKey = targetVoice.provider === "fpt" ? this.fptApiKey : this.openaiApiKey;
-    if (!apiKey) {
+    const canUseKey = Boolean(apiKey || (targetVoice.provider === "fpt" && this.hasServerFptKey));
+
+    if (!canUseKey) {
       return {
         success: false,
         message: `Chưa có API Key cho ${targetVoice.provider.toUpperCase()}. Vui lòng dán mã API Key cá nhân để nghe thử giọng ${targetVoice.name}.`,
