@@ -40,7 +40,11 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
   const [mounted, setMounted] = useState<boolean>(false);
   const [ttsState, setTtsState] = useState<TTSState>(ttsManager.getState());
   const [selectedProvider, setSelectedProvider] = useState<TTSProvider>(
-    ttsState.provider === "google" || ttsState.provider === "browser" ? "free" : ttsState.provider
+    ttsState.provider === "google" || ttsState.provider === "gemini"
+      ? "gemini"
+      : ttsState.provider === "browser"
+      ? "free"
+      : ttsState.provider
   );
   const [selectedVoiceId, setSelectedVoiceId] = useState<string>(ttsState.voiceId);
   const [speed, setSpeed] = useState<number>(ttsState.speed);
@@ -48,6 +52,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
   // API Key inputs
   const [fptKey, setFptKey] = useState<string>("");
   const [openaiKey, setOpenaiKey] = useState<string>("");
+  const [googleKey, setGoogleKey] = useState<string>("");
   const [showKey, setShowKey] = useState<boolean>(false);
 
   // Testing voice state
@@ -73,7 +78,9 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
     if (isOpen) {
       const curState = ttsManager.getState();
       const normProv: TTSProvider =
-        curState.provider === "google" || curState.provider === "browser"
+        curState.provider === "google"
+          ? "gemini"
+          : curState.provider === "browser"
           ? "free"
           : curState.provider;
       setSelectedProvider(normProv);
@@ -81,6 +88,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
       setSpeed(curState.speed);
       setFptKey(ttsManager.getStoredApiKey("fpt"));
       setOpenaiKey(ttsManager.getStoredApiKey("openai"));
+      setGoogleKey(ttsManager.getStoredApiKey("gemini"));
       setTestMessage(null);
     }
   }, [isOpen]);
@@ -88,13 +96,18 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
   if (!isOpen || !mounted) return null;
 
   // Lọc danh sách giọng đọc theo nhà cung cấp đang chọn
-  const availableVoices = VOICE_OPTIONS.filter((v) => v.provider === selectedProvider);
+  const availableVoices = VOICE_OPTIONS.filter((v) => {
+    if (selectedProvider === "gemini") {
+      return v.provider === "gemini" || v.category === "gemini";
+    }
+    return v.provider === selectedProvider || v.category === selectedProvider;
+  });
 
   // Đổi nhà cung cấp
   const handleSelectProvider = (prov: TTSProvider) => {
     soundManager.playClick();
     setSelectedProvider(prov);
-    const defaultVoice = VOICE_OPTIONS.find((v) => v.provider === prov);
+    const defaultVoice = VOICE_OPTIONS.find((v) => v.provider === prov || v.category === prov);
     if (defaultVoice) {
       setSelectedVoiceId(defaultVoice.id);
     }
@@ -117,6 +130,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
       speed,
       fptKey,
       openaiKey,
+      googleKey,
       enabled: ttsState.isEnabled,
     });
 
@@ -152,6 +166,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
       speed,
       fptKey,
       openaiKey,
+      googleKey,
       enabled: true,
     });
 
@@ -202,7 +217,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
               </span>
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-              Lựa chọn giọng đọc thực tế: Miễn phí không cần key, giọng Miền Tây / MC Bắc FPT.AI, hoặc giọng phòng thu OpenAI.
+              Lựa chọn đa dạng: Miễn phí tức thì, Google Gemini AI, FPT.AI (Miền Tây &amp; MC), hoặc OpenAI Studio.
             </p>
           </div>
         </div>
@@ -236,93 +251,172 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
             <label className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between">
               <span>1. Chọn Nhóm Giọng Đọc (Engine):</span>
               <span className="text-[11px] font-normal text-slate-500">
-                {selectedProvider === "free"
-                  ? "Miễn phí 100%, không cần đăng ký tài khoản"
+                {selectedProvider === "edge"
+                  ? "Microsoft Edge AI Neural • Miễn phí 100% đỉnh cao"
+                  : selectedProvider === "free"
+                  ? "Miễn phí 100%, dùng ngay không cần Key"
+                  : selectedProvider === "gemini"
+                  ? "Mô hình đa phương thức Google Gemini 2.0"
                   : selectedProvider === "fpt"
                   ? "Giọng Miền Tây & MC Bắc thực thụ"
                   : "Giọng phòng thu quốc tế"}
               </span>
             </label>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              {/* Tab 1: Miễn phí 100% */}
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+              {/* Tab 1: Microsoft Edge AI Neural */}
+              <button
+                type="button"
+                onClick={() => handleSelectProvider("edge")}
+                className={`p-2.5 rounded-neu-sm text-left transition flex flex-col justify-between cursor-pointer border ${
+                  selectedProvider === "edge"
+                    ? "bg-amber-50/90 dark:bg-amber-950/50 border-amber-500 shadow-neu-flat text-amber-900 dark:text-amber-200"
+                    : "bg-[#e6ecf5] dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-white/40"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-extrabold text-xs flex items-center gap-1">
+                    🌟 Edge AI
+                  </span>
+                  {selectedProvider === "edge" && <Check className="w-3.5 h-3.5 text-amber-600" />}
+                </div>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">
+                  Hoài My &amp; Nam Minh (Studio Free)
+                </span>
+              </button>
+
+              {/* Tab 2: Miễn phí Dự Phòng */}
               <button
                 type="button"
                 onClick={() => handleSelectProvider("free")}
-                className={`p-3 rounded-neu-sm text-left transition flex flex-col justify-between cursor-pointer border ${
+                className={`p-2.5 rounded-neu-sm text-left transition flex flex-col justify-between cursor-pointer border ${
                   selectedProvider === "free"
                     ? "bg-emerald-50/90 dark:bg-emerald-950/50 border-emerald-500 shadow-neu-flat text-emerald-900 dark:text-emerald-200"
                     : "bg-[#e6ecf5] dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-white/40"
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-extrabold text-xs flex items-center gap-1.5">
-                    🌟 Miễn Phí 100%
+                  <span className="font-extrabold text-xs flex items-center gap-1">
+                    🌸 Google Stream
                   </span>
-                  {selectedProvider === "free" && <Check className="w-4 h-4 text-emerald-600" />}
+                  {selectedProvider === "free" && <Check className="w-3.5 h-3.5 text-emerald-600" />}
                 </div>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1.5 leading-snug">
-                  🌸 Mai Linh (Nữ) &amp; 👔 Quốc Tuấn (Nam) • 0ms, không cần Key
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">
+                  Mai Linh &amp; Native Device
                 </span>
               </button>
 
-              {/* Tab 2: FPT.AI Voice */}
+              {/* Tab 3: Google Gemini AI */}
+              <button
+                type="button"
+                onClick={() => handleSelectProvider("gemini")}
+                className={`p-2.5 rounded-neu-sm text-left transition flex flex-col justify-between cursor-pointer border ${
+                  selectedProvider === "gemini"
+                    ? "bg-purple-50/90 dark:bg-purple-950/50 border-purple-500 shadow-neu-flat text-purple-900 dark:text-purple-200"
+                    : "bg-[#e6ecf5] dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-white/40"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-extrabold text-xs flex items-center gap-1">
+                    ✨ Gemini AI
+                  </span>
+                  {selectedProvider === "gemini" && <Check className="w-3.5 h-3.5 text-purple-600" />}
+                </div>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">
+                  Aoede, Puck, Charon (Flash Audio)
+                </span>
+              </button>
+
+              {/* Tab 4: FPT.AI Voice */}
               <button
                 type="button"
                 onClick={() => handleSelectProvider("fpt")}
-                className={`p-3 rounded-neu-sm text-left transition flex flex-col justify-between cursor-pointer border ${
+                className={`p-2.5 rounded-neu-sm text-left transition flex flex-col justify-between cursor-pointer border ${
                   selectedProvider === "fpt"
                     ? "bg-blue-50/90 dark:bg-blue-950/50 border-blue-500 shadow-neu-blue text-blue-900 dark:text-blue-200"
                     : "bg-[#e6ecf5] dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-white/40"
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-extrabold text-xs flex items-center gap-1.5">
-                    🌾 FPT.AI Voice
+                  <span className="font-extrabold text-xs flex items-center gap-1">
+                    🌾 FPT.AI
                   </span>
-                  {selectedProvider === "fpt" && <Check className="w-4 h-4 text-blue-600" />}
+                  {selectedProvider === "fpt" && <Check className="w-3.5 h-3.5 text-blue-600" />}
                 </div>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1.5 leading-snug">
-                  🌾 Giọng Miền Tây &amp; 🎙️ MC Bắc chuẩn bản quyền (Cần Key FPT)
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">
+                  Miền Tây &amp; MC Bắc (Free 100k)
                 </span>
               </button>
 
-              {/* Tab 3: OpenAI Studio */}
+              {/* Tab 5: OpenAI Studio */}
               <button
                 type="button"
                 onClick={() => handleSelectProvider("openai")}
-                className={`p-3 rounded-neu-sm text-left transition flex flex-col justify-between cursor-pointer border ${
+                className={`p-2.5 rounded-neu-sm text-left transition flex flex-col justify-between cursor-pointer border ${
                   selectedProvider === "openai"
                     ? "bg-indigo-50/90 dark:bg-indigo-950/50 border-indigo-500 shadow-neu-flat text-indigo-900 dark:text-indigo-200"
                     : "bg-[#e6ecf5] dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-white/40"
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-extrabold text-xs flex items-center gap-1.5">
-                    ✨ OpenAI Studio
+                  <span className="font-extrabold text-xs flex items-center gap-1">
+                    🎙️ OpenAI
                   </span>
-                  {selectedProvider === "openai" && <Check className="w-4 h-4 text-indigo-600" />}
+                  {selectedProvider === "openai" && <Check className="w-3.5 h-3.5 text-indigo-600" />}
                 </div>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1.5 leading-snug">
-                  ✨ Nova &amp; Echo • Siêu mượt mà chuẩn phòng thu (Cần OpenAI Key)
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">
+                  Nova &amp; Echo phòng thu
                 </span>
               </button>
             </div>
           </div>
 
           {/* BƯỚC 2: HƯỚNG DẪN / NHẬP API KEY */}
-          {selectedProvider === "free" ? (
+          {selectedProvider === "edge" ? (
+            <div className="p-3.5 rounded-neu-sm bg-amber-50/90 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700/80 space-y-1.5 shadow-neu-flat-xs">
+              <div className="flex items-center gap-2 text-amber-800 dark:text-amber-300 font-bold text-xs">
+                <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
+                <span>Hoạt động 100% Miễn Phí • Đỉnh cao giọng đọc Microsoft Edge Neural!</span>
+              </div>
+              <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                Tích hợp trực tiếp công nghệ <strong>Microsoft Edge TTS Universal</strong> không cần bất kỳ API Key nào. Cung cấp cả hai giọng đọc chuẩn phòng thu: <strong>🌸 Hoài My (Nữ)</strong> ngọt ngào, truyền cảm và <strong>👔 Nam Minh (Nam)</strong> đĩnh đạc, rõ ràng từng chi tiết. Hãy chọn một trong hai giọng bên dưới rồi bấm <strong>&quot;Nghe Thử Câu Mẫu&quot;</strong>!
+              </p>
+            </div>
+          ) : selectedProvider === "free" ? (
             <div className="p-3.5 rounded-neu-sm bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-700/80 space-y-1.5 shadow-neu-flat-xs">
               <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-bold text-xs">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                 <span>Hoạt động ngay lập tức 100% • Không cần bất kỳ API Key nào!</span>
               </div>
               <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
-                Nhóm giọng Miễn Phí cung cấp 2 giọng đọc tách bạch rõ rệt: <strong>🌸 Mai Linh (Nữ)</strong> phát qua luồng âm thanh trong trẻo, mượt mà và <strong>👔 Quốc Tuấn (Nam)</strong> phát âm trầm ấm, đĩnh đạc qua Native Engine của thiết bị. Chọn một trong hai giọng bên dưới rồi bấm <strong>&quot;Nghe Thử Câu Mẫu&quot;</strong>!
+                Nhóm giọng Miễn Phí cung cấp các giọng đọc chuẩn: <strong>🌸 Mai Linh (Nữ)</strong> phát qua luồng Google Stream mượt mà 0ms và <strong>👔 Quốc Tuấn (Nam)</strong> phát âm qua thiết bị. Bấm chọn giọng bên dưới rồi bấm <strong>&quot;Nghe Thử Câu Mẫu&quot;</strong>!
               </p>
             </div>
           ) : (
             <div className="p-3.5 rounded-neu-sm bg-white/60 dark:bg-slate-800/70 border border-slate-300 dark:border-slate-700 space-y-2.5">
+              {/* Hướng dẫn Gemini */}
+              {selectedProvider === "gemini" && (
+                <div className="text-[11px] text-purple-900 dark:text-purple-200 bg-purple-50/90 dark:bg-purple-950/40 p-2.5 rounded-neu-sm border border-purple-200 dark:border-purple-800 space-y-1">
+                  <div className="font-bold flex items-center gap-1.5 text-purple-800 dark:text-purple-300">
+                    <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                    <span>Mô hình giọng nói Google Gemini 2.0 Flash Audio:</span>
+                  </div>
+                  <p className="text-[10px] text-slate-600 dark:text-slate-300">
+                    Sử dụng công nghệ Audio Modality thế hệ mới từ Google AI (Aoede, Kore, Puck, Charon). Hệ thống <strong>tự động liên kết mã key</strong> từ <strong>Trợ lý Socratic AI</strong> mà bạn đã nhập trước đó. Nếu chưa có, bạn có thể lấy key hoàn toàn miễn phí tại{" "}
+                    <a
+                      href="https://aistudio.google.com/app/apikey"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-600 font-bold underline inline-flex items-center gap-0.5"
+                    >
+                      aistudio.google.com
+                      <ExternalLink className="w-2.5 h-2.5" />
+                    </a>.
+                  </p>
+                </div>
+              )}
+
+              {/* Hướng dẫn FPT */}
               {selectedProvider === "fpt" &&
                 (ttsState.hasServerKey ? (
                   <div className="text-[11px] text-emerald-900 dark:text-emerald-200 bg-emerald-50/90 dark:bg-emerald-950/40 p-2.5 rounded-neu-sm border border-emerald-300 dark:border-emerald-800 space-y-1">
@@ -354,7 +448,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
                         và đăng nhập bằng tài khoản Google (nhận 100.000 ký tự miễn phí mỗi tháng).
                       </li>
                       <li>
-                        Vào mục <strong>Text to Speech</strong> ➔ Sao chép mã <strong>API Key</strong> (dạng chuỗi 32 ký tự).
+                        Vào mục <strong>Text to Speech</strong> ➔ Sao chép mã <strong>API Key</strong> (chuỗi 32 ký tự).
                       </li>
                       <li>Dán mã vào ô bên dưới rồi bấm <strong>Nghe Thử Câu Mẫu</strong>.</li>
                     </ol>
@@ -364,6 +458,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
                   </div>
                 ))}
 
+              {/* Hướng dẫn OpenAI */}
               {selectedProvider === "openai" && (
                 <div className="text-[11px] text-indigo-900 dark:text-indigo-200 bg-indigo-50/90 dark:bg-indigo-950/40 p-2.5 rounded-neu-sm border border-indigo-200 dark:border-indigo-800 space-y-1">
                   <div className="font-bold flex items-center gap-1.5">
@@ -389,10 +484,27 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
                 <label className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
                   <Key className="w-3.5 h-3.5 text-indigo-600" />
                   <span>
-                    Nhập API Key cá nhân của {selectedProvider === "fpt" ? "FPT.AI" : "OpenAI"}:
+                    Nhập API Key của{" "}
+                    {selectedProvider === "gemini"
+                      ? "Google Gemini AI"
+                      : selectedProvider === "fpt"
+                      ? "FPT.AI"
+                      : "OpenAI"}
+                    :
                   </span>
                 </label>
 
+                {selectedProvider === "gemini" && (
+                  <a
+                    href="https://aistudio.google.com/app/apikey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] text-purple-600 hover:underline font-bold inline-flex items-center gap-1"
+                  >
+                    <span>Lấy Google Gemini Key (Miễn phí)</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
                 {selectedProvider === "fpt" && (
                   <a
                     href="https://console.fpt.ai"
@@ -420,14 +532,23 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
               <div className="relative flex items-center">
                 <input
                   type={showKey ? "text" : "password"}
-                  value={selectedProvider === "fpt" ? fptKey : openaiKey}
+                  value={
+                    selectedProvider === "gemini"
+                      ? googleKey
+                      : selectedProvider === "fpt"
+                      ? fptKey
+                      : openaiKey
+                  }
                   onChange={(e) => {
                     const val = e.target.value;
-                    if (selectedProvider === "fpt") setFptKey(val);
+                    if (selectedProvider === "gemini") setGoogleKey(val);
+                    else if (selectedProvider === "fpt") setFptKey(val);
                     else setOpenaiKey(val);
                   }}
                   placeholder={
-                    selectedProvider === "fpt"
+                    selectedProvider === "gemini"
+                      ? "Dán Google Gemini API Key (AIzaSy...)"
+                      : selectedProvider === "fpt"
                       ? "Dán API Key FPT.AI (32 ký tự, ví dụ: 4f9a72b...)"
                       : "Dán OpenAI API Key (sk-proj-...)"
                   }
@@ -445,7 +566,7 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
               <div className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
                 <Info className="w-3 h-3 text-slate-400 flex-shrink-0" />
                 <span>
-                  Mã API Key được lưu trực tiếp trên trình duyệt máy bạn, tuyệt đối bảo mật và không lưu trữ trên máy chủ.
+                  Mã API Key được lưu trực tiếp trên trình duyệt máy bạn, an toàn tuyệt đối và không lưu trữ trên máy chủ.
                 </span>
               </div>
             </div>
@@ -490,6 +611,8 @@ export const VoiceSettingsModal: React.FC<VoiceSettingsModalProps> = ({
                           className={`text-[9px] font-bold px-1.5 py-0.2 rounded ${
                             voice.region === "mientay"
                               ? "bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300"
+                              : voice.category === "gemini"
+                              ? "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300"
                               : voice.region === "studio"
                               ? "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300"
                               : "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300"

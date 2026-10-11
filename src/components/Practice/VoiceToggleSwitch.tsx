@@ -60,6 +60,7 @@ export const VoiceToggleSwitch: React.FC<VoiceToggleSwitchProps> = ({
   const getVoiceBadge = () => {
     if (activeVoice.region === "mientay") return "🌾 Miền Tây";
     if (activeVoice.region === "mienbac") return "🎙️ MC Trong Trẻo";
+    if (activeVoice.category === "gemini" || activeVoice.provider === "gemini") return "✨ Gemini AI";
     if (activeVoice.region === "studio") return "✨ Studio AI";
     if (activeVoice.gender === "female") return "🌸 Mai Linh";
     return "👔 Quốc Tuấn";

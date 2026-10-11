@@ -1,16 +1,19 @@
 /**
  * Hệ thống Đọc đề bài thông minh (Smart Question Audio Reader 2.0)
- * Tích hợp đa nguồn giọng nói miễn phí và chất lượng cao:
+ * Tích hợp 4 nhóm giọng đọc chuyên nghiệp:
  * 1. MIỄN PHÍ 100% (Không cần bất kỳ Key nào):
  *    - 🌸 Mai Linh (Nữ Tự Nhiên - Google Stream MP3)
  *    - 👔 Quốc Tuấn (Nam Trầm Ấm - Native Engine)
  *    - ✨ Nam Minh / Hoài My (Microsoft Neural AI - Tự động nhận diện trên Windows/Edge)
- * 2. FPT.AI (Gói Miễn Phí 100.000 ký tự/tháng):
+ * 2. GOOGLE GEMINI AI AUDIO:
+ *    - ✨ Aoede (Nữ AI) & Kore (Nữ Truyền Cảm)
+ *    - ✨ Puck (Nam AI) & Charon (Nam Trầm Đĩnh Đạc)
+ * 3. FPT.AI (Gói Miễn Phí 100.000 ký tự/tháng):
  *    - 🌾 Giọng Miền Tây (Thu Minh / Minh Quang) & 🎙️ Giọng MC Bắc (Ban Mai / Lê Minh)
- * 3. OpenAI Studio: ✨ Nova & Echo chuẩn phòng thu quốc tế.
+ * 4. OPENAI STUDIO: ✨ Nova & Echo chuẩn phòng thu quốc tế.
  */
 
-export type TTSProvider = "free" | "fpt" | "openai" | "google" | "browser";
+export type TTSProvider = "edge" | "free" | "gemini" | "fpt" | "openai" | "google" | "browser";
 export type VoiceGender = "female" | "male";
 
 export interface TTSVoiceOption {
@@ -18,7 +21,7 @@ export interface TTSVoiceOption {
   name: string;
   region: "mientay" | "mienbac" | "studio" | "standard";
   gender: VoiceGender;
-  category: "free" | "fpt" | "openai";
+  category: "edge" | "free" | "gemini" | "fpt" | "openai";
   provider: TTSProvider;
   apiVoiceKey: string;
   description: string;
@@ -27,33 +30,105 @@ export interface TTSVoiceOption {
 }
 
 export const BASE_VOICE_OPTIONS: TTSVoiceOption[] = [
-  // 1. MIỄN PHÍ 100% - KHÔNG CẦN API KEY
+  // 1. MICROSOFT EDGE NEURAL AI (100% MIỄN PHÍ - CHẤT LƯỢNG CAO NHẤT - KHÔNG CẦN KEY)
+  {
+    id: "edge_hoaimy",
+    name: "Hoài My (Nữ Microsoft Edge AI)",
+    region: "studio",
+    gender: "female",
+    category: "edge",
+    provider: "edge",
+    apiVoiceKey: "vi-VN-HoaiMyNeural",
+    description: "Giọng Nữ Neural Microsoft Azure cực kỳ ngọt ngào, tự nhiên, chuẩn phòng thu (100% Miễn phí không cần Key)",
+    badge: "🌸 Nữ Edge Neural",
+    recommended: true,
+  },
+  {
+    id: "edge_namminh",
+    name: "Nam Minh (Nam Microsoft Edge AI)",
+    region: "studio",
+    gender: "male",
+    category: "edge",
+    provider: "edge",
+    apiVoiceKey: "vi-VN-NamMinhNeural",
+    description: "Giọng Nam Neural Microsoft Azure trầm ấm, rành mạch, phong thái sư phạm (100% Miễn phí không cần Key)",
+    badge: "👔 Nam Edge Neural",
+    recommended: true,
+  },
+
+  // 2. MIỄN PHÍ DỰ PHÒNG (Google Stream MP3 & Native Device Engine)
   {
     id: "free_female",
-    name: "Mai Linh (Nữ Tự Nhiên)",
+    name: "Mai Linh (Nữ Google Stream)",
     region: "standard",
     gender: "female",
     category: "free",
     provider: "free",
     apiVoiceKey: "google_stream_female",
-    description: "Giọng Nữ chuẩn tiếng Việt ngọt ngào, trong trẻo, mượt mà (Phát âm Google Stream)",
-    badge: "🌸 Nữ Tự Nhiên",
-    recommended: true,
+    description: "Giọng Nữ chuẩn tiếng Việt, phát âm tức thì qua Google Stream (100% Miễn phí)",
+    badge: "🌸 Nữ Google Stream",
   },
   {
     id: "free_male",
-    name: "Quốc Tuấn (Nam Trầm Ấm)",
+    name: "Quốc Tuấn (Nam Native Engine)",
     region: "standard",
     gender: "male",
     category: "free",
     provider: "free",
     apiVoiceKey: "native_male",
-    description: "Giọng Nam trầm ấm, đĩnh đạc, rõ ràng, phong thái sư phạm (Phát âm Native Engine)",
-    badge: "👔 Nam Trầm Ấm",
-    recommended: true,
+    description: "Giọng Nam trầm ấm phát âm trực tiếp qua Native Engine thiết bị (100% Miễn phí)",
+    badge: "👔 Nam Native",
   },
 
-  // 2. FPT.AI - Chuyên gia Tiếng Việt (Miễn phí 100.000 ký tự/tháng)
+  // 2. GOOGLE GEMINI AI AUDIO (Gemini 2.0 Flash Multimodal)
+  {
+    id: "gemini_aoede",
+    name: "Aoede (Nữ Gemini AI)",
+    region: "studio",
+    gender: "female",
+    category: "gemini",
+    provider: "gemini",
+    apiVoiceKey: "aoede",
+    description: "Giọng Nữ AI đa phương thức thế hệ mới của Google, trong trẻo, biểu cảm tự nhiên",
+    badge: "✨ Nữ Gemini AI",
+    recommended: true,
+  },
+  {
+    id: "gemini_kore",
+    name: "Kore (Nữ Truyền Cảm)",
+    region: "studio",
+    gender: "female",
+    category: "gemini",
+    provider: "gemini",
+    apiVoiceKey: "kore",
+    description: "Giọng Nữ AI dịu dàng, ấm áp, sâu lắng, phong cách phát thanh viên truyền cảm",
+    badge: "✨ Nữ Gemini AI",
+  },
+  {
+    id: "gemini_puck",
+    name: "Puck (Nam Gemini AI)",
+    region: "studio",
+    gender: "male",
+    category: "gemini",
+    provider: "gemini",
+    apiVoiceKey: "puck",
+    description: "Giọng Nam AI tươi sáng, rành mạch, dứt khoát, phong cách hiện đại từ Google",
+    badge: "✨ Nam Gemini AI",
+    recommended: true,
+  },
+  {
+    id: "gemini_charon",
+    name: "Charon (Nam Trầm Đĩnh Đạc)",
+    region: "studio",
+    gender: "male",
+    category: "gemini",
+    provider: "gemini",
+    apiVoiceKey: "charon",
+    description: "Giọng Nam AI trầm ấm, uy quyền, đĩnh đạc chuẩn phong thái người dẫn chương trình",
+    badge: "✨ Nam Gemini AI",
+  },
+
+  // 3. FPT.AI - Chuyên gia Tiếng Việt (Miễn phí 100.000 ký tự/tháng)
   {
     id: "fpt_thuminh",
     name: "Thu Minh (Nữ Miền Tây)",
@@ -101,7 +176,7 @@ export const BASE_VOICE_OPTIONS: TTSVoiceOption[] = [
     badge: "🎙️ Nam MC Bắc",
   },
 
-  // 3. OpenAI TTS Studio - Đỉnh cao phòng thu quốc tế
+  // 4. OpenAI TTS Studio - Đỉnh cao phòng thu quốc tế
   {
     id: "openai_nova",
     name: "Nova (Nữ Studio)",
@@ -250,6 +325,7 @@ class TTSManager {
 
   private fptApiKey: string = "";
   private openaiApiKey: string = "";
+  private googleApiKey: string = "";
   private hasServerFptKey: boolean = false;
   private hasServerOpenaiKey: boolean = false;
 
@@ -293,17 +369,24 @@ class TTSManager {
       if (savedEnabled !== null) this.isEnabled = savedEnabled === "true";
 
       const savedProvider = localStorage.getItem("thpt_tts_provider") as TTSProvider;
-      if (savedProvider && ["free", "fpt", "openai"].includes(savedProvider)) {
+      if (savedProvider && ["edge", "free", "gemini", "fpt", "openai"].includes(savedProvider)) {
         this.provider = savedProvider;
+      } else if (savedProvider === "google") {
+        this.provider = "gemini";
       } else {
-        this.provider = "free";
+        this.provider = "edge";
       }
 
       const savedVoiceId = localStorage.getItem("thpt_tts_voice_id");
       if (savedVoiceId) {
         this.voiceId = savedVoiceId;
       } else {
-        this.voiceId = this.provider === "free" ? "free_female" : "fpt_thuminh";
+        this.voiceId =
+          this.provider === "edge"
+            ? "edge_hoaimy"
+            : this.provider === "free"
+            ? "free_female"
+            : "gemini_aoede";
       }
 
       const savedGender = localStorage.getItem("thpt_tts_gender") as VoiceGender;
@@ -321,6 +404,10 @@ class TTSManager {
 
       this.fptApiKey = localStorage.getItem("thpt_tts_fpt_key") || "";
       this.openaiApiKey = localStorage.getItem("thpt_tts_openai_key") || "";
+      this.googleApiKey =
+        localStorage.getItem("thpt_tts_google_key") ||
+        localStorage.getItem("custom_gemini_api_key") ||
+        "";
     } catch {
       // Ignored
     }
@@ -399,7 +486,6 @@ class TTSManager {
     }
 
     if (dynamicVoices.length > 0) {
-      // Ghép vào VOICE_OPTIONS
       const existingIds = new Set(BASE_VOICE_OPTIONS.map((v) => v.id));
       const filtered = dynamicVoices.filter((v) => !existingIds.has(v.id));
       VOICE_OPTIONS = [
@@ -455,6 +541,16 @@ class TTSManager {
   }
 
   public getActiveApiKey(): string {
+    if (this.provider === "gemini" || this.provider === "google") {
+      return (
+        this.googleApiKey ||
+        (typeof window !== "undefined"
+          ? localStorage.getItem("thpt_tts_google_key") ||
+            localStorage.getItem("custom_gemini_api_key") ||
+            ""
+          : "")
+      );
+    }
     if (this.provider === "fpt") return this.fptApiKey;
     if (this.provider === "openai") return this.openaiApiKey;
     return "";
@@ -491,6 +587,7 @@ class TTSManager {
     speed?: number;
     fptKey?: string;
     openaiKey?: string;
+    googleKey?: string;
     enabled?: boolean;
   }) {
     this.stop();
@@ -504,10 +601,21 @@ class TTSManager {
       this.openaiApiKey = config.openaiKey.trim();
       if (typeof window !== "undefined") localStorage.setItem("thpt_tts_openai_key", this.openaiApiKey);
     }
+    if (config.googleKey !== undefined) {
+      this.googleApiKey = config.googleKey.trim();
+      if (typeof window !== "undefined") {
+        localStorage.setItem("thpt_tts_google_key", this.googleApiKey);
+        if (this.googleApiKey) {
+          localStorage.setItem("custom_gemini_api_key", this.googleApiKey);
+        }
+      }
+    }
+
+    const normProvider = config.provider === "google" ? "gemini" : config.provider;
 
     const targetVoice =
       VOICE_OPTIONS.find((v) => v.id === config.voiceId) ||
-      VOICE_OPTIONS.find((v) => v.provider === config.provider) ||
+      VOICE_OPTIONS.find((v) => v.provider === normProvider) ||
       VOICE_OPTIONS[0];
 
     this.voiceId = targetVoice.id;
@@ -535,7 +643,8 @@ class TTSManager {
   }
 
   public setProvider(provider: TTSProvider) {
-    const normProvider = provider === "google" || provider === "browser" ? "free" : provider;
+    const normProvider =
+      provider === "google" ? "gemini" : provider === "browser" ? "free" : provider;
     this.provider = normProvider;
 
     const matchingVoice =
@@ -632,7 +741,7 @@ class TTSManager {
     this.notify();
   }
 
-  public setApiKey(provider: "fpt" | "openai", key: string) {
+  public setApiKey(provider: "fpt" | "openai" | "gemini" | "google", key: string) {
     const trimmed = key.trim();
     if (provider === "fpt") {
       this.fptApiKey = trimmed;
@@ -640,13 +749,29 @@ class TTSManager {
     } else if (provider === "openai") {
       this.openaiApiKey = trimmed;
       if (typeof window !== "undefined") localStorage.setItem("thpt_tts_openai_key", trimmed);
+    } else if (provider === "gemini" || provider === "google") {
+      this.googleApiKey = trimmed;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("thpt_tts_google_key", trimmed);
+        if (trimmed) localStorage.setItem("custom_gemini_api_key", trimmed);
+      }
     }
     this.notify();
   }
 
-  public getStoredApiKey(provider: "fpt" | "openai" | "free" | "google"): string {
+  public getStoredApiKey(provider: "fpt" | "openai" | "gemini" | "google" | "free"): string {
     if (provider === "fpt") return this.fptApiKey;
     if (provider === "openai") return this.openaiApiKey;
+    if (provider === "gemini" || provider === "google") {
+      return (
+        this.googleApiKey ||
+        (typeof window !== "undefined"
+          ? localStorage.getItem("thpt_tts_google_key") ||
+            localStorage.getItem("custom_gemini_api_key") ||
+            ""
+          : "")
+      );
+    }
     return "";
   }
 
@@ -676,6 +801,57 @@ class TTSManager {
       : normalizedContent;
 
     const activeVoice = this.getActiveVoice();
+
+    // 0. GIỌNG MICROSOFT EDGE NEURAL AI (100% MIỄN PHÍ - PHÒNG THU ĐỈNH CAO - KHÔNG CẦN KEY)
+    if (activeVoice.provider === "edge") {
+      const cacheKey = `${activeVoice.id}_${this.speed}_${fullText}`;
+      if (this.audioCache.has(cacheKey)) {
+        this.playAudioUrl(this.audioCache.get(cacheKey)!, activeVoice.gender, activeVoice.apiVoiceKey);
+        return;
+      }
+
+      this.isLoadingState = true;
+      this.notify();
+
+      const controller = new AbortController();
+      this.currentAbortController = controller;
+
+      try {
+        const res = await fetch("/api/tts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
+          body: JSON.stringify({
+            text: fullText,
+            provider: "edge",
+            voice: activeVoice.apiVoiceKey,
+            speed: this.speed,
+          }),
+        });
+
+        if (controller.signal.aborted) return;
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.message || `Lỗi API (${res.status})`);
+        }
+
+        const blob = await res.blob();
+        const finalAudioUrl = URL.createObjectURL(blob);
+        if (controller.signal.aborted) return;
+
+        this.audioCache.set(cacheKey, finalAudioUrl);
+        this.isLoadingState = false;
+        this.currentAbortController = null;
+        this.playAudioUrl(finalAudioUrl, activeVoice.gender, activeVoice.apiVoiceKey);
+      } catch (err: any) {
+        if (err.name === "AbortError" || controller.signal.aborted) return;
+        this.isLoadingState = false;
+        this.currentAbortController = null;
+        this.errorMessageState = `Lỗi giọng đọc Edge: ${err.message}`;
+        this.notify();
+      }
+      return;
+    }
 
     // 1. CÁC GIỌNG PHÁT NATIVE TRÊN THIẾT BỊ (Quốc Tuấn, Nam Minh, Hoài My...)
     if (
@@ -738,12 +914,16 @@ class TTSManager {
       return;
     }
 
-    // 3. GIỌNG FPT.AI HOẶC OPENAI STUDIO: Có thể dùng Key người dùng hoặc Key máy chủ
+    // 3. GIỌNG GEMINI AI, FPT.AI HOẶC OPENAI STUDIO: Có thể dùng Key người dùng hoặc Key máy chủ
     const apiKey = this.getActiveApiKey();
     const canUseKey = Boolean(apiKey || (activeVoice.provider === "fpt" && this.hasServerFptKey));
 
     if (!canUseKey) {
-      this.errorMessageState = `Giọng "${activeVoice.name}" cần API Key ${activeVoice.provider.toUpperCase()}. Vui lòng dán mã Key trong Cài đặt hoặc chọn nhóm giọng Miễn Phí.`;
+      const provName =
+        activeVoice.provider === "gemini"
+          ? "Google Gemini AI"
+          : activeVoice.provider.toUpperCase();
+      this.errorMessageState = `Giọng "${activeVoice.name}" cần API Key ${provName}. Vui lòng dán mã Key trong Cài đặt hoặc chọn nhóm giọng Miễn Phí.`;
       this.notify();
       return;
     }
@@ -823,7 +1003,12 @@ class TTSManager {
 
     const apiKey = this.getActiveApiKey();
     const canUseKey = Boolean(apiKey || (activeVoice.provider === "fpt" && this.hasServerFptKey));
-    if ((activeVoice.provider === "fpt" || activeVoice.provider === "openai") && !canUseKey) {
+    if (
+      (activeVoice.provider === "gemini" ||
+        activeVoice.provider === "fpt" ||
+        activeVoice.provider === "openai") &&
+      !canUseKey
+    ) {
       return;
     }
 
@@ -942,9 +1127,6 @@ class TTSManager {
           utterance.pitch = 1.05;
           utterance.rate = this.speed;
         } else {
-          // Với giọng Nam:
-          // Nếu có giọng nam thật (Microsoft NamMinh): pitch 0.98
-          // Nếu chỉ có giọng nữ: hạ pitch xuống 0.55 để tạo âm vực nam trầm ấm, rành mạch!
           utterance.pitch = isNativeMale ? 0.98 : 0.55;
           utterance.rate = this.speed * 0.90;
         }
@@ -994,7 +1176,6 @@ class TTSManager {
       }
     }
 
-    // Nếu chỉ định tên cụ thể (ví dụ: browser_namminh -> "Microsoft NamMinh Online")
     if (specificVoiceName && specificVoiceName !== "native_male") {
       const exact = this.browserVoices.find((v) =>
         v.name.toLowerCase().includes(specificVoiceName.toLowerCase())
@@ -1020,7 +1201,6 @@ class TTSManager {
       );
       return { voice: female || viVoices[0], isNativeMale: false };
     } else {
-      // Tìm giọng nam thật nếu hệ thống có (Microsoft NamMinh, An, Minh, Male...)
       const nativeMale = viVoices.find((v) =>
         /namminh|nam|minh|male|an|huy|khoa/i.test(v.name)
       );
@@ -1094,15 +1274,56 @@ class TTSManager {
       : this.getActiveVoice();
 
     const sampleText =
-      targetVoice.region === "mientay"
+      targetVoice.provider === "edge"
+        ? targetVoice.gender === "male"
+          ? "Chào bạn! Tôi là Nam Minh, giọng đọc trí tuệ nhân tạo Microsoft Edge Neural. Chúc bạn ôn thi tốt nghiệp THPT Quốc Gia đạt điểm tuyệt đối!"
+          : "Chào bạn! Tôi là Hoài My, giọng đọc trí tuệ nhân tạo Microsoft Edge Neural. Rất vui được đồng hành cùng bạn ôn luyện đề thi hôm nay!"
+        : targetVoice.region === "mientay"
         ? "Dạ chào bạn! Đây là giọng đọc Miền Tây Nam Bộ ấm áp, chúc bạn ôn thi tốt nghiệp Trung học Phổ thông đạt điểm cao nghen!"
         : targetVoice.region === "mienbac"
         ? "Chào bạn! Đây là giọng đọc phát thanh viên truyền cảm, chúc bạn ôn thi môn Tin học đạt kết quả xuất sắc nhất!"
+        : targetVoice.provider === "gemini"
+        ? targetVoice.gender === "male"
+          ? "Chào bạn! Đây là giọng Nam trí tuệ nhân tạo Google Gemini 2.0 Flash Audio, chúc bạn ôn thi đạt kết quả tốt nhất."
+          : "Chào bạn! Đây là giọng Nữ trí tuệ nhân tạo Google Gemini 2.0 Flash Audio, chúc bạn ôn thi đạt kết quả tốt nhất."
         : targetVoice.gender === "male"
         ? "Chào bạn! Đây là giọng Nam trầm ấm, dứt khoát, sẵn sàng đồng hành cùng bạn ôn thi tốt nghiệp THPT."
         : "Chào bạn! Đây là giọng Nữ dịu dàng, trong trẻo, sẵn sàng đồng hành cùng bạn ôn thi tốt nghiệp THPT.";
 
     this.stop();
+
+    // 0. Giọng Microsoft Edge Neural AI -> Không cần Key, phát trực tiếp từ /api/tts
+    if (targetVoice.provider === "edge") {
+      this.isLoadingState = true;
+      this.notify();
+      try {
+        const res = await fetch("/api/tts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            text: sampleText,
+            provider: "edge",
+            voice: targetVoice.apiVoiceKey,
+            speed: this.speed,
+          }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.message || `Lỗi phản hồi (${res.status})`);
+        }
+
+        const blob = await res.blob();
+        const finalAudioUrl = URL.createObjectURL(blob);
+        this.isLoadingState = false;
+        this.playAudioUrl(finalAudioUrl, targetVoice.gender, targetVoice.apiVoiceKey);
+        return { success: true };
+      } catch (err: any) {
+        this.isLoadingState = false;
+        this.notify();
+        return { success: false, message: err.message };
+      }
+    }
 
     // 1. Giọng Native Trên Thiết Bị (Quốc Tuấn, Nam Minh, Hoài My...)
     if (targetVoice.id === "free_male" || targetVoice.id.startsWith("browser_")) {
@@ -1143,14 +1364,24 @@ class TTSManager {
       }
     }
 
-    // 3. Giọng FPT.AI hoặc OpenAI Studio
-    const apiKey = targetVoice.provider === "fpt" ? this.fptApiKey : this.openaiApiKey;
+    // 3. Giọng Gemini, FPT.AI hoặc OpenAI Studio
+    const apiKey =
+      targetVoice.provider === "gemini"
+        ? this.getActiveApiKey()
+        : targetVoice.provider === "fpt"
+        ? this.fptApiKey
+        : this.openaiApiKey;
+
     const canUseKey = Boolean(apiKey || (targetVoice.provider === "fpt" && this.hasServerFptKey));
 
     if (!canUseKey) {
+      const provName =
+        targetVoice.provider === "gemini"
+          ? "Google Gemini AI"
+          : targetVoice.provider.toUpperCase();
       return {
         success: false,
-        message: `Chưa có API Key cho ${targetVoice.provider.toUpperCase()}. Vui lòng dán mã API Key cá nhân để nghe thử giọng ${targetVoice.name}.`,
+        message: `Chưa có API Key cho ${provName}. Vui lòng dán mã API Key cá nhân để nghe thử giọng ${targetVoice.name}.`,
       };
     }
 
