@@ -211,40 +211,7 @@ Tỷ lệ mất câu cao (khoảng 50%). Có thể do format đề khác (dòng 
 | `prosess.md` | Nhật ký tiến trình; cập nhật sau mỗi lần build |
 | `src/data/questions12b.ts` | Ngân hàng 12B đã gộp Bài 3 (83 câu) |
 | `src/data/questionsCd3.ts` | 191 câu Bài 3 gốc + TF |
-| `src/data/sampleBank.ts` | `INITIAL_SUBJECTS` + spread câu hỏi |
-| `src/lib/driveFolderScanner.ts` | Map file Drive + parser |
-| `src/app/page.tsx` | Filter topic / cache version |
-| `src/lib/competencyEngine.ts` | Năng lực NLa |
-| `src/data/weeklyPlan.ts` | `tuan-08-10` |
-| `src/data/theoryBank.ts` | Lý thuyết mạng (key gốc Bài 3 + alias) |
-| `src/lib/googleAuth.ts` | JWT Drive readonly |
-
-File Drive:
-
-- CD3: `194sTkPkdn29NAle3x3ScPFIcT4JZf2mk`
-- 12B: `1z1po2n3jrSVv-yrsBSr1fJIxubNiM_mr`
-
-Tạm (không commit): `/tmp/opencode/token.txt`, `/tmp/opencode/parsed/`, `/tmp/opencode/extracted/`
-
----
-
-### 8. Cảnh báo SmartScreen trên Vercel — 2026-10-03
-
-`https://on-tnthpt.vercel.app` bị Microsoft Defender SmartScreen gắn “This site has been reported as unsafe”. Đây **không** phải lỗi build Next.js. Nguyên nhân phổ biến: subdomain `*.vercel.app` mới + form đăng nhập.
-
-Đã làm trong code:
-- Header bảo mật (`X-Content-Type-Options`, `X-Frame-Options`, `Permissions-Policy` chặn camera/mic/payment)
-- Metadata + JSON-LD rõ đây là app giáo dục nội bộ, không thu phí
-- Tắt âm thanh mặc định (tránh tín hiệu autoplay)
-- Ghi chú trên cổng đăng nhập: không thu phí, không hỏi ngân hàng/CCCD
-
-Việc thầy/cô cần làm ngoài code:
-1. Trên trang đỏ: **Report that this is not a scam site**
-2. Gắn tên miền trường (vd. `ontn.thptnguyensinhsac.edu.vn`) trên Vercel — cách triệt để nhất
-
----
-
-### 9. Reparse 12A + 12B từ Drive rồi rebase `main` — 2026-10-05
+| `src/data/s### 9. Reparse 12A + 12B từ Drive rồi rebase `main` — 2026-10-05
 
 - Extract `/tmp/docs/12A.txt`, `/tmp/docs/12B.txt`; parser MC + Đ/S (`__U__`/`__EU__`).
 - `src/data/questions12a.ts` **mới**: 97 câu (79 MC + 18 TF), thay hẳn bank AI cũ.
@@ -255,13 +222,28 @@ Việc thầy/cô cần làm ngoài code:
 
 Câu thiếu gạch chân điền tay: 12A MC4 (thiếu nhãn B, đáp án A); 12A Đ/S 9/12 (ý b Sai); 12B 3 MC LAN/phương tiện/Router.
 
+---
+
+### 10. Nâng cấp toàn diện Quản Lý Người Dùng & Phân Quyền Admin Dashboard — 2026-10-11
+
+- **Tab chuyên dụng**: Thêm Tab "Quản Lý Người Dùng & Phân Quyền" tách biệt rõ ràng với bảng điểm học tập (Overview).
+- **Khắc phục lỗi Bulk Import từ Excel**: Sửa parser nhận diện ký tự phân cách cột Tab (`\t`), Phẩy (`,`), Chấm phẩy (`;`), tự động bỏ qua dòng tiêu đề Excel và hỗ trợ cột STT tự động.
+- **Tính năng Chỉnh Sửa Người Dùng (Edit User Modal)**: Cho phép sửa Họ tên, Tên đăng nhập, Lớp/Bộ môn, Vai trò, Trạng thái hoạt động, Mật khẩu mới.
+- **Hỗ trợ đầy đủ vai trò (Roles)**: Cấp tài khoản Học sinh (`student`), Giáo viên (`teacher`), Quản trị viên (`admin`).
+- **Dọn dẹp bài làm mồ côi (Orphaned Attempts)**: Khi xóa tài khoản, tự động dọn sạch bài làm liên quan để tránh rác dữ liệu và tránh dính dữ liệu vào tài khoản mới.
+- **Đồng bộ hóa dữ liệu bài làm**: Khi cập nhật thông tin học sinh (tên, username, lớp), tự động cập nhật cả trong các lượt làm bài tương ứng.
+- **In phiếu tài khoản**: Hỗ trợ in danh sách thẻ tài khoản cấp cho từng học sinh theo lớp chuẩn A4 / PDF.
+
+---
+
 ## Việc tiếp theo (ưu tiên)
 
 1. ~~Đổi key gốc `theoryBank` sang `tin-cd3-thiet-bi-mang`~~ — xong.
 2. ~~Reparse 12A/12B + gộp Bài 3 + rebase `main`~~ — xong 2026-10-05.
-3. Chạy lại parser trên các file Drive còn thiếu (ưu tiên **10F**, rồi 11F, 12E, 11D/12D, 12G).
-4. Rà soát stem/option 10F và các câu `content` ngắn bất thường còn lại.
-5. Gắn custom domain + báo cáo SmartScreen (ngoài code).
+3. ~~Nâng cấp Quản lý người dùng Dashboard Admin~~ — xong 2026-10-11.
+4. Chạy lại parser trên các file Drive còn thiếu (ưu tiên **10F**, rồi 11F, 12E, 11D/12D, 12G).
+5. Rà soát stem/option 10F và các câu `content` ngắn bất thường còn lại.
+6. Gắn custom domain + báo cáo SmartScreen (ngoài code).
 
 ---
 
@@ -328,7 +310,7 @@ git pull origin main
 3. Câu điền tay 12A (nếu chưa tin đáp án):
     - 12A MC4: thiếu nhãn B, đáp án A
     - 12A Đ/S 9/12: ý b Sai
-   - 12B: 3 MC LAN / phương tiện / Router
+    - 12B: 3 MC LAN / phương tiện / Router
 4. Parser Drive còn thiếu trên các file khác; tái sử dụng `/tmp/docs/parse_12ab.js` nếu còn, hoặc viết lại từ `driveFolderScanner.parseTextDocumentQuestions`.
 5. SmartScreen Vercel — ngoài code (custom domain trường).
 
@@ -355,6 +337,10 @@ git pull origin main
 | `src/app/page.tsx` | Alias + `STRUCTURE_VERSION` |
 | `src/lib/driveFolderScanner.ts` | Map 12B/CD3 → Bài 3 |
 | `src/lib/competencyEngine.ts` | NLa Bài 3 |
+| `src/data/theoryBank.ts` | Lý thuyết mạng |10 = 274 |
+| `src/app/page.tsx` | Alias + `STRUCTURE_VERSION` |
+| `src/lib/driveFolderScanner.ts` | Map 12B/CD3 → Bài 3 |
+| `src/lib/competencyEngine.ts` | NLa Bài 3 |
 | `src/data/theoryBank.ts` | Lý thuyết mạng |
 
 ### 5. Quota / phiên
@@ -362,3 +348,23 @@ git pull origin main
 Không đọc được số quota nền tảng từ repo. Checkpoint này ghi **trước khi hết** để phiên sau không mất ngữ cảnh rebase/conflict.
 
 Nếu phiên sau thấy `main` lệch remote: `git fetch` + `git log HEAD..origin/main` trước khi sửa bank.
+=======
+### 9. Nâng cấp toàn diện Quản Lý Người Dùng & Phân Quyền Admin Dashboard — 2026-10-11
+
+- **Tab chuyên dụng**: Thêm Tab "Quản Lý Người Dùng & Phân Quyền" tách biệt rõ ràng với bảng điểm học tập (Overview).
+- **Khắc phục lỗi Bulk Import từ Excel**: Sửa parser nhận diện ký tự phân cách cột Tab (`\t`), Phẩy (`,`), Chấm phẩy (`;`), tự động bỏ qua dòng tiêu đề Excel và hỗ trợ cột STT tự động.
+- **Tính năng Chỉnh Sửa Người Dùng (Edit User Modal)**: Cho phép sửa Họ tên, Tên đăng nhập, Lớp/Bộ môn, Vai trò, Trạng thái hoạt động, Mật khẩu mới.
+- **Hỗ trợ đầy đủ vai trò (Roles)**: Cấp tài khoản Học sinh (`student`), Giáo viên (`teacher`), Quản trị viên (`admin`).
+- **Dọn dẹp bài làm mồ côi (Orphaned Attempts)**: Khi xóa tài khoản, tự động dọn sạch bài làm liên quan để tránh rác dữ liệu và tránh dính dữ liệu vào tài khoản mới.
+- **Đồng bộ hóa dữ liệu bài làm**: Khi cập nhật thông tin học sinh (tên, username, lớp), tự động cập nhật cả trong các lượt làm bài tương ứng.
+- **In phiếu tài khoản**: Hỗ trợ in danh sách thẻ tài khoản cấp cho từng học sinh theo lớp chuẩn A4 / PDF.
+
+---
+
+## Việc tiếp theo (ưu tiên)
+
+1. ~~Nâng cấp Quản lý người dùng Dashboard Admin~~ — xong.
+2. Chạy lại parser trên 9 file Drive; bổ sung câu thiếu (ưu tiên 10F, 11F, 12E, 11D/12D, 12G).
+3. Rà soát stem/option 10F và các câu `content` ngắn bất thường còn lại.
+4. Gắn custom domain + báo cáo SmartScreen (ngoài code).
+>>>>>>> e2f11a4 (feat: Nang cap toan dien quan ly nguoi dung va phan quyen trong Admin Dashboard)

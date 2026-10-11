@@ -8,16 +8,24 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const className = searchParams.get("class");
+    const role = searchParams.get("role"); // "all" | "student" | "teacher" | "admin"
 
-    let students = (await StorageAdapter.getUsers()).filter((u) => u.role === "student");
-    if (className && className !== "all") {
-      students = students.filter((s) => s.className === className);
+    let allUsers = await StorageAdapter.getUsers();
+
+    if (role && role !== "all") {
+      allUsers = allUsers.filter((u) => u.role === role);
     }
 
-    const safeStudents = students.map(({ password: _, ...s }) => s);
+    if (className && className !== "all") {
+      allUsers = allUsers.filter((s) => s.className === className);
+    }
+
+    const safeUsers = allUsers.map(({ password: _, ...s }) => s);
+    const safeStudents = safeUsers.filter((u) => u.role === "student");
 
     return NextResponse.json({
       success: true,
+      users: safeUsers,
       students: safeStudents,
     });
   } catch (error: any) {
@@ -29,7 +37,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    // Hỗ trợ cả 2 chế độ: Thêm đơn lẻ ({ fullName, username, password, className })
+    // Hỗ trợ cả 2 chế độ: Thêm đơn lẻ ({ fullName, username, password, className, role })
     // hoặc Thêm hàng loạt ({ students: [...] })
     if (Array.isArray(body.students)) {
       const created: User[] = [];
@@ -42,43 +50,46 @@ export async function POST(req: NextRequest) {
         }
 
         try {
+          const userRole = item.role === "admin" || item.role === "teacher" ? item.role : "student";
           const newUser = await StorageAdapter.createUser({
-            username: item.username.trim(),
+            username: item.username.trim().toLowerCase(),
             fullName: item.fullName.trim(),
-            role: "student",
-            className: item.className ? item.className.trim() : "12A1",
+            role: userRole,
+            className: item.className ? item.className.trim() : (userRole === "student" ? "12A1" : "Tổ Tin"),
             schoolYear: item.schoolYear || "2026-2027",
             password: item.password ? item.password.trim() : "123",
-            isActive: true,
+            isActive: item.isActive !== undefined ? item.isActive : true,
           });
           created.push(newUser);
         } catch (e: any) {
-          errors.push(`Học sinh "${item.username}": ${e.message}`);
+          errors.push(`Người dùng "${item.username}": ${e.message}`);
         }
       }
 
       return NextResponse.json({
         success: true,
-        message: `Đã nhập thành công ${created.length} học sinh.`,
+        message: `Đã nhập thành công ${created.length} tài khoản người dùng.`,
         createdCount: created.length,
         errors,
       });
     }
 
     // Thêm đơn lẻ
-    const { username, fullName, className, password } = body;
+    const { username, fullName, className, password, role } = body;
     if (!username || !fullName) {
       return NextResponse.json(
-        { success: false, message: "Vui lòng cung cấp Tên đăng nhập và Họ tên học sinh." },
+        { success: false, message: "Vui lòng cung cấp Tên đăng nhập và Họ tên người dùng." },
         { status: 400 }
       );
     }
 
+    const userRole = role === "admin" || role === "teacher" ? role : "student";
+
     const newUser = await StorageAdapter.createUser({
-      username: username.trim(),
+      username: username.trim().toLowerCase(),
       fullName: fullName.trim(),
-      role: "student",
-      className: className ? className.trim() : "12A1",
+      role: userRole,
+      className: className ? className.trim() : (userRole === "student" ? "12A1" : "Tổ Tin"),
       schoolYear: "2026-2027",
       password: password ? password.trim() : "123",
       isActive: true,
@@ -88,12 +99,13 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: `Đã cấp tài khoản cho học sinh "${fullName}" thành công!`,
+      message: `Đã cấp tài khoản cho ${userRole === "student" ? "học sinh" : userRole === "teacher" ? "giáo viên" : "quản trị viên"} "${fullName}" thành công!`,
       student: safeUser,
+      user: safeUser,
     });
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, message: error.message || "Lỗi tạo tài khoản học sinh." },
+      { success: false, message: error.message || "Lỗi tạo tài khoản người dùng." },
       { status: 400 }
     );
   }

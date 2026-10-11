@@ -64,6 +64,7 @@ import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
 import { PrintableReportModal } from "@/components/Admin/PrintableReportModal";
 import { CompetencyRadarCard } from "@/components/Analytics/CompetencyRadarCard";
 import { ExamManagementView } from "@/components/Admin/ExamManagementView";
+import { UserManagementView } from "@/components/Admin/UserManagementView";
 
 export default function AdminDashboardPage() {
   const { user, isLoggedIn, isAdmin, login, logout } = useAuth();
@@ -108,7 +109,7 @@ export default function AdminDashboardPage() {
   const [isResetting, setIsResetting] = useState(false);
 
   // 6. Weekly Plan & Matrix States
-  const [activeTab, setActiveTab] = useState<"overview" | "weekly" | "matrix" | "competencies" | "exams">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "users" | "weekly" | "matrix" | "competencies" | "exams">("overview");
   const [allWeeks, setAllWeeks] = useState<WeekPlanItem[]>(WEEKLY_PLAN);
   const [selectedWeekId, setSelectedWeekId] = useState<string>("tuan-02-06");
   const [selectedSemester, setSelectedSemester] = useState<1 | 2 | "all">("all");
@@ -170,10 +171,10 @@ export default function AdminDashboardPage() {
         setAttempts(attData.attempts);
       }
 
-      const usersRes = await fetch(`/api/admin/students?class=${cls}`);
+      const usersRes = await fetch("/api/admin/students?role=all");
       const usersData = await usersRes.json();
       if (usersData.success) {
-        setAllUserAccounts(usersData.students);
+        setAllUserAccounts(usersData.users || usersData.students || []);
       }
     } catch (err) {
       console.error("Lỗi nạp dữ liệu dashboard:", err);
@@ -392,23 +393,62 @@ export default function AdminDashboardPage() {
       return;
     }
 
-    const lines = bulkInputText.trim().split("\n");
+    const rawLines = bulkInputText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
     const parsedStudents: any[] = [];
 
-    lines.forEach((line) => {
-      const parts = line.split(",").map((p) => p.trim());
+    rawLines.forEach((line) => {
+      const lower = line.toLowerCase();
+      if (
+        lower.startsWith("mã hs") ||
+        lower.startsWith("tên đăng nhập") ||
+        lower.startsWith("username") ||
+        lower.startsWith("stt") ||
+        lower.startsWith("họ và tên")
+      ) {
+        return;
+      }
+
+      let parts: string[] = [];
+      if (line.includes("\t")) {
+        parts = line.split("\t");
+      } else if (line.includes(",")) {
+        parts = line.split(",");
+      } else if (line.includes(";")) {
+        parts = line.split(";");
+      } else if (line.includes("|")) {
+        parts = line.split("|");
+      } else {
+        parts = line.split(/\s{2,}/);
+      }
+
+      parts = parts.map((p) => p.trim()).filter((p) => p.length > 0);
+
+      if (parts.length >= 3 && /^\d+$/.test(parts[0]) && !parts[0].toLowerCase().includes("hs")) {
+        parts = parts.slice(1);
+      }
+
       if (parts.length >= 2) {
-        parsedStudents.push({
-          username: parts[0],
-          fullName: parts[1],
-          className: parts[2] || "12A1",
-          password: parts[3] || "123",
-        });
+        const username = parts[0].trim().toLowerCase();
+        const fullName = parts[1].trim();
+        const className = parts[2] ? parts[2].trim() : "12A1";
+        const password = parts[3] ? parts[3].trim() : "123";
+
+        if (username && fullName) {
+          parsedStudents.push({
+            username,
+            fullName,
+            className,
+            password,
+          });
+        }
       }
     });
 
     if (parsedStudents.length === 0) {
-      setFormNotification({ type: "error", message: "Định dạng không đúng. Mỗi dòng: Mã HS, Họ tên, Lớp, Mật khẩu" });
+      setFormNotification({
+        type: "error",
+        message: "Không tìm thấy dữ liệu học sinh hợp lệ. Định dạng: Mã HS, Họ tên, Lớp, Mật khẩu (hoặc copy trực tiếp từ Excel).",
+      });
       return;
     }
 
@@ -1077,6 +1117,30 @@ export default function AdminDashboardPage() {
           <button
             onClick={() => {
               soundManager.playClick();
+              setActiveTab("users");
+            }}
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+              activeTab === "users"
+                ? "bg-blue-600 text-white shadow-neu-blue"
+                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+            }`}
+          >
+            <Users className="w-3.5 h-3.5" />
+            <span>Quản Lý Người Dùng &amp; Phân Quyền</span>
+            <span
+              className={`text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${
+                activeTab === "users"
+                  ? "bg-white text-blue-700"
+                  : "bg-indigo-100 text-indigo-800"
+              }`}
+            >
+              {allUserAccounts.length}
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              soundManager.playClick();
               setActiveTab("weekly");
               if (!weeklyOverview) {
                 fetchWeeklyData(selectedWeekId, selectedClass);
@@ -1614,6 +1678,26 @@ export default function AdminDashboardPage() {
           </div>
         </div>
         </>
+      )}
+
+      {/* ======================================================== */}
+      {/* TAB: QUẢN LÝ NGƯỜI DÙNG & PHÂN QUYỀN (FULL USER MANAGEMENT) */}
+      {/* ======================================================== */}
+      {activeTab === "users" && (
+        <UserManagementView
+          users={allUserAccounts}
+          students={students}
+          currentUserId={user?.id}
+          onRefresh={() => fetchData(selectedClass)}
+          onViewStudentDetail={(studentId) => {
+            const found = students.find((s) => s.studentId === studentId);
+            if (found) {
+              setActiveStudent(found);
+              setIsDetailModalOpen(true);
+            }
+          }}
+          classesList={overview?.classes || []}
+        />
       )}
 
       {/* ======================================================== */}

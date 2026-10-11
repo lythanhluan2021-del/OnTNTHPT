@@ -299,17 +299,81 @@ export class StorageAdapter {
       }
     }
 
-    const updated = { ...users[idx], ...updates };
+    const oldUser = users[idx];
+    const updated = { ...oldUser, ...updates };
     users[idx] = updated;
     await this.saveUsers(users);
+
+    // Đồng bộ thông tin học sinh trong các bài làm nếu có đổi họ tên, username hoặc lớp
+    if (
+      (updates.username && updates.username !== oldUser.username) ||
+      (updates.fullName && updates.fullName !== oldUser.fullName) ||
+      (updates.className && updates.className !== oldUser.className)
+    ) {
+      try {
+        const attempts = await this.getAttempts();
+        let changed = false;
+        const updatedAttempts = attempts.map((a) => {
+          if (matchStudentAttempt(a, oldUser)) {
+            changed = true;
+            return {
+              ...a,
+              studentId: updated.id,
+              studentName: updated.fullName,
+              className: updated.className,
+            };
+          }
+          return a;
+        });
+
+        if (changed) {
+          globalForStorage.ontnAttemptsCache = updatedAttempts;
+          const redis = getRedisClient();
+          if (redis) {
+            await redis.set("thpt:attempts", updatedAttempts);
+          }
+          safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), updatedAttempts);
+          if (!IS_SERVERLESS) {
+            safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), updatedAttempts);
+          }
+        }
+      } catch (err) {
+        console.warn("[StorageAdapter] Lỗi đồng bộ attempts khi cập nhật user:", err);
+      }
+    }
+
     return updated;
   }
 
   static async deleteUser(id: string): Promise<boolean> {
     const users = await this.getUsers();
+    const targetUser = users.find((u) => u.id === id);
     const filtered = users.filter((u) => u.id !== id);
+
     if (filtered.length !== users.length) {
       await this.saveUsers(filtered);
+
+      // Dọn sạch các bài làm liên quan để tránh bài thi mồ côi
+      if (targetUser) {
+        try {
+          const attempts = await this.getAttempts();
+          const cleanedAttempts = attempts.filter((a) => !matchStudentAttempt(a, targetUser));
+          if (cleanedAttempts.length !== attempts.length) {
+            globalForStorage.ontnAttemptsCache = cleanedAttempts;
+            const redis = getRedisClient();
+            if (redis) {
+              await redis.set("thpt:attempts", cleanedAttempts);
+            }
+            safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), cleanedAttempts);
+            if (!IS_SERVERLESS) {
+              safeWriteJson(LOCAL_DB_DIR, path.join(LOCAL_DB_DIR, "attempts.json"), cleanedAttempts);
+            }
+          }
+        } catch (err) {
+          console.warn("[StorageAdapter] Lỗi dọn attempts khi xóa user:", err);
+        }
+      }
+
       return true;
     }
     return false;
