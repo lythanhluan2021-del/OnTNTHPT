@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleDriveStorage } from "@/lib/db/googleDriveStorage";
 import { StorageAdapter } from "@/lib/db/storageAdapter";
+import { setRuntimeServiceAccount, getDefaultServiceAccount } from "@/lib/googleAuth";
 
 export const dynamic = "force-dynamic";
 
@@ -8,6 +9,15 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const action = searchParams.get("action");
+
+    // Lấy thông tin Service Account Key từ server (nếu có ở local/env)
+    if (action === "get_key") {
+      const sa = getDefaultServiceAccount();
+      if (sa && sa.client_email && sa.private_key) {
+        return NextResponse.json({ success: true, key: sa });
+      }
+      return NextResponse.json({ success: false, message: "Server chưa có khóa Service Account." });
+    }
 
     // Nếu người dùng yêu cầu tải dữ liệu CSDL về máy để kéo thả lên Drive
     if (action === "download_users") {
@@ -54,9 +64,19 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
-    const action = body.action || "sync_all"; // "backup_to_drive" | "restore_from_drive" | "sync_all"
+    const action = body.action || "sync_all"; // "backup_to_drive" | "restore_from_drive" | "sync_all" | "set_runtime_key"
 
     const serviceAccount = body.serviceAccount || undefined;
+    if (serviceAccount && serviceAccount.client_email && serviceAccount.private_key) {
+      setRuntimeServiceAccount(serviceAccount);
+    }
+
+    if (action === "set_runtime_key") {
+      return NextResponse.json({
+        success: true,
+        message: "Đã kích hoạt khóa Service Account vào bộ nhớ hệ thống thành công!",
+      });
+    }
 
     // 1. Sao lưu dữ liệu hiện tại lên Google Drive (Backup)
     if (action === "backup_to_drive") {

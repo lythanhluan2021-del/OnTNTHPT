@@ -47,6 +47,39 @@ export const DriveStorageSyncModal: React.FC<DriveStorageSyncModalProps> = ({
   const [actionInProgress, setActionInProgress] = useState<string | null>(null);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [copiedKey, setCopiedKey] = useState(false);
+  const [saKeyJson, setSaKeyJson] = useState("");
+  const [showKeyInput, setShowKeyInput] = useState(false);
+
+  // Nạp key từ localStorage hoặc lấy từ server
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("thpt_sa_key");
+      if (saved) {
+        setSaKeyJson(saved);
+        // Tự động kích hoạt lên server runtime cache
+        try {
+          const parsed = JSON.parse(saved);
+          fetch("/api/admin/drive-storage", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action: "set_runtime_key", serviceAccount: parsed }),
+          }).catch(() => {});
+        } catch {}
+      } else {
+        // Thử lấy key từ server (nếu server có file local onthithpt-*.json)
+        fetch("/api/admin/drive-storage?action=get_key")
+          .then((r) => r.json())
+          .then((d) => {
+            if (d.success && d.key) {
+              const str = JSON.stringify(d.key, null, 2);
+              setSaKeyJson(str);
+              localStorage.setItem("thpt_sa_key", str);
+            }
+          })
+          .catch(() => {});
+      }
+    } catch {}
+  }, []);
 
   const checkStatus = async () => {
     setIsLoading(true);
@@ -88,11 +121,20 @@ export const DriveStorageSyncModal: React.FC<DriveStorageSyncModalProps> = ({
     soundManager.playClick();
     setActionInProgress(action);
     setMessage(null);
+
+    let parsedSa = undefined;
+    const storedSa = saKeyJson || localStorage.getItem("thpt_sa_key");
+    if (storedSa) {
+      try {
+        parsedSa = JSON.parse(storedSa);
+      } catch {}
+    }
+
     try {
       const res = await fetch("/api/admin/drive-storage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action }),
+        body: JSON.stringify({ action, serviceAccount: parsedSa }),
       });
       const data = await res.json();
       if (data.success) {
@@ -109,6 +151,43 @@ export const DriveStorageSyncModal: React.FC<DriveStorageSyncModalProps> = ({
       setMessage({ type: "error", text: "Lỗi kết nối: " + e.message });
     } finally {
       setActionInProgress(null);
+    }
+  };
+
+  const handleCopyKey = () => {
+    soundManager.playClick();
+    const keyToCopy = saKeyJson || localStorage.getItem("thpt_sa_key") || "";
+    if (keyToCopy) {
+      navigator.clipboard.writeText(keyToCopy);
+      setCopiedKey(true);
+      setTimeout(() => setCopiedKey(false), 3000);
+    } else {
+      alert("Chưa có nội dung khóa Service Account để sao chép. Vui lòng dán khóa vào ô bên dưới.");
+    }
+  };
+
+  const handleSaveSaKey = () => {
+    soundManager.playClick();
+    if (!saKeyJson.trim()) {
+      alert("Vui lòng dán nội dung tệp JSON của Service Account.");
+      return;
+    }
+    try {
+      const parsed = JSON.parse(saKeyJson);
+      if (!parsed.client_email || !parsed.private_key) {
+        throw new Error("Tệp JSON thiếu trường client_email hoặc private_key.");
+      }
+      localStorage.setItem("thpt_sa_key", JSON.stringify(parsed));
+      fetch("/api/admin/drive-storage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "set_runtime_key", serviceAccount: parsed }),
+      }).catch(() => {});
+      alert("Đã lưu và kích hoạt khóa Service Account thành công!");
+      setShowKeyInput(false);
+      checkStatus();
+    } catch (e: any) {
+      alert("Định dạng JSON không hợp lệ: " + e.message);
     }
   };
 

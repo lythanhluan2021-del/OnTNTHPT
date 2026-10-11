@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     // Hỗ trợ cả 2 chế độ: Thêm đơn lẻ ({ fullName, username, password, className, role })
     // hoặc Thêm hàng loạt ({ students: [...] })
     if (Array.isArray(body.students)) {
-      const created: User[] = [];
+      const candidates: Omit<User, "id" | "createdAt">[] = [];
       const errors: string[] = [];
 
       for (const item of body.students) {
@@ -49,28 +49,26 @@ export async function POST(req: NextRequest) {
           continue;
         }
 
-        try {
-          const userRole = item.role === "admin" || item.role === "teacher" ? item.role : "student";
-          const newUser = await StorageAdapter.createUser({
-            username: item.username.trim().toLowerCase(),
-            fullName: item.fullName.trim(),
-            role: userRole,
-            className: item.className ? item.className.trim() : (userRole === "student" ? "12A1" : "Tổ Tin"),
-            schoolYear: item.schoolYear || "2026-2027",
-            password: item.password ? item.password.trim() : "123",
-            isActive: item.isActive !== undefined ? item.isActive : true,
-          });
-          created.push(newUser);
-        } catch (e: any) {
-          errors.push(`Người dùng "${item.username}": ${e.message}`);
-        }
+        const userRole = item.role === "admin" || item.role === "teacher" ? item.role : "student";
+        candidates.push({
+          username: item.username.trim().toLowerCase(),
+          fullName: item.fullName.trim(),
+          role: userRole,
+          className: item.className ? item.className.trim() : (userRole === "student" ? "12A1" : "Tổ Tin"),
+          schoolYear: item.schoolYear || "2026-2027",
+          password: item.password ? item.password.trim() : "123",
+          isActive: item.isActive !== undefined ? item.isActive : true,
+        });
       }
+
+      const result = await StorageAdapter.createUsersBatch(candidates);
+      const allErrors = [...errors, ...result.errors];
 
       return NextResponse.json({
         success: true,
-        message: `Đã nhập thành công ${created.length} tài khoản người dùng.`,
-        createdCount: created.length,
-        errors,
+        message: `Đã nhập thành công ${result.created.length} tài khoản người dùng.`,
+        createdCount: result.created.length,
+        errors: allErrors,
       });
     }
 

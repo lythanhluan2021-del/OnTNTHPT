@@ -267,9 +267,11 @@ export class StorageAdapter {
 
     // 2. Lưu vào Google Drive Cloud nếu có kết nối
     if (GoogleDriveStorage.isConfigured()) {
-      GoogleDriveStorage.syncUsers(users).catch((err) => {
+      try {
+        await GoogleDriveStorage.syncUsers(users);
+      } catch (err) {
         console.warn("[StorageAdapter] ⚠️ Lỗi đồng bộ users lên Google Drive:", err);
-      });
+      }
     }
 
     // 3. Ghi dự phòng vào /tmp
@@ -308,6 +310,41 @@ export class StorageAdapter {
     users.push(newUser);
     await this.saveUsers(users);
     return newUser;
+  }
+
+  static async createUsersBatch(
+    newUsersData: Omit<User, "id" | "createdAt">[]
+  ): Promise<{ created: User[]; errors: string[] }> {
+    const users = await this.getUsers();
+    const created: User[] = [];
+    const errors: string[] = [];
+    const existingUsernames = new Set(users.map((u) => u.username.toLowerCase()));
+
+    for (const item of newUsersData) {
+      const cleanUsername = item.username.trim().toLowerCase();
+      if (existingUsernames.has(cleanUsername)) {
+        errors.push(`Tên đăng nhập "${cleanUsername}" đã tồn tại.`);
+        continue;
+      }
+
+      const newUser: User = {
+        ...item,
+        username: cleanUsername,
+        id: `usr-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`,
+        createdAt: Date.now(),
+        isActive: item.isActive !== undefined ? item.isActive : true,
+      };
+
+      users.push(newUser);
+      existingUsernames.add(cleanUsername);
+      created.push(newUser);
+    }
+
+    if (created.length > 0) {
+      await this.saveUsers(users);
+    }
+
+    return { created, errors };
   }
 
   static async updateUser(id: string, updates: Partial<User>): Promise<User> {
@@ -510,9 +547,11 @@ export class StorageAdapter {
 
     // 2. Lưu vào Google Drive Cloud
     if (GoogleDriveStorage.isConfigured()) {
-      GoogleDriveStorage.syncAttempts(updated).catch((err) => {
+      try {
+        await GoogleDriveStorage.syncAttempts(updated);
+      } catch (err) {
         console.warn("[StorageAdapter] ⚠️ Lỗi đồng bộ attempt lên Google Drive:", err);
-      });
+      }
     }
 
     // 3. Dự phòng /tmp và cục bộ
@@ -540,9 +579,11 @@ export class StorageAdapter {
       }
 
       if (GoogleDriveStorage.isConfigured()) {
-        GoogleDriveStorage.syncAttempts(updated).catch((err) => {
+        try {
+          await GoogleDriveStorage.syncAttempts(updated);
+        } catch (err) {
           console.warn("[StorageAdapter] ⚠️ Lỗi đồng bộ batch attempts lên Google Drive:", err);
-        });
+        }
       }
 
       safeWriteJson(TMP_DB_DIR, path.join(TMP_DB_DIR, "attempts.json"), updated);

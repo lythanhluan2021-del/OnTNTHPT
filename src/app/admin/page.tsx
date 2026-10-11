@@ -15,6 +15,7 @@ import {
   KeyRound,
   Trash2,
   Eye,
+  Edit3,
   ArrowLeft,
   RefreshCw,
   CheckCircle2,
@@ -87,6 +88,16 @@ export default function AdminDashboardPage() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
+  const [isEditStudentModalOpen, setIsEditStudentModalOpen] = useState(false);
+  const [editingStudentForm, setEditingStudentForm] = useState({
+    id: "",
+    username: "",
+    fullName: "",
+    className: "12A1",
+    newPassword: "",
+  });
+  const [isEditingSubmitting, setIsEditingSubmitting] = useState(false);
+  const [editStudentError, setEditStudentError] = useState("");
   const [isCloudHelpModalOpen, setIsCloudHelpModalOpen] = useState(false);
   const [isDriveStorageModalOpen, setIsDriveStorageModalOpen] = useState(false);
   const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
@@ -155,28 +166,76 @@ export default function AdminDashboardPage() {
   const [adminLoginError, setAdminLoginError] = useState("");
   const [isAdminLoggingIn, setIsAdminLoggingIn] = useState(false);
 
+  // Nạp dữ liệu học sinh & tổng quan từ cache để tránh nhấp nháy khi chuyển trang
+  useEffect(() => {
+    try {
+      const cachedStudents = localStorage.getItem("thpt_students_cache");
+      const cachedOverview = localStorage.getItem("thpt_overview_cache");
+      if (cachedStudents) {
+        const parsed = JSON.parse(cachedStudents);
+        if (Array.isArray(parsed) && parsed.length > 0) setStudents(parsed);
+      }
+      if (cachedOverview) {
+        const parsed = JSON.parse(cachedOverview);
+        if (parsed) setOverview(parsed);
+      }
+    } catch {}
+  }, []);
+
   // Fetch Dashboard Data
   const fetchData = async (cls = selectedClass) => {
     try {
       setIsRefreshing(true);
       const res = await fetch(`/api/admin/dashboard?class=${cls}`);
       const data = await res.json();
-      if (data.success) {
-        setOverview(data.data.overview);
-        setStudents(data.data.students);
+      if (data.success && data.data) {
+        if (data.data.overview) {
+          setOverview(data.data.overview);
+          try {
+            localStorage.setItem("thpt_overview_cache", JSON.stringify(data.data.overview));
+          } catch {}
+        }
+        if (Array.isArray(data.data.students)) {
+          if (data.data.students.length > 0) {
+            setStudents(data.data.students);
+            try {
+              localStorage.setItem("thpt_students_cache", JSON.stringify(data.data.students));
+            } catch {}
+          } else {
+            // Nếu serverless cold-start instance vừa trả về mảng rỗng trong khi cache client có học sinh,
+            // giữ lại danh sách học sinh từ cache để tránh giao diện của Thầy bị giật từ 11 thành 0
+            const cachedStudents = localStorage.getItem("thpt_students_cache");
+            if (cachedStudents) {
+              try {
+                const parsed = JSON.parse(cachedStudents);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                  setStudents(parsed);
+                }
+              } catch {}
+            } else {
+              setStudents([]);
+            }
+          }
+        }
       }
 
       // Lấy toàn bộ lượt làm bài và tài khoản để chi tiết
       const attRes = await fetch("/api/student/attempts");
       const attData = await attRes.json();
-      if (attData.success) {
+      if (attData.success && Array.isArray(attData.attempts)) {
         setAttempts(attData.attempts);
       }
 
       const usersRes = await fetch("/api/admin/students?role=all");
       const usersData = await usersRes.json();
       if (usersData.success) {
-        setAllUserAccounts(usersData.users || usersData.students || []);
+        const accs = usersData.users || usersData.students || [];
+        setAllUserAccounts(accs);
+        if (accs.length > 0) {
+          try {
+            localStorage.setItem("thpt_users_cache", JSON.stringify(accs));
+          } catch {}
+        }
       }
     } catch (err) {
       console.error("Lỗi nạp dữ liệu dashboard:", err);
@@ -477,6 +536,67 @@ export default function AdminDashboardPage() {
       setFormNotification({ type: "error", message: err.message });
     } finally {
       setFormSubmitting(false);
+    }
+  };
+
+  // Handle Open Edit Student Modal
+  const handleOpenEditModal = (st: StudentProgressSummary) => {
+    soundManager.playClick();
+    const userAcc = allUserAccounts.find(
+      (u) => u.id === st.studentId || u.username.toLowerCase() === st.username.toLowerCase()
+    );
+    setEditingStudentForm({
+      id: userAcc?.id || st.studentId,
+      username: st.username,
+      fullName: st.fullName,
+      className: st.className || "12A1",
+      newPassword: "",
+    });
+    setEditStudentError("");
+    setIsEditStudentModalOpen(true);
+  };
+
+  // Handle Save Edit Student
+  const handleSaveEditStudent = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingStudentForm.fullName.trim() || !editingStudentForm.username.trim()) {
+      setEditStudentError("Vui lòng điền đầy đủ Họ tên và Tên đăng nhập.");
+      return;
+    }
+
+    try {
+      setIsEditingSubmitting(true);
+      setEditStudentError("");
+
+      const payload: any = {
+        fullName: editingStudentForm.fullName.trim(),
+        username: editingStudentForm.username.trim().toLowerCase(),
+        className: editingStudentForm.className.trim(),
+      };
+      if (editingStudentForm.newPassword.trim()) {
+        payload.password = editingStudentForm.newPassword.trim();
+      }
+
+      const res = await fetch(`/api/admin/students/${editingStudentForm.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        soundManager.playSuccess();
+        setIsEditStudentModalOpen(false);
+        fetchData(selectedClass);
+      } else {
+        soundManager.playError();
+        setEditStudentError(data.message || "Không thể cập nhật thông tin học sinh.");
+      }
+    } catch (err: any) {
+      soundManager.playError();
+      setEditStudentError("Lỗi kết nối tới máy chủ.");
+    } finally {
+      setIsEditingSubmitting(false);
     }
   };
 
@@ -1682,6 +1802,15 @@ export default function AdminDashboardPage() {
                               <Eye className="w-3.5 h-3.5" />
                             </button>
 
+                            {/* Sửa thông tin tài khoản */}
+                            <button
+                              onClick={() => handleOpenEditModal(st)}
+                              className="p-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-xs active:shadow-neu-inset text-indigo-600 hover:text-indigo-800 transition"
+                              title="Chỉnh sửa tài khoản học sinh"
+                            >
+                              <Edit3 className="w-3.5 h-3.5" />
+                            </button>
+
                             {/* Cấp lại mật khẩu */}
                             <button
                               onClick={() => {
@@ -2713,6 +2842,144 @@ export default function AdminDashboardPage() {
                 Lưu Mật Khẩu
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ======================================================== */}
+      {/* MODAL: CHỈNH SỬA TÀI KHOẢN HỌC SINH                      */}
+      {/* ======================================================== */}
+      {isEditStudentModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+          <div className="w-full max-w-md bg-[#e6ecf5] rounded-neu shadow-neu-flat p-6 relative border border-white/70 space-y-4">
+            <button
+              onClick={() => setIsEditStudentModalOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-[#e6ecf5] shadow-neu-flat-xs active:shadow-neu-inset text-slate-500 hover:text-slate-800"
+              aria-label="Đóng"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-3 border-b border-slate-300/60 pb-3">
+              <div className="w-10 h-10 rounded-neu-sm bg-indigo-100 flex items-center justify-center text-indigo-700 shadow-neu-flat-xs flex-shrink-0">
+                <Edit3 className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-sm font-black text-slate-800">
+                  Cập Nhật Tài Khoản Học Sinh
+                </h2>
+                <p className="text-[11px] text-slate-500 font-medium">
+                  Chỉnh sửa thông tin cá nhân, tên đăng nhập hoặc mật khẩu
+                </p>
+              </div>
+            </div>
+
+            {editStudentError && (
+              <div className="p-2.5 rounded-neu-sm bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 flex-shrink-0 text-rose-600" />
+                <span>{editStudentError}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleSaveEditStudent} className="space-y-3.5">
+              <div>
+                <label className="block text-xs font-bold text-slate-600 mb-1">
+                  Họ và Tên Học Sinh <span className="text-rose-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={editingStudentForm.fullName}
+                  onChange={(e) =>
+                    setEditingStudentForm({ ...editingStudentForm, fullName: e.target.value })
+                  }
+                  placeholder="Ví dụ: Hồ Minh Kha"
+                  className="w-full px-3.5 py-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-600 mb-1">
+                    Tên Đăng Nhập / Mã HS <span className="text-rose-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={editingStudentForm.username}
+                    onChange={(e) =>
+                      setEditingStudentForm({
+                        ...editingStudentForm,
+                        username: e.target.value.toLowerCase().trim(),
+                      })
+                    }
+                    placeholder="Ví dụ: hmkha12a4"
+                    className="w-full px-3.5 py-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-xs font-mono font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-600 mb-1">
+                    Lớp Học <span className="text-rose-500">*</span>
+                  </label>
+                  <select
+                    value={editingStudentForm.className}
+                    onChange={(e) =>
+                      setEditingStudentForm({ ...editingStudentForm, className: e.target.value })
+                    }
+                    className="w-full px-3.5 py-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 cursor-pointer"
+                  >
+                    {[
+                      "12A1", "12A2", "12A3", "12A4", "12A5", "12A6",
+                      "12A7", "12A8", "12A9", "12A10", "12A11", "12A12",
+                    ].map((c) => (
+                      <option key={c} value={c}>
+                        Lớp {c}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-600 mb-1">
+                  Mật Khẩu Mới <span className="text-slate-400 font-normal">(Bỏ trống nếu không muốn đổi)</span>
+                </label>
+                <input
+                  type="text"
+                  value={editingStudentForm.newPassword}
+                  onChange={(e) =>
+                    setEditingStudentForm({ ...editingStudentForm, newPassword: e.target.value })
+                  }
+                  placeholder="Để trống nếu giữ nguyên mật khẩu cũ"
+                  className="w-full px-3.5 py-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
+                />
+              </div>
+
+              <div className="flex gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setIsEditStudentModalOpen(false)}
+                  className="flex-1 py-2.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold text-slate-600 hover:text-slate-800 cursor-pointer"
+                >
+                  Hủy Bỏ
+                </button>
+                <button
+                  type="submit"
+                  disabled={isEditingSubmitting}
+                  className="flex-1 py-2.5 rounded-neu-sm bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-neu-flat-xs active:shadow-neu-inset flex items-center justify-center gap-1.5 transition disabled:opacity-50 cursor-pointer"
+                >
+                  {isEditingSubmitting ? (
+                    <>
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                      <span>Đang Lưu...</span>
+                    </>
+                  ) : (
+                    <span>Lưu Thay Đổi</span>
+                  )}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

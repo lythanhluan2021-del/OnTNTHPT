@@ -8,10 +8,23 @@ export interface ServiceAccountCredentials {
   project_id?: string;
 }
 
+const globalForGoogleAuth = globalThis as unknown as {
+  ontnServiceAccountCache?: ServiceAccountCredentials | null;
+};
+
+export function setRuntimeServiceAccount(creds: ServiceAccountCredentials | null): void {
+  globalForGoogleAuth.ontnServiceAccountCache = creds;
+}
+
 /**
- * Tự động tìm kiếm Service Account Credentials từ biến môi trường hoặc tệp tin cục bộ
+ * Tự động tìm kiếm Service Account Credentials từ runtime cache, biến môi trường hoặc tệp tin cục bộ
  */
 export function getDefaultServiceAccount(): ServiceAccountCredentials | null {
+  // 0. Khóa Service Account được thiết lập từ Admin Dashboard tại Runtime
+  if (globalForGoogleAuth.ontnServiceAccountCache?.client_email && globalForGoogleAuth.ontnServiceAccountCache?.private_key) {
+    return globalForGoogleAuth.ontnServiceAccountCache;
+  }
+
   // 1. Biến môi trường GOOGLE_SERVICE_ACCOUNT_KEY (dạng JSON string)
   if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
     try {
