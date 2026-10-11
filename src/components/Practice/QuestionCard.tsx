@@ -43,6 +43,7 @@ interface QuestionCardProps {
   ) => void;
   onAskAiTutor?: () => void;
   comboStreak?: number;
+  nextQuestionContent?: string;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -59,6 +60,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   onOpenSqlIde,
   onAskAiTutor,
   comboStreak = 0,
+  nextQuestionContent,
 }) => {
   const isTrueFalse = question.type === "true_false" && question.tfItems && question.tfItems.length > 0;
   const isPythonQuestion =
@@ -142,9 +144,16 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   // Tự động phát âm đề bài nếu chế độ đọc đang BẬT và câu hỏi chưa được trả lời
   useEffect(() => {
     if (ttsManager.getState().isEnabled && !hasAnswered && question?.content) {
+      // Giảm delay xuống 40ms để chuyển câu là phát âm thanh ngay lập tức
       const timer = setTimeout(() => {
         ttsManager.speakQuestion(question.content, `Câu ${currentIndex + 1}`);
-      }, 350);
+      }, 40);
+
+      // Đồng thời chạy ngầm tải trước (prefetch) âm thanh câu tiếp theo để chuyển tiếp là có ngay 0ms
+      if (nextQuestionContent) {
+        ttsManager.prefetchQuestion(nextQuestionContent, `Câu ${currentIndex + 2}`);
+      }
+
       return () => {
         clearTimeout(timer);
         ttsManager.stop();
@@ -152,7 +161,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     } else {
       ttsManager.stop();
     }
-  }, [question?.id, currentIndex, hasAnswered]);
+  }, [question?.id, currentIndex, hasAnswered, nextQuestionContent]);
 
   // Ngắt phát âm khi unmount khỏi giao diện
   useEffect(() => {

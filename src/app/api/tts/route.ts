@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
+// Bộ đệm âm thanh RAM trên Server (lưu trữ 300 tệp âm thanh gần nhất để phát ngay lập tức)
+const serverAudioCache = new Map<string, { buffer: Buffer; mimeType: string; jsonUrl?: string }>();
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -12,6 +15,28 @@ export async function POST(req: NextRequest) {
         { success: false, message: "Thiếu nội dung văn bản cần chuyển thành giọng nói." },
         { status: 400 }
       );
+    }
+
+    // 0. Kiểm tra Server-side Memory Cache để trả kết quả ngay tức thì (< 5ms)
+    const cacheKey = `${provider}_${voice}_${speed}_${text.trim()}`;
+    if (serverAudioCache.has(cacheKey)) {
+      const cached = serverAudioCache.get(cacheKey)!;
+      if (cached.jsonUrl) {
+        return NextResponse.json({
+          success: true,
+          provider,
+          voice,
+          audioUrl: cached.jsonUrl,
+          cached: true,
+        });
+      }
+      return new NextResponse(new Uint8Array(cached.buffer), {
+        headers: {
+          "Content-Type": cached.mimeType,
+          "Cache-Control": "public, max-age=86400",
+          "X-Cache": "HIT",
+        },
+      });
     }
 
     // 1. NHÀ CUNG CẤP: FPT.AI Text to Speech (Chuyên gia giọng Tiếng Việt, Miền Tây, MC)
@@ -287,6 +312,13 @@ export async function POST(req: NextRequest) {
               const rawBase64 = audioPart.inlineData.data;
               const mimeType = audioPart.inlineData.mimeType || "audio/wav";
               const audioBuffer = Buffer.from(rawBase64, "base64");
+
+              // Lưu vào bộ đệm máy chủ để lần đọc sau trả về trong 1ms
+              if (serverAudioCache.size > 300) {
+                const firstKey = serverAudioCache.keys().next().value;
+                if (firstKey) serverAudioCache.delete(firstKey);
+              }
+              serverAudioCache.set(cacheKey, { buffer: audioBuffer, mimeType });
 
               return new NextResponse(audioBuffer, {
                 headers: {

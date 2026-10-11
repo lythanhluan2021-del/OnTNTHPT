@@ -1268,6 +1268,7 @@ export default function AppHome() {
                     onSelectTF={handleSelectTF}
                     hasAnswered={hasAnswered}
                     comboStreak={comboStreak}
+                    nextQuestionContent={activePracticeQuestions[currentQuestionIndex + 1]?.content}
                     onOpenIde={(codeSnippet, title, defaultInput, targetAnswer, questionNumber) => {
                       if (codeSnippet) {
                         setIdeDrawerCode(codeSnippet);

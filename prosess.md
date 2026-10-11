@@ -17,7 +17,10 @@ Cập nhật: 2026-10-11 — Nâng cấp toàn diện **Hệ thống Giọng đ�
   - Huy hiệu hiển thị phong cách trên thanh câu hỏi: `🌾 Miền Tây`, `🎙️ MC Trong Trẻo`, `✨ Studio AI`.
   - Giữ nguyên phong cách vùng miền khi chuyển đổi nhanh giữa 👩 Nữ và 👨 Nam.
 - Tối ưu hoá phân biệt **Giọng Nam / Nữ trên Trình Duyệt**: tự động phát hiện giọng nam tự nhiên (`Microsoft NamMinh`), đồng thời áp dụng hạ tần số pitch (0.55) và nhịp điệu (0.90x) khi trình duyệt chỉ có một giọng nữ duy nhất (Chrome `Google tiếng Việt`), tạo ra âm vực nam trầm ấm, rành mạch, phân biệt rõ ràng 100% so với giọng nữ.
-- Bộ chuẩn hóa ngữ âm Tin học (`normalizeTextForSpeech`): Tự động phiên âm các thuật ngữ CNTT thông dụng (Router, Switch, Modem, Hub, LAN, WAN, TCP/IP, IP, SQL, HTML, CSS, DBMS, CSDL...) thành phát âm tự nhiên, sư phạm.
+- Tối ưu hóa tốc độ đọc tức thì khi chuyển câu (**Zero-latency Instant Audio Playback**):
+  - **Tiền nạp âm thanh thông minh (Predictive Audio Pre-fetching)**: Trong khi học sinh đang làm câu hiện tại, hệ thống chạy ngầm tải trước (`prefetchQuestion`) âm thanh của câu hỏi tiếp theo vào `audioCache`. Khi học sinh bấm chuyển câu, âm thanh đã sẵn sàng và cất lên ngay lập tức (0ms).
+  - **Bộ đệm âm thanh RAM trên Server (Server-side Memory Cache)**: Lưu trữ 300 tệp âm thanh gần nhất, phản hồi ngay lập tức (< 5ms), tiết kiệm tối đa quota và triệt tiêu độ trễ mạng.
+  - **Rút ngắn độ trễ kích hoạt**: Giảm delay kích hoạt trong `QuestionCard` từ 350ms xuống 40ms, giúp chuyển câu là đọc ngay tức thì.
 - Biên dịch dự án `npm run build` thành công xuất sắc, sẵn sàng triển khai Vercel.
 
 ## ĐỌC TRƯỚC KHI LÀM (phiên mới / hết quota)

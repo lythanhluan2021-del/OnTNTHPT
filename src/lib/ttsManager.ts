@@ -670,6 +670,62 @@ class TTSManager {
   }
 
   /**
+   * Tải trước (pre-fetch) âm thanh của câu hỏi tiếp theo chạy ngầm
+   * Giúp khi học sinh bấm chuyển câu, âm thanh phát ra ngay lập tức 0ms không độ trễ
+   */
+  public async prefetchQuestion(rawContent: string, questionPrefix?: string) {
+    if (typeof window === "undefined" || !this.isEnabled) return;
+    const activeVoice = this.getActiveVoice();
+    const apiKey = this.getActiveApiKey();
+    if (activeVoice.provider === "browser" || !apiKey) return;
+
+    const normalizedContent = normalizeTextForSpeech(rawContent);
+    if (!normalizedContent) return;
+
+    const fullText = questionPrefix
+      ? `${questionPrefix} . ${normalizedContent}`
+      : normalizedContent;
+
+    const cacheKey = `${activeVoice.id}_${this.speed}_${fullText}`;
+    if (this.audioCache.has(cacheKey)) return;
+
+    try {
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: fullText,
+          provider: activeVoice.provider,
+          voice: activeVoice.apiVoiceKey,
+          speed: this.speed,
+          apiKey: apiKey,
+        }),
+      });
+
+      if (!res.ok) return;
+
+      const contentType = res.headers.get("content-type") || "";
+      let finalAudioUrl = "";
+
+      if (contentType.includes("application/json")) {
+        const data = await res.json();
+        if (data.audioUrl) {
+          finalAudioUrl = data.audioUrl;
+        }
+      } else {
+        const blob = await res.blob();
+        finalAudioUrl = URL.createObjectURL(blob);
+      }
+
+      if (finalAudioUrl) {
+        this.audioCache.set(cacheKey, finalAudioUrl);
+      }
+    } catch {
+      // Chạy ngầm, không làm gián đoạn
+    }
+  }
+
+  /**
    * Phát âm thanh qua thẻ HTMLAudioElement
    */
   private playAudioUrl(url: string) {
