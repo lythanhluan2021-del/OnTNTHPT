@@ -132,7 +132,7 @@ export class GoogleDriveStorage {
       if (existingFileId) {
         // Cập nhật nội dung tệp hiện có (uploadType=media)
         const updateRes = await fetch(
-          `https://www.googleapis.com/upload/drive/v3/files/${existingFileId}?uploadType=media`,
+          `https://www.googleapis.com/upload/drive/v3/files/${existingFileId}?uploadType=media&supportsAllDrives=true`,
           {
             method: "PATCH",
             headers: {
@@ -145,7 +145,7 @@ export class GoogleDriveStorage {
 
         if (!updateRes.ok) {
           const errText = await updateRes.text();
-          throw new Error(`Cập nhật tệp thất bại (${updateRes.status}): ${errText}`);
+          throw new Error(`Cập nhật tệp "${fileName}" thất bại (${updateRes.status}): ${errText}`);
         }
 
         return existingFileId;
@@ -171,7 +171,7 @@ export class GoogleDriveStorage {
           closeDelimiter;
 
         const createRes = await fetch(
-          "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart",
+          "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&supportsAllDrives=true",
           {
             method: "POST",
             headers: {
@@ -184,7 +184,7 @@ export class GoogleDriveStorage {
 
         if (!createRes.ok) {
           const errText = await createRes.text();
-          throw new Error(`Tạo mới tệp thất bại (${createRes.status}): ${errText}`);
+          throw new Error(`Tạo mới tệp "${fileName}" thất bại (${createRes.status}): ${errText}`);
         }
 
         const createData = await createRes.json();
@@ -192,7 +192,7 @@ export class GoogleDriveStorage {
       }
     } catch (err: any) {
       console.error(`[GoogleDriveStorage] Lỗi ghi tệp "${fileName}" lên Google Drive:`, err);
-      return null;
+      throw err;
     }
   }
 

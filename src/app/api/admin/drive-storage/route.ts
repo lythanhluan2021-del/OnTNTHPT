@@ -4,8 +4,32 @@ import { StorageAdapter } from "@/lib/db/storageAdapter";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
+    const { searchParams } = new URL(req.url);
+    const action = searchParams.get("action");
+
+    // Nếu người dùng yêu cầu tải dữ liệu CSDL về máy để kéo thả lên Drive
+    if (action === "download_users") {
+      const users = await StorageAdapter.getUsers();
+      return new NextResponse(JSON.stringify(users, null, 2), {
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Disposition": 'attachment; filename="ontn_users.json"',
+        },
+      });
+    }
+
+    if (action === "download_attempts") {
+      const attempts = await StorageAdapter.getAttempts();
+      return new NextResponse(JSON.stringify(attempts, null, 2), {
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Disposition": 'attachment; filename="ontn_attempts.json"',
+        },
+      });
+    }
+
     const status = await GoogleDriveStorage.checkStatus();
     const users = await StorageAdapter.getUsers();
     const attempts = await StorageAdapter.getAttempts();
@@ -80,7 +104,7 @@ export async function POST(req: NextRequest) {
 
       return NextResponse.json({
         success: true,
-        message: `Đã khôi phục thành công ${restoredUsers} tài khoản người dùng từ Google Drive vào hệ thống!`,
+        message: `Đã khôi phục thành công ${restoredUsers} tài khoản người dùng và ${restoredAttempts} bài làm từ Google Drive vào hệ thống!`,
         restoredUsers,
         restoredAttempts,
       });
@@ -113,9 +137,11 @@ export async function POST(req: NextRequest) {
     });
   } catch (error: any) {
     console.error("Lỗi thao tác Google Drive Storage:", error);
-    return NextResponse.json(
-      { success: false, message: error.message || "Lỗi thao tác Google Drive." },
-      { status: 500 }
-    );
+    let msg = error.message || "Lỗi thao tác Google Drive.";
+    if (msg.includes("storage quota") || msg.includes("storageQuotaExceeded")) {
+      msg =
+        "Google Drive báo lỗi Storage Quota: Tài khoản Service Account mặc định không có dung lượng tạo tệp mới trong thư mục cá nhân. Thầy chỉ cần kéo thả 2 tệp 'ontn_users.json' và 'ontn_attempts.json' vào thư mục OnTNTHPT trên Drive 1 lần (hoặc chuyển thư mục vào 'Bộ nhớ dùng chung'). Sau đó hệ thống sẽ tự động cập nhật liên tục!";
+    }
+    return NextResponse.json({ success: false, message: msg }, { status: 400 });
   }
 }

@@ -282,6 +282,47 @@ export const DriveStorageSyncModal: React.FC<DriveStorageSyncModalProps> = ({
           </div>
         </div>
 
+        {/* Khởi tạo 2 tệp trên Drive để vượt qua giới hạn Quota của Service Account */}
+        <div className="p-3.5 rounded-neu-sm bg-blue-50/80 border border-blue-200/90 space-y-2.5 text-xs text-blue-950">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <span className="font-bold flex items-center gap-1.5 text-blue-900">
+              <UploadCloud className="w-4 h-4 text-blue-600 flex-shrink-0" />
+              <span>Khởi tạo 2 tệp trên Drive của Thầy (Chỉ cần làm 1 lần duy nhất):</span>
+            </span>
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <a
+                href="/api/admin/drive-storage?action=download_users"
+                download="ontn_users.json"
+                className="px-2.5 py-1 rounded bg-white text-blue-700 font-bold text-[10px] shadow-neu-flat-xs border border-blue-300 hover:bg-blue-100 flex items-center gap-1 transition"
+                title="Tải tệp ontn_users.json về máy tính"
+              >
+                <DownloadCloud className="w-3 h-3" />
+                <span>Tải ontn_users.json</span>
+              </a>
+              <a
+                href="/api/admin/drive-storage?action=download_attempts"
+                download="ontn_attempts.json"
+                className="px-2.5 py-1 rounded bg-white text-blue-700 font-bold text-[10px] shadow-neu-flat-xs border border-blue-300 hover:bg-blue-100 flex items-center gap-1 transition"
+                title="Tải tệp ontn_attempts.json về máy tính"
+              >
+                <DownloadCloud className="w-3 h-3" />
+                <span>Tải ontn_attempts.json</span>
+              </a>
+            </div>
+          </div>
+          <div className="text-[11px] text-blue-800 leading-relaxed space-y-1">
+            <p>
+              💡 <strong>Vì sao xuất hiện thông báo này?</strong> Google quy định tài khoản Service Account mặc định có quota tạo tệp = 0 MB trong thư mục cá nhân.
+            </p>
+            <p>
+              👉 <strong>Cách xử lý trong 15 giây:</strong> Thầy chỉ cần bấm 2 nút tải ở trên (hoặc lấy 2 tệp <code>ontn_users.json</code> &amp; <code>ontn_attempts.json</code> sẵn trong thư mục dự án) rồi <strong>kéo thả vào thư mục OnTNTHPT trên Google Drive</strong> (màn hình Drive Thầy đang mở). Khi Thầy là chủ sở hữu (5 TB), Service Account sẽ ghi đè và tự động đồng bộ realtime vĩnh viễn!
+            </p>
+            <p className="text-[10px] text-blue-600">
+              ✨ <em>Hoặc:</em> Thầy có thể di chuyển thư mục <code>OnTNTHPT</code> vào mục <strong>&quot;Bộ nhớ dùng chung&quot;</strong> (Shared Drive ở cột bên trái Drive), hệ thống sẽ tự động tạo tệp mà không cần tải lên thủ công.
+            </p>
+          </div>
+        </div>
+
         {/* Hướng dẫn cài đặt vĩnh viễn trên Vercel */}
         <div className="p-3.5 rounded-neu-sm bg-amber-50/70 border border-amber-200/80 space-y-2 text-xs text-amber-950">
           <div className="flex items-center gap-2 font-bold text-amber-900">

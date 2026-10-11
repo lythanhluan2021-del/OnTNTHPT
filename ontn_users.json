@@ -1,0 +1,11 @@
+[
+  {
+    "id": "usr-admin",
+    "username": "admin",
+    "fullName": "Thầy Lý Thành Luân (Quản trị viên)",
+    "role": "admin",
+    "isActive": true,
+    "createdAt": 1726000000000,
+    "lastLoginAt": 1728633600000
+  }
+]
