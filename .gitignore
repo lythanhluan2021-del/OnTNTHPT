@@ -38,3 +38,11 @@ next-env.d.ts
 credentials*.json
 *service_account*.json
 *.docx
+
+# local scratch & data
+TKHS.xlsx
+TKHS.md
+Email-connect*.txt
+*.png
+/scripts/
+

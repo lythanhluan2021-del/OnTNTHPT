@@ -2,7 +2,7 @@
   {
     "id": "usr-admin",
     "username": "admin",
-    "fullName": "Thầy Lý Thành Luân (Quản trị viên)",
+    "fullName": "Quản trị viên hệ thống",
     "role": "admin",
     "isActive": true,
     "password": "admin",
@@ -141,20 +141,6 @@
     "isActive": true,
     "createdAt": 1791712024790,
     "accountType": "official"
-  },
-  {
-    "id": "usr-gg-mv3o9rk1-bdtw",
-    "username": "lythanhluan21121",
-    "fullName": "chí long",
-    "email": "lythanhluan21121@gmail.com",
-    "role": "student",
-    "className": "Lớp Tự Do",
-    "schoolYear": "2026 - 2027",
-    "isActive": true,
-    "createdAt": 1791714027457,
-    "lastLoginAt": 1791714027457,
-    "authProvider": "google",
-    "accountType": "free"
   },
   {
     "id": "usr-test",

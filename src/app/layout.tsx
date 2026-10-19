@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Hệ thống ôn luyện thi tốt nghiệp THPT môn Tin học của Trường THPT Nguyễn Sinh Sắc. Ứng dụng giáo dục nội bộ, không thu phí, không yêu cầu thông tin ngân hàng hay thanh toán.",
   applicationName: "OnTNTHPT",
-  authors: [{ name: "Thầy Lý Thành Luân" }],
+  authors: [{ name: "Ban Chuyên Môn Tin Học" }],
   creator: "Trường THPT Nguyễn Sinh Sắc",
   publisher: "Trường THPT Nguyễn Sinh Sắc",
   category: "education",

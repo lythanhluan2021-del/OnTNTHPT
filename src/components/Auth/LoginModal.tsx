@@ -67,7 +67,7 @@ export const LoginModal: React.FC = () => {
             Trường THPT Nguyễn Sinh Sắc
           </p>
           <p className="text-[11px] text-slate-500">
-            Phụ trách: Thầy Lý Thành Luân
+            Phụ trách: Ban Quản Trị Hệ Thống
           </p>
         </div>
 
@@ -186,7 +186,7 @@ export const LoginModal: React.FC = () => {
         {/* Ghi chú chân trang */}
         <div className="text-center pt-2 border-t border-slate-300/50">
           <p className="text-[11px] text-slate-500 leading-normal">
-            Học sinh đăng nhập bằng Google hoặc tài khoản do <strong>Thầy Lý Thành Luân</strong> cấp để lưu tiến trình trực tiếp lên Google Drive.
+            Học sinh đăng nhập bằng Google hoặc tài khoản do <strong>Giáo viên bộ môn</strong> cấp để lưu tiến trình trực tiếp lên Google Drive.
           </p>
         </div>
       </div>

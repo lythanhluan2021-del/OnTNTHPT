@@ -1052,7 +1052,7 @@ export default function AdminDashboardPage() {
   // Handle Reset Mock Data
   const handleResetData = async () => {
     const confirmed = window.confirm(
-      "⚠️ XÁC NHẬN DỌN DẸP DỮ LIỆU:\n\nThầy có chắc chắn muốn dọn sạch toàn bộ học sinh mẫu và lịch sử bài làm thử nghiệm?\n\n• Tài khoản Quản trị viên (Admin Thầy Luân) sẽ được BẢO LƯU tuyệt đối.\n• Toàn bộ học sinh và lịch sử làm bài sẽ được đưa về 0 để Thầy sẵn sàng thêm danh sách học sinh thật.\n\nBấm OK để tiếp tục dọn dẹp."
+      "⚠️ XÁC NHẬN DỌN DẸP DỮ LIỆU:\n\nBạn có chắc chắn muốn dọn sạch toàn bộ học sinh mẫu và lịch sử bài làm thử nghiệm?\n\n• Tài khoản Quản trị viên (Admin) sẽ được BẢO LƯU tuyệt đối.\n• Toàn bộ học sinh và lịch sử làm bài sẽ được đưa về 0 để sẵn sàng thêm danh sách học sinh thật.\n\nBấm OK để tiếp tục dọn dẹp."
     );
     if (!confirmed) return;
 
@@ -1360,7 +1360,7 @@ export default function AdminDashboardPage() {
               <span>Quay lại trang Ôn Luyện</span>
             </Link>
             <span className="text-[11px] text-slate-400 font-semibold">
-              GV: Lý Thành Luân
+              Quản trị viên
             </span>
           </div>
         </div>
@@ -1391,7 +1391,7 @@ export default function AdminDashboardPage() {
               </span>
             </div>
             <p className="text-xs text-slate-500 font-medium">
-              Trường THPT Nguyễn Sinh Sắc • Năm học 2026 - 2027 • Phụ trách: Thầy Lý Thành Luân
+              Trường THPT Nguyễn Sinh Sắc • Năm học 2026 - 2027 • Phụ trách: Ban Quản Trị Hệ Thống
             </p>
             {/* Huy hiệu trạng thái Lưu trữ Đám mây: Tách riêng Upstash Redis và Google Drive */}
             <div className="flex items-center gap-2 pt-1 flex-wrap">

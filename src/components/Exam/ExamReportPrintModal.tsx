@@ -233,7 +233,6 @@ export function ExamReportPrintModal({
                   <p className="font-bold text-xs uppercase">GIÁO VIÊN BỘ MÔN</p>
                   <p className="text-[10px] italic">(Ký và ghi rõ họ tên)</p>
                   <div className="h-16" />
-                  <p className="font-bold text-xs">LÝ THÀNH LUÂN</p>
                 </div>
               </div>
             </div>
@@ -407,8 +406,8 @@ export function ExamReportPrintModal({
               <div className="text-right pt-6">
                 <p className="italic text-[11px]">Cao Lãnh, ngày {new Date().getDate()} tháng {new Date().getMonth() + 1} năm {new Date().getFullYear()}</p>
                 <p className="font-bold text-xs uppercase mt-1">GIÁO VIÊN BỘ MÔN TIN HỌC</p>
+                <p className="text-[10px] italic">(Ký và ghi rõ họ tên)</p>
                 <div className="h-16" />
-                <p className="font-bold text-xs">LÝ THÀNH LUÂN</p>
               </div>
             </div>
           )}

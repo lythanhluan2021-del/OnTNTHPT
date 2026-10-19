@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getGoogleAccessToken, ServiceAccountCredentials } from "@/lib/googleAuth";
+import { getGoogleAccessToken, ServiceAccountCredentials, getDefaultServiceAccount } from "@/lib/googleAuth";
 import { scanOnTNTHPTRootFolder } from "@/lib/driveFolderScanner";
 
 export async function POST(req: NextRequest) {
@@ -8,15 +8,15 @@ export async function POST(req: NextRequest) {
     const folderId = body.folderId || "19toY6VB5iERD2D9-tirycSjEz_YQbowL";
     let serviceAccount: ServiceAccountCredentials | null = null;
 
-    // 1. Lấy thông tin Service Account từ payload hoặc từ biến môi trường
+    // 1. Lấy thông tin Service Account từ payload hoặc từ hệ thống (env / file / base64)
     if (body.serviceAccount) {
       if (typeof body.serviceAccount === "string") {
         serviceAccount = JSON.parse(body.serviceAccount);
       } else {
         serviceAccount = body.serviceAccount;
       }
-    } else if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
-      serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
+    } else {
+      serviceAccount = getDefaultServiceAccount();
     }
 
     if (!serviceAccount || !serviceAccount.client_email || !serviceAccount.private_key) {

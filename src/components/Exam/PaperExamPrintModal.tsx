@@ -309,7 +309,6 @@ export function PaperExamPrintModal({
 
               <div className="text-right pt-6 text-xs italic">
                 <p>Tổ Chuyên Môn Tin Học - THPT Nguyễn Sinh Sắc</p>
-                <p className="font-bold not-italic">GV: Lý Thành Luân</p>
               </div>
             </div>
           )}

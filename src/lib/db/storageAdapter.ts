@@ -125,7 +125,7 @@ const INITIAL_USERS: User[] = [
   {
     id: "usr-admin",
     username: "admin",
-    fullName: "Thầy Lý Thành Luân (Quản trị viên)",
+    fullName: "Quản trị viên hệ thống",
     role: "admin",
     isActive: true,
     password: "admin", // Hoặc thptnss2026

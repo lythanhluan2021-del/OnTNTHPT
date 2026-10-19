@@ -891,7 +891,7 @@ export const TOPIC_THEORY_MAP: Record<string, TopicTheory> = {
     "subjectName": "Tin học 12",
     "topicName": "Chuyên đề 12F: Tạo trang web với HTML & CSS",
     "chapterName": "Chủ đề F: Tạo trang web (Chuyên đề Tin học 12)",
-    "docTitle": "Chuyên đề 12F. Tạo trang Web.docx (Biên soạn: Thầy Lý Thành Luân)",
+    "docTitle": "Chuyên đề 12F. Tạo trang Web.docx (Biên soạn: Tổ Tin học)",
     "objectives": [
       "Hiểu và giải thích được cấu trúc của một trang web dưới dạng HTML.",
       "Sử dụng được các thẻ HTML để trình bày trang web:",
