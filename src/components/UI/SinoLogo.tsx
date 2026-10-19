@@ -31,7 +31,8 @@ export const SinoLogo: React.FC<SinoLogoProps> = ({
     <div className={`flex items-center gap-2.5 sm:gap-3 ${className}`}>
       {/* Logo Icon Container */}
       <div
-        className={`${currentSize.box} rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1f2633] shadow-neu-flat border border-white/70 dark:border-slate-700/60 p-1 flex items-center justify-center overflow-hidden flex-shrink-0 transition-transform hover:scale-105`}
+        className={`${currentSize.box} rounded-neu-sm logo-badge shadow-neu-flat border border-white/80 dark:border-blue-400/50 p-1 flex items-center justify-center overflow-hidden flex-shrink-0 transition-transform hover:scale-105`}
+        style={{ backgroundColor: "#ffffff" }}
       >
         {variant === "image" ? (
           <Image
@@ -39,7 +40,7 @@ export const SinoLogo: React.FC<SinoLogoProps> = ({
             alt="SINO Logo"
             width={currentSize.imgSize}
             height={currentSize.imgSize}
-            className="w-full h-full object-contain rounded-sm mix-blend-multiply dark:mix-blend-normal"
+            className="w-full h-full object-contain rounded-sm mix-blend-multiply"
             priority
           />
         ) : (

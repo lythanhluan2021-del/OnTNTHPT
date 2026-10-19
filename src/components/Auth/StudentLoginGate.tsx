@@ -38,11 +38,14 @@ export const StudentLoginGate: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#e6ecf5] flex flex-col justify-center items-center p-4 antialiased">
-      <div className="w-full max-w-md bg-[#e6ecf5] rounded-neu shadow-neu-flat p-6 sm:p-8 border border-white/80 space-y-6">
+    <div className="min-h-screen bg-[#e6ecf5] dark:bg-[#0f1319] flex flex-col justify-center items-center p-4 antialiased transition-colors duration-200">
+      <div className="w-full max-w-md bg-[#e6ecf5] dark:bg-[#181f2a] rounded-neu shadow-neu-flat border border-white/80 dark:border-slate-700/60 p-6 sm:p-8 space-y-6">
         {/* Header SINO Brand & Logo */}
         <div className="text-center space-y-2.5">
-          <div className="w-20 h-20 mx-auto rounded-neu bg-[#e6ecf5] flex items-center justify-center shadow-neu-flat border border-white/80 p-1.5 transition-transform hover:scale-105">
+          <div
+            className="w-20 h-20 mx-auto rounded-neu logo-badge flex items-center justify-center shadow-neu-flat dark:shadow-[0_0_20px_rgba(59,130,246,0.3)] border border-white/80 dark:border-blue-400/50 p-1.5 transition-transform hover:scale-105"
+            style={{ backgroundColor: "#ffffff" }}
+          >
             <Image
               src="/sino_logo.png"
               alt="SINO Logo"
@@ -54,29 +57,29 @@ export const StudentLoginGate: React.FC = () => {
           </div>
           <div className="space-y-1">
             <div className="flex items-center justify-center gap-2">
-              <h1 className="text-2xl font-black text-slate-800 tracking-tight">
+              <h1 className="text-2xl font-black text-slate-800 dark:text-white tracking-tight">
                 SINO
               </h1>
             </div>
-            <p className="text-xs font-black text-blue-700 tracking-tight">
+            <p className="text-xs font-black text-blue-700 dark:text-blue-400 tracking-tight">
               Ôn thi thông minh, bứt phá điểm số
             </p>
-            <p className="text-[11px] text-slate-500 font-medium">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
               Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật
             </p>
           </div>
         </div>
 
         {/* Lời nhắn hướng dẫn học sinh */}
-        <div className="p-3 rounded-neu-sm bg-blue-50/70 border border-blue-200/60 text-[11px] text-blue-900 leading-relaxed space-y-1 shadow-neu-flat-xs">
-          <div className="flex items-center gap-1.5 font-bold">
-            <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-            <span>Hướng dẫn tham gia ôn luyện:</span>
+        <div className="p-3.5 rounded-neu-sm bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200/70 dark:border-blue-800/60 text-[11px] leading-relaxed space-y-1.5 shadow-neu-flat-xs">
+          <div className="flex items-center gap-1.5 font-bold text-blue-900 dark:text-blue-300">
+            <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+            <span className="font-extrabold text-blue-900 dark:text-blue-200">Hướng dẫn tham gia ôn luyện:</span>
           </div>
-          <p className="text-slate-600 text-[11px]">
+          <p className="text-slate-600 dark:text-slate-200 text-[11px] leading-relaxed">
             Học sinh đăng nhập bằng tài khoản và mật khẩu do Thầy/Cô cấp để bắt đầu ôn luyện theo kế hoạch 35 tuần và lưu tiến trình bài làm theo thời gian thực.
           </p>
-          <p className="text-slate-600 text-[11px]">
+          <p className="text-slate-500 dark:text-slate-400 text-[10.5px]">
             Đây là ứng dụng giáo dục nội bộ. Không thu phí, không yêu cầu thông tin ngân hàng, thanh toán hay CCCD.
           </p>
         </div>
@@ -92,8 +95,8 @@ export const StudentLoginGate: React.FC = () => {
         {/* Form đăng nhập dành riêng cho học sinh */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-700 px-1 flex items-center gap-1.5">
-              <User className="w-3.5 h-3.5 text-blue-600" />
+            <label className="text-xs font-bold text-slate-700 dark:text-slate-200 px-1 flex items-center gap-1.5">
+              <User className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
               <span>Tên đăng nhập (Mã học sinh):</span>
             </label>
             <input
@@ -103,14 +106,14 @@ export const StudentLoginGate: React.FC = () => {
               placeholder="Nhập tên đăng nhập do Thầy cấp..."
               autoCapitalize="none"
               autoCorrect="off"
-              className="w-full px-3.5 py-2.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+              className="w-full px-3.5 py-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#12161f] shadow-neu-inset text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 border border-transparent dark:border-slate-700/60 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
               autoFocus
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-700 px-1 flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5 text-blue-600" />
+            <label className="text-xs font-bold text-slate-700 dark:text-slate-200 px-1 flex items-center gap-1.5">
+              <Lock className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
               <span>Mật khẩu:</span>
             </label>
             <input
@@ -118,7 +121,7 @@ export const StudentLoginGate: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full px-3.5 py-2.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+              className="w-full px-3.5 py-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#12161f] shadow-neu-inset text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 border border-transparent dark:border-slate-700/60 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
             />
           </div>
 
@@ -138,8 +141,8 @@ export const StudentLoginGate: React.FC = () => {
 
         {/* Divider */}
         <div className="relative flex items-center justify-center my-3">
-          <div className="border-t border-slate-300 w-full" />
-          <span className="bg-[#e6ecf5] px-3 text-[11px] font-bold text-slate-500 uppercase tracking-wider relative">
+          <div className="border-t border-slate-300 dark:border-slate-700/80 w-full" />
+          <span className="bg-[#e6ecf5] dark:bg-[#181f2a] px-3 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider relative">
             Hoặc
           </span>
         </div>
@@ -152,7 +155,7 @@ export const StudentLoginGate: React.FC = () => {
             setIsGoogleModalOpen(true);
           }}
           disabled={isLoading}
-          className="w-full py-2.5 px-4 rounded-neu font-bold text-xs text-slate-700 bg-white/80 hover:bg-white shadow-neu-flat-xs active:shadow-neu-inset border border-slate-300/60 transition flex items-center justify-center gap-2.5 cursor-pointer"
+          className="w-full py-2.5 px-4 rounded-neu font-bold text-xs text-slate-700 dark:text-slate-100 bg-white/90 hover:bg-white dark:bg-[#202734] dark:hover:bg-[#283244] shadow-neu-flat-xs active:shadow-neu-inset border border-slate-300/60 dark:border-slate-700 transition flex items-center justify-center gap-2.5 cursor-pointer"
         >
           <svg className="w-4 h-4" viewBox="0 0 24 24">
             <path
@@ -172,7 +175,7 @@ export const StudentLoginGate: React.FC = () => {
               d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
             />
           </svg>
-          <span>Đăng Nhập Nhanh Bằng Tài Khoản Google</span>
+          <span className="text-slate-700 dark:text-slate-100 font-bold">Đăng Nhập Nhanh Bằng Tài Khoản Google</span>
         </button>
 
         {/* Modal Đăng nhập Google hiện đại */}

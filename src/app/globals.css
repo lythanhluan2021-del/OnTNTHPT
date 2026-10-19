@@ -103,13 +103,15 @@ html.dark .bg-\[\#e6ecf5\] {
 
 /* Chuyển các nền sáng sang nền tối hài hòa, tránh lóa mắt */
 html.dark .bg-blue-50,
+html.dark .bg-blue-50\/70,
 html.dark .bg-blue-50\/80 {
-  background-color: rgba(30, 58, 138, 0.35) !important;
+  background-color: rgba(30, 58, 138, 0.4) !important;
 }
 
 html.dark .bg-blue-100,
-html.dark .bg-blue-100\/50 {
-  background-color: rgba(30, 58, 138, 0.45) !important;
+html.dark .bg-blue-100\/50,
+html.dark .bg-blue-100\/70 {
+  background-color: rgba(30, 58, 138, 0.5) !important;
 }
 
 html.dark .bg-emerald-50 {
@@ -151,8 +153,16 @@ html.dark .bg-slate-300 {
   background-color: #242c38 !important;
 }
 
-html.dark .bg-white {
+html.dark .bg-white,
+html.dark .bg-white\/80,
+html.dark .bg-white\/90 {
   background-color: #202732 !important;
+}
+
+/* Biểu tượng logo luôn bảo toàn nền trắng sáng để logo nổi bật rõ nét */
+.logo-badge,
+html.dark .logo-badge {
+  background-color: #ffffff !important;
 }
 
 /* Đổi màu văn bản tối sang sáng trên nền tối */
