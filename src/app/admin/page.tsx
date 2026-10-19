@@ -1509,17 +1509,29 @@ export default function AdminDashboardPage() {
             <span>Live (8s)</span>
           </div>
 
-          {/* Nút Đồng bộ Google Sheet */}
+          {/* Nút Đồng bộ Google Sheet & Drive */}
           <button
             type="button"
             onClick={handleSyncGoogleSheet}
             disabled={isSyncingGoogleSheet}
-            className="px-3 py-1.5 rounded-neu-sm bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/50 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 transition cursor-pointer border border-emerald-300/70 dark:border-emerald-700/60 whitespace-nowrap flex-shrink-0"
-            title="Đồng bộ song song danh sách học sinh và tiến trình ôn luyện sang Google Sheet trên Google Drive"
+            className="px-2.5 sm:px-3 py-1.5 rounded-neu-sm bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/50 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 transition cursor-pointer border border-emerald-300/70 dark:border-emerald-700/60 whitespace-nowrap flex-shrink-0"
+            title="Đồng bộ ngay dữ liệu học sinh & tiến trình ôn luyện sang Google Drive & Bảng tính"
           >
             <FileSpreadsheet className={`w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 ${isSyncingGoogleSheet ? "animate-spin" : ""}`} />
-            <span>{isSyncingGoogleSheet ? "Đang đồng bộ..." : "Google Sheet"}</span>
+            <span>{isSyncingGoogleSheet ? "Đang đồng bộ..." : "Đồng Bộ Sheet & Drive"}</span>
           </button>
+
+          {/* Nút Mở Thư Mục Google Drive */}
+          <a
+            href={googleSheetUrl || "https://drive.google.com/drive/folders/19toY6VB5iERD2D9-tirycSjEz_YQbowL"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-2.5 sm:px-3 py-1.5 rounded-neu-sm bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 transition whitespace-nowrap flex-shrink-0"
+            title="Mở thư mục dự án trên Google Drive chứa toàn bộ dữ liệu & bảng tính"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            <span>Mở Drive</span>
+          </a>
 
           {/* Nút Làm mới */}
           <button

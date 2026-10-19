@@ -91,7 +91,13 @@ export function getDefaultServiceAccount(): ServiceAccountCredentials | null {
     }
   } catch {}
 
-  return null;
+  // 4. Khóa Service Account mặc định của Dự án SINO ONTNTHPT (Đảm bảo hoạt động 100% trên Vercel Serverless)
+  return {
+    client_email: "drive-scanner@onthithpt-509307.iam.gserviceaccount.com",
+    project_id: "onthithpt-509307",
+    private_key:
+      "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCpfhF/tLZAvHJe\nmi3pmk2svlnCZ6FkYNw3yz8cwA2HdVFd9yHm5XaRILcwFRMti7jvLgjhmGwQmXX2\nGjlMBz6FdSuWr4UG9HmVOZ312d1/gJaAZ2hph25SZVZQO0FVTkYooOJYO4BF53PD\nYHVAm5r6uZFHMEdfu6g/D7bwmCHO5D6DXAnl+iAEl210+vcscQkLNmpgVMt+7p0g\ng9j9RS1jzFkrb+IiPCEDR8j3es/aKsIDnGovmkbU21AeSz/NBSoSKRD/fwSaXHql\nKBmS8UxjcMxGtrs1B0futGXlM4C06YBoJs/1UMSuamcIsF4sXLJqVLemjQxs8Bb/\nU0JLQ+0JAgMBAAECggEASkmfuNYHdatDA5TXH8bKWbbal5sdQWY0z12NbXf91gvF\nHIbHfLDBPY3VzMTH8ZQGfAq0yNAqOUJR0gqfZ2Pbctouvy5yA2De81lcExgo/Yvq\nKyBnwq0h3QpegO7fzVhv5rnRSzPVHo56Dj22Vpl9HXx9IPMXrW2OKgmkuKItW0S2\n3c3zNsvG0K5ahP2oA9Tt/tHUYo/gh575GfEb6td/Hp1t8K9bha3zRXfzAGhzTdpS\nAMZNuxiUgNG1mL7wRGhKBcq7W1+wT/29RElVYXstG3Rn+GcAhMz3lTYMdlf025W8\nv0kPeUgKJ7KDX/UFvELxoJcLTldLBaPlGUrJm4qH0wKBgQDe/K0aL6s8czDRTZJw\nl/7oxd/aHlraJVj8LAIBTxQl9Z2sfzwhwsDe9RsM1N0Y1Vbo/BlEDQaomVgQCQJC\nfptjEks23Njj1YNLMsLckJY6EAPreLtwwaiQHaliLN28xflFw0EuKln6ekwbL9/g\nlILi0U2EarEQk0LsJwpPwDSlgwKBgQDCleukW1qwEaNBjalV5rhCE8dWWxRvAh17\nDVNxLlm5A9PYRBPhIAtXxVLzbrxt2dxGjRmLDck5cvwwukyziVhPWOk+vYjZfv09\n9K2nQPooscid+SzSRUxYsculmUWnmLK5AHjcL/P98i32n7ATNH/40jLd3CQNzyAE\ndmunE2XpgwKBgQCwlLOXuwwFEMsl1CIVG6h3OMst9T/I5C51c3wbAT5ZWQmFojRC\nH/GQHdVP8fksQzVRxuFTLGWLefNsr1WkxpHSgJgjV/xBX8Fa+VWqSK1OSYRxIeh9\nQD518adC4Xiulq/xeM/S+SLL4bEHDoBhXfnQGCMkq0CQea1TSQ83XGPUdQKBgQCa\nJwkCMPk8SQzLrv16twg8GM0vhYI/my5dwKXdITolT3nxd6VEEQ3LX+CiR5TxdcmC\n/t9AgRBr+cL+m2iORv12BtrpQF/85hSbk45K1TgZKxbix3cRsaKVFW1e6Hj9GARm\neZBF55tlEAoHumRUIqBLL8Lqbi8F3ZPg1SvdtYlkHwKBgQDMd0TARZu0NQPnE1vt\nvevE5YH5NVtNbMgz/SUEeFcmlu/HWZRb9F1Dbbxq4ABPM3peUas1m/ZgvxNxeuqh\nIiMK+sa/qaJLBJF4GLmu+mPilslzLxVZVGJBZAe6e3xyQ0PjplU6Aws45Nfw1GpH\nQnQBdBBUqzYa2DpiRpSsvMZpNQ==\n-----END PRIVATE KEY-----",
+  };
 }
 
 /**

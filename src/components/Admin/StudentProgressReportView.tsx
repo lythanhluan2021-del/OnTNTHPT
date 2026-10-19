@@ -14,6 +14,7 @@ import {
   TrendingUp,
   Clock,
   CheckCircle2,
+  AlertCircle,
   AlertTriangle,
   Eye,
   BookOpen,
@@ -140,7 +141,7 @@ export const StudentProgressReportView: React.FC<StudentProgressReportViewProps>
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap self-stretch sm:self-auto justify-end">
-            {/* Nút Đồng bộ Google Sheet */}
+            {/* Nút Đồng bộ Google Sheet & Drive */}
             <button
               type="button"
               onClick={() => {
@@ -149,36 +150,36 @@ export const StudentProgressReportView: React.FC<StudentProgressReportViewProps>
               }}
               disabled={isSyncingSheet}
               className="px-3.5 py-2 rounded-neu-sm bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white shadow-neu-flat-xs text-xs font-bold flex items-center gap-2 transition cursor-pointer disabled:opacity-60 whitespace-nowrap"
-              title="Ghi nhận ngay toàn bộ tiến độ học sinh sang Google Sheet trong thư mục Google Drive"
+              title="Đồng bộ ngay toàn bộ danh sách học sinh và tiến trình ôn luyện sang Google Drive & Bảng tính"
             >
               <FileSpreadsheet className={`w-4 h-4 ${isSyncingSheet ? "animate-spin" : ""}`} />
-              <span>{isSyncingSheet ? "Đang đồng bộ..." : "Đồng Bộ Google Sheet"}</span>
+              <span>{isSyncingSheet ? "Đang đồng bộ..." : "Đồng Bộ Google Sheet & Drive"}</span>
             </button>
+
+            {/* Nút Mở Thư Mục Google Drive */}
+            {googleDriveFolderUrl && (
+              <a
+                href={googleDriveFolderUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2 rounded-neu-sm bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 transition whitespace-nowrap"
+                title="Mở thư mục dự án trên Google Drive chứa toàn bộ dữ liệu & bảng tính"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span>Mở Thư Mục Google Drive</span>
+              </a>
+            )}
 
             {/* Nút Xuất Báo Cáo CSV / Excel */}
             <button
               type="button"
               onClick={handleExportCsv}
               className="px-3 py-2 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1f2633] hover:bg-white/60 dark:hover:bg-[#283244] text-slate-700 dark:text-slate-200 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 transition cursor-pointer whitespace-nowrap"
-              title="Tải tệp bảng tính CSV (chuẩn UTF-8 mở trên Google Trang Tính và Excel)"
+              title="Tải tệp bảng tính CSV (chuẩn UTF-8 BOM mở trực tiếp trên Google Trang Tính và Excel không lỗi font)"
             >
               <Download className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
               <span>Xuất Bảng Điểm CSV</span>
             </button>
-
-            {/* Nút Mở Google Drive */}
-            {googleDriveFolderUrl && (
-              <a
-                href={googleDriveFolderUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-2 rounded-neu-sm bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 text-blue-700 dark:text-blue-300 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 transition whitespace-nowrap"
-                title="Mở thư mục dự án trên Google Drive"
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>Mở Google Drive</span>
-              </a>
-            )}
 
             {/* Nút Làm mới */}
             <button
@@ -196,11 +197,21 @@ export const StudentProgressReportView: React.FC<StudentProgressReportViewProps>
           </div>
         </div>
 
-        {/* Thông báo đồng bộ nếu có */}
-        {syncMessage && (
-          <div className="mt-3 p-2.5 rounded-neu-sm bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-xs font-bold flex items-center justify-between gap-2 shadow-neu-flat-xs animate-in slide-in-from-top-1">
+        {/* Thanh trạng thái kết nối & thông báo đồng bộ */}
+        {syncMessage ? (
+          <div
+            className={`mt-3 p-2.5 rounded-neu-sm text-xs font-bold flex items-center justify-between gap-2 shadow-neu-flat-xs animate-in slide-in-from-top-1 ${
+              syncMessage.includes("thất bại") || syncMessage.includes("Lỗi") || syncMessage.includes("Chưa cấu hình")
+                ? "bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-800 text-rose-800 dark:text-rose-200"
+                : "bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200"
+            }`}
+          >
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              {syncMessage.includes("thất bại") || syncMessage.includes("Lỗi") || syncMessage.includes("Chưa cấu hình") ? (
+                <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 flex-shrink-0" />
+              ) : (
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              )}
               <span>{syncMessage}</span>
             </div>
             {googleDriveFolderUrl && (
@@ -208,9 +219,30 @@ export const StudentProgressReportView: React.FC<StudentProgressReportViewProps>
                 href={googleDriveFolderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline text-[11px] font-extrabold text-emerald-700 dark:text-emerald-300 hover:text-emerald-900"
+                className="underline text-[11px] font-extrabold hover:opacity-80 flex-shrink-0"
               >
-                Xem tệp trên Drive &rarr;
+                Mở thư mục trên Drive &rarr;
+              </a>
+            )}
+          </div>
+        ) : (
+          <div className="mt-3 p-2.5 rounded-neu-sm bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200/70 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-200 text-xs font-bold flex items-center justify-between gap-2 shadow-neu-flat-xs">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span>Google Drive &amp; Bảng Tính: Đã kết nối thư mục dự án • Tự động ghi nhận tiến độ &amp; đăng nhập thời gian thực</span>
+            </div>
+            {googleDriveFolderUrl && (
+              <a
+                href={googleDriveFolderUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 underline text-[11px] font-extrabold text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 flex-shrink-0"
+              >
+                <span>Xem tệp trên Drive</span>
+                <ExternalLink className="w-3 h-3" />
               </a>
             )}
           </div>

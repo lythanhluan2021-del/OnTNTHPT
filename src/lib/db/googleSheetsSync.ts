@@ -291,15 +291,35 @@ export class GoogleSheetsSync {
     }
 
     try {
-      // 1. Đồng bộ users và attempts gốc lên Google Drive
-      const usersSynced = await GoogleDriveStorage.syncUsers(users, creds);
+      // 1. Tính toán báo cáo tiến độ chi tiết
+      const progressData = this.computeStudentProgress(users, attempts);
+
+      // 2. Làm giàu danh sách người dùng với tiến độ học tập thực tế
+      const enrichedUsers = users.map((u) => {
+        const prog = progressData.find(
+          (p) => p.id === u.id || p.username.toLowerCase() === u.username.toLowerCase()
+        );
+        if (prog) {
+          return {
+            ...u,
+            totalQuestionsAttempted: prog.totalQuestions,
+            correctCount: prog.correctCount,
+            incorrectCount: prog.incorrectCount,
+            accuracy: prog.accuracyPercent,
+            estimatedScore: prog.averageScore,
+            progressPercent: prog.progressPercent,
+            rating: prog.rating,
+            lastLoginFormatted: prog.lastLoginFormatted,
+          };
+        }
+        return u;
+      });
+
+      // 3. Đồng bộ song song lên Google Drive (ontn_users.json & ontn_attempts.json)
+      const usersSynced = await GoogleDriveStorage.syncUsers(enrichedUsers, creds);
       const attemptsSynced = await GoogleDriveStorage.syncAttempts(attempts, creds);
 
-      // 2. Tính toán báo cáo tiến độ chi tiết
-      const progressData = this.computeStudentProgress(users, attempts);
-      const csvContent = this.generateProgressCsv(users, attempts);
-
-      // 3. Đồng bộ tệp JSON tổng hợp tiến trình để Dashboard tải tức thì
+      // 4. Đồng bộ thêm tệp JSON tổng hợp tiến trình nếu tệp đã tồn tại
       await GoogleDriveStorage.writeJsonFile(
         token,
         "ontn_student_progress.json",
