@@ -56,7 +56,7 @@ export const StudentLoginGate: React.FC = () => {
               Trường THPT Nguyễn Sinh Sắc
             </p>
             <p className="text-[11px] text-slate-500 font-medium">
-              Phụ trách chuyên môn: Tổ Tin Học
+              Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật
             </p>
           </div>
         </div>
@@ -178,12 +178,7 @@ export const StudentLoginGate: React.FC = () => {
           }}
         />
 
-        {/* Hỗ trợ trợ cấp lại tài khoản */}
-        <div className="text-center pt-2 border-t border-slate-300/50">
-          <p className="text-[11px] text-slate-500 leading-normal">
-            Học sinh đăng nhập bằng Google hoặc tài khoản do <strong>Giáo viên bộ môn</strong> cấp để lưu tiến trình trực tiếp lên Google Drive.
-          </p>
-        </div>
+
       </div>
 
       {/* Footer nhỏ nhẹ */}
