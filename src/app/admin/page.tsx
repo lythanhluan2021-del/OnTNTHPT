@@ -69,9 +69,10 @@ import { INITIAL_QUESTIONS, INITIAL_SUBJECTS } from "@/data/sampleBank";
 import { DriveSyncModal } from "@/components/Drive/DriveSyncModal";
 import { DriveStorageSyncModal } from "@/components/Admin/DriveStorageSyncModal";
 import { PrintableReportModal } from "@/components/Admin/PrintableReportModal";
-import { CompetencyRadarCard } from "@/components/Analytics/CompetencyRadarCard";
 import { ExamManagementView } from "@/components/Admin/ExamManagementView";
 import { UserManagementView } from "@/components/Admin/UserManagementView";
+import { StudentProgressReportView } from "@/components/Admin/StudentProgressReportView";
+import { StudentProgressItem } from "@/lib/db/googleSheetsSync";
 
 export default function AdminDashboardPage() {
   const { user, isLoggedIn, isAdmin, login, logout } = useAuth();
@@ -136,7 +137,12 @@ export default function AdminDashboardPage() {
   const [isResetting, setIsResetting] = useState(false);
 
   // 6. Weekly Plan & Matrix States
-  const [activeTab, setActiveTab] = useState<"overview" | "users" | "weekly" | "matrix" | "competencies" | "exams">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "users" | "progress" | "weekly" | "matrix" | "exams">("overview");
+  const [progressStudents, setProgressStudents] = useState<StudentProgressItem[]>([]);
+  const [isProgressLoading, setIsProgressLoading] = useState(false);
+  const [isSyncingGoogleSheet, setIsSyncingGoogleSheet] = useState(false);
+  const [googleSheetSyncMessage, setGoogleSheetSyncMessage] = useState<string | null>(null);
+  const [googleSheetUrl, setGoogleSheetUrl] = useState<string | null>(null);
   const [allWeeks, setAllWeeks] = useState<WeekPlanItem[]>(WEEKLY_PLAN);
   const [selectedWeekId, setSelectedWeekId] = useState<string>("tuan-02-06");
   const [selectedSemester, setSelectedSemester] = useState<1 | 2 | "all">("all");
@@ -259,6 +265,51 @@ export default function AdminDashboardPage() {
     }
   };
 
+  // Nạp dữ liệu báo cáo tiến trình học sinh & Google Sheet
+  const fetchProgressReport = async () => {
+    try {
+      setIsProgressLoading(true);
+      const res = await fetch("/api/admin/google-sheet-sync");
+      const data = await res.json();
+      if (data.success && data.data) {
+        setProgressStudents(data.data.students || []);
+        if (data.data.googleDrive?.folderUrl) {
+          setGoogleSheetUrl(data.data.googleDrive.folderUrl);
+        }
+      }
+    } catch (err) {
+      console.error("Lỗi nạp tiến trình học sinh:", err);
+    } finally {
+      setIsProgressLoading(false);
+    }
+  };
+
+  // Đồng bộ song song sang Google Sheet trên Google Drive
+  const handleSyncGoogleSheet = async () => {
+    try {
+      setIsSyncingGoogleSheet(true);
+      setGoogleSheetSyncMessage(null);
+      const res = await fetch("/api/admin/google-sheet-sync", { method: "POST" });
+      const data = await res.json();
+      if (data.success) {
+        soundManager.playSuccess();
+        setGoogleSheetSyncMessage(data.message);
+        if (data.spreadsheetUrl) {
+          setGoogleSheetUrl(data.spreadsheetUrl);
+        }
+        await fetchProgressReport();
+      } else {
+        soundManager.playError();
+        setGoogleSheetSyncMessage(data.message || "Đồng bộ thất bại");
+      }
+    } catch (err: any) {
+      soundManager.playError();
+      setGoogleSheetSyncMessage(err.message || "Lỗi kết nối đồng bộ");
+    } finally {
+      setIsSyncingGoogleSheet(false);
+    }
+  };
+
   // Fetch Weekly Data
   const fetchWeeklyData = async (weekId = selectedWeekId, cls = selectedClass) => {
     try {
@@ -308,6 +359,8 @@ export default function AdminDashboardPage() {
     if (isAdmin) {
       if (activeTab === "overview") {
         fetchData(selectedClass);
+      } else if (activeTab === "progress") {
+        fetchProgressReport();
       } else if (activeTab === "weekly") {
         fetchWeeklyData(selectedWeekId, selectedClass);
       } else if (activeTab === "matrix") {
@@ -323,6 +376,7 @@ export default function AdminDashboardPage() {
     if (!isAdmin) return;
     const handleFocus = () => {
       if (activeTab === "overview") fetchData(selectedClass);
+      else if (activeTab === "progress") fetchProgressReport();
       else if (activeTab === "weekly") fetchWeeklyData(selectedWeekId, selectedClass);
       else if (activeTab === "matrix") fetchMatrixData(selectedClass);
     };
@@ -336,6 +390,8 @@ export default function AdminDashboardPage() {
     const interval = setInterval(() => {
       if (activeTab === "overview") {
         fetchData(selectedClass);
+      } else if (activeTab === "progress") {
+        fetchProgressReport();
       } else if (activeTab === "weekly") {
         fetchWeeklyData(selectedWeekId, selectedClass);
       } else if (activeTab === "matrix") {
@@ -1384,26 +1440,26 @@ export default function AdminDashboardPage() {
   return (
     <div className="min-h-screen bg-[#e6ecf5] text-slate-800 p-3 sm:p-6 space-y-6">
       {/* Top Header Bar */}
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-[#e6ecf5] p-4 sm:p-5 rounded-neu shadow-neu-flat border border-white/60">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-neu-sm bg-indigo-100 flex items-center justify-center text-indigo-700 shadow-neu-flat-xs flex-shrink-0">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 bg-[#e6ecf5] dark:bg-[#181f2a] p-4 sm:p-5 rounded-neu shadow-neu-flat border border-white/60 dark:border-slate-700/60 transition-colors duration-200">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-12 h-12 rounded-neu-sm bg-indigo-100 dark:bg-indigo-950 flex items-center justify-center text-indigo-700 dark:text-indigo-300 shadow-neu-flat-xs flex-shrink-0">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-base sm:text-lg font-black text-slate-800">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h1 className="text-base sm:text-lg font-black text-slate-800 dark:text-white truncate">
                 SINO – Dashboard Quản Lý Ôn Thi Thông Minh
               </h1>
-              <span className="text-[10px] uppercase tracking-wider font-extrabold bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded-full shadow-neu-flat-xs">
+              <span className="text-[10px] uppercase tracking-wider font-extrabold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-0.5 rounded-full shadow-neu-flat-xs flex-shrink-0">
                 Admin
               </span>
             </div>
-            <p className="text-xs text-slate-500 font-medium">
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
               SINO • Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật
             </p>
-            {/* Huy hiệu trạng thái Lưu trữ Đám mây: Tách riêng Upstash Redis và Google Drive */}
+            {/* Huy hiệu trạng thái Lưu trữ Đám mây Google Drive */}
             <div className="flex items-center gap-2 pt-1 flex-wrap">
-              {/* 1. Huy hiệu Upstash Redis (Tốc độ Realtime tức thì) */}
+              {/* Huy hiệu Upstash Redis nếu có */}
               {overview?.cloudProvider === "redis" || overview?.isCloudConnected ? (
                 <button
                   type="button"
@@ -1411,108 +1467,114 @@ export default function AdminDashboardPage() {
                     soundManager.playClick();
                     setIsCloudHelpModalOpen(true);
                   }}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 hover:bg-blue-200 text-blue-800 text-[10px] font-black shadow-neu-flat-xs border border-blue-300 transition cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 hover:bg-blue-200 text-blue-800 dark:text-blue-300 text-[10px] font-black shadow-neu-flat-xs border border-blue-300 dark:border-blue-700 transition cursor-pointer"
                   title="Bấm xem thông tin kết nối Đám mây Upstash Redis"
                 >
                   <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                  <Database className="w-3 h-3 text-blue-700" />
-                  <span>Upstash Redis: Realtime Live</span>
+                  <Database className="w-3 h-3 text-blue-700 dark:text-blue-400" />
+                  <span>Upstash Redis: Realtime</span>
                 </button>
               ) : null}
 
-              {/* 2. Huy hiệu Google Drive Cloud (Lưu trữ Bền vững & Đồng bộ toàn trường) */}
+              {/* Huy hiệu Google Drive Cloud */}
               <button
                 type="button"
                 onClick={() => {
                   soundManager.playClick();
                   setIsDriveStorageModalOpen(true);
                 }}
-                className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-[10px] font-black shadow-neu-flat-xs border border-emerald-300 transition cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 hover:bg-emerald-200 text-emerald-800 dark:text-emerald-300 text-[10px] font-black shadow-neu-flat-xs border border-emerald-300 dark:border-emerald-700 transition cursor-pointer"
                 title="Bấm để mở Bảng Quản Lý Lưu Trữ & Đồng Bộ Google Drive"
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <Cloud className="w-3 h-3 text-emerald-700" />
-                <span>Google Drive: Đã Kết Nối (Lưu Bền Vững)</span>
-                <ExternalLink className="w-2.5 h-2.5 text-emerald-700 ml-0.5" />
+                <Cloud className="w-3 h-3 text-emerald-700 dark:text-emerald-400" />
+                <span>Google Drive: Đã Kết Nối</span>
+                <ExternalLink className="w-2.5 h-2.5 text-emerald-700 dark:text-emerald-400 ml-0.5" />
               </button>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 self-end sm:self-auto flex-wrap">
+        {/* Thanh công cụ hành động - Cố định 1 dòng, không rớt dòng */}
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap shrink-0 overflow-x-auto max-w-full whitespace-nowrap self-stretch lg:self-auto justify-end pb-1 lg:pb-0">
           {/* Huy hiệu Realtime Live */}
           <div
-            className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-neu-sm bg-indigo-50/80 text-indigo-700 text-[11px] font-bold shadow-neu-flat-xs border border-indigo-200/60"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-neu-sm bg-indigo-50/80 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-bold shadow-neu-flat-xs border border-indigo-200/60 dark:border-indigo-800/60 whitespace-nowrap flex-shrink-0"
             title="Dashboard tự động cập nhật kết quả làm bài của học sinh ngầm mỗi 8 giây"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span>Realtime (8s)</span>
+            <span>Live (8s)</span>
           </div>
 
-          {/* Nút Kết Nối & Đồng Bộ Google Drive */}
+          {/* Nút Đồng bộ Google Sheet */}
+          <button
+            type="button"
+            onClick={handleSyncGoogleSheet}
+            disabled={isSyncingGoogleSheet}
+            className="px-3 py-1.5 rounded-neu-sm bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/50 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 transition cursor-pointer border border-emerald-300/70 dark:border-emerald-700/60 whitespace-nowrap flex-shrink-0"
+            title="Đồng bộ song song danh sách học sinh và tiến trình ôn luyện sang Google Sheet trên Google Drive"
+          >
+            <FileSpreadsheet className={`w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 ${isSyncingGoogleSheet ? "animate-spin" : ""}`} />
+            <span>{isSyncingGoogleSheet ? "Đang đồng bộ..." : "Google Sheet"}</span>
+          </button>
+
+          {/* Nút Làm mới */}
           <button
             type="button"
             onClick={() => {
               soundManager.playClick();
-              setIsDriveModalOpen(true);
+              fetchData(selectedClass);
+              fetchProgressReport();
             }}
-            className="p-2 sm:px-3 sm:py-2 rounded-neu-sm bg-emerald-50 hover:bg-emerald-100 text-emerald-800 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-2 transition cursor-pointer border border-emerald-300/70"
-            title="Quản lý kết nối & đồng bộ Ngân hàng câu hỏi từ Google Drive"
-          >
-            <CloudDownload className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-            <span className="inline">Nguồn Google Drive</span>
-            <span className="text-[10px] bg-emerald-200/90 text-emerald-800 font-extrabold px-2 py-0.5 rounded-full">
-              Khép kín
-            </span>
-          </button>
-
-          <button
-            onClick={() => fetchData(selectedClass)}
             disabled={isRefreshing}
-            className="p-2 sm:px-3 sm:py-2 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat-xs active:shadow-neu-inset text-slate-700 text-xs font-bold flex items-center gap-1.5 transition"
-            title="Làm mới dữ liệu"
+            className="px-3 py-1.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#1f2633] hover:bg-white/60 dark:hover:bg-[#283244] shadow-neu-flat-xs active:shadow-neu-inset text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center gap-1.5 transition cursor-pointer whitespace-nowrap flex-shrink-0"
+            title="Làm mới dữ liệu toàn hệ thống"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? "animate-spin text-blue-600" : ""}`} />
-            <span className="hidden sm:inline">Làm mới</span>
+            <span>Làm mới</span>
           </button>
 
+          {/* Nút Luyện thi */}
           <Link
             href="/"
-            className="p-2 sm:px-3.5 sm:py-2 rounded-neu-sm bg-blue-50 text-blue-700 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 hover:bg-blue-100 transition"
+            className="px-3 py-1.5 rounded-neu-sm bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 transition whitespace-nowrap flex-shrink-0"
+            title="Quay lại phòng luyện thi ôn tập"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Vào Trang Luyện Thi</span>
+            <span>Luyện Thi</span>
           </Link>
 
+          {/* Nút Thoát */}
           <button
+            type="button"
             onClick={() => {
               soundManager.playClick();
               logout();
             }}
-            className="p-2 sm:px-3 sm:py-2 rounded-neu-sm bg-rose-50 text-rose-600 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 hover:bg-rose-100 transition"
-            title="Đăng xuất"
+            className="px-3 py-1.5 rounded-neu-sm bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/60 dark:hover:bg-rose-900/60 text-rose-600 dark:text-rose-300 shadow-neu-flat-xs active:shadow-neu-inset text-xs font-bold flex items-center gap-1.5 transition cursor-pointer whitespace-nowrap flex-shrink-0"
+            title="Đăng xuất khỏi bảng quản trị"
           >
             <LogOut className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Thoát</span>
+            <span>Thoát</span>
           </button>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Navigation Tabs Bar */}
-        <div className="flex items-center gap-2 p-1.5 bg-[#e6ecf5] rounded-neu shadow-neu-inset-sm max-w-fit flex-wrap">
+        <div className="flex items-center gap-2 p-1.5 bg-[#e6ecf5] dark:bg-[#181f2a] rounded-neu shadow-neu-inset-sm max-w-full overflow-x-auto whitespace-nowrap flex-nowrap sm:flex-wrap">
           <button
             onClick={() => {
               soundManager.playClick();
               setActiveTab("overview");
             }}
-            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer whitespace-nowrap ${
               activeTab === "overview"
                 ? "bg-blue-600 text-white shadow-neu-blue"
-                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-none hover:bg-white/40"
             }`}
           >
             <BarChart3 className="w-3.5 h-3.5" />
@@ -1524,10 +1586,10 @@ export default function AdminDashboardPage() {
               soundManager.playClick();
               setActiveTab("users");
             }}
-            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer whitespace-nowrap ${
               activeTab === "users"
                 ? "bg-blue-600 text-white shadow-neu-blue"
-                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-none hover:bg-white/40"
             }`}
           >
             <Users className="w-3.5 h-3.5" />
@@ -1543,6 +1605,36 @@ export default function AdminDashboardPage() {
             </span>
           </button>
 
+          {/* TAB MỚI: BÁO CÁO THỐNG KÊ TIẾN TRÌNH HỌC SINH (THAY THẾ RADAR 5 MẠCH NĂNG LỰC) */}
+          <button
+            onClick={() => {
+              soundManager.playClick();
+              setActiveTab("progress");
+              if (progressStudents.length === 0) {
+                fetchProgressReport();
+              }
+            }}
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer whitespace-nowrap ${
+              activeTab === "progress"
+                ? "bg-blue-600 text-white shadow-neu-blue"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-none hover:bg-white/40"
+            }`}
+          >
+            <FileSpreadsheet className="w-3.5 h-3.5" />
+            <span>Báo Cáo Tiến Trình Học Sinh</span>
+            {progressStudents.length > 0 && (
+              <span
+                className={`text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${
+                  activeTab === "progress"
+                    ? "bg-white text-blue-700"
+                    : "bg-emerald-100 text-emerald-800"
+                }`}
+              >
+                {progressStudents.filter((p) => p.totalQuestions > 0).length}/{progressStudents.length}
+              </span>
+            )}
+          </button>
+
           <button
             onClick={() => {
               soundManager.playClick();
@@ -1551,10 +1643,10 @@ export default function AdminDashboardPage() {
                 fetchWeeklyData(selectedWeekId, selectedClass);
               }
             }}
-            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer whitespace-nowrap ${
               activeTab === "weekly"
                 ? "bg-blue-600 text-white shadow-neu-blue"
-                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-none hover:bg-white/40"
             }`}
           >
             <Calendar className="w-3.5 h-3.5" />
@@ -1569,10 +1661,10 @@ export default function AdminDashboardPage() {
                 fetchMatrixData(selectedClass);
               }
             }}
-            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer whitespace-nowrap ${
               activeTab === "matrix"
                 ? "bg-blue-600 text-white shadow-neu-blue"
-                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-none hover:bg-white/40"
             }`}
           >
             <Grid className="w-3.5 h-3.5" />
@@ -1582,31 +1674,16 @@ export default function AdminDashboardPage() {
           <button
             onClick={() => {
               soundManager.playClick();
-              setActiveTab("competencies");
-            }}
-            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
-              activeTab === "competencies"
-                ? "bg-blue-600 text-white shadow-neu-blue"
-                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
-            }`}
-          >
-            <Compass className="w-3.5 h-3.5" />
-            <span>Radar 5 Mạch Năng Lực</span>
-          </button>
-
-          <button
-            onClick={() => {
-              soundManager.playClick();
               setActiveTab("exams");
             }}
-            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2 rounded-neu-sm text-xs font-bold transition flex items-center gap-2 cursor-pointer whitespace-nowrap ${
               activeTab === "exams"
                 ? "bg-blue-600 text-white shadow-neu-blue"
-                : "text-slate-600 hover:text-slate-900 shadow-none hover:bg-white/40"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-none hover:bg-white/40"
             }`}
           >
             <ShieldAlert className="w-3.5 h-3.5" />
-            <span>Khảo Thí &amp; Kiểm Tra Chống Gian Lận</span>
+            <span>Khảo Thí &amp; Chống Gian Lận</span>
           </button>
         </div>
 
@@ -2764,56 +2841,19 @@ export default function AdminDashboardPage() {
       )}
 
       {/* ======================================================== */}
-      {/* TAB 4: PHÂN TÍCH 5 MẠCH NĂNG LỰC GDPT 2018 TOÀN TRƯỜNG */}
+      {/* TAB: BÁO CÁO TIẾN TRÌNH HỌC TẬP & ĐỒNG BỘ GOOGLE SHEET */}
       {/* ======================================================== */}
-      {activeTab === "competencies" && (
-        <div className="space-y-6">
-          <div className="bg-[#e6ecf5] p-5 rounded-neu shadow-neu-flat border border-white/60 space-y-3">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div>
-                <h2 className="text-base sm:text-lg font-black text-slate-800 flex items-center gap-2">
-                  <Compass className="w-5 h-5 text-blue-600" />
-                  <span>
-                    Đánh Giá Năng Lực Tin Học GDPT 2018 - {selectedClass === "all" ? "Toàn Trường" : `Lớp ${selectedClass}`}
-                  </span>
-                </h2>
-                <p className="text-xs text-slate-500 font-medium">
-                  Tổng hợp mức độ đạt được của 5 mạch năng lực cốt lõi theo Thông tư 32/2018/TT-BGDĐT
-                </p>
-              </div>
-
-              {/* Bộ lọc Lớp */}
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-slate-600">Lớp học:</span>
-                <select
-                  value={selectedClass}
-                  onChange={(e) => {
-                    setSelectedClass(e.target.value);
-                  }}
-                  className="px-3 py-1.5 rounded-neu-sm bg-[#e6ecf5] shadow-neu-inset text-xs font-bold text-slate-700 outline-none"
-                >
-                  <option value="all">Tất cả các lớp</option>
-                  {(overview?.classes || []).map((c) => (
-                    <option key={c} value={c}>
-                      Lớp {c}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div className="max-w-2xl mx-auto">
-            <CompetencyRadarCard
-              questions={INITIAL_QUESTIONS}
-              attempts={
-                selectedClass === "all"
-                  ? attempts
-                  : attempts.filter((a) => a.className === selectedClass)
-              }
-            />
-          </div>
-        </div>
+      {activeTab === "progress" && (
+        <StudentProgressReportView
+          students={progressStudents}
+          isLoading={isProgressLoading}
+          onRefresh={fetchProgressReport}
+          onSyncGoogleSheet={handleSyncGoogleSheet}
+          isSyncingSheet={isSyncingGoogleSheet}
+          syncMessage={googleSheetSyncMessage}
+          googleDriveFolderUrl={googleSheetUrl}
+          allClasses={overview?.classes || ["12A1", "12A2", "12A3", "12A4"]}
+        />
       )}
 
       {/* ======================================================== */}
