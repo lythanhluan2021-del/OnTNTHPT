@@ -1,5 +1,13 @@
 # Tiến trình dự án OnTNTHPT
 
+Cập nhật: 2026-10-19 — Hoàn thiện nhận diện thương hiệu **SINO – Ôn thi thông minh, bứt phá điểm số**, chuẩn hóa bản quyền và loại bỏ nhãn EdTech:
+- **Tối ưu nhận diện thương hiệu SINO**:
+  - Cập nhật logo vector hiện đại SINO, màu xanh navy và xanh electric công nghệ, biểu tượng chữ S cách điệu kết hợp mũ cử nhân.
+  - Loại bỏ hoàn toàn nhãn "EdTech" khỏi logo hình ảnh, icon trình duyệt, favicon và toàn bộ giao diện (Sidebar, LoginModal, StudentLoginGate, Admin, SinoLogo).
+  - Chuẩn hóa thông tin bản quyền: "Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật".
+  - Tối ưu hóa bộ nhớ heap (`--max-old-space-size=4096`) giúp quá trình build Next.js ổn định 100% với kho ngân hàng câu hỏi đồ sộ.
+  - Kiểm thử `npm run build` thành công xuất sắc, sẵn sàng triển khai môi trường Vercel production.
+
 Cập nhật: 2026-10-11 — Hoàn thành nâng cấp toàn diện **Hệ thống Lưu trữ Đám mây Google Drive (Realtime + Bền Vững 100%)** & **Đồng bộ Tài khoản Người dùng (Cấp bởi Thầy + Đăng nhập Google)**:
 - **Khắc phục triệt để lỗi "Không tìm thấy học sinh nào phù hợp với bộ lọc hiện tại"**:
   - **Nguyên nhân**: Trên môi trường Serverless (Vercel), hệ thống tệp là Read-Only và bộ nhớ RAM bị xóa khi container khởi động lại (cold restart/redeploy). Dữ liệu học sinh chỉ lưu cục bộ trong bộ nhớ tạm thời nên bị mất sau khi đóng mở ứng dụng hoặc khi redeploy.

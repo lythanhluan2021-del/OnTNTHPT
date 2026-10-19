@@ -73,9 +73,6 @@ export const LoginModal: React.FC = () => {
               <h2 className="text-xl font-black text-slate-800 tracking-tight">
                 SINO
               </h2>
-              <span className="text-[9px] uppercase tracking-wider font-extrabold bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded shadow-neu-flat-xs">
-                EdTech
-              </span>
             </div>
             <p className="text-xs font-black text-blue-700">
               Ôn thi thông minh, bứt phá điểm số

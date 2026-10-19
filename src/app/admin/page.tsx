@@ -1399,7 +1399,7 @@ export default function AdminDashboardPage() {
               </span>
             </div>
             <p className="text-xs text-slate-500 font-medium">
-              SINO EdTech • Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật
+              SINO • Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật
             </p>
             {/* Huy hiệu trạng thái Lưu trữ Đám mây: Tách riêng Upstash Redis và Google Drive */}
             <div className="flex items-center gap-2 pt-1 flex-wrap">

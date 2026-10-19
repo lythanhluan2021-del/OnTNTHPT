@@ -57,9 +57,6 @@ export const StudentLoginGate: React.FC = () => {
               <h1 className="text-2xl font-black text-slate-800 tracking-tight">
                 SINO
               </h1>
-              <span className="text-[10px] uppercase tracking-wider font-extrabold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full shadow-neu-flat-xs">
-                EdTech
-              </span>
             </div>
             <p className="text-xs font-black text-blue-700 tracking-tight">
               Ôn thi thông minh, bứt phá điểm số

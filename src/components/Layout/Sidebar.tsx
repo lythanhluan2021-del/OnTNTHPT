@@ -457,9 +457,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <span className="font-black text-slate-800 text-base leading-tight tracking-tight">
                   SINO
                 </span>
-                <span className="text-[9px] uppercase tracking-wider font-extrabold bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded shadow-neu-flat-xs">
-                  EdTech
-                </span>
               </div>
               <p className="text-[11px] font-bold text-blue-700 leading-none pt-0.5">
                 Ôn thi thông minh

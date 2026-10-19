@@ -101,9 +101,6 @@ export const SinoLogo: React.FC<SinoLogoProps> = ({
             >
               SINO
             </span>
-            <span className="text-[10px] uppercase tracking-wider font-extrabold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 px-1.5 py-0.2 rounded shadow-neu-flat-xs">
-              EdTech
-            </span>
           </div>
           {showTagline && (
             <p

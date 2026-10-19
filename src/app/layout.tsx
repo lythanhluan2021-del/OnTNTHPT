@@ -10,11 +10,11 @@ export const metadata: Metadata = {
     template: "%s | SINO",
   },
   description:
-    "SINO – Nền tảng EdTech ôn thi tốt nghiệp THPT thông minh môn Tin học, bứt phá điểm số cùng trợ lý AI và lộ trình ôn tập cá nhân hóa.",
+    "SINO – Nền tảng ôn thi tốt nghiệp THPT thông minh môn Tin học, bứt phá điểm số cùng trợ lý AI và lộ trình ôn tập cá nhân hóa.",
   applicationName: "SINO",
   authors: [{ name: "Ban quản lý dự án Khoa học kỹ thuật" }],
   creator: "Ban quản lý dự án Khoa học kỹ thuật",
-  publisher: "SINO EdTech",
+  publisher: "SINO",
   category: "education",
   keywords: [
     "SINO",
@@ -22,7 +22,6 @@ export const metadata: Metadata = {
     "bứt phá điểm số",
     "ôn thi THPT",
     "tin học 12",
-    "EdTech",
     "trắc nghiệm tin học",
     "AI gia sư socratic",
   ],
@@ -39,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "SINO",
     title: "SINO – Ôn thi thông minh, bứt phá điểm số",
     description:
-      "SINO – Nền tảng EdTech ôn thi tốt nghiệp THPT thông minh, bứt phá điểm số môn Tin học.",
+      "SINO – Nền tảng ôn thi tốt nghiệp THPT thông minh, bứt phá điểm số môn Tin học.",
     images: [
       {
         url: "/sino_logo.png",
@@ -79,7 +78,7 @@ export default function RootLayout({
               "@type": "EducationalOrganization",
               name: "SINO – Ôn thi thông minh, bứt phá điểm số",
               description:
-                "Nền tảng EdTech ôn thi tốt nghiệp THPT thông minh môn Tin học, bứt phá điểm số.",
+                "Nền tảng ôn thi tốt nghiệp THPT thông minh môn Tin học, bứt phá điểm số.",
               url: SITE_URL,
               inLanguage: "vi-VN",
               educationalUse: "practice",
