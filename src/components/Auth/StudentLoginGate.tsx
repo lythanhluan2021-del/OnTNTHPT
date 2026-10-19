@@ -71,7 +71,7 @@ export const StudentLoginGate: React.FC = () => {
         <div className="p-3 rounded-neu-sm bg-blue-50/70 border border-blue-200/60 text-[11px] text-blue-900 leading-relaxed space-y-1 shadow-neu-flat-xs">
           <div className="flex items-center gap-1.5 font-bold">
             <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-            <span>Khu vực ôn tập có hướng dẫn Socratic & AI:</span>
+            <span>Hướng dẫn tham gia ôn luyện:</span>
           </div>
           <p className="text-slate-600 text-[11px]">
             Học sinh đăng nhập bằng tài khoản và mật khẩu do Thầy/Cô cấp để bắt đầu ôn luyện theo kế hoạch 35 tuần và lưu tiến trình bài làm theo thời gian thực.
