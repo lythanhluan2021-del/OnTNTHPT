@@ -332,14 +332,30 @@ export class GoogleSheetsSync {
         folderId
       ).catch(() => null);
 
-      // Thư mục Drive URL để Thầy bấm vào xem ngay
+      // 5. Tự động kiểm tra và cập nhật trực tiếp vào tệp Google Trang Tính (Google Sheet) nếu có trong thư mục
+      const existingSheet = await this.findProjectSpreadsheet(token, folderId);
+      let sheetUpdated = false;
       const folderUrl = `https://drive.google.com/drive/folders/${folderId}`;
+      let finalSpreadsheetUrl = folderUrl;
+
+      if (existingSheet) {
+        finalSpreadsheetUrl = existingSheet.url;
+        sheetUpdated = await this.updateSpreadsheetValues(token, existingSheet.id, progressData);
+      }
+
+      let syncMsg = `Đã đồng bộ ${progressData.length} học sinh và ${attempts.length} bài làm lên Google Drive!`;
+      if (existingSheet && sheetUpdated) {
+        syncMsg = `Đã đồng bộ thành công dữ liệu vào tệp Google Trang Tính "${existingSheet.name}" và lưu trữ trên Google Drive!`;
+      } else if (!existingSheet) {
+        syncMsg = `Đã lưu an toàn toàn bộ dữ liệu lên Google Drive! Để xem dạng Google Trang Tính: Thầy bấm "+ Mới" -> "Google Trang tính" trong thư mục Drive, hệ thống sẽ tự động đồng bộ ngay!`;
+      }
 
       return {
         success: usersSynced || attemptsSynced,
-        message: `Đã đồng bộ thành công ${progressData.length} học sinh và ${attempts.length} lượt làm bài lên Google Drive & Bảng theo dõi tiến độ!`,
+        message: syncMsg,
         syncedAt: Date.now(),
-        spreadsheetUrl: folderUrl,
+        spreadsheetUrl: finalSpreadsheetUrl,
+        fileId: existingSheet ? existingSheet.id : null,
         totalStudents: progressData.length,
         activeStudents: progressData.filter((p) => p.totalQuestions > 0).length,
         totalAttempts: attempts.length,
@@ -354,6 +370,117 @@ export class GoogleSheetsSync {
         activeStudents: users.filter((u) => u.role === "student" && Boolean(u.lastLoginAt)).length,
         totalAttempts: attempts.length,
       };
+    }
+  }
+
+  /**
+   * Tìm kiếm tệp Google Sheet (Google Trang Tính) có sẵn trong thư mục dự án
+   */
+  static async findProjectSpreadsheet(
+    token: string,
+    folderId: string = GoogleDriveStorage.getFolderId()
+  ): Promise<{ id: string; name: string; url: string } | null> {
+    try {
+      const q = encodeURIComponent(`'${folderId}' in parents and mimeType = 'application/vnd.google-apps.spreadsheet' and trashed = false`);
+      const res = await fetch(
+        `https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id,name,webViewLink)&pageSize=1`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      if (!res.ok) return null;
+      const data = await res.json();
+      if (data.files && data.files.length > 0) {
+        return {
+          id: data.files[0].id,
+          name: data.files[0].name,
+          url: data.files[0].webViewLink,
+        };
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  }
+
+  /**
+   * Cập nhật các dòng dữ liệu tiến độ vào Google Sheet thông qua Google Sheets API
+   */
+  static async updateSpreadsheetValues(
+    token: string,
+    spreadsheetId: string,
+    progressData: StudentProgressItem[]
+  ): Promise<boolean> {
+    try {
+      // 1. Lấy tên sheet đầu tiên
+      const metaRes = await fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?fields=sheets.properties.title`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      let sheetTitle = "Sheet1";
+      if (metaRes.ok) {
+        const metaData = await metaRes.json();
+        if (metaData.sheets && metaData.sheets.length > 0) {
+          sheetTitle = metaData.sheets[0].properties.title;
+        }
+      }
+
+      // 2. Chuẩn bị bảng dữ liệu
+      const headers = [
+        "STT",
+        "Mã Học Sinh",
+        "Họ Và Tên",
+        "Lớp",
+        "Hình Thức",
+        "Số Câu Đã Làm",
+        "Số Câu Đúng",
+        "Số Câu Sai",
+        "Tỷ Lệ Đúng",
+        "Điểm Trung Bình",
+        "Tiến Độ Toàn Khóa",
+        "Lần Đăng Nhập Cuối",
+        "Xếp Loại",
+      ];
+
+      const rows = progressData.map((p, idx) => [
+        idx + 1,
+        p.username,
+        p.fullName,
+        p.className,
+        p.accountType === "official" ? "Chính khóa" : "Tự do",
+        p.totalQuestions,
+        p.correctCount,
+        p.incorrectCount,
+        `${p.accuracyPercent}%`,
+        p.averageScore,
+        `${p.progressPercent}%`,
+        p.lastLoginFormatted,
+        p.rating,
+      ]);
+
+      const values = [headers, ...rows];
+
+      // 3. Ghi dữ liệu vào Google Sheet
+      const updateUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/'${encodeURIComponent(sheetTitle)}'!A1:M${values.length}?valueInputOption=USER_ENTERED`;
+      const updateRes = await fetch(updateUrl, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          range: `'${sheetTitle}'!A1:M${values.length}`,
+          majorDimension: "ROWS",
+          values,
+        }),
+      });
+
+      return updateRes.ok;
+    } catch (e) {
+      console.warn("[GoogleSheetsSync] Không thể ghi vào Google Sheets API:", e);
+      return false;
     }
   }
 }

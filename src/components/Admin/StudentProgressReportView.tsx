@@ -226,25 +226,30 @@ export const StudentProgressReportView: React.FC<StudentProgressReportViewProps>
             )}
           </div>
         ) : (
-          <div className="mt-3 p-2.5 rounded-neu-sm bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200/70 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-200 text-xs font-bold flex items-center justify-between gap-2 shadow-neu-flat-xs">
-            <div className="flex items-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span>Google Drive &amp; Bảng Tính: Đã kết nối thư mục dự án • Tự động ghi nhận tiến độ &amp; đăng nhập thời gian thực</span>
+          <div className="mt-3 p-3 rounded-neu-sm bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200/70 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-200 text-xs font-bold space-y-1 shadow-neu-flat-xs">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>Google Drive: Đã kết nối &amp; lưu trữ bền vững (ontn_users.json &amp; ontn_attempts.json)</span>
+              </div>
+              {googleDriveFolderUrl && (
+                <a
+                  href={googleDriveFolderUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 underline text-[11px] font-extrabold text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 flex-shrink-0"
+                >
+                  <span>Mở thư mục Drive</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
             </div>
-            {googleDriveFolderUrl && (
-              <a
-                href={googleDriveFolderUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 underline text-[11px] font-extrabold text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 flex-shrink-0"
-              >
-                <span>Xem tệp trên Drive</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            )}
+            <p className="text-[11px] text-slate-600 dark:text-slate-300 font-normal pl-4">
+              💡 <strong>Để có bảng Google Trang tính (icon xanh lá):</strong> Trong thư mục Drive này, Thầy bấm nút <strong>&quot;+ Mới&quot;</strong> ➔ Chọn <strong>&quot;Google Trang tính&quot;</strong> (đặt tên ví dụ <em>&quot;SINO - Tiến Độ Học Sinh&quot;</em>). Sau đó bấm nút <strong>&quot;Đồng Bộ Google Sheet &amp; Drive&quot;</strong> trên hệ thống, toàn bộ bảng điểm sẽ được tự động điền vào trang tính!
+            </p>
           </div>
         )}
       </div>

@@ -39,6 +39,14 @@ export async function GET(req: NextRequest) {
     const progressList = GoogleSheetsSync.computeStudentProgress(users, attempts);
     const folderId = GoogleDriveStorage.getFolderId();
 
+    let spreadsheetInfo: { id: string; name: string; url: string } | null = null;
+    try {
+      const token = await GoogleDriveStorage.getAccessToken();
+      if (token) {
+        spreadsheetInfo = await GoogleSheetsSync.findProjectSpreadsheet(token, folderId);
+      }
+    } catch {}
+
     return NextResponse.json({
       success: true,
       data: {
@@ -64,6 +72,8 @@ export async function GET(req: NextRequest) {
         googleDrive: {
           folderId,
           folderUrl: `https://drive.google.com/drive/folders/${folderId}`,
+          spreadsheetUrl: spreadsheetInfo?.url || null,
+          spreadsheetName: spreadsheetInfo?.name || null,
           isConfigured: GoogleDriveStorage.isConfigured(),
         },
       },
