@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { useAuth } from "@/contexts/AuthContext";
 import { soundManager } from "@/lib/audioEffects";
 import { Lock, User, School, KeyRound, AlertCircle, X, GraduationCap } from "lucide-react";
@@ -56,19 +57,33 @@ export const LoginModal: React.FC = () => {
         </button>
 
         {/* Header */}
-        <div className="text-center space-y-1 pt-1">
-          <div className="w-12 h-12 mx-auto rounded-neu-sm bg-blue-100 flex items-center justify-center text-blue-700 shadow-neu-flat-xs mb-2">
-            <School className="w-6 h-6 text-blue-600" />
+        <div className="text-center space-y-2 pt-1">
+          <div className="w-14 h-14 mx-auto rounded-neu-sm bg-[#e6ecf5] flex items-center justify-center shadow-neu-flat border border-white/80 p-1 mb-1">
+            <Image
+              src="/sino_logo.png"
+              alt="SINO Logo"
+              width={52}
+              height={52}
+              className="w-full h-full object-contain rounded mix-blend-multiply"
+              priority
+            />
           </div>
-          <h2 className="text-lg font-black text-slate-800">
-            Cổng Đăng Nhập Học Sinh
-          </h2>
-          <p className="text-xs text-blue-700 font-bold">
-            Trường THPT Nguyễn Sinh Sắc
-          </p>
-          <p className="text-[11px] text-slate-500">
-            Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật
-          </p>
+          <div className="space-y-0.5">
+            <div className="flex items-center justify-center gap-1.5">
+              <h2 className="text-xl font-black text-slate-800 tracking-tight">
+                SINO
+              </h2>
+              <span className="text-[9px] uppercase tracking-wider font-extrabold bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded shadow-neu-flat-xs">
+                EdTech
+              </span>
+            </div>
+            <p className="text-xs font-black text-blue-700">
+              Ôn thi thông minh, bứt phá điểm số
+            </p>
+            <p className="text-[11px] text-slate-500">
+              Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật
+            </p>
+          </div>
         </div>
 
         {/* Lời nhắc */}

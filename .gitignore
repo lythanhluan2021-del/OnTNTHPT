@@ -43,6 +43,6 @@ credentials*.json
 TKHS.xlsx
 TKHS.md
 Email-connect*.txt
-*.png
+json-connec*.png
 /scripts/
 

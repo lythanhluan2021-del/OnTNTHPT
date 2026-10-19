@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Menu,
@@ -78,17 +79,35 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-30 bg-[#e6ecf5] dark:bg-[#1a1f26] px-3 sm:px-4 py-2.5 border-b border-slate-300/60 dark:border-slate-800 shadow-neu-flat-sm">
       <div className="max-w-4xl mx-auto flex items-center justify-between gap-1.5 sm:gap-2">
-        {/* Left: Hamburger menu toggle */}
-        <button
-          onClick={() => {
-            soundManager.playClick();
-            onToggleSidebar();
-          }}
-          className="p-2 sm:p-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat active:shadow-neu-inset text-slate-700 dark:text-slate-300 transition flex-shrink-0"
-          aria-label="Mở danh mục bài học"
-        >
-          <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-slate-800 dark:text-slate-200" />
-        </button>
+        {/* Left: Hamburger menu toggle & SINO brand */}
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+          <button
+            onClick={() => {
+              soundManager.playClick();
+              onToggleSidebar();
+            }}
+            className="p-2 sm:p-2.5 rounded-neu-sm bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat active:shadow-neu-inset text-slate-700 dark:text-slate-300 transition flex-shrink-0"
+            aria-label="Mở danh mục bài học"
+          >
+            <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-slate-800 dark:text-slate-200" />
+          </button>
+
+          <div className="hidden sm:flex items-center gap-1.5 pl-0.5">
+            <div className="w-7 h-7 rounded-neu-xs bg-[#e6ecf5] dark:bg-[#202734] shadow-neu-flat-xs p-0.5 border border-white/60 dark:border-slate-700/60 flex items-center justify-center overflow-hidden">
+              <Image
+                src="/sino_logo.png"
+                alt="SINO"
+                width={24}
+                height={24}
+                className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal"
+                priority
+              />
+            </div>
+            <span className="font-black text-xs tracking-tight text-slate-800 dark:text-slate-200">
+              SINO
+            </span>
+          </div>
+        </div>
 
         {/* Center: Subject & Topic name with clickable subject switcher */}
         <div className="flex-1 text-center min-w-0 px-1 sm:px-2">

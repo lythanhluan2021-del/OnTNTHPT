@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { useAuth } from "@/contexts/AuthContext";
 import { soundManager } from "@/lib/audioEffects";
 import { Lock, User, School, KeyRound, AlertCircle, Sparkles, BookOpen, GraduationCap } from "lucide-react";
@@ -39,21 +40,29 @@ export const StudentLoginGate: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#e6ecf5] flex flex-col justify-center items-center p-4 antialiased">
       <div className="w-full max-w-md bg-[#e6ecf5] rounded-neu shadow-neu-flat p-6 sm:p-8 border border-white/80 space-y-6">
-        {/* Header trường học & môn học */}
-        <div className="text-center space-y-2">
-          <div className="w-16 h-16 mx-auto rounded-neu bg-blue-100 flex items-center justify-center text-blue-700 shadow-neu-flat-xs">
-            <School className="w-8 h-8 text-blue-600" />
+        {/* Header SINO Brand & Logo */}
+        <div className="text-center space-y-2.5">
+          <div className="w-20 h-20 mx-auto rounded-neu bg-[#e6ecf5] flex items-center justify-center shadow-neu-flat border border-white/80 p-1.5 transition-transform hover:scale-105">
+            <Image
+              src="/sino_logo.png"
+              alt="SINO Logo"
+              width={76}
+              height={76}
+              className="w-full h-full object-contain rounded-neu-sm mix-blend-multiply"
+              priority
+            />
           </div>
           <div className="space-y-1">
-            <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blue-100/80 text-blue-800 text-[10px] font-black uppercase tracking-wider shadow-neu-flat-xs">
-              <GraduationCap className="w-3.5 h-3.5" />
-              <span>Năm Học 2026 - 2027</span>
-            </span>
-            <h1 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
-              Hệ Thống Ôn Thi Tốt Nghiệp THPT
-            </h1>
-            <p className="text-xs font-bold text-blue-700">
-              Trường THPT Nguyễn Sinh Sắc
+            <div className="flex items-center justify-center gap-2">
+              <h1 className="text-2xl font-black text-slate-800 tracking-tight">
+                SINO
+              </h1>
+              <span className="text-[10px] uppercase tracking-wider font-extrabold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full shadow-neu-flat-xs">
+                EdTech
+              </span>
+            </div>
+            <p className="text-xs font-black text-blue-700 tracking-tight">
+              Ôn thi thông minh, bứt phá điểm số
             </p>
             <p className="text-[11px] text-slate-500 font-medium">
               Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật
@@ -183,7 +192,7 @@ export const StudentLoginGate: React.FC = () => {
 
       {/* Footer nhỏ nhẹ */}
       <footer className="mt-6 text-center text-[11px] text-slate-400 font-medium">
-        © 2026 Trường THPT Nguyễn Sinh Sắc • Ứng dụng Ôn Thi TN THPT Chuẩn Cấu Trúc GD1
+        © 2026 SINO • Ôn thi thông minh, bứt phá điểm số
       </footer>
     </div>
   );

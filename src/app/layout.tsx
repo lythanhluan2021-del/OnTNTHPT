@@ -6,34 +6,48 @@ const SITE_URL = "https://on-tnthpt.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "OnTNTHPT | Ôn thi tốt nghiệp THPT Tin học – THPT Nguyễn Sinh Sắc",
-    template: "%s | OnTNTHPT",
+    default: "SINO – Ôn thi thông minh, bứt phá điểm số",
+    template: "%s | SINO",
   },
   description:
-    "Hệ thống ôn luyện thi tốt nghiệp THPT môn Tin học của Trường THPT Nguyễn Sinh Sắc. Ứng dụng giáo dục nội bộ, không thu phí, không yêu cầu thông tin ngân hàng hay thanh toán.",
-  applicationName: "OnTNTHPT",
+    "SINO – Nền tảng EdTech ôn thi tốt nghiệp THPT thông minh môn Tin học, bứt phá điểm số cùng trợ lý AI và lộ trình ôn tập cá nhân hóa.",
+  applicationName: "SINO",
   authors: [{ name: "Ban quản lý dự án Khoa học kỹ thuật" }],
-  creator: "Trường THPT Nguyễn Sinh Sắc",
-  publisher: "Trường THPT Nguyễn Sinh Sắc",
+  creator: "Ban quản lý dự án Khoa học kỹ thuật",
+  publisher: "SINO EdTech",
   category: "education",
   keywords: [
+    "SINO",
+    "ôn thi thông minh",
+    "bứt phá điểm số",
     "ôn thi THPT",
     "tin học 12",
-    "THPT Nguyễn Sinh Sắc",
-    "OnTNTHPT",
-    "ôn tập tốt nghiệp",
-    "giáo dục",
+    "EdTech",
+    "trắc nghiệm tin học",
+    "AI gia sư socratic",
   ],
+  icons: {
+    icon: "/sino_logo.png",
+    apple: "/sino_logo.png",
+  },
   robots: { index: true, follow: true },
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: "website",
     locale: "vi_VN",
     url: SITE_URL,
-    siteName: "OnTNTHPT",
-    title: "OnTNTHPT | Ôn thi tốt nghiệp THPT Tin học – THPT Nguyễn Sinh Sắc",
+    siteName: "SINO",
+    title: "SINO – Ôn thi thông minh, bứt phá điểm số",
     description:
-      "Ứng dụng ôn thi tốt nghiệp THPT môn Tin học của Trường THPT Nguyễn Sinh Sắc. Dành cho học sinh, không thu phí.",
+      "SINO – Nền tảng EdTech ôn thi tốt nghiệp THPT thông minh, bứt phá điểm số môn Tin học.",
+    images: [
+      {
+        url: "/sino_logo.png",
+        width: 800,
+        height: 800,
+        alt: "SINO Logo",
+      },
+    ],
   },
 };
 
@@ -63,9 +77,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "EducationalOrganization",
-              name: "OnTNTHPT – Trường THPT Nguyễn Sinh Sắc",
+              name: "SINO – Ôn thi thông minh, bứt phá điểm số",
               description:
-                "Hệ thống ôn luyện thi tốt nghiệp THPT môn Tin học dành cho học sinh Trường THPT Nguyễn Sinh Sắc.",
+                "Nền tảng EdTech ôn thi tốt nghiệp THPT thông minh môn Tin học, bứt phá điểm số.",
               url: SITE_URL,
               inLanguage: "vi-VN",
               educationalUse: "practice",

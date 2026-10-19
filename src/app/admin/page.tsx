@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Users,
   UserCheck,
@@ -1296,14 +1297,21 @@ export default function AdminDashboardPage() {
       <div className="min-h-screen bg-[#e6ecf5] flex items-center justify-center p-4">
         <div className="w-full max-w-md bg-[#e6ecf5] rounded-neu shadow-neu-flat p-8 border border-white/70 space-y-6">
           <div className="text-center space-y-2">
-            <div className="w-16 h-16 mx-auto rounded-neu bg-indigo-100 flex items-center justify-center text-indigo-700 shadow-neu-flat-sm">
-              <ShieldCheck className="w-8 h-8" />
+            <div className="w-16 h-16 mx-auto rounded-neu bg-[#e6ecf5] flex items-center justify-center shadow-neu-flat p-1 border border-white/80">
+              <Image
+                src="/sino_logo.png"
+                alt="SINO"
+                width={56}
+                height={56}
+                className="w-full h-full object-contain mix-blend-multiply"
+                priority
+              />
             </div>
             <h1 className="text-xl font-black text-slate-800">
-              Trang Quản Trị Ôn Thi THPT
+              SINO – Trang Quản Trị Hệ Thống
             </h1>
             <p className="text-xs text-slate-500 font-medium leading-relaxed">
-              Khu vực dành riêng cho Giáo viên & Ban Giám Hiệu Trường THPT Nguyễn Sinh Sắc để theo dõi tiến độ và cấp tài khoản học sinh.
+              Khu vực dành cho Quản trị viên theo dõi tiến độ ôn luyện và quản lý ngân hàng câu hỏi.
             </p>
           </div>
 
@@ -1384,14 +1392,14 @@ export default function AdminDashboardPage() {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-base sm:text-lg font-black text-slate-800">
-                Dashboard Quản Lý Ôn Thi Tốt Nghiệp THPT
+                SINO – Dashboard Quản Lý Ôn Thi Thông Minh
               </h1>
               <span className="text-[10px] uppercase tracking-wider font-extrabold bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded-full shadow-neu-flat-xs">
                 Admin
               </span>
             </div>
             <p className="text-xs text-slate-500 font-medium">
-              Trường THPT Nguyễn Sinh Sắc • Năm học 2026 - 2027 • Phụ trách: Ban Quản Trị Hệ Thống
+              SINO EdTech • Bản quyền thuộc về Ban quản lý dự án Khoa học kỹ thuật
             </p>
             {/* Huy hiệu trạng thái Lưu trữ Đám mây: Tách riêng Upstash Redis và Google Drive */}
             <div className="flex items-center gap-2 pt-1 flex-wrap">

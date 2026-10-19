@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
+import Image from "next/image";
 import { Subject, Topic } from "@/types";
 import { soundManager } from "@/lib/audioEffects";
 import {
@@ -441,15 +442,27 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Sidebar Header */}
         <div className="p-3.5 sm:p-4 border-b border-slate-300/60 flex items-center justify-between">
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat flex items-center justify-center text-blue-600 font-bold">
-              <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />
+            <div className="w-10 h-10 rounded-neu-sm bg-[#e6ecf5] shadow-neu-flat flex items-center justify-center p-1 border border-white/80 overflow-hidden flex-shrink-0">
+              <Image
+                src="/sino_logo.png"
+                alt="SINO"
+                width={36}
+                height={36}
+                className="w-full h-full object-contain mix-blend-multiply"
+                priority
+              />
             </div>
             <div>
-              <h2 className="font-bold text-slate-800 text-sm sm:text-base leading-tight">
-                Cấu Trúc Bài Học
-              </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500 font-medium">
-                Ôn thi tốt nghiệp THPT
+              <div className="flex items-center gap-1.5">
+                <span className="font-black text-slate-800 text-base leading-tight tracking-tight">
+                  SINO
+                </span>
+                <span className="text-[9px] uppercase tracking-wider font-extrabold bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded shadow-neu-flat-xs">
+                  EdTech
+                </span>
+              </div>
+              <p className="text-[11px] font-bold text-blue-700 leading-none pt-0.5">
+                Ôn thi thông minh
               </p>
             </div>
           </div>

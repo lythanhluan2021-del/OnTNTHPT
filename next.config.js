@@ -23,6 +23,8 @@ const nextConfig = {
   },
   experimental: {
     serverComponentsExternalPackages: ["ws"],
+    workerThreads: false,
+    cpus: 1,
   },
   webpack: (config, { isServer }) => {
     config.resolve.alias = {
