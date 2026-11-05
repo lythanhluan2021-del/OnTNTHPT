@@ -631,6 +631,10 @@ export async function scanOnTNTHPTRootFolder(
       subjectId = "toan-12";
       subjectDisplayName = "Toán học 12";
       icon = "Calculator";
+    } else if (nameLower.includes("anh") || nameLower.includes("english")) {
+      subjectId = "tieng-anh-12";
+      subjectDisplayName = "Tiếng Anh 12";
+      icon = "Languages";
     } else if (nameLower.includes("ly") || nameLower.includes("vat")) {
       subjectId = "vat-ly-12";
       subjectDisplayName = "Vật lý 12";

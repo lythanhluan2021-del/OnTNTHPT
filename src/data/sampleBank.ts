@@ -4,6 +4,7 @@ import { CHUYEN_DE_12B_QUESTIONS } from "./questions12b";
 import { QUESTIONS_12B_BAI_4 } from "./questions12bBai4";
 import { CHUYEN_DE_12E_QUESTIONS } from "./questions12e";
 import { CHUYEN_DE_CD3_QUESTIONS } from "./questionsCd3";
+import { ENGLISH_12_QUESTIONS } from "./questionsEnglish12";
 
 export const INITIAL_SUBJECTS: Subject[] = [
   {
@@ -191,6 +192,58 @@ export const INITIAL_SUBJECTS: Subject[] = [
         subjectId: "vat-ly-12",
         chapter: "Chương 1: Dao động cơ",
         totalQuestions: 2,
+      },
+    ],
+  },
+  {
+    id: "tieng-anh-12",
+    name: "Tiếng Anh 12",
+    icon: "Languages",
+    topics: [
+      {
+        id: "anh-phonetics",
+        name: "Ngữ âm: Phát âm & Trọng âm",
+        subjectId: "tieng-anh-12",
+        chapter: "Chuyên đề 1: Phonetics & Stress",
+        totalQuestions: 4,
+        mcCount: 4,
+        hasTheory: true,
+      },
+      {
+        id: "anh-grammar-vocab",
+        name: "Ngữ pháp & Từ vựng trọng tâm",
+        subjectId: "tieng-anh-12",
+        chapter: "Chuyên đề 2: Grammar & Vocabulary",
+        totalQuestions: 4,
+        mcCount: 4,
+        hasTheory: true,
+      },
+      {
+        id: "anh-communication",
+        name: "Chức năng giao tiếp (Speaking & Response)",
+        subjectId: "tieng-anh-12",
+        chapter: "Chuyên đề 3: Communication",
+        totalQuestions: 2,
+        mcCount: 2,
+        hasTheory: true,
+      },
+      {
+        id: "anh-sentence-order",
+        name: "Sắp xếp trật tự câu & đoạn văn (Định dạng 2025)",
+        subjectId: "tieng-anh-12",
+        chapter: "Chuyên đề 4: Text Arrangement (Đề minh họa 2025)",
+        totalQuestions: 2,
+        mcCount: 2,
+        hasTheory: true,
+      },
+      {
+        id: "anh-reading-comprehension",
+        name: "Đọc hiểu văn bản (Reading Comprehension)",
+        subjectId: "tieng-anh-12",
+        chapter: "Chuyên đề 5: Reading Comprehension",
+        totalQuestions: 4,
+        mcCount: 4,
+        hasTheory: true,
       },
     ],
   },
@@ -21679,4 +21732,5 @@ export const INITIAL_QUESTIONS: Question[] = [
   ...QUESTIONS_12B_BAI_4,
   ...CHUYEN_DE_12E_QUESTIONS,
   ...CHUYEN_DE_CD3_QUESTIONS,
+  ...ENGLISH_12_QUESTIONS,
 ];

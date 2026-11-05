@@ -16,6 +16,7 @@ import {
   Laptop,
   Calculator,
   Atom,
+  Languages,
   ArrowRight,
   Key,
   FolderGit2,
@@ -314,7 +315,7 @@ export const DriveSyncModal: React.FC<DriveSyncModalProps> = ({
               <label className="text-xs font-bold text-slate-700">
                 Chọn môn học bạn muốn liên kết tệp:
               </label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {subjects.map((subj) => {
                   const isSelected = subj.id === activeSubjectId;
                   const hasUrl = Boolean(subjectUrls[subj.id]);
@@ -335,6 +336,8 @@ export const DriveSyncModal: React.FC<DriveSyncModalProps> = ({
                         <Laptop className="w-4 h-4 text-indigo-600" />
                       ) : subj.id.includes("toan") ? (
                         <Calculator className="w-4 h-4 text-blue-600" />
+                      ) : subj.id.includes("anh") ? (
+                        <Languages className="w-4 h-4 text-amber-600" />
                       ) : (
                         <Atom className="w-4 h-4 text-cyan-600" />
                       )}

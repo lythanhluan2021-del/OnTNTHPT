@@ -9,6 +9,7 @@ import {
   Calculator,
   Atom,
   Laptop,
+  Languages,
   ChevronRight,
   ChevronDown,
   X,
@@ -484,7 +485,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="text-[11px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider px-1">
             Chọn môn học
           </div>
-          <div className="grid grid-cols-3 gap-1.5">
+          <div className="grid grid-cols-4 gap-1.5">
             {subjects.map((subj) => {
               const isSelected = subj.id === selectedSubjectId;
               return (
@@ -494,7 +495,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     soundManager.playClick();
                     onSelectSubject(subj.id);
                   }}
-                  className={`flex flex-col items-center justify-center gap-1 py-2 px-1.5 rounded-neu-sm text-[11px] font-semibold transition-all ${
+                  className={`flex flex-col items-center justify-center gap-1 py-2 px-1 rounded-neu-sm text-[11px] font-semibold transition-all ${
                     isSelected
                       ? "bg-[#e6ecf5] text-blue-600 shadow-neu-inset"
                       : "bg-[#e6ecf5] text-slate-600 shadow-neu-flat-sm active:shadow-neu-inset hover:text-blue-600"
@@ -504,11 +505,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     <Laptop className="w-4 h-4 text-indigo-600" />
                   ) : subj.id.includes("toan") ? (
                     <Calculator className="w-4 h-4 text-blue-600" />
+                  ) : subj.id.includes("anh") ? (
+                    <Languages className="w-4 h-4 text-amber-600" />
                   ) : (
                     <Atom className="w-4 h-4 text-cyan-600" />
                   )}
                   <span className="truncate w-full text-center leading-tight">
-                    {subj.name.replace(" học", "")}
+                    {subj.name.replace(" học", "").replace("Tiếng ", "")}
                   </span>
                 </button>
               );

@@ -6,6 +6,7 @@ import {
   Laptop,
   Calculator,
   Atom,
+  Languages,
   CheckCircle2,
   X,
   Sparkles,
@@ -35,6 +36,8 @@ export const SubjectSwitchModal: React.FC<SubjectSwitchModalProps> = ({
       return <Laptop className="w-5 h-5 text-indigo-600" />;
     } else if (subjectId.includes("toan")) {
       return <Calculator className="w-5 h-5 text-blue-600" />;
+    } else if (subjectId.includes("anh")) {
+      return <Languages className="w-5 h-5 text-amber-600" />;
     } else {
       return <Atom className="w-5 h-5 text-cyan-600" />;
     }
@@ -45,6 +48,8 @@ export const SubjectSwitchModal: React.FC<SubjectSwitchModalProps> = ({
       return { text: "File định hướng 2026", color: "bg-indigo-100 text-indigo-800 border-indigo-200" };
     } else if (subjectId.includes("toan")) {
       return { text: "Chuẩn BGD", color: "bg-blue-100 text-blue-800 border-blue-200" };
+    } else if (subjectId.includes("anh")) {
+      return { text: "Chuẩn BGD 2025", color: "bg-amber-100 text-amber-800 border-amber-200" };
     } else {
       return { text: "Chuẩn BGD", color: "bg-cyan-100 text-cyan-800 border-cyan-200" };
     }
