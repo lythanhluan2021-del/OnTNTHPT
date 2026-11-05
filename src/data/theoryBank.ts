@@ -2183,83 +2183,77 @@ TOPIC_THEORY_MAP["tin-chuyen-de-12e"] = CHUYEN_DE_12E_THEORY;
 TOPIC_THEORY_MAP["tin-12e"] = CHUYEN_DE_12E_THEORY;
 TOPIC_THEORY_MAP["tin-thuc-hanh-tao-web"] = CHUYEN_DE_12E_THEORY;
 
-TOPIC_THEORY_MAP["anh-phonetics"] = {
+TOPIC_THEORY_MAP["anh-tuan-01-tu-loai"] = {
   subjectId: "tieng-anh-12",
   subjectName: "Tiếng Anh 12",
-  topicName: "Ngữ âm: Phát âm & Trọng âm",
-  chapterName: "Chuyên đề 1: Phonetics & Stress",
-  docTitle: "Tóm tắt Lý thuyết Ngữ âm Tiếng Anh 12.docx",
+  topicName: "Bài 1: Dạng câu hỏi về Từ loại (Word Form) (Tuần 1)",
+  chapterName: "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  docTitle: "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)",
   objectives: [
-    "Nắm vững 3 quy tắc phát âm đuôi -ed (/id/, /t/, /d/).",
-    "Nắm vững 3 quy tắc phát âm đuôi -s/-es (/s/, /z/, /iz/).",
-    "Phân biệt các nguyên âm đơn và nguyên âm đôi hay gặp trong đề thi THPT.",
-    "Nắm vững quy tắc đánh trọng âm từ 2 âm tiết và từ có tiền tố/hậu tố."
+    "Nhận biết được dấu hiệu các đuôi Danh từ, Động từ, Tính từ, Trạng từ trong tiếng Anh.",
+    "Nắm vững và vận dụng 13 quy tắc trật tự từ trong câu để chọn đúng từ loại.",
+    "Nắm chắc phương pháp làm bài đục lỗ: xét các phương án trước để xác định phạm trù kiến thức, không dịch toàn bài."
   ],
   sections: [
     {
-      id: "phonetics-ed-rules",
-      topicId: "anh-phonetics",
-      title: "1. Quy tắc phát âm đuôi -ed và -s/-es",
+      id: "word-form-endings",
+      topicId: "anh-tuan-01-tu-loai",
+      title: "1.1.1. Dấu hiệu nhận biết từ loại qua hậu tố (đuôi từ)",
       icon: "BookOpen",
       tag: "Trọng tâm",
-      summary: "Tổng hợp các mẹo nhớ nhanh quy tắc phát âm đuôi -ed và -s/-es trong đề thi.",
-      keyTerms: ["Phát âm -ed", "Phát âm -s/-es", "/id/", "/t/", "/d/"],
+      summary: "Tổng hợp các đuôi danh từ, động từ, tính từ và trạng từ thường gặp trong đề thi.",
+      keyTerms: ["Đuôi danh từ", "Đuôi động từ", "Đuôi tính từ", "Đuôi trạng từ"],
       content: [
         {
-          heading: "Quy tắc phát âm đuôi -ed",
-          text: "1. Đuôi -ed phát âm là /id/ khi động từ kết thúc bằng /t/ hoặc /d/ (vd: wanted, needed). Phát âm là /t/ khi kết thúc bằng âm vô thanh (/p/, /k/, /f/, /s/, /ʃ/, /tʃ/ - mẹo nhớ: 'chính phủ phát sách thời phong kiến'). Còn lại phát âm là /d/."
+          heading: "a) Các đuôi của danh từ (Noun)",
+          text: "-ment, -ance, -ion/ation, -age, -ure, -er, -or, -ist, -ress, -ness, -ant, -ee, -ledge, -ence, -ity, -y, -ty, -cy, -dom, -ism, -hood, -th, -ship... (Ví dụ: development, attention, punishment, imagination, variety)."
         },
         {
-          heading: "Mẹo nhớ phát âm đuôi -s / -es",
-          text: "Phát âm là /s/ khi tận cùng là các âm vô thanh (/p/, /k/, /f/, /t/, /θ/ - 'thời phong kiến phương tây'). Phát âm là /iz/ khi tận cùng là /s/, /z/, /ʃ/, /tʃ/, /dʒ/ (như s, x, z, ch, sh, ge). Còn lại đọc là /z/."
+          heading: "b) Các đuôi của động từ (Verb)",
+          text: "-ise/-ize, -ate, -fy, -en... (Ví dụ: popularize, communicate, strengthen)."
+        },
+        {
+          heading: "c) Các đuôi của tính từ (Adjective)",
+          text: "-ful, -less, -ic, -able, -ous, -some, -al, -ing/-ed, -ible, -ent, -ive, -like, -ish, -ary, -ory... (Ví dụ: attractive, psychological, dangerous, different, natural, exhausted)."
+        },
+        {
+          heading: "d) Đuôi của trạng từ (Adverb)",
+          text: "-ly (Ví dụ: carefully, officially, attentively, differently)."
         }
       ]
     },
     {
-      id: "stress-rules",
-      topicId: "anh-phonetics",
-      title: "2. Quy tắc đánh trọng âm cơ bản",
+      id: "word-order-rules",
+      topicId: "anh-tuan-01-tu-loai",
+      title: "1.1.2. 13 Quy tắc trật tự từ trong câu",
       icon: "BookOpen",
-      tag: "Trọng tâm",
-      summary: "Quy tắc trọng âm cho từ 2 âm tiết và từ có hậu tố đặc biệt.",
-      keyTerms: ["Trọng âm 2 âm tiết", "Hậu tố -tion", "Hậu tố -ic"],
+      tag: "Quy tắc cốt lõi",
+      summary: "13 vị trí vàng của từ loại cần ghi nhớ để giải nhanh bài trắc nghiệm.",
+      keyTerms: ["Trật tự từ", "Sau to be", "Trước danh từ", "Sau giới từ"],
       content: [
         {
-          heading: "Trọng âm từ 2 âm tiết và hậu tố",
-          text: "Hầu hết động từ 2 âm tiết có trọng âm rơi vào âm tiết thứ 2 (protect, provide). Danh từ và tính từ 2 âm tiết thường có trọng âm rơi vào âm tiết thứ 1 (damage, happy). Các từ có hậu tố -tion, -sion, -ic, -ical trọng âm rơi vào âm tiết ngay trước nó (generation, economic)."
+          heading: "Bảng 13 quy tắc vị trí từ loại (Trích giáo án Tiết 1, 2)",
+          text: "1. Sau to be (am/is/are/was/were) là tính từ\n2. Sau động từ là trạng từ\n3. Sau V (tri giác: hear, see, smell, taste, feel…) là tính từ\n4. Sau look, seem, get, become, find, make,... + adj\n5. Sau mạo từ (a/an/the) + N\n6. Sau tính từ sở hữu (my/your/our/his/her/their/its) là danh từ\n7. Sau sở hữu cách là danh từ\n8. Sau đại từ chỉ định (this/that/these/those) + N\n9. Sau some/any/many/much + N\n10. Sau giới từ + danh từ/cụm danh từ/danh động từ/mệnh đề danh từ\n11. Trước danh từ là tính từ\n12. Trước tính từ là trạng từ\n13. Đứng đầu câu, ngăn cách với phần trong câu bằng dấu phẩy (,) là trạng từ."
+        }
+      ]
+    },
+    {
+      id: "cloze-test-method",
+      topicId: "anh-tuan-01-tu-loai",
+      title: "Phương pháp giải bài đọc đục lỗ Form bài quảng cáo & tờ rơi",
+      icon: "BookOpen",
+      tag: "Chiến thuật làm bài",
+      summary: "Chiến thuật xử lý dạng bài đục lỗ 6 câu theo định dạng đề thi mới.",
+      keyTerms: ["Bài quảng cáo", "Tờ rơi", "Đục lỗ 6 câu"],
+      content: [
+        {
+          heading: "Quy trình làm bài chuẩn",
+          text: "Không làm theo phương pháp đọc dịch đoạn văn mà xét các phương án trong mỗi câu hỏi trước để xác định phạm trù kiến thức (từ loại, trật tự từ, mệnh đề quan hệ, giới từ, cụm từ cố định, danh động từ...), rồi từ đó xác định hướng làm chính xác và tiết kiệm thời gian nhất."
         }
       ]
     }
   ]
 };
 
-TOPIC_THEORY_MAP["anh-grammar-vocab"] = {
-  subjectId: "tieng-anh-12",
-  subjectName: "Tiếng Anh 12",
-  topicName: "Ngữ pháp & Từ vựng trọng tâm",
-  chapterName: "Chuyên đề 2: Grammar & Vocabulary",
-  docTitle: "Tóm tắt Chuyên đề Ngữ pháp Trọng tâm Lớp 12.docx",
-  objectives: [
-    "Nắm vững các thì động từ và sự phối hợp thì trong câu.",
-    "Hệ thống hóa câu điều kiện (loại 1, 2, 3 và hỗn hợp).",
-    "Sử dụng thành thạo mệnh đề quan hệ và rút gọn mệnh đề quan hệ.",
-    "Nắm vững cấu trúc kết quả: so... that và such... that, đảo ngữ."
-  ],
-  sections: [
-    {
-      id: "grammar-conditionals",
-      topicId: "anh-grammar-vocab",
-      title: "1. Câu điều kiện & Mệnh đề giả định",
-      icon: "BookOpen",
-      tag: "Ngữ pháp",
-      summary: "Công thức và dấu hiệu nhận biết các loại câu điều kiện.",
-      keyTerms: ["Conditionals", "Type 1", "Type 2", "Type 3", "Mixed"],
-      content: [
-        {
-          heading: "Các dạng câu điều kiện thông dụng",
-          text: "Loại 1: If + S + V(hiện tại đơn), S + will + V-inf (Có thật ở hiện tại/tương lai).\nLoại 2: If + S + V(quá khứ đơn), S + would + V-inf (Trái ngược hiện tại).\nLoại 3: If + S + had + V3/V-ed, S + would have + V3/V-ed (Trái ngược quá khứ)."
-        }
-      ]
-    }
-  ]
-};
+TOPIC_THEORY_MAP["anh-tuan-05-duc-lo-quang-cao"] = TOPIC_THEORY_MAP["anh-tuan-01-tu-loai"];
+TOPIC_THEORY_MAP["anh-tuan-11-tu-vung-truong-nghia"] = TOPIC_THEORY_MAP["anh-tuan-01-tu-loai"];

@@ -129,6 +129,57 @@ function matchFileToExistingTopic(
     }
   }
 
+  // Tiếng Anh 12 - Khớp các chuyên đề theo Kế hoạch 35 tuần THPT Nguyễn Sinh Sắc
+  if (subjectId === "tieng-anh-12" || norm.includes("anh") || norm.includes("english")) {
+    const engMatches: { keys: string[]; topicId: string }[] = [
+      { keys: ["tuan 1", "tu loai", "word form", "tiet 1"], topicId: "anh-tuan-01-tu-loai" },
+      { keys: ["tuan 2", "trat tu tu", "word order", "cum tinh tu"], topicId: "anh-tuan-02-trat-tu-tu" },
+      { keys: ["tuan 3", "menh de quan he", "dai tu quan he", "rut gon menh de", "relative clause"], topicId: "anh-tuan-03-menh-de-quan-he" },
+      { keys: ["tuan 4", "nguyen mau", "danh dong tu", "gerund", "infinitive", "to vo", "v-ing"], topicId: "anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu" },
+      { keys: ["tuan 5", "quang cao", "advertisement", "duc lo quang cao"], topicId: "anh-tuan-05-duc-lo-quang-cao" },
+      { keys: ["tuan 6", "gioi tu", "preposition"], topicId: "anh-tuan-06-gioi-tu" },
+      { keys: ["tuan 7", "cum tu co dinh", "collocation"], topicId: "anh-tuan-07-cum-tu-co-dinh" },
+      { keys: ["tuan 8", "duc lo 6 cau", "duc lo tong hop"], topicId: "anh-tuan-08-duc-lo-tong-hop-1" },
+      { keys: ["tuan 9", "luong tu", "quantifier", "lien tu", "conjunction"], topicId: "anh-tuan-09-luong-tu-lien-tu" },
+      { keys: ["tuan 10", "cum dong tu", "phrasal verb"], topicId: "anh-tuan-10-cum-dong-tu" },
+      { keys: ["tuan 11", "truong nghia", "tu cung truong nghia", "tu vung"], topicId: "anh-tuan-11-tu-vung-truong-nghia" },
+      { keys: ["tuan 12", "to roi", "leaflet", "brochure", "duc lo to roi"], topicId: "anh-tuan-12-duc-lo-to-roi" },
+      { keys: ["tuan 13", "cau truc cau", "cau don", "cau ghep", "cau phuc"], topicId: "anh-tuan-13-cau-truc-cau" },
+      { keys: ["tuan 14", "phan tu", "participle", "hien tai phan tu", "qua khu phan tu"], topicId: "anh-tuan-14-phan-tu" },
+      { keys: ["tuan 15", "sap xep hoi thoai", "dialogue", "conversation"], topicId: "anh-tuan-15-sap-xep-hoi-thoai" },
+      { keys: ["tuan 16", "tong hop hk1", "revision hk1", "on tap hk1"], topicId: "anh-tuan-16-on-tap-tong-hop-hk1" },
+      { keys: ["tuan 18", "sap xep thu", "email", "letter", "la thu"], topicId: "anh-tuan-18-sap-xep-thu-email" },
+      { keys: ["tuan 19", "sap xep doan van", "paragraph"], topicId: "anh-tuan-19-sap-xep-doan-van" },
+      { keys: ["tuan 20", "on tap sap xep", "sap xep cau"], topicId: "anh-tuan-20-on-tap-sap-xep-cau" },
+      { keys: ["tuan 21", "thong tin chi tiet", "detail", "reference", "tham chieu"], topicId: "anh-tuan-21-doc-hieu-thong-tin-chi-tiet" },
+      { keys: ["tuan 22", "dung sai", "true false", "khong de cap", "not mention"], topicId: "anh-tuan-22-doc-hieu-dung-sai" },
+      { keys: ["tuan 23", "on tap doc hieu 1"], topicId: "anh-tuan-23-on-tap-doc-hieu-1" },
+      { keys: ["tuan 24", "paraphrase", "dien giai", "vi tri cau"], topicId: "anh-tuan-24-doc-hieu-paraphrase" },
+      { keys: ["tuan 25", "y chinh", "main idea", "thong tin o doan"], topicId: "anh-tuan-25-doc-hieu-y-chinh" },
+      { keys: ["tuan 26", "dong nghia", "trai nghia", "synonym", "antonym", "suy luan"], topicId: "anh-tuan-26-doc-hieu-dong-trai-nghia-suy-luan" },
+      { keys: ["tuan 27", "on tap doc hieu 2"], topicId: "anh-tuan-27-on-tap-doc-hieu-2" },
+      { keys: ["mock test 1", "tuan 28"], topicId: "anh-tuan-28-mock-test-1" },
+      { keys: ["mock test 2", "tuan 29"], topicId: "anh-tuan-29-mock-test-2" },
+      { keys: ["mock test 3", "tuan 30"], topicId: "anh-tuan-30-mock-test-3" },
+      { keys: ["mock test 4", "tuan 31"], topicId: "anh-tuan-31-mock-test-4" },
+      { keys: ["mock test 5", "tuan 32"], topicId: "anh-tuan-32-mock-test-5" },
+      { keys: ["mock test 6", "tuan 33"], topicId: "anh-tuan-33-mock-test-6" },
+      { keys: ["mock test 7", "tuan 35"], topicId: "anh-tuan-35-mock-test-7" },
+      { keys: ["phonetic", "phat am", "trong am"], topicId: "anh-phonetics" },
+      { keys: ["reading", "doc hieu"], topicId: "anh-reading-comprehension" },
+      { keys: ["communication", "giao tiep"], topicId: "anh-communication" },
+    ];
+
+    for (const rule of engMatches) {
+      if (rule.keys.some((k) => norm.includes(k))) {
+        const found = existingTopics.find((t) => t.id === rule.topicId);
+        if (found) {
+          return { topicId: found.id, topicName: found.name, chapterName: found.chapter, isMatched: true };
+        }
+      }
+    }
+  }
+
   // 1. Chuyên đề 12A / Trí tuệ nhân tạo (Tin học 12)
   if (norm.includes("12a") || norm.includes("tri tue nhan tao") || norm.includes("ai")) {
     const found = existingTopics.find((t) => t.id === "tin-ai-tri-tue-nhan-tao");

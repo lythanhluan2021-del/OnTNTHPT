@@ -1,5 +1,15 @@
 # Tiến trình dự án OnTNTHPT
 
+Cập nhật: 2026-11-05 — Chuẩn hóa Kế hoạch Ôn thi Tốt nghiệp THPT Môn Tiếng Anh 12 (36 tuần, 70 tiết) theo Kế hoạch Tổ Tiếng Anh - Trường THPT Nguyễn Sinh Sắc:
+- **Tích hợp Kế hoạch ôn tập Tiếng Anh 12 vào hệ thống SINO**:
+  - Chuẩn hóa toàn bộ 36 tuần theo 8 chuyên đề trọng tâm bám sát ma trận đề thi tốt nghiệp THPT từ năm 2025 (dạng bài quảng cáo, dạng bài tờ rơi, sắp xếp câu/thư/đoạn, đọc hiểu 1 & 2, mock tests 1–7) vào `weeklyPlan.ts`.
+  - Đồng bộ danh mục Topics trong `sampleBank.ts` khớp 100% với hệ thống mã chuyên đề (`anh-tuan-01-tu-loai` đến `anh-tuan-35-mock-test-7`).
+  - Nâng cấp bộ nhận diện tự động `driveFolderScanner.ts` để quét và bóc tách câu hỏi, đáp án tự động từ thư mục Google Drive môn Tiếng Anh.
+  - Tích hợp nội dung lý thuyết trọng tâm từ vựng/ngữ pháp và 13 quy tắc trật tự từ vào `theoryBank.ts` (trích từ giáo án Tiết 1, 2).
+  - Khởi tạo cây thư mục chuẩn hóa `TIENG_ANH_12_ON_THI_TN` kèm kịch bản `Tao_Cay_Thu_Muc.ps1` và tài liệu hướng dẫn giáo viên `HUONG_DAN_SU_DUNG.md`.
+  - Cập nhật phiên bản cấu trúc lên `2026_GD1_V12_KE_HOACH_TIENG_ANH_THPT_NSS` để tự động làm mới bộ nhớ cache học sinh trên Vercel.
+  - Kiểm thử `npm run build` thành công xuất sắc, sẵn sàng triển khai môi trường Vercel production.
+
 Cập nhật: 2026-10-19 — Hoàn thiện nhận diện thương hiệu **SINO – Ôn thi thông minh, bứt phá điểm số**, chuẩn hóa bản quyền và loại bỏ nhãn EdTech:
 - **Tối ưu nhận diện thương hiệu SINO**:
   - Cập nhật logo vector hiện đại SINO, màu xanh navy và xanh electric công nghệ, biểu tượng chữ S cách điệu kết hợp mũ cử nhân.
