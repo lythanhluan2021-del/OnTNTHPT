@@ -1,5 +1,35 @@
 # Tiến trình dự án OnTNTHPT
 
+Cập nhật: 2026-11-08 — Cập nhật & Làm giàu Bài tập Tuần 3, 4 Tab Môn Tiếng Anh 12 (Tổng 158 câu):
+- **Tab Tiếng Anh 12 - Chuẩn hóa Trọn vẹn Bài tập Tuần 1 – Tuần 4**:
+  - Tuần 1 (`anh-tuan-01-tu-loai`): 39 câu hỏi trắc nghiệm từ loại bóc tách từ file Google Drive `Tiết 1,2.docx`.
+  - Tuần 2 (`anh-tuan-02-trat-tu-tu` - Tiết 3, 4): Chuẩn hóa toàn bộ 43 câu hỏi từ file Google Drive `TIẾT 3,4.docx`, bao gồm cả các câu sắp xếp câu/đoạn văn, trật tự tính từ OSASCOMP, danh từ ghép.
+  - Tuần 3 (`anh-tuan-03-menh-de-quan-he`): Bổ sung lên 30 câu hỏi chuyên sâu (tăng từ 20 lên 30 câu) bao gồm đại từ quan hệ (who, whom, which, whose, that), trạng từ quan hệ (where, when, why), giới từ + đại từ quan hệ (in which, to whom), mệnh đề quan hệ không xác định, và các dạng rút gọn (V-ing, V3/ed, to-V với the first/only/so sánh nhất).
+  - Tuần 4 (`anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu`): Bổ sung lên 30 câu hỏi chuyên sâu (tăng từ 20 lên 30 câu) bao gồm động từ theo sau bởi to-V, động từ theo sau bởi V-ing, động từ giác quan (see/watch/hear + O + Vo), các động từ đổi nghĩa (remember, stop, try, regret, need) và các cụm từ cố định (look forward to V-ing, spend time V-ing).
+  - Toàn bộ câu hỏi đều có đủ 3 tầng gợi ý Socratic (Level 1 Khái niệm, Level 2 Công thức, Level 3 Dẫn dắt bước làm tuyệt đối không lộ đáp án) và lời giải thích ngữ pháp chi tiết.
+- **Đồng bộ Dữ liệu Hệ thống**:
+  - Cập nhật số lượng câu hỏi trong `sampleBank.ts`: Tuần 1: 39, Tuần 2: 43, Tuần 3: 30, Tuần 4: 30.
+  - Cập nhật số lượng mục tiêu học tập trong `weeklyPlan.ts`: Tuần 3: 30 câu, Tuần 4: 30 câu.
+  - Nâng cấp phiên bản cấu trúc dữ liệu `STRUCTURE_VERSION` lên `2026_GD1_V13_TIENG_ANH_TUAN_1_4_FULL` trong `src/app/page.tsx` giúp trình duyệt của học sinh tự động đồng bộ cache mới nhất.
+  - Kiểm thử `npm run build` thành công xuất sắc (exit code 0, 10/10 static routes generated), sẵn sàng deploy.
+
+Cập nhật: 2026-11-07 — Cập nhật toàn diện Ngân hàng Bài tập Tiếng Anh 12 (Tuần 1 – Tuần 4) từ Google Drive & Giáo án Kế hoạch Tổ Tiếng Anh THPT Nguyễn Sinh Sắc:
+- **Tải và Bóc tách Tệp Giáo án `TIẾT 3,4.docx` vừa upload lên Google Drive (Thư mục English)**:
+  - Bóc tách toàn bộ 43 câu hỏi từ tệp `TIẾT 3,4.docx` (gồm 39 câu đục lỗ bài quảng cáo/thông báo kiểm tra trật tự từ, từ loại, tính từ đuôi -ing/-ed + 4 câu sắp xếp câu/đoạn văn chuẩn cấu trúc mới 2025).
+  - Trích xuất 59 mục từ vựng trọng tâm (kèm loại từ, phiên âm IPA chuẩn quốc tế và nghĩa tiếng Việt) từ Bảng từ vựng của tệp vào `theoryBank.ts`.
+  - Tích hợp toàn diện lý thuyết: Trật tự tính từ trước danh từ OSASCOMP, phân biệt tính từ -ing/-ed, cấu trúc danh từ ghép và vị trí Trạng từ + Tính từ + Danh từ.
+- **Nâng cấp Bộ Bóc Tách Tệp Word `docxExtractor.ts` & Nhận Diện Chủ Đề `driveFolderScanner.ts`**:
+  - Bổ sung khả năng nhận diện định dạng đánh dấu đáp án bằng màu Highlight vàng (`<w:highlight w:val="yellow"/>`) bên cạnh gạch chân (`<w:u>`), giúp hệ thống tự động bóc tách đáp án chuẩn xác 100% từ mọi kiểu định dạng Word của giáo viên.
+  - Bổ sung từ khóa nhận diện linh hoạt: `"tiet 1,2"`, `"tiet 3,4"`, `"tiet 5,6"`, `"tiet 7,8"`, `"period 1,2"`, `"period 3,4"`, `"period 5,6"`, `"period 7,8"` tự động ánh xạ vào đúng chuyên đề tuần tương ứng.
+- **Chuẩn hóa Toàn Diện Ngân Hàng Câu Hỏi Môn Tiếng Anh 12 (`questionsEnglish12.ts`)**:
+  - Tuần 1 (`anh-tuan-01-tu-loai`): 39 câu hỏi trắc nghiệm từ loại từ tệp `Tiết 1,2.docx`.
+  - Tuần 2 (`anh-tuan-02-trat-tu-tu`): 43 câu hỏi trắc nghiệm trật tự từ & cụm tính từ từ tệp `TIẾT 3,4.docx`.
+  - Tuần 3 (`anh-tuan-03-menh-de-quan-he`): 20 câu hỏi đại từ quan hệ (who, whom, which, that, whose, where, when, why) và 4 dạng rút gọn mệnh đề quan hệ (V-ing, V3/ed, To-V, Having V3/ed).
+  - Tuần 4 (`anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu`): 20 câu hỏi động từ nguyên mẫu (Vo, To Vo) và danh động từ (V-ing), nhóm động từ đổi nghĩa (remember, forget, stop, regret, try, need).
+  - Tích hợp trực tiếp `ENGLISH_12_QUESTIONS` (138 câu) vào `INITIAL_QUESTIONS` trong `sampleBank.ts`.
+  - Đồng bộ số lượng mục tiêu trong `INITIAL_SUBJECTS` và `weeklyPlan.ts` khớp 100% thực tế (Tuần 1: 39 câu, Tuần 2: 43 câu, Tuần 3: 20 câu, Tuần 4: 20 câu).
+  - Bổ sung lý thuyết trọng tâm Tuần 2, Tuần 3, Tuần 4 vào `theoryBank.ts`.
+
 Cập nhật: 2026-11-05 — Chuẩn hóa Kế hoạch Ôn thi Tốt nghiệp THPT Môn Tiếng Anh 12 (36 tuần, 70 tiết) theo Kế hoạch Tổ Tiếng Anh - Trường THPT Nguyễn Sinh Sắc:
 - **Tích hợp Kế hoạch ôn tập Tiếng Anh 12 vào hệ thống SINO**:
   - Chuẩn hóa toàn bộ 36 tuần theo 8 chuyên đề trọng tâm bám sát ma trận đề thi tốt nghiệp THPT từ năm 2025 (dạng bài quảng cáo, dạng bài tờ rơi, sắp xếp câu/thư/đoạn, đọc hiểu 1 & 2, mock tests 1–7) vào `weeklyPlan.ts`.

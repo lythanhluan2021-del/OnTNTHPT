@@ -132,10 +132,10 @@ function matchFileToExistingTopic(
   // Tiếng Anh 12 - Khớp các chuyên đề theo Kế hoạch 35 tuần THPT Nguyễn Sinh Sắc
   if (subjectId === "tieng-anh-12" || norm.includes("anh") || norm.includes("english")) {
     const engMatches: { keys: string[]; topicId: string }[] = [
-      { keys: ["tuan 1", "tu loai", "word form", "tiet 1"], topicId: "anh-tuan-01-tu-loai" },
-      { keys: ["tuan 2", "trat tu tu", "word order", "cum tinh tu"], topicId: "anh-tuan-02-trat-tu-tu" },
-      { keys: ["tuan 3", "menh de quan he", "dai tu quan he", "rut gon menh de", "relative clause"], topicId: "anh-tuan-03-menh-de-quan-he" },
-      { keys: ["tuan 4", "nguyen mau", "danh dong tu", "gerund", "infinitive", "to vo", "v-ing"], topicId: "anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu" },
+      { keys: ["tuan 1", "tu loai", "word form", "tiet 1", "tiet 2", "tiet 1,2", "period 1,2"], topicId: "anh-tuan-01-tu-loai" },
+      { keys: ["tuan 2", "trat tu tu", "word order", "cum tinh tu", "tiet 3", "tiet 4", "tiet 3,4", "period 3,4"], topicId: "anh-tuan-02-trat-tu-tu" },
+      { keys: ["tuan 3", "menh de quan he", "dai tu quan he", "rut gon menh de", "relative clause", "tiet 5", "tiet 6", "tiet 5,6", "period 5,6"], topicId: "anh-tuan-03-menh-de-quan-he" },
+      { keys: ["tuan 4", "nguyen mau", "danh dong tu", "gerund", "infinitive", "to vo", "v-ing", "tiet 7", "tiet 8", "tiet 7,8", "period 7,8"], topicId: "anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu" },
       { keys: ["tuan 5", "quang cao", "advertisement", "duc lo quang cao"], topicId: "anh-tuan-05-duc-lo-quang-cao" },
       { keys: ["tuan 6", "gioi tu", "preposition"], topicId: "anh-tuan-06-gioi-tu" },
       { keys: ["tuan 7", "cum tu co dinh", "collocation"], topicId: "anh-tuan-07-cum-tu-co-dinh" },

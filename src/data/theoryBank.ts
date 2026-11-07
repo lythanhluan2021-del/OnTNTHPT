@@ -2257,3 +2257,197 @@ TOPIC_THEORY_MAP["anh-tuan-01-tu-loai"] = {
 
 TOPIC_THEORY_MAP["anh-tuan-05-duc-lo-quang-cao"] = TOPIC_THEORY_MAP["anh-tuan-01-tu-loai"];
 TOPIC_THEORY_MAP["anh-tuan-11-tu-vung-truong-nghia"] = TOPIC_THEORY_MAP["anh-tuan-01-tu-loai"];
+TOPIC_THEORY_MAP["anh-tuan-02-trat-tu-tu"] = {
+  subjectId: "tieng-anh-12",
+  subjectName: "Tiếng Anh 12",
+  topicName: "Bài 2: Trật tự từ và Cụm tính từ (Tiết 3, 4) (Tuần 2)",
+  chapterName: "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  docTitle: "TIẾT 3,4.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)",
+  objectives: [
+    "Nắm vững quy tắc trật tự tính từ OSASCOMP: Opinion -> Size -> Colour -> Origin -> Material + Noun.",
+    "Phân biệt chính xác cách dùng tính từ đuôi -ing (bản chất sự việc) và đuôi -ed (cảm xúc người).",
+    "Hiểu rõ cấu trúc danh từ ghép (Compound Nouns) và trật tự Trạng từ + Tính từ + Danh từ.",
+    "Thuộc 59 từ vựng trọng tâm xuất hiện trong đề bài đục lỗ và bài đọc hiểu."
+  ],
+  sections: [
+    {
+      id: "adjective-order-rules",
+      topicId: "anh-tuan-02-trat-tu-tu",
+      title: "1. Trật tự tính từ trước danh từ (OSASCOMP)",
+      icon: "BookOpen",
+      tag: "Trọng tâm",
+      summary: "Quy tắc sắp xếp nhiều tính từ cùng bổ nghĩa cho một danh từ.",
+      keyTerms: ["OSASCOMP", "Opinion", "Size", "Colour", "Origin", "Material"],
+      content: [
+        {
+          heading: "Công thức chuẩn (Trích giáo án Tiết 3, 4)",
+          text: "Opinion (Quan điểm) -> Size (Kích cỡ) -> Colour (Màu sắc) -> Origin (Nguồn gốc) -> Material (Chất liệu) + NOUN\n\nVí dụ minh họa:\n- He bought her an expensive large Vietnamese ring. (expensive: Opinion, large: Size, Vietnamese: Origin, ring: Noun)\n- exciting football match (exciting: Opinion, football: Danh từ bổ nghĩa, match: Danh từ chính)\n- small rescue team (small: Size, rescue team: Danh từ ghép)"
+        }
+      ]
+    },
+    {
+      id: "ing-vs-ed-adjectives",
+      topicId: "anh-tuan-02-trat-tu-tu",
+      title: "2. Phân biệt tính từ đuôi -ing và đuôi -ed",
+      icon: "BookOpen",
+      tag: "Trọng tâm hay nhầm",
+      summary: "Cách phân biệt tính chất bản chất (-ing) và cảm xúc trạng thái (-ed).",
+      keyTerms: ["Tính từ -ing", "Tính từ -ed", "Cảm xúc", "Bản chất"],
+      content: [
+        {
+          heading: "a) Tính từ đuôi -ing",
+          text: "Dùng để diễn tả bản chất, đặc điểm, tính cách của đối tượng (thường là sự vật, sự việc, hiện tượng, hoặc người gây ra cảm xúc đó).\nVí dụ:\n- This book is boring. (Quyển sách này chán)\n- Saving sea turtles is an amazing activity. (Hoạt động tuyệt vời)\n- an embarrassing moment (khoảnh khắc ngượng ngùng)\n- alarming rise (sự gia tăng đáng báo động)"
+        },
+        {
+          heading: "b) Tính từ đuôi -ed",
+          text: "Dùng để diễn tả trạng thái, cảm xúc của đối tượng chịu tác động (thường là người).\nVí dụ:\n- I felt bored. (Tôi cảm thấy buồn chán)\n- Fans were satisfied when their team scored first. (Các cổ động viên cảm thấy hài lòng)\n- Visitors were surprised by how the city changed. (Du khách cảm thấy ngạc nhiên)"
+        }
+      ]
+    },
+    {
+      id: "compound-nouns-and-adv-adj",
+      topicId: "anh-tuan-02-trat-tu-tu",
+      title: "3. Cấu trúc cụm danh từ ghép & Trạng từ bổ nghĩa cho tính từ",
+      icon: "BookOpen",
+      tag: "Quy tắc cốt lõi",
+      summary: "Hai danh từ ghép liền nhau và vị trí của trạng từ đứng trước tính từ.",
+      keyTerms: ["Danh từ ghép", "Noun + Noun", "Adv + Adj"],
+      content: [
+        {
+          heading: "Danh từ ghép (Compound Nouns)",
+          text: "Hai danh từ có thể đi liền với nhau để tạo thành một danh từ ghép. Danh từ thứ nhất đóng vai trò như một tính từ bổ nghĩa cho danh từ thứ hai. Khi dịch nghĩa, cần dịch từ danh từ thứ hai ngược lên.\nVí dụ:\n- plane journey: hành trình trên máy bay\n- sports day: ngày hội thể thao\n- energy network: mạng lưới năng lượng\n- flight attendant: tiếp viên hàng không"
+        },
+        {
+          heading: "Vị trí Trạng từ + Tính từ + Danh từ",
+          text: "Tính từ đứng trước danh từ để bổ nghĩa cho danh từ; Trạng từ đứng trước tính từ để bổ nghĩa cho tính từ.\nVí dụ:\n- an exceptionally talented student (exceptionally: adv, talented: adj, student: noun)\n- really dangerous trip"
+        }
+      ]
+    }
+  ]
+};
+
+TOPIC_THEORY_MAP["anh-tuan-03-menh-de-quan-he"] = {
+  subjectId: "tieng-anh-12",
+  subjectName: "Tiếng Anh 12",
+  topicName: "Bài 3: Đại từ quan hệ & Rút gọn mệnh đề quan hệ (Tuần 3)",
+  chapterName: "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  docTitle: "Kế hoạch Ôn thi TN THPT môn Tiếng Anh 12 - THPT Nguyễn Sinh Sắc",
+  objectives: [
+    "Nhận biết và chọn đúng các đại từ quan hệ (who, whom, which, that, whose) và trạng từ quan hệ (where, when, why).",
+    "Thành thạo các trường hợp không dùng 'that' (mệnh đề có dấu phẩy hoặc đứng sau giới từ).",
+    "Vận dụng thành thạo 4 cách rút gọn mệnh đề quan hệ (V-ing, V3/ed, To-V, Having V3/ed) vào dạng bài đọc đục lỗ."
+  ],
+  sections: [
+    {
+      id: "relative-pronouns-usage",
+      topicId: "anh-tuan-03-menh-de-quan-he",
+      title: "1. Bảng phân loại đại từ & trạng từ quan hệ",
+      icon: "BookOpen",
+      tag: "Trọng tâm",
+      summary: "Chức năng của từng đại từ và trạng từ quan hệ trong câu.",
+      keyTerms: ["Who", "Whom", "Which", "That", "Whose", "Where", "When"],
+      content: [
+        {
+          heading: "Đại từ quan hệ",
+          text: "- WHO: thay thế cho danh từ chỉ người, làm chủ ngữ hoặc tân ngữ (The girl who lives next door).\n- WHOM: thay thế cho danh từ chỉ người, làm tân ngữ (The man whom I met yesterday).\n- WHICH: thay thế cho danh từ chỉ vật (hoặc thay thế cho cả mệnh đề đứng trước khi có dấu phẩy).\n- THAT: thay thế cho cả người lẫn vật trong mệnh đề xác định (Lưu ý: KHÔNG dùng 'that' sau dấu phẩy và sau giới từ).\n- WHOSE: chỉ sở hữu cho người hoặc vật (whose + Noun: The boy whose bike was stolen)."
+        },
+        {
+          heading: "Trạng từ quan hệ",
+          text: "- WHERE (= in/at which): chỉ nơi chốn (The hotel where we stayed).\n- WHEN (= on/in/at which): chỉ thời gian (The day when we first met).\n- WHY (= for which): chỉ lý do sau 'the reason'."
+        }
+      ]
+    },
+    {
+      id: "reduced-relative-clauses",
+      topicId: "anh-tuan-03-menh-de-quan-he",
+      title: "2. 4 Cách rút gọn mệnh đề quan hệ (Cực kỳ quan trọng trong đề thi mới)",
+      icon: "BookOpen",
+      tag: "Bẫy điểm cao",
+      summary: "Phương pháp nhận diện và rút gọn mệnh đề quan hệ dạng chủ động, bị động, to-V và hoàn thành.",
+      keyTerms: ["V-ing", "V3/ed", "To-infinitive", "Having + V3/ed"],
+      content: [
+        {
+          heading: "1. Rút gọn bằng V-ing (Chủ động)",
+          text: "Khi mệnh đề quan hệ mang nghĩa chủ động, lược bỏ đại từ quan hệ và trợ động từ, chuyển động từ chính về dạng V-ing.\nVí dụ: The man who is standing there -> The man standing there."
+        },
+        {
+          heading: "2. Rút gọn bằng V3/ed (Bị động)",
+          text: "Khi mệnh đề quan hệ mang nghĩa bị động, lược bỏ đại từ quan hệ và to be, giữ lại quá khứ phân từ V3/ed.\nVí dụ: The bridge which was built in 2020 -> The bridge built in 2020."
+        },
+        {
+          heading: "3. Rút gọn bằng To-V (Sau từ chỉ thứ tự & so sánh nhất)",
+          text: "Khi danh từ đứng trước có các từ hạn định: the first, the second, the last, the only, hoặc cấp so sánh nhất.\nVí dụ: Neil Armstrong was the first person who walked on the Moon -> Neil Armstrong was the first person to walk on the Moon."
+        },
+        {
+          heading: "4. Rút gọn bằng Phân từ hoàn thành (Having + V3/ed)",
+          text: "Khi hành động trong mệnh đề rút gọn xảy ra và hoàn thành trước hành động trong mệnh đề chính.\nVí dụ: Students having completed all requirements will graduate."
+        }
+      ]
+    }
+  ]
+};
+
+TOPIC_THEORY_MAP["anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu"] = {
+  subjectId: "tieng-anh-12",
+  subjectName: "Tiếng Anh 12",
+  topicName: "Bài 4: Động từ nguyên mẫu (Vo/To Vo) & Danh động từ (V-ing) (Tuần 4)",
+  chapterName: "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  docTitle: "Kế hoạch Ôn thi TN THPT môn Tiếng Anh 12 - THPT Nguyễn Sinh Sắc",
+  objectives: [
+    "Nhận biết và phân loại các nhóm động từ theo sau là To-V, V-ing, hoặc Bare-Vo.",
+    "Nắm chắc các động từ thay đổi nghĩa khi đi với To-V vs V-ing (remember, forget, stop, try, regret, need).",
+    "Vận dụng quy tắc giới từ + V-ing và các cụm thành ngữ đặc biệt (look forward to, be used to, can't help, it's no use)."
+  ],
+  sections: [
+    {
+      id: "verbs-followed-by-to-v-and-v-ing",
+      topicId: "anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu",
+      title: "1. Nhóm động từ đi với To-V và V-ing",
+      icon: "BookOpen",
+      tag: "Trọng tâm",
+      summary: "Bảng tổng hợp các động từ phổ biến nhất trong đề thi tốt nghiệp.",
+      keyTerms: ["V + To-V", "V + V-ing", "Bare Infinitive"],
+      content: [
+        {
+          heading: "Động từ theo sau là TO-V (Infinitive with to)",
+          text: "want, decide, hope, promise, agree, refuse, manage, afford, tend, plan, offer, aim, threaten, choose, hesitate...\nVí dụ: They decided to launch a coastal cleanup campaign."
+        },
+        {
+          heading: "Động từ theo sau là V-ING (Gerund)",
+          text: "enjoy, avoid, practice, suggest, mind, consider, postpone, admit, deny, finish, keep, risk, spend (time)...\nVí dụ: We should practice leaving digital devices outside the bedroom."
+        },
+        {
+          heading: "Động từ đi với BARE-VO (Nguyên mẫu không to)",
+          text: "make + O + Vo, let + O + Vo, help + O + (to) Vo, can/could/will/would/should/must + Vo.\nVí dụ: The loud noise made everyone scream in panic."
+        }
+      ]
+    },
+    {
+      id: "verbs-with-meaning-change",
+      topicId: "anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu",
+      title: "2. Các động từ thay đổi nghĩa khi đi với To-V vs V-ing",
+      icon: "BookOpen",
+      tag: "Bẫy đề thi",
+      summary: "6 cặp động từ quan trọng thay đổi ngữ nghĩa hoàn toàn giữa việc chưa làm và việc đã làm.",
+      keyTerms: ["Remember", "Forget", "Stop", "Try", "Regret", "Need"],
+      content: [
+        {
+          heading: "1. Remember / Forget",
+          text: "- remember/forget + To-V: nhớ/quên phải làm gì (việc chưa làm, bổn phận)\n- remember/forget + V-ing: nhớ/quên đã làm gì (việc đã xảy ra trong quá khứ)\nVí dụ: Remember to lock the door (Hãy nhớ khóa cửa) vs I remember locking the door (Tôi nhớ là đã khóa rồi)."
+        },
+        {
+          heading: "2. Stop",
+          text: "- stop + To-V: dừng lại để làm việc khác (mục đích)\n- stop + V-ing: dừng hẳn, từ bỏ hành động đang làm\nVí dụ: We stopped to have lunch (dừng lại để ăn trưa) vs He stopped smoking (ông ấy đã bỏ hút thuốc)."
+        },
+        {
+          heading: "3. Regret",
+          text: "- regret + To-V: lấy làm tiếc phải thông báo điều gì (thường dùng trong văn thư trang trọng: regret to inform/say)\n- regret + V-ing: hối hận vì đã làm điều gì trong quá khứ."
+        },
+        {
+          heading: "4. Need",
+          text: "- need + To-V: chủ động, chủ ngữ là người (I need to study)\n- need + V-ing (= need to be V3): bị động, chủ ngữ là vật (The car needs washing = needs to be washed)."
+        }
+      ]
+    }
+  ]
+};

@@ -40,7 +40,8 @@ export function extractDocxTextFromBuffer(buffer: Buffer): string {
           if (xml) {
             const processedXml = xml.replace(/<w:r\b[\s\S]*?<\/w:r>/g, (run) => {
               const isUnderline =
-                /<w:u\b/i.test(run) && !/<w:u\b[^>]*\bval="none"/i.test(run);
+                (/<w:u\b/i.test(run) && !/<w:u\b[^>]*\bval="none"/i.test(run)) ||
+                (/<w:highlight\b/i.test(run) && !/<w:highlight\b[^>]*\bval="none"/i.test(run));
               const isSuperscript = /vertAlign\b[^>]*\bval="superscript"/i.test(run);
               const isSubscript = /vertAlign\b[^>]*\bval="subscript"/i.test(run);
               const textMatch = run.match(/<w:t[^>]*>([\s\S]*?)<\/w:t>/g);
