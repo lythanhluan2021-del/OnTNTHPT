@@ -1377,6 +1377,402 @@ export const ENGLISH_12_QUESTIONS: Question[] = [
     explanation: "Tr\u01b0\u1edbc danh t\u1eeb 'activity' c\u1ea7n m\u1ed9t t\u00ednh t\u1eeb b\u1ed5 ngh\u0129a mang \u00fd ngh\u0129a b\u1ea3n ch\u1ea5t s\u1ef1 vi\u1ec7c ('ho\u1ea1t \u0111\u1ed9ng k\u1ef3 di\u1ec7u/tuy\u1ec7t v\u1eddi'). T\u00ednh t\u1eeb 'amazing' (-ing) di\u1ec5n t\u1ea3 t\u00ednh ch\u1ea5t c\u1ee7a ho\u1ea1t \u0111\u1ed9ng, trong khi 'amazed' (-ed) di\u1ec5n t\u1ea3 c\u1ea3m x\u00fac c\u1ee7a con ng\u01b0\u1eddi. Do \u0111\u00f3 \u0111\u00e1p \u00e1n \u0111\u00fang l\u00e0 B.",
     sourceDocTitle: "TI\u1ebeT 3,4.docx (T\u1ed5 Ti\u1ebfng Anh - THPT Nguy\u1ec5n Sinh S\u1eafc)",
   },
+{
+  "id": "Q-ENG-T01-40",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "The municipal council decided to renovate the historic city museum _______ so as to preserve its architectural beauty.\n\nMark the letter A, B, C, or D to indicate the correct word form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "beautiful"
+    },
+    {
+      "id": "B",
+      "content": "beautifully"
+    },
+    {
+      "id": "C",
+      "content": "beauty"
+    },
+    {
+      "id": "D",
+      "content": "beautify"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Vị trí của trạng từ chỉ thể cách (Adverb of manner): đứng sau tân ngữ để bổ nghĩa cho động từ hành động trước đó.",
+    "level2_formula": "Cấu trúc: S + V + O + Adv. Động từ 'renovate' đi kèm tân ngữ 'the historic city museum', theo sau cần một trạng từ.",
+    "level3_steps": "Xét 4 phương án: beautiful (Adj), beautifully (Adv), beauty (Noun), beautify (Verb). Chọn trạng từ 'beautifully'. Đáp án B."
+  },
+  "explanation": "Quy tắc vị trí từ loại:\n- 'renovate' là ngoại động từ đã có tân ngữ là 'the historic city museum'.\n- Để bổ nghĩa cho hành động 'renovate' (trùng tu một cách đẹp đẽ), ta cần một trạng từ chỉ thể cách (Adv) kết thúc bằng đuôi '-ly'.\n=> Đáp án đúng là B (beautifully).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-41",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Thanks to thorough preparation, the candidate answered all the interview questions without any _______.\n\nMark the letter A, B, C, or D to indicate the correct word form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "difficulty"
+    },
+    {
+      "id": "B",
+      "content": "difficult"
+    },
+    {
+      "id": "C",
+      "content": "difficultly"
+    },
+    {
+      "id": "D",
+      "content": "difficulte"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Từ loại đứng sau giới từ (without) và lượng từ (any).",
+    "level2_formula": "Giới từ + (lượng từ) + Danh từ (Noun): 'without any + Noun'.",
+    "level3_steps": "Xét 4 phương án: difficulty (Noun), difficult (Adj). Danh từ tương ứng là 'difficulty'. Đáp án A."
+  },
+  "explanation": "Quy tắc từ loại sau giới từ:\n- Sau giới từ 'without' và từ hạn định 'any', ta cần một danh từ (Noun).\n- 'difficulty' (Noun: sự khó khăn) có đuôi danh từ '-ty'.\n- Cụm từ: without any difficulty = một cách dễ dàng, không gặp khó khăn nào.\n=> Đáp án đúng là A (difficulty).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-42",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "This freshly brewed lotus tea tastes _______ and helps relax the mind after hours of hard study.\n\nMark the letter A, B, C, or D to indicate the correct word form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "wonder"
+    },
+    {
+      "id": "B",
+      "content": "wonderfully"
+    },
+    {
+      "id": "C",
+      "content": "wonderful"
+    },
+    {
+      "id": "D",
+      "content": "wondered"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Từ loại đứng sau động từ nối chỉ tri giác (Linking verbs: taste, smell, look, feel, sound, seem).",
+    "level2_formula": "Cấu trúc: S + Linking Verb (taste/smell/look) + Adjective (không dùng trạng từ).",
+    "level3_steps": "'taste' là động từ nối -> sau nó cần tính từ (Adj). 'wonderful' có đuôi tính từ '-ful'. Đáp án C."
+  },
+  "explanation": "Quy tắc từ loại sau động từ nối (Linking Verbs):\n- 'taste' (có vị) là động từ nối, theo sau bắt buộc là một Tính từ (Adjective) để mô tả tính chất của chủ ngữ 'lotus tea'.\n- 'wonderful' (tuyệt vời) là tính từ có hậu tố '-ful'.\n=> Đáp án đúng là C (wonderful).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-43",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "It is strictly _______ to hunt rare wild animals inside protected national conservation parks.\n\nMark the letter A, B, C, or D to indicate the correct word form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "legal"
+    },
+    {
+      "id": "B",
+      "content": "illegal"
+    },
+    {
+      "id": "C",
+      "content": "legally"
+    },
+    {
+      "id": "D",
+      "content": "illegally"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Cấu trúc giả định: It + to be + (Adv) + Adj + to Vo. Lưu ý tiền tố phủ định 'il-'.",
+    "level2_formula": "It is strictly + Adjective + to Vo. Săn bắn thú quý hiếm trong rừng cấm là hành vi 'bất hợp pháp'.",
+    "level3_steps": "Cần tính từ mang nghĩa tiêu cực/bất hợp pháp: 'illegal' (legal = hợp pháp, illegal = bất hợp pháp). Đáp án B."
+  },
+  "explanation": "Quy tắc kết hợp từ loại và tiền tố trái nghĩa:\n- Cấu trúc: 'It is + Adv + Adj + to do sth' -> cần một tính từ.\n- Xét ngữ cảnh: săn bắt động vật quý hiếm trong khu bảo tồn là hành vi phạm pháp, do đó dùng tính từ có tiền tố 'il-' phủ định là 'illegal' (bất hợp pháp).\n=> Đáp án đúng là B (illegal).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-44",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Wind and solar power are considered clean and _______ energy sources for our planet's future.\n\nMark the letter A, B, C, or D to indicate the correct word form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "rely"
+    },
+    {
+      "id": "B",
+      "content": "reliable"
+    },
+    {
+      "id": "C",
+      "content": "reliance"
+    },
+    {
+      "id": "D",
+      "content": "reliably"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Cấu trúc song hành với liên từ 'and': Tính từ + and + Tính từ + Danh từ.",
+    "level2_formula": "Từ đứng trước là tính từ 'clean' -> từ nối sau 'and' bổ nghĩa cho 'energy sources' cũng phải là Tính từ (Adj).",
+    "level3_steps": "Đuôi '-able' là hậu tố tính từ: 'reliable' (đáng tin cậy, ổn định). Đáp án B."
+  },
+  "explanation": "Cấu trúc song hành và vị trí tính từ:\n- Trước danh từ 'energy sources', ta có liên từ 'and' nối tính từ 'clean' với chỗ trống -> từ cần điền phải là một tính từ (Adjective).\n- 'reliable' (đáng tin cậy) là tính từ có hậu tố '-able'.\n=> Đáp án đúng là B (reliable).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-45",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "The famous floating market in Mekong Delta attracts thousands of foreign _______ every single week.\n\nMark the letter A, B, C, or D to indicate the correct word form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "visit"
+    },
+    {
+      "id": "B",
+      "content": "visitors"
+    },
+    {
+      "id": "C",
+      "content": "visitations"
+    },
+    {
+      "id": "D",
+      "content": "visiting"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Phân biệt danh từ chỉ người và danh từ chỉ sự vật/hành động.",
+    "level2_formula": "attract + thousands of + [Tính từ] + [Danh từ số nhiều chỉ người]: visitors (du khách).",
+    "level3_steps": "Chợ nổi thu hút hàng nghìn 'khách du lịch nước ngoài' -> Danh từ số nhiều chỉ người có đuôi '-or': 'visitors'. Đáp án B."
+  },
+  "explanation": "Quy tắc từ loại danh từ chỉ người:\n- Cụm 'thousands of foreign...' cần một danh từ đếm được số nhiều đóng vai trò tân ngữ cho 'attracts'.\n- Đuôi '-or' là hậu tố danh từ chỉ người (visitor: du khách). Dạng số nhiều là 'visitors'.\n=> Đáp án đúng là B (visitors).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-46",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "The school digital e-library is _______ convenient for learners who reside far away from the town center.\n\nMark the letter A, B, C, or D to indicate the correct word form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "extreme"
+    },
+    {
+      "id": "B",
+      "content": "extremely"
+    },
+    {
+      "id": "C",
+      "content": "extremity"
+    },
+    {
+      "id": "D",
+      "content": "extremeness"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Vị trí của trạng từ chỉ mức độ (Adverb of degree): đứng trước tính từ để bổ nghĩa cho tính từ đó.",
+    "level2_formula": "Cấu trúc: to be + Adv + Adj. Chỗ trống đứng trước tính từ 'convenient'.",
+    "level3_steps": "Bổ nghĩa cho tính từ 'convenient' là trạng từ có đuôi '-ly': 'extremely'. Đáp án B."
+  },
+  "explanation": "Quy tắc trạng từ bổ nghĩa cho tính từ:\n- 'convenient' là tính từ. Để chỉ mức độ 'vô cùng tiện lợi', ta dùng trạng từ chỉ mức độ đứng ngay trước tính từ.\n- 'extremely' (cực kỳ, vô cùng) là trạng từ có đuôi '-ly'.\n=> Đáp án đúng là B (extremely).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-47",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Many technical colleges provide high school graduates with practical _______ training courses in information technology.\n\nMark the letter A, B, C, or D to indicate the correct word form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "vocation"
+    },
+    {
+      "id": "B",
+      "content": "vocational"
+    },
+    {
+      "id": "C",
+      "content": "vocationally"
+    },
+    {
+      "id": "D",
+      "content": "vocations"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Vị trí tính từ đứng trước cụm danh từ để bổ nghĩa: Adj + Noun phrase.",
+    "level2_formula": "Cụm danh từ: practical + [Tính từ đuôi -al] + training courses (các khóa đào tạo nghề nghiệp thực tiễn).",
+    "level3_steps": "'vocational' (thuộc về hướng nghiệp/nghề nghiệp) là tính từ có hậu tố '-al'. Đáp án B."
+  },
+  "explanation": "Quy tắc cấu tạo tính từ từ danh từ:\n- 'vocation' (nghề nghiệp) -> thêm hậu tố '-al' tạo thành tính từ 'vocational' (thuộc về nghề nghiệp).\n- Cụm 'vocational training courses' = các khóa học đào tạo nghề.\n=> Đáp án đúng là B (vocational).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-48",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Cultivating the habit of daily reading helps _______ your English vocabulary and general worldview.\n\nMark the letter A, B, C, or D to indicate the correct word form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "broad"
+    },
+    {
+      "id": "B",
+      "content": "broaden"
+    },
+    {
+      "id": "C",
+      "content": "broadly"
+    },
+    {
+      "id": "D",
+      "content": "breadth"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Vị trí động từ sau cấu trúc 'help (to) Vo'. Hậu tố tạo động từ '-en'.",
+    "level2_formula": "Cấu trúc: help + Vo (hoặc help to Vo). Từ cần điền là Động từ nguyên mẫu.",
+    "level3_steps": "broad (Adj: rộng) -> broaden (Verb: mở rộng). Đuôi '-en' là hậu tố động từ. Đáp án B."
+  },
+  "explanation": "Quy tắc cấu tạo động từ với hậu tố '-en':\n- Sau 'helps' ta cần một động từ nguyên mẫu không to (Vo).\n- Tính từ 'broad' (rộng lớn) khi kết hợp hậu tố '-en' trở thành động từ 'broaden' (mở rộng, nâng cao).\n=> Đáp án đúng là B (broaden).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-49",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Read the school environmental campaign announcement:\n\n*JOIN OUR GREEN CAMPUS PROJECT*\nOur school environment committee invites all students to join hands in sorting plastic trash and creating a clean and (1) _______ educational environment for future generations.\n\nMark the letter A, B, C or D to choose the correct answer for blank (1):",
+  "options": [
+    {
+      "id": "A",
+      "content": "sustainability"
+    },
+    {
+      "id": "B",
+      "content": "sustainable"
+    },
+    {
+      "id": "C",
+      "content": "sustainably"
+    },
+    {
+      "id": "D",
+      "content": "sustain"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Cấu trúc bài đục lỗ quảng cáo: xác định từ loại đi kèm liên từ 'and' trước danh từ.",
+    "level2_formula": "a clean (Adj) and [Tính từ đuôi -able] educational environment (Noun phrase).",
+    "level3_steps": "sustainable (Adj: bền vững) có hậu tố '-able' tương thích cấu trúc song hành với 'clean'. Đáp án B."
+  },
+  "explanation": "Dạng bài đục lỗ quảng cáo (Word Form):\n- Trước chỗ trống có tính từ 'clean' và liên từ đẳng lập 'and' -> chỗ trống bắt buộc là một Tính từ (Adjective) cùng bổ nghĩa cho cụm danh từ 'educational environment'.\n- 'sustainable' (bền vững, thân thiện môi trường) là tính từ mang hậu tố '-able'.\n=> Phương án B là đáp án chính xác.",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T01-50",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-01-tu-loai",
+  "topicName": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Read the flyer about Future Career Workshop 2026:\n\nYoung job seekers with excellent communication skills and high English (1) _______ are guaranteed to stand out during corporate interview sessions.\n\nMark the letter A, B, C or D to choose the correct word form for blank (1):",
+  "options": [
+    {
+      "id": "A",
+      "content": "proficient"
+    },
+    {
+      "id": "B",
+      "content": "proficiency"
+    },
+    {
+      "id": "C",
+      "content": "proficiently"
+    },
+    {
+      "id": "D",
+      "content": "proficience"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Dạng bài đục lỗ tờ rơi: Cụm danh từ ghép 'high English + Noun'.",
+    "level2_formula": "high (Adj) + English (Noun/Adj) + [Danh từ chỉ năng lực/trình độ].",
+    "level3_steps": "Hậu tố danh từ '-cy': 'proficiency' (sự thành thạo, năng lực). Cụm từ: English proficiency (trình độ tiếng Anh). Đáp án B."
+  },
+  "explanation": "Dạng bài đục lỗ tờ rơi (Word Form):\n- Chỗ trống đứng sau tính từ 'high' và từ bổ nghĩa 'English', đóng vai trò là danh từ chính của cụm danh từ làm tân ngữ sau giới từ 'with'.\n- 'proficiency' (sự thông thạo, trình độ giỏi) là danh từ có đuôi '-cy'. Cụm 'English proficiency' là collocations chuẩn chỉ năng lực tiếng Anh.\n=> Đáp án đúng là B (proficiency).",
+  "sourceDocTitle": "Tiết 1,2.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
   {
     id: "Q-ENG-T02-02",
     subjectId: "tieng-anh-12",
@@ -2414,6 +2810,258 @@ export const ENGLISH_12_QUESTIONS: Question[] = [
     explanation: "Danh t\u1eeb \u0111\u1ee9ng tr\u01b0\u1edbc l\u00e0 'young volunteers' (ng\u01b0\u1eddi), v\u1ecb tr\u00ed sau ch\u1ed7 tr\u1ed1ng l\u00e0 \u0111\u1ed9ng t\u1eeb 'care deeply' (c\u1ea7n ch\u1ee7 ng\u1eef) => D\u00f9ng \u0111\u1ea1i t\u1eeb quan h\u1ec7 'who'.",
     sourceDocTitle: "K\u1ebf ho\u1ea1ch \u00d4n thi TN THPT m\u00f4n Ti\u1ebfng Anh 12 (Tu\u1ea7n 3 - M\u1ec7nh \u0111\u1ec1 quan h\u1ec7)",
   },
+{
+  "id": "Q-ENG-T02-44",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-02-trat-tu-tu",
+  "topicName": "Tuần 2: Trật tự từ và Cụm tính từ (Tiết 3, 4)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "For her graduation ceremony, Mai wore a _______ dress designed by a famous Vietnamese tailor.\n\nMark the letter A, B, C, or D to indicate the correct adjective order:",
+  "options": [
+    {
+      "id": "A",
+      "content": "silk beautiful traditional"
+    },
+    {
+      "id": "B",
+      "content": "traditional beautiful silk"
+    },
+    {
+      "id": "C",
+      "content": "beautiful traditional silk"
+    },
+    {
+      "id": "D",
+      "content": "beautiful silk traditional"
+    }
+  ],
+  "correctAnswer": "C",
+  "hints": {
+    "level1_concept": "Quy tắc trật tự tính từ trước danh từ OSASCOMP.",
+    "level2_formula": "Opinion (beautiful) -> Origin/Style (traditional) -> Material (silk) + Noun (dress).",
+    "level3_steps": "beautiful (quan điểm) đứng đầu -> traditional (phong cách/nguồn gốc) đứng tiếp -> silk (chất liệu lụa) đứng sát danh từ. Đáp án C."
+  },
+  "explanation": "Quy tắc sắp xếp trật tự tính từ OSASCOMP:\n- beautiful: tính từ chỉ quan điểm/nhận xét (Opinion) -> đứng đầu.\n- traditional: tính từ chỉ phong cách/nguồn gốc (Origin/Style) -> đứng giữa.\n- silk: danh từ chỉ chất liệu (Material) làm tính từ bổ nghĩa -> đứng sát danh từ 'dress'.\n=> Trật tự chuẩn: beautiful traditional silk dress. Đáp án đúng là C.",
+  "sourceDocTitle": "TIẾT 3,4.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T02-45",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-02-trat-tu-tu",
+  "topicName": "Tuần 2: Trật tự từ và Cụm tính từ (Tiết 3, 4)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "The tourists enjoyed staying in a _______ villa overlooking the pine forest during their trip to Da Lat.\n\nMark the letter A, B, C, or D to indicate the correct order of adjectives:",
+  "options": [
+    {
+      "id": "A",
+      "content": "luxurious French wooden"
+    },
+    {
+      "id": "B",
+      "content": "French luxurious wooden"
+    },
+    {
+      "id": "C",
+      "content": "wooden French luxurious"
+    },
+    {
+      "id": "D",
+      "content": "luxurious wooden French"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Quy tắc OSASCOMP: Opinion -> Origin -> Material.",
+    "level2_formula": "luxurious (Opinion: sang trọng) -> French (Origin: gốc Pháp) -> wooden (Material: bằng gỗ) + Noun (villa).",
+    "level3_steps": "luxurious đứng đầu -> French đứng thứ hai -> wooden đứng sát danh từ villa. Đáp án A."
+  },
+  "explanation": "Quy tắc trật tự tính từ OSASCOMP:\n- luxurious: Opinion (đánh giá, quan điểm) -> đứng đầu.\n- French: Origin (nguồn gốc xuất xứ) -> đứng thứ hai.\n- wooden: Material (chất liệu) -> đứng cuối cùng ngay trước danh từ 'villa'.\n=> Trật tự chuẩn: luxurious French wooden villa. Đáp án đúng là A.",
+  "sourceDocTitle": "TIẾT 3,4.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T02-46",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-02-trat-tu-tu",
+  "topicName": "Tuần 2: Trật tự từ và Cụm tính từ (Tiết 3, 4)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "The nature documentary about wildlife in Tram Chim National Park was so _______ that we watched it twice.\n\nMark the letter A, B, C, or D to indicate the correct adjective form:",
+  "options": [
+    {
+      "id": "A",
+      "content": "fascinated"
+    },
+    {
+      "id": "B",
+      "content": "fascinating"
+    },
+    {
+      "id": "C",
+      "content": "fascination"
+    },
+    {
+      "id": "D",
+      "content": "fascinate"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Phân biệt tính từ đuôi -ing (bản chất sự vật) và tính từ đuôi -ed (cảm xúc con người).",
+    "level2_formula": "Chủ ngữ là sự vật/sự việc 'The nature documentary' -> Dùng tính từ đuôi -ing mang nghĩa 'có tính chất lôi cuốn'.",
+    "level3_steps": "documentary là vật có bản chất cuốn hút -> Dùng 'fascinating'. Đáp án B."
+  },
+  "explanation": "Quy tắc phân biệt tính từ đuôi -ing và -ed (trích giáo án Tiết 3, 4):\n- Tính từ đuôi -ing: diễn tả bản chất, đặc điểm của đối tượng (sự vật/hiện tượng).\n- Tính từ đuôi -ed: diễn tả cảm xúc, tâm trạng do tác động từ bên ngoài (con người).\n- Chủ ngữ 'The nature documentary' (bộ phim tài liệu) là sự vật, có đặc tính hấp dẫn -> chọn 'fascinating'.\n=> Đáp án đúng là B.",
+  "sourceDocTitle": "TIẾT 3,4.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T02-47",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-02-trat-tu-tu",
+  "topicName": "Tuần 2: Trật tự từ và Cụm tính từ (Tiết 3, 4)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "To ensure comfortable learning conditions, our school has installed a modern _______ system in all exam rooms.\n\nMark the letter A, B, C, or D to indicate the correct compound noun order:",
+  "options": [
+    {
+      "id": "A",
+      "content": "conditioning air"
+    },
+    {
+      "id": "B",
+      "content": "air conditioning"
+    },
+    {
+      "id": "C",
+      "content": "air conditioned"
+    },
+    {
+      "id": "D",
+      "content": "conditioned air"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Trật tự cụm danh từ ghép (Compound Noun): Noun + Noun.",
+    "level2_formula": "Cụm danh từ ghép cố định: 'air conditioning system' (hệ thống điều hòa không khí).",
+    "level3_steps": "'air' bổ nghĩa cho 'conditioning' tạo thành danh từ ghép 'air conditioning'. Đáp án B."
+  },
+  "explanation": "Quy tắc danh từ ghép (Compound Nouns - Tiết 3, 4):\n- Danh từ ghép cố định trong tiếng Anh: 'air conditioning' (máy lạnh / điều hòa không khí).\n- Khi kết hợp với 'system' tạo thành cụm danh từ: 'air conditioning system' (hệ thống điều hòa).\n=> Đáp án đúng là B (air conditioning).",
+  "sourceDocTitle": "TIẾT 3,4.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T02-48",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-02-trat-tu-tu",
+  "topicName": "Tuần 2: Trật tự từ và Cụm tính từ (Tiết 3, 4)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Teacher Nguyen is a _______ educator who has spent thirty years mentoring generations of gifted students.\n\nMark the letter A, B, C, or D to indicate the correct word order:",
+  "options": [
+    {
+      "id": "A",
+      "content": "dedicated highly"
+    },
+    {
+      "id": "B",
+      "content": "highly dedicated"
+    },
+    {
+      "id": "C",
+      "content": "dedicated high"
+    },
+    {
+      "id": "D",
+      "content": "high dedication"
+    }
+  ],
+  "correctAnswer": "B",
+  "hints": {
+    "level1_concept": "Trật tự cụm: Trạng từ chỉ mức độ (Adv) + Tính từ (Adj) + Danh từ (Noun).",
+    "level2_formula": "Cấu trúc chuẩn: a/an + Adv (highly) + Adj (dedicated) + Noun (educator).",
+    "level3_steps": "highly (Adv) đứng trước tính từ dedicated để bổ nghĩa cho tính từ đó. Đáp án B."
+  },
+  "explanation": "Trật tự từ trong cụm tính từ - danh từ (Tiết 3, 4):\n- Trạng từ chỉ mức độ (Adv) đứng ngay trước tính từ (Adj) mà nó bổ nghĩa, sau đó tới danh từ (Noun).\n- Cấu trúc: a + highly (Adv) + dedicated (Adj) + educator (Noun) = một nhà giáo vô cùng tận tụy.\n=> Đáp án đúng là B (highly dedicated).",
+  "sourceDocTitle": "TIẾT 3,4.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T02-49",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-02-trat-tu-tu",
+  "topicName": "Tuần 2: Trật tự từ và Cụm tính từ (Tiết 3, 4)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "ThongHieu",
+  "type": "multiple_choice",
+  "content": "Mark the letter A, B, C or D to indicate the best arrangement of sentences to make a meaningful announcement for the Photography Exhibition:\n\na. First, all entries must be submitted to the art club by this Friday.\nb. The Youth Club is pleased to announce our annual Photography Exhibition.\nc. Finally, selected photographs will be displayed in the school lobby next Monday.\nd. All students are warmly invited to share their best campus life moments.",
+  "options": [
+    {
+      "id": "A",
+      "content": "b - d - a - c"
+    },
+    {
+      "id": "B",
+      "content": "b - a - d - c"
+    },
+    {
+      "id": "C",
+      "content": "a - b - d - c"
+    },
+    {
+      "id": "D",
+      "content": "d - b - a - c"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Trình tự mạch lạc của một thông báo sự kiện học đường: Giới thiệu sự kiện -> Lời mời tham gia -> Hướng dẫn bước nộp bài -> Lịch trưng bày kết thúc.",
+    "level2_formula": "Mở đầu: (b) Thông báo sự kiện -> (d) Mời học sinh -> (a) Hướng dẫn bước 1 ('First') -> (c) Kết quả/bước cuối ('Finally').",
+    "level3_steps": "Trật tự logic: b - d - a - c. Đáp án A."
+  },
+  "explanation": "Trình tự sắp xếp văn bản thông báo (dạng bài sắp xếp câu chuẩn 2025):\n- (b) Câu mở đầu nêu mục đích thông báo: 'The Youth Club is pleased to announce...'\n- (d) Lời kêu gọi học sinh tham gia: 'All students are warmly invited...'\n- (a) Mốc thời gian nộp bài đầu tiên ('First'): 'First, all entries must be submitted...'\n- (c) Mốc kết thúc trưng bày ('Finally'): 'Finally, selected photographs will be displayed...'\n=> Trật tự đúng là: b - d - a - c (Đáp án A).",
+  "sourceDocTitle": "TIẾT 3,4.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
+{
+  "id": "Q-ENG-T02-50",
+  "subjectId": "tieng-anh-12",
+  "topicId": "anh-tuan-02-trat-tu-tu",
+  "topicName": "Tuần 2: Trật tự từ và Cụm tính từ (Tiết 3, 4)",
+  "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  "difficulty": "NhanBiet",
+  "type": "multiple_choice",
+  "content": "Mark the letter A, B, C or D to indicate the best arrangement of utterances to make a meaningful conversation in the library:\n\na. Librarian: Go straight ahead, then turn left at the reference desk. The IELTS books are on shelf number 4.\nb. Nam: Excuse me, could you show me where the English preparation books are?\nc. Nam: Thank you very much for your helpful guidance, ma'am!",
+  "options": [
+    {
+      "id": "A",
+      "content": "b - a - c"
+    },
+    {
+      "id": "B",
+      "content": "a - b - c"
+    },
+    {
+      "id": "C",
+      "content": "c - b - a"
+    },
+    {
+      "id": "D",
+      "content": "b - c - a"
+    }
+  ],
+  "correctAnswer": "A",
+  "hints": {
+    "level1_concept": "Trật tự hội thoại giao tiếp lịch sự: Hỏi thông tin lịch sự -> Chỉ dẫn -> Cảm ơn.",
+    "level2_formula": "(b) Excuse me (hỏi) -> (a) Chỉ đường -> (c) Thank you (cảm ơn).",
+    "level3_steps": "Trật tự tự nhiên của đoạn hội thoại: b - a - c. Đáp án A."
+  },
+  "explanation": "Trật tự logic của hội thoại giao tiếp:\n1. (b) Nam bắt đầu bằng lời chào lịch sự và hỏi vị trí sách: 'Excuse me, could you show me...'\n2. (a) Thủ thư nhiệt tình chỉ dẫn: 'Go straight ahead, then turn left...'\n3. (c) Nam cảm ơn người chỉ dẫn: 'Thank you very much...'\n=> Trật tự chuẩn: b - a - c (Đáp án A).",
+  "sourceDocTitle": "TIẾT 3,4.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)"
+},
   {
     id: "Q-ENG-T03-02",
     subjectId: "tieng-anh-12",

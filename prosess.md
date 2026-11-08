@@ -1,5 +1,18 @@
 # Tiến trình dự án OnTNTHPT
 
+Cập nhật: 2026-11-08 (Lần 2) — Cập nhật & Làm giàu Toàn diện Bài tập Tuần 1, 2 Tab Môn Tiếng Anh 12 (Tổng 176 câu):
+- **Tab Tiếng Anh 12 - Chuẩn hóa Trọn vẹn Bài tập Tuần 1 & Tuần 2 (Mỗi tuần 50 câu chuẩn)**:
+  - Tuần 1 (`anh-tuan-01-tu-loai`): Nâng cấp lên **50 câu hỏi** trắc nghiệm từ loại (gồm 39 câu gốc từ tệp Google Drive `Tiết 1,2.docx` + 11 câu hỏi vận dụng chuyên sâu về các đuôi từ -ment, -tion, -able, -ful, -less, tiền tố phủ định il-, un-, dis-, cấu trúc S + V + O + Adv, trạng từ bổ nghĩa tính từ, linking verbs taste/smell/look + Adj).
+  - Tuần 2 (`anh-tuan-02-trat-tu-tu` - Tiết 3, 4): Nâng cấp lên **50 câu hỏi** trắc nghiệm trật tự từ & cụm tính từ (gồm 43 câu gốc từ tệp Google Drive `TIẾT 3,4.docx` + 7 câu hỏi mở rộng về trật tự tính từ OSASCOMP, phân biệt tính từ đuôi -ing và -ed theo ngữ cảnh, danh từ ghép compound nouns và sắp xếp văn bản thông báo/hội thoại).
+  - Tuần 3 (`anh-tuan-03-menh-de-quan-he`): Giữ vững 30 câu hỏi đại từ quan hệ & 4 quy tắc rút gọn mệnh đề quan hệ.
+  - Tuần 4 (`anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu`): Giữ vững 30 câu hỏi động từ nguyên mẫu và danh động từ.
+  - Tổng số câu hỏi môn Tiếng Anh 12 trong ngân hàng đạt **176 câu** (160 câu chuyên đề Tuần 1–4 + 16 câu tổng quan minh họa).
+- **Đồng bộ Dữ liệu & Triển khai Production**:
+  - Cập nhật số lượng câu hỏi trong `sampleBank.ts`: Tuần 1: 50, Tuần 2: 50, Tuần 3: 30, Tuần 4: 30.
+  - Cập nhật số lượng mục tiêu học tập trong `weeklyPlan.ts`: Tuần 1: 50 câu, Tuần 2: 50 câu.
+  - Nâng cấp phiên bản cấu trúc dữ liệu `STRUCTURE_VERSION` lên `2026_GD1_V14_TIENG_ANH_TUAN_1_4_ENRICHED` trong `src/app/page.tsx` giúp trình duyệt học sinh tự động làm mới bộ nhớ cache.
+  - Kiểm thử `npm run build` thành công xuất sắc (exit code 0, 10/10 static routes generated), sẵn sàng deploy tự động lên Vercel.
+
 Cập nhật: 2026-11-08 — Cập nhật & Làm giàu Bài tập Tuần 3, 4 Tab Môn Tiếng Anh 12 (Tổng 158 câu):
 - **Tab Tiếng Anh 12 - Chuẩn hóa Trọn vẹn Bài tập Tuần 1 – Tuần 4**:
   - Tuần 1 (`anh-tuan-01-tu-loai`): 39 câu hỏi trắc nghiệm từ loại bóc tách từ file Google Drive `Tiết 1,2.docx`.

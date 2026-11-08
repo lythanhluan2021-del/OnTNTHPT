@@ -244,7 +244,7 @@ export const WEEKLY_PLAN: WeekPlanItem[] = [
     topicIds: ["anh-tuan-01-tu-loai"],
     subjectId: "tieng-anh-12",
     semester: 1,
-    totalTargetQuestions: 39,
+    totalTargetQuestions: 50,
   },
   {
     id: "anh-plan-tuan-02",
@@ -257,7 +257,7 @@ export const WEEKLY_PLAN: WeekPlanItem[] = [
     topicIds: ["anh-tuan-02-trat-tu-tu"],
     subjectId: "tieng-anh-12",
     semester: 1,
-    totalTargetQuestions: 43,
+    totalTargetQuestions: 50,
   },
   {
     id: "anh-plan-tuan-03",

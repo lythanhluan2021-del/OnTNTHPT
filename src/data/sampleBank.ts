@@ -182,8 +182,8 @@ export const INITIAL_SUBJECTS: Subject[] = [
         "name": "Tuần 1: Dạng câu hỏi về Từ loại (Word Form)",
         "subjectId": "tieng-anh-12",
         "chapter": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
-        "totalQuestions": 39,
-        "mcCount": 39,
+        "totalQuestions": 50,
+        "mcCount": 50,
         "hasTheory": true
       },
       {
@@ -191,8 +191,8 @@ export const INITIAL_SUBJECTS: Subject[] = [
         "name": "Tuần 2: Trật tự từ và Cụm tính từ (Tiết 3, 4)",
         "subjectId": "tieng-anh-12",
         "chapter": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
-        "totalQuestions": 43,
-        "mcCount": 43,
+        "totalQuestions": 50,
+        "mcCount": 50,
         "hasTheory": true
       },
       {
