@@ -218,8 +218,8 @@ export const INITIAL_SUBJECTS: Subject[] = [
         "name": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
         "subjectId": "tieng-anh-12",
         "chapter": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
-        "totalQuestions": 6,
-        "mcCount": 6,
+        "totalQuestions": 30,
+        "mcCount": 30,
         "hasTheory": true
       },
       {
@@ -227,8 +227,8 @@ export const INITIAL_SUBJECTS: Subject[] = [
         "name": "Tuần 6: Giới từ theo sau tính từ và động từ",
         "subjectId": "tieng-anh-12",
         "chapter": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
-        "totalQuestions": 10,
-        "mcCount": 10,
+        "totalQuestions": 30,
+        "mcCount": 30,
         "hasTheory": true
       },
       {

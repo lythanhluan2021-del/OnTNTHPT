@@ -1,5 +1,24 @@
 # Tiến trình dự án OnTNTHPT
 
+Cập nhật: 2026-11-09 — Cập nhật Toàn diện Bài tập & Lý thuyết Tuần 5 & Tuần 6 Tab Môn Tiếng Anh 12 (Tổng 236 câu):
+- **Tab Tiếng Anh 12 - Chuẩn hóa Trọn vẹn Bài tập Tuần 5 & Tuần 6 (Mỗi tuần 30 câu chuẩn)**:
+  - Tuần 5 (`anh-tuan-05-duc-lo-quang-cao`): Nâng cấp lên **30 câu hỏi** trắc nghiệm dạng đục lỗ bài quảng cáo bóc tách trực tiếp từ các văn bản trong tệp Google Drive `Tiết 5,6.docx` và `Tiết 7+8.docx` (Chiến dịch từ thiện Hope for All, Liên hoan phim quốc tế Grand Cinema, Thông báo khẩn cảnh báo lũ lụt Riverdale, Dịch vụ Tết cổ truyền Perfect Tet Solutions, Ứng dụng điện thoại thông minh phục vụ học tập StudyPro). Bao gồm các dạng câu hỏi chuẩn đề minh họa 2025/2026: Từ loại, Trật tự từ cụm danh từ, Đại từ/Trạng từ quan hệ, Dạng động từ, Giới từ & Thành ngữ.
+  - Tuần 6 (`anh-tuan-06-gioi-tu`): Cập nhật **30 câu hỏi** trắc nghiệm giới từ theo sau tính từ và động từ (15 câu Tính từ + Giới từ: good at, interested in, proud of, responsible for, keen on, excited about, afraid of, capable of, accustomed to, famous for, different from, aware of, satisfied with, independent of, suitable for; 15 câu Động từ + Giới từ: depend on, look forward to + V-ing, apologize to sb for sth, succeed in, concentrate on, participate in, cope with, prevent sb from, remind of, congratulate on, object to + V-ing, spend on, sign up for, provide with, contribute to).
+  - Tuần 1 (`anh-tuan-01-tu-loai`): 50 câu chuẩn.
+  - Tuần 2 (`anh-tuan-02-trat-tu-tu`): 50 câu chuẩn.
+  - Tuần 3 (`anh-tuan-03-menh-de-quan-he`): 30 câu chuẩn.
+  - Tuần 4 (`anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu`): 30 câu chuẩn.
+  - Tổng số câu hỏi môn Tiếng Anh 12 trong ngân hàng đạt **236 câu** (220 câu chuyên đề Tuần 1–6 + 16 câu tổng quan minh họa).
+  - Toàn bộ 236 câu hỏi đều có đủ 4 phương án trắc nghiệm chuẩn A, B, C, D, đáp án đúng chính xác 100%, gợi ý Socratic 3 tầng (Level 1 Khái niệm, Level 2 Công thức, Level 3 Hướng dẫn tư duy) và lời giải ngữ pháp chuyên sâu.
+- **Tích hợp Lý thuyết Chuyên sâu vào `theoryBank.ts`**:
+  - Tuần 5: Phương pháp 4 bước xử lý dạng bài đục lỗ quảng cáo + Ma trận 5 dạng ngữ pháp cốt lõi.
+  - Tuần 6: Bảng tra cứu Tính từ + Giới từ kinh điển, Bảng tra cứu Động từ + Giới từ trọng điểm, Ba cái bẫy đề thi kinh điển về giới từ (To + V-ing, Dependent on vs Independent of, Provide sb with vs provide sth to/for).
+- **Đồng bộ Dữ liệu & Triển khai Production**:
+  - Cập nhật số lượng câu hỏi trong `sampleBank.ts`: Tuần 5: 30, Tuần 6: 30.
+  - Cập nhật số lượng mục tiêu học tập trong `weeklyPlan.ts`: Tuần 5: 30, Tuần 6: 30.
+  - Nâng cấp phiên bản cấu trúc dữ liệu `STRUCTURE_VERSION` lên `2026_GD1_V15_TIENG_ANH_TUAN_5_6_FULL` trong `src/app/page.tsx` giúp client tự động refresh dữ liệu mới nhất.
+  - Kiểm thử `npm run build` thành công xuất sắc (exit code 0, 10/10 static routes generated), sẵn sàng deploy tự động lên Vercel.
+
 Cập nhật: 2026-11-08 (Lần 2) — Cập nhật & Làm giàu Toàn diện Bài tập Tuần 1, 2 Tab Môn Tiếng Anh 12 (Tổng 176 câu):
 - **Tab Tiếng Anh 12 - Chuẩn hóa Trọn vẹn Bài tập Tuần 1 & Tuần 2 (Mỗi tuần 50 câu chuẩn)**:
   - Tuần 1 (`anh-tuan-01-tu-loai`): Nâng cấp lên **50 câu hỏi** trắc nghiệm từ loại (gồm 39 câu gốc từ tệp Google Drive `Tiết 1,2.docx` + 11 câu hỏi vận dụng chuyên sâu về các đuôi từ -ment, -tion, -able, -ful, -less, tiền tố phủ định il-, un-, dis-, cấu trúc S + V + O + Adv, trạng từ bổ nghĩa tính từ, linking verbs taste/smell/look + Adj).

@@ -4723,4 +4723,2172 @@ export const ENGLISH_12_QUESTIONS: Question[] = [
   "explanation": "Cấu trúc bị động đặc biệt với Need:\n- Khi chủ ngữ là danh từ chỉ vật (keyboards and monitors), động từ 'need' đi với V-ing để biểu đạt ý nghĩa bị động:\n  S (vật) + need + V-ing = S + need + to be + V3/ed.\n- Do đó, 'need replacing' = 'need to be replaced'.\n=> Đáp án đúng là B (replacing).",
   "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
 },
+
+  // ==========================================
+  // TUẦN 5: ÔN TẬP DẠNG BÀI ĐỤC LỖ QUẢNG CÁO (30 CÂU)
+  // ==========================================
+  {
+    "id": "Q-ENG-T05-01",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (31):\n\n**📰 Join Us to Make a Difference!**\nAre you looking for a way to help those in need? Hope for All, **(31)** _______, is dedicated to supporting underprivileged communities. Our mission is to provide food, clean water, and education to children whose families struggle to afford basic necessities.",
+    "options": [
+      {
+        "id": "A",
+        "content": "which was a non-profit organization"
+      },
+      {
+        "id": "B",
+        "content": "is a non-profit organization"
+      },
+      {
+        "id": "C",
+        "content": "a non-profit organization"
+      },
+      {
+        "id": "D",
+        "content": "that is a non-profit organization"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Cụm danh từ đồng vị (Appositive phrase) đứng giữa hai dấu phẩy bổ nghĩa cho chủ ngữ.",
+      "level2_formula": "S (Hope for All), [cụm danh từ đồng vị], V chính (is dedicated)... Không được chọn mệnh đề có động từ chính chia thì vì câu đã có 'is dedicated'.",
+      "level3_steps": "A sai thì (was). B sai cấu trúc vì thừa động từ 'is'. D sai vì mệnh đề quan hệ 'that' không được dùng sau dấu phẩy (non-defining). C là cụm danh từ đồng vị hoàn toàn chính xác."
+    },
+    "explanation": "'Hope for All' là chủ ngữ, 'is dedicated' là vị ngữ chính của câu. Giữa hai dấu phẩy cần một cụm đồng vị ngữ (appositive phrase) giải thích cho 'Hope for All', chọn 'a non-profit organization'. Không dùng 'that' sau dấu phẩy (loại D); không dùng 'is' làm câu bị hai động từ chính (loại B); không dùng 'was' vì tổ chức hiện tại vẫn đang hoạt động (loại A).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-02",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (32):\n\nOur mission is to provide food, clean water, and education to children **(32)** _______ families struggle to afford basic necessities. Every donation helps change lives.",
+    "options": [
+      {
+        "id": "A",
+        "content": "whose"
+      },
+      {
+        "id": "B",
+        "content": "whom"
+      },
+      {
+        "id": "C",
+        "content": "who"
+      },
+      {
+        "id": "D",
+        "content": "that"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Đại từ quan hệ chỉ quyền sở hữu giữa danh từ đứng trước và danh từ đứng sau.",
+      "level2_formula": "Danh từ (children) + whose + danh từ (families) + V: gia đình của những đứa trẻ.",
+      "level3_steps": "Phía sau chỗ trống là danh từ 'families' (gia đình của các em). Ta cần đại từ sở hữu 'whose'."
+    },
+    "explanation": "'Whose' là đại từ quan hệ chỉ sở hữu, đứng giữa danh từ chỉ người 'children' và danh từ 'families' (gia đình của những đứa trẻ này). 'Who'/'whom'/'that' không mang nghĩa sở hữu.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-03",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (33):\n\nEvery donation, which goes directly to those in need, **(33)** _______ change lives. We organize monthly charity events for our volunteers.",
+    "options": [
+      {
+        "id": "A",
+        "content": "which helps"
+      },
+      {
+        "id": "B",
+        "content": "helping"
+      },
+      {
+        "id": "C",
+        "content": "helps"
+      },
+      {
+        "id": "D",
+        "content": "help"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Sự hòa hợp giữa chủ ngữ và động từ chính của mệnh đề chính.",
+      "level2_formula": "Chủ ngữ là 'Every donation' (số ít), theo sau bởi mệnh đề quan hệ xen vào ', which goes... ,'. Chỗ trống cần động từ chính của câu chia ở thì hiện tại đơn ngôi thứ 3 số ít.",
+      "level3_steps": "'Every + danh từ số ít' đi với động từ số ít thêm -s/es -> 'helps'. Loại A vì thừa 'which', loại B vì V-ing không làm động từ chính, loại D vì số nhiều."
+    },
+    "explanation": "Chủ ngữ chính của câu là 'Every donation' (danh từ số ít sau Every). Mệnh đề 'which goes directly to those in need' là mệnh đề phụ xen giữa hai dấu phẩy. Chỗ trống là vị ngữ chính của câu, do đó cần động từ số ít 'helps'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-04",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (34):\n\nWe organize monthly charity events, **(34)** _______ volunteers can contribute their time and skills to make a real impact on society.",
+    "options": [
+      {
+        "id": "A",
+        "content": "which"
+      },
+      {
+        "id": "B",
+        "content": "where"
+      },
+      {
+        "id": "C",
+        "content": "when"
+      },
+      {
+        "id": "D",
+        "content": "that"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Trạng từ quan hệ thay thế cho danh từ chỉ địa điểm/hoạt động diễn ra sự việc.",
+      "level2_formula": "charity events, where + S + V: tại các sự kiện từ thiện đó, các tình nguyện viên có thể đóng góp thời gian.",
+      "level3_steps": "Mệnh đề sau đầy đủ S (volunteers) + V (can contribute) + O (their time and skills). Sau dấu phẩy không dùng 'that'. Để chỉ 'nơi mà/tại sự kiện mà', dùng 'where' (= at which)."
+    },
+    "explanation": "'Where' thay thế cho 'monthly charity events' với nghĩa 'nơi/ở các sự kiện đó', theo sau là một mệnh đề hoàn chỉnh (volunteers can contribute...). Không dùng 'that' sau dấu phẩy; 'which' cần giới từ 'at which' vì vế sau không khuyết chủ ngữ hay tân ngữ.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-05",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (35):\n\nLast year, we built five schools **(35)** _______ over 1,000 children in remote areas.",
+    "options": [
+      {
+        "id": "A",
+        "content": "that now educates"
+      },
+      {
+        "id": "B",
+        "content": "now educate"
+      },
+      {
+        "id": "C",
+        "content": "which now educate"
+      },
+      {
+        "id": "D",
+        "content": "now educated"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Mệnh đề quan hệ bổ nghĩa cho danh từ số nhiều 'five schools'.",
+      "level2_formula": "five schools (danh từ số nhiều) + which/that + động từ số nhiều (educate không chia đuôi -s).",
+      "level3_steps": "A sai vì 'educates' là số ít. B sai vì thiếu đại từ quan hệ nối hai mệnh đề. C đúng vì 'which' thay cho 'five schools' và động từ 'educate' chia số nhiều ở hiện tại theo 'now'."
+    },
+    "explanation": "'Five schools' là danh từ số nhiều. Mệnh đề quan hệ bổ nghĩa cần dùng đại từ 'which' và động từ chia số nhiều nguyên mẫu 'educate' do có trạng từ 'now' chỉ thực tế hiện tại. Phương án A sai vì 'educates' chia số ít.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-06",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (36):\n\nYou can be the next person **(36)** _______ hope and happiness to others. Join us today and become a part of our community!",
+    "options": [
+      {
+        "id": "A",
+        "content": "who bringing"
+      },
+      {
+        "id": "B",
+        "content": "brings"
+      },
+      {
+        "id": "C",
+        "content": "bringing"
+      },
+      {
+        "id": "D",
+        "content": "to bring"
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Rút gọn mệnh đề quan hệ khi danh từ đi sau các từ như 'the first', 'the second', 'the next', 'the last', 'the only'.",
+      "level2_formula": "the next + N + to V (thay thế cho 'who brings/will bring').",
+      "level3_steps": "Trước chỗ trống có 'the next person' -> dùng cụm động từ nguyên mẫu có to: 'to bring'."
+    },
+    "explanation": "Quy tắc rút gọn mệnh đề quan hệ: Khi danh từ đứng trước có các từ chỉ thứ tự (the first, the next, the last, the only), ta rút gọn bằng 'to V' (nghĩa chủ động). Do đó chọn 'to bring'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-07",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following event flyer and mark the letter A, B, C, or D to indicate the correct option that best fits blank (37):\n\n**🎬 Discover the Magic of Cinema! 🎬**\nAre you a movie lover **(37)** _______ thrilling adventures and heartwarming stories? If so, you can’t miss our upcoming Film Festival!",
+    "options": [
+      {
+        "id": "A",
+        "content": "who enjoy"
+      },
+      {
+        "id": "B",
+        "content": "enjoys"
+      },
+      {
+        "id": "C",
+        "content": "enjoying"
+      },
+      {
+        "id": "D",
+        "content": "enjoyed"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Rút gọn mệnh đề quan hệ thể chủ động bằng hiện tại phân từ V-ing.",
+      "level2_formula": "a movie lover who enjoys... -> rút gọn thành: a movie lover enjoying...",
+      "level3_steps": "Nếu dùng đại từ 'who' thì động từ phải chia theo 'a movie lover' (số ít) thành 'who enjoys' (A sai vì dùng 'who enjoy'). B sai vì câu đã có động từ 'Are'. Do đó rút gọn dạng chủ động dùng 'enjoying' (C)."
+    },
+    "explanation": "Câu rút gọn mệnh đề quan hệ chủ động: 'a movie lover who enjoys...' rút gọn thành 'a movie lover enjoying...'. Phương án A sai vì 'a movie lover' là số ít nên nếu có 'who' phải là 'who enjoys'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-08",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following event flyer and mark the letter A, B, C, or D to indicate the correct option that best fits blank (38):\n\nIf so, you can’t miss our upcoming Film Festival, **(38)** _______ place at the Grand Cinema from April 20 to April 25.",
+    "options": [
+      {
+        "id": "A",
+        "content": "which will take"
+      },
+      {
+        "id": "B",
+        "content": "will take"
+      },
+      {
+        "id": "C",
+        "content": "which will be taken"
+      },
+      {
+        "id": "D",
+        "content": "taken"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Mệnh đề quan hệ không xác định (sau dấu phẩy) chỉ sự việc trong tương lai.",
+      "level2_formula": "Cụm thành ngữ 'take place' mang nghĩa diễn ra (nội động từ, luôn dùng thể chủ động, không dùng bị động).",
+      "level3_steps": "Sau dấu phẩy cần đại từ 'which' thay cho 'Film Festival'. 'take place' mang nghĩa diễn ra ở tương lai nên dùng chủ động: 'which will take'. C và D sai vì chia bị động."
+    },
+    "explanation": "Sau dấu phẩy dùng mệnh đề quan hệ không xác định với đại từ 'which'. Cụm 'take place' (diễn ra) là nội động từ mang nghĩa chủ động, không chia bị động nên loại C và D. Loại B vì thiếu đại từ quan hệ.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-09",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following event flyer and mark the letter A, B, C, or D to indicate the correct option that best fits blank (39):\n\nThis festival, **(39)** _______ award-winning films from around the world, is a perfect opportunity for film enthusiasts to experience different cultures.",
+    "options": [
+      {
+        "id": "A",
+        "content": "Features"
+      },
+      {
+        "id": "B",
+        "content": "which features"
+      },
+      {
+        "id": "C",
+        "content": "to feature"
+      },
+      {
+        "id": "D",
+        "content": "featured"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Mệnh đề quan hệ không xác định bổ nghĩa cho chủ ngữ 'This festival'.",
+      "level2_formula": "S (This festival), which + V (features), is a perfect opportunity...",
+      "level3_steps": "Chủ ngữ là 'This festival', động từ chính của câu là 'is'. Giữa hai dấu phẩy cần mệnh đề quan hệ 'which features' (trình chiếu/nổi bật với). A sai vì làm câu có hai vị ngữ chính; D sai nghĩa bị động."
+    },
+    "explanation": "'This festival' là chủ ngữ, 'is a perfect opportunity' là vị ngữ chính. Phần giữa hai dấu phẩy là mệnh đề quan hệ bổ sung thông tin: 'which features' (nơi trình chiếu các bộ phim đoạt giải).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-10",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "VanDung",
+    "type": "multiple_choice",
+    "content": "Read the following event flyer and mark the letter A, B, C, or D to indicate the correct option that best fits blank (40):\n\nOne of the highlights is 'Beyond the Stars', which was directed by the famous filmmaker John Carter and **(40)** _______ international acclaim.",
+    "options": [
+      {
+        "id": "A",
+        "content": "receiving"
+      },
+      {
+        "id": "B",
+        "content": "has received"
+      },
+      {
+        "id": "C",
+        "content": "which has received"
+      },
+      {
+        "id": "D",
+        "content": "received"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Cấu trúc song hành trong mệnh đề quan hệ nối bởi liên từ 'and'.",
+      "level2_formula": "which [was directed...] and [has received...]: hai động từ cùng chia thì vị ngữ bổ nghĩa cho 'Beyond the Stars'.",
+      "level3_steps": "'and' liên kết hai hành động trong mệnh đề quan hệ: phim đã được đạo diễn và hiện nay đã đạt được thành công quốc tế -> 'has received'."
+    },
+    "explanation": "Liên từ 'and' kết nối vị ngữ thứ hai trong mệnh đề quan hệ bắt đầu bởi 'which': 'which was directed ... and has received international acclaim'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-11",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Read the following emergency notice and mark the letter A, B, C, or D to indicate the correct option that best fits blank (41):\n\n**📢 Emergency Announcement: Severe Flood Warning**\nDear Residents, We regret to inform you **(41)** _______ a severe flood is expected to hit our area due to continuous heavy rainfall.",
+    "options": [
+      {
+        "id": "A",
+        "content": "that"
+      },
+      {
+        "id": "B",
+        "content": "which"
+      },
+      {
+        "id": "C",
+        "content": "where"
+      },
+      {
+        "id": "D",
+        "content": "when"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Mệnh đề danh từ làm tân ngữ sau động từ 'inform sb'.",
+      "level2_formula": "inform somebody that + clause (thông báo với ai rằng điều gì xảy ra).",
+      "level3_steps": "Phía sau là một mệnh đề hoàn chỉnh (a severe flood is expected to hit...). Cần liên từ 'that'."
+    },
+    "explanation": "Cấu trúc thông báo: 'inform somebody that + clause' (thông báo với ai rằng...). Do đó chọn 'that'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-12",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following emergency notice and mark the letter A, B, C, or D to indicate the correct option that best fits blank (42):\n\nA severe flood is expected to hit our area due to continuous heavy rainfall **(42)** _______ for the past three days.",
+    "options": [
+      {
+        "id": "A",
+        "content": "has been ongoing"
+      },
+      {
+        "id": "B",
+        "content": "which has been ongoing"
+      },
+      {
+        "id": "C",
+        "content": "to be ongoing"
+      },
+      {
+        "id": "D",
+        "content": "which ongoing"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Mệnh đề quan hệ bổ nghĩa cho danh từ chỉ vật 'continuous heavy rainfall'.",
+      "level2_formula": "danh từ chỉ vật + which/that + V chia theo thì hiện tại hoàn thành tiếp diễn (for the past three days).",
+      "level3_steps": "A sai vì thiếu đại từ quan hệ làm chủ ngữ. D sai vì thiếu to be trước tính từ 'ongoing'. C sai ngữ pháp. B hoàn toàn đúng."
+    },
+    "explanation": "'Which has been ongoing' là mệnh đề quan hệ đầy đủ gồm đại từ quan hệ 'which' thay thế cho 'heavy rainfall' và vị ngữ chia thì HTHT tiếp diễn theo dấu hiệu 'for the past three days'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-13",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "VanDung",
+    "type": "multiple_choice",
+    "content": "Read the following emergency notice and mark the letter A, B, C, or D to indicate the correct option that best fits blank (43):\n\nThe local authorities, **(43)** _______ the situation, have declared a state of emergency to ensure everyone's safety.",
+    "options": [
+      {
+        "id": "A",
+        "content": "who is closely monitoring"
+      },
+      {
+        "id": "B",
+        "content": "whom are closely monitoring"
+      },
+      {
+        "id": "C",
+        "content": "are closely monitoring"
+      },
+      {
+        "id": "D",
+        "content": "closely monitoring"
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Rút gọn mệnh đề quan hệ thể chủ động bằng cụm phân từ hiện tại (V-ing phrase).",
+      "level2_formula": "The local authorities, who are closely monitoring..., have declared... -> rút gọn thành: The local authorities, closely monitoring...",
+      "level3_steps": "A sai vì 'authorities' số nhiều mà dùng 'who is'. B sai vì 'whom' không làm chủ ngữ. C sai vì làm câu thừa vị ngữ chính. D là cụm hiện tại phân từ rút gọn chính xác."
+    },
+    "explanation": "Rút gọn mệnh đề quan hệ chủ động: 'who are closely monitoring' -> 'closely monitoring'. Phương án A sai vì 'authorities' số nhiều không đi với 'is'; B sai vì 'whom' không làm chủ ngữ; C sai vì làm câu có 2 vị ngữ chính.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-14",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following emergency notice and mark the letter A, B, C, or D to indicate the correct option that best fits blank (44):\n\nThe main roads **(44)** _______ the town to neighboring cities are already partially flooded and may become impassable soon.",
+    "options": [
+      {
+        "id": "A",
+        "content": "which connects"
+      },
+      {
+        "id": "B",
+        "content": "connected"
+      },
+      {
+        "id": "C",
+        "content": "connecting"
+      },
+      {
+        "id": "D",
+        "content": "connect"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Rút gọn mệnh đề quan hệ chủ động bổ nghĩa cho danh từ số nhiều 'The main roads'.",
+      "level2_formula": "The main roads which connect... -> rút gọn chủ động bằng V-ing: 'connecting'.",
+      "level3_steps": "A sai vì 'roads' số nhiều không đi với 'connects'. B sai vì đường tự nối chứ không bị động. D sai vì câu đã có động từ chính 'are'. Chọn C."
+    },
+    "explanation": "'The main roads' là chủ ngữ số nhiều, 'are already partially flooded' là vị ngữ chính. Chỗ trống cần dạng rút gọn mệnh đề quan hệ chủ động (con đường nối thị trấn với các thành phố lân cận), dùng V-ing 'connecting'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-15",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following emergency notice and mark the letter A, B, C, or D to indicate the correct option that best fits blank (45):\n\nResidents whose homes are located in low-lying areas **(45)** _______ to evacuate immediately.",
+    "options": [
+      {
+        "id": "A",
+        "content": "are strongly advised"
+      },
+      {
+        "id": "B",
+        "content": "strongly advised"
+      },
+      {
+        "id": "C",
+        "content": "who are strongly advised"
+      },
+      {
+        "id": "D",
+        "content": "strongly advising"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Xác định động từ chính của câu ở thể bị động.",
+      "level2_formula": "Chủ ngữ: 'Residents' [whose homes are located... là mệnh đề quan hệ] + V chính của câu chia bị động: 'are strongly advised'.",
+      "level3_steps": "Câu chưa có động từ chính cho chủ ngữ 'Residents'. Người dân được khuyên nên sơ tán ngay lập tức -> dạng bị động 'are strongly advised'."
+    },
+    "explanation": "'Residents' là chủ ngữ chính, theo sau là mệnh đề quan hệ 'whose homes are located in low-lying areas'. Do đó chỗ trống cần động từ chính của câu, chia ở thể bị động: 'are strongly advised' (được khuyến cáo mạnh mẽ).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-16",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "VanDung",
+    "type": "multiple_choice",
+    "content": "Read the following emergency notice and mark the letter A, B, C, or D to indicate the correct option that best fits blank (46):\n\nThe emergency shelters **(46)** _______ at the community center and local schools are now open for those in need.",
+    "options": [
+      {
+        "id": "A",
+        "content": "which has been set up"
+      },
+      {
+        "id": "B",
+        "content": "which have been set up"
+      },
+      {
+        "id": "C",
+        "content": "set up"
+      },
+      {
+        "id": "D",
+        "content": "have been set up"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Mệnh đề quan hệ bổ nghĩa cho danh từ số nhiều 'The emergency shelters' ở thể bị động.",
+      "level2_formula": "The emergency shelters (số nhiều) + which have been set up...",
+      "level3_steps": "A sai vì 'has' là số ít. D sai vì làm câu thừa vị ngữ chính ('are now open' là vị ngữ chính). B là mệnh đề quan hệ chuẩn xác."
+    },
+    "explanation": "'The emergency shelters' là danh từ số nhiều, vị ngữ chính của câu là 'are now open'. Mệnh đề quan hệ bổ nghĩa ở thể bị động số nhiều là 'which have been set up' (các nơi trú ẩn khẩn cấp được thiết lập tại...).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-17",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following emergency notice and mark the letter A, B, C, or D to indicate the correct option that best fits blank (47):\n\nRescue teams **(47)** _______ to assist affected families will provide further instructions.",
+    "options": [
+      {
+        "id": "A",
+        "content": "have been deployed"
+      },
+      {
+        "id": "B",
+        "content": "who have been deployed"
+      },
+      {
+        "id": "C",
+        "content": "deploying"
+      },
+      {
+        "id": "D",
+        "content": "to deploy"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Mệnh đề quan hệ bổ nghĩa cho chủ ngữ chỉ người 'Rescue teams'.",
+      "level2_formula": "Rescue teams + who have been deployed... + will provide (vị ngữ chính).",
+      "level3_steps": "Vị ngữ chính của câu là 'will provide'. Chỗ trống thuộc mệnh đề quan hệ bổ nghĩa cho 'Rescue teams' được điều động đi làm nhiệm vụ -> 'who have been deployed'."
+    },
+    "explanation": "Chủ ngữ là 'Rescue teams', vị ngữ chính là 'will provide further instructions'. Chỗ trống cần mệnh đề quan hệ chỉ người ở thể bị động bổ nghĩa cho chủ ngữ: 'who have been deployed' (những đội cứu hộ đã được triển khai).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-18",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following emergency notice and mark the letter A, B, C, or D to indicate the correct option that best fits blank (48):\n\nFor emergency assistance, please contact the disaster hotline **(48)** _______ 24/7.",
+    "options": [
+      {
+        "id": "A",
+        "content": "which is operated"
+      },
+      {
+        "id": "B",
+        "content": "which operates"
+      },
+      {
+        "id": "C",
+        "content": "to operate"
+      },
+      {
+        "id": "D",
+        "content": "operated"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Động từ 'operate' dùng với chủ ngữ 'hotline' mang nghĩa 'hoạt động'.",
+      "level2_formula": "the hotline which operates 24/7 (đường dây nóng hoạt động 24/7).",
+      "level3_steps": "'operate' ở đây là nội động từ mang nghĩa 'hoạt động', chủ ngữ số ít 'the hotline' đi với 'which operates'."
+    },
+    "explanation": "'The disaster hotline' là số ít, động từ 'operate' dùng ở dạng chủ động mang nghĩa hoạt động liên tục: 'which operates 24/7' (hoạt động 24/7).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-19",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (1):\n\n**🎉 PERFECT TET SOLUTIONS 🎉**\nWith your busy schedule, finding time to prepare for Tet can be **(1)** _______. That’s why we’re here to make things easy for you!",
+    "options": [
+      {
+        "id": "A",
+        "content": "frustrating"
+      },
+      {
+        "id": "B",
+        "content": "frustrated"
+      },
+      {
+        "id": "C",
+        "content": "frustratingly"
+      },
+      {
+        "id": "D",
+        "content": "frustration"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Tính từ đuôi -ing miêu tả tính chất của sự việc, tình huống.",
+      "level2_formula": "Sau linking verb 'can be' cần tính từ (Adj). Sự việc 'finding time to prepare for Tet' gây mệt mỏi, căng thẳng nên dùng tính từ đuôi -ing: 'frustrating'.",
+      "level3_steps": "Chủ ngữ là danh từ/V-ing chỉ sự việc ('finding time...') -> dùng tính từ đuôi -ing. Loại B (-ed chỉ cảm xúc con người), C (trạng từ), D (danh từ)."
+    },
+    "explanation": "Sau động từ liên kết 'be' cần tính từ. Chủ ngữ 'finding time to prepare for Tet' là một sự việc/hành động mang tính chất gây căng thẳng, khó khăn nên dùng tính từ chủ động tận cùng bằng -ing: 'frustrating'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-20",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (2):\n\nWe provide top-notch **(2)** _______ to assist your family during the festive season with absolute peace of mind.",
+    "options": [
+      {
+        "id": "A",
+        "content": "service customer professional"
+      },
+      {
+        "id": "B",
+        "content": "customer professional service"
+      },
+      {
+        "id": "C",
+        "content": "professional customer service"
+      },
+      {
+        "id": "D",
+        "content": "service professional customer"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Trật tự từ trong cụm danh từ: Tính từ + Danh từ phụ + Danh từ chính.",
+      "level2_formula": "Tính từ 'professional' (chuyên nghiệp) bổ nghĩa cho cụm danh từ 'customer service' (dịch vụ khách hàng).",
+      "level3_steps": "Thứ tự đúng: professional (tính từ) + customer (danh từ bổ nghĩa) + service (danh từ trung tâm) -> 'professional customer service'."
+    },
+    "explanation": "Trật tự cụm danh từ trong tiếng Anh: tính từ đứng trước danh từ ghép để bổ nghĩa: 'professional customer service' (dịch vụ chăm sóc khách hàng chuyên nghiệp).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-21",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (3):\n\nEnjoy our traditional holiday dishes **(3)** _______ with authentic organic ingredients and time-honored recipes.",
+    "options": [
+      {
+        "id": "A",
+        "content": "are made"
+      },
+      {
+        "id": "B",
+        "content": "making"
+      },
+      {
+        "id": "C",
+        "content": "made"
+      },
+      {
+        "id": "D",
+        "content": "which made"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Rút gọn mệnh đề quan hệ thể bị động bằng quá khứ phân từ (V-ed/V3).",
+      "level2_formula": "dishes which are made with... -> rút gọn thành: dishes made with...",
+      "level3_steps": "Món ăn được chế biến từ nguyên liệu hữu cơ (bị động) -> dùng phân từ hai 'made'."
+    },
+    "explanation": "Câu rút gọn mệnh đề quan hệ bị động bổ nghĩa cho 'dishes': 'which are made with...' được rút gọn thành 'made with...'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-22",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (4):\n\nCustomers are welcome **(4)** _______ our specialty treats before placing any large order.",
+    "options": [
+      {
+        "id": "A",
+        "content": "to tasting"
+      },
+      {
+        "id": "B",
+        "content": "tasting"
+      },
+      {
+        "id": "C",
+        "content": "to taste"
+      },
+      {
+        "id": "D",
+        "content": "taste"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Cấu trúc 'be welcome to V' (được chào đón/hoan nghênh làm gì).",
+      "level2_formula": "be welcome + to-infinitive (to V).",
+      "level3_steps": "Sau 'are welcome' đi với động từ nguyên mẫu có to -> 'to taste'."
+    },
+    "explanation": "Cấu trúc: 'be welcome + to V' (được mời/hoan nghênh làm gì). Vì vậy chọn 'to taste'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-23",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (5):\n\nCall our hotline early to **(5)** _______ a reservation for your family feast and secure special discounts.",
+    "options": [
+      {
+        "id": "A",
+        "content": "make"
+      },
+      {
+        "id": "B",
+        "content": "create"
+      },
+      {
+        "id": "C",
+        "content": "give"
+      },
+      {
+        "id": "D",
+        "content": "put"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Cụm từ cố định (Collocation) đi với danh từ 'reservation'.",
+      "level2_formula": "make a reservation = book a table/place (đặt chỗ trước).",
+      "level3_steps": "Đi với 'a reservation' luôn là động từ 'make'."
+    },
+    "explanation": "Cụm từ cố định: 'make a reservation' có nghĩa là đặt chỗ trước. Các từ khác không kết hợp với 'reservation'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-24",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Read the following advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (6):\n\nFor more details, don't hesitate to get in touch **(6)** _______ our friendly consulting team via hotline.",
+    "options": [
+      {
+        "id": "A",
+        "content": "in"
+      },
+      {
+        "id": "B",
+        "content": "from"
+      },
+      {
+        "id": "C",
+        "content": "with"
+      },
+      {
+        "id": "D",
+        "content": "about"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Cụm thành ngữ liên lạc với ai đó.",
+      "level2_formula": "get in touch with somebody = contact somebody.",
+      "level3_steps": "Thành ngữ 'get in touch' luôn đi với giới từ 'with'."
+    },
+    "explanation": "Cụm thành ngữ cố định: 'get in touch with someone' có nghĩa là liên lạc, kết nối với ai.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-25",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following technology product advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (15):\n\n**📱 SMARTPHONES & PRODUCTIVITY 📱**\nSmartphones have become an essential part of our daily lives, **(15)** _______ a plenty of apps that can help us with our daily tasks.",
+    "options": [
+      {
+        "id": "A",
+        "content": "offered"
+      },
+      {
+        "id": "B",
+        "content": "offering"
+      },
+      {
+        "id": "C",
+        "content": "which is offered"
+      },
+      {
+        "id": "D",
+        "content": "is offering"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Rút gọn mệnh đề quan hệ thể chủ động hoặc phân từ hiện tại chỉ kết quả/bổ sung.",
+      "level2_formula": "Smartphones have become..., offering... (mang lại vô số ứng dụng hỗ trợ công việc).",
+      "level3_steps": "Điện thoại thông minh chủ động cung cấp ứng dụng -> dùng hiện tại phân từ V-ing: 'offering'."
+    },
+    "explanation": "Dùng hiện tại phân từ (V-ing) 'offering' để rút gọn mệnh đề quan hệ chủ động (which offer a plenty of apps...) bổ sung ý nghĩa cho mệnh đề trước.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-26",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following technology product advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (16):\n\nStudyPro is a **(16)** _______ that allows high school seniors to organize study schedules effectively.",
+    "options": [
+      {
+        "id": "A",
+        "content": "useful smartphone app"
+      },
+      {
+        "id": "B",
+        "content": "useful app smartphone"
+      },
+      {
+        "id": "C",
+        "content": "app useful smartphone"
+      },
+      {
+        "id": "D",
+        "content": "smartphone useful app"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Trật tự từ trong cụm danh từ tiếng Anh.",
+      "level2_formula": "Tính từ (useful) + Danh từ đóng vai trò bổ nghĩa (smartphone) + Danh từ chính (app).",
+      "level3_steps": "Ứng dụng trên điện thoại thông minh hữu ích: 'useful' đứng trước 'smartphone app'."
+    },
+    "explanation": "Cụm danh từ đúng quy tắc trật tự từ: Tính từ 'useful' đứng trước cụm danh từ ghép 'smartphone app' tạo thành 'useful smartphone app' (ứng dụng điện thoại thông minh hữu ích).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-27",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Read the following technology product advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (17):\n\nThe app comes fully equipped **(17)** _______ smart notifications, cloud sync, and progress charts.",
+    "options": [
+      {
+        "id": "A",
+        "content": "at"
+      },
+      {
+        "id": "B",
+        "content": "for"
+      },
+      {
+        "id": "C",
+        "content": "with"
+      },
+      {
+        "id": "D",
+        "content": "in"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Giới từ đi với phân từ/tính từ 'equipped'.",
+      "level2_formula": "be equipped with something (được trang bị với cái gì).",
+      "level3_steps": "'equipped' đi kèm với giới từ 'with'."
+    },
+    "explanation": "Cụm từ: 'equipped with sth' (được trang bị tính năng gì). Do đó giới từ đúng là 'with'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-28",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following technology product advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (18):\n\nWith this app, users can easily manage study sessions, making it simpler to **(18)** _______ track of what needs to be reviewed before exams.",
+    "options": [
+      {
+        "id": "A",
+        "content": "set"
+      },
+      {
+        "id": "B",
+        "content": "keep"
+      },
+      {
+        "id": "C",
+        "content": "pay"
+      },
+      {
+        "id": "D",
+        "content": "take"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Cụm thành ngữ mang nghĩa theo dõi, nắm bắt thông tin.",
+      "level2_formula": "keep track of something (theo dõi tiến độ/thông tin của cái gì).",
+      "level3_steps": "Đi với 'track of' là động từ 'keep'."
+    },
+    "explanation": "Thành ngữ: 'keep track of sth' có nghĩa là theo dõi, ghi nhớ và kiểm soát tiến độ của cái gì. Các từ khác không tạo thành cụm từ có nghĩa này.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-29",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following technology product advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (19):\n\nDo not hesitate **(19)** _______ your learning statistics every evening to evaluate your daily progress.",
+    "options": [
+      {
+        "id": "A",
+        "content": "check"
+      },
+      {
+        "id": "B",
+        "content": "checking"
+      },
+      {
+        "id": "C",
+        "content": "to checking"
+      },
+      {
+        "id": "D",
+        "content": "to check"
+      }
+    ],
+    "correctAnswer": "D",
+    "hints": {
+      "level1_concept": "Dạng động từ theo sau 'hesitate'.",
+      "level2_formula": "hesitate to do something (ngập ngừng, ngần ngại làm việc gì).",
+      "level3_steps": "'hesitate' đi trực tiếp với to V -> 'to check'."
+    },
+    "explanation": "Cấu trúc: 'hesitate + to V' (do dự, ngần ngại làm gì). Trong câu phủ định/mệnh lệnh: 'Do not hesitate to check...' (Đừng ngần ngại kiểm tra...).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T05-30",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-05-duc-lo-quang-cao",
+    "topicName": "Tuần 5: Ôn tập dạng bài đục lỗ quảng cáo",
+    "chapterName": "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Read the following technology product advertisement and mark the letter A, B, C, or D to indicate the correct option that best fits blank (20):\n\nInteractive study challenges help keep learners constantly **(20)** _______ throughout their exam preparation journey.",
+    "options": [
+      {
+        "id": "A",
+        "content": "motivated"
+      },
+      {
+        "id": "B",
+        "content": "motivating"
+      },
+      {
+        "id": "C",
+        "content": "motivatingly"
+      },
+      {
+        "id": "D",
+        "content": "motivate"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Cấu trúc 'keep someone + adjective' chỉ trạng thái cảm xúc của con người.",
+      "level2_formula": "keep + O (learners) + Adj: người học cảm thấy có động lực -> dùng tính từ phân từ bị động 'motivated'.",
+      "level3_steps": "Học sinh được thúc đẩy, cảm thấy tràn đầy động lực -> 'motivated'."
+    },
+    "explanation": "Cấu trúc: 'keep + O + Adj'. 'Learners' là tân ngữ chỉ người, miêu tả cảm xúc được truyền cảm hứng và động lực nên dùng tính từ phân từ hai 'motivated'.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+
+  // ==========================================
+  // TUẦN 6: GIỚI TỪ THEO SAU TÍNH TỪ VÀ ĐỘNG TỪ (30 CÂU)
+  // ==========================================
+  {
+    "id": "Q-ENG-T06-01",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Lan is exceptionally good _______ solving complex mathematical equations under strict time limits.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "at"
+      },
+      {
+        "id": "B",
+        "content": "in"
+      },
+      {
+        "id": "C",
+        "content": "on"
+      },
+      {
+        "id": "D",
+        "content": "with"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'good' chỉ năng khiếu hoặc sự thành thạo trong một lĩnh vực.",
+      "level2_formula": "be good at + V-ing / Noun (giỏi về việc gì/môn gì).",
+      "level3_steps": "Sau 'good' chỉ sự giỏi giang trong giải toán -> chọn giới từ 'at'."
+    },
+    "explanation": "Cấu trúc: 'be good at + N/V-ing' có nghĩa là giỏi về cái gì hoặc thành thạo làm việc gì. Ngược lại là 'be bad at'. Do đó đáp án đúng là A (at).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-02",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Many high school students are deeply interested _______ artificial intelligence and robotic engineering.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "for"
+      },
+      {
+        "id": "B",
+        "content": "in"
+      },
+      {
+        "id": "C",
+        "content": "about"
+      },
+      {
+        "id": "D",
+        "content": "with"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'interested' chỉ sự hứng thú, quan tâm.",
+      "level2_formula": "be interested in + N/V-ing (hứng thú, quan tâm đến cái gì).",
+      "level3_steps": "'interested' luôn đi kèm với giới từ 'in'."
+    },
+    "explanation": "Cấu trúc: 'be interested in something' (quan tâm, có hứng thú với điều gì). Đáp án đúng là B (in).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-03",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "The teachers and parents were extremely proud _______ Nam when he won first place in the national science contest.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "about"
+      },
+      {
+        "id": "B",
+        "content": "of"
+      },
+      {
+        "id": "C",
+        "content": "with"
+      },
+      {
+        "id": "D",
+        "content": "for"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'proud' biểu thị sự tự hào.",
+      "level2_formula": "be proud of somebody / something (tự hào về ai / cái gì) = take pride in.",
+      "level3_steps": "'proud' luôn kết hợp với giới từ 'of'."
+    },
+    "explanation": "Cấu trúc: 'be proud of sb/sth' (tự hào về ai/điều gì). Đồng nghĩa với cụm 'take pride in sb/sth'. Đáp án B.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-04",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "The monitor is responsible _______ keeping attendance records and maintaining order in the classroom.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "with"
+      },
+      {
+        "id": "B",
+        "content": "to"
+      },
+      {
+        "id": "C",
+        "content": "for"
+      },
+      {
+        "id": "D",
+        "content": "in"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'responsible' chỉ trách nhiệm.",
+      "level2_formula": "be responsible for + N / V-ing (chịu trách nhiệm về việc gì).",
+      "level3_steps": "'responsible' đi với giới từ 'for'."
+    },
+    "explanation": "Cấu trúc: 'be responsible for sth/doing sth' có nghĩa là chịu trách nhiệm về việc gì. Đáp án C.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-05",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "My younger sister is very keen _______ learning foreign languages, especially French and Japanese.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "on"
+      },
+      {
+        "id": "B",
+        "content": "in"
+      },
+      {
+        "id": "C",
+        "content": "at"
+      },
+      {
+        "id": "D",
+        "content": "of"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'keen' mang nghĩa say mê, thích thú.",
+      "level2_formula": "be keen on + N/V-ing (say mê, thích thú cái gì) = be fond of.",
+      "level3_steps": "'keen' luôn đi với giới từ 'on'."
+    },
+    "explanation": "Cấu trúc: 'be keen on + V-ing/N' (say mê, rất thích cái gì). Phân biệt với 'be fond of' và 'be interested in'. Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-06",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "All twelfth-graders are extremely excited _______ the upcoming cultural field trip to Da Lat.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "about"
+      },
+      {
+        "id": "B",
+        "content": "with"
+      },
+      {
+        "id": "C",
+        "content": "for"
+      },
+      {
+        "id": "D",
+        "content": "to"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'excited' chỉ tâm trạng háo hức, phấn khích.",
+      "level2_formula": "be excited about + N / V-ing (hào hứng, phấn khởi về cái gì).",
+      "level3_steps": "'excited' đi với 'about'."
+    },
+    "explanation": "Cấu trúc: 'be excited about something' mang nghĩa háo hức, phấn khởi về điều gì sắp tới. Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-07",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "When he was a little child, he used to be terrified and afraid _______ the dark.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "at"
+      },
+      {
+        "id": "B",
+        "content": "with"
+      },
+      {
+        "id": "C",
+        "content": "of"
+      },
+      {
+        "id": "D",
+        "content": "from"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Giới từ đi với các tính từ chỉ nỗi sợ hãi (afraid, scared, terrified).",
+      "level2_formula": "be afraid / scared / terrified of + N / V-ing (sợ cái gì).",
+      "level3_steps": "'afraid' luôn đi kèm giới từ 'of'."
+    },
+    "explanation": "Cấu trúc: 'be afraid of sth' (sợ hãi cái gì). Tương tự: 'scared of', 'frightened of'. Đáp án C.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-08",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "With adequate training, human beings are capable _______ accomplishing extraordinary intellectual feats.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "for"
+      },
+      {
+        "id": "B",
+        "content": "to"
+      },
+      {
+        "id": "C",
+        "content": "of"
+      },
+      {
+        "id": "D",
+        "content": "in"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'capable' chỉ khả năng, năng lực.",
+      "level2_formula": "be capable of + V-ing / N (có khả năng làm gì). Lưu ý: 'able' thì đi với 'to V'.",
+      "level3_steps": "Sau 'capable' đi kèm giới từ 'of' + V-ing."
+    },
+    "explanation": "Cấu trúc: 'be capable of + V-ing' (có khả năng làm được việc gì). Phân biệt với 'be able to V'. Đáp án C.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-09",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "It took the foreign exchange students several months to get accustomed _______ the tropical climate of Vietnam.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "with"
+      },
+      {
+        "id": "B",
+        "content": "to"
+      },
+      {
+        "id": "C",
+        "content": "for"
+      },
+      {
+        "id": "D",
+        "content": "in"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'accustomed' chỉ sự quen thuộc với điều gì.",
+      "level2_formula": "be / get accustomed to + N / V-ing (quen với cái gì) = be used to.",
+      "level3_steps": "'accustomed' luôn đi với giới từ 'to'."
+    },
+    "explanation": "Cấu trúc: 'be/get accustomed to + N/V-ing' có nghĩa là đã quen thuộc thích nghi với cái gì. Đáp án B.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-10",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Dong Thap province is famous _______ its vast lotus fields, friendly local people, and scenic eco-tourism spots.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "for"
+      },
+      {
+        "id": "B",
+        "content": "about"
+      },
+      {
+        "id": "C",
+        "content": "with"
+      },
+      {
+        "id": "D",
+        "content": "by"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'famous' chỉ sự nổi tiếng vì một đặc điểm nào đó.",
+      "level2_formula": "be famous for something (nổi tiếng vì cái gì) = be well-known for.",
+      "level3_steps": "'famous' đi với giới từ 'for'."
+    },
+    "explanation": "Cấu trúc: 'be famous for sth' (nổi tiếng vì điều gì/đặc sản gì). Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-11",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Life in modern bustling metropolises is completely different _______ life in peaceful rural villages.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "with"
+      },
+      {
+        "id": "B",
+        "content": "from"
+      },
+      {
+        "id": "C",
+        "content": "to"
+      },
+      {
+        "id": "D",
+        "content": "against"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'different' biểu thị sự khác biệt.",
+      "level2_formula": "be different from something (khác biệt với cái gì).",
+      "level3_steps": "'different' kết hợp chuẩn nhất với 'from'."
+    },
+    "explanation": "Cấu trúc: 'be different from sth' (khác biệt với cái gì). Đáp án B.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-12",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Young citizens should be fully aware _______ their environmental responsibilities to combat climate change.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "of"
+      },
+      {
+        "id": "B",
+        "content": "for"
+      },
+      {
+        "id": "C",
+        "content": "about"
+      },
+      {
+        "id": "D",
+        "content": "with"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'aware' mang nghĩa ý thức, nhận thức được.",
+      "level2_formula": "be aware of something (ý thức, nhận biết được điều gì) = be conscious of.",
+      "level3_steps": "'aware' luôn đi kèm giới từ 'of'."
+    },
+    "explanation": "Cấu trúc: 'be aware of sth' (nhận thức được cái gì). Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-13",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "The school principal was highly satisfied _______ the disciplined and creative performance of all contestants.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "with"
+      },
+      {
+        "id": "B",
+        "content": "to"
+      },
+      {
+        "id": "C",
+        "content": "for"
+      },
+      {
+        "id": "D",
+        "content": "about"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'satisfied' chỉ sự hài lòng.",
+      "level2_formula": "be satisfied with something (hài lòng, thỏa mãn với cái gì) = be pleased with.",
+      "level3_steps": "'satisfied' đi với giới từ 'with'."
+    },
+    "explanation": "Cấu trúc: 'be satisfied with sth' (hài lòng, thỏa mãn với điều gì). Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-14",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "After graduating from university, young adults should strive to be financially independent _______ their parents.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "on"
+      },
+      {
+        "id": "B",
+        "content": "of"
+      },
+      {
+        "id": "C",
+        "content": "with"
+      },
+      {
+        "id": "D",
+        "content": "to"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Phân biệt giới từ giữa 'dependent' và 'independent'.",
+      "level2_formula": "dependent ON (phụ thuộc vào) >< independent OF (độc lập, không phụ thuộc vào).",
+      "level3_steps": "Ở đây dùng tính từ 'independent' nên giới từ đi kèm là 'of'."
+    },
+    "explanation": "Cấu trúc quan trọng cần phân biệt:\n- be dependent ON sth/sb: phụ thuộc vào ai/cái gì.\n- be independent OF sth/sb: độc lập, tự chủ, không lệ thuộc vào ai/cái gì.\nDo đó đáp án đúng là B (of).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-15",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "This advanced vocational training course is extremely suitable _______ candidates seeking immediate employment.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "to"
+      },
+      {
+        "id": "B",
+        "content": "for"
+      },
+      {
+        "id": "C",
+        "content": "with"
+      },
+      {
+        "id": "D",
+        "content": "in"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Giới từ đi với tính từ 'suitable' chỉ sự phù hợp.",
+      "level2_formula": "be suitable for somebody / something (phù hợp, thích hợp cho ai/cái gì).",
+      "level3_steps": "'suitable' đi kèm với 'for'."
+    },
+    "explanation": "Cấu trúc: 'be suitable for sb/sth' (phù hợp, thích hợp với ai/mục đích gì). Đáp án B.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-16",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Your future academic success depends largely _______ your personal diligence and consistent daily effort.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "on"
+      },
+      {
+        "id": "B",
+        "content": "in"
+      },
+      {
+        "id": "C",
+        "content": "to"
+      },
+      {
+        "id": "D",
+        "content": "for"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Giới từ đi với động từ 'depend' mang nghĩa phụ thuộc vào.",
+      "level2_formula": "depend on somebody / something (phụ thuộc vào ai/cái gì) = rely on.",
+      "level3_steps": "'depend' luôn đi với giới từ 'on'."
+    },
+    "explanation": "Cấu trúc: 'depend on sb/sth' (phụ thuộc, dựa vào ai/cái gì). Đồng nghĩa với 'rely on'. Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-17",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "All students are looking forward _______ receiving the final results of their high school graduation trial exam.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "to"
+      },
+      {
+        "id": "B",
+        "content": "for"
+      },
+      {
+        "id": "C",
+        "content": "at"
+      },
+      {
+        "id": "D",
+        "content": "about"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Cụm động từ 'look forward to' là cấu trúc đặc biệt đi với V-ing.",
+      "level2_formula": "look forward to + V-ing / Noun ('to' ở đây là giới từ, không phải to-V).",
+      "level3_steps": "Cụm cố định: look forward + to + V-ing -> chọn giới từ 'to'."
+    },
+    "explanation": "Cấu trúc: 'look forward to + V-ing/N' (trông đợi, mong chờ điều gì). 'To' ở đây là giới từ đi kèm. Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-18",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "He sincerely apologized to the teacher _______ arriving late for the morning revision session.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "with"
+      },
+      {
+        "id": "B",
+        "content": "about"
+      },
+      {
+        "id": "C",
+        "content": "for"
+      },
+      {
+        "id": "D",
+        "content": "at"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Cấu trúc của động từ 'apologize'.",
+      "level2_formula": "apologize to somebody for something / doing something (xin lỗi ai vì việc gì).",
+      "level3_steps": "Sau 'to the teacher' là lý do xin lỗi -> dùng giới từ 'for' + V-ing."
+    },
+    "explanation": "Cấu trúc: 'apologize to sb for doing sth' (xin lỗi ai vì đã làm điều gì). Do đó chọn 'for'. Đáp án C.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-19",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Through perseverance and disciplined practice, she finally succeeded _______ passing the IELTS exam with a score of 8.0.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "in"
+      },
+      {
+        "id": "B",
+        "content": "on"
+      },
+      {
+        "id": "C",
+        "content": "at"
+      },
+      {
+        "id": "D",
+        "content": "with"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Giới từ đi với động từ 'succeed'.",
+      "level2_formula": "succeed in + V-ing / N (thành công trong việc gì).",
+      "level3_steps": "'succeed' luôn đi kèm với giới từ 'in'."
+    },
+    "explanation": "Cấu trúc: 'succeed in doing sth' có nghĩa là thành công trong việc làm gì. Phân biệt với 'manage to V'. Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-20",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Please turn off all mobile notifications so that you can concentrate _______ your reading task.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "into"
+      },
+      {
+        "id": "B",
+        "content": "on"
+      },
+      {
+        "id": "C",
+        "content": "for"
+      },
+      {
+        "id": "D",
+        "content": "with"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Giới từ đi với động từ 'concentrate' biểu thị sự tập trung.",
+      "level2_formula": "concentrate on + N / V-ing (tập trung vào cái gì) = focus on.",
+      "level3_steps": "'concentrate' luôn đi cùng giới từ 'on'."
+    },
+    "explanation": "Cấu trúc: 'concentrate on sth' (tập trung vào điều gì). Tương đương với 'focus on'. Đáp án B.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-21",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "More than two hundred youths enthusiastically participated _______ the green campus clean-up campaign.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "to"
+      },
+      {
+        "id": "B",
+        "content": "in"
+      },
+      {
+        "id": "C",
+        "content": "for"
+      },
+      {
+        "id": "D",
+        "content": "at"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Giới từ đi với động từ 'participate' chỉ sự tham gia.",
+      "level2_formula": "participate in something (tham gia vào cái gì) = take part in.",
+      "level3_steps": "'participate' luôn đi cùng giới từ 'in'."
+    },
+    "explanation": "Cấu trúc: 'participate in sth' (tham gia vào hoạt động gì). Đồng nghĩa với 'take part in', 'join in'. Đáp án B.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-22",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "High school seniors often find effective relaxation techniques to cope _______ severe exam stress.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "with"
+      },
+      {
+        "id": "B",
+        "content": "for"
+      },
+      {
+        "id": "C",
+        "content": "against"
+      },
+      {
+        "id": "D",
+        "content": "about"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Cụm động từ mang nghĩa đối phó, xử lý tình huống khó khăn.",
+      "level2_formula": "cope with something = deal with something (đối phó, xử lý cái gì).",
+      "level3_steps": "'cope' luôn đi kèm với giới từ 'with'."
+    },
+    "explanation": "Cấu trúc: 'cope with sth' có nghĩa là đương đầu, giải quyết, đối phó với khó khăn. Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-23",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Protective face masks and helmets help prevent workers _______ breathing toxic dust and suffering injuries.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "against"
+      },
+      {
+        "id": "B",
+        "content": "from"
+      },
+      {
+        "id": "C",
+        "content": "out of"
+      },
+      {
+        "id": "D",
+        "content": "with"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Cấu trúc ngăn chặn ai làm gì hoặc bị cái gì tác động.",
+      "level2_formula": "prevent sb / sth from + V-ing = stop sb / sth from + V-ing.",
+      "level3_steps": "Đi với 'prevent sb' là giới từ 'from' + V-ing."
+    },
+    "explanation": "Cấu trúc: 'prevent someone from doing something' (ngăn chặn ai làm gì/khỏi cái gì). Đáp án B.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-24",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Whenever I visit Sa Dec flower village, the vibrant blooming flowers remind me _______ my tranquil childhood.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "about"
+      },
+      {
+        "id": "B",
+        "content": "of"
+      },
+      {
+        "id": "C",
+        "content": "with"
+      },
+      {
+        "id": "D",
+        "content": "for"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Cấu trúc 'remind' khi gợi nhớ về kỷ niệm hoặc hình ảnh trong quá khứ.",
+      "level2_formula": "remind somebody of somebody / something (gợi cho ai nhớ đến ai/cái gì).",
+      "level3_steps": "Gợi nhớ kỷ niệm tuổi thơ -> 'remind me of'."
+    },
+    "explanation": "Cấu trúc: 'remind sb of sb/sth' (khiến ai nhớ đến ai/cái gì). Lưu ý: 'remind sb to V' là nhắc nhở ai làm gì. Ở đây là gợi nhớ kỷ niệm nên dùng 'of'. Đáp án B.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-25",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "The school management board warmly congratulated the debate team _______ winning the provincial championship.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "for"
+      },
+      {
+        "id": "B",
+        "content": "on"
+      },
+      {
+        "id": "C",
+        "content": "with"
+      },
+      {
+        "id": "D",
+        "content": "in"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Giới từ đi với động từ 'congratulate' để chúc mừng nhân dịp/thành tích gì.",
+      "level2_formula": "congratulate somebody on something / doing something (chúc mừng ai vì thành tích gì).",
+      "level3_steps": "Đi với 'congratulate sb' là giới từ 'on'."
+    },
+    "explanation": "Cấu trúc: 'congratulate sb on sth/doing sth' (chúc mừng ai về thành tích/dịp gì). Đáp án B (on).",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-26",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "VanDung",
+    "type": "multiple_choice",
+    "content": "Several environmental groups strongly objected _______ building a coal-fired power plant near the sanctuary.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "against"
+      },
+      {
+        "id": "B",
+        "content": "with"
+      },
+      {
+        "id": "C",
+        "content": "to"
+      },
+      {
+        "id": "D",
+        "content": "for"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Động từ 'object' mang nghĩa phản đối, 'to' là giới từ đi với V-ing.",
+      "level2_formula": "object to + V-ing / Noun (phản đối việc gì).",
+      "level3_steps": "'object' đi với giới từ 'to' + V-ing."
+    },
+    "explanation": "Cấu trúc: 'object to + V-ing/N' (phản đối điều gì). Giới từ bắt buộc là 'to'. Đáp án C.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-27",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Teenagers should avoid spending too much money and valuable time _______ addictive mobile video games.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "for"
+      },
+      {
+        "id": "B",
+        "content": "in"
+      },
+      {
+        "id": "C",
+        "content": "on"
+      },
+      {
+        "id": "D",
+        "content": "with"
+      }
+    ],
+    "correctAnswer": "C",
+    "hints": {
+      "level1_concept": "Cấu trúc của động từ 'spend' khi đi với tiền bạc hoặc thời gian cho một đối tượng danh từ.",
+      "level2_formula": "spend time / money on something (dành tiền/thời gian vào việc gì). Nếu là động từ thì spend time + V-ing.",
+      "level3_steps": "Phía sau là cụm danh từ 'addictive mobile video games' -> dùng giới từ 'on'."
+    },
+    "explanation": "Cấu trúc: 'spend money/time on sth' (chi tiêu tiền/thời gian vào cái gì). Do đó chọn giới từ 'on'. Đáp án C.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-28",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "NhanBiet",
+    "type": "multiple_choice",
+    "content": "Interested applicants should sign up _______ the international volunteer leadership training before the end of this month.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "for"
+      },
+      {
+        "id": "B",
+        "content": "to"
+      },
+      {
+        "id": "C",
+        "content": "with"
+      },
+      {
+        "id": "D",
+        "content": "at"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Cụm động từ chỉ sự đăng ký tham gia một khóa học, hoạt động.",
+      "level2_formula": "sign up for something (đăng ký tham gia cái gì).",
+      "level3_steps": "'sign up' luôn đi kèm với giới từ 'for'."
+    },
+    "explanation": "Cụm động từ: 'sign up for sth' mang nghĩa đăng ký tham gia khóa học/hoạt động nào đó (xuất hiện trong văn bản quảng cáo Tiết 7+8). Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-29",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "The charitable foundation aims to provide underprivileged students _______ free textbooks and scholarship grants.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "for"
+      },
+      {
+        "id": "B",
+        "content": "with"
+      },
+      {
+        "id": "C",
+        "content": "to"
+      },
+      {
+        "id": "D",
+        "content": "in"
+      }
+    ],
+    "correctAnswer": "B",
+    "hints": {
+      "level1_concept": "Cấu trúc của động từ 'provide'.",
+      "level2_formula": "provide somebody WITH something = provide something TO / FOR somebody (cung cấp cho ai cái gì).",
+      "level3_steps": "Phía sau là tân ngữ chỉ người 'underprivileged students' + chỗ trống + vật -> dùng giới từ 'with'."
+    },
+    "explanation": "Cấu trúc phân biệt:\n- provide sb WITH sth: cung cấp cho ai cái gì.\n- provide sth TO/FOR sb: cung cấp cái gì cho ai.\nỞ đây tân ngữ là 'underprivileged students' (người) nên dùng 'with'. Đáp án B.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
+  {
+    "id": "Q-ENG-T06-30",
+    "subjectId": "tieng-anh-12",
+    "topicId": "anh-tuan-06-gioi-tu",
+    "topicName": "Tuần 6: Giới từ theo sau tính từ và động từ",
+    "chapterName": "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+    "difficulty": "ThongHieu",
+    "type": "multiple_choice",
+    "content": "Regular physical exercise and healthy nutrition contribute greatly _______ enhancing cognitive abilities and overall well-being.\n\nMark the letter A, B, C, or D to indicate the correct answer:",
+    "options": [
+      {
+        "id": "A",
+        "content": "to"
+      },
+      {
+        "id": "B",
+        "content": "for"
+      },
+      {
+        "id": "C",
+        "content": "into"
+      },
+      {
+        "id": "D",
+        "content": "in"
+      }
+    ],
+    "correctAnswer": "A",
+    "hints": {
+      "level1_concept": "Giới từ đi với động từ 'contribute' chỉ sự đóng góp, góp phần.",
+      "level2_formula": "contribute to + N / V-ing (đóng góp vào, góp phần vào việc gì).",
+      "level3_steps": "'contribute' luôn đi kèm với giới từ 'to'."
+    },
+    "explanation": "Cấu trúc: 'contribute to + N/V-ing' có nghĩa là góp phần vào việc gì. Giới từ đúng là 'to'. Đáp án A.",
+    "sourceDocTitle": "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc"
+  },
 ];

@@ -2255,7 +2255,6 @@ TOPIC_THEORY_MAP["anh-tuan-01-tu-loai"] = {
   ]
 };
 
-TOPIC_THEORY_MAP["anh-tuan-05-duc-lo-quang-cao"] = TOPIC_THEORY_MAP["anh-tuan-01-tu-loai"];
 TOPIC_THEORY_MAP["anh-tuan-11-tu-vung-truong-nghia"] = TOPIC_THEORY_MAP["anh-tuan-01-tu-loai"];
 TOPIC_THEORY_MAP["anh-tuan-02-trat-tu-tu"] = {
   subjectId: "tieng-anh-12",
@@ -2446,6 +2445,172 @@ TOPIC_THEORY_MAP["anh-tuan-04-dong-tu-nguyen-mau-danh-dong-tu"] = {
         {
           heading: "4. Need",
           text: "- need + To-V: chủ động, chủ ngữ là người (I need to study)\n- need + V-ing (= need to be V3): bị động, chủ ngữ là vật (The car needs washing = needs to be washed)."
+        }
+      ]
+    }
+  ]
+};
+
+
+// ==========================================
+// TUẦN 5: ÔN TẬP DẠNG BÀI ĐỤC LỖ QUẢNG CÁO
+// ==========================================
+TOPIC_THEORY_MAP["anh-tuan-05-duc-lo-quang-cao"] = {
+  subjectId: "tieng-anh-12",
+  subjectName: "Tiếng Anh 12",
+  topicName: "Bài 5: Ôn tập - Luyện tập điền từ vào đoạn văn bài quảng cáo (Tuần 5)",
+  chapterName: "Chủ đề 1: Dạng bài đục lỗ 1 (Form bài quảng cáo) (Tuần 1 – 5)",
+  docTitle: "Tiết 5,6.docx & Tiết 7+8.docx (Tổ Tiếng Anh - THPT Nguyễn Sinh Sắc)",
+  objectives: [
+    "Nắm vững format cấu trúc 6 câu hỏi trong bài đục lỗ quảng cáo của đề thi tốt nghiệp THPT mới.",
+    "Làm chủ 5 dạng câu hỏi trọng tâm: Từ loại (Word Form), Trật tự từ (Word Order), Đại từ quan hệ (Relative Pronouns), Dạng động từ (Gerund/Infinitive), Giới từ & Cụm từ cố định (Collocations).",
+    "Thành thạo phương pháp 4 bước làm bài đục lỗ nhanh, chính xác dưới 3 phút.",
+    "Nhận diện các dấu hiệu ngữ pháp then chốt xung quanh chỗ trống để chọn đáp án không cần dịch toàn bộ bài."
+  ],
+  sections: [
+    {
+      id: "cloze-ad-strategy",
+      topicId: "anh-tuan-05-duc-lo-quang-cao",
+      title: "1. Phương pháp 4 bước xử lý dạng bài đục lỗ quảng cáo",
+      icon: "BookOpen",
+      tag: "Chiến thuật",
+      summary: "Quy trình tư duy chuẩn giúp đạt điểm tối đa dạng bài quảng cáo.",
+      keyTerms: ["Skim Title", "Grammar Slot", "Collocation", "Elimination"],
+      content: [
+        {
+          heading: "Bước 1: Đọc lướt tiêu đề & Xác định ngữ cảnh",
+          text: "- Đọc tiêu đề hoa / biểu tượng (icon) ở đầu đoạn (ví dụ: 'Join Us to Make a Difference!', 'Discover the Magic of Cinema!', 'PERFECT TET SOLUTIONS').\n- Xác định văn bản quảng cáo về: Sự kiện (Event), Dịch vụ (Service), Khóa học (Course), hay Hoạt động tình nguyện (Charity)."
+        },
+        {
+          heading: "Bước 2: Phân tích kết cấu ngữ pháp xung quanh chỗ trống",
+          text: "- Nhìn ngay từ đứng TRƯỚC và SAU chỗ trống:\n  + Nếu trước là Mạo từ (a/an/the) hoặc Tính từ sở hữu -> chỗ trống cần Cụm danh từ (chú ý trật tự từ: Adv + Adj + N).\n  + Nếu trước là Động từ tri giác hoặc Động từ chỉ cảm xúc -> xét V-ing hay To-V.\n  + Nếu có dấu phẩy ',' ngay trước chỗ trống -> kiểm tra đại từ quan hệ (không dùng 'that' sau dấu phẩy).\n  + Nếu là động từ chính của câu -> kiểm tra sự hòa hợp Chủ - Vị (số ít/số nhiều) và Thì (Tense)."
+        },
+        {
+          heading: "Bước 3: Đối chiếu 4 phương án & Loại trừ bẫy",
+          text: "- Xác định 4 phương án kiểm tra kiến thức gì (Từ loại, Thì, Giới từ, hay Cụm từ).\n- Loại ngay các phương án sai hình thái (như 'who is' đi với danh từ số nhiều, hoặc 'that' sau dấu phẩy).\n- Chú ý dạng rút gọn: V-ing (chủ động) vs V-ed/V3 (bị động) vs To-V (mục đích, sau số thứ tự / the only)."
+        },
+        {
+          heading: "Bước 4: Đọc lại câu văn hoàn chỉnh",
+          text: "- Lắp đáp án đã chọn vào câu và đọc lướt để kiểm tra xem câu có trôi chảy, đúng ngữ nghĩa và ngữ pháp không."
+        }
+      ]
+    },
+    {
+      id: "cloze-ad-grammar-matrix",
+      topicId: "anh-tuan-05-duc-lo-quang-cao",
+      title: "2. Ma trận 5 dạng ngữ pháp cốt lõi trong bài quảng cáo",
+      icon: "CheckCircle2",
+      tag: "Trọng tâm",
+      summary: "5 kiến thức ngữ pháp luôn xuất hiện trong 6 câu đục lỗ của bài quảng cáo.",
+      keyTerms: ["Word Form", "Word Order", "Relative Clause", "Gerund/Infinitive", "Collocations"],
+      content: [
+        {
+          heading: "Dạng 1: Từ loại (Word Form)",
+          text: "- Xác định vị trí cần Danh từ (Noun), Tính từ (Adj), Động từ (Verb) hay Trạng từ (Adv).\n- Ví dụ: 'finding time can be _______' (sau linking verb 'can be' cần tính từ 'frustrating')."
+        },
+        {
+          heading: "Dạng 2: Trật tự cụm từ (Word Order)",
+          text: "- Quy tắc: Tính từ + Danh từ phụ + Danh từ chính.\n- Ví dụ: 'professional customer service' (dịch vụ chăm sóc khách hàng chuyên nghiệp), 'useful smartphone app' (ứng dụng điện thoại hữu ích)."
+        },
+        {
+          heading: "Dạng 3: Đại từ quan hệ & Rút gọn mệnh đề quan hệ",
+          text: "- Đại từ sở hữu: 'children whose families struggle...' (gia đình của các em).\n- Mệnh đề quan hệ không xác định: 'Film Festival, which will take place...' (không dùng 'that').\n- Rút gọn chủ động: 'movie lover enjoying thrilling adventures' (= who enjoys).\n- Rút gọn bị động: 'dishes made with organic ingredients' (= which are made with).\n- Rút gọn sau the next / the only: 'the next person to bring hope...' (= who will bring)."
+        },
+        {
+          heading: "Dạng 4: Động từ nguyên mẫu & Danh động từ (To-V vs V-ing)",
+          text: "- Cấu trúc mời gọi trong quảng cáo: 'be welcome to V' (welcome to taste), 'do not hesitate to V' (hesitate to check), 'help keep learners motivated' (keep + O + Adj/P2)."
+        },
+        {
+          heading: "Dạng 5: Giới từ & Cụm từ cố định (Collocations)",
+          text: "- 'make a reservation' (đặt chỗ trước).\n- 'keep track of' (theo dõi tiến độ).\n- 'get in touch with' (liên lạc với ai).\n- 'be equipped with' (được trang bị cái gì)."
+        }
+      ]
+    }
+  ]
+};
+
+// ==========================================
+// TUẦN 6: GIỚI TỪ THEO SAU TÍNH TỪ VÀ ĐỘNG TỪ
+// ==========================================
+TOPIC_THEORY_MAP["anh-tuan-06-gioi-tu"] = {
+  subjectId: "tieng-anh-12",
+  subjectName: "Tiếng Anh 12",
+  topicName: "Bài 6: Giới từ theo sau tính từ và động từ (Tuần 6)",
+  chapterName: "Chủ đề 2: Giới từ, Cụm từ cố định & Dạng bài đục lỗ (Tuần 6 – 8)",
+  docTitle: "Kế hoạch Ôn thi TN THPT - Tổ Tiếng Anh THPT Nguyễn Sinh Sắc",
+  objectives: [
+    "Thuộc lòng 20 cụm Tính từ + Giới từ (Adjective + Preposition) then chốt trong chương trình 12.",
+    "Thuộc lòng 20 cụm Động từ + Giới từ (Verb + Preposition / Prepositional Verbs) kinh điển.",
+    "Nắm vững nguyên tắc vàng: Giới từ luôn đi sau bởi Danh từ hoặc V-ing (kể cả các cấu trúc có 'to' là giới từ như 'look forward to', 'object to', 'be accustomed to').",
+    "Phân biệt chính xác các cặp giới từ dễ nhầm lẫn trong bài thi trắc nghiệm tốt nghiệp THPT."
+  ],
+  sections: [
+    {
+      id: "adjective-prepositions",
+      topicId: "anh-tuan-06-gioi-tu",
+      title: "1. Bảng tra cứu Tính từ + Giới từ kinh điển",
+      icon: "BookOpen",
+      tag: "Trọng tâm",
+      summary: "Các cụm tính từ đi kèm giới từ bắt buộc trong đề thi THPT.",
+      keyTerms: ["good at", "interested in", "proud of", "responsible for", "accustomed to", "independent of"],
+      content: [
+        {
+          heading: "Nhóm giới từ AT & IN",
+          text: "- be good at / bad at: giỏi / dở về cái gì (Ex: Lan is good at solving equations).\n- be interested in: quan tâm, thích thú (Ex: interested in robotics)."
+        },
+        {
+          heading: "Nhóm giới từ OF & FOR",
+          text: "- be proud of: tự hào về (= take pride in)\n- be afraid of / scared of: sợ hãi cái gì\n- be capable of + V-ing: có khả năng làm gì (>< be able to V)\n- be aware of: nhận thức được\n- be independent of: độc lập, không phụ thuộc vào\n- be famous for: nổi tiếng vì (đặc sản, thành tích)\n- be responsible for: chịu trách nhiệm về\n- be suitable for: phù hợp với ai/mục đích gì"
+        },
+        {
+          heading: "Nhóm giới từ ON, WITH, ABOUT & TO",
+          text: "- be keen on: say mê (= be fond of)\n- be satisfied with / pleased with: hài lòng với\n- be excited about / nervous about: hào hứng / lo lắng về\n- be accustomed to + V-ing/N: quen với cái gì (= be used to)\n- be different from: khác biệt so với"
+        }
+      ]
+    },
+    {
+      id: "verb-prepositions",
+      topicId: "anh-tuan-06-gioi-tu",
+      title: "2. Bảng tra cứu Động từ + Giới từ trọng điểm",
+      icon: "CheckCircle2",
+      tag: "Trọng tâm",
+      summary: "Các động từ đi kèm giới từ cố định (Prepositional Verbs) bắt buộc phải thuộc.",
+      keyTerms: ["depend on", "look forward to", "apologize for", "succeed in", "participate in", "cope with"],
+      content: [
+        {
+          heading: "Động từ đi với ON & IN",
+          text: "- depend on / rely on: phụ thuộc vào, dựa vào\n- concentrate on / focus on: tập trung vào\n- congratulate sb on sth: chúc mừng ai về thành tích gì\n- spend money/time on sth: chi tiền/thời gian vào việc gì\n- succeed in + V-ing: thành công trong việc gì\n- participate in / take part in: tham gia vào"
+        },
+        {
+          heading: "Động từ đi với FOR & WITH",
+          text: "- apologize to sb for sth/doing sth: xin lỗi ai vì điều gì\n- sign up for: đăng ký tham gia (khóa học, hoạt động)\n- cope with / deal with: đối phó, đương đầu với khó khăn\n- provide sb WITH sth: cung cấp cho ai cái gì (lưu ý: provide sth TO/FOR sb)"
+        },
+        {
+          heading: "Động từ đi với FROM, OF & TO",
+          text: "- prevent sb from + V-ing: ngăn chặn ai làm gì (= stop sb from)\n- remind sb of sb/sth: gợi cho ai nhớ đến ai/kỷ niệm gì\n- look forward to + V-ing: mong đợi, trông chờ\n- object to + V-ing: phản đối điều gì\n- contribute to + V-ing/N: đóng góp, góp phần vào"
+        }
+      ]
+    },
+    {
+      id: "preposition-exam-traps",
+      topicId: "anh-tuan-06-gioi-tu",
+      title: "3. Ba cái bẫy đề thi kinh điển về giới từ",
+      icon: "AlertTriangle",
+      tag: "Bẫy đề thi",
+      summary: "Những điểm học sinh thường hay mất điểm oan trong bài thi tốt nghiệp THPT.",
+      keyTerms: ["Trap 1: To + V-ing", "Trap 2: Dependent vs Independent", "Trap 3: Provide with vs to"],
+      content: [
+        {
+          heading: "Bẫy 1: 'TO' là giới từ đi với V-ing (không phải To-infinitive)",
+          text: "- look forward to + V-ing (trông đợi: looking forward to seeing you)\n- object to + V-ing (phản đối: objected to building a power plant)\n- be accustomed to + V-ing (quen với: accustomed to living in the countryside)\n- contribute to + V-ing (góp phần: contribute to protecting the environment)"
+        },
+        {
+          heading: "Bẫy 2: Phân biệt Dependent ON vs Independent OF",
+          text: "- be dependent ON: lệ thuộc vào ai/cái gì (financially dependent on parents).\n- be independent OF: độc lập, tự chủ, không bị phụ thuộc vào (independent of parents)."
+        },
+        {
+          heading: "Bẫy 3: Cấu trúc của động từ Provide",
+          text: "- provide + NGƯỜI + WITH + VẬT: provide students with free textbooks.\n- provide + VẬT + TO / FOR + NGƯỜI: provide free textbooks to students."
         }
       ]
     }

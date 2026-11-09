@@ -296,7 +296,7 @@ export const WEEKLY_PLAN: WeekPlanItem[] = [
     topicIds: ["anh-tuan-05-duc-lo-quang-cao"],
     subjectId: "tieng-anh-12",
     semester: 1,
-    totalTargetQuestions: 6,
+    totalTargetQuestions: 30,
   },
 
   // CHỦ ĐỀ 2: GIỚI TỪ, CỤM TỪ CỐ ĐỊNH & DẠNG BÀI ĐỤC LỖ (TUẦN 6 – 8)
@@ -311,7 +311,7 @@ export const WEEKLY_PLAN: WeekPlanItem[] = [
     topicIds: ["anh-tuan-06-gioi-tu"],
     subjectId: "tieng-anh-12",
     semester: 1,
-    totalTargetQuestions: 10,
+    totalTargetQuestions: 30,
   },
   {
     id: "anh-plan-tuan-07",
