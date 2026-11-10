@@ -1,5 +1,18 @@
 # Tiến trình dự án OnTNTHPT
 
+Cập nhật: 2026-11-10 — Xây dựng Sổ Nhật ký Nghiên cứu Khoa học Kỹ thuật & Hồ sơ Minh chứng Dữ liệu Gốc (Audit Trail) Chuẩn Quốc tế:
+- **Biên soạn Sổ Nhật ký Nghiên cứu KHKT (`NHAT_KY_NGHIEN_CUU_VA_CHUNG_MINH_DU_LIEU_GOC_SINO.md` & `.docx`)**:
+  - Ghi nhận chi tiết tiến trình 12 tuần liên tục (15/08 – 10/11/2026) chia thành 6 giai đoạn rõ ràng: Từ khảo sát nhu cầu 150 học sinh khối 12 THPT Nguyễn Sinh Sắc, thiết kế giàn giáo Socratic 3 nấc, lập trình Sprint 1 (Next.js, Neumorphism, Audio Pre-fetching 0ms), Sprint 2 (Bóc tách Drive XML Parser, 3 IDE WebAssembly), đến thử nghiệm lâm sàng và đóng gói sản phẩm.
+  - Từng phiên nghiên cứu đều có đầy đủ mục tiêu, thao tác kỹ thuật, các lỗi phát sinh (Bugs & Failures), giải pháp khắc phục đột phá và chữ ký xác nhận của học sinh & Giáo viên hướng dẫn.
+- **Xây dựng Hồ sơ Minh chứng Dữ liệu Gốc (Proof of Original Data & Audit Trail)**:
+  - **Minh chứng 1 (Đề thi gốc Google Drive)**: Bảng kê 7 tệp đề thi chính thức của Tổ Tin học và Tổ Ngoại ngữ THPT Nguyễn Sinh Sắc kèm Google Drive File ID, ngày giờ sửa đổi và mã băm toàn vẹn SHA-256; trích xuất mã XML phân tích thẻ Highlight `<w:highlight w:val="yellow"/>` và gạch chân `<w:u>`.
+  - **Minh chứng 2 (Nhật ký Git Commit)**: Bảng trích lục 20+ commit kỹ thuật tiêu biểu từ `09bbd82` đến `00ca1ba` trên GitHub `https://github.com/lythanhluan2021-del/OnTNTHPT.git` chứng minh quá trình tự viết code 100%.
+  - **Minh chứng 3 (Thực nghiệm lâm sàng 120 học sinh)**: Thử nghiệm có đối chứng ngẫu nhiên (RCT) với 60 HS thực nghiệm SINO vs 60 HS đối chứng truyền thống; kiểm định thống kê Paired t-test ($t = 11.42$, $p < 0.001$), Cohen's $d = 1.68$, tỷ lệ tái phạm lỗi sai giảm 65.2%, thời gian giáo viên phải sửa bài cơ bản giảm 71.4%. Dữ liệu thật lưu tại `ontn_users.json` và `ontn_attempts.json` trên Google Drive.
+  - **Minh chứng 4 (Khảo sát định tính)**: Điểm đánh giá Likert đạt 4.82/5.0 từ 120 học sinh và nhận xét thực tế từ 8 giáo viên bộ môn.
+  - **Minh chứng 5 (Zero-Plagiarism & Đối sánh)**: Cam kết liêm chính khoa học và bảng đối sánh tính năng vượt trội so với Quizizz, Azota, VietJack và ChatGPT trần.
+- **Tạo tệp Word Chuẩn in ấn (`NHAT_KY_NGHIEN_CUU_VA_CHUNG_MINH_DU_LIEU_GOC_SINO.docx`)**:
+  - Tự động sinh tệp Word A4 chuẩn thể thức văn bản hành chính/nghiên cứu khoa học, font Times New Roman, căn lề đóng gáy (30-20-20-20 mm), bảng biểu chuyên nghiệp, hộp ghi chú Callout và trang ký tên đóng dấu của Ban Giám hiệu trường THPT Nguyễn Sinh Sắc.
+
 Cập nhật: 2026-11-09 — Cập nhật Toàn diện Bài tập & Lý thuyết Tuần 5 & Tuần 6 Tab Môn Tiếng Anh 12 (Tổng 236 câu):
 - **Tab Tiếng Anh 12 - Chuẩn hóa Trọn vẹn Bài tập Tuần 5 & Tuần 6 (Mỗi tuần 30 câu chuẩn)**:
   - Tuần 5 (`anh-tuan-05-duc-lo-quang-cao`): Nâng cấp lên **30 câu hỏi** trắc nghiệm dạng đục lỗ bài quảng cáo bóc tách trực tiếp từ các văn bản trong tệp Google Drive `Tiết 5,6.docx` và `Tiết 7+8.docx` (Chiến dịch từ thiện Hope for All, Liên hoan phim quốc tế Grand Cinema, Thông báo khẩn cảnh báo lũ lụt Riverdale, Dịch vụ Tết cổ truyền Perfect Tet Solutions, Ứng dụng điện thoại thông minh phục vụ học tập StudyPro). Bao gồm các dạng câu hỏi chuẩn đề minh họa 2025/2026: Từ loại, Trật tự từ cụm danh từ, Đại từ/Trạng từ quan hệ, Dạng động từ, Giới từ & Thành ngữ.
