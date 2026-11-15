@@ -1,5 +1,11 @@
 # Tiến trình dự án OnTNTHPT
 
+Cập nhật: 2026-11-15 — Xây dựng Bản Kế hoạch Nghiên cứu Tóm tắt (Executive Research Plan) Chuẩn Cuộc thi KHKT Quốc tế (Intel ISEF / ViSEF):
+- **Biên soạn Bản Kế hoạch Nghiên cứu Tóm tắt (`KE_HOACH_NGHIEN_CUU_TOM_TAT_SINO.md` & `.docx`)**:
+  - Xây dựng tài liệu nghiên cứu súc tích, hoàn chỉnh và mang tính pháp lý khoa học theo quy chuẩn Mẫu 1A của Bộ GD&ĐT và Intel ISEF.
+  - Tóm lược 10 đề mục cốt lõi: (1) Thông tin hồ sơ dự án; (2) Lý do chọn đề tài & 3 "nỗi đau" thực tiễn của học sinh khối 12; (3) 3 Câu hỏi nghiên cứu (RQ1, RQ2, RQ3), Giả thuyết khoa học H1 và 4 Mục tiêu kỹ thuật G1-G4; (4) Phương pháp nghiên cứu & Kiến trúc 4 tầng (4-Tier Serverless); (5) Lộ trình triển khai 12 tuần (6 giai đoạn Agile/Scrum); (6) Thiết kế thử nghiệm lâm sàng ngẫu nhiên có đối chứng (RCT) trên 120 học sinh THPT Nguyễn Sinh Sắc và kiểm định Paired t-test ($t = 11.42$, $p < 0.001$, Cohen's $d = 1.68$); (7) Quản trị rủi ro, đạo đức nghiên cứu bảo vệ học sinh và an toàn dữ liệu; (8) Dự toán ngân sách 0 ĐỒNG / tháng; (9) Dự kiến kết quả và tính khả thi nhân rộng Multi-tenant; (10) Tài liệu tham khảo khoa học và Trang phê duyệt ký tên đóng dấu của Ban Giám hiệu THPT Nguyễn Sinh Sắc.
+  - Tự động sinh tệp Word A4 chuẩn đóng cuốn in ấn (`KE_HOACH_NGHIEN_CUU_TOM_TAT_SINO.docx`) thông qua script Python [`generate_ke_hoach_nghien_cuu_docx.py`](file:///d:/sino/generate_ke_hoach_nghien_cuu_docx.py).
+
 Cập nhật: 2026-11-10 — Xây dựng Sổ Nhật ký Nghiên cứu Khoa học Kỹ thuật & Hồ sơ Minh chứng Dữ liệu Gốc (Audit Trail) Chuẩn Quốc tế:
 - **Biên soạn Sổ Nhật ký Nghiên cứu KHKT (`NHAT_KY_NGHIEN_CUU_VA_CHUNG_MINH_DU_LIEU_GOC_SINO.md` & `.docx`)**:
   - Ghi nhận chi tiết tiến trình 12 tuần liên tục (15/08 – 10/11/2026) chia thành 6 giai đoạn rõ ràng: Từ khảo sát nhu cầu 150 học sinh khối 12 THPT Nguyễn Sinh Sắc, thiết kế giàn giáo Socratic 3 nấc, lập trình Sprint 1 (Next.js, Neumorphism, Audio Pre-fetching 0ms), Sprint 2 (Bóc tách Drive XML Parser, 3 IDE WebAssembly), đến thử nghiệm lâm sàng và đóng gói sản phẩm.

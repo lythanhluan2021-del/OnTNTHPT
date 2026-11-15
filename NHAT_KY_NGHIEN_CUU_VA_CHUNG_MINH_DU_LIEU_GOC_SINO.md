@@ -398,3 +398,4 @@ Chúng tôi, gồm các học sinh tác giả đề tài, giáo viên hướng d
 |:---:|:---:|:---:|
 | *(Ký và ghi rõ họ tên)* | *(Ký và ghi rõ họ tên)* | *(Ký tên, đóng dấu)* |
 | <br><br><br>**Học sinh 1 & Học sinh 2** | <br><br><br>**Tổ Tin học & Tổ Ngoại ngữ** | <br><br><br>**Ban Giám hiệu Nhà trường** |
+
