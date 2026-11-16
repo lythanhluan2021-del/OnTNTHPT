@@ -214,3 +214,4 @@ Bản Kế hoạch nghiên cứu này đã được thảo luận kỹ lưỡng,
 |:---:|:---:|:---:|
 | *(Ký và ghi rõ họ tên)* | *(Ký và ghi rõ họ tên)* | *(Ký tên và đóng dấu)* |
 | <br><br><br>**Học sinh 1 & Học sinh 2** | <br><br><br>**Tổ Tin học & Tổ Ngoại ngữ** | <br><br><br>**Ban Giám hiệu Nhà trường** |
+

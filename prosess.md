@@ -1,5 +1,11 @@
 # Tiến trình dự án OnTNTHPT
 
+Cập nhật: 2026-11-16 — Thiết kế Bộ Trang Bìa Chuẩn Quy định Cuộc thi KHKT Quốc tế (Intel ISEF / ViSEF):
+- **Phát hành Bộ Trang Bìa KHKT (`TRANG_BIA_KE_HOACH_NGHIEN_CUU_SINO` & `TRANG_BIA_BAO_CAO_NGHIEN_CUU_SINO`)**:
+  - Trang bìa Kế hoạch nghiên cứu (`.docx` & `.html`): Thiết kế chuẩn Mẫu 1A của Bộ GD&ĐT với khung viền hoa văn đôi nghệ thuật màu xanh Navy `#1E3A8A`, căn lề đóng gáy (30-20-20-20 mm), tiêu đề dự án nổi bật, hộp thông tin tác giả và giáo viên hướng dẫn, trang bìa lót có phân công nhiệm vụ và chữ ký phê duyệt của Ban Giám hiệu THPT Nguyễn Sinh Sắc.
+  - Trang bìa Báo cáo kết quả nghiên cứu (`.docx` & `.html`): Thiết kế trang trọng dành cho cuốn báo cáo toàn văn 15-20 trang nộp Ban Giám khảo chấm thi, sẵn sàng in màu trên giấy bìa cứng (160-200 gsm) bọc mica bóng kính hoặc in trực tiếp qua trình duyệt với tỷ lệ chuẩn A4 (210 x 297 mm).
+  - Tự động hóa bằng script Python [`generate_cover_pages_khkt.py`](file:///d:/sino/generate_cover_pages_khkt.py) và tài liệu hướng dẫn in ấn chi tiết [`BO_TRANG_BIA_KHKT_SINO.md`](file:///d:/sino/BO_TRANG_BIA_KHKT_SINO.md).
+
 Cập nhật: 2026-11-15 — Xây dựng Bản Kế hoạch Nghiên cứu Tóm tắt (Executive Research Plan) Chuẩn Cuộc thi KHKT Quốc tế (Intel ISEF / ViSEF):
 - **Biên soạn Bản Kế hoạch Nghiên cứu Tóm tắt (`KE_HOACH_NGHIEN_CUU_TOM_TAT_SINO.md` & `.docx`)**:
   - Xây dựng tài liệu nghiên cứu súc tích, hoàn chỉnh và mang tính pháp lý khoa học theo quy chuẩn Mẫu 1A của Bộ GD&ĐT và Intel ISEF.

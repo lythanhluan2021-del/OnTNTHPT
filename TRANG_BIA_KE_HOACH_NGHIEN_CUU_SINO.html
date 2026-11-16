@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Bìa Kế Hoạch Nghiên Cứu KHKT - SINO</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #f1f5f9;
+      color: #1f2937;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 20mm 20mm 20mm 30mm; /* Lề trái 30mm đóng gáy */
+      background: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      margin-bottom: 25px;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Khung viền đôi nghệ thuật trang trọng */
+    .outer-border {
+      position: absolute;
+      top: 15mm;
+      left: 20mm;
+      right: 15mm;
+      bottom: 15mm;
+      border: 3px double #1e3a8a;
+      pointer-events: none;
+    }
+
+    .inner-border {
+      position: absolute;
+      top: 17mm;
+      left: 22mm;
+      right: 17mm;
+      bottom: 17mm;
+      border: 1px solid #1e3a8a;
+      pointer-events: none;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-top: 5mm;
+    }
+
+    .inst-name {
+      font-size: 13pt;
+      font-weight: bold;
+      color: #111827;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .school-name {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #1e3a8a;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .divider {
+      margin: 6px auto 18px auto;
+      width: 140px;
+      border-bottom: 1.5px solid #64748b;
+    }
+
+    /* Contest info */
+    .contest-title {
+      font-size: 13pt;
+      font-weight: bold;
+      color: #1f2937;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .contest-year {
+      font-size: 12pt;
+      font-weight: bold;
+      color: #2563eb;
+      margin-top: 3px;
+    }
+
+    /* Document Type Title */
+    .doc-type {
+      text-align: center;
+      margin: 18px 0 10px 0;
+    }
+
+    .doc-type-main {
+      font-size: 17pt;
+      font-weight: bold;
+      color: #dc2626;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+    }
+
+    .doc-type-sub {
+      font-size: 11pt;
+      font-style: italic;
+      color: #4b5563;
+      margin-top: 4px;
+      font-weight: bold;
+    }
+
+    /* Project Title */
+    .project-section {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .project-label {
+      font-size: 11.5pt;
+      font-weight: bold;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .project-name {
+      font-size: 19pt;
+      font-weight: bold;
+      color: #1e3a8a;
+      line-height: 1.35;
+      margin: 8px 0 6px 0;
+      text-transform: uppercase;
+    }
+
+    .project-subtitle {
+      font-size: 12pt;
+      font-weight: bold;
+      color: #2563eb;
+      line-height: 1.4;
+    }
+
+    .project-english {
+      font-size: 11pt;
+      font-style: italic;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* Metadata Table */
+    .meta-box {
+      margin: 15px auto;
+      width: 100%;
+    }
+
+    table.meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1.5px solid #1e3a8a;
+      background: white;
+    }
+
+    table.meta-table td {
+      padding: 8px 14px;
+      font-size: 11pt;
+      border-bottom: 1px solid #e2e8f0;
+      line-height: 1.4;
+    }
+
+    table.meta-table td.label-col {
+      width: 32%;
+      font-weight: bold;
+      background-color: #f8fafc;
+      color: #1e3a8a;
+      border-right: 1px solid #cbd5e1;
+    }
+
+    table.meta-table td.val-col {
+      width: 68%;
+      color: #1f2937;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-bottom: 5mm;
+    }
+
+    .footer-loc {
+      font-size: 11.5pt;
+      font-weight: bold;
+      color: #1f2937;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Page 2 specifics */
+    .task-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    .task-table th, .task-table td {
+      border: 1px solid #cbd5e1;
+      padding: 7px 10px;
+      font-size: 10pt;
+      line-height: 1.35;
+    }
+
+    .task-table th {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .sig-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+
+    .sig-table td {
+      width: 33.33%;
+      text-align: center;
+      vertical-align: top;
+      font-size: 10pt;
+      font-weight: bold;
+      line-height: 1.35;
+    }
+
+    .sig-space {
+      height: 60px;
+    }
+
+    /* Print settings */
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    .btn-print {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-print:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn-print no-print" onclick="window.print()">
+    🖨️ In Trang Bìa (Ctrl + P)
+  </button>
+
+  <!-- TRANG 1: BÌA CHÍNH (BÌA NGOÀI) -->
+  <div class="page">
+    <div class="outer-border"></div>
+    <div class="inner-border"></div>
+
+    <div class="header">
+      <div class="inst-name">Sở Giáo dục và Đào tạo Tỉnh An Giang</div>
+      <div class="school-name">Trường THPT Nguyễn Sinh Sắc (TX. Tân Châu)</div>
+      <div class="divider"></div>
+      <div class="contest-title">Cuộc thi Khoa học Kỹ thuật Dành cho Học sinh Trung học</div>
+      <div class="contest-year">Năm học 2026 – 2027</div>
+    </div>
+
+    <div class="doc-type">
+      <div class="doc-type-main">BẢN KẾ HOẠCH NGHIÊN CỨU KHOA HỌC KỸ THUẬT</div>
+      <div class="doc-type-sub">(RESEARCH PLAN — KÈM THEO PHIẾU HỌC SINH 1A)</div>
+    </div>
+
+    <div class="project-section">
+      <div class="project-label">Tên Dự án Dự thi:</div>
+      <div class="project-name">SINO – HỆ THỐNG ÔN LUYỆN THI TỐT NGHIỆP THPT THÔNG MINH</div>
+      <div class="project-subtitle">DỰA TRÊN PHƯƠNG PHÁP GỢI MỞ SOCRATIC, BẢN ĐỊA HÓA GIỌNG ĐỌC AI<br>VÀ KIẾN TRÚC SERVERLESS 0 ĐỒNG</div>
+      <div class="project-english">(Smart Interactive National-exam Optimizer)</div>
+    </div>
+
+    <div class="meta-box">
+      <table class="meta-table">
+        <tr>
+          <td class="label-col">Lĩnh vực dự thi:</td>
+          <td class="val-col"><strong>Phần mềm hệ thống (Systems Software)</strong> / Khoa học máy tính & AI trong giáo dục</td>
+        </tr>
+        <tr>
+          <td class="label-col">Đối tượng nghiên cứu:</td>
+          <td class="val-col">Học sinh THPT ôn thi Tốt nghiệp theo Chương trình mới GDPT 2018</td>
+        </tr>
+        <tr>
+          <td class="label-col">Nhóm tác giả học sinh:</td>
+          <td class="val-col"><strong>02 Học sinh Khối 12</strong> – Trường THPT Nguyễn Sinh Sắc, An Giang</td>
+        </tr>
+        <tr>
+          <td class="label-col">Giáo viên hướng dẫn:</td>
+          <td class="val-col"><strong>Tổ Tin học & Tổ Ngoại ngữ</strong> – Trường THPT Nguyễn Sinh Sắc</td>
+        </tr>
+        <tr>
+          <td class="label-col">Năm học thực hiện:</td>
+          <td class="val-col"><strong>2026 – 2027</strong></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="footer">
+      <div class="footer-loc">TÂN CHÂU, AN GIANG — THÁNG 09 NĂM 2026</div>
+    </div>
+  </div>
+
+  <!-- TRANG 2: BÌA PHỤ (BÌA LÓT CÓ PHÂN CÔNG & CHỮ KÝ PHÊ DUYỆT) -->
+  <div class="page">
+    <div class="outer-border"></div>
+    <div class="inner-border"></div>
+
+    <div class="header">
+      <div class="inst-name">Sở Giáo dục và Đào tạo Tỉnh An Giang</div>
+      <div class="school-name">Trường THPT Nguyễn Sinh Sắc (TX. Tân Châu)</div>
+      <div class="divider"></div>
+      <div class="contest-title">BẢN KẾ HOẠCH NGHIÊN CỨU CHI TIẾT</div>
+      <div class="contest-year">Dự án: SINO – Hệ thống Ôn luyện Thi Tốt nghiệp THPT Thông minh</div>
+    </div>
+
+    <div style="margin: 10px 0;">
+      <p style="font-size: 11pt; font-weight: bold; color: #1e3a8a; margin-bottom: 6px;">DANH SÁCH TÁC GIẢ VÀ PHÂN CÔNG NHIỆM VỤ NGHIÊN CỨU:</p>
+      <table class="task-table">
+        <thead>
+          <tr>
+            <th style="width: 26%;">Họ và tên tác giả</th>
+            <th style="width: 14%;">Lớp</th>
+            <th style="width: 18%;">Vai trò</th>
+            <th style="width: 42%;">Nhiệm vụ nghiên cứu chính</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Học sinh 1</strong></td>
+            <td style="text-align: center;">Khối 12</td>
+            <td style="text-align: center; color: #1e3a8a;"><strong>Trưởng nhóm</strong></td>
+            <td>Phụ trách Sư phạm Socratic, Thiết kế Trải nghiệm người dùng (UX/UI), Khảo sát nhu cầu và Thực nghiệm lâm sàng</td>
+          </tr>
+          <tr>
+            <td><strong>Học sinh 2</strong></td>
+            <td style="text-align: center;">Khối 12</td>
+            <td style="text-align: center; color: #1e3a8a;"><strong>Kỹ sư hệ thống</strong></td>
+            <td>Phụ trách Kiến trúc Next.js Serverless, Thuật toán Socratic Guardrail, Đồng bộ Google Drive và Triển khai Cloud</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin: 12px 0;">
+      <p style="font-size: 11pt; font-weight: bold; color: #1e3a8a; margin-bottom: 6px;">CƠ QUAN CHỦ TRÌ & HƯỚNG DẪN KHOA HỌC:</p>
+      <p style="font-size: 10.5pt; line-height: 1.5; color: #374151;">
+        • <strong>Đơn vị chủ trì:</strong> Trường THPT Nguyễn Sinh Sắc (TX. Tân Châu, Tỉnh An Giang)<br>
+        • <strong>Giáo viên hướng dẫn khoa học:</strong> Tổ Tin học & Tổ Ngoại ngữ – Trường THPT Nguyễn Sinh Sắc<br>
+        • <strong>Thời gian phê duyệt kế hoạch:</strong> Ngày 05 tháng 09 năm 2026 (Trước khi tiến hành thử nghiệm)
+      </p>
+    </div>
+
+    <div style="text-align: right; font-style: italic; font-size: 10.5pt; margin-top: 15px;">
+      Tân Châu, ngày 05 tháng 09 năm 2026
+    </div>
+
+    <table class="sig-table">
+      <tr>
+        <td>ĐẠI DIỆN NHÓM TÁC GIẢ<br><span style="font-weight: normal; font-style: italic; font-size: 9.5pt;">(Ký và ghi rõ họ tên)</span></td>
+        <td>GIÁO VIÊN HƯỚNG DẪN<br><span style="font-weight: normal; font-style: italic; font-size: 9.5pt;">(Ký và ghi rõ họ tên)</span></td>
+        <td>XÁC NHẬN CỦA HIỆU TRƯỞNG<br><span style="font-weight: normal; font-style: italic; font-size: 9.5pt;">TRƯỜNG THPT NGUYỄN SINH SẮC</span></td>
+      </tr>
+      <tr>
+        <td class="sig-space"></td>
+        <td class="sig-space"></td>
+        <td class="sig-space"></td>
+      </tr>
+      <tr>
+        <td>Học sinh 1 & Học sinh 2</td>
+        <td>Tổ Tin học & Tổ Ngoại ngữ</td>
+        <td>Ban Giám hiệu Nhà trường</td>
+      </tr>
+    </table>
+
+    <div class="footer">
+      <div class="footer-loc" style="font-size: 10pt; color: #64748b;">HỒ SƠ NGHIÊN CỨU KHOA HỌC KỸ THUẬT — NĂM HỌC 2026 – 2027</div>
+    </div>
+  </div>
+
+</body>
+</html>
